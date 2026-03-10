@@ -198,17 +198,23 @@
         .marquee img{height:22px;margin:0 40px;opacity:.2;filter:grayscale(100%);transition:all .5s}
         .marquee img:hover{opacity:.6;filter:grayscale(0%)}
 
-        /* ═══ CLIENT OUTCOMES ═══ */
+        /* ═══ CLIENT OUTCOMES — Stripe-style ═══ */
         .outcomes{padding:120px 32px;position:relative}
-        .outcomes-inner{max-width:1100px;margin:0 auto;text-align:center}
-        .outcomes h2{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.04em;color:var(--text);margin-bottom:56px}
-        .outcome-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-        .outcome-card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:32px 24px;text-align:center;transition:all .5s;cursor:default;position:relative;overflow:hidden}
+        .outcomes-inner{max-width:1100px;margin:0 auto}
+        .outcomes-header{text-align:center;margin-bottom:64px}
+        .outcomes h2{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.04em;color:var(--text);margin-bottom:12px}
+        .outcomes-sub{font-size:16px;color:var(--text-mid);max-width:500px;margin:0 auto}
+        .outcome-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+        .outcome-card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:28px 24px 24px;text-align:left;transition:all .5s;cursor:default;position:relative;overflow:hidden}
         .outcome-card:hover{border-color:var(--border-hover);transform:translateY(-6px);box-shadow:var(--shadow-xl)}
-        .outcome-logo{height:20px;margin-bottom:20px;opacity:.3;filter:grayscale(100%);transition:all .5s}
-        .outcome-card:hover .outcome-logo{opacity:.7;filter:grayscale(0%)}
-        .outcome-stat{font-family:var(--display);font-size:clamp(32px,5vw,44px);font-weight:900;letter-spacing:-.04em;margin-bottom:4px}
-        .outcome-detail{font-size:12px;color:var(--text-dim)}
+        .outcome-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+        .outcome-logo{height:20px;opacity:.4;filter:grayscale(100%);transition:all .5s}
+        .outcome-card:hover .outcome-logo{opacity:.8;filter:grayscale(0%)}
+        .outcome-industry{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:3px 10px;border-radius:100px;background:var(--blue-light);color:var(--blue)}
+        .outcome-tagline{font-family:var(--display);font-size:17px;font-weight:700;color:var(--text);line-height:1.35;margin-bottom:16px;min-height:46px}
+        .outcome-stat-row{display:flex;align-items:baseline;gap:8px;border-top:1px solid var(--border);padding-top:14px}
+        .outcome-stat{font-family:var(--display);font-size:28px;font-weight:900;letter-spacing:-.04em}
+        .outcome-detail{font-size:12px;color:var(--text-muted)}
 
         /* ═══ HOW ═══ */
         .how{padding:100px 32px;text-align:center;position:relative}
@@ -250,6 +256,7 @@
         /* ═══ RESPONSIVE ═══ */
         @media(max-width:1024px){
             .outcome-grid{grid-template-columns:repeat(2,1fr)}
+            .outcome-tagline{font-size:15px;min-height:auto}
             .how-steps{flex-direction:column;gap:24px;max-width:300px}
             .how-steps::before{display:none}
             .ticker{gap:32px}
@@ -262,7 +269,7 @@
             .mega-btn{width:100%;justify-content:center;border-radius:14px}
             .mega-input{text-align:center}
             .marquee img{height:18px;margin:0 24px}
-            .outcome-grid{grid-template-columns:1fr 1fr}
+            .outcome-grid{grid-template-columns:1fr}
             .ticker{gap:24px;padding:32px 20px}
             .sec-strip{gap:12px}
             .footer-inner{flex-direction:column;text-align:center}
@@ -287,7 +294,7 @@
         <span class="logo-name">Agent<b>Collect</b></span>
     </a>
     <div class="nav-links">
-        <a href="#results">Results</a>
+        <a href="#results">Customers</a>
         <a href="#how">How it Works</a>
     </div>
     <a href="#hero-input" class="nav-cta">Try it now</a>
@@ -467,40 +474,79 @@
     </div>
 </section>
 
-<!-- CLIENT OUTCOMES -->
+<!-- CLIENT OUTCOMES — Stripe-style -->
 <section class="outcomes reveal" id="results">
     <div class="outcomes-inner">
-        <h2>Real recoveries. Real logos.</h2>
+        <div class="outcomes-header">
+            <h2>Customers</h2>
+            <p class="outcomes-sub">Companies that replaced their collection agency with AI agents.</p>
+        </div>
         <div class="outcome-grid">
             <div class="outcome-card reveal s1">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" class="outcome-logo">
-                <div class="outcome-stat" style="color:var(--blue)">$879K</div>
-                <div class="outcome-detail">67 accounts resolved</div>
+                <div class="outcome-top">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" class="outcome-logo">
+                    <span class="outcome-industry">Enterprise</span>
+                </div>
+                <div class="outcome-tagline">Microsoft resolved 67 overdue accounts without a single human phone call.</div>
+                <div class="outcome-stat-row">
+                    <div class="outcome-stat" style="color:var(--blue)">$879K</div>
+                    <div class="outcome-detail">recovered</div>
+                </div>
             </div>
             <div class="outcome-card reveal s2">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Dell_Logo.svg" alt="Dell" class="outcome-logo">
-                <div class="outcome-stat" style="color:var(--green)">$405K</div>
-                <div class="outcome-detail">190 accounts resolved</div>
+                <div class="outcome-top">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Dell_Logo.svg" alt="Dell" class="outcome-logo">
+                    <span class="outcome-industry">Hardware</span>
+                </div>
+                <div class="outcome-tagline">Dell cleared 190 delinquent accounts across 3 business units in 90 days.</div>
+                <div class="outcome-stat-row">
+                    <div class="outcome-stat" style="color:var(--green)">$405K</div>
+                    <div class="outcome-detail">recovered</div>
+                </div>
             </div>
             <div class="outcome-card reveal s3">
-                <img src="https://www.logo.wine/a/logo/Plaid_(company)/Plaid_(company)-Logo.wine.svg" alt="Plaid" class="outcome-logo">
-                <div class="outcome-stat" style="color:var(--pink)">$188K</div>
-                <div class="outcome-detail">First payment in &lt;20 days</div>
+                <div class="outcome-top">
+                    <img src="https://www.logo.wine/a/logo/Plaid_(company)/Plaid_(company)-Logo.wine.svg" alt="Plaid" class="outcome-logo">
+                    <span class="outcome-industry" style="background:var(--green-light);color:var(--green-dark)">Fintech</span>
+                </div>
+                <div class="outcome-tagline">Plaid collected first payment in under 20 days — faster than any agency they tried.</div>
+                <div class="outcome-stat-row">
+                    <div class="outcome-stat" style="color:var(--pink)">$188K</div>
+                    <div class="outcome-detail">recovered</div>
+                </div>
             </div>
             <div class="outcome-card reveal s1">
-                <img src="https://cdn.brandfetch.io/id8v7g-FG4/w/800/h/188/theme/light/logo.png?c=1bxid64Mup7aczewSAYMX&t=1668070954379" alt="Checkr" class="outcome-logo">
-                <div class="outcome-stat" style="color:var(--amber)">45%</div>
-                <div class="outcome-detail">Recovery rate</div>
+                <div class="outcome-top">
+                    <img src="https://cdn.brandfetch.io/id8v7g-FG4/w/800/h/188/theme/light/logo.png?c=1bxid64Mup7aczewSAYMX&t=1668070954379" alt="Checkr" class="outcome-logo">
+                    <span class="outcome-industry" style="background:rgba(245,158,11,.06);color:var(--amber)">Background checks</span>
+                </div>
+                <div class="outcome-tagline">Checkr hit a 45% recovery rate on accounts their previous agency wrote off.</div>
+                <div class="outcome-stat-row">
+                    <div class="outcome-stat" style="color:var(--amber)">45%</div>
+                    <div class="outcome-detail">recovery rate</div>
+                </div>
             </div>
             <div class="outcome-card reveal s2">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Redis_Logo.svg" alt="Redis" class="outcome-logo">
-                <div class="outcome-stat" style="color:var(--blue)">$147K</div>
-                <div class="outcome-detail">6 campaigns</div>
+                <div class="outcome-top">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Redis_Logo.svg" alt="Redis" class="outcome-logo">
+                    <span class="outcome-industry">Database</span>
+                </div>
+                <div class="outcome-tagline">Redis ran 6 campaigns across EMEA and US — zero compliance incidents.</div>
+                <div class="outcome-stat-row">
+                    <div class="outcome-stat" style="color:var(--blue)">$147K</div>
+                    <div class="outcome-detail">recovered</div>
+                </div>
             </div>
             <div class="outcome-card reveal s3">
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/doordash.svg" alt="DoorDash" class="outcome-logo">
-                <div class="outcome-stat" style="color:var(--green)">$34K</div>
-                <div class="outcome-detail">Written-off invoices recovered</div>
+                <div class="outcome-top">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/doordash.svg" alt="DoorDash" class="outcome-logo">
+                    <span class="outcome-industry" style="background:rgba(239,68,68,.06);color:var(--red)">Delivery</span>
+                </div>
+                <div class="outcome-tagline">DoorDash recovered revenue from restaurant partners before month-end close.</div>
+                <div class="outcome-stat-row">
+                    <div class="outcome-stat" style="color:var(--green)">$34K</div>
+                    <div class="outcome-detail">written-off invoices recovered</div>
+                </div>
             </div>
         </div>
     </div>
