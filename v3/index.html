@@ -750,11 +750,7 @@ async function startAgent(){
     // Show profile card with avatar (LinkedIn photo if available)
     const profileCard = document.getElementById('profile-card');
     const avatarWrap = document.getElementById('avatar-wrap');
-    const liUrl = known?.linkedinUrl || contactData?.person?.linkedinUrl || contactData?.person?.linkedin || li;
-    if(liUrl && liUrl.includes('/in/')){
-        const username = liUrl.replace(/.*\/in\//,'').replace(/\/$/,'');
-        avatarWrap.innerHTML=`<img src="https://unavatar.io/linkedin/${username}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML='<svg width=\\'28\\' height=\\'28\\' viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'var(--blue)\\' stroke-width=\\'1.5\\' opacity=\\'.4\\'><path d=\\'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\\'/><circle cx=\\'12\\' cy=\\'7\\' r=\\'4\\'/></svg>'">`;
-    }
+    avatarWrap.innerHTML=`<img src="https://unavatar.io/${encodeURIComponent(email)}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML='<svg width=\\'28\\' height=\\'28\\' viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'var(--blue)\\' stroke-width=\\'1.5\\' opacity=\\'.4\\'><path d=\\'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\\'/><circle cx=\\'12\\' cy=\\'7\\' r=\\'4\\'/></svg>'">`;
     profileCard.style.display='block';
     profileCard.style.animation='pop-in .4s cubic-bezier(.16,1,.3,1)';
     document.getElementById('card-identity').classList.add('loaded');
