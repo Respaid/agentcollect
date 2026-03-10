@@ -332,7 +332,7 @@
             <input type="email" class="input-field" id="email-input" placeholder="marc@salesforce.com" autocomplete="email">
             <button class="input-btn" id="go-btn" onclick="startAgent()">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                Watch it work
+                Try it now
             </button>
         </div>
         <div class="input-hint">We'll try to collect $1 from you. That's it.</div>
@@ -445,12 +445,12 @@
 <section class="section reveal" id="results">
     <div class="section-inner">
         <div class="section-label">Customers</div>
-        <div class="section-title">Real results from real companies</div>
-        <div class="section-sub">Enterprise teams that switched from collection agencies to AI agents.</div>
+        <div class="section-title">They fired their collection agency.</div>
+        <div class="section-sub">Fortune 500 teams that replaced human collectors with AI agents. Same compliance. 3× the results.</div>
         <div class="cards-grid">
             <div class="card card-featured reveal s1" onclick="toggleCard(this)">
                 <img src="https://cdn.brandfetch.io/microsoft.com/w/512/h/80/logo" alt="Microsoft" class="card-logo">
-                <div class="card-headline">Replaced their collection agency. Zero headcount. AI handles everything.</div>
+                <div class="card-headline">Fired their agency. AI recovers 3.2× more. Zero complaints.</div>
                 <div class="card-metric">
                     <div class="card-num" style="color:var(--blue)">3.2×</div>
                     <div class="card-desc">recovery rate vs. their previous agency</div>
@@ -512,7 +512,7 @@
             </div>
             <div class="card reveal s2" onclick="toggleCard(this)">
                 <img src="https://cdn.brandfetch.io/dell.com/w/512/h/80/logo" alt="Dell" class="card-logo">
-                <div class="card-headline">Runs collection across 4 business units. No integration. Just Excel.</div>
+                <div class="card-headline">4 business units. No API. No IT. Just a spreadsheet.</div>
                 <div class="card-metric">
                     <div class="card-num" style="color:var(--green)">20 min</div>
                     <div class="card-desc">to go live per unit</div>
@@ -526,9 +526,9 @@
             </div>
             <div class="card reveal s3" onclick="toggleCard(this)">
                 <img src="https://cdn.brandfetch.io/plaid.com/w/512/h/80/logo" alt="Plaid" class="card-logo">
-                <div class="card-headline">Previous agency: 6 months, 5% recovered. AI did it in 20 days.</div>
+                <div class="card-headline">Their agency: 6 months, 5%. Our AI: 20 days, 50%.</div>
                 <div class="card-metric">
-                    <div class="card-num" style="color:var(--pink)">10x</div>
+                    <div class="card-num" style="color:var(--pink)">10×</div>
                     <div class="card-desc">faster than their agency</div>
                 </div>
                 <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">See use case <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
@@ -540,7 +540,7 @@
             </div>
             <div class="card reveal s1" onclick="toggleCard(this)">
                 <img src="https://cdn.brandfetch.io/checkr.com/w/512/h/80/logo" alt="Checkr" class="card-logo">
-                <div class="card-headline">AI handles disputes in under 60 seconds. Negotiates payment plans.</div>
+                <div class="card-headline">Debtors prefer the AI. No judgment. No hold music. Just resolution.</div>
                 <div class="card-metric">
                     <div class="card-num" style="color:var(--amber)">0</div>
                     <div class="card-desc">client relationships damaged</div>
@@ -554,7 +554,7 @@
             </div>
             <div class="card reveal s2" onclick="toggleCard(this)">
                 <img src="https://cdn.brandfetch.io/redis.com/w/512/h/80/logo" alt="Redis" class="card-logo">
-                <div class="card-headline">Collects across EMEA and US in 12 languages. Same AI.</div>
+                <div class="card-headline">12 languages. 2 continents. 1 AI. Zero localization cost.</div>
                 <div class="card-metric">
                     <div class="card-num" style="color:var(--blue)">12</div>
                     <div class="card-desc">languages, zero incidents</div>
@@ -568,7 +568,7 @@
             </div>
             <div class="card reveal s3" onclick="toggleCard(this)">
                 <img src="https://cdn.brandfetch.io/doordash.com/w/512/h/80/logo" alt="DoorDash" class="card-logo">
-                <div class="card-headline">Collects from partners without damaging the marketplace.</div>
+                <div class="card-headline">Collects from partners. Keeps the relationship. Agency couldn't.</div>
                 <div class="card-metric">
                     <div class="card-num" style="color:var(--green)">&lt;60s</div>
                     <div class="card-desc">AI dispute response</div>
@@ -588,8 +588,8 @@
 <section class="section reveal" id="how" style="border-top:1px solid var(--border)">
     <div class="section-inner" style="text-align:center">
         <div class="section-label">How it works</div>
-        <div class="section-title" style="margin-left:auto;margin-right:auto">Upload a spreadsheet. Get paid.</div>
-        <div class="section-sub" style="margin-left:auto;margin-right:auto;text-align:center">No integration. No onboarding call. No minimum.</div>
+        <div class="section-title" style="margin-left:auto;margin-right:auto">Drop a spreadsheet. We do the rest.</div>
+        <div class="section-sub" style="margin-left:auto;margin-right:auto;text-align:center">No API. No onboarding call. No minimum. You'll be live before your coffee gets cold.</div>
         <div class="how-grid">
             <div class="how-card">
                 <div class="how-num">01</div>
@@ -729,7 +729,7 @@ rev.forEach(el=>io.observe(el));
 setTimeout(()=>rev.forEach(el=>el.classList.add('visible')),4000);
 
 const cEls=document.querySelectorAll('[data-count]');
-const cIO=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){animC(x.target);cIO.unobserve(x.target)}})},{threshold:.5});
+const cIO=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){animC(x.target);cIO.unobserve(x.target)}})},{threshold:.1});
 cEls.forEach(el=>cIO.observe(el));
 function animC(el){const t=parseInt(el.dataset.count),p=el.dataset.prefix||'',s=el.dataset.suffix||'';if(t===0){el.textContent=p+'0'+s;el.style.animation='counter-pop .5s cubic-bezier(.16,1,.3,1)';return}const d=1800,st=performance.now();function tick(n){const e=n-st,pr=Math.min(e/d,1),ea=1-Math.pow(1-pr,3);el.textContent=p+Math.round(t*ea)+s;if(pr<1)requestAnimationFrame(tick)}requestAnimationFrame(tick)}
 
