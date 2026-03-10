@@ -156,10 +156,10 @@
             gap: 56px; flex-wrap: wrap;
         }
         .logos-row img {
-            height: 22px; opacity: 0.25; transition: opacity 0.4s;
+            height: 28px; opacity: 0.35; transition: opacity 0.4s;
             filter: grayscale(100%) brightness(0);
         }
-        .logos-row img:hover { opacity: 0.5; }
+        .logos-row img:hover { opacity: 0.6; }
 
         /* ===== STATS ===== */
         .stats {
@@ -368,11 +368,11 @@
 <section class="logos anim-5">
     <div class="logos-label">trusted by</div>
     <div class="logos-row">
-        <img src="https://www.logo.wine/a/logo/Microsoft/Microsoft-Logo.wine.svg" alt="Microsoft" height="22">
-        <img src="https://www.logo.wine/a/logo/Dell/Dell-Logo.wine.svg" alt="Dell" height="22">
-        <img src="https://www.logo.wine/a/logo/Plaid_(company)/Plaid_(company)-Logo.wine.svg" alt="Plaid" height="22">
-        <img src="https://www.logo.wine/a/logo/Uber/Uber-Logo.wine.svg" alt="Uber Freight" height="22">
-        <img src="https://cdn.brandfetch.io/id8v7g-FG4/w/800/h/188/theme/light/logo.png?c=1bxid64Mup7aczewSAYMX&t=1668070954379" alt="Checkr" height="22">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" height="28">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Dell_Logo.svg" alt="Dell" height="28">
+        <img src="https://cdn.brandfetch.io/idoZvatVpf/theme/dark/logo.svg?c=1bfwsmEH20zzEfSNTed" alt="Plaid" height="28">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png" alt="Uber Freight" height="28">
+        <img src="https://cdn.brandfetch.io/id8v7g-FG4/w/800/h/188/theme/light/logo.png?c=1bxid64Mup7aczewSAYMX&t=1668070954379" alt="Checkr" height="28">
     </div>
 </section>
 
@@ -488,6 +488,9 @@
         });
     }, { threshold: 0.15 });
     reveals.forEach(el => observer.observe(el));
+
+    // Fallback: show all sections after 1.5s (for screenshot tools, slow loads)
+    setTimeout(() => reveals.forEach(el => el.classList.add('visible')), 1500);
 
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
