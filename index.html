@@ -68,7 +68,7 @@
         .nav-cta:hover { transform:scale(1.03); box-shadow:0 4px 20px rgba(0,0,0,0.15); }
 
         /* Hero */
-        .hero { max-width:1200px; margin:0 auto; padding:100px 32px 80px; text-align:center; position:relative; }
+        .hero { max-width:1200px; margin:0 auto; padding:100px 32px 80px; text-align:center; position:relative; overflow:hidden; }
         .hero::before { content:''; position:absolute; width:500px; height:500px; top:50%; left:50%; transform:translate(-50%,-50%); background:radial-gradient(circle,rgba(99,102,241,0.08) 0%,transparent 70%); border-radius:50%; pointer-events:none; animation:glow 4s ease-in-out infinite; }
         .hero h1 { font-size:clamp(52px,9vw,96px); font-weight:800; letter-spacing:-0.045em; line-height:1; margin-bottom:24px; position:relative; }
         .hero-sub { font-size:clamp(16px,2vw,20px); font-weight:400; color:var(--text-muted); line-height:1.6; max-width:420px; margin:0 auto 40px; }
@@ -177,7 +177,7 @@
         .step p { font-size:14px; color:var(--text-muted); line-height:1.5; }
 
         /* CTA */
-        .cta { text-align:center; padding:100px 32px; position:relative; }
+        .cta { text-align:center; padding:100px 32px; position:relative; overflow:hidden; }
         .cta::before { content:''; position:absolute; width:400px; height:400px; top:50%; left:50%; transform:translate(-50%,-50%); background:radial-gradient(circle,rgba(16,185,129,0.06) 0%,transparent 70%); border-radius:50%; pointer-events:none; }
         .cta-amount { font-family:'Plus Jakarta Sans'; font-size:clamp(80px,15vw,140px); font-weight:800; letter-spacing:-0.05em; background:linear-gradient(135deg,var(--brand),var(--emerald)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; line-height:1; margin-bottom:16px; animation:float 3s ease-in-out infinite; }
         .cta h2 { font-size:clamp(20px,3vw,32px); font-weight:700; margin-bottom:12px; }
