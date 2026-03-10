@@ -675,8 +675,8 @@ const API = 'https://backend.widr.app/api/demo';
 let agentEmail = '', agentPhone = null, contactData = null;
 
 const KNOWN = {
-    'j@respaid.com': {name:'John Banner',title:'Founder',company:'Respaid',location:'San Francisco, CA',phone:'+1 (415) 867-4010',linkedin:'linkedin.com/in/johnbanner',linkedinUrl:'https://linkedin.com/in/johnbanner',avatarUrl:'https://unavatar.io/linkedin/johnbanner',profile_type:'YC W22 founder, AI-powered collections',company_health:'Respaid — YC W22, serving Microsoft, Dell, Plaid, Checkr',payment_behavior:'Founder — responds to direct, personal outreach',risk:'Low — high ability to pay',recommended_tone:'Direct, professional'},
-    'marc@salesforce.com': {name:'Marc Benioff',title:'Chair & CEO',company:'Salesforce',location:'San Francisco, CA',linkedin:'linkedin.com/in/marcbenioff',linkedinUrl:'https://linkedin.com/in/marcbenioff',avatarUrl:'https://unavatar.io/x/Benioff',noSend:true,profile_type:'Fortune 500 CEO, $34B revenue',company_health:'Salesforce — $34B revenue, 80K+ employees, #1 CRM',payment_behavior:'Enterprise AP — invoices routed through procurement',risk:'Low ability / Complex process',recommended_tone:'Formal, legal-grade notice'},
+    'j@respaid.com': {name:'John Banner',title:'Founder',company:'Respaid',location:'San Francisco, CA',phone:'+1 (415) 867-4010',linkedin:'linkedin.com/in/johnbanner',linkedinUrl:'https://linkedin.com/in/johnbanner',avatarUrl:'https://unavatar.io/j@respaid.com',profile_type:'YC S23 founder, AI-powered collections',company_health:'Respaid — YC S23, serving Microsoft, Dell, Plaid, Checkr',payment_behavior:'Founder — responds to direct, personal outreach',risk:'Low — high ability to pay',recommended_tone:'Direct, professional',strategy:{likely_reason:'Founder-operator, likely saw the invoice but prioritized product over AP',approach:'Direct email to John, reference his YC network and enterprise clients. Follow up with call in 48h.',expected_days:5,confidence:96}},
+    'marc@salesforce.com': {name:'Marc Benioff',title:'Chair & CEO',company:'Salesforce',location:'San Francisco, CA',linkedin:'linkedin.com/in/marcbenioff',linkedinUrl:'https://linkedin.com/in/marcbenioff',avatarUrl:'https://unavatar.io/x/Benioff',noSend:true,profile_type:'Fortune 500 CEO, $34B revenue',company_health:'Salesforce — $34B revenue, 80K+ employees, #1 CRM',payment_behavior:'Enterprise AP — invoices routed through procurement',risk:'Low ability / Complex process',recommended_tone:'Formal, legal-grade notice',strategy:{likely_reason:'Enterprise AP process — invoice likely stuck in procurement routing or PO matching',approach:'Formal demand letter to AP department, escalation to VP Finance within 5 business days, executive engagement via legal counsel if unresolved.',expected_days:15,confidence:94}},
     'satya@microsoft.com': {name:'Satya Nadella',title:'CEO',company:'Microsoft',location:'Redmond, WA',linkedin:'linkedin.com/in/satyanadella',linkedinUrl:'https://linkedin.com/in/satyanadella',avatarUrl:'https://unavatar.io/github/satyanadella',profile_type:'Enterprise CEO, $245B revenue',company_health:'Microsoft — $245B revenue, 220K+ employees',payment_behavior:'30-90 day cycles, escalation to controller unlocks payment',risk:'Low',recommended_tone:'Formal, reference existing relationship'},
     'jensen@nvidia.com': {name:'Jensen Huang',title:'CEO & Founder',company:'NVIDIA',location:'Santa Clara, CA',linkedin:'linkedin.com/in/jensenhuang',linkedinUrl:'https://linkedin.com/in/jensenhuang',avatarUrl:'https://unavatar.io/x/JensenHuang_',profile_type:'Tech visionary, $60B+ revenue',company_health:'NVIDIA — $60B+ revenue, 30K+ employees',payment_behavior:'Engineering-led org, efficient finance team',risk:'Low',recommended_tone:'Tech-forward, concise'},
 };
@@ -842,7 +842,7 @@ async function startAgent(){
 
     showStep('strategy');setIcon('strategy',false);
     document.getElementById('sub-strategy').textContent='Analyzing '+nm+'...';await sleep(500);
-    const rs=contactData?.recovery_strategy||buildStrat(cp,domain);
+    const rs=known?.strategy||contactData?.recovery_strategy||buildStrat(cp,domain);
     await addStrategyRow(`<strong>Likely reason:</strong> ${rs.likely_reason}`);
     await addStrategyRow(`<strong>Action plan:</strong> ${rs.approach}`);
 
@@ -860,7 +860,7 @@ async function startAgent(){
     showStep('collect');setIcon('collect',false);document.getElementById('sub-collect').textContent='Deploying AI agent...';await sleep(250);
     const safeToSend=!known?.noSend;
     document.getElementById('collect-content').innerHTML='<div class="thinking"><div class="thinking-dot"></div><div class="thinking-dot"></div><div class="thinking-dot"></div></div><div style="font-size:13px;color:var(--text-muted)">'+(safeToSend?'Sending collection notice to '+nm+'...':'Simulating collection notice...')+'</div>';
-    if(safeToSend){try{await fetch(API+'/email',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})})}catch{}}
+    if(safeToSend){try{await fetch(API+'/email',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,name:nm,company:cp})})}catch{}}
     await sleep(1000);
 
     document.getElementById('card-collect').classList.add('loaded');
