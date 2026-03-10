@@ -1,4 +1,7 @@
 {
+  "rewrites": [
+    { "source": "/logos", "destination": "/logos.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
