@@ -3,645 +3,684 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgentCollect — AI Collections for the Fortune 500</title>
-    <meta name="description" content="AI agents that collect your unpaid invoices. 50% recovery rate. 30x faster than agencies. Respectfully.">
-    <meta property="og:title" content="AgentCollect — AI Collections for the Fortune 500">
-    <meta property="og:description" content="AI agents that collect your unpaid invoices. 50% recovery rate. 30x faster. Respectfully.">
+    <title>AgentCollect — Your Invoices, Collected.</title>
+    <meta name="description" content="AI agents that collect your unpaid invoices. 50% recovery rate in 20 days. Fully automated.">
+    <meta property="og:title" content="AgentCollect — Your Invoices, Collected.">
+    <meta property="og:description" content="AI agents handle calls, emails, and contact finding. 50% recovery rate. 20 days. Fully automated.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://agentcollect.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg: #0a0a0b;
-            --bg-card: rgba(255,255,255,0.03);
-            --border: rgba(255,255,255,0.06);
-            --text: #f5f5f5;
-            --text-muted: rgba(255,255,255,0.45);
-            --text-dim: rgba(255,255,255,0.25);
-            --brand: #818CF8;
-            --brand-glow: rgba(129, 140, 248, 0.15);
-            --emerald: #34D399;
-            --emerald-glow: rgba(52, 211, 153, 0.12);
+            --bg: #faf8f5;
+            --bg-dark: #1c1917;
+            --bg-card: #fff;
+            --border: rgba(21,24,35,0.08);
+            --border-dark: rgba(255,255,255,0.08);
+            --text: #151823;
+            --text-muted: rgba(21,24,35,0.55);
+            --text-dim: rgba(21,24,35,0.3);
+            --brand: #6366F1;
+            --brand-light: rgba(99,102,241,0.08);
+            --brand-medium: rgba(99,102,241,0.15);
+            --emerald: #10B981;
+            --emerald-light: rgba(16,185,129,0.08);
+            --pink: #EC4899;
+            --pink-light: rgba(236,72,153,0.08);
+            --mono: 'JetBrains Mono', monospace;
+            --radius: 16px;
         }
 
         body {
             font-family: 'Inter', -apple-system, sans-serif;
             background: var(--bg);
             color: var(--text);
-            min-height: 100vh;
-            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
+        h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; }
 
-        h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
-
-        /* Grid bg */
-        .grid-bg {
-            position: fixed;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-            background-size: 80px 80px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Gradient orbs */
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(140px);
-            pointer-events: none;
-            z-index: 0;
-        }
-        .orb-1 { width: 500px; height: 500px; top: -150px; right: -50px; background: var(--brand); opacity: 0.08; }
-        .orb-2 { width: 400px; height: 400px; bottom: 20%; left: -100px; background: var(--emerald); opacity: 0.05; }
-        .orb-3 { width: 300px; height: 300px; top: 40%; right: 10%; background: #6366F1; opacity: 0.04; }
-
-        /* Layout */
-        .wrapper { position: relative; z-index: 1; }
-
-        section {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+        .section { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
         /* ===== NAV ===== */
         nav {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 24px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            max-width: 1120px; margin: 0 auto; padding: 20px 24px;
+            display: flex; justify-content: space-between; align-items: center;
         }
         .logo {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 20px;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            color: var(--text);
+            font-size: 22px; font-weight: 800; letter-spacing: -0.03em;
+            color: var(--text); text-decoration: none;
         }
         .logo span { color: var(--brand); }
-        .nav-cta {
-            padding: 8px 20px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            background: transparent;
-            color: var(--text-muted);
-            font-family: inherit;
-            font-size: 13px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
+        .nav-right { display: flex; align-items: center; gap: 32px; }
+        .nav-link {
+            font-size: 14px; color: var(--text-muted); text-decoration: none;
+            font-weight: 500; transition: color 0.2s;
         }
-        .nav-cta:hover { border-color: rgba(255,255,255,0.15); color: var(--text); }
+        .nav-link:hover { color: var(--text); }
+        .nav-cta {
+            padding: 10px 24px; background: var(--text); color: var(--bg);
+            border: none; border-radius: 10px; font-family: inherit;
+            font-size: 14px; font-weight: 600; cursor: pointer;
+            text-decoration: none; transition: all 0.2s;
+        }
+        .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
 
         /* ===== HERO ===== */
         .hero {
-            padding-top: 100px;
-            padding-bottom: 80px;
-            text-align: center;
+            padding: 80px 0 60px; text-align: center;
         }
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 16px;
-            border-radius: 100px;
-            border: 1px solid var(--border);
-            background: var(--bg-card);
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--text-muted);
-            margin-bottom: 32px;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
+        .hero-eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 13px; font-weight: 600; color: var(--brand);
+            text-transform: uppercase; letter-spacing: 0.08em;
+            margin-bottom: 24px;
         }
-        .hero-badge .dot {
-            width: 6px; height: 6px;
-            border-radius: 50%;
-            background: var(--emerald);
-            animation: pulse 2s ease-in-out infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+        .hero-eyebrow .line {
+            width: 24px; height: 1.5px; background: var(--brand); opacity: 0.4;
         }
 
         .hero h1 {
-            font-size: clamp(44px, 7vw, 80px);
-            font-weight: 800;
-            letter-spacing: -0.035em;
-            line-height: 1.05;
-            margin-bottom: 20px;
-        }
-        .hero h1 .gradient {
-            background: linear-gradient(135deg, var(--brand) 0%, var(--emerald) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: clamp(42px, 7vw, 76px);
+            font-weight: 800; letter-spacing: -0.04em;
+            line-height: 1.05; margin-bottom: 20px; color: var(--text);
         }
 
         .hero-sub {
-            font-size: clamp(16px, 2vw, 20px);
-            font-weight: 300;
-            color: var(--text-muted);
-            line-height: 1.6;
-            max-width: 520px;
-            margin: 0 auto 48px;
+            font-size: clamp(16px, 2vw, 20px); font-weight: 400;
+            color: var(--text-muted); line-height: 1.6;
+            max-width: 540px; margin: 0 auto 40px;
         }
 
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 36px;
-            background: #fff;
-            color: #000;
-            border: none;
-            border-radius: 10px;
+        .hero-actions {
+            display: flex; gap: 12px; justify-content: center;
+            flex-wrap: wrap; margin-bottom: 48px;
+        }
+        .btn-primary {
+            padding: 14px 32px; background: var(--brand); color: #fff;
+            border: none; border-radius: 12px; font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 15px; font-weight: 600; cursor: pointer;
+            text-decoration: none; transition: all 0.2s;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(99,102,241,0.25); }
+        .btn-secondary {
+            padding: 14px 32px; background: var(--bg-card); color: var(--text);
+            border: 1.5px solid var(--border); border-radius: 12px;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.25s;
-            text-decoration: none;
+            font-size: 15px; font-weight: 600; cursor: pointer;
+            text-decoration: none; transition: all 0.2s;
+            display: inline-flex; align-items: center; gap: 8px;
         }
-        .hero-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(255,255,255,0.12);
+        .btn-secondary:hover { border-color: var(--brand); color: var(--brand); }
+
+        /* ===== AUDIO PLAYER ===== */
+        .audio-demo {
+            max-width: 600px; margin: 0 auto 56px;
+            background: var(--bg-card);
+            border: 1.5px solid var(--border);
+            border-radius: 16px;
+            padding: 20px 24px;
+            display: flex; align-items: center; gap: 16px;
         }
-        .hero-cta svg { width: 16px; height: 16px; transition: transform 0.2s; }
-        .hero-cta:hover svg { transform: translateX(3px); }
+        .play-btn {
+            width: 48px; height: 48px; flex-shrink: 0;
+            background: var(--brand); border: none; border-radius: 50%;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s; position: relative;
+        }
+        .play-btn:hover { transform: scale(1.05); box-shadow: 0 4px 16px rgba(99,102,241,0.3); }
+        .play-btn svg { margin-left: 2px; }
+        .play-btn .pause-icon { display: none; }
+        .play-btn.playing .play-icon { display: none; }
+        .play-btn.playing .pause-icon { display: block; }
+
+        .audio-info { flex: 1; min-width: 0; }
+        .audio-label {
+            font-size: 12px; font-weight: 600; color: var(--brand);
+            text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px;
+        }
+        .audio-title {
+            font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 8px;
+        }
+        .waveform {
+            display: flex; align-items: center; gap: 2px; height: 32px;
+        }
+        .wave-bar {
+            width: 3px; border-radius: 2px;
+            background: var(--brand-medium);
+            transition: height 0.15s, background 0.3s;
+        }
+        .wave-bar.active { background: var(--brand); }
+        .audio-time {
+            font-family: var(--mono); font-size: 11px;
+            color: var(--text-dim); margin-left: 16px; white-space: nowrap;
+        }
 
         /* ===== LOGOS ===== */
         .logos {
-            text-align: center;
-            padding: 40px 0 80px;
+            padding: 48px 0; text-align: center;
             border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
         .logos-label {
-            font-size: 11px;
-            font-weight: 500;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            margin-bottom: 24px;
+            font-size: 11px; font-weight: 600; color: var(--text-dim);
+            text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 28px;
         }
         .logos-row {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 48px;
-            flex-wrap: wrap;
+            display: flex; justify-content: center; align-items: center;
+            gap: 48px; flex-wrap: wrap;
         }
-        .logos-row span {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-            color: rgba(255,255,255,0.15);
-            letter-spacing: -0.01em;
+        .logos-row img {
+            height: 24px; opacity: 0.35; transition: opacity 0.3s;
+            filter: grayscale(100%);
         }
+        .logos-row img:hover { opacity: 0.7; }
 
         /* ===== STATS ===== */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1px;
-            background: var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-            margin-bottom: 100px;
+        .stats-section { padding: 80px 0; }
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 0; border: 1.5px solid var(--border); border-radius: var(--radius);
+            overflow: hidden; background: var(--bg-card);
         }
         .stat-card {
-            background: var(--bg);
-            padding: 48px 32px;
-            text-align: center;
+            padding: 48px 32px; text-align: center;
+            border-right: 1.5px solid var(--border);
         }
-        .stat-card:hover { background: var(--bg-card); }
+        .stat-card:last-child { border-right: none; }
         .stat-value {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 48px;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            margin-bottom: 8px;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 800; letter-spacing: -0.03em;
+            margin-bottom: 8px; color: var(--text);
         }
-        .stat-card:nth-child(1) .stat-value { color: var(--brand); }
-        .stat-card:nth-child(2) .stat-value { color: var(--emerald); }
-        .stat-card:nth-child(3) .stat-value { color: #F472B6; }
-        .stat-label {
-            font-size: 13px;
-            color: var(--text-muted);
-            font-weight: 400;
-        }
+        .stat-label { font-size: 14px; color: var(--text-muted); font-weight: 400; }
         .stat-compare {
-            font-size: 11px;
-            color: var(--text-dim);
-            margin-top: 4px;
+            font-size: 12px; color: var(--text-dim);
+            margin-top: 6px; font-weight: 400;
         }
 
-        /* ===== CHANNELS ===== */
-        .channels {
-            margin-bottom: 100px;
-        }
-        .section-label {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--brand);
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            margin-bottom: 12px;
-            text-align: center;
+        /* ===== SECTION HEADERS ===== */
+        .section-eyebrow {
+            font-size: 12px; font-weight: 600; color: var(--brand);
+            text-transform: uppercase; letter-spacing: 0.1em;
+            margin-bottom: 12px; text-align: center;
         }
         .section-title {
-            font-size: clamp(28px, 4vw, 40px);
-            font-weight: 700;
-            letter-spacing: -0.025em;
-            text-align: center;
-            margin-bottom: 12px;
+            font-size: clamp(28px, 4vw, 42px); font-weight: 800;
+            letter-spacing: -0.03em; text-align: center; margin-bottom: 12px;
         }
         .section-sub {
-            font-size: 16px;
-            color: var(--text-muted);
-            text-align: center;
-            max-width: 500px;
-            margin: 0 auto 48px;
-            font-weight: 300;
+            font-size: 17px; color: var(--text-muted); text-align: center;
+            max-width: 520px; margin: 0 auto 48px; font-weight: 400; line-height: 1.6;
         }
 
-        .channel-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 12px;
+        /* ===== PRODUCTS (DARK SECTION) ===== */
+        .products-section {
+            background: var(--bg-dark); color: #fff;
+            padding: 100px 0; margin: 0 -9999px; padding-left: 9999px; padding-right: 9999px;
         }
-        .channel-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 28px 16px;
-            text-align: center;
-            transition: all 0.25s;
-            cursor: default;
+        .products-inner { max-width: 1120px; margin: 0 auto; }
+        .products-section .section-eyebrow { color: rgba(255,255,255,0.4); }
+        .products-section .section-title { color: #fff; }
+        .products-section .section-sub { color: rgba(255,255,255,0.5); }
+
+        .products-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
         }
-        .channel-card:hover {
-            border-color: rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.05);
-            transform: translateY(-2px);
+        .product-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: var(--radius); padding: 32px 28px;
+            transition: all 0.3s;
         }
-        .channel-icon {
-            font-size: 28px;
-            margin-bottom: 12px;
+        .product-card:hover {
+            border-color: rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.06);
+            transform: translateY(-4px);
         }
-        .channel-name {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 4px;
+        .product-icon {
+            width: 44px; height: 44px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 20px;
         }
-        .channel-desc {
-            font-size: 12px;
-            color: var(--text-dim);
-            line-height: 1.4;
+        .card-call .product-icon { background: var(--brand-medium); }
+        .card-email .product-icon { background: var(--emerald-light); }
+        .card-finder .product-icon { background: var(--pink-light); }
+
+        .product-card h3 {
+            font-size: 20px; font-weight: 700; margin-bottom: 8px;
+            letter-spacing: -0.01em; color: #fff;
         }
+        .product-card p {
+            font-size: 14px; color: rgba(255,255,255,0.5);
+            line-height: 1.6; margin-bottom: 20px;
+        }
+        .product-card ul {
+            list-style: none; padding: 0;
+        }
+        .product-card li {
+            font-size: 13px; color: rgba(255,255,255,0.45);
+            padding: 6px 0; display: flex; align-items: center; gap: 8px;
+        }
+        .product-card li::before {
+            content: ''; width: 4px; height: 4px; border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .card-call li::before { background: var(--brand); }
+        .card-email li::before { background: var(--emerald); }
+        .card-finder li::before { background: var(--pink); }
 
         /* ===== HOW IT WORKS ===== */
-        .how {
-            margin-bottom: 100px;
+        .how-section { padding: 100px 0; }
+        .steps-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
         }
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
+        .step-card {
+            background: var(--bg-card); border: 1.5px solid var(--border);
+            border-radius: var(--radius); padding: 32px 24px;
+            transition: all 0.25s; position: relative;
         }
-        .step {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 32px 24px;
-            position: relative;
-            transition: all 0.25s;
-        }
-        .step:hover {
-            border-color: rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.04);
-        }
+        .step-card:hover { border-color: var(--brand); transform: translateY(-2px); }
         .step-num {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 28px; height: 28px;
-            border-radius: 8px;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 13px;
-            font-weight: 700;
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 32px; height: 32px; border-radius: 10px;
+            font-family: 'Plus Jakarta Sans'; font-size: 14px; font-weight: 800;
             margin-bottom: 16px;
         }
-        .step:nth-child(1) .step-num { background: var(--brand-glow); color: var(--brand); }
-        .step:nth-child(2) .step-num,
-        .step:nth-child(3) .step-num,
-        .step:nth-child(4) .step-num { background: var(--emerald-glow); color: var(--emerald); }
+        .step-card:nth-child(1) .step-num { background: var(--brand-light); color: var(--brand); }
+        .step-card:nth-child(2) .step-num,
+        .step-card:nth-child(3) .step-num,
+        .step-card:nth-child(4) .step-num { background: var(--emerald-light); color: var(--emerald); }
         .step-badge {
-            display: inline-block;
-            font-size: 9px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            padding: 3px 8px;
-            border-radius: 4px;
-            margin-bottom: 12px;
-            margin-left: 8px;
+            display: inline-block; font-size: 9px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            padding: 3px 8px; border-radius: 4px; margin-left: 8px;
         }
-        .badge-you { background: var(--brand-glow); color: var(--brand); }
-        .badge-ai { background: var(--emerald-glow); color: var(--emerald); }
-        .step h3 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: -0.01em;
-        }
-        .step p {
-            font-size: 13px;
-            color: var(--text-muted);
-            line-height: 1.5;
-            font-weight: 300;
-        }
+        .badge-you { background: var(--brand-light); color: var(--brand); }
+        .badge-ai { background: var(--emerald-light); color: var(--emerald); }
+        .step-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+        .step-card p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
 
-        /* ===== WHY DIFFERENT ===== */
-        .why {
-            margin-bottom: 100px;
-        }
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-        }
-        .why-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 36px 32px;
-            transition: all 0.25s;
-        }
-        .why-card:hover {
-            border-color: rgba(255,255,255,0.1);
-        }
-        .why-card h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: -0.01em;
-        }
-        .why-card p {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.6;
-            font-weight: 300;
-        }
-        .why-icon {
-            font-size: 24px;
-            margin-bottom: 16px;
-        }
-
-        /* ===== CTA SECTION ===== */
-        .final-cta {
-            text-align: center;
-            padding: 80px 0 40px;
-            margin-bottom: 40px;
+        /* ===== COMPLIANCE ===== */
+        .compliance-section {
+            padding: 60px 0 80px;
             border-top: 1px solid var(--border);
         }
-        .final-cta h2 {
-            font-size: clamp(28px, 4vw, 44px);
-            font-weight: 800;
-            letter-spacing: -0.03em;
+        .compliance-grid {
+            display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
+        }
+        .compliance-badge {
+            display: flex; align-items: center; gap: 10px;
+            padding: 12px 20px; background: var(--bg-card);
+            border: 1.5px solid var(--border); border-radius: 12px;
+        }
+        .compliance-icon {
+            width: 32px; height: 32px; border-radius: 8px;
+            background: var(--brand-light); display: flex;
+            align-items: center; justify-content: center;
+            font-size: 16px;
+        }
+        .compliance-text { font-size: 13px; font-weight: 600; color: var(--text); }
+        .compliance-sub { font-size: 11px; color: var(--text-dim); }
+
+        /* ===== FINAL CTA ===== */
+        .cta-section {
+            background: var(--bg-dark); color: #fff;
+            padding: 100px 0; margin: 0 -9999px;
+            padding-left: 9999px; padding-right: 9999px;
+            text-align: center;
+        }
+        .cta-inner { max-width: 1120px; margin: 0 auto; }
+        .cta-dollar {
+            font-family: 'Plus Jakarta Sans'; font-size: clamp(64px, 12vw, 120px);
+            font-weight: 800; letter-spacing: -0.04em;
+            background: linear-gradient(135deg, var(--brand) 0%, var(--emerald) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             margin-bottom: 16px;
         }
-        .final-cta p {
-            font-size: 16px;
-            color: var(--text-muted);
-            margin-bottom: 36px;
-            font-weight: 300;
+        .cta-section h2 {
+            font-size: clamp(24px, 3vw, 36px); font-weight: 700;
+            margin-bottom: 12px; color: #fff;
+        }
+        .cta-section p {
+            font-size: 16px; color: rgba(255,255,255,0.5);
+            margin-bottom: 36px; max-width: 420px; margin-left: auto; margin-right: auto;
+        }
+        .cta-section .btn-primary {
+            background: #fff; color: var(--text);
+        }
+        .cta-section .btn-primary:hover {
+            box-shadow: 0 12px 32px rgba(255,255,255,0.15);
         }
 
         /* ===== FOOTER ===== */
         footer {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 24px;
-            border-top: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 48px;
+            max-width: 1120px; margin: 0 auto;
+            padding: 24px; border-top: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
         }
-        footer span {
-            font-size: 12px;
-            color: var(--text-dim);
-            font-weight: 300;
-        }
-        .footer-note {
-            font-style: italic;
-        }
+        footer span { font-size: 12px; color: var(--text-dim); }
+        .footer-note { font-style: italic; }
 
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .stats { grid-template-columns: 1fr; }
-            .channel-grid { grid-template-columns: repeat(3, 1fr); }
-            .steps { grid-template-columns: repeat(2, 1fr); }
-            .why-grid { grid-template-columns: 1fr; }
-            .stat-card { padding: 32px 24px; }
-            .stat-value { font-size: 36px; }
-            footer { flex-direction: column; gap: 8px; text-align: center; }
+        @media (max-width: 900px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .stat-card { border-right: none; border-bottom: 1.5px solid var(--border); }
+            .stat-card:last-child { border-bottom: none; }
+            .products-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+            .steps-grid { grid-template-columns: repeat(2, 1fr); }
         }
-        @media (max-width: 480px) {
-            .channel-grid { grid-template-columns: repeat(2, 1fr); }
-            .steps { grid-template-columns: 1fr; }
-            .logos-row { gap: 28px; }
-            .logos-row span { font-size: 15px; }
+        @media (max-width: 600px) {
+            .steps-grid { grid-template-columns: 1fr; }
+            .hero-actions { flex-direction: column; align-items: center; }
+            .audio-demo { flex-direction: column; text-align: center; }
+            .logos-row { gap: 32px; }
+            .logos-row img { height: 20px; }
+            footer { flex-direction: column; gap: 8px; text-align: center; }
+            .nav-right { gap: 16px; }
+            .nav-link { display: none; }
+            .compliance-grid { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
 <body>
-    <div class="grid-bg"></div>
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
 
-    <div class="wrapper">
-        <!-- Nav -->
-        <nav>
-            <div class="logo">agent<span>collect</span></div>
-            <a href="mailto:j@respaid.com" class="nav-cta">request access</a>
-        </nav>
+    <!-- Nav -->
+    <nav>
+        <a href="/" class="logo">agent<span>collect</span></a>
+        <div class="nav-right">
+            <a href="#products" class="nav-link">products</a>
+            <a href="#how" class="nav-link">how it works</a>
+            <a href="mailto:j@respaid.com" class="nav-cta">request demo</a>
+        </div>
+    </nav>
 
-        <!-- Hero -->
-        <section class="hero">
-            <div class="hero-badge">
-                <span class="dot"></span>
-                accepting enterprise clients
-            </div>
-            <h1>AI agents that collect<br>your <span class="gradient">unpaid invoices</span></h1>
-            <p class="hero-sub">
-                calls, emails, contact finding — fully automated.<br>
-                no call center. no threats. just results.
-            </p>
-            <a href="mailto:j@respaid.com" class="hero-cta">
-                see it live
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
+    <!-- Hero -->
+    <section class="section hero">
+        <div class="hero-eyebrow">
+            <span class="line"></span>
+            AI-powered invoice collection
+            <span class="line"></span>
+        </div>
+
+        <h1>your invoices, collected.</h1>
+
+        <p class="hero-sub">
+            AI agents handle calls, emails, and contact finding —<br>
+            fully automated, under your brand.
+        </p>
+
+        <div class="hero-actions">
+            <a href="mailto:j@respaid.com" class="btn-primary">
+                request a demo
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-        </section>
-
-        <!-- Logos -->
-        <section class="logos">
-            <div class="logos-label">trusted by</div>
-            <div class="logos-row">
-                <span>Microsoft</span>
-                <span>Dell</span>
-                <span>Plaid</span>
-                <span>Uber Freight</span>
-                <span>Checkr</span>
-            </div>
-        </section>
-
-        <!-- Stats -->
-        <section>
-            <div class="stats">
-                <div class="stat-card">
-                    <div class="stat-value">50%</div>
-                    <div class="stat-label">recovery rate</div>
-                    <div class="stat-compare">vs. 10-15% industry average</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">20 days</div>
-                    <div class="stat-label">average resolution</div>
-                    <div class="stat-compare">vs. 4-6 months with agencies</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">&lt;0.1%</div>
-                    <div class="stat-label">detect it's AI</div>
-                    <div class="stat-compare">calls and emails feel human</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Multi-channel -->
-        <section class="channels">
-            <div class="section-label">multi-channel AI</div>
-            <div class="section-title">every channel. fully autonomous.</div>
-            <p class="section-sub">your AI agent reaches debtors where they respond — respectfully and under your brand.</p>
-            <div class="channel-grid">
-                <div class="channel-card">
-                    <div class="channel-icon">&#9993;</div>
-                    <div class="channel-name">email</div>
-                    <div class="channel-desc">personalized outreach + smart replies</div>
-                </div>
-                <div class="channel-card">
-                    <div class="channel-icon">&#128222;</div>
-                    <div class="channel-name">voice</div>
-                    <div class="channel-desc">AI calls that sound human</div>
-                </div>
-                <div class="channel-card">
-                    <div class="channel-icon">&#128172;</div>
-                    <div class="channel-name">SMS</div>
-                    <div class="channel-desc">timely nudges that convert</div>
-                </div>
-                <div class="channel-card">
-                    <div class="channel-icon">&#9898;</div>
-                    <div class="channel-name">iMessage</div>
-                    <div class="channel-desc">blue bubble trust factor</div>
-                </div>
-                <div class="channel-card">
-                    <div class="channel-icon">&#128276;</div>
-                    <div class="channel-name">WhatsApp</div>
-                    <div class="channel-desc">global reach, instant delivery</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- How it works -->
-        <section class="how">
-            <div class="section-label">how it works</div>
-            <div class="section-title">you upload. AI handles the rest.</div>
-            <p class="section-sub">from invoice to payment in four steps.</p>
-            <div class="steps">
-                <div class="step">
-                    <span class="step-num">1</span><span class="step-badge badge-you">you</span>
-                    <h3>upload invoices</h3>
-                    <p>drop an Excel file or connect your ERP. that's your only job.</p>
-                </div>
-                <div class="step">
-                    <span class="step-num">2</span><span class="step-badge badge-ai">AI</span>
-                    <h3>finds contacts</h3>
-                    <p>AI researches the right person to contact — phone, email, LinkedIn.</p>
-                </div>
-                <div class="step">
-                    <span class="step-num">3</span><span class="step-badge badge-ai">AI</span>
-                    <h3>reaches out</h3>
-                    <p>multi-channel outreach. handles replies, disputes, and follow-ups automatically.</p>
-                </div>
-                <div class="step">
-                    <span class="step-num">4</span><span class="step-badge badge-ai">AI</span>
-                    <h3>you get paid</h3>
-                    <p>payment collected. relationship preserved. you see everything in your dashboard.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why different -->
-        <section class="why">
-            <div class="section-label">why us</div>
-            <div class="section-title">built different from day one.</div>
-            <p class="section-sub">not a call center with a chatbot bolted on.</p>
-            <div class="why-grid">
-                <div class="why-card">
-                    <div class="why-icon">&#129302;</div>
-                    <h3>AI-native, not AI-washed</h3>
-                    <p>every call, every email, every decision is made by AI trained on 1B+ simulations. not humans reading scripts.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">&#128737;</div>
-                    <h3>your brand, not ours</h3>
-                    <p>debtors see your company and your law firm. we're invisible. your reputation stays intact.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">&#9889;</div>
-                    <h3>20 days, not 6 months</h3>
-                    <p>traditional agencies take months. we resolve in weeks because AI doesn't sleep, forget, or procrastinate.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">&#129309;</div>
-                    <h3>respectful by design</h3>
-                    <p>no threats, no harassment. we collect more precisely because we treat people like humans. that's the whole point.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Final CTA -->
-        <section class="final-cta">
-            <h2>ready to see it?</h2>
-            <p>we'll collect $1 from you with AI so you can experience it yourself.</p>
-            <a href="mailto:j@respaid.com" class="hero-cta">
-                try the live demo
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
+            <a href="#demo" class="btn-secondary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                hear a live AI call
             </a>
-        </section>
+        </div>
 
-        <!-- Footer -->
-        <footer>
-            <span>&copy; 2026 AgentCollect</span>
-            <span class="footer-note">named by a friend who knows a thing or two about enterprise sales.</span>
-        </footer>
+        <!-- Audio Demo Player -->
+        <div class="audio-demo" id="demo">
+            <button class="play-btn" id="playBtn" onclick="toggleAudio()">
+                <svg class="play-icon" width="18" height="18" viewBox="0 0 24 24" fill="#fff"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                <svg class="pause-icon" width="18" height="18" viewBox="0 0 24 24" fill="#fff"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            </button>
+            <div class="audio-info">
+                <div class="audio-label">sample AI collection call</div>
+                <div class="audio-title">collecting $1 from a real person — can you tell it's AI?</div>
+                <div class="waveform" id="waveform"></div>
+            </div>
+            <span class="audio-time" id="audioTime">0:00 / 1:24</span>
+        </div>
+    </section>
+
+    <!-- Logos -->
+    <section class="section logos">
+        <div class="logos-label">trusted by Fortune 500 teams</div>
+        <div class="logos-row">
+            <img src="https://cdn.simpleicons.org/microsoft/151823" alt="Microsoft" height="24">
+            <img src="https://cdn.simpleicons.org/dell/151823" alt="Dell" height="24">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Plaid_logo.svg" alt="Plaid" height="22" style="filter: brightness(0) opacity(0.35);">
+            <img src="https://cdn.simpleicons.org/uber/151823" alt="Uber Freight" height="22">
+            <img src="https://cdn.simpleicons.org/checkr/151823" alt="Checkr" height="22">
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="section stats-section">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">50%</div>
+                <div class="stat-label">recovery rate</div>
+                <div class="stat-compare">vs. 10-15% with traditional agencies</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">20 days</div>
+                <div class="stat-label">average resolution</div>
+                <div class="stat-compare">vs. 4-6 months with call centers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">&lt;0.1%</div>
+                <div class="stat-label">flag it's AI</div>
+                <div class="stat-compare">calls and emails feel completely human</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <div class="products-section" id="products">
+        <div class="products-inner">
+            <div class="section-eyebrow">three products. zero humans.</div>
+            <div class="section-title" style="color:#fff;">everything your collection agency does.<br>but autonomous.</div>
+            <div class="section-sub">each product works independently or together as a full recovery engine.</div>
+
+            <div class="products-grid">
+                <div class="product-card card-call">
+                    <div class="product-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                    </div>
+                    <h3>AI call</h3>
+                    <p>real-time voice conversations that collect payments, handle objections, and negotiate — indistinguishable from a human agent.</p>
+                    <ul>
+                        <li>natural voice, no robotic scripts</li>
+                        <li>handles disputes and objections live</li>
+                        <li>trained on 1B+ call simulations</li>
+                        <li>compliant with FDCPA and TCPA</li>
+                    </ul>
+                </div>
+
+                <div class="product-card card-email">
+                    <div class="product-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/>
+                        </svg>
+                    </div>
+                    <h3>AI email reply</h3>
+                    <p>sends personalized collection emails and autonomously handles every reply — disputes, questions, payment plans, escalations.</p>
+                    <ul>
+                        <li>reads and understands debtor intent</li>
+                        <li>multi-turn conversations over days/weeks</li>
+                        <li>sends under your brand, not ours</li>
+                        <li>smart follow-up cadence</li>
+                    </ul>
+                </div>
+
+                <div class="product-card card-finder">
+                    <div class="product-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EC4899" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                        </svg>
+                    </div>
+                    <h3>contact finder</h3>
+                    <p>finds the right person to contact — direct phone, email, LinkedIn — by cross-referencing 5+ data sources in seconds.</p>
+                    <ul>
+                        <li>cross-references RocketReach, Hunter, Apollo</li>
+                        <li>finds direct mobile numbers</li>
+                        <li>verifies email deliverability</li>
+                        <li>ranks phone numbers by reachability</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- How it works -->
+    <section class="section how-section" id="how">
+        <div class="section-eyebrow">how it works</div>
+        <div class="section-title">you upload. AI collects.</div>
+        <div class="section-sub">from invoice to payment in four steps. your only job is step one.</div>
+
+        <div class="steps-grid">
+            <div class="step-card">
+                <span class="step-num">1</span><span class="step-badge badge-you">you</span>
+                <h3>upload invoices</h3>
+                <p>drop an Excel or connect your ERP. takes 2 minutes. that's your only job.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-num">2</span><span class="step-badge badge-ai">AI</span>
+                <h3>finds the right contact</h3>
+                <p>AI researches who to reach — direct phone, email, LinkedIn — across 5+ sources.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-num">3</span><span class="step-badge badge-ai">AI</span>
+                <h3>reaches out respectfully</h3>
+                <p>multi-channel outreach. handles every reply, dispute, and follow-up. automatically.</p>
+            </div>
+            <div class="step-card">
+                <span class="step-num">4</span><span class="step-badge badge-ai">AI</span>
+                <h3>you get paid</h3>
+                <p>payment collected. relationship preserved. everything tracked in your dashboard.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compliance -->
+    <section class="section compliance-section">
+        <div class="section-eyebrow">enterprise-grade security</div>
+        <div class="compliance-grid">
+            <div class="compliance-badge">
+                <div class="compliance-icon">&#128274;</div>
+                <div>
+                    <div class="compliance-text">SOC 2 Type II</div>
+                    <div class="compliance-sub">audited annually</div>
+                </div>
+            </div>
+            <div class="compliance-badge">
+                <div class="compliance-icon">&#127482;&#127480;</div>
+                <div>
+                    <div class="compliance-text">CCPA compliant</div>
+                    <div class="compliance-sub">California privacy act</div>
+                </div>
+            </div>
+            <div class="compliance-badge">
+                <div class="compliance-icon">&#9989;</div>
+                <div>
+                    <div class="compliance-text">FDCPA & TCPA</div>
+                    <div class="compliance-sub">federal collection laws</div>
+                </div>
+            </div>
+            <div class="compliance-badge">
+                <div class="compliance-icon">&#127758;</div>
+                <div>
+                    <div class="compliance-text">US-based</div>
+                    <div class="compliance-sub">data stays in the US</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <div class="cta-section">
+        <div class="cta-inner">
+            <div class="cta-dollar">$1</div>
+            <h2>we'll collect $1 from you. live.</h2>
+            <p>real AI call. real email. see if you can tell it's not human. that's our demo.</p>
+            <a href="mailto:j@respaid.com" class="btn-primary">
+                try the live demo
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <span>&copy; 2026 AgentCollect</span>
+        <span class="footer-note">named by a friend who knows a thing or two about enterprise sales.</span>
+    </footer>
+
+    <script>
+        // Generate waveform bars
+        const waveform = document.getElementById('waveform');
+        const barCount = 60;
+        const heights = [];
+        for (let i = 0; i < barCount; i++) {
+            const bar = document.createElement('div');
+            bar.className = 'wave-bar';
+            const h = 4 + Math.random() * 24;
+            heights.push(h);
+            bar.style.height = h + 'px';
+            waveform.appendChild(bar);
+        }
+
+        let isPlaying = false;
+        let animFrame;
+        let progress = 0;
+
+        function toggleAudio() {
+            const btn = document.getElementById('playBtn');
+            isPlaying = !isPlaying;
+            btn.classList.toggle('playing', isPlaying);
+
+            if (isPlaying) {
+                animateWaveform();
+            } else {
+                cancelAnimationFrame(animFrame);
+            }
+        }
+
+        function animateWaveform() {
+            const bars = waveform.querySelectorAll('.wave-bar');
+            progress += 0.3;
+            const activeIndex = Math.floor((progress / 100) * barCount);
+
+            bars.forEach((bar, i) => {
+                if (i <= activeIndex) {
+                    bar.classList.add('active');
+                }
+                // Animate heights for playing bars
+                if (isPlaying && i >= activeIndex - 3 && i <= activeIndex + 3) {
+                    const newH = 4 + Math.random() * 28;
+                    bar.style.height = newH + 'px';
+                }
+            });
+
+            // Update time
+            const totalSec = 84; // 1:24
+            const currentSec = Math.floor((progress / 100) * totalSec);
+            const min = Math.floor(currentSec / 60);
+            const sec = String(currentSec % 60).padStart(2, '0');
+            document.getElementById('audioTime').textContent = `${min}:${sec} / 1:24`;
+
+            if (progress >= 100) {
+                isPlaying = false;
+                document.getElementById('playBtn').classList.remove('playing');
+                return;
+            }
+
+            animFrame = requestAnimationFrame(() => setTimeout(animateWaveform, 50));
+        }
+    </script>
 </body>
 </html>
