@@ -750,8 +750,8 @@ async function startAgent(){
     // Show profile card with avatar (LinkedIn photo if available)
     const profileCard = document.getElementById('profile-card');
     const avatarWrap = document.getElementById('avatar-wrap');
-    const liUrl = known?.linkedinUrl || contactData?.person?.linkedinUrl;
-    if(liUrl){
+    const liUrl = known?.linkedinUrl || contactData?.person?.linkedinUrl || contactData?.person?.linkedin || li;
+    if(liUrl && liUrl.includes('/in/')){
         const username = liUrl.replace(/.*\/in\//,'').replace(/\/$/,'');
         avatarWrap.innerHTML=`<img src="https://unavatar.io/linkedin/${username}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML='<svg width=\\'28\\' height=\\'28\\' viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'var(--blue)\\' stroke-width=\\'1.5\\' opacity=\\'.4\\'><path d=\\'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\\'/><circle cx=\\'12\\' cy=\\'7\\' r=\\'4\\'/></svg>'">`;
     }
@@ -804,7 +804,7 @@ async function startAgent(){
 
     setIcon('identity',true);
     document.getElementById('title-identity').textContent=nm;
-    document.getElementById('sub-identity').textContent=(ti||'')+' at '+cp;
+    document.getElementById('sub-identity').textContent=ti ? ti+' at '+cp : cp;
     doneStep('identity');
     await sleep(500);
 
@@ -927,8 +927,9 @@ async function triggerCall(){
 }
 
 async function doCall(prefilledPhone){
-    const phone=prefilledPhone||document.getElementById('call-phone')?.value?.trim();
-    if(!phone||phone.length<6){const inp=document.getElementById('call-phone');if(inp)inp.style.borderColor='var(--red)';return}
+    const rawPhone=prefilledPhone||document.getElementById('call-phone')?.value?.trim();
+    if(!rawPhone||rawPhone.length<6){const inp=document.getElementById('call-phone');if(inp)inp.style.borderColor='var(--red)';return}
+    const phone=rawPhone.replace(/[^0-9+() \-]/g,'');
     const inner=document.getElementById('call-inner');
 
     // Show the number being called
