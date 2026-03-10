@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Privacy Policy — AgentCollect</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ffffff'/%3E%3Ctext x='32' y='36' dominant-baseline='middle' text-anchor='middle' fill='%231e293b' font-family='system-ui' font-weight='900' font-size='32' letter-spacing='-2'%3Ea%3C/text%3E%3Cline x1='16' y1='48' x2='48' y2='16' stroke='%23ef4444' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#FAFBFF;--bg-card:#fff;--bg-dark:#0B1B3D;
+            --border:#E8ECF2;--border-hover:rgba(37,99,235,.25);
+            --text:#0B1B3D;--text-mid:#475569;--text-muted:#94A3B8;--text-dim:#CBD5E1;
+            --blue:#2563EB;--blue-dark:#1D4ED8;--blue-light:rgba(37,99,235,.06);--blue-glow:rgba(37,99,235,.15);
+            --green:#10B981;--green-dark:#059669;--green-light:rgba(16,185,129,.06);
+            --amber:#F59E0B;--red:#EF4444;--pink:#EC4899;--sf-blue:#00A1E0;
+            --mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
+            --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+            --shadow-md:0 4px 12px rgba(0,0,0,.06);
+            --shadow-lg:0 12px 40px rgba(0,0,0,.08);
+            --max-w:1140px;
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:var(--sans);background:#fff;color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+        h1,h2,h3,h4,h5{font-family:var(--display)}
+        ::selection{background:rgba(37,99,235,.12)}
+
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+        .nav.scrolled{box-shadow:0 1px 8px rgba(0,0,0,.04)}
+        .nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:60px}
+        .logo{display:flex;align-items:center;gap:8px;text-decoration:none;margin-right:40px;font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:-.04em;color:var(--text)}
+        .logo span{color:var(--blue)}
+        .logo-icon{width:26px;height:26px;background:#fff;border:1.5px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
+        .logo-icon .logo-a{font-weight:900;font-size:15px;color:var(--text);position:relative;z-index:1}
+        .logo-icon .logo-slash{position:absolute;width:16px;height:2px;background:#ef4444;transform:rotate(-45deg);border-radius:1px}
+        .nav-links{display:flex;gap:28px;flex:1}
+        .nav-links a{color:var(--text-mid);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+        .nav-links a:hover{color:var(--text)}
+        .nav-right{display:flex;align-items:center;gap:20px}
+        .nav-login{color:var(--text-mid);text-decoration:none;font-size:14px;font-weight:500}
+        .nav-login:hover{color:var(--text)}
+        .nav-cta{padding:9px 20px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s}
+        .nav-cta:hover{background:var(--blue-dark)}
+        .nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px}
+
+        .page-hero{padding:140px 32px 40px;text-align:center}
+        .page-hero h1{font-size:clamp(32px,4vw,48px);font-weight:900;letter-spacing:-.04em;line-height:1.1;margin-bottom:16px}
+        .page-hero p{font-size:15px;color:var(--text-muted);max-width:400px;margin:0 auto}
+
+        .legal{max-width:720px;margin:0 auto;padding:40px 32px 80px}
+        .legal h2{font-size:20px;font-weight:800;margin:40px 0 12px;letter-spacing:-.02em}
+        .legal h2:first-of-type{margin-top:0}
+        .legal h3{font-size:16px;font-weight:700;margin:24px 0 8px}
+        .legal p{font-size:14px;color:var(--text-mid);line-height:1.8;margin-bottom:12px}
+        .legal ul{margin:0 0 12px 20px;font-size:14px;color:var(--text-mid);line-height:1.8}
+        .legal a{color:var(--blue);text-decoration:none}
+        .legal a:hover{text-decoration:underline}
+
+        footer{background:#fff;border-top:1px solid var(--border);padding:56px 32px 32px}
+        .footer-inner{max-width:var(--max-w);margin:0 auto}
+        .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+        .footer-brand{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:12px}
+        .footer-brand span{color:var(--blue)}
+        .footer-tagline{font-size:13px;color:var(--text-muted);line-height:1.5;max-width:260px}
+        .footer-col h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text);margin-bottom:16px}
+        .footer-col a{display:block;font-size:13px;color:var(--text-muted);text-decoration:none;margin-bottom:10px;transition:color .2s}
+        .footer-col a:hover{color:var(--text)}
+        .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;gap:16px}
+        .footer-copy{font-size:12px;color:var(--text-muted)}
+        .footer-badges{display:flex;gap:8px}
+        .footer-badge{padding:4px 10px;border:1px solid var(--border);border-radius:6px;font-size:10px;color:var(--text-muted);font-weight:600}
+
+        @media(max-width:768px){
+            .nav-links,.nav-login{display:none}
+            .nav-mobile{display:block}
+            .nav-inner{padding:0 20px}
+            .page-hero{padding:120px 20px 32px}
+            .legal{padding:32px 20px 60px}
+            .footer-top{grid-template-columns:1fr;gap:28px}
+            .footer-bottom{flex-direction:column;text-align:center}
+            .footer-badges{justify-content:center}
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+<div class="nav-inner">
+    <a href="/" class="logo"><div class="logo-icon"><span class="logo-a">a</span><div class="logo-slash"></div></div>agent<span>collect</span></a>
+    <div class="nav-links">
+        <a href="/#results">Customers</a>
+        <a href="/#how">How it works</a>
+        <a href="/#security">Security</a>
+    </div>
+    <div class="nav-right">
+        <a href="#" class="nav-login">Log in</a>
+        <a href="/#hero-input" class="nav-cta">Try the demo</a>
+    </div>
+    <button class="nav-mobile" onclick="window.location='/'">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+</div>
+</nav>
+
+<section class="page-hero">
+    <h1>Privacy Policy</h1>
+    <p>Effective date: January 1, 2026</p>
+</section>
+
+<div class="legal">
+    <h2>1. Introduction</h2>
+    <p>AgentCollect, Inc. ("AgentCollect," "we," "us," or "our") respects your privacy and is committed to protecting your personal data. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform and services.</p>
+
+    <h2>2. Information We Collect</h2>
+    <h3>Information you provide</h3>
+    <ul>
+        <li>Account registration data (name, email, company name, phone number)</li>
+        <li>Billing and payment information (processed via Stripe; we do not store full card numbers)</li>
+        <li>Invoice and accounts receivable data you upload to our platform</li>
+        <li>Communications with our support team</li>
+    </ul>
+
+    <h3>Information collected automatically</h3>
+    <ul>
+        <li>Device and browser information (IP address, browser type, operating system)</li>
+        <li>Usage data (pages visited, features used, session duration)</li>
+        <li>Cookies and similar tracking technologies</li>
+    </ul>
+
+    <h3>Information from third parties</h3>
+    <ul>
+        <li>Publicly available business contact information used in our recovery process</li>
+        <li>Data from identity verification and compliance providers</li>
+    </ul>
+
+    <h2>3. How We Use Your Information</h2>
+    <p>We use collected information to:</p>
+    <ul>
+        <li>Provide, operate, and maintain our AI-powered recovery platform</li>
+        <li>Process transactions and send related information</li>
+        <li>Send you technical notices, security alerts, and support messages</li>
+        <li>Respond to your comments, questions, and customer service requests</li>
+        <li>Monitor and analyze trends, usage, and activities</li>
+        <li>Detect, investigate, and prevent fraudulent transactions and abuse</li>
+        <li>Comply with legal obligations, including collections regulations (FDCPA, Regulation F)</li>
+    </ul>
+
+    <h2>4. How We Share Your Information</h2>
+    <p>We do not sell your personal information. We may share data with:</p>
+    <ul>
+        <li><strong>Service providers:</strong> Third-party vendors who assist in operating our platform (cloud hosting, payment processing, email delivery, voice AI services)</li>
+        <li><strong>Legal compliance:</strong> When required by law, regulation, or legal process</li>
+        <li><strong>Business transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
+        <li><strong>With your consent:</strong> When you have given us explicit permission</li>
+    </ul>
+
+    <h2>5. Data Security</h2>
+    <p>We implement industry-standard security measures including encryption in transit (TLS 1.2+) and at rest (AES-256), SOC 2 Type II certified controls, regular security assessments, and role-based access controls. No method of transmission over the Internet is 100% secure, but we strive to protect your data using commercially acceptable means.</p>
+
+    <h2>6. Data Retention</h2>
+    <p>We retain your personal data only for as long as necessary to fulfill the purposes outlined in this policy, comply with legal obligations, resolve disputes, and enforce our agreements. Account data is deleted within 90 days of account closure upon request.</p>
+
+    <h2>7. Cookies</h2>
+    <p>We use essential cookies to operate our platform and analytics cookies to understand usage patterns. You can control cookie preferences through your browser settings. Disabling certain cookies may limit your ability to use some features of our platform.</p>
+
+    <h2>8. Your Rights</h2>
+    <h3>For all users</h3>
+    <ul>
+        <li>Access the personal data we hold about you</li>
+        <li>Request correction of inaccurate data</li>
+        <li>Request deletion of your data (subject to legal retention requirements)</li>
+        <li>Opt out of marketing communications</li>
+    </ul>
+
+    <h3>CCPA / CPRA rights (California residents)</h3>
+    <ul>
+        <li>Right to know what personal information is collected, used, and shared</li>
+        <li>Right to delete personal information</li>
+        <li>Right to opt out of the sale or sharing of personal information</li>
+        <li>Right to non-discrimination for exercising your rights</li>
+    </ul>
+
+    <h3>GDPR rights (EEA/UK residents)</h3>
+    <ul>
+        <li>Right of access, rectification, erasure, and data portability</li>
+        <li>Right to restrict or object to processing</li>
+        <li>Right to withdraw consent at any time</li>
+        <li>Right to lodge a complaint with a supervisory authority</li>
+    </ul>
+
+    <h2>9. International Transfers</h2>
+    <p>Your data may be transferred to and processed in the United States, where our servers are located. We ensure appropriate safeguards are in place for international data transfers in compliance with applicable data protection laws.</p>
+
+    <h2>10. Children's Privacy</h2>
+    <p>Our services are not directed to individuals under 18. We do not knowingly collect personal information from children. If you believe we have collected data from a child, please contact us immediately.</p>
+
+    <h2>11. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. We will notify you of material changes by posting the updated policy on this page and updating the effective date. Your continued use of our services after changes become effective constitutes acceptance of the revised policy.</p>
+
+    <h2>12. Contact Us</h2>
+    <p>For privacy-related inquiries, data access requests, or complaints:</p>
+    <p>Email: <a href="mailto:privacy@agentcollect.com">privacy@agentcollect.com</a><br>
+    AgentCollect, Inc.<br>
+    New York, NY</p>
+</div>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div>
+                <div class="footer-brand"><span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:#fff;border:1px solid #e2e8f0;border-radius:4px;position:relative;vertical-align:middle;margin-right:6px"><span style="font-weight:900;font-size:12px;color:#1e293b;position:relative;z-index:1">a</span><span style="position:absolute;width:12px;height:1.5px;background:#ef4444;transform:rotate(-45deg);border-radius:1px"></span></span>agent<span>collect</span></div>
+                <div class="footer-tagline">Agents, not agencies. AI-powered recovery under your brand. Faster, cheaper, fairer.</div>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <a href="/#how">How it works</a>
+                <a href="/#results">Customers</a>
+                <a href="/#security">Security</a>
+                <a href="/#hero-input">Live demo</a>
+            </div>
+            <div class="footer-col">
+                <h4>Compliance</h4>
+                <a href="#">SOC 2 Type II</a>
+                <a href="#">CCPA / CPRA</a>
+                <a href="#">Regulation F</a>
+                <a href="#">GDPR</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="/about">About</a>
+                <a href="/careers">Careers</a>
+                <a href="/contact">Contact</a>
+                <a href="/privacy">Privacy</a>
+                <a href="/terms">Terms</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-copy">&copy; 2026 AgentCollect, Inc. San Francisco, CA</div>
+            <div class="footer-badges"><span class="footer-badge">SOC 2</span><span class="footer-badge">CCPA</span><span class="footer-badge">Reg F</span></div>
+        </div>
+    </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>10)});
+</script>
+</body>
+</html>
