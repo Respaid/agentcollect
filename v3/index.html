@@ -172,6 +172,17 @@
             .cs-region-grid{grid-template-columns:1fr}
         }
 
+        /* ═══ PULL QUOTE ═══ */
+        .pull-quote{padding:80px 32px;background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+        .pull-quote-inner{max-width:800px;margin:0 auto;text-align:center}
+        .pull-quote blockquote{font-family:var(--display);font-size:clamp(22px,3vw,32px);font-weight:700;letter-spacing:-.02em;color:var(--text);line-height:1.35;margin-bottom:28px;position:relative}
+        .pull-quote blockquote::before{content:'"';font-size:80px;font-weight:900;color:var(--blue);opacity:.2;line-height:1;display:block;margin-bottom:-20px}
+        .pull-quote-cite{display:flex;align-items:center;justify-content:center;gap:12px}
+        .pull-quote-cite img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--border)}
+        .pull-quote-cite-text{text-align:left}
+        .pull-quote-cite-text strong{font-size:14px;color:var(--text);display:block}
+        .pull-quote-cite-text span{font-size:13px;color:var(--text-muted)}
+
         /* ═══ HOW ═══ */
         .how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:56px;counter-reset:step}
         .how-card{position:relative;padding:24px 20px;border:1px solid var(--border);border-radius:12px;transition:border-color .3s}
@@ -324,8 +335,8 @@
 <!-- HERO -->
 <section class="hero" id="hero">
     <div class="hero-badge"><span class="dot"></span> Trusted by Fortune 500 finance teams</div>
-    <h1>Enter your email.<br>Watch us <em>collect from you</em>.</h1>
-    <p class="hero-sub">AI agents that find you, profile you, build a strategy, and send a real collection notice. In 30 seconds. For $1.</p>
+    <h1>Your collection agency<br>is <em>already obsolete</em>.</h1>
+    <p class="hero-sub">Enter your email. Our AI will find you, profile you, build a strategy, and send a real collection notice. In 30 seconds. For $1.</p>
 
     <div class="input-wrap" id="hero-input">
         <div class="input-box">
@@ -438,6 +449,20 @@
         <div class="stat-item"><div class="stat-num" style="color:var(--green)" data-count="50" data-prefix="~" data-suffix="%">0</div><div class="stat-label">Average recovery rate</div></div>
         <div class="stat-item"><div class="stat-num" style="color:var(--amber)" data-count="20" data-prefix="" data-suffix=" min">0</div><div class="stat-label">Time to go live</div></div>
         <div class="stat-item"><div class="stat-num" data-count="0" data-prefix="" data-suffix="">0</div><div class="stat-label">Compliance incidents</div></div>
+    </div>
+</section>
+
+<!-- PULL QUOTE -->
+<section class="pull-quote reveal">
+    <div class="pull-quote-inner">
+        <blockquote>Not one of them complained about the tone or the engagement. That's unheard of in collections.</blockquote>
+        <div class="pull-quote-cite">
+            <img src="https://respaid.com/images/neil-doyle.png" alt="Neil Doyle">
+            <div class="pull-quote-cite-text">
+                <strong>Neil Doyle</strong>
+                <span>Group Finance Manager, Microsoft</span>
+            </div>
+        </div>
     </div>
 </section>
 
