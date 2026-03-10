@@ -429,7 +429,7 @@
     <div class="agent-actions" id="agent-actions">
         <button class="action-btn action-btn-call" id="call-action-btn" onclick="triggerCall()">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <span id="call-btn-text">Now call me — let the AI collect $1</span>
+            <span id="call-btn-text">Call me now</span>
         </button>
         <button class="action-btn action-btn-email" onclick="scrollTo({top:0,behavior:'smooth'})">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
@@ -610,10 +610,10 @@ let agentEmail = '', agentPhone = null, contactData = null;
 
 // Known contacts — personalized investigator experience
 const KNOWN = {
-    'j@respaid.com': {name:'John Banner',title:'CEO & Co-Founder',company:'Respaid',location:'San Francisco, CA',phone:'+1 (415) 867-4010',linkedin:'linkedin.com/in/johnbanner',linkedinUrl:'https://linkedin.com/in/johnbanner',greeting:'Hey John — let\'s see how it works on you.',profile_type:'Tech founder',company_health:'YC W22, enterprise clients (Microsoft, Dell, Plaid)',payment_behavior:'Founder-CEO — direct approach works',risk:'Low',recommended_tone:'Professional, playful'},
-    'marc@salesforce.com': {name:'Marc Benioff',title:'Chair & CEO',company:'Salesforce',location:'San Francisco, CA',linkedin:'linkedin.com/in/marcbenioff',linkedinUrl:'https://linkedin.com/in/marcbenioff',greeting:'Welcome Marc. Your AppExchange partner at work.',profile_type:'Enterprise CEO',company_health:'$34B revenue, 80K+ employees',payment_behavior:'Fortune 500 AP — invoices routed through procurement',risk:'Low (ability) / High (process)',recommended_tone:'Formal, legal-grade'},
-    'satya@microsoft.com': {name:'Satya Nadella',title:'CEO',company:'Microsoft',location:'Redmond, WA',linkedin:'linkedin.com/in/satyanadella',linkedinUrl:'https://linkedin.com/in/satyanadella',greeting:'Hi Satya. $879K already recovered for Microsoft.',profile_type:'Enterprise CEO',company_health:'$245B revenue, 220K+ employees',payment_behavior:'30-90 day cycles, escalation to controller unlocks payment',risk:'Low',recommended_tone:'Formal, reference existing relationship'},
-    'jensen@nvidia.com': {name:'Jensen Huang',title:'CEO & Founder',company:'NVIDIA',location:'Santa Clara, CA',linkedin:'linkedin.com/in/jensenhuang',linkedinUrl:'https://linkedin.com/in/jensenhuang',greeting:'AI collecting from AI companies — poetic.',profile_type:'Tech visionary / CEO',company_health:'$60B+ revenue, 30K+ employees',payment_behavior:'Engineering-led, efficient finance team, Net-30',risk:'Low',recommended_tone:'Tech-forward, concise'},
+    'j@respaid.com': {name:'John Banner',title:'CEO & Co-Founder',company:'Respaid',location:'San Francisco, CA',phone:'+1 (415) 867-4010',linkedin:'linkedin.com/in/johnbanner',linkedinUrl:'https://linkedin.com/in/johnbanner',avatarUrl:'https://unavatar.io/github/johnbanner',greeting:'Hey John — let\'s see how it works on you.',profile_type:'Tech founder',company_health:'YC W22, enterprise clients (Microsoft, Dell, Plaid)',payment_behavior:'Founder-CEO — direct approach works',risk:'Low',recommended_tone:'Professional, playful'},
+    'marc@salesforce.com': {name:'Marc Benioff',title:'Chair & CEO',company:'Salesforce',location:'San Francisco, CA',linkedin:'linkedin.com/in/marcbenioff',linkedinUrl:'https://linkedin.com/in/marcbenioff',avatarUrl:'https://unavatar.io/x/marcbenioff',greeting:'Welcome Marc. Your AppExchange partner at work.',profile_type:'Enterprise CEO',company_health:'$34B revenue, 80K+ employees',payment_behavior:'Fortune 500 AP — invoices routed through procurement',risk:'Low (ability) / High (process)',recommended_tone:'Formal, legal-grade'},
+    'satya@microsoft.com': {name:'Satya Nadella',title:'CEO',company:'Microsoft',location:'Redmond, WA',linkedin:'linkedin.com/in/satyanadella',linkedinUrl:'https://linkedin.com/in/satyanadella',avatarUrl:'https://unavatar.io/github/satyanadella',greeting:'Hi Satya. $879K already recovered for Microsoft.',profile_type:'Enterprise CEO',company_health:'$245B revenue, 220K+ employees',payment_behavior:'30-90 day cycles, escalation to controller unlocks payment',risk:'Low',recommended_tone:'Formal, reference existing relationship'},
+    'jensen@nvidia.com': {name:'Jensen Huang',title:'CEO & Founder',company:'NVIDIA',location:'Santa Clara, CA',linkedin:'linkedin.com/in/jensenhuang',linkedinUrl:'https://linkedin.com/in/jensenhuang',avatarUrl:'https://unavatar.io/x/jensenhuang',greeting:'AI collecting from AI companies — poetic.',profile_type:'Tech visionary / CEO',company_health:'$60B+ revenue, 30K+ employees',payment_behavior:'Engineering-led, efficient finance team, Net-30',risk:'Low',recommended_tone:'Tech-forward, concise'},
 };
 
 // Nav scroll
@@ -750,7 +750,8 @@ async function startAgent(){
     // Show profile card with avatar (LinkedIn photo if available)
     const profileCard = document.getElementById('profile-card');
     const avatarWrap = document.getElementById('avatar-wrap');
-    avatarWrap.innerHTML=`<img src="https://unavatar.io/${encodeURIComponent(email)}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML='<svg width=\\'28\\' height=\\'28\\' viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'var(--blue)\\' stroke-width=\\'1.5\\' opacity=\\'.4\\'><path d=\\'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\\'/><circle cx=\\'12\\' cy=\\'7\\' r=\\'4\\'/></svg>'">`;
+    const avatarSrc = known?.avatarUrl || `https://unavatar.io/${encodeURIComponent(email)}`;
+    avatarWrap.innerHTML=`<img src="${avatarSrc}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML='<svg width=\\'28\\' height=\\'28\\' viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'var(--blue)\\' stroke-width=\\'1.5\\' opacity=\\'.4\\'><path d=\\'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\\'/><circle cx=\\'12\\' cy=\\'7\\' r=\\'4\\'/></svg>'">`;
     profileCard.style.display='block';
     profileCard.style.animation='pop-in .4s cubic-bezier(.16,1,.3,1)';
     document.getElementById('card-identity').classList.add('loaded');
