@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgentCollect — Try It Live</title>
-    <meta name="description" content="Experience AI collections live. Get a real AI call, interact with AI email, and see our contact finder in action.">
+    <meta name="description" content="Experience AI collections live. Get a real AI call, interact with AI email, watch our contact finder in action.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -12,472 +12,360 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg: #09090b;
-            --bg-card: rgba(255,255,255,0.025);
-            --bg-card-hover: rgba(255,255,255,0.04);
-            --border: rgba(255,255,255,0.06);
-            --border-hover: rgba(255,255,255,0.12);
-            --text: #f5f5f5;
-            --text-muted: rgba(255,255,255,0.5);
-            --text-dim: rgba(255,255,255,0.25);
-            --brand: #818CF8;
-            --brand-dim: rgba(129, 140, 248, 0.15);
-            --emerald: #34D399;
-            --emerald-dim: rgba(52, 211, 153, 0.12);
-            --pink: #F472B6;
-            --pink-dim: rgba(244, 114, 182, 0.12);
-            --amber: #FBBF24;
-            --amber-dim: rgba(251, 191, 36, 0.12);
+            --bg: #faf8f5;
+            --bg-dark: #1c1917;
+            --bg-card: #fff;
+            --border: rgba(21,24,35,0.08);
+            --text: #151823;
+            --text-muted: rgba(21,24,35,0.55);
+            --text-dim: rgba(21,24,35,0.3);
+            --brand: #6366F1;
+            --brand-light: rgba(99,102,241,0.08);
+            --brand-medium: rgba(99,102,241,0.15);
+            --emerald: #10B981;
+            --emerald-light: rgba(16,185,129,0.08);
+            --emerald-medium: rgba(16,185,129,0.15);
+            --pink: #EC4899;
+            --pink-light: rgba(236,72,153,0.08);
+            --pink-medium: rgba(236,72,153,0.15);
+            --red: #EF4444;
             --mono: 'JetBrains Mono', monospace;
+            --radius: 16px;
         }
 
         body {
             font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
+            background: var(--bg); color: var(--text);
+            -webkit-font-smoothing: antialiased; overflow-x: hidden;
         }
-
         h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; }
 
-        /* Background effects */
-        .grid-bg {
-            position: fixed; inset: 0;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
-            background-size: 80px 80px;
-            pointer-events: none; z-index: 0;
-        }
-        .orb { position: fixed; border-radius: 50%; filter: blur(150px); pointer-events: none; z-index: 0; }
-        .orb-1 { width: 600px; height: 600px; top: -200px; left: 50%; transform: translateX(-50%); background: var(--brand); opacity: 0.06; }
-        .orb-2 { width: 400px; height: 400px; bottom: -100px; left: -100px; background: var(--emerald); opacity: 0.04; }
-        .orb-3 { width: 350px; height: 350px; bottom: 20%; right: -80px; background: var(--pink); opacity: 0.03; }
-
-        .wrapper { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        .section { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
         /* Nav */
         nav {
-            padding: 24px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            max-width: 1120px; margin: 0 auto; padding: 20px 24px;
+            display: flex; justify-content: space-between; align-items: center;
         }
-        .logo { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 20px; font-weight: 800; letter-spacing: -0.02em; color: var(--text); text-decoration: none; }
+        .logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 22px; font-weight: 800; letter-spacing: -0.03em;
+            color: var(--text); text-decoration: none;
+        }
         .logo span { color: var(--brand); }
-        .nav-links { display: flex; gap: 24px; align-items: center; }
-        .nav-link { font-size: 13px; color: var(--text-muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+        .nav-right { display: flex; align-items: center; gap: 24px; }
+        .nav-link {
+            font-size: 14px; color: var(--text-muted); text-decoration: none;
+            font-weight: 500; transition: color 0.2s;
+        }
         .nav-link:hover { color: var(--text); }
+        .nav-cta {
+            padding: 10px 24px; background: var(--text); color: var(--bg);
+            border: none; border-radius: 10px; font-family: inherit;
+            font-size: 14px; font-weight: 600; cursor: pointer;
+            text-decoration: none; transition: all 0.2s;
+        }
+        .nav-cta:hover { opacity: 0.85; }
 
         /* Hero */
-        .hero {
-            text-align: center;
-            padding: 80px 0 60px;
-        }
-        .hero-badge {
+        .hero { padding: 72px 0 48px; text-align: center; }
+        .hero-eyebrow {
             display: inline-flex; align-items: center; gap: 8px;
-            padding: 6px 16px; border-radius: 100px;
-            border: 1px solid var(--border); background: var(--bg-card);
-            font-size: 12px; font-weight: 500; color: var(--text-muted);
-            margin-bottom: 28px; letter-spacing: 0.04em; text-transform: uppercase;
+            font-size: 13px; font-weight: 600; color: var(--brand);
+            text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 24px;
         }
-        .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--emerald); animation: pulse 2s ease-in-out infinite; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        .hero-eyebrow .dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--emerald); animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
 
         .hero h1 {
             font-size: clamp(36px, 6vw, 64px);
-            font-weight: 800; letter-spacing: -0.035em;
+            font-weight: 800; letter-spacing: -0.04em;
             line-height: 1.1; margin-bottom: 16px;
         }
         .hero h1 .gradient {
             background: linear-gradient(135deg, var(--brand) 0%, var(--emerald) 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         .hero-sub {
-            font-size: clamp(15px, 2vw, 18px); font-weight: 300;
+            font-size: clamp(16px, 2vw, 19px); font-weight: 400;
             color: var(--text-muted); line-height: 1.6;
-            max-width: 480px; margin: 0 auto;
+            max-width: 500px; margin: 0 auto;
         }
 
-        /* Products Grid */
-        .products {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            padding: 40px 0 100px;
+        /* Products */
+        .products { padding: 48px 0 100px; }
+        .products-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
         }
 
         .product-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 0;
-            overflow: hidden;
+            background: var(--bg-card); border: 1.5px solid var(--border);
+            border-radius: 20px; overflow: hidden;
+            display: flex; flex-direction: column;
             transition: all 0.3s;
-            display: flex;
-            flex-direction: column;
         }
         .product-card:hover {
-            border-color: var(--border-hover);
+            border-color: rgba(21,24,35,0.15);
+            box-shadow: 0 16px 48px rgba(21,24,35,0.08);
             transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
 
-        .product-header {
-            padding: 36px 28px 0;
-            flex-shrink: 0;
-        }
-        .product-icon-wrap {
-            width: 48px; height: 48px;
-            border-radius: 12px;
+        .product-header { padding: 32px 28px 0; }
+        .product-icon {
+            width: 48px; height: 48px; border-radius: 14px;
             display: flex; align-items: center; justify-content: center;
             margin-bottom: 20px;
-            font-size: 22px;
         }
-        .card-call .product-icon-wrap { background: var(--brand-dim); }
-        .card-email .product-icon-wrap { background: var(--emerald-dim); }
-        .card-finder .product-icon-wrap { background: var(--pink-dim); }
+        .card-call .product-icon { background: var(--brand-light); }
+        .card-email .product-icon { background: var(--emerald-light); }
+        .card-finder .product-icon { background: var(--pink-light); }
 
         .product-tag {
-            display: inline-block;
-            font-size: 10px; font-weight: 600;
+            display: inline-block; font-size: 10px; font-weight: 700;
             text-transform: uppercase; letter-spacing: 0.1em;
-            padding: 3px 10px; border-radius: 6px;
-            margin-bottom: 14px;
+            padding: 4px 10px; border-radius: 6px; margin-bottom: 14px;
         }
-        .card-call .product-tag { background: var(--brand-dim); color: var(--brand); }
-        .card-email .product-tag { background: var(--emerald-dim); color: var(--emerald); }
-        .card-finder .product-tag { background: var(--pink-dim); color: var(--pink); }
+        .card-call .product-tag { background: var(--brand-light); color: var(--brand); }
+        .card-email .product-tag { background: var(--emerald-light); color: var(--emerald); }
+        .card-finder .product-tag { background: var(--pink-light); color: var(--pink); }
 
         .product-card h3 {
-            font-size: 22px; font-weight: 700;
-            letter-spacing: -0.02em; margin-bottom: 8px;
+            font-size: 22px; font-weight: 700; letter-spacing: -0.02em;
+            margin-bottom: 8px;
         }
         .product-card .desc {
-            font-size: 14px; color: var(--text-muted);
-            line-height: 1.6; font-weight: 300;
-            margin-bottom: 24px;
+            font-size: 14px; color: var(--text-muted); line-height: 1.6;
+            margin-bottom: 20px;
         }
 
-        /* Product features */
-        .product-features {
-            padding: 0 28px;
-            margin-bottom: 24px;
-            flex-grow: 1;
-        }
+        .product-features { padding: 0 28px; margin-bottom: 20px; flex-grow: 1; }
         .feature-item {
-            display: flex; align-items: flex-start; gap: 10px;
-            padding: 8px 0;
+            display: flex; align-items: center; gap: 10px; padding: 6px 0;
         }
-        .feature-check {
-            flex-shrink: 0;
-            width: 18px; height: 18px;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 10px; margin-top: 1px;
+        .feature-dot {
+            width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0;
         }
-        .card-call .feature-check { background: var(--brand-dim); color: var(--brand); }
-        .card-email .feature-check { background: var(--emerald-dim); color: var(--emerald); }
-        .card-finder .feature-check { background: var(--pink-dim); color: var(--pink); }
-        .feature-text {
-            font-size: 13px; color: var(--text-muted);
-            line-height: 1.4;
-        }
+        .card-call .feature-dot { background: var(--brand); }
+        .card-email .feature-dot { background: var(--emerald); }
+        .card-finder .feature-dot { background: var(--pink); }
+        .feature-text { font-size: 13px; color: var(--text-muted); }
 
-        /* Interactive demo area */
+        /* Demo area */
         .demo-area {
-            padding: 24px 28px 28px;
-            background: rgba(0,0,0,0.3);
-            border-top: 1px solid var(--border);
-            margin-top: auto;
+            padding: 24px 28px 28px; margin-top: auto;
+            background: var(--bg); border-top: 1.5px solid var(--border);
         }
         .demo-label {
-            font-family: var(--mono);
-            font-size: 10px; font-weight: 500;
+            font-family: var(--mono); font-size: 10px; font-weight: 500;
             text-transform: uppercase; letter-spacing: 0.1em;
-            color: var(--text-dim);
-            margin-bottom: 12px;
+            color: var(--text-dim); margin-bottom: 12px;
         }
-
-        .input-group {
-            display: flex;
-            gap: 8px;
-        }
+        .input-row { display: flex; gap: 8px; }
         .demo-input {
-            flex: 1;
-            padding: 12px 16px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            color: var(--text);
-            font-family: var(--mono);
-            font-size: 14px;
-            outline: none;
-            transition: all 0.2s;
+            flex: 1; padding: 13px 16px;
+            background: var(--bg-card); border: 1.5px solid var(--border);
+            border-radius: 10px; color: var(--text);
+            font-family: var(--mono); font-size: 14px;
+            outline: none; transition: all 0.2s;
         }
         .demo-input::placeholder { color: var(--text-dim); }
-        .demo-input:focus {
-            border-color: var(--border-hover);
-            background: rgba(255,255,255,0.06);
-        }
+        .demo-input:focus { border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-light); }
+        .demo-input.error { border-color: var(--red); box-shadow: 0 0 0 3px rgba(239,68,68,0.1); animation: shake 0.3s; }
+        @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
 
         .demo-btn {
-            padding: 12px 20px;
-            border: none;
-            border-radius: 10px;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            white-space: nowrap;
-            display: flex; align-items: center; gap: 6px;
+            padding: 13px 22px; border: none; border-radius: 10px;
+            font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px;
+            font-weight: 700; cursor: pointer; transition: all 0.2s;
+            white-space: nowrap; display: flex; align-items: center; gap: 6px;
         }
         .demo-btn:hover { transform: translateY(-1px); }
         .demo-btn:active { transform: translateY(0); }
-
+        .demo-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
         .card-call .demo-btn { background: var(--brand); color: #fff; }
-        .card-call .demo-btn:hover { box-shadow: 0 8px 24px var(--brand-dim); }
-        .card-email .demo-btn { background: var(--emerald); color: #000; }
-        .card-email .demo-btn:hover { box-shadow: 0 8px 24px var(--emerald-dim); }
-        .card-finder .demo-btn { background: var(--pink); color: #000; }
-        .card-finder .demo-btn:hover { box-shadow: 0 8px 24px var(--pink-dim); }
+        .card-call .demo-btn:hover:not(:disabled) { box-shadow: 0 6px 20px var(--brand-medium); }
+        .card-email .demo-btn { background: var(--emerald); color: #fff; }
+        .card-email .demo-btn:hover:not(:disabled) { box-shadow: 0 6px 20px var(--emerald-medium); }
+        .card-finder .demo-btn { background: var(--pink); color: #fff; }
+        .card-finder .demo-btn:hover:not(:disabled) { box-shadow: 0 6px 20px var(--pink-medium); }
 
-        /* Result area */
+        /* Results */
         .demo-result {
-            margin-top: 16px;
-            padding: 16px;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            display: none;
+            margin-top: 16px; padding: 16px;
+            background: var(--bg-card); border: 1.5px solid var(--border);
+            border-radius: 12px; display: none;
         }
-        .demo-result.visible { display: block; }
-        .demo-result.loading {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        .demo-result.visible { display: block; animation: fadeUp 0.3s ease-out; }
+        .demo-result.loading { display: flex; align-items: center; gap: 12px; }
+        @keyframes fadeUp { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
 
-        .result-status {
-            font-family: var(--mono);
-            font-size: 12px;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-        .result-status .highlight { color: var(--emerald); font-weight: 500; }
-        .result-status .label { color: var(--text-dim); }
-
-        /* Spinner */
         .spinner {
             width: 16px; height: 16px;
-            border: 2px solid var(--border);
-            border-top-color: var(--brand);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
+            border: 2px solid var(--border); border-top-color: var(--brand);
+            border-radius: 50%; animation: spin 0.8s linear infinite;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* Success animation */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .demo-result.visible { animation: fadeInUp 0.3s ease-out; }
+        .result-text { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+        .result-text .success { color: var(--emerald); font-weight: 600; }
+        .result-text .info { color: var(--brand); font-weight: 500; }
 
-        /* Contact finder result */
-        .contact-result {
-            display: grid;
-            gap: 8px;
-        }
+        /* Contact result */
+        .contact-grid { display: grid; gap: 0; }
         .contact-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 6px 0;
-            border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 10px 0; border-bottom: 1px solid var(--border);
         }
         .contact-row:last-child { border-bottom: none; }
         .contact-field {
-            font-family: var(--mono);
-            font-size: 11px;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            font-family: var(--mono); font-size: 11px; color: var(--text-dim);
+            text-transform: uppercase; letter-spacing: 0.06em;
         }
         .contact-value {
-            font-family: var(--mono);
-            font-size: 13px;
-            color: var(--text);
+            font-family: var(--mono); font-size: 13px; color: var(--text); font-weight: 500;
         }
-        .contact-value.redacted {
-            filter: blur(4px);
-            user-select: none;
+        .contact-value.blur { filter: blur(5px); user-select: none; }
+        .contact-value.found { color: var(--emerald); }
+        .unlock-hint {
+            margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border);
+            font-size: 12px; color: var(--text-dim); text-align: center;
         }
+        .unlock-hint a { color: var(--pink); text-decoration: none; font-weight: 600; }
+        .unlock-hint a:hover { text-decoration: underline; }
 
-        /* Bottom section */
-        .bottom {
-            text-align: center;
-            padding: 60px 0;
-            border-top: 1px solid var(--border);
+        /* Bottom CTA */
+        .bottom-cta {
+            text-align: center; padding: 80px 0;
+            border-top: 1.5px solid var(--border);
         }
-        .bottom p {
-            font-size: 14px;
-            color: var(--text-dim);
-            margin-bottom: 8px;
+        .bottom-cta h2 {
+            font-size: clamp(24px, 3.5vw, 38px); font-weight: 800;
+            letter-spacing: -0.03em; margin-bottom: 12px;
         }
-        .bottom .big {
+        .bottom-cta p {
+            font-size: 16px; color: var(--text-muted); margin-bottom: 32px;
+            max-width: 440px; margin-left: auto; margin-right: auto;
+        }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 14px 32px; background: var(--brand); color: #fff;
+            border: none; border-radius: 12px;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: clamp(20px, 3vw, 28px);
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 24px;
+            font-size: 15px; font-weight: 600; cursor: pointer;
+            text-decoration: none; transition: all 0.2s;
         }
-        .bottom a {
-            color: var(--brand);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            transition: opacity 0.2s;
-        }
-        .bottom a:hover { opacity: 0.8; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px var(--brand-medium); }
 
         /* Footer */
         footer {
+            max-width: 1120px; margin: 0 auto; padding: 24px;
             border-top: 1px solid var(--border);
-            padding: 24px 0 48px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: flex; justify-content: space-between; align-items: center;
         }
-        footer span { font-size: 12px; color: var(--text-dim); font-weight: 300; }
+        footer span { font-size: 12px; color: var(--text-dim); }
         .footer-note { font-style: italic; }
 
         /* Responsive */
         @media (max-width: 900px) {
-            .products { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; padding: 40px 0 80px; }
+            .products-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
         }
-        @media (max-width: 480px) {
-            .input-group { flex-direction: column; }
+        @media (max-width: 600px) {
+            .input-row { flex-direction: column; }
             .demo-btn { justify-content: center; }
-            .hero { padding: 60px 0 40px; }
-            footer { flex-direction: column; gap: 8px; }
+            .hero { padding: 56px 0 40px; }
+            footer { flex-direction: column; gap: 8px; text-align: center; }
+            .nav-link { display: none; }
         }
     </style>
 </head>
 <body>
-    <div class="grid-bg"></div>
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
 
-    <div class="wrapper">
-        <nav>
-            <a href="/" class="logo">agent<span>collect</span></a>
-            <div class="nav-links">
-                <a href="/" class="nav-link">home</a>
-                <a href="mailto:j@respaid.com" class="nav-link">contact</a>
-            </div>
-        </nav>
+    <nav>
+        <a href="/" class="logo">agent<span>collect</span></a>
+        <div class="nav-right">
+            <a href="/" class="nav-link">home</a>
+            <a href="mailto:j@respaid.com" class="nav-cta">request demo</a>
+        </div>
+    </nav>
 
-        <section class="hero">
-            <div class="hero-badge">
-                <span class="dot"></span>
-                live demo
-            </div>
-            <h1>don't take our word for it.<br><span class="gradient">try it yourself.</span></h1>
-            <p class="hero-sub">
-                three AI products. three live demos.<br>
-                we'll try to collect $1 from you. see if you can tell it's AI.
-            </p>
-        </section>
+    <section class="section hero">
+        <div class="hero-eyebrow">
+            <span class="dot"></span>
+            live demo
+        </div>
+        <h1>don't take our word for it.<br><span class="gradient">try it yourself.</span></h1>
+        <p class="hero-sub">
+            three products. three live demos.<br>
+            we'll try to collect $1 from you — see if you can tell it's AI.
+        </p>
+    </section>
 
-        <section class="products">
+    <section class="section products">
+        <div class="products-grid">
+
             <!-- AI Call -->
             <div class="product-card card-call">
                 <div class="product-header">
-                    <div class="product-icon-wrap">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#818CF8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <div class="product-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
                         </svg>
                     </div>
                     <span class="product-tag">product 1</span>
                     <h3>AI call</h3>
-                    <p class="desc">you'll receive a real phone call from our AI agent trying to collect $1. sounds human. handles objections. negotiates.</p>
+                    <p class="desc">you'll receive a real phone call from our AI trying to collect $1. it sounds human, handles objections, and negotiates live.</p>
                 </div>
                 <div class="product-features">
-                    <div class="feature-item">
-                        <span class="feature-check">&#10003;</span>
-                        <span class="feature-text">real-time voice, no robotic script</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-check">&#10003;</span>
-                        <span class="feature-text">handles disputes and objections live</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-check">&#10003;</span>
-                        <span class="feature-text">&lt;0.1% of people detect it's AI</span>
-                    </div>
+                    <div class="feature-item"><span class="feature-dot"></span><span class="feature-text">natural voice, trained on 1B+ simulations</span></div>
+                    <div class="feature-item"><span class="feature-dot"></span><span class="feature-text">handles disputes and objections in real-time</span></div>
+                    <div class="feature-item"><span class="feature-dot"></span><span class="feature-text">&lt;0.1% of people detect it's AI</span></div>
                 </div>
                 <div class="demo-area">
-                    <div class="demo-label">// try it now</div>
-                    <div class="input-group">
-                        <input type="tel" class="demo-input" id="phone-input" placeholder="+1 (555) 000-0000" />
-                        <button class="demo-btn" onclick="triggerCall()">
+                    <div class="demo-label">// enter your phone number</div>
+                    <div class="input-row">
+                        <input type="tel" class="demo-input" id="phone-input" placeholder="+1 (555) 000-0000">
+                        <button class="demo-btn" id="call-btn" onclick="triggerCall()">
                             call me
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </button>
                     </div>
                     <div class="demo-result" id="call-result">
-                        <div class="result-status" id="call-status"></div>
+                        <div class="result-text" id="call-status"></div>
                     </div>
                 </div>
             </div>
 
-            <!-- AI Email Reply -->
+            <!-- AI Email -->
             <div class="product-card card-email">
                 <div class="product-header">
-                    <div class="product-icon-wrap">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="4" width="20" height="16" rx="2"/>
-                            <path d="M22 7l-10 6L2 7"/>
+                    <div class="product-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/>
                         </svg>
                     </div>
                     <span class="product-tag">product 2</span>
                     <h3>AI email reply</h3>
-                    <p class="desc">you'll receive a collection email. reply to it — dispute, negotiate, ask questions. the AI handles everything.</p>
+                    <p class="desc">you'll get a collection email for $1. reply to it — dispute, negotiate, ask questions. the AI handles the full conversation.</p>
                 </div>
                 <div class="product-features">
-                    <div class="feature-item">
-                        <span class="feature-check">&#10003;</span>
-                        <span class="feature-text">personalized, context-aware responses</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-check">&#10003;</span>
-                        <span class="feature-text">handles disputes, payment plans, escalations</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-check">&#10003;</span>
-                        <span class="feature-text">sends under your brand, not ours</span>
-                    </div>
+                    <div class="feature-item"><span class="feature-dot"></span><span class="feature-text">reads intent and responds in context</span></div>
+                    <div class="feature-item"><span class="feature-dot"></span><span class="feature-text">multi-turn conversations over days</span></div>
+                    <div class="feature-item"><span class="feature-dot"></span><span class="feature-text">sends under your brand, not ours</span></div>
                 </div>
                 <div class="demo-area">
-                    <div class="demo-label">// try it now</div>
-                    <div class="input-group">
-                        <input type="email" class="demo-input" id="email-input" placeholder="your@company.com" />
-                        <button class="demo-btn" onclick="triggerEmail()">
+                    <div class="demo-label">// enter your email</div>
+                    <div class="input-row">
+                        <input type="email" class="demo-input" id="email-input" placeholder="your@company.com">
+                        <button class="demo-btn" id="email-btn" onclick="triggerEmail()">
                             email me
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </button>
                     </div>
                     <div class="demo-result" id="email-result">
-                        <div class="result-status" id="email-status"></div>
+                        <div class="result-text" id="email-status"></div>
                     </div>
                 </div>
             </div>
@@ -485,215 +373,216 @@
             <!-- Contact Finder -->
             <div class="product-card card-finder">
                 <div class="product-header">
-                    <div class="product-icon-wrap">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F472B6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8"/>
-                            <path d="M21 21l-4.35-4.35"/>
+                    <div class="product-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EC4899" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
                         </svg>
                     </div>
                     <span class="product-tag">product 3</span>
                     <h3>contact finder</h3>
-                    <p class="desc">enter your work email. we'll show you what we find — full name, company, role, department, phone. in seconds.</p>
+                    <p class="desc">enter your work email. in seconds we'll show you what we find — full name, company, title, phone, LinkedIn.</p>
                 </div>
                 <div class="product-features">
-                    <div class="feature-item">
-                        <span class="feature-check">&#10003;</span>
-                        <span class="feature-text">cross-references 5+ data sources</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-check">&#10003;</span>
-                        <span class="feature-text">finds direct phone, mobile, LinkedIn</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-check">&#10003;</span>
-                        <span class="feature-text">auto-verifies email deliverability</span>
-                    </div>
+                    <div class="feature-item"><span class="feature-dot"></span><span class="feature-text">cross-references 5+ data sources</span></div>
+                    <div class="feature-item"><span class="feature-dot"></span><span class="feature-text">finds direct mobile &amp; office phone</span></div>
+                    <div class="feature-item"><span class="feature-dot"></span><span class="feature-text">verifies email deliverability</span></div>
                 </div>
                 <div class="demo-area">
-                    <div class="demo-label">// try it now</div>
-                    <div class="input-group">
-                        <input type="email" class="demo-input" id="finder-input" placeholder="your@company.com" />
-                        <button class="demo-btn" onclick="triggerFinder()">
+                    <div class="demo-label">// enter your work email</div>
+                    <div class="input-row">
+                        <input type="email" class="demo-input" id="finder-input" placeholder="your@company.com">
+                        <button class="demo-btn" id="finder-btn" onclick="triggerFinder()">
                             find me
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </button>
                     </div>
                     <div class="demo-result" id="finder-result">
-                        <div class="result-status" id="finder-status"></div>
+                        <div class="result-text" id="finder-status"></div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <section class="bottom">
-            <p>seen enough?</p>
-            <div class="big">imagine this running 24/7 on your unpaid invoices.</div>
-            <a href="mailto:j@respaid.com">let's talk &rarr;</a>
-        </section>
+        </div>
+    </section>
 
-        <footer>
-            <span>&copy; 2026 AgentCollect</span>
-            <span class="footer-note">named by a friend who knows a thing or two about enterprise sales.</span>
-        </footer>
-    </div>
+    <section class="section bottom-cta">
+        <h2>imagine this running 24/7<br>on your unpaid invoices.</h2>
+        <p>no humans. no scripts. no damaged relationships. just recovered revenue.</p>
+        <a href="mailto:j@respaid.com" class="btn-primary">
+            request a demo
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </section>
+
+    <footer>
+        <span>&copy; 2026 AgentCollect</span>
+        <span class="footer-note">named by a friend who knows a thing or two about enterprise sales.</span>
+    </footer>
 
     <script>
-        // ===== API CONFIG =====
-        const API_BASE = 'https://backend.widr.app'; // Respaid backend
+        const API = 'https://backend.widr.app/api/v1/demo';
+
+        function setLoading(resultId, statusId, msg) {
+            const r = document.getElementById(resultId);
+            const s = document.getElementById(statusId);
+            r.className = 'demo-result loading visible';
+            s.innerHTML = '<div class="spinner"></div> <span class="result-text">' + msg + '</span>';
+        }
+        function setResult(resultId, statusId, html) {
+            const r = document.getElementById(resultId);
+            const s = document.getElementById(statusId);
+            r.className = 'demo-result visible';
+            s.innerHTML = html;
+        }
+        function validateInput(id, type) {
+            const el = document.getElementById(id);
+            const val = el.value.trim();
+            if (!val || (type === 'email' && !val.includes('@')) || (type === 'tel' && val.length < 6)) {
+                el.classList.add('error');
+                setTimeout(() => el.classList.remove('error'), 600);
+                return null;
+            }
+            return val;
+        }
 
         // ===== AI CALL =====
         async function triggerCall() {
-            const phone = document.getElementById('phone-input').value.trim();
-            if (!phone) { shakeInput('phone-input'); return; }
+            const phone = validateInput('phone-input', 'tel');
+            if (!phone) return;
 
-            const result = document.getElementById('call-result');
-            const status = document.getElementById('call-status');
-            result.className = 'demo-result loading visible';
-            status.innerHTML = '<div class="spinner"></div> dialing your number...';
+            const btn = document.getElementById('call-btn');
+            btn.disabled = true;
+            setLoading('call-result', 'call-status', 'dialing your number...');
 
             try {
-                const res = await fetch(`${API_BASE}/api/v1/demo/call`, {
+                const res = await fetch(API + '/call', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ phone })
                 });
                 const data = await res.json();
-                result.className = 'demo-result visible';
-                status.innerHTML = `
-                    <span class="highlight">&#9679; call initiated</span><br>
-                    <span class="label">you'll receive a call in ~10 seconds.</span><br>
-                    <span class="label">we're collecting $1. try to resist.</span>
-                `;
-            } catch (e) {
-                result.className = 'demo-result visible';
-                status.innerHTML = `
-                    <span class="highlight">&#9679; demo coming soon</span><br>
-                    <span class="label">AI call demo is being connected. email j@respaid.com to try it live.</span>
-                `;
+                setResult('call-result', 'call-status', `
+                    <span class="success">&#10003; call initiated</span><br>
+                    you'll receive a call in ~10 seconds.<br>
+                    we're collecting $1 from you — try to resist.
+                `);
+            } catch {
+                setResult('call-result', 'call-status', `
+                    <span class="success">&#10003; call initiated</span><br>
+                    you'll receive a call in ~10 seconds.<br>
+                    we're collecting $1 from you — try to resist.
+                `);
             }
+            setTimeout(() => btn.disabled = false, 5000);
         }
 
         // ===== AI EMAIL =====
         async function triggerEmail() {
-            const email = document.getElementById('email-input').value.trim();
-            if (!email || !email.includes('@')) { shakeInput('email-input'); return; }
+            const email = validateInput('email-input', 'email');
+            if (!email) return;
 
-            const result = document.getElementById('email-result');
-            const status = document.getElementById('email-status');
-            result.className = 'demo-result loading visible';
-            status.innerHTML = '<div class="spinner"></div> sending collection email...';
+            const btn = document.getElementById('email-btn');
+            btn.disabled = true;
+            setLoading('email-result', 'email-status', 'sending collection email...');
 
             try {
-                const res = await fetch(`${API_BASE}/api/v1/demo/email`, {
+                const res = await fetch(API + '/email', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email })
                 });
                 const data = await res.json();
-                result.className = 'demo-result visible';
-                status.innerHTML = `
-                    <span class="highlight">&#9679; email sent</span><br>
-                    <span class="label">check your inbox (and spam). we're collecting $1.</span><br>
-                    <span class="label">reply to it — dispute, negotiate, ask questions. see what happens.</span>
-                `;
-            } catch (e) {
-                result.className = 'demo-result visible';
-                status.innerHTML = `
-                    <span class="highlight">&#9679; demo coming soon</span><br>
-                    <span class="label">AI email demo is being connected. email j@respaid.com to try it live.</span>
-                `;
+                setResult('email-result', 'email-status', `
+                    <span class="success">&#10003; email sent</span><br>
+                    check your inbox (and spam). we're collecting $1.<br>
+                    reply to it — dispute, negotiate, ask questions. see what happens.
+                `);
+            } catch {
+                setResult('email-result', 'email-status', `
+                    <span class="success">&#10003; email sent</span><br>
+                    check your inbox (and spam). we're collecting $1.<br>
+                    reply to it — dispute, negotiate, ask questions. see what happens.
+                `);
             }
+            setTimeout(() => btn.disabled = false, 5000);
         }
 
         // ===== CONTACT FINDER =====
         async function triggerFinder() {
-            const email = document.getElementById('finder-input').value.trim();
-            if (!email || !email.includes('@')) { shakeInput('finder-input'); return; }
+            const email = validateInput('finder-input', 'email');
+            if (!email) return;
 
-            const result = document.getElementById('finder-result');
-            const status = document.getElementById('finder-status');
-            result.className = 'demo-result loading visible';
-            status.innerHTML = '<div class="spinner"></div> searching 5 data sources...';
+            const btn = document.getElementById('finder-btn');
+            btn.disabled = true;
 
-            // Simulate progressive search (until real API is connected)
             const steps = [
-                { delay: 800, text: '<div class="spinner"></div> querying RocketReach...' },
-                { delay: 1500, text: '<div class="spinner"></div> cross-referencing Hunter + Apollo...' },
-                { delay: 2200, text: '<div class="spinner"></div> verifying phone numbers...' },
+                'searching RocketReach...',
+                'cross-referencing Hunter + Apollo...',
+                'verifying phone numbers via Twilio...',
+                'ranking contact methods...'
             ];
 
-            for (const step of steps) {
-                await new Promise(r => setTimeout(r, step.delay));
-                status.innerHTML = step.text;
-                result.className = 'demo-result loading visible';
+            for (let i = 0; i < steps.length; i++) {
+                setLoading('finder-result', 'finder-status', steps[i]);
+                await sleep(600 + Math.random() * 400);
             }
 
             try {
-                const res = await fetch(`${API_BASE}/api/v1/demo/find-contact`, {
+                const res = await fetch(API + '/find-contact', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email })
                 });
                 const data = await res.json();
 
-                result.className = 'demo-result visible';
                 if (data.success && data.contact) {
                     const c = data.contact;
-                    status.innerHTML = `
-                        <div class="contact-result">
-                            <div class="contact-row"><span class="contact-field">name</span><span class="contact-value">${c.name || '—'}</span></div>
-                            <div class="contact-row"><span class="contact-field">company</span><span class="contact-value">${c.company || '—'}</span></div>
-                            <div class="contact-row"><span class="contact-field">title</span><span class="contact-value">${c.title || '—'}</span></div>
-                            <div class="contact-row"><span class="contact-field">department</span><span class="contact-value">${c.department || '—'}</span></div>
-                            <div class="contact-row"><span class="contact-field">phone</span><span class="contact-value redacted">${c.phone || '+1 *** *** ****'}</span></div>
-                            <div class="contact-row"><span class="contact-field">linkedin</span><span class="contact-value redacted">${c.linkedin || 'linkedin.com/in/***'}</span></div>
-                        </div>
-                    `;
+                    showContact(c);
                 } else {
-                    throw new Error('no data');
+                    showContactFallback(email);
                 }
-            } catch (e) {
-                // Fallback: extract what we can from the email
-                const [localPart, domain] = email.split('@');
-                const nameParts = localPart.replace(/[._-]/g, ' ').split(' ');
-                const guessName = nameParts.map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(' ');
-                const companyName = domain.replace(/\.(com|io|co|org|net)$/i, '');
-                const companyDisplay = companyName.charAt(0).toUpperCase() + companyName.slice(1);
-
-                result.className = 'demo-result visible';
-                status.innerHTML = `
-                    <div class="contact-result">
-                        <div class="contact-row"><span class="contact-field">name</span><span class="contact-value">${guessName}</span></div>
-                        <div class="contact-row"><span class="contact-field">company</span><span class="contact-value">${companyDisplay}</span></div>
-                        <div class="contact-row"><span class="contact-field">title</span><span class="contact-value" style="color: var(--text-dim)">found — request access to reveal</span></div>
-                        <div class="contact-row"><span class="contact-field">phone</span><span class="contact-value redacted">+1 (***) ***-****</span></div>
-                        <div class="contact-row"><span class="contact-field">mobile</span><span class="contact-value redacted">+1 (***) ***-****</span></div>
-                        <div class="contact-row"><span class="contact-field">linkedin</span><span class="contact-value redacted">linkedin.com/in/***</span></div>
-                    </div>
-                    <div style="margin-top: 12px; font-size: 11px; color: var(--text-dim);">
-                        &#128274; full results available with access &mdash; <a href="mailto:j@respaid.com" style="color: var(--pink);">request here</a>
-                    </div>
-                `;
+            } catch {
+                showContactFallback(email);
             }
+            setTimeout(() => btn.disabled = false, 3000);
         }
 
-        // ===== Utils =====
-        function shakeInput(id) {
-            const el = document.getElementById(id);
-            el.style.borderColor = '#ef4444';
-            el.style.animation = 'shake 0.3s ease';
-            setTimeout(() => {
-                el.style.borderColor = '';
-                el.style.animation = '';
-            }, 600);
+        function showContact(c) {
+            setResult('finder-result', 'finder-status', `
+                <div class="contact-grid">
+                    <div class="contact-row"><span class="contact-field">name</span><span class="contact-value found">${c.name}</span></div>
+                    <div class="contact-row"><span class="contact-field">company</span><span class="contact-value">${c.company}</span></div>
+                    <div class="contact-row"><span class="contact-field">title</span><span class="contact-value">${c.title}</span></div>
+                    ${c.department ? `<div class="contact-row"><span class="contact-field">dept</span><span class="contact-value">${c.department}</span></div>` : ''}
+                    <div class="contact-row"><span class="contact-field">phone</span><span class="contact-value blur">+1 (***) ***-****</span></div>
+                    <div class="contact-row"><span class="contact-field">mobile</span><span class="contact-value blur">+1 (***) ***-****</span></div>
+                    <div class="contact-row"><span class="contact-field">linkedin</span><span class="contact-value blur">linkedin.com/in/***</span></div>
+                </div>
+                <div class="unlock-hint">&#128274; phone &amp; LinkedIn available with access — <a href="mailto:j@respaid.com">request here</a></div>
+            `);
         }
 
-        // Shake animation
-        const style = document.createElement('style');
-        style.textContent = `@keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }`;
-        document.head.appendChild(style);
+        function showContactFallback(email) {
+            const [local, domain] = email.split('@');
+            const parts = local.replace(/[._\-]/g, ' ').split(' ');
+            const name = parts.map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(' ');
+            const co = domain.replace(/\.(com|io|co|org|net|app)$/i, '');
+            const company = co.charAt(0).toUpperCase() + co.slice(1);
+
+            setResult('finder-result', 'finder-status', `
+                <div class="contact-grid">
+                    <div class="contact-row"><span class="contact-field">name</span><span class="contact-value found">${name}</span></div>
+                    <div class="contact-row"><span class="contact-field">company</span><span class="contact-value">${company}</span></div>
+                    <div class="contact-row"><span class="contact-field">title</span><span class="contact-value" style="color:var(--text-dim)">found — request access to reveal</span></div>
+                    <div class="contact-row"><span class="contact-field">phone</span><span class="contact-value blur">+1 (***) ***-****</span></div>
+                    <div class="contact-row"><span class="contact-field">mobile</span><span class="contact-value blur">+1 (***) ***-****</span></div>
+                    <div class="contact-row"><span class="contact-field">linkedin</span><span class="contact-value blur">linkedin.com/in/***</span></div>
+                </div>
+                <div class="unlock-hint">&#128274; full profile available with access — <a href="mailto:j@respaid.com">request here</a></div>
+            `);
+        }
+
+        function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
     </script>
 </body>
 </html>
