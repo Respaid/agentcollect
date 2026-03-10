@@ -183,6 +183,38 @@
         .pull-quote-cite-text strong{font-size:14px;color:var(--text);display:block}
         .pull-quote-cite-text span{font-size:13px;color:var(--text-muted)}
 
+        /* ═══ INTEGRATIONS ═══ */
+        .integrations{padding:100px 32px;background:#fff;border-top:1px solid var(--border)}
+        .integrations-inner{max-width:var(--max-w);margin:0 auto}
+        .integrations-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;margin-top:48px}
+        .appex-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:32px;position:relative;overflow:hidden}
+        .appex-header{display:flex;align-items:center;gap:6px;margin-bottom:24px;font-size:12px;color:var(--text-muted);font-weight:500}
+        .appex-header img{height:20px}
+        .appex-listing{display:flex;gap:20px;align-items:flex-start}
+        .appex-icon{width:72px;height:72px;border-radius:16px;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(37,99,235,.25)}
+        .appex-icon span{color:#fff;font-family:var(--display);font-weight:800;font-size:22px}
+        .appex-info{flex:1}
+        .appex-info h4{font-family:var(--display);font-size:18px;font-weight:800;color:var(--text);margin-bottom:4px}
+        .appex-info .appex-by{font-size:12px;color:var(--text-muted);margin-bottom:8px}
+        .appex-stars{display:flex;align-items:center;gap:4px;margin-bottom:12px}
+        .appex-stars svg{color:#F59E0B}
+        .appex-stars span{font-size:12px;color:var(--text-muted);margin-left:4px}
+        .appex-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 24px;background:var(--sf-blue);color:#fff;border:none;border-radius:6px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:default}
+        .appex-tags{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+        .appex-tag{padding:4px 10px;background:#fff;border:1px solid var(--border);border-radius:20px;font-size:11px;color:var(--text-mid);font-weight:500}
+        .integ-logos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+        .integ-logo{display:flex;align-items:center;justify-content:center;padding:20px 16px;background:var(--bg);border:1px solid var(--border);border-radius:12px;transition:all .3s}
+        .integ-logo:hover{border-color:var(--border-hover);box-shadow:var(--shadow-sm)}
+        .integ-logo img{height:24px;opacity:.5;filter:grayscale(100%);transition:all .4s;object-fit:contain}
+        .integ-logo:hover img{opacity:.8;filter:grayscale(0%)}
+        .integ-logo.integ-featured{border-color:var(--sf-blue);background:rgba(0,161,224,.03)}
+        .integ-logo.integ-featured img{opacity:.7;filter:grayscale(0%)}
+        .integ-count{grid-column:1/-1;text-align:center;font-size:13px;color:var(--text-muted);font-weight:500;padding:12px}
+        @media(max-width:768px){
+            .integrations-grid{grid-template-columns:1fr;gap:32px}
+            .integ-logos{grid-template-columns:repeat(3,1fr)}
+        }
+
         /* ═══ HOW ═══ */
         .how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:56px;counter-reset:step}
         .how-card{position:relative;padding:24px 20px;border:1px solid var(--border);border-radius:12px;transition:border-color .3s}
@@ -603,6 +635,64 @@
                     <strong>Challenge:</strong> DoorDash needs to collect from restaurant partners they depend on. Burning a bridge means losing a partner and their customers.<br><br>
                     <strong>Solution:</strong> AI agents de-escalate automatically, reference specific invoices and delivery data, and offer flexible resolution paths. Tone is firm but fair.<br><br>
                     <strong>Result:</strong> Disputes resolved in under 60 seconds. Restaurant partners continue operating on the platform while resolving their balance.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- INTEGRATIONS -->
+<section class="integrations reveal" id="integrations">
+    <div class="integrations-inner">
+        <div class="section-label">Integrations</div>
+        <div class="section-title">Lives inside your stack. Not next to it.</div>
+        <div class="section-sub">Drop a spreadsheet or connect your ERP. Either way, you're live in 20 minutes.</div>
+        <div class="integrations-grid">
+            <!-- AppExchange Mockup -->
+            <div class="appex-card">
+                <div class="appex-header">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#00A1E0"/><path d="M7.5 10.5c0-1.1.9-2 2-2 .7 0 1.4.4 1.7 1 .4-.6 1-1 1.8-1 1.1 0 2 .9 2 2 0 .3 0 .5-.1.7.7.3 1.1 1 1.1 1.8 0 1.1-.9 2-2 2h-6c-1.1 0-2-.9-2-2 0-.8.5-1.5 1.2-1.8-.1-.2-.2-.5-.2-.7z" fill="#fff"/></svg>
+                    Salesforce AppExchange
+                </div>
+                <div class="appex-listing">
+                    <div class="appex-icon"><span>AC</span></div>
+                    <div class="appex-info">
+                        <h4>AgentCollect for Salesforce</h4>
+                        <div class="appex-by">by AgentCollect, Inc.</div>
+                        <div class="appex-stars">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <span>5.0 (47 reviews)</span>
+                        </div>
+                        <button class="appex-btn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+                            Get It Now
+                        </button>
+                    </div>
+                </div>
+                <div class="appex-tags">
+                    <span class="appex-tag">Collections Automation</span>
+                    <span class="appex-tag">AI Agents</span>
+                    <span class="appex-tag">Accounts Receivable</span>
+                    <span class="appex-tag">Dispute Resolution</span>
+                </div>
+            </div>
+            <!-- Integration Logos -->
+            <div>
+                <div class="integ-logos">
+                    <div class="integ-logo integ-featured"><img src="https://cdn.brandfetch.io/salesforce.com/w/512/h/80/logo" alt="Salesforce"></div>
+                    <div class="integ-logo"><img src="https://cdn.brandfetch.io/netsuite.com/w/512/h/80/logo" alt="NetSuite"></div>
+                    <div class="integ-logo"><img src="https://cdn.brandfetch.io/quickbooks.intuit.com/w/512/h/80/logo" alt="QuickBooks"></div>
+                    <div class="integ-logo"><img src="https://cdn.brandfetch.io/sap.com/w/512/h/80/logo" alt="SAP"></div>
+                    <div class="integ-logo"><img src="https://cdn.brandfetch.io/xero.com/w/512/h/80/logo" alt="Xero"></div>
+                    <div class="integ-logo"><img src="https://cdn.brandfetch.io/hubspot.com/w/512/h/80/logo" alt="HubSpot"></div>
+                    <div class="integ-logo"><img src="https://cdn.brandfetch.io/freshbooks.com/w/512/h/80/logo" alt="FreshBooks"></div>
+                    <div class="integ-logo"><img src="https://cdn.brandfetch.io/sage.com/w/512/h/80/logo" alt="Sage"></div>
+                    <div class="integ-logo"><img src="https://cdn.brandfetch.io/zuora.com/w/512/h/80/logo" alt="Zuora"></div>
+                    <div class="integ-count">+ 500 more via API, CSV, or direct integration</div>
                 </div>
             </div>
         </div>
