@@ -884,8 +884,8 @@ async function startAgent(){
     setIcon('collect',true);document.getElementById('title-collect').textContent=safeToSend?'Collection in progress':'Simulation complete';
     doneStep('collect');await sleep(400);
 
-    agentPhone=ph;
-    document.getElementById('call-btn-text').textContent=ph?'Call '+ph+' now':'Call me now';
+    agentPhone=ph2||ph;
+    document.getElementById('call-btn-text').textContent=agentPhone?'Call '+agentPhone+' now':'Call me now';
     document.getElementById('agent-actions').classList.add('show');btn.disabled=false;
 }
 
