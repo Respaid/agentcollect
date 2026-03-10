@@ -11,246 +11,241 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://agentcollect.vercel.app/v3">
     <meta property="og:image" content="https://agentcollect.vercel.app/og.png">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%232563EB'/%3E%3Cstop offset='100%25' stop-color='%2310B981'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Cpath d='M20 44V24l12-8 12 8v20l-12 6-12-6z' fill='none' stroke='white' stroke-width='2.5' stroke-linejoin='round'/%3E%3Cpath d='M32 16v34M20 24l12 8 12-8' fill='none' stroke='white' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232563EB'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='system-ui' font-weight='800' font-size='28'%3EAC%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         :root{
             --bg:#FAFBFF;--bg-card:#fff;--bg-dark:#0B1B3D;
-            --border:rgba(11,27,61,.06);--border-hover:rgba(37,99,235,.2);
-            --text:#0B1B3D;--text-mid:rgba(11,27,61,.65);--text-muted:rgba(11,27,61,.4);--text-dim:rgba(11,27,61,.2);
-            --blue:#2563EB;--blue-dark:#1D4ED8;--blue-light:rgba(37,99,235,.06);--blue-glow:rgba(37,99,235,.2);
-            --green:#10B981;--green-dark:#059669;--green-light:rgba(16,185,129,.06);--green-glow:rgba(16,185,129,.2);
+            --border:#E8ECF2;--border-hover:rgba(37,99,235,.25);
+            --text:#0B1B3D;--text-mid:#475569;--text-muted:#94A3B8;--text-dim:#CBD5E1;
+            --blue:#2563EB;--blue-dark:#1D4ED8;--blue-light:rgba(37,99,235,.06);--blue-glow:rgba(37,99,235,.15);
+            --green:#10B981;--green-dark:#059669;--green-light:rgba(16,185,129,.06);
             --amber:#F59E0B;--red:#EF4444;--pink:#EC4899;--sf-blue:#00A1E0;
             --mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
-            --shadow-sm:0 1px 3px rgba(11,27,61,.04),0 1px 2px rgba(11,27,61,.02);
-            --shadow-md:0 4px 16px rgba(11,27,61,.06),0 2px 4px rgba(11,27,61,.03);
-            --shadow-lg:0 20px 60px rgba(11,27,61,.08),0 8px 24px rgba(11,27,61,.04);
-            --shadow-xl:0 32px 80px rgba(37,99,235,.1),0 12px 32px rgba(11,27,61,.06);
-            --max-w:1200px;
+            --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+            --shadow-md:0 4px 12px rgba(0,0,0,.06);
+            --shadow-lg:0 12px 40px rgba(0,0,0,.08);
+            --shadow-xl:0 24px 64px rgba(37,99,235,.1);
+            --max-w:1140px;
         }
         html{scroll-behavior:smooth}
-        body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+        body{font-family:var(--sans);background:#fff;color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
         h1,h2,h3,h4,h5{font-family:var(--display)}
-        ::selection{background:rgba(37,99,235,.15);color:var(--blue-dark)}
+        ::selection{background:rgba(37,99,235,.12)}
 
-        @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-        @keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
         @keyframes spin{to{transform:rotate(360deg)}}
-        @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+        @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
         @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
         @keyframes gradient-shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
         @keyframes wave{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
         @keyframes counter-pop{0%{transform:scale(.8);opacity:0}60%{transform:scale(1.05)}100%{transform:scale(1);opacity:1}}
-        @keyframes strike{from{width:0}to{width:108%}}
         @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
         @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-        @keyframes pop-in{0%{opacity:0;transform:scale(.85)}60%{transform:scale(1.03)}100%{opacity:1;transform:scale(1)}}
-        @keyframes glow-ring{0%,100%{box-shadow:0 0 0 0 rgba(37,99,235,.3)}50%{box-shadow:0 0 0 12px rgba(37,99,235,0)}}
+        @keyframes pop-in{0%{opacity:0;transform:scale(.9)}100%{opacity:1;transform:scale(1)}}
+        @keyframes glow-ring{0%,100%{box-shadow:0 0 0 0 rgba(37,99,235,.3)}50%{box-shadow:0 0 0 10px rgba(37,99,235,0)}}
         @keyframes check-draw{0%{stroke-dashoffset:24}100%{stroke-dashoffset:0}}
         @keyframes dot-typing{0%{opacity:.2}20%{opacity:1}100%{opacity:.2}}
 
-        .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+        .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
         .reveal.visible{opacity:1;transform:translateY(0)}
-        .s1{transition-delay:.1s}.s2{transition-delay:.2s}.s3{transition-delay:.3s}.s4{transition-delay:.4s}
+        .s1{transition-delay:.1s}.s2{transition-delay:.2s}.s3{transition-delay:.3s}
 
-        /* ═══ NAV — Enterprise style ═══ */
-        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
-        .nav.scrolled{box-shadow:0 1px 12px rgba(11,27,61,.06)}
-        .nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 40px;display:flex;align-items:center;height:64px}
-        .logo{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:48px}
-        .logo svg{width:28px;height:28px}
-        .logo-name{font-family:var(--display);font-size:17px;font-weight:800;letter-spacing:-.03em;color:var(--text)}
-        .logo-name b{background:linear-gradient(135deg,var(--blue),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .nav-links{display:flex;gap:32px;flex:1}
-        .nav-links a{color:var(--text-mid);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;padding:4px 0}
+        /* ═══ NAV ═══ */
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+        .nav.scrolled{box-shadow:0 1px 8px rgba(0,0,0,.04)}
+        .nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:60px}
+        .logo{display:flex;align-items:center;gap:2px;text-decoration:none;margin-right:40px;font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:-.04em;color:var(--text)}
+        .logo span{color:var(--blue)}
+        .nav-links{display:flex;gap:28px;flex:1}
+        .nav-links a{color:var(--text-mid);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
         .nav-links a:hover{color:var(--text)}
-        .nav-right{display:flex;align-items:center;gap:16px}
-        .nav-cta{padding:10px 24px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-family:var(--display);font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
-        .nav-cta:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 4px 16px var(--blue-glow)}
-        .nav-login{color:var(--text-mid);text-decoration:none;font-size:13px;font-weight:600;transition:color .2s}
+        .nav-right{display:flex;align-items:center;gap:20px}
+        .nav-login{color:var(--text-mid);text-decoration:none;font-size:14px;font-weight:500}
         .nav-login:hover{color:var(--text)}
-        .nav-mobile-btn{display:none;background:none;border:none;cursor:pointer;padding:8px}
+        .nav-cta{padding:9px 20px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s}
+        .nav-cta:hover{background:var(--blue-dark)}
+        .nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px}
 
         /* ═══ HERO ═══ */
-        .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:140px 40px 80px;position:relative;overflow:hidden}
-        .hero-glow{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;opacity:.4}
-        .hero-glow-1{width:600px;height:600px;background:radial-gradient(circle,rgba(37,99,235,.12),transparent 70%);top:-15%;right:-10%}
-        .hero-glow-2{width:500px;height:500px;background:radial-gradient(circle,rgba(16,185,129,.08),transparent 70%);bottom:-10%;left:-10%}
+        .hero{padding:160px 32px 100px;text-align:center;position:relative;overflow:hidden;background:#fff}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid var(--border);border-radius:100px;font-size:12px;font-weight:600;color:var(--text-mid);margin-bottom:28px}
+        .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green)}
+        .hero h1{font-size:clamp(36px,5.5vw,64px);font-weight:900;letter-spacing:-.04em;line-height:1.05;margin-bottom:20px;max-width:700px;margin-left:auto;margin-right:auto;color:var(--text)}
+        .hero h1 em{font-style:normal;color:var(--blue)}
+        .hero-sub{font-size:clamp(15px,1.6vw,18px);color:var(--text-mid);max-width:460px;margin:0 auto 40px;line-height:1.6}
 
-        .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:100px;font-size:12px;font-weight:600;color:var(--text-mid);margin-bottom:32px;box-shadow:var(--shadow-sm)}
-        .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
-
-        .hero h1{font-size:clamp(40px,6vw,72px);font-weight:900;letter-spacing:-.05em;line-height:1;margin-bottom:24px;max-width:800px;color:var(--text);position:relative;z-index:1}
-        .hero h1 .gradient{background:linear-gradient(135deg,var(--blue),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .hero-sub{font-size:clamp(16px,1.8vw,20px);color:var(--text-mid);max-width:520px;margin:0 auto 48px;position:relative;z-index:1;line-height:1.6;font-weight:400}
-
-        /* ═══ MEGA INPUT ═══ */
-        .mega-input-wrap{position:relative;z-index:1;width:100%;max-width:560px;margin:0 auto}
-        .mega-input-box{display:flex;align-items:center;background:var(--bg-card);border:2px solid var(--border);border-radius:16px;padding:6px;transition:all .3s;box-shadow:var(--shadow-lg)}
-        .mega-input-box:focus-within{border-color:var(--blue);box-shadow:var(--shadow-xl),0 0 0 4px rgba(37,99,235,.08)}
-        .mega-input{flex:1;padding:16px 20px;background:transparent;border:none;font-family:var(--sans);font-size:16px;font-weight:500;color:var(--text);outline:none}
-        .mega-input::placeholder{color:var(--text-dim);font-weight:400}
-        .mega-input.error{animation:shake .4s}
-        .mega-btn{padding:16px 32px;background:var(--blue);color:#fff;border:none;border-radius:12px;font-family:var(--display);font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:8px;position:relative;overflow:hidden;min-height:52px}
-        .mega-btn:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 8px 32px var(--blue-glow)}
-        .mega-btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
-        .mega-hint{margin-top:16px;font-size:12px;color:var(--text-dim);display:flex;align-items:center;justify-content:center;gap:6px}
-        .mega-hint svg{opacity:.4}
+        /* ═══ INPUT ═══ */
+        .input-wrap{max-width:520px;margin:0 auto}
+        .input-box{display:flex;align-items:center;background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:5px;transition:all .2s;box-shadow:var(--shadow-md)}
+        .input-box:focus-within{border-color:var(--blue);box-shadow:var(--shadow-lg),0 0 0 3px rgba(37,99,235,.08)}
+        .input-field{flex:1;padding:14px 16px;background:transparent;border:none;font-family:var(--sans);font-size:15px;color:var(--text);outline:none}
+        .input-field::placeholder{color:var(--text-dim)}
+        .input-field.error{animation:shake .4s}
+        .input-btn{padding:14px 28px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:6px}
+        .input-btn:hover{background:var(--blue-dark)}
+        .input-btn:disabled{opacity:.5;cursor:not-allowed}
+        .input-hint{margin-top:12px;font-size:12px;color:var(--text-dim);text-align:center}
 
         /* ═══ LOGOS ═══ */
-        .logos{padding:64px 0;overflow:hidden;border-bottom:1px solid var(--border)}
-        .logos-label{text-align:center;font-size:12px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.12em;font-weight:600;margin-bottom:32px}
-        .marquee{display:flex;width:max-content;animation:marquee 30s linear infinite}
+        .logos{padding:56px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:#fff}
+        .logos-label{text-align:center;font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.14em;font-weight:600;margin-bottom:28px}
+        .marquee{display:flex;width:max-content;animation:marquee 35s linear infinite}
         .marquee:hover{animation-play-state:paused}
-        .marquee img{height:24px;margin:0 44px;opacity:.25;filter:grayscale(100%);transition:all .5s}
-        .marquee img:hover{opacity:.6;filter:grayscale(0%)}
+        .marquee img{height:28px;margin:0 40px;opacity:.4;filter:grayscale(100%);transition:all .4s;object-fit:contain}
+        .marquee img:hover{opacity:.8;filter:grayscale(0%)}
 
-        /* ═══ STATS BAR ═══ */
-        .stats-bar{padding:0 40px}
+        /* ═══ STATS ═══ */
+        .stats{padding:0 32px;background:#fff}
         .stats-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
-        .stat-item{padding:48px 24px;text-align:center;border-right:1px solid var(--border)}
-        .stat-item:last-child{border-right:none}
-        .stat-num{font-family:var(--display);font-size:clamp(32px,4vw,48px);font-weight:900;letter-spacing:-.04em;line-height:1}
-        .stat-label{font-size:13px;color:var(--text-muted);margin-top:8px;font-weight:500}
+        .stat-item{padding:48px 20px;text-align:center}
+        .stat-item:not(:last-child){border-right:1px solid var(--border)}
+        .stat-num{font-family:var(--display);font-size:clamp(28px,3.5vw,44px);font-weight:900;letter-spacing:-.04em;line-height:1}
+        .stat-label{font-size:13px;color:var(--text-muted);margin-top:6px}
 
-        /* ═══ SECTION PATTERN ═══ */
-        .section{padding:120px 40px}
+        /* ═══ SECTIONS ═══ */
+        .section{padding:100px 32px;background:#fff}
         .section-inner{max-width:var(--max-w);margin:0 auto}
-        .section-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);margin-bottom:16px}
-        .section-title{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.04em;color:var(--text);margin-bottom:12px;line-height:1.1}
-        .section-sub{font-size:16px;color:var(--text-mid);max-width:480px;line-height:1.6}
+        .section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--blue);margin-bottom:12px}
+        .section-title{font-size:clamp(26px,3.5vw,40px);font-weight:800;letter-spacing:-.03em;color:var(--text);margin-bottom:10px;line-height:1.15}
+        .section-sub{font-size:15px;color:var(--text-mid);max-width:420px;line-height:1.6}
 
-        /* ═══ CLIENT OUTCOMES ═══ */
-        .outcome-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:64px}
-        .outcome-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px 28px 28px;transition:all .4s;cursor:default;position:relative}
-        .outcome-card:hover{border-color:var(--border-hover);transform:translateY(-4px);box-shadow:var(--shadow-lg)}
-        .outcome-logo-wrap{height:28px;display:flex;align-items:center;margin-bottom:24px}
-        .outcome-logo{height:20px;opacity:.35;filter:grayscale(100%);transition:all .5s}
-        .outcome-card:hover .outcome-logo{opacity:.7;filter:grayscale(0%)}
-        .outcome-tagline{font-family:var(--display);font-size:16px;font-weight:700;color:var(--text);line-height:1.4;margin-bottom:24px}
-        .outcome-metric{display:flex;align-items:baseline;gap:10px;padding-top:20px;border-top:1px solid var(--border)}
-        .outcome-num{font-family:var(--display);font-size:32px;font-weight:900;letter-spacing:-.04em}
-        .outcome-desc{font-size:13px;color:var(--text-muted);line-height:1.4}
+        /* ═══ CUSTOMER CARDS ═══ */
+        .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
+        .card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:28px 24px;cursor:pointer;transition:all .3s;position:relative}
+        .card:hover{border-color:var(--border-hover);box-shadow:var(--shadow-md)}
+        .card-logo{height:22px;opacity:.45;filter:grayscale(100%);margin-bottom:20px;transition:all .4s;object-fit:contain}
+        .card:hover .card-logo{opacity:.7;filter:grayscale(0%)}
+        .card-headline{font-family:var(--display);font-size:15px;font-weight:700;color:var(--text);line-height:1.45;margin-bottom:20px}
+        .card-metric{display:flex;align-items:baseline;gap:10px;padding-top:16px;border-top:1px solid var(--border)}
+        .card-num{font-family:var(--display);font-size:28px;font-weight:900;letter-spacing:-.03em}
+        .card-desc{font-size:12px;color:var(--text-muted);line-height:1.4}
+        .card-expand{display:none;margin-top:20px;padding-top:20px;border-top:1px solid var(--border);font-size:13px;color:var(--text-mid);line-height:1.7}
+        .card-expand.open{display:block;animation:fadeUp .3s ease}
+        .card-expand strong{color:var(--text);font-weight:600}
+        .card-toggle{display:flex;align-items:center;gap:4px;margin-top:16px;font-size:12px;font-weight:600;color:var(--blue);border:none;background:none;cursor:pointer;padding:0;font-family:var(--sans)}
+        .card-toggle svg{transition:transform .2s}
+        .card-toggle.open svg{transform:rotate(180deg)}
 
-        /* ═══ HOW IT WORKS ═══ */
-        .how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:64px}
-        .how-card{text-align:center}
-        .how-num{width:48px;height:48px;margin:0 auto 20px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:18px;font-weight:800;color:#fff;background:var(--blue)}
-        .how-card h3{font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px}
+        /* ═══ HOW ═══ */
+        .how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:56px;counter-reset:step}
+        .how-card{position:relative;padding:24px 20px;border:1px solid var(--border);border-radius:12px;transition:border-color .3s}
+        .how-card:hover{border-color:var(--border-hover)}
+        .how-num{font-family:var(--display);font-size:32px;font-weight:900;color:var(--text-dim);margin-bottom:12px}
+        .how-card h3{font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px}
         .how-card p{font-size:13px;color:var(--text-muted);line-height:1.5}
 
-        /* ═══ APPEX + SECURITY ═══ */
-        .trust-bar{padding:0 40px;border-top:1px solid var(--border)}
-        .trust-inner{max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:center;gap:32px;padding:40px 0;flex-wrap:wrap}
-        .trust-pill{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted);font-weight:600}
-        .trust-pill svg{flex-shrink:0}
-        .trust-divider{width:1px;height:20px;background:var(--border)}
+        /* ═══ TRUST ═══ */
+        .trust{padding:32px;border-top:1px solid var(--border);background:#fff}
+        .trust-inner{max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap}
+        .trust-item{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-muted);font-weight:500}
+        .trust-item svg{flex-shrink:0;opacity:.5}
+        .trust-sep{width:1px;height:16px;background:var(--border)}
 
-        /* ═══ FINAL CTA ═══ */
-        .cta-final{padding:140px 40px;text-align:center;position:relative;overflow:hidden;background:var(--bg-dark);color:#fff}
-        .cta-final .hero-glow{opacity:.3}
-        .cta-price{font-family:var(--display);font-size:clamp(80px,16vw,160px);font-weight:900;letter-spacing:-.06em;background:linear-gradient(135deg,var(--blue),#4F8BFF,var(--green));background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gradient-shift 5s ease infinite;line-height:.9;margin-bottom:24px;position:relative;z-index:1}
-        .cta-final h2{font-size:clamp(20px,3vw,32px);font-weight:600;margin-bottom:40px;position:relative;z-index:1;opacity:.9}
-        .btn-white{display:inline-flex;align-items:center;gap:8px;padding:16px 40px;background:#fff;color:var(--bg-dark);border:none;border-radius:10px;font-family:var(--display);font-size:16px;font-weight:700;cursor:pointer;text-decoration:none;transition:all .3s;position:relative;z-index:1}
-        .btn-white:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(255,255,255,.12)}
+        /* ═══ CTA ═══ */
+        .cta{padding:120px 32px;text-align:center;background:var(--bg-dark);color:#fff;position:relative;overflow:hidden}
+        .cta-price{font-family:var(--display);font-size:clamp(80px,14vw,140px);font-weight:900;letter-spacing:-.06em;background:linear-gradient(135deg,var(--blue),#4F8BFF,var(--green));background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gradient-shift 5s ease infinite;line-height:.9;margin-bottom:20px}
+        .cta h2{font-size:clamp(18px,2.5vw,28px);font-weight:600;margin-bottom:36px;opacity:.85}
+        .cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 36px;background:#fff;color:var(--bg-dark);border:none;border-radius:8px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s}
+        .cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(255,255,255,.1)}
 
         /* ═══ FOOTER ═══ */
-        footer{padding:40px;border-top:1px solid var(--border)}
-        .footer-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-        .footer-left{display:flex;align-items:center;gap:20px}
-        .footer-left span{font-size:12px;color:var(--text-dim)}
+        footer{background:#fff;border-top:1px solid var(--border);padding:56px 32px 32px}
+        .footer-inner{max-width:var(--max-w);margin:0 auto}
+        .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+        .footer-brand{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:12px}
+        .footer-brand span{color:var(--blue)}
+        .footer-tagline{font-size:13px;color:var(--text-muted);line-height:1.5;max-width:260px}
+        .footer-col h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text);margin-bottom:16px}
+        .footer-col a{display:block;font-size:13px;color:var(--text-muted);text-decoration:none;margin-bottom:10px;transition:color .2s}
+        .footer-col a:hover{color:var(--text)}
+        .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;gap:16px}
+        .footer-copy{font-size:12px;color:var(--text-muted)}
         .footer-badges{display:flex;gap:8px}
-        .footer-badge{padding:4px 10px;border:1px solid var(--border);border-radius:6px;font-size:10px;color:var(--text-dim);font-weight:600}
+        .footer-badge{padding:4px 10px;border:1px solid var(--border);border-radius:6px;font-size:10px;color:var(--text-muted);font-weight:600}
 
-        /* ═══ LIVE AGENT CONSOLE ═══ */
-        .agent-console{max-width:800px;margin:0 auto;padding:0 24px;display:none}
-        .agent-console.active{display:block;animation:fadeUp .6s cubic-bezier(.16,1,.3,1)}
-        .agent-header{text-align:center;margin-bottom:48px}
-        .agent-target{display:inline-flex;align-items:center;gap:12px;padding:12px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-sm)}
+        /* ═══ AGENT CONSOLE ═══ */
+        .agent-console{max-width:720px;margin:0 auto;padding:0 24px;display:none}
+        .agent-console.active{display:block;animation:fadeUp .5s ease}
+        .agent-header{text-align:center;margin-bottom:40px}
+        .agent-target{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;background:#fff;border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow-sm)}
         .agent-target-email{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--blue)}
         .agent-target-status{width:8px;height:8px;border-radius:50%;background:var(--green);animation:glow-ring 2s infinite}
-
-        .agent-step{margin-bottom:32px;opacity:0;transform:translateY(20px);transition:all .5s cubic-bezier(.16,1,.3,1)}
+        .agent-step{margin-bottom:28px;opacity:0;transform:translateY(16px);transition:all .4s ease}
         .agent-step.active{opacity:1;transform:translateY(0)}
-        .agent-step.done .step-icon{background:var(--green-light);border-color:rgba(16,185,129,.2)}
+        .agent-step.done .step-icon{background:var(--green-light);border-color:rgba(16,185,129,.15)}
         .agent-step.done .step-icon svg{color:var(--green)}
-        .step-header{display:flex;align-items:center;gap:14px;margin-bottom:16px}
-        .step-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--blue-light);border:1px solid rgba(37,99,235,.1);transition:all .4s;flex-shrink:0}
-        .step-icon svg{width:18px;height:18px;color:var(--blue)}
+        .step-header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+        .step-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--blue-light);border:1px solid rgba(37,99,235,.08);transition:all .3s;flex-shrink:0}
+        .step-icon svg{width:16px;height:16px;color:var(--blue)}
         .step-icon.spinning svg{animation:spin .8s linear infinite}
         .step-title{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text)}
-        .step-subtitle{font-size:12px;color:var(--text-muted);margin-top:2px}
-
-        .step-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-left:54px;box-shadow:var(--shadow-sm);overflow:hidden;position:relative}
-        .step-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--green));transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+        .step-subtitle{font-size:12px;color:var(--text-muted);margin-top:1px}
+        .step-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px;margin-left:48px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+        .step-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--green));transform:scaleX(0);transform-origin:left;transition:transform 1s ease}
         .step-card.loaded::before{transform:scaleX(1)}
-
-        .data-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(11,27,61,.04);opacity:0;transform:translateX(12px);transition:all .3s cubic-bezier(.16,1,.3,1)}
+        .data-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.04);opacity:0;transform:translateX(8px);transition:all .3s ease}
         .data-row:last-child{border-bottom:none}
         .data-row.show{opacity:1;transform:translateX(0)}
-        .data-key{font-family:var(--sans);font-size:12px;color:var(--text-muted);font-weight:500;flex-shrink:0}
-        .data-val{font-family:var(--sans);font-size:13px;color:var(--text);font-weight:600;text-align:right}
+        .data-key{font-size:12px;color:var(--text-muted);font-weight:500}
+        .data-val{font-size:13px;color:var(--text);font-weight:600;text-align:right}
         .data-val.found{color:var(--green);font-weight:700}
         .data-val.typing::after{content:'|';animation:blink .6s infinite;color:var(--blue);margin-left:2px}
-
         .thinking{display:flex;align-items:center;gap:4px;padding:8px 0}
-        .thinking-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);animation:dot-typing 1.4s infinite}
+        .thinking-dot{width:5px;height:5px;border-radius:50%;background:var(--blue);animation:dot-typing 1.4s infinite}
         .thinking-dot:nth-child(2){animation-delay:.2s}
         .thinking-dot:nth-child(3){animation-delay:.4s}
-
-        .strategy-card{background:linear-gradient(135deg,rgba(37,99,235,.02),rgba(16,185,129,.02));border:1px solid var(--border);border-radius:14px;padding:24px;margin-left:54px}
-        .strategy-row{margin-bottom:12px;font-size:13px;color:var(--text-mid);line-height:1.6;opacity:0;transform:translateY(8px);transition:all .4s cubic-bezier(.16,1,.3,1)}
+        .strategy-card{background:rgba(37,99,235,.02);border:1px solid var(--border);border-radius:10px;padding:20px;margin-left:48px}
+        .strategy-row{margin-bottom:10px;font-size:13px;color:var(--text-mid);line-height:1.6;opacity:0;transform:translateY(6px);transition:all .3s ease}
         .strategy-row.show{opacity:1;transform:translateY(0)}
-        .strategy-row strong{color:var(--blue);font-weight:700}
-        .confidence-bar{display:flex;align-items:center;gap:12px;margin-top:16px;opacity:0;transition:all .5s}
+        .strategy-row strong{color:var(--text);font-weight:600}
+        .confidence-bar{display:flex;align-items:center;gap:10px;margin-top:14px;opacity:0;transition:all .4s}
         .confidence-bar.show{opacity:1}
-        .conf-track{flex:1;height:4px;background:rgba(11,27,61,.04);border-radius:2px;overflow:hidden}
-        .conf-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--green));border-radius:2px;transition:width 1.5s cubic-bezier(.16,1,.3,1);width:0}
-        .conf-label{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--green);min-width:40px}
-
-        .agent-actions{display:flex;gap:12px;justify-content:center;margin-top:48px;flex-wrap:wrap;opacity:0;transform:translateY(16px);transition:all .5s}
+        .conf-track{flex:1;height:4px;background:rgba(0,0,0,.04);border-radius:2px;overflow:hidden}
+        .conf-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--green));border-radius:2px;transition:width 1.2s ease;width:0}
+        .conf-label{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--green)}
+        .agent-actions{display:flex;gap:10px;justify-content:center;margin-top:40px;flex-wrap:wrap;opacity:0;transform:translateY(12px);transition:all .4s}
         .agent-actions.show{opacity:1;transform:translateY(0)}
-        .action-btn{display:flex;align-items:center;gap:10px;padding:14px 28px;border-radius:10px;font-family:var(--display);font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;border:none;min-height:48px}
-        .action-btn:hover{transform:translateY(-2px)}
-        .action-btn-call{background:var(--blue);color:#fff;box-shadow:0 4px 16px var(--blue-glow)}
-        .action-btn-call:hover{background:var(--blue-dark);box-shadow:0 8px 32px var(--blue-glow)}
-        .action-btn-email{background:var(--bg-card);color:var(--text);border:1.5px solid var(--border);box-shadow:var(--shadow-sm)}
-        .action-btn-email:hover{border-color:var(--border-hover);box-shadow:var(--shadow-md)}
-
-        .call-active{text-align:center;padding:32px;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow-md);display:none}
-        .call-active.show{display:block;animation:pop-in .4s cubic-bezier(.16,1,.3,1)}
-        .call-countdown{font-family:var(--display);font-size:64px;font-weight:900;background:linear-gradient(135deg,var(--blue),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:float 2s ease-in-out infinite}
-        .waveform{display:flex;align-items:center;justify-content:center;gap:3px;height:40px;margin:16px 0}
+        .action-btn{display:flex;align-items:center;gap:8px;padding:12px 24px;border-radius:8px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;border:none}
+        .action-btn:hover{transform:translateY(-1px)}
+        .action-btn-call{background:var(--blue);color:#fff}
+        .action-btn-call:hover{background:var(--blue-dark)}
+        .action-btn-email{background:#fff;color:var(--text);border:1px solid var(--border)}
+        .action-btn-email:hover{border-color:var(--border-hover)}
+        .call-active{text-align:center;padding:28px;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-md);display:none}
+        .call-active.show{display:block;animation:pop-in .3s ease}
+        .call-countdown{font-family:var(--display);font-size:56px;font-weight:900;background:linear-gradient(135deg,var(--blue),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:float 2s ease-in-out infinite}
+        .waveform{display:flex;align-items:center;justify-content:center;gap:3px;height:36px;margin:12px 0}
         .wave-bar{width:3px;background:linear-gradient(to top,var(--blue),var(--green));border-radius:2px;animation:wave 1.2s ease-in-out infinite}
         .wave-bar:nth-child(1){height:35%;animation-delay:0s}.wave-bar:nth-child(2){height:65%;animation-delay:.1s}.wave-bar:nth-child(3){height:100%;animation-delay:.2s}.wave-bar:nth-child(4){height:55%;animation-delay:.3s}.wave-bar:nth-child(5){height:80%;animation-delay:.4s}.wave-bar:nth-child(6){height:40%;animation-delay:.5s}.wave-bar:nth-child(7){height:90%;animation-delay:.15s}
 
         /* ═══ RESPONSIVE ═══ */
         @media(max-width:1024px){
-            .outcome-grid{grid-template-columns:repeat(2,1fr)}
+            .cards-grid{grid-template-columns:repeat(2,1fr)}
             .how-grid{grid-template-columns:repeat(2,1fr)}
             .stats-inner{grid-template-columns:repeat(2,1fr)}
             .stat-item:nth-child(2){border-right:none}
+            .footer-top{grid-template-columns:1fr 1fr}
         }
         @media(max-width:768px){
             .nav-links,.nav-login{display:none}
-            .nav-mobile-btn{display:block}
+            .nav-mobile{display:block}
             .nav-inner{padding:0 20px}
-            .hero{padding:120px 20px 60px;min-height:auto}
-            .mega-input-box{flex-direction:column;padding:6px}
-            .mega-btn{width:100%;justify-content:center;border-radius:10px}
-            .mega-input{text-align:center}
-            .marquee img{height:18px;margin:0 24px}
-            .outcome-grid{grid-template-columns:1fr}
-            .how-grid{grid-template-columns:1fr;gap:24px;max-width:320px;margin-left:auto;margin-right:auto}
+            .hero{padding:120px 20px 60px}
+            .input-box{flex-direction:column;padding:5px}
+            .input-btn{width:100%;justify-content:center;border-radius:8px}
+            .input-field{text-align:center}
+            .marquee img{height:22px;margin:0 28px}
+            .cards-grid{grid-template-columns:1fr}
+            .how-grid{grid-template-columns:1fr;max-width:360px;margin-left:auto;margin-right:auto}
             .stats-inner{grid-template-columns:repeat(2,1fr)}
-            .stat-item{padding:32px 16px}
-            .section{padding:80px 20px}
-            .trust-inner{gap:16px}
-            .trust-divider{display:none}
-            .footer-inner{flex-direction:column;text-align:center}
+            .stat-item{padding:28px 16px}
+            .section{padding:64px 20px}
+            .footer-top{grid-template-columns:1fr;gap:28px}
+            .footer-bottom{flex-direction:column;text-align:center}
             .footer-badges{justify-content:center}
             .step-card,.strategy-card{margin-left:0}
             .agent-actions{flex-direction:column}
@@ -258,7 +253,7 @@
         }
         @media(max-width:480px){
             .stats-inner{grid-template-columns:1fr}
-            .stat-item{border-right:none;border-bottom:1px solid var(--border)}
+            .stat-item{border-right:none!important;border-bottom:1px solid var(--border)}
             .stat-item:last-child{border-bottom:none}
         }
     </style>
@@ -268,51 +263,41 @@
 <!-- NAV -->
 <nav class="nav" id="nav">
 <div class="nav-inner">
-    <a href="/" class="logo">
-        <svg viewBox="0 0 32 32" fill="none"><defs><linearGradient id="lg" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#2563EB"/><stop offset="1" stop-color="#10B981"/></linearGradient></defs><rect width="32" height="32" rx="8" fill="url(#lg)"/><path d="M10 22V13l6-4 6 4v9l-6 3-6-3z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" fill="none"/><path d="M16 9v16M10 13l6 4 6-4" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" fill="none"/></svg>
-        <span class="logo-name">Agent<b>Collect</b></span>
-    </a>
+    <a href="/" class="logo">Agent<span>Collect</span></a>
     <div class="nav-links">
         <a href="#results">Customers</a>
-        <a href="#how">How it Works</a>
+        <a href="#how">How it works</a>
         <a href="#appex">AppExchange</a>
     </div>
     <div class="nav-right">
         <a href="#" class="nav-login">Log in</a>
         <a href="#hero-input" class="nav-cta">Try the demo</a>
     </div>
-    <button class="nav-mobile-btn" onclick="document.getElementById('hero-input').scrollIntoView({behavior:'smooth'})">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    <button class="nav-mobile" onclick="document.getElementById('hero-input').scrollIntoView({behavior:'smooth'})">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
     </button>
 </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="hero">
-    <div class="hero-glow hero-glow-1"></div>
-    <div class="hero-glow hero-glow-2"></div>
+    <div class="hero-badge"><span class="dot"></span> Available on the Salesforce AppExchange</div>
+    <h1>Enter your email.<br>Watch us <em>collect from you</em>.</h1>
+    <p class="hero-sub">AI agents that find you, profile you, build a strategy, and send a real collection notice. In 30 seconds. For $1.</p>
 
-    <div class="hero-badge"><span class="dot"></span> Now available on the Salesforce AppExchange</div>
-
-    <h1>Recover receivables<br>with <span class="gradient">AI agents</span></h1>
-    <p class="hero-sub">Enter any email address. Watch the AI find the person, build a collection strategy, and send a real demand letter. In 30 seconds.</p>
-
-    <div class="mega-input-wrap" id="hero-input">
-        <div class="mega-input-box">
-            <input type="email" class="mega-input" id="email-input" placeholder="marc@salesforce.com" autocomplete="email">
-            <button class="mega-btn" id="go-btn" onclick="startAgent()">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    <div class="input-wrap" id="hero-input">
+        <div class="input-box">
+            <input type="email" class="input-field" id="email-input" placeholder="marc@salesforce.com" autocomplete="email">
+            <button class="input-btn" id="go-btn" onclick="startAgent()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                 Watch it work
             </button>
         </div>
-        <div class="mega-hint">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            We'll try to collect $1 from you. That's it.
-        </div>
+        <div class="input-hint">We'll try to collect $1 from you. That's it.</div>
     </div>
 </section>
 
-<!-- LIVE AGENT CONSOLE -->
+<!-- AGENT CONSOLE -->
 <section class="agent-console" id="agent-console">
     <div class="agent-header">
         <div class="agent-target">
@@ -320,198 +305,189 @@
             <span class="agent-target-email" id="target-email"></span>
         </div>
     </div>
-
     <div class="agent-step" id="step-identity">
         <div class="step-header">
-            <div class="step-icon" id="icon-identity">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            </div>
-            <div>
-                <div class="step-title" id="title-identity">Investigating...</div>
-                <div class="step-subtitle" id="sub-identity"></div>
-            </div>
+            <div class="step-icon" id="icon-identity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <div><div class="step-title" id="title-identity">Investigating...</div><div class="step-subtitle" id="sub-identity"></div></div>
         </div>
         <div class="step-card" id="card-identity">
             <div id="profile-card" style="display:none">
-                <div style="display:flex;align-items:center;gap:20px;margin-bottom:20px">
-                    <div id="avatar-wrap" style="width:64px;height:64px;border-radius:50%;background:var(--blue-light);border:2px solid rgba(37,99,235,.15);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" opacity=".4"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px">
+                    <div id="avatar-wrap" style="width:56px;height:56px;border-radius:50%;background:var(--blue-light);border:2px solid rgba(37,99,235,.1);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" opacity=".3"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                     </div>
                     <div>
-                        <div id="profile-name" style="font-family:var(--display);font-size:20px;font-weight:800;color:var(--text)"></div>
+                        <div id="profile-name" style="font-family:var(--display);font-size:18px;font-weight:800;color:var(--text)"></div>
                         <div id="profile-title" style="font-size:13px;color:var(--text-mid);margin-top:2px"></div>
                         <div id="profile-location" style="font-size:12px;color:var(--text-muted);margin-top:2px;display:flex;align-items:center;gap:4px"></div>
                     </div>
                 </div>
-                <div id="profile-linkedin" style="display:none;margin-bottom:16px;padding:12px 16px;background:rgba(10,102,194,.04);border:1px solid rgba(10,102,194,.1);border-radius:10px">
-                    <div style="display:flex;align-items:center;gap:8px">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                        <span style="font-size:12px;color:#0A66C2;font-weight:600" id="linkedin-text"></span>
+                <div id="profile-linkedin" style="display:none;margin-bottom:14px;padding:10px 14px;background:rgba(10,102,194,.03);border:1px solid rgba(10,102,194,.08);border-radius:8px">
+                    <div style="display:flex;align-items:center;gap:6px">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        <span style="font-size:11px;color:#0A66C2;font-weight:600" id="linkedin-text"></span>
                     </div>
                 </div>
             </div>
             <div id="identity-rows"></div>
         </div>
     </div>
-
     <div class="agent-step" id="step-intel">
         <div class="step-header">
-            <div class="step-icon" id="icon-intel">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-            </div>
-            <div>
-                <div class="step-title" id="title-intel">Profiling debtor...</div>
-                <div class="step-subtitle" id="sub-intel"></div>
-            </div>
+            <div class="step-icon" id="icon-intel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></div>
+            <div><div class="step-title" id="title-intel">Profiling...</div><div class="step-subtitle" id="sub-intel"></div></div>
         </div>
-        <div class="step-card" id="card-intel">
-            <div id="intel-rows"></div>
-        </div>
+        <div class="step-card" id="card-intel"><div id="intel-rows"></div></div>
     </div>
-
     <div class="agent-step" id="step-strategy">
         <div class="step-header">
-            <div class="step-icon" id="icon-strategy">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-            </div>
-            <div>
-                <div class="step-title" id="title-strategy">Designing approach...</div>
-                <div class="step-subtitle" id="sub-strategy"></div>
-            </div>
+            <div class="step-icon" id="icon-strategy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+            <div><div class="step-title" id="title-strategy">Designing approach...</div><div class="step-subtitle" id="sub-strategy"></div></div>
         </div>
         <div class="strategy-card" id="card-strategy"></div>
     </div>
-
     <div class="agent-step" id="step-collect">
         <div class="step-header">
-            <div class="step-icon" id="icon-collect">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-            </div>
-            <div>
-                <div class="step-title" id="title-collect">Collecting...</div>
-                <div class="step-subtitle" id="sub-collect"></div>
-            </div>
+            <div class="step-icon" id="icon-collect"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></div>
+            <div><div class="step-title" id="title-collect">Collecting...</div><div class="step-subtitle" id="sub-collect"></div></div>
         </div>
-        <div class="step-card" id="card-collect">
-            <div id="collect-content"></div>
-        </div>
+        <div class="step-card" id="card-collect"><div id="collect-content"></div></div>
     </div>
-
     <div class="agent-actions" id="agent-actions">
         <button class="action-btn action-btn-call" id="call-action-btn" onclick="triggerCall()">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             <span id="call-btn-text">Call me now</span>
         </button>
         <button class="action-btn action-btn-email" onclick="scrollTo({top:0,behavior:'smooth'})">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
             Try another email
         </button>
     </div>
-
-    <div class="call-active" id="call-active">
-        <div id="call-inner"></div>
-    </div>
+    <div class="call-active" id="call-active"><div id="call-inner"></div></div>
 </section>
 
 <!-- LOGOS -->
 <section class="logos reveal">
     <div class="logos-label">Trusted by teams at</div>
     <div class="marquee">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Dell_Logo.svg" alt="Dell">
-        <img src="https://www.logo.wine/a/logo/Plaid_(company)/Plaid_(company)-Logo.wine.svg" alt="Plaid">
-        <img src="https://assets.checkr.com/logo.svg" alt="Checkr">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/doordash.svg" alt="DoorDash">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Twilio-logo-red.svg" alt="Twilio">
-        <img src="https://cdn.simpleicons.org/redis" alt="Redis">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png" alt="Uber Freight">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Dell_Logo.svg" alt="Dell">
-        <img src="https://www.logo.wine/a/logo/Plaid_(company)/Plaid_(company)-Logo.wine.svg" alt="Plaid">
-        <img src="https://assets.checkr.com/logo.svg" alt="Checkr">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/doordash.svg" alt="DoorDash">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Twilio-logo-red.svg" alt="Twilio">
-        <img src="https://cdn.simpleicons.org/redis" alt="Redis">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png" alt="Uber Freight">
+        <img src="https://cdn.brandfetch.io/microsoft.com/w/512/h/80/logo" alt="Microsoft">
+        <img src="https://cdn.brandfetch.io/dell.com/w/512/h/80/logo" alt="Dell">
+        <img src="https://cdn.brandfetch.io/plaid.com/w/512/h/80/logo" alt="Plaid">
+        <img src="https://cdn.brandfetch.io/checkr.com/w/512/h/80/logo" alt="Checkr">
+        <img src="https://cdn.brandfetch.io/doordash.com/w/512/h/80/logo" alt="DoorDash">
+        <img src="https://cdn.brandfetch.io/twilio.com/w/512/h/80/logo" alt="Twilio">
+        <img src="https://cdn.brandfetch.io/redis.com/w/512/h/80/logo" alt="Redis">
+        <img src="https://cdn.brandfetch.io/uber.com/w/512/h/80/logo" alt="Uber">
+        <img src="https://cdn.brandfetch.io/microsoft.com/w/512/h/80/logo" alt="Microsoft">
+        <img src="https://cdn.brandfetch.io/dell.com/w/512/h/80/logo" alt="Dell">
+        <img src="https://cdn.brandfetch.io/plaid.com/w/512/h/80/logo" alt="Plaid">
+        <img src="https://cdn.brandfetch.io/checkr.com/w/512/h/80/logo" alt="Checkr">
+        <img src="https://cdn.brandfetch.io/doordash.com/w/512/h/80/logo" alt="DoorDash">
+        <img src="https://cdn.brandfetch.io/twilio.com/w/512/h/80/logo" alt="Twilio">
+        <img src="https://cdn.brandfetch.io/redis.com/w/512/h/80/logo" alt="Redis">
+        <img src="https://cdn.brandfetch.io/uber.com/w/512/h/80/logo" alt="Uber">
     </div>
 </section>
 
 <!-- STATS -->
-<section class="stats-bar reveal">
+<section class="stats reveal">
     <div class="stats-inner">
         <div class="stat-item"><div class="stat-num" style="color:var(--blue)" data-count="85" data-prefix="" data-suffix="K">0</div><div class="stat-label">Collections per day</div></div>
         <div class="stat-item"><div class="stat-num" style="color:var(--green)" data-count="50" data-prefix="~" data-suffix="%">0</div><div class="stat-label">Average recovery rate</div></div>
         <div class="stat-item"><div class="stat-num" style="color:var(--amber)" data-count="20" data-prefix="" data-suffix=" min">0</div><div class="stat-label">Time to go live</div></div>
-        <div class="stat-item"><div class="stat-num" style="color:var(--text)" data-count="0" data-prefix="" data-suffix="">0</div><div class="stat-label">Compliance incidents</div></div>
+        <div class="stat-item"><div class="stat-num" data-count="0" data-prefix="" data-suffix="">0</div><div class="stat-label">Compliance incidents</div></div>
     </div>
 </section>
 
-<!-- CLIENT OUTCOMES -->
+<!-- CUSTOMERS -->
 <section class="section reveal" id="results">
     <div class="section-inner">
         <div class="section-label">Customers</div>
         <div class="section-title">Real results from real companies</div>
-        <div class="section-sub">Enterprise teams that replaced their collection agency with AI agents.</div>
-
-        <div class="outcome-grid">
-            <div class="outcome-card reveal s1">
-                <div class="outcome-logo-wrap">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft" class="outcome-logo">
+        <div class="section-sub">Enterprise teams that switched from collection agencies to AI agents.</div>
+        <div class="cards-grid">
+            <div class="card reveal s1" onclick="toggleCard(this)">
+                <img src="https://cdn.brandfetch.io/microsoft.com/w/512/h/80/logo" alt="Microsoft" class="card-logo">
+                <div class="card-headline">Replaced their collection agency. Zero headcount. AI handles everything.</div>
+                <div class="card-metric">
+                    <div class="card-num" style="color:var(--blue)">~50%</div>
+                    <div class="card-desc">recovery rate in 20 days</div>
                 </div>
-                <div class="outcome-tagline">Replaced their collection agency. Zero headcount. AI handles emails, calls, and disputes.</div>
-                <div class="outcome-metric">
-                    <div class="outcome-num" style="color:var(--blue)">~50%</div>
-                    <div class="outcome-desc">recovery rate<br>in 20 days</div>
-                </div>
-            </div>
-            <div class="outcome-card reveal s2">
-                <div class="outcome-logo-wrap">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Dell_Logo.svg" alt="Dell" class="outcome-logo">
-                </div>
-                <div class="outcome-tagline">Runs collection across 4 business units. No IT integration. Just an Excel upload.</div>
-                <div class="outcome-metric">
-                    <div class="outcome-num" style="color:var(--green)">20 min</div>
-                    <div class="outcome-desc">to go live<br>per business unit</div>
+                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">See use case <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="card-expand">
+                    <strong>Challenge:</strong> Microsoft had $2M+ in overdue B2B receivables across multiple business units, managed by a traditional collection agency with slow turnaround.<br><br>
+                    <strong>Solution:</strong> AgentCollect deployed AI agents that send demand letters, make voice calls, and handle disputes automatically. No integration needed — just an Excel upload.<br><br>
+                    <strong>Result:</strong> ~50% recovery rate in the first 20 days. Zero employees added. AI resolved disputes in under 60 seconds.
                 </div>
             </div>
-            <div class="outcome-card reveal s3">
-                <div class="outcome-logo-wrap">
-                    <img src="https://www.logo.wine/a/logo/Plaid_(company)/Plaid_(company)-Logo.wine.svg" alt="Plaid" class="outcome-logo">
+            <div class="card reveal s2" onclick="toggleCard(this)">
+                <img src="https://cdn.brandfetch.io/dell.com/w/512/h/80/logo" alt="Dell" class="card-logo">
+                <div class="card-headline">Runs collection across 4 business units. No integration. Just Excel.</div>
+                <div class="card-metric">
+                    <div class="card-num" style="color:var(--green)">20 min</div>
+                    <div class="card-desc">to go live per unit</div>
                 </div>
-                <div class="outcome-tagline">Previous agency: 6 months, 5% recovered. AI agents did it in 20 days.</div>
-                <div class="outcome-metric">
-                    <div class="outcome-num" style="color:var(--pink)">10x</div>
-                    <div class="outcome-desc">faster than<br>their previous agency</div>
-                </div>
-            </div>
-            <div class="outcome-card reveal s1">
-                <div class="outcome-logo-wrap">
-                    <img src="https://assets.checkr.com/logo.svg" alt="Checkr" class="outcome-logo">
-                </div>
-                <div class="outcome-tagline">AI calls debtors, handles disputes in under 60 seconds, negotiates payment plans.</div>
-                <div class="outcome-metric">
-                    <div class="outcome-num" style="color:var(--amber)">0</div>
-                    <div class="outcome-desc">client relationships<br>damaged</div>
+                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">See use case <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="card-expand">
+                    <strong>Challenge:</strong> Dell needed to collect overdue invoices across 4 divisions simultaneously, each with different ERP systems and processes.<br><br>
+                    <strong>Solution:</strong> Each division uploads their own Excel file. AI agents handle multi-language outreach, follow-ups, and escalations independently per business unit.<br><br>
+                    <strong>Result:</strong> All 4 units went live in under 20 minutes each. No IT involvement. No API integration required.
                 </div>
             </div>
-            <div class="outcome-card reveal s2">
-                <div class="outcome-logo-wrap">
-                    <img src="https://cdn.simpleicons.org/redis" alt="Redis" class="outcome-logo">
+            <div class="card reveal s3" onclick="toggleCard(this)">
+                <img src="https://cdn.brandfetch.io/plaid.com/w/512/h/80/logo" alt="Plaid" class="card-logo">
+                <div class="card-headline">Previous agency: 6 months, 5% recovered. AI did it in 20 days.</div>
+                <div class="card-metric">
+                    <div class="card-num" style="color:var(--pink)">10x</div>
+                    <div class="card-desc">faster than their agency</div>
                 </div>
-                <div class="outcome-tagline">Collects across EMEA and US in 12 languages simultaneously. Same AI.</div>
-                <div class="outcome-metric">
-                    <div class="outcome-num" style="color:var(--blue)">12</div>
-                    <div class="outcome-desc">languages<br>zero incidents</div>
+                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">See use case <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="card-expand">
+                    <strong>Challenge:</strong> Plaid's previous collection agency spent 6 months on their portfolio and recovered only 5%.<br><br>
+                    <strong>Solution:</strong> AI agents researched each debtor, identified the right contact at each company, and executed a multi-channel strategy (email + phone + LinkedIn).<br><br>
+                    <strong>Result:</strong> 10x the recovery rate in 1/9th the time. AI's persistence and speed outperformed human agents dramatically.
                 </div>
             </div>
-            <div class="outcome-card reveal s3">
-                <div class="outcome-logo-wrap">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/doordash.svg" alt="DoorDash" class="outcome-logo">
+            <div class="card reveal s1" onclick="toggleCard(this)">
+                <img src="https://cdn.brandfetch.io/checkr.com/w/512/h/80/logo" alt="Checkr" class="card-logo">
+                <div class="card-headline">AI handles disputes in under 60 seconds. Negotiates payment plans.</div>
+                <div class="card-metric">
+                    <div class="card-num" style="color:var(--amber)">0</div>
+                    <div class="card-desc">client relationships damaged</div>
                 </div>
-                <div class="outcome-tagline">Collects from restaurant partners without damaging the marketplace relationship.</div>
-                <div class="outcome-metric">
-                    <div class="outcome-num" style="color:var(--green)">&lt;60s</div>
-                    <div class="outcome-desc">AI dispute<br>response time</div>
+                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">See use case <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="card-expand">
+                    <strong>Challenge:</strong> Checkr needed to collect from clients they wanted to keep. Aggressive agencies were damaging relationships.<br><br>
+                    <strong>Solution:</strong> AI agents use a respectful, compliance-first approach. When a debtor disputes, AI responds in under 60 seconds with documentation. Payment plans are offered automatically.<br><br>
+                    <strong>Result:</strong> Zero client relationships lost. Debtors prefer dealing with AI — no judgment, no pressure, just clear next steps.
+                </div>
+            </div>
+            <div class="card reveal s2" onclick="toggleCard(this)">
+                <img src="https://cdn.brandfetch.io/redis.com/w/512/h/80/logo" alt="Redis" class="card-logo">
+                <div class="card-headline">Collects across EMEA and US in 12 languages. Same AI.</div>
+                <div class="card-metric">
+                    <div class="card-num" style="color:var(--blue)">12</div>
+                    <div class="card-desc">languages, zero incidents</div>
+                </div>
+                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">See use case <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="card-expand">
+                    <strong>Challenge:</strong> Redis has debtors across Europe and the US. Different languages, regulations, and business cultures.<br><br>
+                    <strong>Solution:</strong> A single AI agent handles all regions natively — French for France, German for DACH, English for US/UK — while respecting local regulations (GDPR, Reg F, CCPA).<br><br>
+                    <strong>Result:</strong> 12 languages supported simultaneously. Zero compliance incidents across all jurisdictions.
+                </div>
+            </div>
+            <div class="card reveal s3" onclick="toggleCard(this)">
+                <img src="https://cdn.brandfetch.io/doordash.com/w/512/h/80/logo" alt="DoorDash" class="card-logo">
+                <div class="card-headline">Collects from partners without damaging the marketplace.</div>
+                <div class="card-metric">
+                    <div class="card-num" style="color:var(--green)">&lt;60s</div>
+                    <div class="card-desc">AI dispute response</div>
+                </div>
+                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">See use case <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="card-expand">
+                    <strong>Challenge:</strong> DoorDash needs to collect from restaurant partners they depend on. Burning a bridge means losing a partner and their customers.<br><br>
+                    <strong>Solution:</strong> AI agents de-escalate automatically, reference specific invoices and delivery data, and offer flexible resolution paths. Tone is firm but fair.<br><br>
+                    <strong>Result:</strong> Disputes resolved in under 60 seconds. Restaurant partners continue operating on the platform while resolving their balance.
                 </div>
             </div>
         </div>
@@ -521,85 +497,90 @@
 <!-- HOW IT WORKS -->
 <section class="section reveal" id="how" style="border-top:1px solid var(--border)">
     <div class="section-inner" style="text-align:center">
-        <div class="section-label" style="text-align:center">How it works</div>
-        <div class="section-title" style="text-align:center;margin-left:auto;margin-right:auto">Upload a spreadsheet. Get paid.</div>
-        <div class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto">No integration. No onboarding. No minimum.</div>
-
-        <div class="how-grid" style="margin-top:64px">
+        <div class="section-label">How it works</div>
+        <div class="section-title" style="margin-left:auto;margin-right:auto">Upload a spreadsheet. Get paid.</div>
+        <div class="section-sub" style="margin-left:auto;margin-right:auto;text-align:center">No integration. No onboarding call. No minimum.</div>
+        <div class="how-grid">
             <div class="how-card">
-                <div class="how-num">1</div>
+                <div class="how-num">01</div>
                 <h3>Upload</h3>
                 <p>Drop your Excel or CSV with outstanding invoices.</p>
             </div>
             <div class="how-card">
-                <div class="how-num" style="background:var(--amber)">2</div>
+                <div class="how-num">02</div>
                 <h3>AI researches</h3>
-                <p>Finds phones, emails, LinkedIn profiles, and company intel.</p>
+                <p>Finds phones, emails, LinkedIn, and company intel for each debtor.</p>
             </div>
             <div class="how-card">
-                <div class="how-num" style="background:var(--green)">3</div>
+                <div class="how-num">03</div>
                 <h3>AI collects</h3>
-                <p>Sends demand letters, makes calls, handles disputes and negotiations.</p>
+                <p>Sends demand letters, makes calls, handles disputes and payment plans.</p>
             </div>
             <div class="how-card">
-                <div class="how-num" style="background:var(--text)">4</div>
+                <div class="how-num">04</div>
                 <h3>You get paid</h3>
-                <p>Success-based pricing. You only pay when we recover.</p>
+                <p>Success-based pricing. You only pay when we recover money.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- TRUST BAR -->
-<section class="trust-bar reveal" id="appex">
+<!-- TRUST -->
+<section class="trust reveal" id="appex">
     <div class="trust-inner">
-        <div class="trust-pill">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="var(--sf-blue)" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="var(--sf-blue)" stroke-width="2" fill="none"/></svg>
-            Salesforce AppExchange
-        </div>
-        <div class="trust-divider"></div>
-        <div class="trust-pill">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            SOC 2 Type II
-        </div>
-        <div class="trust-divider"></div>
-        <div class="trust-pill">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-            CCPA / CPRA
-        </div>
-        <div class="trust-divider"></div>
-        <div class="trust-pill">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            AES-256 Encryption
-        </div>
-        <div class="trust-divider"></div>
-        <div class="trust-pill">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-            Pay on success only
-        </div>
+        <div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="var(--sf-blue)" stroke-width="2"/><path d="M8 12l3 3 5-5" stroke="var(--sf-blue)" stroke-width="2" fill="none"/></svg>Salesforce AppExchange</div>
+        <div class="trust-sep"></div>
+        <div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>SOC 2 Type II</div>
+        <div class="trust-sep"></div>
+        <div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>CCPA / CPRA</div>
+        <div class="trust-sep"></div>
+        <div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>AES-256</div>
+        <div class="trust-sep"></div>
+        <div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Pay on success only</div>
     </div>
 </section>
 
-<!-- FINAL CTA -->
-<section class="cta-final">
-    <div class="hero-glow hero-glow-1"></div>
-    <div class="hero-glow hero-glow-2"></div>
+<!-- CTA -->
+<section class="cta">
     <div class="cta-price">$1</div>
     <h2>See if you can tell it's not human.</h2>
-    <a href="#hero-input" class="btn-white" onclick="document.getElementById('email-input').focus()">Try the live demo</a>
+    <a href="#hero-input" class="cta-btn" onclick="document.getElementById('email-input').focus()">Try the live demo</a>
 </section>
 
 <!-- FOOTER -->
 <footer>
     <div class="footer-inner">
-        <div class="footer-left">
-            <a href="/" class="logo" style="display:inline-flex">
-                <svg viewBox="0 0 32 32" fill="none" width="24" height="24"><defs><linearGradient id="lg2" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse"><stop stop-color="#2563EB"/><stop offset="1" stop-color="#10B981"/></linearGradient></defs><rect width="32" height="32" rx="8" fill="url(#lg2)"/><path d="M10 22V13l6-4 6 4v9l-6 3-6-3z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" fill="none"/><path d="M16 9v16M10 13l6 4 6-4" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" fill="none"/></svg>
-                <span class="logo-name">Agent<b>Collect</b></span>
-            </a>
-            <span>&copy; 2026 AgentCollect, Inc. &mdash; San Francisco, CA</span>
+        <div class="footer-top">
+            <div>
+                <div class="footer-brand">Agent<span>Collect</span></div>
+                <div class="footer-tagline">AI-powered debt collection for enterprise teams. Faster recovery, zero compliance risk, success-based pricing.</div>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <a href="#how">How it works</a>
+                <a href="#results">Customers</a>
+                <a href="#appex">AppExchange</a>
+                <a href="#hero-input">Live demo</a>
+            </div>
+            <div class="footer-col">
+                <h4>Compliance</h4>
+                <a href="#">SOC 2 Type II</a>
+                <a href="#">CCPA / CPRA</a>
+                <a href="#">Regulation F</a>
+                <a href="#">GDPR</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="#">About</a>
+                <a href="#">Careers</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy</a>
+            </div>
         </div>
-        <div class="footer-badges"><span class="footer-badge">SOC 2</span><span class="footer-badge">CCPA</span><span class="footer-badge">Reg F</span></div>
+        <div class="footer-bottom">
+            <div class="footer-copy">&copy; 2026 AgentCollect, Inc. San Francisco, CA</div>
+            <div class="footer-badges"><span class="footer-badge">SOC 2</span><span class="footer-badge">CCPA</span><span class="footer-badge">Reg F</span></div>
+        </div>
     </div>
 </footer>
 
@@ -614,25 +595,32 @@ const KNOWN = {
     'jensen@nvidia.com': {name:'Jensen Huang',title:'CEO & Founder',company:'NVIDIA',location:'Santa Clara, CA',linkedin:'linkedin.com/in/jensenhuang',linkedinUrl:'https://linkedin.com/in/jensenhuang',avatarUrl:'https://unavatar.io/x/JensenHuang_',greeting:'AI collecting from AI companies — poetic.',profile_type:'Tech visionary, $60B+ revenue company',company_health:'$60B+ revenue, 30K+ employees',payment_behavior:'Engineering-led org, efficient finance team, Net-30 terms',risk:'Low',recommended_tone:'Tech-forward, concise'},
 };
 
-// Nav scroll
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20));
+function toggleCard(card){
+    const expand=card.querySelector('.card-expand');
+    const toggle=card.querySelector('.card-toggle');
+    const isOpen=expand.classList.contains('open');
+    // Close all others
+    document.querySelectorAll('.card-expand.open').forEach(e=>{e.classList.remove('open');e.closest('.card').querySelector('.card-toggle').classList.remove('open');e.closest('.card').querySelector('.card-toggle').innerHTML='See use case <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>'});
+    if(!isOpen){
+        expand.classList.add('open');
+        toggle.classList.add('open');
+        toggle.innerHTML='Close <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>';
+    }
+}
 
-// Reveal on scroll
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20));
 const rev=document.querySelectorAll('.reveal');
 const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target)}})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
 rev.forEach(el=>io.observe(el));
 setTimeout(()=>rev.forEach(el=>el.classList.add('visible')),4000);
 
-// Animated counters
 const cEls=document.querySelectorAll('[data-count]');
 const cIO=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){animC(x.target);cIO.unobserve(x.target)}})},{threshold:.5});
 cEls.forEach(el=>cIO.observe(el));
 function animC(el){const t=parseInt(el.dataset.count),p=el.dataset.prefix||'',s=el.dataset.suffix||'';if(t===0){el.textContent=p+'0'+s;el.style.animation='counter-pop .5s cubic-bezier(.16,1,.3,1)';return}const d=1800,st=performance.now();function tick(n){const e=n-st,pr=Math.min(e/d,1),ea=1-Math.pow(1-pr,3);el.textContent=p+Math.round(t*ea)+s;if(pr<1)requestAnimationFrame(tick)}requestAnimationFrame(tick)}
 
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'})})});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'})})});
 
-// Helpers
 function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
 function showStep(id){document.getElementById('step-'+id).classList.add('active')}
 function doneStep(id){document.getElementById('step-'+id).classList.add('done')}
@@ -641,74 +629,31 @@ function setIcon(id,done){
     if(done){ic.classList.remove('spinning');ic.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="color:var(--green)"><path d="M20 6L9 17l-5-5" stroke-dasharray="24" stroke-dashoffset="0" style="animation:check-draw .4s ease forwards"/></svg>'}
     else{ic.classList.add('spinning');ic.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--blue)"><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg>'}
 }
-async function addDataRow(containerId, key, val, cls=''){
-    const c=document.getElementById(containerId);
-    const r=document.createElement('div');r.className='data-row';
-    r.innerHTML=`<span class="data-key">${key}</span><span class="data-val ${cls}">${val}</span>`;
-    c.appendChild(r);
-    await sleep(50);r.classList.add('show');await sleep(180);
-}
-async function addStrategyRow(text){
-    const c=document.getElementById('card-strategy');
-    const r=document.createElement('div');r.className='strategy-row';r.innerHTML=text;
-    c.appendChild(r);await sleep(50);r.classList.add('show');await sleep(250);
-}
-async function typeText(el,text,speed=30){
-    el.textContent='';el.classList.add('typing');
-    for(let i=0;i<text.length;i++){el.textContent+=text[i];await sleep(speed)}
-    el.classList.remove('typing');
-}
+async function addDataRow(cid,key,val,cls=''){const c=document.getElementById(cid);const r=document.createElement('div');r.className='data-row';r.innerHTML=`<span class="data-key">${key}</span><span class="data-val ${cls}">${val}</span>`;c.appendChild(r);await sleep(50);r.classList.add('show');await sleep(150)}
+async function addStrategyRow(text){const c=document.getElementById('card-strategy');const r=document.createElement('div');r.className='strategy-row';r.innerHTML=text;c.appendChild(r);await sleep(50);r.classList.add('show');await sleep(200)}
+async function typeText(el,text,speed=30){el.textContent='';el.classList.add('typing');for(let i=0;i<text.length;i++){el.textContent+=text[i];await sleep(speed)}el.classList.remove('typing')}
 
-// ═══════════════════════════
-// MAIN AGENT FLOW
-// ═══════════════════════════
 async function resetConsole(){
-    ['identity','intel','strategy','collect'].forEach(id=>{
-        const step=document.getElementById('step-'+id);
-        if(step){step.classList.remove('active','done')}
-        const card=document.getElementById('card-'+id);
-        if(card){card.classList.remove('loaded')}
-    });
-    ['identity-rows','intel-rows'].forEach(id=>{
-        const el=document.getElementById(id);
-        if(el)el.innerHTML='';
-    });
-    const stratCard=document.getElementById('card-strategy');
-    if(stratCard){stratCard.querySelectorAll('.strategy-row,.confidence-bar').forEach(el=>el.remove())}
-    const pc=document.getElementById('profile-card');
-    if(pc){pc.style.display='none'}
-    document.getElementById('avatar-wrap').innerHTML='<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" opacity=".4"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
-    document.getElementById('profile-name').textContent='';
-    document.getElementById('profile-title').textContent='';
-    document.getElementById('profile-location').innerHTML='';
-    document.getElementById('profile-linkedin').style.display='none';
+    ['identity','intel','strategy','collect'].forEach(id=>{const s=document.getElementById('step-'+id);if(s)s.classList.remove('active','done');const c=document.getElementById('card-'+id);if(c)c.classList.remove('loaded')});
+    ['identity-rows','intel-rows'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=''});
+    const sc=document.getElementById('card-strategy');if(sc)sc.querySelectorAll('.strategy-row,.confidence-bar').forEach(el=>el.remove());
+    const pc=document.getElementById('profile-card');if(pc)pc.style.display='none';
+    document.getElementById('avatar-wrap').innerHTML='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" opacity=".3"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
+    document.getElementById('profile-name').textContent='';document.getElementById('profile-title').textContent='';document.getElementById('profile-location').innerHTML='';document.getElementById('profile-linkedin').style.display='none';
     agentPhone=null;
     document.querySelectorAll('#card-identity > div:not(#profile-card):not(#identity-rows)').forEach(el=>el.remove());
-    const cc=document.getElementById('collect-content');
-    if(cc)cc.innerHTML='';
+    const cc=document.getElementById('collect-content');if(cc)cc.innerHTML='';
     document.getElementById('agent-actions').classList.remove('show');
-    const callEl=document.getElementById('call-active');
-    if(callEl)callEl.classList.remove('show');
+    const callEl=document.getElementById('call-active');if(callEl)callEl.classList.remove('show');
 }
 
 async function startAgent(){
-    const email = document.getElementById('email-input').value.trim();
-    if(!email || !email.includes('@')){
-        document.getElementById('email-input').classList.add('error');
-        setTimeout(()=>document.getElementById('email-input').classList.remove('error'),600);
-        return;
-    }
-    agentEmail = email;
-    const btn=document.getElementById('go-btn');
-    btn.disabled=true;
-
+    const email=document.getElementById('email-input').value.trim();
+    if(!email||!email.includes('@')){document.getElementById('email-input').classList.add('error');setTimeout(()=>document.getElementById('email-input').classList.remove('error'),600);return}
+    agentEmail=email;const btn=document.getElementById('go-btn');btn.disabled=true;
     await resetConsole();
-
-    const console_el=document.getElementById('agent-console');
-    console_el.classList.add('active');
-    document.getElementById('target-email').textContent=email;
-    await sleep(200);
-    console_el.scrollIntoView({behavior:'smooth',block:'start'});
+    const ce=document.getElementById('agent-console');ce.classList.add('active');document.getElementById('target-email').textContent=email;
+    await sleep(200);ce.scrollIntoView({behavior:'smooth',block:'start'});
 
     const [local,domain]=email.split('@');
     const parts=local.replace(/[._\-]/g,' ').split(' ');
@@ -717,88 +662,55 @@ async function startAgent(){
     const isPersonal=personalDomains.includes(domain.toLowerCase());
     const co=domain.replace(/\.(com|io|co|org|net|app)$/i,'');
     const coName=isPersonal?null:co.charAt(0).toUpperCase()+co.slice(1);
-    const known = KNOWN[email.toLowerCase()] || null;
+    const known=KNOWN[email.toLowerCase()]||null;
 
-    let apiData = null;
-    const fetchPromise = known ? Promise.resolve() : fetch(API+'/find-contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})}).then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}).then(d=>{if(d.success&&d.data)apiData=d.data}).catch(err=>{console.warn('API fetch failed:',err.message)});
+    let apiData=null;
+    const fetchP=known?Promise.resolve():fetch(API+'/find-contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})}).then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}).then(d=>{if(d.success&&d.data)apiData=d.data}).catch(err=>{console.warn('API:',err.message)});
 
-    // ──── STEP 1: Identity ────
-    showStep('identity');
-    setIcon('identity',false);
+    showStep('identity');setIcon('identity',false);
     document.getElementById('sub-identity').textContent='Searching for '+email+'...';
-    await sleep(1200);
+    await sleep(1200);await fetchP;contactData=apiData;
 
-    await fetchPromise;
-    contactData = apiData;
+    const nm=known?.name||contactData?.person?.name||guessName;
+    const apiCo=contactData?.company?.name;
+    const cp=known?.company||(apiCo&&!personalDomains.includes(apiCo.toLowerCase()+'.com')&&apiCo.toLowerCase()!=='gmail'&&apiCo.toLowerCase()!=='yahoo'?apiCo:null)||coName;
+    const ti=known?.title||contactData?.person?.title||null;
+    const lo=known?.location||contactData?.person?.location||null;
+    const li=known?.linkedin||contactData?.person?.linkedin||null;
+    const ph=known?.phone||contactData?.phones?.[0]?.number||null;
+    const ph2=known?.mobile||contactData?.phones?.[1]?.number||null;
 
-    const nm = known?.name || contactData?.person?.name || guessName;
-    const apiCo = contactData?.company?.name;
-    const cp = known?.company || (apiCo && !personalDomains.includes(apiCo.toLowerCase()+'.com') && apiCo.toLowerCase()!=='gmail' && apiCo.toLowerCase()!=='yahoo' ? apiCo : null) || coName;
-    const ti = known?.title || contactData?.person?.title || null;
-    const lo = known?.location || contactData?.person?.location || null;
-    const li = known?.linkedin || contactData?.person?.linkedin || null;
-    const ph = known?.phone || contactData?.phones?.[0]?.number || null;
-    const ph2 = known?.mobile || contactData?.phones?.[1]?.number || null;
-
-    const profileCard = document.getElementById('profile-card');
-    const avatarWrap = document.getElementById('avatar-wrap');
-    const initials = nm.split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();
-    const initialsFallback = `https://ui-avatars.com/api/?name=${encodeURIComponent(nm)}&size=200&background=2563EB&color=fff&bold=true`;
-    const avatarSrc = known?.avatarUrl || `https://unavatar.io/${encodeURIComponent(email)}`;
+    const profileCard=document.getElementById('profile-card');
+    const avatarWrap=document.getElementById('avatar-wrap');
+    const initialsFallback=`https://ui-avatars.com/api/?name=${encodeURIComponent(nm)}&size=200&background=2563EB&color=fff&bold=true`;
+    const avatarSrc=known?.avatarUrl||`https://unavatar.io/${encodeURIComponent(email)}`;
     avatarWrap.innerHTML=`<img src="${avatarSrc}" style="width:100%;height:100%;object-fit:cover" onerror="this.src='${initialsFallback}'">`;
-    profileCard.style.display='block';
-    profileCard.style.animation='pop-in .4s cubic-bezier(.16,1,.3,1)';
+    profileCard.style.display='block';profileCard.style.animation='pop-in .3s ease';
     document.getElementById('card-identity').classList.add('loaded');
 
-    await typeText(document.getElementById('profile-name'),nm,40);
-    await sleep(200);
-
-    const titleText = ti && cp ? ti+' at '+cp : ti || cp || '';
+    await typeText(document.getElementById('profile-name'),nm,35);await sleep(150);
+    const titleText=ti&&cp?ti+' at '+cp:ti||cp||'';
     if(titleText){document.getElementById('profile-title').textContent=titleText;document.getElementById('profile-title').style.animation='fadeUp .3s ease'}
+    await sleep(150);
+    if(lo){document.getElementById('profile-location').innerHTML='<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>'+lo;document.getElementById('profile-location').style.animation='fadeUp .3s ease'}
     await sleep(200);
-
-    if(lo){
-        document.getElementById('profile-location').innerHTML='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>'+lo;
-        document.getElementById('profile-location').style.animation='fadeUp .3s ease';
-    }
-    await sleep(300);
-
-    if(li){
-        const liDiv=document.getElementById('profile-linkedin');
-        liDiv.style.display='block';liDiv.style.animation='fadeUp .3s ease';
-        document.getElementById('linkedin-text').textContent='Profile found — '+li;
-    }
-    await sleep(300);
-
-    if(known?.greeting){
-        const greetDiv=document.createElement('div');
-        greetDiv.style.cssText='padding:12px 16px;background:linear-gradient(135deg,rgba(37,99,235,.04),rgba(16,185,129,.04));border:1px solid rgba(37,99,235,.1);border-radius:10px;margin-top:12px;font-size:14px;color:var(--blue);font-weight:600;font-family:var(--display);text-align:center;animation:pop-in .4s cubic-bezier(.16,1,.3,1)';
-        greetDiv.textContent=known.greeting;
-        document.getElementById('card-identity').appendChild(greetDiv);
-    }
+    if(li){const liDiv=document.getElementById('profile-linkedin');liDiv.style.display='block';liDiv.style.animation='fadeUp .3s ease';document.getElementById('linkedin-text').textContent='Found — '+li}
     await sleep(200);
+    if(known?.greeting){const g=document.createElement('div');g.style.cssText='padding:10px 14px;background:rgba(37,99,235,.03);border:1px solid rgba(37,99,235,.08);border-radius:8px;margin-top:10px;font-size:13px;color:var(--blue);font-weight:600;font-family:var(--display);text-align:center;animation:pop-in .3s ease';g.textContent=known.greeting;document.getElementById('card-identity').appendChild(g)}
+    await sleep(150);
 
-    const hasRealPhone = known?.phone || contactData?.phones?.[0]?.number;
-    const hasRealMobile = known?.mobile || contactData?.phones?.[1]?.number;
-    if(hasRealPhone) await addDataRow('identity-rows','Phone',ph,'found');
-    if(hasRealMobile) await addDataRow('identity-rows','Mobile',ph2,'found');
-    if(!hasRealPhone && !hasRealMobile && contactData?.phones?.length){
-        await addDataRow('identity-rows','Phone',contactData.phones[0].number,'found');
-    }
+    const hasPhone=known?.phone||contactData?.phones?.[0]?.number;
+    const hasMobile=known?.mobile||contactData?.phones?.[1]?.number;
+    if(hasPhone)await addDataRow('identity-rows','Phone',ph,'found');
+    if(hasMobile)await addDataRow('identity-rows','Mobile',ph2,'found');
+    if(!hasPhone&&!hasMobile&&contactData?.phones?.length)await addDataRow('identity-rows','Phone',contactData.phones[0].number,'found');
     await addDataRow('identity-rows','Email','Verified deliverable','found');
 
-    setIcon('identity',true);
-    document.getElementById('title-identity').textContent=nm;
-    document.getElementById('sub-identity').textContent=titleText || 'Identity confirmed';
-    doneStep('identity');
-    await sleep(500);
+    setIcon('identity',true);document.getElementById('title-identity').textContent=nm;
+    document.getElementById('sub-identity').textContent=titleText||'Identity confirmed';doneStep('identity');await sleep(400);
 
-    // ──── STEP 2: Intelligence — "You are..." format ────
-    showStep('intel');
-    setIcon('intel',false);
-    document.getElementById('sub-intel').textContent=cp ? 'Analyzing '+cp+'...' : 'Building profile...';
-    await sleep(800);
-
+    showStep('intel');setIcon('intel',false);
+    document.getElementById('sub-intel').textContent=cp?'Analyzing '+cp+'...':'Building profile...';await sleep(700);
     document.getElementById('card-intel').classList.add('loaded');
 
     if(known){
@@ -808,124 +720,73 @@ async function startAgent(){
         await addDataRow('intel-rows','Risk level',known.risk);
         await addDataRow('intel-rows','Best approach',known.recommended_tone);
     } else {
-        const rs = contactData?.recovery_strategy || buildStrat(cp||nm,domain);
-        const isEnt = rs.confidence > 90;
-        if(cp) await addDataRow('intel-rows','Your company',rs.company_profile||rs.profile||cp);
+        const rs=contactData?.recovery_strategy||buildStrat(cp||nm,domain);
+        const isEnt=rs.confidence>90;
+        if(cp)await addDataRow('intel-rows','Your company',rs.company_profile||rs.profile||cp);
         await addDataRow('intel-rows','You are',isEnt?'Enterprise decision-maker':'Individual contact','found');
         await addDataRow('intel-rows','Risk level',isEnt?'Low — ability to pay is high':'Medium — requires direct outreach');
         await addDataRow('intel-rows','Best approach',isEnt?'Formal notice, reference contract terms':'Direct outreach, offer payment plan');
     }
 
-    setIcon('intel',true);
-    document.getElementById('title-intel').textContent='Profile complete';
-    document.getElementById('sub-intel').textContent=cp ? cp+' — analyzed' : 'Analysis complete';
-    doneStep('intel');
-    await sleep(500);
+    setIcon('intel',true);document.getElementById('title-intel').textContent='Profile complete';
+    document.getElementById('sub-intel').textContent=cp?cp+' — analyzed':'Analysis complete';doneStep('intel');await sleep(400);
 
-    // ──── STEP 3: Strategy — why they're not paying ────
-    showStep('strategy');
-    setIcon('strategy',false);
-    document.getElementById('sub-strategy').textContent='Building collection plan...';
-    await sleep(600);
-
-    const rs = contactData?.recovery_strategy || buildStrat(cp,domain);
-
-    await addStrategyRow(`<strong>Why they haven't paid:</strong> ${rs.likely_reason}`);
+    showStep('strategy');setIcon('strategy',false);
+    document.getElementById('sub-strategy').textContent='Building collection plan...';await sleep(500);
+    const rs=contactData?.recovery_strategy||buildStrat(cp,domain);
+    await addStrategyRow(`<strong>Why you haven't paid:</strong> ${rs.likely_reason}`);
     await addStrategyRow(`<strong>What we'll do:</strong> ${rs.approach}`);
     await addStrategyRow(`<strong>Expected resolution:</strong> ${rs.expected_days} days`);
 
     const confDiv=document.createElement('div');confDiv.className='confidence-bar';
     confDiv.innerHTML=`<span style="font-size:12px;color:var(--text-muted)">Confidence</span><div class="conf-track"><div class="conf-fill" id="conf-bar"></div></div><span class="conf-label">${rs.confidence}%</span>`;
     document.getElementById('card-strategy').appendChild(confDiv);
-    await sleep(100);confDiv.classList.add('show');await sleep(100);
-    document.getElementById('conf-bar').style.width=rs.confidence+'%';
+    await sleep(80);confDiv.classList.add('show');await sleep(80);document.getElementById('conf-bar').style.width=rs.confidence+'%';
+    setIcon('strategy',true);document.getElementById('title-strategy').textContent='Strategy ready';
+    document.getElementById('sub-strategy').textContent=rs.confidence+'% confidence — '+rs.expected_days+' day resolution';doneStep('strategy');await sleep(300);
 
-    setIcon('strategy',true);
-    document.getElementById('title-strategy').textContent='Strategy ready';
-    document.getElementById('sub-strategy').textContent=rs.confidence+'% confidence — '+rs.expected_days+' day resolution';
-    doneStep('strategy');
-    await sleep(400);
-
-    // ──── STEP 4: Collection ────
-    showStep('collect');
-    setIcon('collect',false);
-    document.getElementById('sub-collect').textContent='Deploying AI agent...';
-    await sleep(300);
-
+    showStep('collect');setIcon('collect',false);document.getElementById('sub-collect').textContent='Deploying AI agent...';await sleep(250);
     document.getElementById('collect-content').innerHTML='<div class="thinking"><div class="thinking-dot"></div><div class="thinking-dot"></div><div class="thinking-dot"></div></div><div style="font-size:13px;color:var(--text-muted)">Sending collection notice...</div>';
-
-    const safeToEmail = !email.toLowerCase().includes('marc@salesforce.com');
+    const safeToEmail=!email.toLowerCase().includes('marc@salesforce.com');
     if(safeToEmail){try{await fetch(API+'/email',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})})}catch{}}
-    await sleep(1200);
+    await sleep(1000);
 
     document.getElementById('card-collect').classList.add('loaded');
-    const repCompany = cp || nm;
-    document.getElementById('collect-content').innerHTML=`
-        <div style="text-align:center;padding:16px 0">
-            <div style="font-size:36px;margin-bottom:12px">&#9993;</div>
-            <div style="font-family:var(--display);font-size:18px;font-weight:800;color:var(--green);margin-bottom:8px">Collection notice sent</div>
-            <div style="font-size:14px;color:var(--text);margin-bottom:4px">Expect an email from <strong>Matthew Schweber</strong> representing <strong>${repCompany}</strong></div>
-            <div style="font-size:12px;color:var(--text-muted);margin-top:8px">Reply to dispute it — AI responds in under 60 seconds.</div>
-        </div>`;
+    const repCompany=cp||nm;
+    document.getElementById('collect-content').innerHTML=`<div style="text-align:center;padding:12px 0">
+        <div style="font-family:var(--display);font-size:16px;font-weight:800;color:var(--green);margin-bottom:6px">Collection notice sent</div>
+        <div style="font-size:13px;color:var(--text);margin-bottom:4px">Expect an email from <strong>Matthew Schweber</strong> representing <strong>${repCompany}</strong></div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:6px">Reply to dispute it — AI responds in under 60 seconds.</div>
+    </div>`;
+    setIcon('collect',true);document.getElementById('title-collect').textContent='Collection in progress';
+    document.getElementById('sub-collect').textContent='Email sent — AI monitoring for response';doneStep('collect');await sleep(400);
 
-    setIcon('collect',true);
-    document.getElementById('title-collect').textContent='Collection in progress';
-    document.getElementById('sub-collect').textContent='Email sent — AI monitoring for response';
-    doneStep('collect');
-    await sleep(500);
-
-    agentPhone = ph;
-    document.getElementById('call-btn-text').textContent=ph ? 'Call '+ph+' now' : 'Call me now';
-    document.getElementById('agent-actions').classList.add('show');
-    btn.disabled=false;
+    agentPhone=ph;
+    document.getElementById('call-btn-text').textContent=ph?'Call '+ph+' now':'Call me now';
+    document.getElementById('agent-actions').classList.add('show');btn.disabled=false;
 }
 
-// ═══════════════════════════
-// CALL DEMO
-// ═══════════════════════════
 async function triggerCall(){
-    const btn=document.getElementById('call-action-btn');
-    btn.disabled=true;
-    const callEl=document.getElementById('call-active');
-    callEl.classList.add('show');
-    callEl.scrollIntoView({behavior:'smooth',block:'center'});
+    const btn=document.getElementById('call-action-btn');btn.disabled=true;
+    const callEl=document.getElementById('call-active');callEl.classList.add('show');callEl.scrollIntoView({behavior:'smooth',block:'center'});
     if(agentPhone){doCall(agentPhone);return}
-    document.getElementById('call-inner').innerHTML=`
-        <div style="margin-bottom:12px;font-family:var(--display);font-size:16px;font-weight:700">Your phone number</div>
-        <div style="display:flex;gap:8px;max-width:400px;margin:0 auto">
-            <input type="tel" id="call-phone" placeholder="+1 (555) 000-0000" style="flex:1;padding:14px 18px;border:1.5px solid var(--border);border-radius:10px;font-family:var(--mono);font-size:14px;outline:none;transition:border .3s" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'">
-            <button onclick="doCall()" style="padding:14px 28px;background:var(--blue);color:#fff;border:none;border-radius:10px;font-family:var(--display);font-weight:700;cursor:pointer;font-size:14px">Call me</button>
-        </div>`;
+    document.getElementById('call-inner').innerHTML=`<div style="margin-bottom:10px;font-family:var(--display);font-size:15px;font-weight:700">Your phone number</div><div style="display:flex;gap:8px;max-width:380px;margin:0 auto"><input type="tel" id="call-phone" placeholder="+1 (555) 000-0000" style="flex:1;padding:12px 16px;border:1.5px solid var(--border);border-radius:8px;font-family:var(--mono);font-size:14px;outline:none;transition:border .2s" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'"><button onclick="doCall()" style="padding:12px 24px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-weight:600;cursor:pointer;font-size:14px">Call</button></div>`;
 }
 
 async function doCall(prefilledPhone){
     const rawPhone=prefilledPhone||document.getElementById('call-phone')?.value?.trim();
     if(!rawPhone||rawPhone.length<6){const inp=document.getElementById('call-phone');if(inp)inp.style.borderColor='var(--red)';return}
-    const phone=rawPhone.replace(/[^0-9+() \-]/g,'');
-    const inner=document.getElementById('call-inner');
-
-    inner.innerHTML=`<div style="text-align:center"><div class="thinking" style="justify-content:center"><div class="thinking-dot"></div><div class="thinking-dot"></div><div class="thinking-dot"></div></div><div style="font-size:14px;color:var(--text-muted)">Analyzing number...</div><div style="font-family:var(--mono);font-size:20px;font-weight:700;color:var(--blue);margin-top:8px">${phone}</div></div>`;
-
-    try{const r=await fetch(API+'/phone-lookup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone})});await r.json()}catch{}
+    const phone=rawPhone.replace(/[^0-9+() \-]/g,'');const inner=document.getElementById('call-inner');
+    inner.innerHTML=`<div style="text-align:center"><div class="thinking" style="justify-content:center"><div class="thinking-dot"></div><div class="thinking-dot"></div><div class="thinking-dot"></div></div><div style="font-size:13px;color:var(--text-muted)">Analyzing number...</div><div style="font-family:var(--mono);font-size:18px;font-weight:700;color:var(--blue);margin-top:6px">${phone}</div></div>`;
+    try{await fetch(API+'/phone-lookup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone})});} catch{}
     await sleep(500);
-
-    inner.innerHTML=`<div style="text-align:center"><div style="font-size:13px;color:var(--text-muted);margin-bottom:4px">Calling</div><div style="font-family:var(--mono);font-size:20px;font-weight:700;color:var(--text);margin-bottom:12px">${phone}</div><div class="call-countdown" id="cd"></div></div>`;
-    const cd=document.getElementById('cd');
-    for(let i=5;i>=1;i--){cd.textContent=i;await sleep(1000)}
-
-    inner.innerHTML=`<div style="text-align:center"><div class="thinking" style="justify-content:center"><div class="thinking-dot"></div><div class="thinking-dot"></div><div class="thinking-dot"></div></div><div style="font-family:var(--mono);font-size:18px;font-weight:700;color:var(--blue);margin-bottom:4px">${phone}</div><div style="font-size:14px;color:var(--text-muted)">Dialing...</div></div>`;
+    inner.innerHTML=`<div style="text-align:center"><div style="font-size:12px;color:var(--text-muted);margin-bottom:4px">Calling</div><div style="font-family:var(--mono);font-size:18px;font-weight:700;color:var(--text);margin-bottom:10px">${phone}</div><div class="call-countdown" id="cd"></div></div>`;
+    const cd=document.getElementById('cd');for(let i=5;i>=1;i--){cd.textContent=i;await sleep(1000)}
+    inner.innerHTML=`<div style="text-align:center"><div class="thinking" style="justify-content:center"><div class="thinking-dot"></div><div class="thinking-dot"></div><div class="thinking-dot"></div></div><div style="font-family:var(--mono);font-size:16px;font-weight:700;color:var(--blue);margin-bottom:4px">${phone}</div><div style="font-size:13px;color:var(--text-muted)">Dialing...</div></div>`;
     try{await fetch(API+'/call',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone})})}catch{}
     await sleep(800);
-
     const isFR=phone.startsWith('+33'),amt=isFR?'1':'$1';
-    inner.innerHTML=`<div style="text-align:center">
-        <div class="waveform" style="margin:0 auto 16px">${'<div class="wave-bar"></div>'.repeat(7)}</div>
-        <div style="font-family:var(--mono);font-size:16px;color:var(--text-muted);margin-bottom:8px">${phone}</div>
-        <div style="font-family:var(--display);font-size:20px;font-weight:800;color:var(--green);margin-bottom:4px">Call in progress</div>
-        <div style="font-size:14px;color:var(--text-muted)">Your phone is ringing. AI is collecting ${amt}.</div>
-        <div style="font-size:12px;color:var(--text-dim);margin-top:8px">Try to negotiate or refuse — it handles everything.</div>
-    </div>`;
-
+    inner.innerHTML=`<div style="text-align:center"><div class="waveform" style="margin:0 auto 12px">${'<div class="wave-bar"></div>'.repeat(7)}</div><div style="font-family:var(--mono);font-size:14px;color:var(--text-muted);margin-bottom:6px">${phone}</div><div style="font-family:var(--display);font-size:18px;font-weight:800;color:var(--green);margin-bottom:4px">Call in progress</div><div style="font-size:13px;color:var(--text-muted)">Your phone is ringing. AI is collecting ${amt}.</div><div style="font-size:11px;color:var(--text-dim);margin-top:6px">Try to negotiate or refuse — it handles everything.</div></div>`;
     setTimeout(()=>document.getElementById('call-action-btn').disabled=false,30000);
 }
 
