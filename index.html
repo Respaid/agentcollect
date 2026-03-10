@@ -120,28 +120,27 @@
         .section-sub{font-size:15px;color:var(--text-mid);max-width:420px;line-height:1.6}
 
         /* ═══ CUSTOMER CARDS ═══ */
-        .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
-        .card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:28px 24px;cursor:pointer;transition:all .3s;position:relative}
-        .card:hover{border-color:var(--border-hover);box-shadow:var(--shadow-md)}
-        .card-logo{height:22px;opacity:.45;filter:grayscale(100%);margin-bottom:20px;transition:all .4s;object-fit:contain}
-        .card:hover .card-logo{opacity:.7;filter:grayscale(0%)}
-        .card-headline{font-family:var(--display);font-size:15px;font-weight:700;color:var(--text);line-height:1.45;margin-bottom:20px}
-        .card-metric{display:flex;align-items:baseline;gap:10px;padding-top:16px;border-top:1px solid var(--border)}
-        .card-num{font-family:var(--display);font-size:28px;font-weight:900;letter-spacing:-.03em}
-        .card-desc{font-size:13px;color:var(--text-mid);line-height:1.4}
-        .card-expand{display:none;margin-top:20px;padding-top:20px;border-top:1px solid var(--border);font-size:13px;color:var(--text-mid);line-height:1.7}
+        .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:56px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+        .card{background:#fff;padding:32px 28px;cursor:pointer;transition:all .25s;position:relative;display:flex;flex-direction:column}
+        .card:hover{background:var(--bg)}
+        .card-logo{height:20px;opacity:.4;filter:grayscale(100%);margin-bottom:20px;transition:all .4s;object-fit:contain}
+        .card:hover .card-logo{opacity:.65;filter:grayscale(0%)}
+        .card-headline{font-family:var(--display);font-size:14px;font-weight:600;color:var(--text);line-height:1.5;flex:1}
+        .card-metric{display:flex;align-items:baseline;gap:8px;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
+        .card-num{font-family:var(--display);font-size:15px;font-weight:800;color:var(--blue);letter-spacing:-.02em}
+        .card-desc{font-size:12px;color:var(--text-muted);line-height:1.4}
+        .card-expand{display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--text-mid);line-height:1.7}
         .card-expand.open{display:block;animation:fadeUp .3s ease}
         .card-expand strong{color:var(--text);font-weight:600}
-        .card-toggle{display:flex;align-items:center;gap:4px;margin-top:16px;font-size:12px;font-weight:600;color:var(--blue);border:none;background:none;cursor:pointer;padding:0;font-family:var(--sans)}
+        .card-toggle{display:flex;align-items:center;gap:4px;margin-top:12px;font-size:12px;font-weight:600;color:var(--blue);border:none;background:none;cursor:pointer;padding:0;font-family:var(--sans)}
         .card-toggle svg{transition:transform .2s}
         .card-toggle.open svg{transform:rotate(180deg)}
 
         /* ═══ RICH CASE STUDY (Microsoft) ═══ */
-        .card.card-featured{grid-column:1/-1}
+        .card.card-featured .card-expand{padding-top:20px}
         .card-featured .card-inner{display:grid;grid-template-columns:1fr 1fr;gap:0}
         .card-featured .card-left{padding-right:24px;border-right:1px solid var(--border)}
         .card-featured .card-right{padding-left:24px}
-        .card-featured .card-expand{grid-column:1/-1}
         .cs-video-wrap{position:relative;border-radius:10px;overflow:hidden;background:#000;margin-bottom:20px;cursor:pointer}
         .cs-video-wrap video{width:100%;display:block;aspect-ratio:16/9;object-fit:contain;background:#000}
         .cs-video-wrap img.cs-poster{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:opacity .3s}
@@ -311,7 +310,7 @@
 
         /* ═══ RESPONSIVE ═══ */
         @media(max-width:1024px){
-            .cards-grid{grid-template-columns:repeat(2,1fr)}
+            .cards-grid{grid-template-columns:repeat(2,1fr);border-radius:12px}
             .how-grid{grid-template-columns:repeat(2,1fr)}
             .stats-inner{grid-template-columns:repeat(2,1fr)}
             .stat-item:nth-child(2){border-right:none}
@@ -326,7 +325,7 @@
             .input-btn{width:100%;justify-content:center;border-radius:8px}
             .input-field{text-align:center}
             .marquee img{height:22px;margin:0 28px}
-            .cards-grid{grid-template-columns:1fr}
+            .cards-grid{grid-template-columns:1fr;border-radius:12px}
             .how-grid{grid-template-columns:1fr;max-width:360px;margin-left:auto;margin-right:auto}
             .stats-inner{grid-template-columns:repeat(2,1fr)}
             .stat-item{padding:28px 16px}
@@ -470,7 +469,7 @@
         <img src="https://cdn.brandfetch.io/doordash.com/w/512/h/80/logo" alt="DoorDash">
         <img src="https://cdn.brandfetch.io/twilio.com/w/512/h/80/logo" alt="Twilio">
         <img src="https://cdn.brandfetch.io/redis.com/w/512/h/80/logo" alt="Redis">
-        <img src="https://cdn.brandfetch.io/uber.com/w/512/h/80/logo" alt="Uber">
+        <img src="https://cdn.brandfetch.io/uberfreight.com/w/512/h/80/logo" alt="Uber Freight">
         <img src="https://cdn.brandfetch.io/microsoft.com/w/512/h/80/logo" alt="Microsoft">
         <img src="https://cdn.brandfetch.io/dell.com/w/512/h/80/logo" alt="Dell">
         <img src="https://cdn.brandfetch.io/plaid.com/w/512/h/80/logo" alt="Plaid">
@@ -478,7 +477,7 @@
         <img src="https://cdn.brandfetch.io/doordash.com/w/512/h/80/logo" alt="DoorDash">
         <img src="https://cdn.brandfetch.io/twilio.com/w/512/h/80/logo" alt="Twilio">
         <img src="https://cdn.brandfetch.io/redis.com/w/512/h/80/logo" alt="Redis">
-        <img src="https://cdn.brandfetch.io/uber.com/w/512/h/80/logo" alt="Uber">
+        <img src="https://cdn.brandfetch.io/uberfreight.com/w/512/h/80/logo" alt="Uber Freight">
     </div>
 </section>
 
@@ -517,14 +516,13 @@
                 <img src="https://cdn.brandfetch.io/microsoft.com/w/512/h/80/logo" alt="Microsoft" class="card-logo">
                 <div class="card-headline">Fired their agency. AI recovers 3.2× more. Zero complaints.</div>
                 <div class="card-metric">
-                    <div class="card-num" style="color:var(--blue)">3.2×</div>
-                    <div class="card-desc">recovery rate vs. their previous agency</div>
+                    <div class="card-num">3.2×</div>
+                    <div class="card-desc">recovery rate vs. previous agency</div>
                 </div>
-                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">See full case study <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">See case study <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
                 <div class="card-expand">
                     <div class="card-inner">
                         <div class="card-left">
-                            <!-- Video -->
                             <div class="cs-video-wrap" onclick="event.stopPropagation();playMsVideo(this)">
                                 <img src="https://respaid.com/customers/microsoft/poster.jpg" alt="Neil Doyle - Microsoft" class="cs-poster">
                                 <video playsinline webkit-playsinline preload="metadata" id="ms-video">
@@ -534,7 +532,6 @@
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="rgba(255,255,255,.95)"><polygon points="6 3 20 12 6 21 6 3"/></svg>
                                 </div>
                             </div>
-                            <!-- Quote -->
                             <div class="cs-quote-block">
                                 <p>"Not one of them complained about the tone or the engagement. That's unheard of in collections."</p>
                                 <cite>
@@ -542,20 +539,17 @@
                                     <div><strong>Neil Doyle</strong> · Group Finance Manager, Microsoft</div>
                                 </cite>
                             </div>
-                            <!-- Challenge / Solution -->
-                            <strong>Challenge:</strong> Collections is one of the riskiest places to deploy AI. A single hallucination and the complaint goes straight to marketing. Microsoft needed to recover across hundreds of enterprise accounts in 44 states — without damaging a single relationship.<br><br>
-                            <strong>Solution:</strong> AI agents that adapt tone by region (empathy-first in the South, direct in the Northeast), discover decision-makers beyond AP (+130% enrichment), and resolve 86% of disputes — 40% with zero human intervention.<br><br>
-                            <strong>Result:</strong> 3.2× the recovery rate of their previous agency. 99.7% positive CX score across thousands of touchpoints. Zero complaints.
+                            <strong>Challenge:</strong> Collections is one of the riskiest places to deploy AI. Microsoft needed to recover across hundreds of enterprise accounts in 44 states — without damaging a single relationship.<br><br>
+                            <strong>Solution:</strong> AI agents adapt tone by region, discover decision-makers beyond AP (+130% enrichment), and resolve 86% of disputes — 40% with zero human intervention.<br><br>
+                            <strong>Result:</strong> 3.2× the recovery rate of their previous agency. 99.7% positive CX score. Zero complaints.
                         </div>
                         <div class="card-right">
-                            <!-- Stats -->
                             <div class="cs-mini-stats">
                                 <div class="cs-mini-stat"><div class="cs-mini-stat-num">99.7%</div><div class="cs-mini-stat-label">positive CX score</div></div>
                                 <div class="cs-mini-stat"><div class="cs-mini-stat-num">3.2×</div><div class="cs-mini-stat-label">recovery vs. agency</div></div>
                                 <div class="cs-mini-stat"><div class="cs-mini-stat-num">+130%</div><div class="cs-mini-stat-label">contacts enriched</div></div>
                                 <div class="cs-mini-stat"><div class="cs-mini-stat-num">44</div><div class="cs-mini-stat-label">US states reached</div></div>
                             </div>
-                            <!-- Compounding -->
                             <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:10px">Every batch gets smarter</div>
                             <div class="cs-evo-bar">
                                 <div class="cs-evo-col"><div class="cs-evo-num">1×</div><div class="cs-evo-fill" style="height:20px;background:var(--border)"></div><div class="cs-evo-label-sm">Batch 1</div></div>
@@ -563,13 +557,12 @@
                                 <div class="cs-evo-col"><div class="cs-evo-num">3.2×</div><div class="cs-evo-fill" style="height:60px;background:var(--blue)"></div><div class="cs-evo-label-sm">+ Enrichment</div></div>
                                 <div class="cs-evo-col"><div class="cs-evo-num" style="color:var(--green)">5×+</div><div class="cs-evo-fill" style="height:80px;background:linear-gradient(to top,var(--blue),var(--green))"></div><div class="cs-evo-label-sm">+ Invoices</div></div>
                             </div>
-                            <!-- Regional intelligence -->
                             <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin:20px 0 10px">AI adapts by region</div>
                             <div class="cs-region-grid">
-                                <div class="cs-region" style="border-left:3px solid #ea580c"><strong>South</strong>Warmer tone, phone-first. Phone converts 2.3× higher.</div>
-                                <div class="cs-region" style="border-left:3px solid #3b82f6"><strong>Northeast</strong>Direct, email-first. Skip pleasantries, get to the invoice.</div>
-                                <div class="cs-region" style="border-left:3px solid #16a34a"><strong>West Coast</strong>Self-service preferred. 68% use the portal without a call.</div>
-                                <div class="cs-region" style="border-left:3px solid #6366f1"><strong>Midwest</strong>Relationship matters. Steady follow-ups with personal touch.</div>
+                                <div class="cs-region" style="border-left:3px solid #ea580c"><strong>South</strong>Warmer tone, phone-first.</div>
+                                <div class="cs-region" style="border-left:3px solid #3b82f6"><strong>Northeast</strong>Direct, email-first.</div>
+                                <div class="cs-region" style="border-left:3px solid #16a34a"><strong>West Coast</strong>Self-service preferred.</div>
+                                <div class="cs-region" style="border-left:3px solid #6366f1"><strong>Midwest</strong>Steady follow-ups.</div>
                             </div>
                         </div>
                     </div>
@@ -579,10 +572,10 @@
                 <img src="https://cdn.brandfetch.io/dell.com/w/512/h/80/logo" alt="Dell" class="card-logo">
                 <div class="card-headline">4 business units. No API. No IT. Just a spreadsheet.</div>
                 <div class="card-metric">
-                    <div class="card-num" style="color:var(--green)">20 min</div>
+                    <div class="card-num">20 min</div>
                     <div class="card-desc">to go live per unit</div>
                 </div>
-                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">See use case <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">Read more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
                 <div class="card-expand">
                     <strong>Challenge:</strong> Dell needed to collect overdue invoices across 4 divisions simultaneously, each with different ERP systems and processes.<br><br>
                     <strong>Solution:</strong> Each division uploads their own Excel file. AI agents handle multi-language outreach, follow-ups, and escalations independently per business unit.<br><br>
@@ -591,12 +584,12 @@
             </div>
             <div class="card reveal s3" onclick="toggleCard(this)">
                 <img src="https://cdn.brandfetch.io/plaid.com/w/512/h/80/logo" alt="Plaid" class="card-logo">
-                <div class="card-headline">Their agency: 6 months, 5%. Our AI: 20 days, 50%.</div>
+                <div class="card-headline">Agency: 6 months, 5%. Our AI: 20 days, 50%.</div>
                 <div class="card-metric">
-                    <div class="card-num" style="color:var(--pink)">10×</div>
+                    <div class="card-num">10×</div>
                     <div class="card-desc">faster than their agency</div>
                 </div>
-                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">See use case <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">Read more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
                 <div class="card-expand">
                     <strong>Challenge:</strong> Plaid's previous collection agency spent 6 months on their portfolio and recovered only 5%.<br><br>
                     <strong>Solution:</strong> AI agents researched each debtor, identified the right contact at each company, and executed a multi-channel strategy (email + phone + LinkedIn).<br><br>
@@ -607,10 +600,10 @@
                 <img src="https://cdn.brandfetch.io/checkr.com/w/512/h/80/logo" alt="Checkr" class="card-logo">
                 <div class="card-headline">Debtors prefer the AI. No judgment. No hold music. Just resolution.</div>
                 <div class="card-metric">
-                    <div class="card-num" style="color:var(--amber)">0</div>
+                    <div class="card-num">0</div>
                     <div class="card-desc">client relationships damaged</div>
                 </div>
-                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">See use case <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">Read more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
                 <div class="card-expand">
                     <strong>Challenge:</strong> Checkr needed to collect from clients they wanted to keep. Aggressive agencies were damaging relationships.<br><br>
                     <strong>Solution:</strong> AI agents use a respectful, compliance-first approach. When a debtor disputes, AI responds in under 60 seconds with documentation. Payment plans are offered automatically.<br><br>
@@ -621,10 +614,10 @@
                 <img src="https://cdn.brandfetch.io/redis.com/w/512/h/80/logo" alt="Redis" class="card-logo">
                 <div class="card-headline">12 languages. 2 continents. 1 AI. Zero localization cost.</div>
                 <div class="card-metric">
-                    <div class="card-num" style="color:var(--blue)">12</div>
+                    <div class="card-num">12</div>
                     <div class="card-desc">languages, zero incidents</div>
                 </div>
-                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">See use case <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">Read more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
                 <div class="card-expand">
                     <strong>Challenge:</strong> Redis has debtors across Europe and the US. Different languages, regulations, and business cultures.<br><br>
                     <strong>Solution:</strong> A single AI agent handles all regions natively — French for France, German for DACH, English for US/UK — while respecting local regulations (GDPR, Reg F, CCPA).<br><br>
@@ -635,10 +628,10 @@
                 <img src="https://cdn.brandfetch.io/doordash.com/w/512/h/80/logo" alt="DoorDash" class="card-logo">
                 <div class="card-headline">Collects from partners. Keeps the relationship. Agency couldn't.</div>
                 <div class="card-metric">
-                    <div class="card-num" style="color:var(--green)">&lt;60s</div>
+                    <div class="card-num">&lt;60s</div>
                     <div class="card-desc">AI dispute response</div>
                 </div>
-                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">See use case <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">Read more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
                 <div class="card-expand">
                     <strong>Challenge:</strong> DoorDash needs to collect from restaurant partners they depend on. Burning a bridge means losing a partner and their customers.<br><br>
                     <strong>Solution:</strong> AI agents de-escalate automatically, reference specific invoices and delivery data, and offer flexible resolution paths. Tone is firm but fair.<br><br>
@@ -1048,7 +1041,7 @@ async function doCall(prefilledPhone){
 }
 
 function buildStrat(company,domain){
-    const ent={'salesforce':{r:'$34B',e:'80K+',i:'Enterprise SaaS'},'microsoft':{r:'$245B',e:'220K+',i:'Technology'},'google':{r:'$307B',e:'180K+',i:'Technology'},'apple':{r:'$383B',e:'160K+',i:'Technology'},'amazon':{r:'$575B',e:'1.5M+',i:'E-commerce/Cloud'},'dell':{r:'$102B',e:'130K+',i:'Technology/Hardware'},'uber':{r:'$37B',e:'30K+',i:'Transportation'},'stripe':{r:'$14B',e:'8K+',i:'Fintech'},'plaid':{r:'$500M+',e:'1K+',i:'Fintech'},'meta':{r:'$135B',e:'67K+',i:'Social/Technology'},'oracle':{r:'$53B',e:'160K+',i:'Enterprise Software'},'doordash':{r:'$8.6B',e:'19K+',i:'Food Delivery'}};
+    const ent={'salesforce':{r:'$34B',e:'80K+',i:'Enterprise SaaS'},'microsoft':{r:'$245B',e:'220K+',i:'Technology'},'google':{r:'$307B',e:'180K+',i:'Technology'},'apple':{r:'$383B',e:'160K+',i:'Technology'},'amazon':{r:'$575B',e:'1.5M+',i:'E-commerce/Cloud'},'dell':{r:'$102B',e:'130K+',i:'Technology/Hardware'},'uberfreight':{r:'$5B+',e:'5K+',i:'Freight/Logistics'},'stripe':{r:'$14B',e:'8K+',i:'Fintech'},'plaid':{r:'$500M+',e:'1K+',i:'Fintech'},'meta':{r:'$135B',e:'67K+',i:'Social/Technology'},'oracle':{r:'$53B',e:'160K+',i:'Enterprise Software'},'doordash':{r:'$8.6B',e:'19K+',i:'Food Delivery'}};
     const co=domain.replace(/\.(com|io|co|org|net|app)$/i,'').toLowerCase(),k=ent[co];
     if(k)return{profile:`${company} — ${k.i}, ${k.r} revenue, ${k.e} employees`,likely_reason:'PO routing delay, AP process backlog, or invoice not matched to internal reference number',approach:'Direct outreach to AP manager, escalation to controller within 5 days, executive engagement if unresolved',expected_days:15,confidence:94};
     const isS=['io','co','app'].some(e=>domain.endsWith('.'+e));
