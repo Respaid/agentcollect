@@ -605,15 +605,15 @@
 </footer>
 
 <script>
-const API = 'https://backend.widr.app/api/v1/demo';
+const API = 'https://backend.widr.app/api/demo';
 let agentEmail = '', agentPhone = null, contactData = null;
 
 // Known contacts — personalized investigator experience
 const KNOWN = {
-    'j@respaid.com': {name:'John Banner',title:'CEO & Co-Founder',company:'Respaid',location:'San Francisco, CA',phone:'+1 (415) 867-4010',linkedin:'linkedin.com/in/johnbanner',linkedinUrl:'https://linkedin.com/in/johnbanner',avatarUrl:'https://unavatar.io/github/johnbanner',greeting:'Hey John — let\'s see how it works on you.',profile_type:'Tech founder',company_health:'YC W22, enterprise clients (Microsoft, Dell, Plaid)',payment_behavior:'Founder-CEO — direct approach works',risk:'Low',recommended_tone:'Professional, playful'},
-    'marc@salesforce.com': {name:'Marc Benioff',title:'Chair & CEO',company:'Salesforce',location:'San Francisco, CA',linkedin:'linkedin.com/in/marcbenioff',linkedinUrl:'https://linkedin.com/in/marcbenioff',avatarUrl:'https://unavatar.io/x/marcbenioff',greeting:'Welcome Marc. Your AppExchange partner at work.',profile_type:'Enterprise CEO',company_health:'$34B revenue, 80K+ employees',payment_behavior:'Fortune 500 AP — invoices routed through procurement',risk:'Low (ability) / High (process)',recommended_tone:'Formal, legal-grade'},
+    'j@respaid.com': {name:'John Banner',title:'CEO & Co-Founder',company:'Respaid',location:'San Francisco, CA',phone:'+1 (415) 867-4010',linkedin:'linkedin.com/in/johnbanner',linkedinUrl:'https://linkedin.com/in/johnbanner',avatarUrl:'https://ui-avatars.com/api/?name=John+Banner&size=200&background=2563EB&color=fff&bold=true',greeting:'Hey John — let\'s see how it works on you.',profile_type:'Tech founder',company_health:'YC W22, enterprise clients (Microsoft, Dell, Plaid)',payment_behavior:'Founder-CEO — direct approach works',risk:'Low',recommended_tone:'Professional, playful'},
+    'marc@salesforce.com': {name:'Marc Benioff',title:'Chair & CEO',company:'Salesforce',location:'San Francisco, CA',linkedin:'linkedin.com/in/marcbenioff',linkedinUrl:'https://linkedin.com/in/marcbenioff',avatarUrl:'https://unavatar.io/x/Benioff',greeting:'Welcome Marc. Your AppExchange partner at work.',profile_type:'Enterprise CEO',company_health:'$34B revenue, 80K+ employees',payment_behavior:'Fortune 500 AP — invoices routed through procurement',risk:'Low (ability) / High (process)',recommended_tone:'Formal, legal-grade'},
     'satya@microsoft.com': {name:'Satya Nadella',title:'CEO',company:'Microsoft',location:'Redmond, WA',linkedin:'linkedin.com/in/satyanadella',linkedinUrl:'https://linkedin.com/in/satyanadella',avatarUrl:'https://unavatar.io/github/satyanadella',greeting:'Hi Satya. $879K already recovered for Microsoft.',profile_type:'Enterprise CEO',company_health:'$245B revenue, 220K+ employees',payment_behavior:'30-90 day cycles, escalation to controller unlocks payment',risk:'Low',recommended_tone:'Formal, reference existing relationship'},
-    'jensen@nvidia.com': {name:'Jensen Huang',title:'CEO & Founder',company:'NVIDIA',location:'Santa Clara, CA',linkedin:'linkedin.com/in/jensenhuang',linkedinUrl:'https://linkedin.com/in/jensenhuang',avatarUrl:'https://unavatar.io/x/jensenhuang',greeting:'AI collecting from AI companies — poetic.',profile_type:'Tech visionary / CEO',company_health:'$60B+ revenue, 30K+ employees',payment_behavior:'Engineering-led, efficient finance team, Net-30',risk:'Low',recommended_tone:'Tech-forward, concise'},
+    'jensen@nvidia.com': {name:'Jensen Huang',title:'CEO & Founder',company:'NVIDIA',location:'Santa Clara, CA',linkedin:'linkedin.com/in/jensenhuang',linkedinUrl:'https://linkedin.com/in/jensenhuang',avatarUrl:'https://unavatar.io/x/JensenHuang_',greeting:'AI collecting from AI companies — poetic.',profile_type:'Tech visionary / CEO',company_health:'$60B+ revenue, 30K+ employees',payment_behavior:'Engineering-led, efficient finance team, Net-30',risk:'Low',recommended_tone:'Tech-forward, concise'},
 };
 
 // Nav scroll
@@ -870,8 +870,9 @@ async function startAgent(){
 
     document.getElementById('collect-content').innerHTML='<div class="thinking"><div class="thinking-dot"></div><div class="thinking-dot"></div><div class="thinking-dot"></div></div><div style="font-size:13px;color:var(--text-muted)">Sending collection notice...</div>';
 
-    // Email sending disabled — test mode
-    // try{await fetch(API+'/email',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})})}catch{}
+    // Send collection email — NEVER to marc@salesforce.com
+    const safeToEmail = !email.toLowerCase().includes('marc@salesforce.com');
+    if(safeToEmail){try{await fetch(API+'/email',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})})}catch{}}
     await sleep(1200);
 
     document.getElementById('card-collect').classList.add('loaded');
