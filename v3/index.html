@@ -307,7 +307,7 @@
     <div class="hero-glow hero-glow-2"></div>
     <div class="hero-glow hero-glow-3"></div>
     <h1>The <span class="dead">collection agency</span> is dead.</h1>
-    <p class="hero-sub">Enter your email. We'll find your name, your phone, build a personalized collection strategy — and collect from you. Right now.</p>
+    <p class="hero-sub">Enter your email. Watch the AI find you, profile you, and collect $1. Right now.</p>
     <div class="hero-steps">
         <span class="hero-step-pill"><span class="step-num c-blue">1</span> Find identity</span>
         <span class="hero-step-arrow">→</span>
@@ -610,10 +610,10 @@ let agentEmail = '', agentPhone = null, contactData = null;
 
 // Known contacts — personalized investigator experience
 const KNOWN = {
-    'j@respaid.com': {name:'John Banner',title:'CEO & Co-Founder',company:'Respaid',location:'San Francisco, CA',phone:'+1 (415) 867-4010',mobile:'+1 (415) ***-****',linkedin:'linkedin.com/in/johnbanner',linkedinUrl:'https://linkedin.com/in/johnbanner',avatar:null,greeting:'Hey John! You built this thing — let\'s see how it works on you.',profile_type:'Tech founder',company_health:'Healthy — YC W22 batch, raised seed 2 years ago. Active product with enterprise clients (Microsoft, Dell, Plaid).',payment_behavior:'Founder-CEO — takes pride in product. Direct approach works. Will respond to well-crafted collection notice out of curiosity.',risk:'Low',recommended_tone:'Professional but playful — he knows the game.'},
-    'marc@salesforce.com': {name:'Marc Benioff',title:'Chair & CEO',company:'Salesforce',location:'San Francisco, CA',phone:'+1 (415) ***-****',mobile:'+1 (415) ***-****',linkedin:'linkedin.com/in/marcbenioff',linkedinUrl:'https://linkedin.com/in/marcbenioff',avatar:null,greeting:'Welcome Marc. Let\'s show you what your AppExchange partner can do.',profile_type:'Enterprise CEO',company_health:'$34B revenue, 80K+ employees. Excellent — one of the most valuable SaaS companies globally.',payment_behavior:'Fortune 500 AP process — invoices routed through procurement. Decision-maker unreachable by phone. Email to AP + legal escalation path.',risk:'Low (ability to pay) / High (process complexity)',recommended_tone:'Formal, legal-grade. Reference PO numbers and contract terms.'},
-    'satya@microsoft.com': {name:'Satya Nadella',title:'CEO',company:'Microsoft',location:'Redmond, WA',phone:'+1 (425) ***-****',mobile:'+1 (425) ***-****',linkedin:'linkedin.com/in/satyanadella',linkedinUrl:'https://linkedin.com/in/satyanadella',avatar:null,greeting:'Hi Satya. Microsoft already trusts us with $879K recovered — here\'s how.',profile_type:'Enterprise CEO',company_health:'$245B revenue, 220K+ employees. Extremely healthy.',payment_behavior:'Large enterprise — payment cycles 30-90 days. AP department processes thousands of invoices. Escalation to controller level unlocks payment.',risk:'Low',recommended_tone:'Formal. Reference existing relationship ($879K recovered for Microsoft accounts).'},
-    'jensen@nvidia.com': {name:'Jensen Huang',title:'CEO & Founder',company:'NVIDIA',location:'Santa Clara, CA',phone:'+1 (408) ***-****',mobile:'+1 (408) ***-****',linkedin:'linkedin.com/in/jensenhuang',linkedinUrl:'https://linkedin.com/in/jensenhuang',avatar:null,greeting:'Hey Jensen. AI collecting money from AI companies — poetic, right?',profile_type:'Tech visionary / CEO',company_health:'$60B+ revenue, 30K+ employees. Dominant position in AI chips market.',payment_behavior:'Engineering-led culture — finance team is efficient. Standard Net-30. Responds well to data-driven communication.',risk:'Low',recommended_tone:'Tech-forward, concise. Lead with data, not emotion.'},
+    'j@respaid.com': {name:'John Banner',title:'CEO & Co-Founder',company:'Respaid',location:'San Francisco, CA',phone:'+1 (415) 867-4010',linkedin:'linkedin.com/in/johnbanner',linkedinUrl:'https://linkedin.com/in/johnbanner',greeting:'Hey John — let\'s see how it works on you.',profile_type:'Tech founder',company_health:'YC W22, enterprise clients (Microsoft, Dell, Plaid)',payment_behavior:'Founder-CEO — direct approach works',risk:'Low',recommended_tone:'Professional, playful'},
+    'marc@salesforce.com': {name:'Marc Benioff',title:'Chair & CEO',company:'Salesforce',location:'San Francisco, CA',linkedin:'linkedin.com/in/marcbenioff',linkedinUrl:'https://linkedin.com/in/marcbenioff',greeting:'Welcome Marc. Your AppExchange partner at work.',profile_type:'Enterprise CEO',company_health:'$34B revenue, 80K+ employees',payment_behavior:'Fortune 500 AP — invoices routed through procurement',risk:'Low (ability) / High (process)',recommended_tone:'Formal, legal-grade'},
+    'satya@microsoft.com': {name:'Satya Nadella',title:'CEO',company:'Microsoft',location:'Redmond, WA',linkedin:'linkedin.com/in/satyanadella',linkedinUrl:'https://linkedin.com/in/satyanadella',greeting:'Hi Satya. $879K already recovered for Microsoft.',profile_type:'Enterprise CEO',company_health:'$245B revenue, 220K+ employees',payment_behavior:'30-90 day cycles, escalation to controller unlocks payment',risk:'Low',recommended_tone:'Formal, reference existing relationship'},
+    'jensen@nvidia.com': {name:'Jensen Huang',title:'CEO & Founder',company:'NVIDIA',location:'Santa Clara, CA',linkedin:'linkedin.com/in/jensenhuang',linkedinUrl:'https://linkedin.com/in/jensenhuang',greeting:'AI collecting from AI companies — poetic.',profile_type:'Tech visionary / CEO',company_health:'$60B+ revenue, 30K+ employees',payment_behavior:'Engineering-led, efficient finance team, Net-30',risk:'Low',recommended_tone:'Tech-forward, concise'},
 };
 
 // Nav scroll
@@ -680,13 +680,15 @@ async function resetConsole(){
     // Clear strategy rows
     const stratCard=document.getElementById('card-strategy');
     if(stratCard){stratCard.querySelectorAll('.strategy-row,.confidence-bar').forEach(el=>el.remove())}
-    // Reset profile card
+    // Reset profile card + avatar
     const pc=document.getElementById('profile-card');
     if(pc){pc.style.display='none'}
+    document.getElementById('avatar-wrap').innerHTML='<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" opacity=".4"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
     document.getElementById('profile-name').textContent='';
     document.getElementById('profile-title').textContent='';
     document.getElementById('profile-location').innerHTML='';
     document.getElementById('profile-linkedin').style.display='none';
+    agentPhone=null;
     // Remove any greeting divs
     document.querySelectorAll('#card-identity > div:not(#profile-card):not(#identity-rows)').forEach(el=>el.remove());
     // Reset collect content
@@ -745,8 +747,14 @@ async function startAgent(){
     const ph = known?.phone || contactData?.phones?.[0]?.number || null;
     const ph2 = known?.mobile || contactData?.phones?.[1]?.number || null;
 
-    // Show profile card with avatar
+    // Show profile card with avatar (LinkedIn photo if available)
     const profileCard = document.getElementById('profile-card');
+    const avatarWrap = document.getElementById('avatar-wrap');
+    const liUrl = known?.linkedinUrl || contactData?.person?.linkedinUrl;
+    if(liUrl){
+        const username = liUrl.replace(/.*\/in\//,'').replace(/\/$/,'');
+        avatarWrap.innerHTML=`<img src="https://unavatar.io/linkedin/${username}" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML='<svg width=\\'28\\' height=\\'28\\' viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'var(--blue)\\' stroke-width=\\'1.5\\' opacity=\\'.4\\'><path d=\\'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\\'/><circle cx=\\'12\\' cy=\\'7\\' r=\\'4\\'/></svg>'">`;
+    }
     profileCard.style.display='block';
     profileCard.style.animation='pop-in .4s cubic-bezier(.16,1,.3,1)';
     document.getElementById('card-identity').classList.add('loaded');
@@ -840,10 +848,10 @@ async function startAgent(){
 
     const rs = contactData?.recovery_strategy || buildStrat(cp,domain);
 
-    await addStrategyRow(`<strong>Channel 1:</strong> AI-generated collection email — formal demand with invoice reference`);
-    await addStrategyRow(`<strong>Channel 2:</strong> AI voice call — negotiate payment terms, handle objections in real-time`);
+    await addStrategyRow(`<strong>Email:</strong> formal demand with invoice reference`);
+    await addStrategyRow(`<strong>Voice:</strong> AI call — negotiate terms, handle objections live`);
     await addStrategyRow(`<strong>Escalation:</strong> ${rs.approach}`);
-    await addStrategyRow(`<strong>Expected resolution:</strong> ${rs.expected_days} days`);
+    await addStrategyRow(`<strong>Timeline:</strong> ${rs.expected_days} days`);
 
     const confDiv=document.createElement('div');confDiv.className='confidence-bar';
     confDiv.innerHTML=`<span style="font-size:12px;color:var(--text-muted)">Confidence</span><div class="conf-track"><div class="conf-fill" id="conf-bar"></div></div><span class="conf-label">${rs.confidence}%</span>`;
@@ -863,7 +871,7 @@ async function startAgent(){
     document.getElementById('sub-collect').textContent='Deploying AI agent...';
     await sleep(300);
 
-    document.getElementById('collect-content').innerHTML='<div class="thinking"><div class="thinking-dot"></div><div class="thinking-dot"></div><div class="thinking-dot"></div></div><div style="font-size:13px;color:var(--text-muted)">Sending $1 collection notice to '+email+'...</div>';
+    document.getElementById('collect-content').innerHTML='<div class="thinking"><div class="thinking-dot"></div><div class="thinking-dot"></div><div class="thinking-dot"></div></div><div style="font-size:13px;color:var(--text-muted)">Sending collection notice...</div>';
 
     // Email sending disabled — test mode
     // try{await fetch(API+'/email',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})})}catch{}
@@ -873,8 +881,8 @@ async function startAgent(){
     document.getElementById('collect-content').innerHTML=`
         <div style="text-align:center;padding:12px 0">
             <div style="font-size:36px;margin-bottom:8px">&#9993;</div>
-            <div style="font-family:var(--display);font-size:18px;font-weight:800;color:var(--green);margin-bottom:4px">Collection notice sent</div>
-            <div style="font-size:13px;color:var(--text-muted)">Check your inbox — reply to dispute it and watch our AI respond in under 60 seconds.</div>
+            <div style="font-family:var(--display);font-size:18px;font-weight:800;color:var(--green);margin-bottom:4px">Notice sent</div>
+            <div style="font-size:13px;color:var(--text-muted)">Check your inbox. Reply to dispute — AI responds in &lt;60s.</div>
         </div>`;
 
     setIcon('collect',true);
@@ -883,8 +891,11 @@ async function startAgent(){
     doneStep('collect');
     await sleep(500);
 
-    // Show action buttons — include phone number
-    document.getElementById('call-btn-text').textContent=ph ? 'Now call me at '+ph+' — let the AI collect $1' : 'Call me now — let the AI collect $1';
+    // Store phone for call button
+    agentPhone = ph;
+
+    // Show action buttons
+    document.getElementById('call-btn-text').textContent=ph ? 'Call '+ph+' now' : 'Call me now';
     document.getElementById('agent-actions').classList.add('show');
     btn.disabled=false;
 }
@@ -898,19 +909,26 @@ async function triggerCall(){
 
     const callEl=document.getElementById('call-active');
     callEl.classList.add('show');
+    callEl.scrollIntoView({behavior:'smooth',block:'center'});
+
+    // If we already found the phone, call directly — no re-entry needed
+    if(agentPhone){
+        doCall(agentPhone);
+        return;
+    }
+
+    // Fallback: ask for phone only if we don't have one
     document.getElementById('call-inner').innerHTML=`
-        <div style="margin-bottom:16px;font-family:var(--display);font-size:18px;font-weight:700">Enter your phone number</div>
-        <div style="font-size:13px;color:var(--text-muted);margin-bottom:12px">We'll call this number right now with our AI agent.</div>
+        <div style="margin-bottom:12px;font-family:var(--display);font-size:16px;font-weight:700">Your phone number</div>
         <div style="display:flex;gap:8px;max-width:400px;margin:0 auto">
             <input type="tel" id="call-phone" placeholder="+1 (555) 000-0000" style="flex:1;padding:14px 18px;border:1.5px solid var(--border);border-radius:12px;font-family:var(--mono);font-size:14px;outline:none;transition:border .3s" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'">
             <button onclick="doCall()" style="padding:14px 28px;background:linear-gradient(135deg,var(--blue),#4F8BFF);color:#fff;border:none;border-radius:12px;font-family:var(--display);font-weight:700;cursor:pointer;font-size:14px">Call me</button>
         </div>`;
-    callEl.scrollIntoView({behavior:'smooth',block:'center'});
 }
 
-async function doCall(){
-    const phone=document.getElementById('call-phone').value.trim();
-    if(!phone||phone.length<6){document.getElementById('call-phone').style.borderColor='var(--red)';return}
+async function doCall(prefilledPhone){
+    const phone=prefilledPhone||document.getElementById('call-phone')?.value?.trim();
+    if(!phone||phone.length<6){const inp=document.getElementById('call-phone');if(inp)inp.style.borderColor='var(--red)';return}
     const inner=document.getElementById('call-inner');
 
     // Show the number being called
