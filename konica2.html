@@ -358,7 +358,13 @@
 
     /* ===== SCREEN 3 — INTEL ===== */
     #intel {
-      background: var(--page-bg);
+      background: var(--dark-bg);
+      color: var(--dark-text);
+    }
+
+    #intel .section-label {
+      color: #a78bfa;
+      background: rgba(167,139,250,.1);
     }
 
     #intel h2 {
@@ -371,7 +377,7 @@
 
     .intel-sub {
       font-size: 16px;
-      color: var(--muted);
+      color: var(--dark-muted);
       max-width: 540px;
       margin-bottom: 44px;
       line-height: 1.6;
@@ -400,6 +406,19 @@
       transition: opacity .4s ease, transform .4s ease;
     }
 
+    #disputes .intel-card {
+      background: rgba(255,255,255,.05);
+      border-color: rgba(255,255,255,.1);
+    }
+
+    #disputes .intel-card h3 {
+      color: var(--dark-text);
+    }
+
+    #disputes .intel-card p {
+      color: var(--dark-muted);
+    }
+
     .intel-card.visible {
       opacity: 1;
       transform: translateY(0);
@@ -414,12 +433,12 @@
       font-size: 15px;
       font-weight: 700;
       margin-bottom: 8px;
-      color: var(--text);
+      color: var(--dark-text);
     }
 
     .intel-card p {
       font-size: 13px;
-      color: var(--muted);
+      color: var(--dark-muted);
       line-height: 1.6;
     }
 
@@ -437,7 +456,13 @@
 
     /* ===== SCREEN 4 — DISPUTES ===== */
     #disputes {
-      background: var(--card-bg);
+      background: var(--dark-bg);
+      color: var(--dark-text);
+    }
+
+    #disputes .section-label {
+      color: #a78bfa;
+      background: rgba(167,139,250,.1);
     }
 
     #disputes h2 {
@@ -567,7 +592,13 @@
 
     /* ===== SCREEN 6 — HOW IT WORKS ===== */
     #how {
-      background: var(--page-bg);
+      background: var(--dark-bg);
+      color: var(--dark-text);
+    }
+
+    #how .section-label {
+      color: #a78bfa;
+      background: rgba(167,139,250,.1);
     }
 
     #how h2 {
@@ -587,8 +618,8 @@
     @media (max-width: 680px) { .steps { grid-template-columns: 1fr; } }
 
     .step {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
       border-radius: 14px;
       padding: 24px;
       opacity: 0;
@@ -611,11 +642,12 @@
       font-size: 17px;
       font-weight: 700;
       margin-bottom: 10px;
+      color: var(--dark-text);
     }
 
     .step p {
       font-size: 14px;
-      color: var(--muted);
+      color: var(--dark-muted);
       line-height: 1.6;
     }
 
@@ -880,16 +912,6 @@
           <td>Your cut (per $1 recovered)</td>
           <td>$0.70</td>
           <td>$0.85</td>
-        </tr>
-        <tr>
-          <td>Debtor complaints logged publicly</td>
-          <td>Yes (BBB, CFPB)</td>
-          <td>Zero incidents</td>
-        </tr>
-        <tr>
-          <td>FDCPA violations possible</td>
-          <td>Yes</td>
-          <td>No — fully compliant</td>
         </tr>
         <tr>
           <td>Scales with volume</td>
