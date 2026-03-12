@@ -1,5 +1,6 @@
 {
   "rewrites": [
+{ "source": "/konica-minolta", "destination": "/konica-minolta.html" },
 { "source": "/about", "destination": "/about.html" },
     { "source": "/careers", "destination": "/careers.html" },
     { "source": "/contact", "destination": "/contact.html" },
