@@ -263,6 +263,56 @@
       color: var(--primary);
     }
 
+    .demo-enriching {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .demo-found {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .demo-found-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 10px;
+      padding: 12px 16px;
+    }
+
+    .demo-found-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .demo-found-name { font-weight: 700; font-size: 15px; color: var(--text); }
+    .demo-found-title { font-size: 12px; color: var(--muted); }
+    .demo-found-badge {
+      margin-left: auto;
+      background: #dcfce7;
+      color: #16a34a;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 20px;
+    }
+
     .demo-pulse {
       width: 16px; height: 16px;
       border-radius: 50%;
@@ -622,12 +672,13 @@
     <h1>Your AI collection agent.<br><strong>Already running.</strong></h1>
     <p class="hero-sub">Call it. The agent will try to collect $4,750 from a bizhub C lease — branded Konica Minolta. Can you not pay?</p>
 
-    <!-- $1 Demo Flow -->
+    <!-- Demo Flow -->
     <div class="demo-box" id="demo-box">
+      <!-- Step 1: Enter number -->
       <div class="demo-step" id="demo-step-1">
         <p class="demo-label">Enter your phone number — the agent calls you now.</p>
         <div class="demo-input-row">
-          <input type="tel" id="demo-phone" placeholder="+1 (555) 000-0000" class="demo-input" />
+          <input type="tel" id="demo-phone" placeholder="(415) 867-4010" class="demo-input" maxlength="14" />
           <button class="call-btn" onclick="startDemo()" id="demo-btn">
             <div class="call-icon">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
@@ -636,10 +687,28 @@
           </button>
         </div>
       </div>
+      <!-- Step 2: Enriching -->
       <div class="demo-step hidden" id="demo-step-2">
-        <div class="demo-calling">
+        <div class="demo-enriching">
           <div class="demo-pulse"></div>
-          <span>Calling you now — answer and try not to pay $4,750.</span>
+          <span id="enriching-text">Looking you up...</span>
+        </div>
+      </div>
+      <!-- Step 3: Found + calling -->
+      <div class="demo-step hidden" id="demo-step-3">
+        <div class="demo-found">
+          <div class="demo-found-card" id="found-card">
+            <div class="demo-found-avatar" id="found-initials">?</div>
+            <div>
+              <div class="demo-found-name" id="found-name">Identifying...</div>
+              <div class="demo-found-title" id="found-title"></div>
+            </div>
+            <span class="demo-found-badge">✓ identified</span>
+          </div>
+          <div class="demo-calling">
+            <div class="demo-pulse"></div>
+            <span>Calling you now — answer and try not to pay $4,750.</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1003,18 +1072,59 @@
 
   sections.forEach(s => gaObs.observe(s));
 
-  // $1 Demo Flow
+  // Phone number formatter: (415) 867-4010
+  document.getElementById('demo-phone').addEventListener('input', function(e) {
+    var v = e.target.value.replace(/\D/g, '').substring(0, 10);
+    var out = '';
+    if (v.length > 0) out = '(' + v.substring(0, 3);
+    if (v.length >= 4) out += ') ' + v.substring(3, 6);
+    if (v.length >= 7) out += '-' + v.substring(6, 10);
+    e.target.value = out;
+  });
+
+  // Allow Enter key in phone input
+  document.getElementById('demo-phone').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') startDemo();
+  });
+
+  // Demo Flow
   function startDemo() {
-    const phone = document.getElementById('demo-phone').value.trim();
-    if (!phone) {
+    var raw = document.getElementById('demo-phone').value.replace(/\D/g, '');
+    if (raw.length < 10) {
       document.getElementById('demo-phone').focus();
       return;
     }
+    var phone = '+1' + raw;
     gtag('event', 'demo_call_requested', { phone_entered: true });
+
+    // Step 1 → Step 2 (enriching)
     document.getElementById('demo-step-1').classList.add('hidden');
     document.getElementById('demo-step-2').classList.remove('hidden');
 
-    // Call AgentCollect API to trigger the call
+    // Reverse lookup via backend
+    fetch('https://backend.widr.app/api/v1/demo/lookup?phone=' + encodeURIComponent(phone))
+      .then(function(r) { return r.json(); })
+      .then(function(data) { showFoundAndCall(phone, data); })
+      .catch(function() { showFoundAndCall(phone, null); });
+  }
+
+  function showFoundAndCall(phone, data) {
+    // Step 2 → Step 3
+    document.getElementById('demo-step-2').classList.add('hidden');
+    document.getElementById('demo-step-3').classList.remove('hidden');
+
+    if (data && data.name) {
+      var initials = data.name.split(' ').map(function(w){ return w[0]; }).join('').substring(0,2).toUpperCase();
+      document.getElementById('found-initials').textContent = initials;
+      document.getElementById('found-name').textContent = data.name;
+      document.getElementById('found-title').textContent = data.title || data.company || '';
+    } else {
+      document.getElementById('found-initials').textContent = '?';
+      document.getElementById('found-name').textContent = 'Identity confirmed';
+      document.getElementById('found-title').textContent = 'Calling you now...';
+    }
+
+    // Trigger the call
     fetch('https://backend.widr.app/api/v1/demo/prospect-call', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -1023,18 +1133,13 @@
         prospect: 'Konica Minolta',
         product: 'bizhub C3110i copier lease',
         amount: '$4,750',
-        from_number: '+12016277551'
+        from_number: '+12016277551',
+        name: data && data.name ? data.name : null
       })
-    }).catch(() => {
-      // Fallback: direct call link
+    }).catch(function() {
       window.location.href = 'tel:+12016277551';
     });
   }
-
-  // Allow Enter key in phone input
-  document.getElementById('demo-phone').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') startDemo();
-  });
 </script>
 </body>
 </html>
