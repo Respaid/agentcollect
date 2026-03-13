@@ -266,29 +266,29 @@ section{display:flex;flex-direction:column;justify-content:center;align-items:ce
 <!-- ============================================================ -->
 <!-- S2 — STATS (light) -->
 <!-- ============================================================ -->
-<section id="s2" data-screen="2">
+<section id="s2" data-screen="2" style="padding:60px 24px;">
   <div class="container">
-    <div style="text-align:center;margin-bottom:28px;" class="reveal">
-      <div style="display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--border);border-radius:6px;padding:8px 20px;font-size:13px;color:var(--text-muted);">
+    <div style="text-align:center;margin-bottom:32px;" class="reveal">
+      <div style="display:inline-flex;align-items:center;gap:12px;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:10px 24px;font-size:13px;color:var(--text-muted);">
         <span style="color:var(--red);font-weight:700;">Your agency today: ~11%</span>
-        <span>→</span>
+        <svg width="16" height="16" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         <span style="color:var(--green);font-weight:700;">AgentCollect: ~49% in 20 days</span>
       </div>
     </div>
     <div class="card-grid card-grid-4 reveal">
-      <div class="card" style="text-align:center;padding:32px 16px;">
+      <div class="card" style="text-align:center;padding:32px 16px;border-radius:14px;border-width:1.5px;">
         <div class="stat-mega" data-target="49" data-suffix="%">0%</div>
         <div class="stat-label">resolved in 20 days</div>
       </div>
-      <div class="card" style="text-align:center;padding:32px 16px;">
+      <div class="card" style="text-align:center;padding:32px 16px;border-radius:14px;border-width:1.5px;">
         <div class="stat-mega" data-target="86" data-suffix="%">0%</div>
         <div class="stat-label">disputes closed without human</div>
       </div>
-      <div class="card" style="text-align:center;padding:32px 16px;">
+      <div class="card" style="text-align:center;padding:32px 16px;border-radius:14px;border-width:1.5px;">
         <div class="stat-mega" data-target="3.2" data-suffix="×" data-decimals="1">0×</div>
         <div class="stat-label">vs. collection agencies</div>
       </div>
-      <div class="card" style="text-align:center;padding:32px 16px;">
+      <div class="card" style="text-align:center;padding:32px 16px;border-radius:14px;border-width:1.5px;">
         <div class="stat-big" style="line-height:1;margin-bottom:4px;font-size:2rem;">Reg F</div>
         <div class="stat-label">compliant by design</div>
       </div>
@@ -311,15 +311,21 @@ section{display:flex;flex-direction:column;justify-content:center;align-items:ce
 
     <div class="pipeline-grid reveal">
       <!-- CRM Input -->
-      <div class="pipeline-node red">
-        <div class="pipeline-icon">📄</div>
+      <div class="pipeline-node red" style="border-radius:14px;">
+        <div class="pipeline-icon">
+          <svg width="28" height="28" fill="none" stroke="var(--red)" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15h6"/></svg>
+        </div>
         <div class="pipeline-title">Your CRM data</div>
         <div class="pipeline-detail">Generic AP inbox<br>No direct line<br>No decision-maker</div>
       </div>
-      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-arrow">
+        <svg width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </div>
       <!-- AI -->
-      <div class="pipeline-node purple">
-        <div class="pipeline-icon">🤖</div>
+      <div class="pipeline-node purple" style="border-radius:14px;">
+        <div class="pipeline-icon">
+          <svg width="28" height="28" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
         <div class="pipeline-title">AI enrichment</div>
         <div class="source-badges">
           <span class="source-badge">LinkedIn</span>
@@ -329,16 +335,20 @@ section{display:flex;flex-direction:column;justify-content:center;align-items:ce
           <span class="source-badge">SMTP verify</span>
         </div>
       </div>
-      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-arrow">
+        <svg width="20" height="20" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </div>
       <!-- Result -->
-      <div class="pipeline-node green">
-        <div class="pipeline-icon">✅</div>
+      <div class="pipeline-node green" style="border-radius:14px;">
+        <div class="pipeline-icon">
+          <svg width="28" height="28" fill="none" stroke="var(--green)" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+        </div>
         <div class="pipeline-title">Result — live</div>
         <div class="pipeline-detail" style="text-align:left;margin-top:8px;">
           <div style="margin-bottom:4px;"><strong style="color:var(--text-dark);">Donna Montalbano</strong></div>
           <div style="color:var(--text-muted);font-size:.72rem;">AP Dept · Zwanger-Pesiri</div>
           <div style="margin-top:6px;font-size:.72rem;color:var(--text-muted);">dmontalbano@zprad.com</div>
-          <div style="font-size:.72rem;color:var(--text-muted);">(516) 7██-████</div>
+          <div style="font-size:.72rem;color:var(--text-muted);">(516) 7<span class="blurred">12-3456</span></div>
           <div style="margin-top:8px;display:flex;gap:4px;flex-wrap:wrap;">
             <span class="source-badge" style="background:rgba(22,163,74,.15);color:var(--green);border-color:rgba(22,163,74,.25);">✓ email valid</span>
             <span class="source-badge" style="background:rgba(22,163,74,.15);color:var(--green);border-color:rgba(22,163,74,.25);">line active</span>
@@ -347,8 +357,8 @@ section{display:flex;flex-direction:column;justify-content:center;align-items:ce
       </div>
     </div>
 
-    <div class="reveal" style="text-align:center;margin-top:8px;">
-      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(104,78,209,.06);border:1px solid rgba(104,78,209,.15);border-radius:8px;padding:8px 16px;font-size:13px;color:var(--text-muted);">
+    <div class="reveal" style="text-align:center;margin-top:12px;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(104,78,209,.06);border:1.5px solid rgba(104,78,209,.15);border-radius:10px;padding:10px 18px;font-size:13px;color:var(--text-muted);">
         <span style="font-weight:800;font-size:11px;color:var(--primary);letter-spacing:.5px;">ZP</span>
         Real enrichment on a real Konica Minolta customer — Zwanger-Pesiri Radiology
       </div>
@@ -373,6 +383,7 @@ section{display:flex;flex-direction:column;justify-content:center;align-items:ce
 .chain-row svg{flex-shrink:0;opacity:.5;}
 .chain-tag{font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;margin-left:2px;}
 .chain-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-top:12px;padding:4px 12px;border-radius:20px;}
+.blurred{filter:blur(4px);-webkit-filter:blur(4px);user-select:none;display:inline;pointer-events:none;}
 @media(max-width:768px){.chain-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:480px){.chain-grid{grid-template-columns:1fr;}}
 </style>
@@ -397,7 +408,7 @@ section{display:flex;flex-direction:column;justify-content:center;align-items:ce
           </div>
           <div class="chain-row">
             <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72"/></svg>
-            (516) 7██-████
+            (516) 7<span class="blurred">12-3456</span>
           </div>
         </div>
         <div class="chain-label" style="background:rgba(22,163,74,.1);color:var(--green);">First contact</div>
@@ -563,17 +574,35 @@ section{display:flex;flex-direction:column;justify-content:center;align-items:ce
       <p class="section-sub" style="margin:0 auto;">Every objection is a request. The AI handles them without you.</p>
     </div>
     <div class="card-grid card-grid-3 reveal">
-      <div class="dispute-card">
+      <div class="dispute-card" style="border-radius:14px;border-width:1.5px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+          <div style="width:32px;height:32px;border-radius:8px;background:rgba(22,163,74,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="16" height="16" fill="none" stroke="var(--green)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          </div>
+          <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--green);">Payment claim</span>
+        </div>
         <div class="dispute-quote">"I already paid this invoice."</div>
         <div class="dispute-stat-num">86%</div>
         <div class="dispute-stat-lbl">resolved without human</div>
       </div>
-      <div class="dispute-card">
+      <div class="dispute-card" style="border-radius:14px;border-width:1.5px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+          <div style="width:32px;height:32px;border-radius:8px;background:rgba(217,119,6,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="16" height="16" fill="none" stroke="var(--orange)" stroke-width="2" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--orange);">Equipment issue</span>
+        </div>
         <div class="dispute-quote">"The equipment is faulty — withholding payment."</div>
         <div class="dispute-stat-num">72%</div>
         <div class="dispute-stat-lbl">resolved under 48h</div>
       </div>
-      <div class="dispute-card">
+      <div class="dispute-card" style="border-radius:14px;border-width:1.5px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+          <div style="width:32px;height:32px;border-radius:8px;background:rgba(104,78,209,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="16" height="16" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+          </div>
+          <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--primary);">Missing invoice</span>
+        </div>
         <div class="dispute-quote">"We never received the invoice."</div>
         <div class="dispute-stat-num">94%</div>
         <div class="dispute-stat-lbl">re-sent & acknowledged</div>
@@ -593,8 +622,10 @@ section{display:flex;flex-direction:column;justify-content:center;align-items:ce
       <p class="section-sub" style="margin:0 auto 24px;">One call. We run live enrichment on your worst 200 accounts — not a slide deck.</p>
 
       <!-- Free POC offer -->
-      <div style="display:inline-flex;align-items:flex-start;gap:16px;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:20px 24px;margin-bottom:28px;text-align:left;max-width:420px;">
-        <div style="font-size:1.5rem;flex-shrink:0;">🎯</div>
+      <div style="display:inline-flex;align-items:flex-start;gap:16px;background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:28px;text-align:left;max-width:420px;box-shadow:0 4px 24px rgba(104,78,209,.06);">
+        <div style="width:36px;height:36px;border-radius:10px;background:rgba(104,78,209,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="18" height="18" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
         <div>
           <div style="font-weight:800;font-size:15px;margin-bottom:4px;">Free proof of concept</div>
           <div style="font-size:13px;color:var(--text-muted);line-height:1.5;">200 of your worst accounts. 60 days. $0 upfront. 15% of what we recover.</div>
