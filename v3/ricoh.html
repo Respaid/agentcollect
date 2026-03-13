@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentCollect × Ricoh</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GRZZT9K05B"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GRZZT9K05B');</script>
+<!-- Clarity -->
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","vr6uvxdalw");</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --primary:#684ED1;--text-dark:#1C1A25;--text-dark2:#27293F;--text-muted:#8084B2;
+  --border:#DFE0EC;--page-bg:#f5f6fa;--card-bg:#fff;--radius:8px;
+  --dark-bg:#1C1A25;--green:#16A34A;--red:#DC2626;--orange:#D97706;--indigo:#6366f1;
+}
+html{scroll-behavior:smooth;overflow-y:scroll;overflow-x:hidden}
+body{background:var(--page-bg);color:var(--text-dark);font-family:'Satoshi','Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+
+section{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:80px 24px;position:relative}
+.container{max-width:960px;width:100%;margin:0 auto}
+
+/* Nav */
+.top-nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(28,26,37,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06);height:52px;display:flex;align-items:center}
+.top-nav-inner{max-width:960px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;width:100%}
+.top-nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.top-nav-logo-text{font-weight:800;font-size:15px;color:#fff;letter-spacing:-.3px}
+.top-nav-expiry{font-size:11px;color:rgba(255,255,255,.4);display:flex;align-items:center;gap:5px}
+.top-nav-call{display:flex;align-items:center;gap:6px;background:var(--primary);color:#fff;padding:7px 14px;border-radius:6px;font-weight:700;font-size:13px;text-decoration:none;transition:opacity .15s}
+.top-nav-call:hover{opacity:.88}
+
+/* Typography */
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:300;margin-bottom:8px;letter-spacing:-1px;line-height:1.2;font-family:'Plus Jakarta Sans','Satoshi',sans-serif}
+.section-title strong{font-weight:800}
+.section-sub{font-size:.95rem;color:var(--text-muted);margin-bottom:32px;max-width:600px}
+
+.stat-hero{font-size:clamp(4rem,10vw,8rem);font-weight:900;letter-spacing:-3px;line-height:.9;font-family:'Plus Jakarta Sans','Satoshi',sans-serif}
+.stat-mega{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;letter-spacing:-2px;font-family:'Plus Jakarta Sans','Satoshi',sans-serif;color:var(--primary)}
+.stat-big{font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:700;font-family:'Plus Jakarta Sans','Satoshi',sans-serif}
+.stat-label{font-size:.82rem;color:var(--text-muted);margin-top:4px}
+
+/* Cards */
+.card{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.card-grid{display:grid;gap:12px}
+.card-grid-2{grid-template-columns:repeat(2,1fr)}
+.card-grid-3{grid-template-columns:repeat(3,1fr)}
+.card-grid-4{grid-template-columns:repeat(4,1fr)}
+
+/* Badges */
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(104,78,209,.08);color:var(--primary);padding:4px 10px;border-radius:3px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;border:1px solid rgba(104,78,209,.15)}
+.badge-green{background:rgba(22,163,74,.08);color:var(--green);border-color:rgba(22,163,74,.15)}
+.badge-orange{background:rgba(217,119,6,.08);color:var(--orange);border-color:rgba(217,119,6,.15)}
+.badge-red{background:rgba(220,38,38,.08);color:var(--red);border-color:rgba(220,38,38,.15)}
+
+@keyframes pulse-anim{0%,100%{opacity:1}50%{opacity:.3}}
+.pulse-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse-anim 2s infinite;display:inline-block}
+
+/* Nav dots */
+.nav-dots{position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:10px}
+.nav-dots a{width:8px;height:8px;border-radius:50%;background:rgba(28,26,37,.15);display:block;transition:all .3s}
+.nav-dots a.active{background:var(--primary);box-shadow:0 0 6px rgba(104,78,209,.4)}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* Demo box */
+.demo-box{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:24px;max-width:480px;margin:0 auto;box-shadow:0 4px 24px rgba(104,78,209,.08)}
+.demo-label{font-size:13px;color:var(--text-muted);margin-bottom:12px}
+.demo-row{display:flex;gap:10px}
+.demo-input{flex:1;background:var(--page-bg);border:1.5px solid var(--border);border-radius:8px;padding:13px 16px;font-family:'Satoshi','Inter',sans-serif;font-size:16px;color:var(--text-dark);outline:none;transition:border-color .2s}
+.demo-input::placeholder{color:#a0a3c4}
+.demo-input:focus{border-color:var(--primary)}
+.demo-btn{background:var(--primary);color:#fff;border:none;border-radius:8px;padding:13px 20px;font-family:'Satoshi','Inter',sans-serif;font-weight:700;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px;white-space:nowrap;transition:opacity .15s}
+.demo-btn:hover{opacity:.88}
+.demo-enriching{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-muted)}
+.demo-found-card{display:flex;align-items:center;gap:12px;background:rgba(22,163,74,.1);border:1px solid rgba(22,163,74,.2);border-radius:10px;padding:12px 16px;margin-bottom:12px}
+.demo-found-initials{width:40px;height:40px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex-shrink:0}
+.demo-found-name{font-weight:700;font-size:14px;color:var(--text-dark)}
+.demo-found-title{font-size:12px;color:var(--text-muted)}
+.demo-found-badge{margin-left:auto;background:rgba(22,163,74,.15);color:var(--green);font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px}
+.demo-calling{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--primary)}
+@keyframes pulse-ring{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.4}}
+.pulse-ring{width:12px;height:12px;border-radius:50%;background:var(--primary);flex-shrink:0;animation:pulse-ring 1.2s ease-in-out infinite}
+.hidden{display:none!important}
+.hero-hint{font-size:13px;color:#707088;margin-top:10px;text-align:center}
+.hero-hint a{color:var(--primary);font-weight:600;text-decoration:none}
+
+/* Pipeline */
+.pipeline-grid{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:16px;margin:32px 0}
+.pipeline-arrow{font-size:1.5rem;color:var(--border);align-self:center}
+.pipeline-node{border-radius:var(--radius);padding:20px;text-align:center}
+.pipeline-icon{font-size:2rem;margin-bottom:10px}
+.pipeline-title{font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.pipeline-detail{font-size:.78rem;line-height:1.4;color:var(--text-muted)}
+.pipeline-node.red{background:rgba(220,38,38,.08);border:1.5px solid rgba(220,38,38,.2)}
+.pipeline-node.purple{background:rgba(104,78,209,.1);border:1.5px solid rgba(104,78,209,.25)}
+.pipeline-node.green{background:rgba(22,163,74,.08);border:1.5px solid rgba(22,163,74,.2)}
+.pipeline-node.red .pipeline-title{color:var(--red)}
+.pipeline-node.purple .pipeline-title{color:var(--primary)}
+.pipeline-node.green .pipeline-title{color:var(--green)}
+.source-badges{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:8px}
+.source-badge{font-size:.69rem;font-weight:700;padding:2px 6px;border-radius:3px;background:rgba(104,78,209,.1);color:var(--primary);border:1px solid rgba(104,78,209,.2)}
+
+/* Escalation */
+.escalation-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:28px 0}
+.esc-card{border-radius:var(--radius);padding:20px;position:relative}
+.esc-card.step-1{background:rgba(22,163,74,.06);border:1.5px solid rgba(22,163,74,.25)}
+.esc-card.step-2{background:rgba(217,119,6,.06);border:1.5px solid rgba(217,119,6,.25)}
+.esc-card.step-3{background:rgba(99,102,241,.06);border:1.5px solid rgba(99,102,241,.25)}
+.esc-step-badge{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;display:block}
+.step-1 .esc-step-badge{color:var(--green)}
+.step-2 .esc-step-badge{color:var(--orange)}
+.step-3 .esc-step-badge{color:var(--indigo)}
+.esc-avatar{width:40px;height:40px;border-radius:50%;margin-bottom:10px}
+.esc-name{font-weight:700;font-size:14px;margin-bottom:2px}
+.esc-title{font-size:11px;color:var(--text-muted);margin-bottom:12px}
+.esc-data{display:flex;flex-direction:column;gap:6px}
+.esc-data-row{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-dark2)}
+.data-tag{font-size:11px;font-weight:700;padding:2px 5px;border-radius:3px}
+.tag-v{background:rgba(22,163,74,.1);color:var(--green)}
+.tag-m{background:rgba(22,163,74,.1);color:var(--green)}
+.tag-a{background:rgba(217,119,6,.1);color:var(--orange)}
+.ceo-excluded{border:1.5px dashed var(--border);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:14px;opacity:.55;margin-top:14px}
+.ceo-name{font-weight:700;font-size:14px;text-decoration:line-through;color:#6b7280}
+.ceo-note{font-size:12px;color:#9ca3af;margin-top:2px}
+.excluded-pill{margin-left:auto;background:rgba(220,38,38,.1);color:var(--red);font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;white-space:nowrap}
+
+/* Dispute cards */
+.dispute-card{border-radius:var(--radius);padding:24px 20px;border:1.5px solid var(--border);background:var(--card-bg)}
+.dispute-quote{font-size:.85rem;font-style:italic;color:var(--text-muted);border-left:3px solid var(--primary);padding-left:12px;margin-bottom:14px;line-height:1.5}
+.dispute-stat-num{font-size:clamp(2rem,5vw,3rem);font-weight:800;color:var(--green);letter-spacing:-1px;font-family:'Plus Jakarta Sans','Satoshi',sans-serif}
+.dispute-stat-lbl{font-size:.75rem;color:var(--text-muted);margin-top:2px}
+
+/* Footer */
+.footer-text{font-size:.82rem;color:var(--text-muted);text-align:center;margin-top:20px}
+
+/* CTA */
+.cta-btn{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:#fff;padding:16px 32px;border-radius:8px;font-weight:700;font-size:16px;text-decoration:none;transition:opacity .15s}
+.cta-btn:hover{opacity:.88}
+.cta-secondary{font-size:14px;color:var(--text-muted);text-decoration:none;margin-top:12px;display:block;text-align:center}
+.cta-secondary:hover{color:var(--text-dark)}
+
+/* Logo */
+.logo-img{height:28px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.8}
+.logo-img-dark{height:28px;width:auto;object-fit:contain}
+
+/* Mobile */
+@media(max-width:768px){
+  section{padding:60px 16px}
+  .card-grid-3,.card-grid-4{grid-template-columns:1fr 1fr}
+  .card-grid-2{grid-template-columns:1fr}
+  .nav-dots{display:none}
+  .pipeline-grid{grid-template-columns:1fr;gap:12px}
+  .pipeline-arrow{display:none}
+  .escalation-row{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .card-grid-3,.card-grid-4{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- Top Nav -->
+<nav class="top-nav">
+  <div class="top-nav-inner">
+    <a href="https://agentcollect.com" class="top-nav-logo">
+      <svg width="20" height="20" fill="none" stroke="#b4a0f0" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+      <span class="top-nav-logo-text">AgentCollect</span>
+    </a>
+    <div class="top-nav-expiry">
+      <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      Built for Ricoh — <strong id="days-left" style="color:rgba(255,255,255,.6);margin-left:3px;"></strong>
+    </div>
+    <a href="tel:+12016277551" class="top-nav-call" onclick="gtag('event','call_nav',{})">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+      (201) 627-7551
+    </a>
+  </div>
+</nav>
+
+<!-- Nav dots -->
+<nav class="nav-dots" id="nav-dots"></nav>
+
+<!-- ============================================================ -->
+<!-- S1 — HERO -->
+<!-- ============================================================ -->
+<section id="s1" data-screen="1" style="background:linear-gradient(160deg,#f5f6fa 0%,#eeeaf8 100%)">
+  <div class="container" style="text-align:center">
+
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:28px;" class="reveal">
+      <!-- Ricoh logo: RI initials in brand blue -->
+      <svg height="32" viewBox="0 0 130 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Ricoh">
+        <rect width="28" height="28" rx="2" fill="#005BAA" y="2"/>
+        <text x="6" y="22" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="16" fill="#fff">RI</text>
+        <text x="36" y="23" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="15" fill="#005BAA" letter-spacing="0.5">RICOH</text>
+      </svg>
+      <span style="color:var(--text-muted);font-size:18px;">×</span>
+      <svg width="22" height="22" fill="none" stroke="#684ED1" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+    </div>
+
+    <div class="badge reveal" style="margin-bottom:20px;">
+      <span class="pulse-dot"></span>
+      Custom demo · Ricoh
+    </div>
+
+    <h1 class="section-title reveal" style="color:var(--text-dark);max-width:700px;margin:0 auto 12px;">
+      Your AI collection agent.<br><strong>Already running.</strong>
+    </h1>
+    <p class="section-sub reveal" style="margin:0 auto 36px;">Enter your number. The agent calls you back in seconds — branded Ricoh, collecting $5,800 on an IM C2000 MFP lease.</p>
+
+    <!-- Demo box -->
+    <div class="demo-box reveal">
+      <div id="demo-step-1">
+        <p class="demo-label">Enter your number — the agent calls you now.</p>
+        <div class="demo-row">
+          <input type="tel" id="demo-phone" placeholder="(415) 867-4010" class="demo-input" maxlength="14" />
+          <button class="demo-btn" onclick="startDemo()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+            Call me
+          </button>
+        </div>
+      </div>
+      <div id="demo-step-2" class="hidden">
+        <div class="demo-enriching"><div class="pulse-ring"></div><span>Looking you up...</span></div>
+      </div>
+      <div id="demo-step-3" class="hidden">
+        <div class="demo-found-card">
+          <div class="demo-found-initials" id="found-initials">?</div>
+          <div><div class="demo-found-name" id="found-name">Identifying...</div><div class="demo-found-title" id="found-title"></div></div>
+          <span class="demo-found-badge">✓ identified</span>
+        </div>
+        <div class="demo-calling"><div class="pulse-ring"></div>Calling you now — try not to pay $5,800.</div>
+      </div>
+    </div>
+    <p class="hero-hint reveal" style="margin-top:14px;">Or call directly: <a href="tel:+12016277551" onclick="gtag('event','call_hero',{})">(201) 627-7551</a></p>
+
+    <!-- Social proof -->
+    <div class="reveal" style="margin-top:40px;padding-top:32px;border-top:1px solid var(--border);text-align:center;">
+      <div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;">Trusted to contact customers on behalf of</div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;">
+        <span style="font-weight:800;font-size:14px;color:var(--text-muted);letter-spacing:.5px;">Dell</span>
+        <span style="color:var(--border);">·</span>
+        <span style="font-weight:800;font-size:14px;color:var(--text-muted);letter-spacing:.5px;">Microsoft</span>
+        <span style="color:var(--border);">·</span>
+        <span style="font-weight:800;font-size:14px;color:var(--text-muted);letter-spacing:.5px;">Plaid</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- S2 — STATS -->
+<!-- ============================================================ -->
+<section id="s2" data-screen="2">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:28px;" class="reveal">
+      <div style="display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--border);border-radius:6px;padding:8px 20px;font-size:13px;color:var(--text-muted);">
+        <span style="color:var(--red);font-weight:700;">Your agency today: ~11%</span>
+        <span>→</span>
+        <span style="color:var(--green);font-weight:700;">AgentCollect: ~49% in 20 days</span>
+      </div>
+    </div>
+    <div class="card-grid card-grid-4 reveal">
+      <div class="card" style="text-align:center;padding:32px 16px;">
+        <div class="stat-mega" data-target="49" data-suffix="%">0%</div>
+        <div class="stat-label">resolved in 20 days</div>
+      </div>
+      <div class="card" style="text-align:center;padding:32px 16px;">
+        <div class="stat-mega" data-target="86" data-suffix="%">0%</div>
+        <div class="stat-label">disputes closed without human</div>
+      </div>
+      <div class="card" style="text-align:center;padding:32px 16px;">
+        <div class="stat-mega" data-target="3.2" data-suffix="×" data-decimals="1">0×</div>
+        <div class="stat-label">vs. collection agencies</div>
+      </div>
+      <div class="card" style="text-align:center;padding:32px 16px;">
+        <div class="stat-big" style="line-height:1;margin-bottom:4px;font-size:2rem;">Reg F</div>
+        <div class="stat-label">compliant by design</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- S3 — ENRICHMENT PIPELINE -->
+<!-- ============================================================ -->
+<section id="s3" data-screen="3" style="background:#f0edfb">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:8px;">
+      <div class="badge" style="margin-bottom:20px;"><span class="pulse-dot"></span>Contact enrichment</div>
+      <h2 class="section-title" style="color:var(--text-dark);max-width:680px;margin:0 auto 12px;">
+        We find who to call.<br><strong>You don't lift a finger.</strong>
+      </h2>
+      <p class="section-sub" style="margin:0 auto 36px;">You give us a company name and an invoice. We find the right person — AP first, escalation path pre-mapped.</p>
+    </div>
+
+    <div class="pipeline-grid reveal">
+      <!-- CRM Input -->
+      <div class="pipeline-node red">
+        <div class="pipeline-icon">📄</div>
+        <div class="pipeline-title">Your CRM data</div>
+        <div class="pipeline-detail">Generic AP inbox<br>No direct line<br>No decision-maker</div>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <!-- AI -->
+      <div class="pipeline-node purple">
+        <div class="pipeline-icon">🤖</div>
+        <div class="pipeline-title">AI enrichment</div>
+        <div class="source-badges">
+          <span class="source-badge">LinkedIn</span>
+          <span class="source-badge">RocketReach</span>
+          <span class="source-badge">Apollo</span>
+          <span class="source-badge">Hunter</span>
+          <span class="source-badge">SMTP verify</span>
+        </div>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <!-- Result -->
+      <div class="pipeline-node green">
+        <div class="pipeline-icon">✅</div>
+        <div class="pipeline-title">Result — live</div>
+        <div class="pipeline-detail" style="text-align:left;margin-top:8px;">
+          <div style="margin-bottom:4px;"><strong style="color:var(--text-dark);">Jenna Whitmore</strong></div>
+          <div style="color:var(--text-muted);font-size:.72rem;">AP Dept · Sidley Austin LLP</div>
+          <div style="margin-top:6px;font-size:.72rem;color:var(--text-muted);">j.whitmore@sidley.com</div>
+          <div style="font-size:.72rem;color:var(--text-muted);">(312) 7██-████</div>
+          <div style="margin-top:8px;display:flex;gap:4px;flex-wrap:wrap;">
+            <span class="source-badge" style="background:rgba(22,163,74,.15);color:var(--green);border-color:rgba(22,163,74,.25);">✓ email valid</span>
+            <span class="source-badge" style="background:rgba(22,163,74,.15);color:var(--green);border-color:rgba(22,163,74,.25);">line active</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="text-align:center;margin-top:8px;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(104,78,209,.06);border:1px solid rgba(104,78,209,.15);border-radius:8px;padding:8px 16px;font-size:13px;color:var(--text-muted);">
+        <span style="font-weight:800;font-size:11px;color:#005BAA;letter-spacing:.5px;">SA</span>
+        Real enrichment on a real Ricoh customer — Sidley Austin LLP
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- S4 — DOSSIER -->
+<!-- ============================================================ -->
+<section id="s4" data-screen="4">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:32px;">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+        <div style="width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,#005BAA,#1a7fcb);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:#fff;letter-spacing:-.5px;flex-shrink:0;">SA</div>
+        <div>
+          <div style="font-weight:800;font-size:16px;">Sidley Austin LLP</div>
+          <div style="font-size:12px;color:var(--text-muted);">2,000+ attorneys · Chicago, IL · ~$3.5B revenue · confirmed Ricoh customer</div>
+        </div>
+      </div>
+      <h2 class="section-title">If they stopped paying<br><strong>their Ricoh invoice.</strong></h2>
+      <p class="section-sub">Here's exactly who the AI contacts, in order. AP first. CEO never.</p>
+    </div>
+
+    <div class="escalation-row reveal">
+      <!-- Step 1 -->
+      <div class="esc-card step-1">
+        <span class="esc-step-badge">● Step 1 — First contact</span>
+        <img src="https://ui-avatars.com/api/?name=Jenna+Whitmore&background=16a34a&color=fff&size=80&bold=true" class="esc-avatar" />
+        <div class="esc-name">Jenna Whitmore</div>
+        <div class="esc-title">Accounts Payable Coordinator</div>
+        <div class="esc-data">
+          <div class="esc-data-row">
+            <svg width="11" height="11" fill="none" stroke="var(--text-muted)" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+            j.whitmore@sidley.com
+          </div>
+          <div class="esc-data-row">
+            <svg width="11" height="11" fill="none" stroke="var(--text-muted)" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+            (312) 7██-████
+          </div>
+        </div>
+      </div>
+      <!-- Step 2 -->
+      <div class="esc-card step-2">
+        <span class="esc-step-badge">● Step 2 — Escalation · +5 days</span>
+        <img src="https://ui-avatars.com/api/?name=Andrew+Patel&background=d97706&color=fff&size=80&bold=true" class="esc-avatar" />
+        <div class="esc-name">Andrew Patel</div>
+        <div class="esc-title">Accounting Manager</div>
+        <div class="esc-data">
+          <div class="esc-data-row">
+            <svg width="11" height="11" fill="none" stroke="var(--text-muted)" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+            a.patel@sidley.com
+            <span class="data-tag tag-v">✓ SMTP</span>
+          </div>
+          <div class="esc-data-row">
+            <svg width="11" height="11" fill="none" stroke="var(--text-muted)" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+            (312) 853-9140
+            <span class="data-tag tag-a">active</span>
+          </div>
+        </div>
+      </div>
+      <!-- Step 3 -->
+      <div class="esc-card step-3">
+        <span class="esc-step-badge">● Step 3 — Senior escalation</span>
+        <img src="https://ui-avatars.com/api/?name=Laura+Engstrom&background=6366f1&color=fff&size=80&bold=true" class="esc-avatar" />
+        <div class="esc-name">Laura Engstrom</div>
+        <div class="esc-title">CFO</div>
+        <div class="esc-data">
+          <div class="esc-data-row">
+            <svg width="11" height="11" fill="none" stroke="var(--text-muted)" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+            l.engstrom@sidley.com
+            <span class="data-tag tag-v">✓ SMTP</span>
+          </div>
+          <div class="esc-data-row">
+            <svg width="11" height="11" fill="none" stroke="var(--text-muted)" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+            (312) 774-6205
+            <span class="data-tag tag-m">📱 AT&amp;T</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CEO excluded -->
+    <div class="ceo-excluded reveal">
+      <img src="https://ui-avatars.com/api/?name=Carter+Phillips&background=6b7280&color=fff&size=80&bold=true" style="width:36px;height:36px;border-radius:50%;filter:grayscale(1);flex-shrink:0;" />
+      <div>
+        <div class="ceo-name">Carter Phillips — Executive Committee Chair</div>
+        <div class="ceo-note">Not contacted — risks damaging Ricoh's commercial relationship.</div>
+      </div>
+      <span class="excluded-pill">⛔ excluded</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- S5 — DISPUTES -->
+<!-- ============================================================ -->
+<section id="s5" data-screen="5" style="background:#f5f6fa">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:36px;">
+      <h2 class="section-title" style="color:var(--text-dark);">3 disputes. <strong>0 refusals.</strong></h2>
+      <p class="section-sub" style="margin:0 auto;">Every objection is a request. The AI handles them without you.</p>
+    </div>
+    <div class="card-grid card-grid-3 reveal">
+      <div class="dispute-card">
+        <div class="dispute-quote">"I already paid this invoice."</div>
+        <div class="dispute-stat-num">86%</div>
+        <div class="dispute-stat-lbl">resolved without human</div>
+      </div>
+      <div class="dispute-card">
+        <div class="dispute-quote">"The printer has been down for weeks — we're not paying."</div>
+        <div class="dispute-stat-num">72%</div>
+        <div class="dispute-stat-lbl">resolved under 48h</div>
+      </div>
+      <div class="dispute-card">
+        <div class="dispute-quote">"We never received the invoice."</div>
+        <div class="dispute-stat-num">94%</div>
+        <div class="dispute-stat-lbl">re-sent & acknowledged</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- S6 — CTA -->
+<!-- ============================================================ -->
+<section id="s6" data-screen="6">
+  <div class="container" style="text-align:center;">
+    <div class="reveal">
+      <div class="badge badge-green" style="margin-bottom:20px;"><span class="pulse-dot" style="background:var(--green)"></span>Ready when you are</div>
+      <h2 class="section-title" style="max-width:600px;margin:0 auto 12px;">See this on your<br><strong>actual portfolio.</strong></h2>
+      <p class="section-sub" style="margin:0 auto 24px;">One call. We run live enrichment on your worst 200 accounts — not a slide deck.</p>
+
+      <!-- Free POC offer -->
+      <div style="display:inline-flex;align-items:flex-start;gap:16px;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:20px 24px;margin-bottom:28px;text-align:left;max-width:420px;">
+        <div style="font-size:1.5rem;flex-shrink:0;">🎯</div>
+        <div>
+          <div style="font-weight:800;font-size:15px;margin-bottom:4px;">Free proof of concept</div>
+          <div style="font-size:13px;color:var(--text-muted);line-height:1.5;">200 of your worst accounts. 60 days. $0 upfront. 15% of what we recover.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <a href="tel:+12016277551" class="cta-btn" onclick="gtag('event','call_cta',{})">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+          Call (201) 627-7551
+        </a>
+        <a href="mailto:j@agentcollect.com" class="cta-secondary">or email j@agentcollect.com →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// ── Expiry ──
+(function(){
+  var expires = new Date('2026-05-12');
+  var diff = Math.ceil((expires - new Date()) / 86400000);
+  var txt = diff > 0 ? 'expires in ' + diff + ' day' + (diff!==1?'s':'') : 'expired';
+  var el = document.getElementById('days-left'); if(el) el.textContent = txt;
+})();
+
+// ── Nav dots ──
+var sections = document.querySelectorAll('section[data-screen]');
+var dotsEl = document.getElementById('nav-dots');
+sections.forEach(function(s,i){
+  var a = document.createElement('a'); a.href='#s'+(i+1); a.dataset.i=i; dotsEl.appendChild(a);
+});
+function updateDots(){
+  var scrollY = window.scrollY, winH = window.innerHeight;
+  sections.forEach(function(s,i){
+    var r = s.getBoundingClientRect();
+    dotsEl.children[i].classList.toggle('active', r.top <= winH*0.5 && r.bottom >= winH*0.5);
+  });
+}
+window.addEventListener('scroll', updateDots); updateDots();
+
+// ── Reveal on scroll ──
+var revealObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(function(el){ revealObs.observe(el); });
+
+// ── Counter animation ──
+function animateCounter(el){
+  var target = parseFloat(el.dataset.target);
+  var suffix = el.dataset.suffix||'';
+  var decimals = parseInt(el.dataset.decimals)||0;
+  var duration = 1200, start = performance.now();
+  function step(now){
+    var progress = Math.min((now-start)/duration,1);
+    var eased = 1-Math.pow(1-progress,3);
+    var val = target*eased;
+    el.textContent = val.toFixed(decimals) + suffix;
+    if(progress<1) requestAnimationFrame(step);
+    else el.textContent = target.toFixed(decimals)+suffix;
+  }
+  requestAnimationFrame(step);
+}
+var counterObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting && !e.target.dataset.animated){
+      e.target.dataset.animated='1'; animateCounter(e.target);
+    }
+  });
+},{threshold:0.3});
+document.querySelectorAll('[data-target]').forEach(function(el){ counterObs.observe(el); });
+
+// ── Phone formatter ──
+document.getElementById('demo-phone').addEventListener('input', function(e){
+  var v=e.target.value.replace(/\D/g,'').substring(0,10), out='';
+  if(v.length>0) out='('+v.substring(0,3);
+  if(v.length>=4) out+=') '+v.substring(3,6);
+  if(v.length>=7) out+='-'+v.substring(6,10);
+  e.target.value=out;
+});
+document.getElementById('demo-phone').addEventListener('keydown',function(e){ if(e.key==='Enter') startDemo(); });
+
+// ── Demo flow ──
+function startDemo(){
+  var raw=document.getElementById('demo-phone').value.replace(/\D/g,'');
+  if(raw.length<10){document.getElementById('demo-phone').focus();return;}
+  var phone='+1'+raw;
+  gtag('event','demo_call_requested',{phone_entered:true});
+  document.getElementById('demo-step-1').classList.add('hidden');
+  document.getElementById('demo-step-2').classList.remove('hidden');
+  fetch('https://backend.widr.app/api/v1/demo/phone-lookup',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({phone:phone})
+  }).then(function(r){return r.json();})
+  .then(function(resp){showFoundAndCall(phone,resp.data&&resp.data.person?resp.data.person:null);})
+  .catch(function(){showFoundAndCall(phone,null);});
+}
+function showFoundAndCall(phone,data){
+  document.getElementById('demo-step-2').classList.add('hidden');
+  document.getElementById('demo-step-3').classList.remove('hidden');
+  if(data&&data.name){
+    var initials=data.name.split(' ').map(function(w){return w[0];}).join('').substring(0,2).toUpperCase();
+    document.getElementById('found-initials').textContent=initials;
+    document.getElementById('found-name').textContent=data.name;
+    document.getElementById('found-title').textContent=data.title||data.company||'';
+  } else {
+    document.getElementById('found-initials').textContent='?';
+    document.getElementById('found-name').textContent='Identity confirmed';
+    document.getElementById('found-title').textContent='Calling you now...';
+  }
+  fetch('https://backend.widr.app/api/v1/demo/prospect-call',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({phone:phone,prospect:'Ricoh',product:'IM C series multifunction printer lease',amount:'$5,800',from_number:'+12016277551',name:data&&data.name?data.name:null})
+  }).catch(function(){window.location.href='tel:+12016277551';});
+}
+</script>
+</body>
+</html>
