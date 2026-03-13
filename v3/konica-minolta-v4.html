@@ -264,34 +264,62 @@ section{display:flex;flex-direction:column;justify-content:center;align-items:ce
 </section>
 
 <!-- ============================================================ -->
-<!-- S2 — STATS (light) -->
+<!-- S2 — YOUR CURRENT AGENCY (DLL intel + debtor reviews) -->
 <!-- ============================================================ -->
 <section id="s2" data-screen="2" style="padding:60px 24px;">
   <div class="container">
-    <div style="text-align:center;margin-bottom:32px;" class="reveal">
-      <div style="display:inline-flex;align-items:center;gap:12px;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:10px 24px;font-size:13px;color:var(--text-muted);">
-        <span style="color:var(--red);font-weight:700;">Your agency today: ~11%</span>
-        <svg width="16" height="16" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        <span style="color:var(--green);font-weight:700;">AgentCollect: ~49% in 20 days</span>
+    <div class="reveal" style="text-align:center;">
+      <div class="badge badge-red" style="margin-bottom:20px;">
+        <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+        Your current provider
+      </div>
+      <h2 class="section-title">We know who handles your collections.<br><strong>So do your debtors.</strong></h2>
+      <p class="section-sub" style="margin:0 auto 36px;">DLL Finance — Konica Minolta's lease recovery partner for 20+ years. Here's what your customers experience.</p>
+    </div>
+
+    <!-- DLL stats row -->
+    <div class="card-grid card-grid-3 reveal" style="margin-bottom:24px;">
+      <div class="card" style="text-align:center;padding:28px 16px;border-radius:14px;border-width:1.5px;">
+        <div style="font-size:2.2rem;font-weight:800;color:var(--red);font-family:'Plus Jakarta Sans','Satoshi',sans-serif;letter-spacing:-1px;">2.2 / 5</div>
+        <div class="stat-label">Google Reviews</div>
+      </div>
+      <div class="card" style="text-align:center;padding:28px 16px;border-radius:14px;border-width:1.5px;">
+        <div style="font-size:2.2rem;font-weight:800;color:var(--red);font-family:'Plus Jakarta Sans','Satoshi',sans-serif;letter-spacing:-1px;">1 / 5</div>
+        <div class="stat-label">BBB customer reviews</div>
+      </div>
+      <div class="card" style="text-align:center;padding:28px 16px;border-radius:14px;border-width:1.5px;">
+        <div style="font-size:2.2rem;font-weight:800;color:var(--orange);font-family:'Plus Jakarta Sans','Satoshi',sans-serif;letter-spacing:-1px;">FDCPA</div>
+        <div class="stat-label">violations flagged by Lemberg Law</div>
       </div>
     </div>
-    <div class="card-grid card-grid-4 reveal">
-      <div class="card" style="text-align:center;padding:32px 16px;border-radius:14px;border-width:1.5px;">
-        <div class="stat-mega" data-target="49" data-suffix="%">0%</div>
-        <div class="stat-label">resolved in 20 days</div>
+
+    <!-- Debtor reviews -->
+    <div class="card-grid card-grid-3 reveal">
+      <div class="card" style="border-radius:14px;border-width:1.5px;padding:20px;">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
+          <span style="color:var(--red);font-size:13px;">&#9733;&#9734;&#9734;&#9734;&#9734;</span>
+          <span style="font-size:10px;color:var(--text-muted);font-weight:600;">BBB Review</span>
+        </div>
+        <p style="font-size:13px;color:var(--text-dark2);line-height:1.5;font-style:italic;margin:0;">"DLL Finance is a predatory lender. They refuse to give current balance information. Compound interest contracts were not made clear — very deceptive."</p>
       </div>
-      <div class="card" style="text-align:center;padding:32px 16px;border-radius:14px;border-width:1.5px;">
-        <div class="stat-mega" data-target="86" data-suffix="%">0%</div>
-        <div class="stat-label">disputes closed without human</div>
+      <div class="card" style="border-radius:14px;border-width:1.5px;padding:20px;">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
+          <span style="color:var(--red);font-size:13px;">&#9733;&#9734;&#9734;&#9734;&#9734;</span>
+          <span style="font-size:10px;color:var(--text-muted);font-weight:600;">BBB Complaint</span>
+        </div>
+        <p style="font-size:13px;color:var(--text-dark2);line-height:1.5;font-style:italic;margin:0;">"After surrendering the machine and closing our office, we were pursued by rude, aggressive, and demeaning debt collectors."</p>
       </div>
-      <div class="card" style="text-align:center;padding:32px 16px;border-radius:14px;border-width:1.5px;">
-        <div class="stat-mega" data-target="3.2" data-suffix="×" data-decimals="1">0×</div>
-        <div class="stat-label">vs. collection agencies</div>
+      <div class="card" style="border-radius:14px;border-width:1.5px;padding:20px;">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
+          <span style="color:var(--red);font-size:13px;">&#9733;&#9734;&#9734;&#9734;&#9734;</span>
+          <span style="font-size:10px;color:var(--text-muted);font-weight:600;">Lemberg Law</span>
+        </div>
+        <p style="font-size:13px;color:var(--text-dark2);line-height:1.5;font-style:italic;margin:0;">"They don't treat you like a human being. Calls to voicemail were ignored. They charged a $30 fee for a returned payment plus an additional $10."</p>
       </div>
-      <div class="card" style="text-align:center;padding:32px 16px;border-radius:14px;border-width:1.5px;">
-        <div class="stat-big" style="line-height:1;margin-bottom:4px;font-size:2rem;">Reg F</div>
-        <div class="stat-label">compliant by design</div>
-      </div>
+    </div>
+
+    <div class="reveal" style="text-align:center;margin-top:16px;">
+      <p style="font-size:13px;color:var(--text-muted);">These are your customers talking about their experience with <strong style="color:var(--text-dark);">your</strong> collection partner.</p>
     </div>
   </div>
 </section>
@@ -565,48 +593,35 @@ section{display:flex;flex-direction:column;justify-content:center;align-items:ce
 </section>
 
 <!-- ============================================================ -->
-<!-- S5 — DISPUTES (dark) -->
+<!-- S5 — COMPARISON TABLE (DLL vs AgentCollect) -->
 <!-- ============================================================ -->
+<style>
+.compare-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:14px;overflow:hidden;border:1.5px solid var(--border);background:#fff;}
+.compare-table th,.compare-table td{padding:14px 20px;text-align:left;font-size:13px;border-bottom:1px solid var(--border);}
+.compare-table tr:last-child td{border-bottom:none;}
+.compare-table th{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);background:var(--page-bg);}
+.compare-table th:nth-child(2){color:var(--red);}
+.compare-table th:nth-child(3){color:var(--primary);}
+.compare-table td:first-child{font-weight:600;color:var(--text-dark);}
+.compare-table td:nth-child(2){color:var(--text-muted);}
+.compare-table td:nth-child(3){color:var(--text-dark);font-weight:600;}
+@media(max-width:480px){.compare-table th,.compare-table td{padding:10px 12px;font-size:12px;}}
+</style>
 <section id="s5" data-screen="6" style="background:#f5f6fa">
   <div class="container">
     <div class="reveal" style="text-align:center;margin-bottom:36px;">
-      <h2 class="section-title" style="color:var(--text-dark);">3 disputes. <strong>0 refusals.</strong></h2>
-      <p class="section-sub" style="margin:0 auto;">Every objection is a request. The AI handles them without you.</p>
+      <h2 class="section-title" style="color:var(--text-dark);">Side by side.<br><strong>No contest.</strong></h2>
     </div>
-    <div class="card-grid card-grid-3 reveal">
-      <div class="dispute-card" style="border-radius:14px;border-width:1.5px;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
-          <div style="width:32px;height:32px;border-radius:8px;background:rgba(22,163,74,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="16" height="16" fill="none" stroke="var(--green)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-          </div>
-          <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--green);">Payment claim</span>
-        </div>
-        <div class="dispute-quote">"I already paid this invoice."</div>
-        <div class="dispute-stat-num">86%</div>
-        <div class="dispute-stat-lbl">resolved without human</div>
-      </div>
-      <div class="dispute-card" style="border-radius:14px;border-width:1.5px;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
-          <div style="width:32px;height:32px;border-radius:8px;background:rgba(217,119,6,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="16" height="16" fill="none" stroke="var(--orange)" stroke-width="2" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          </div>
-          <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--orange);">Equipment issue</span>
-        </div>
-        <div class="dispute-quote">"The equipment is faulty — withholding payment."</div>
-        <div class="dispute-stat-num">72%</div>
-        <div class="dispute-stat-lbl">resolved under 48h</div>
-      </div>
-      <div class="dispute-card" style="border-radius:14px;border-width:1.5px;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
-          <div style="width:32px;height:32px;border-radius:8px;background:rgba(104,78,209,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="16" height="16" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
-          </div>
-          <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--primary);">Missing invoice</span>
-        </div>
-        <div class="dispute-quote">"We never received the invoice."</div>
-        <div class="dispute-stat-num">94%</div>
-        <div class="dispute-stat-lbl">re-sent & acknowledged</div>
-      </div>
+    <div class="reveal" style="max-width:700px;margin:0 auto;">
+      <table class="compare-table">
+        <tr><th></th><th>DLL Finance (current)</th><th>AgentCollect</th></tr>
+        <tr><td>Customer reviews</td><td>2.2/5 Google · 1/5 BBB</td><td>Brand-preserving — no reviews to dread</td></tr>
+        <tr><td>Resolution speed</td><td>60–120 days average</td><td>49% resolved in 20 days</td></tr>
+        <tr><td>Dispute handling</td><td>Manual, ignored voicemails</td><td>AI handles 86% without a human</td></tr>
+        <tr><td>Debtor experience</td><td>"Rude, aggressive, demeaning"</td><td>Conversational, branded Konica Minolta</td></tr>
+        <tr><td>Compliance</td><td>FDCPA violations flagged</td><td>Reg F compliant by design</td></tr>
+        <tr><td>CEO protected</td><td>No escalation control</td><td>Never contacted — relationship preserved</td></tr>
+      </table>
     </div>
   </div>
 </section>
