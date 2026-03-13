@@ -19,10 +19,10 @@
   --border:#DFE0EC;--page-bg:#f5f6fa;--card-bg:#fff;--radius:8px;
   --dark-bg:#1C1A25;--green:#16A34A;--red:#DC2626;--orange:#D97706;--indigo:#6366f1;
 }
-html{scroll-behavior:smooth;scroll-snap-type:y proximity;overflow-y:scroll;overflow-x:hidden}
+html{scroll-behavior:smooth;overflow-y:scroll;overflow-x:hidden}
 body{background:var(--page-bg);color:var(--text-dark);font-family:'Satoshi','Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
 
-section{min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:80px 24px;position:relative}
+section{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:80px 24px;position:relative}
 section.dark{background:var(--dark-bg);color:#f0f0f5}
 section.dark .card{background:#252335;border-color:#35334a}
 section.dark .text-muted{color:#9898b8}
@@ -161,8 +161,7 @@ section.dark .footer-text{color:#707088}
 
 /* Mobile */
 @media(max-width:768px){
-  html{scroll-snap-type:none}
-  section{min-height:auto;padding:60px 16px}
+  section{padding:60px 16px}
   .card-grid-3,.card-grid-4{grid-template-columns:1fr 1fr}
   .card-grid-2{grid-template-columns:1fr}
   .nav-dots{display:none}
@@ -205,7 +204,13 @@ section.dark .footer-text{color:#707088}
   <div class="container" style="text-align:center">
 
     <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:28px;" class="reveal">
-      <span style="font-weight:900;font-size:15px;letter-spacing:-.5px;color:#E82529;font-family:'Plus Jakarta Sans','Satoshi',sans-serif;">KONICA MINOLTA</span>
+      <svg height="22" viewBox="0 0 220 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Konica Minolta">
+        <!-- Red square mark -->
+        <rect width="28" height="28" rx="2" fill="#E82529" y="2"/>
+        <path d="M6 8 L14 16 L6 24 M14 8 L22 16 L14 24" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <!-- Wordmark -->
+        <text x="36" y="23" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="15" fill="#E82529" letter-spacing="0.5">KONICA MINOLTA</text>
+      </svg>
       <span style="color:#35334a;font-size:18px;">×</span>
       <svg width="22" height="22" fill="none" stroke="#b4a0f0" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
     </div>
@@ -245,6 +250,18 @@ section.dark .footer-text{color:#707088}
       </div>
     </div>
     <p class="hero-hint reveal" style="margin-top:14px;">Or call directly: <a href="tel:+12016277551" onclick="gtag('event','call_hero',{})">(201) 627-7551</a></p>
+
+    <!-- Social proof -->
+    <div class="reveal" style="margin-top:40px;padding-top:32px;border-top:1px solid rgba(255,255,255,.06);text-align:center;">
+      <div style="font-size:11px;color:#555570;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px;">Trusted to contact customers on behalf of</div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;">
+        <span style="font-weight:800;font-size:14px;color:rgba(255,255,255,.35);letter-spacing:.5px;">Dell</span>
+        <span style="color:#35334a;">·</span>
+        <span style="font-weight:800;font-size:14px;color:rgba(255,255,255,.35);letter-spacing:.5px;">Microsoft</span>
+        <span style="color:#35334a;">·</span>
+        <span style="font-weight:800;font-size:14px;color:rgba(255,255,255,.35);letter-spacing:.5px;">Plaid</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -253,6 +270,13 @@ section.dark .footer-text{color:#707088}
 <!-- ============================================================ -->
 <section id="s2" data-screen="2">
   <div class="container">
+    <div style="text-align:center;margin-bottom:28px;" class="reveal">
+      <div style="display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--border);border-radius:6px;padding:8px 20px;font-size:13px;color:var(--text-muted);">
+        <span style="color:var(--red);font-weight:700;">Your agency today: ~11%</span>
+        <span>→</span>
+        <span style="color:var(--green);font-weight:700;">AgentCollect: ~49% in 20 days</span>
+      </div>
+    </div>
     <div class="card-grid card-grid-4 reveal">
       <div class="card" style="text-align:center;padding:32px 16px;">
         <div class="stat-mega" data-target="49" data-suffix="%">0%</div>
@@ -260,7 +284,7 @@ section.dark .footer-text{color:#707088}
       </div>
       <div class="card" style="text-align:center;padding:32px 16px;">
         <div class="stat-mega" data-target="86" data-suffix="%">0%</div>
-        <div class="stat-label">disputes closed</div>
+        <div class="stat-label">disputes closed without human</div>
       </div>
       <div class="card" style="text-align:center;padding:32px 16px;">
         <div class="stat-mega" data-target="3.2" data-suffix="×" data-decimals="1">0×</div>
@@ -458,7 +482,17 @@ section.dark .footer-text{color:#707088}
     <div class="reveal">
       <div class="badge badge-green" style="margin-bottom:20px;"><span class="pulse-dot" style="background:var(--green)"></span>Ready when you are</div>
       <h2 class="section-title" style="max-width:600px;margin:0 auto 12px;">See this on your<br><strong>actual portfolio.</strong></h2>
-      <p class="section-sub" style="margin:0 auto 32px;">One call. We show you live enrichment on your debtors — not a slide deck.</p>
+      <p class="section-sub" style="margin:0 auto 24px;">One call. We run live enrichment on your worst 200 accounts — not a slide deck.</p>
+
+      <!-- Free POC offer -->
+      <div style="display:inline-flex;align-items:flex-start;gap:16px;background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:20px 24px;margin-bottom:28px;text-align:left;max-width:420px;">
+        <div style="font-size:1.5rem;flex-shrink:0;">🎯</div>
+        <div>
+          <div style="font-weight:800;font-size:15px;margin-bottom:4px;">Free proof of concept</div>
+          <div style="font-size:13px;color:var(--text-muted);line-height:1.5;">200 of your worst accounts. 60 days. $0 upfront. 15% of what we recover.</div>
+        </div>
+      </div>
+
       <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
         <a href="tel:+12016277551" class="cta-btn" onclick="gtag('event','call_cta',{})">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
