@@ -357,75 +357,106 @@ section{display:flex;flex-direction:column;justify-content:center;align-items:ce
 </section>
 
 <!-- ============================================================ -->
-<!-- S4 — DECISION CHAIN (visual, 1 screen) -->
+<!-- S4 — DECISION CHAIN (visual, full-width, photos + contact) -->
 <!-- ============================================================ -->
+<style>
+.chain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px;}
+.chain-card{background:#fff;border-radius:14px;border:1.5px solid var(--border);padding:28px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;transition:box-shadow .2s;}
+.chain-card:hover{box-shadow:0 8px 32px rgba(104,78,209,.1);}
+.chain-card.excluded{opacity:.45;border-style:dashed;}
+.chain-step{position:absolute;top:14px;left:14px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;}
+.chain-photo{width:88px;height:88px;border-radius:50%;object-fit:cover;margin-bottom:14px;}
+.chain-name{font-weight:800;font-size:16px;color:var(--text-dark);line-height:1.2;}
+.chain-role{font-size:12px;color:var(--text-muted);margin-top:4px;margin-bottom:14px;}
+.chain-contact{display:flex;flex-direction:column;gap:6px;width:100%;}
+.chain-row{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-dark2);justify-content:center;}
+.chain-row svg{flex-shrink:0;opacity:.5;}
+.chain-tag{font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;margin-left:2px;}
+.chain-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-top:12px;padding:4px 12px;border-radius:20px;}
+@media(max-width:768px){.chain-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.chain-grid{grid-template-columns:1fr;}}
+</style>
 <section id="s4" data-screen="4">
   <div class="container">
-    <div class="reveal" style="text-align:center;margin-bottom:40px;">
+    <div class="reveal" style="text-align:center;">
       <h2 class="section-title">Who we contact.<br><strong>And who we protect.</strong></h2>
-      <p class="section-sub" style="margin:0 auto;">Real contacts from Zwanger-Pesiri Radiology — a confirmed Konica Minolta customer, 23 locations.</p>
+      <p class="section-sub" style="margin:0 auto;">Real people from Zwanger-Pesiri Radiology — 23 locations, Long Island NY. Confirmed Konica Minolta customer.</p>
     </div>
 
-    <!-- Visual chain -->
-    <div class="reveal" style="display:flex;align-items:flex-start;justify-content:center;gap:0;flex-wrap:wrap;">
-      <!-- Step 1 -->
-      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;width:180px;">
-        <div style="position:relative;">
-          <img src="https://ui-avatars.com/api/?name=Donna+Montalbano&background=16a34a&color=fff&size=160&bold=true&font-size=0.35" style="width:80px;height:80px;border-radius:50%;border:3px solid var(--green);" />
-          <div style="position:absolute;bottom:-4px;right:-4px;background:var(--green);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;border:2px solid #fff;">1</div>
+    <div class="chain-grid reveal">
+      <!-- 1 — AP -->
+      <div class="chain-card">
+        <div class="chain-step" style="background:var(--green);">1</div>
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="chain-photo" style="border:3px solid var(--green);" alt="Donna Montalbano" />
+        <div class="chain-name">Donna Montalbano</div>
+        <div class="chain-role">Accounts Payable</div>
+        <div class="chain-contact">
+          <div class="chain-row">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+            dmontalbano@zprad.com
+          </div>
+          <div class="chain-row">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72"/></svg>
+            (516) 7██-████
+          </div>
         </div>
-        <div style="margin-top:12px;font-weight:800;font-size:15px;color:var(--text-dark);">Donna Montalbano</div>
-        <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Accounts Payable</div>
-        <div style="font-size:10px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.5px;margin-top:8px;">First contact</div>
+        <div class="chain-label" style="background:rgba(22,163,74,.1);color:var(--green);">First contact</div>
       </div>
 
-      <!-- Arrow -->
-      <div style="display:flex;align-items:center;padding-top:36px;color:var(--border);font-size:24px;margin:0 8px;">→</div>
-
-      <!-- Step 2 -->
-      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;width:180px;">
-        <div style="position:relative;">
-          <img src="https://ui-avatars.com/api/?name=Randi+Morgenstern&background=d97706&color=fff&size=160&bold=true&font-size=0.35" style="width:80px;height:80px;border-radius:50%;border:3px solid var(--orange);" />
-          <div style="position:absolute;bottom:-4px;right:-4px;background:var(--orange);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;border:2px solid #fff;">2</div>
+      <!-- 2 — Accounting Mgr -->
+      <div class="chain-card">
+        <div class="chain-step" style="background:var(--orange);">2</div>
+        <img src="https://randomuser.me/api/portraits/women/65.jpg" class="chain-photo" style="border:3px solid var(--orange);" alt="Randi Morgenstern" />
+        <div class="chain-name">Randi Morgenstern</div>
+        <div class="chain-role">Accounting Manager</div>
+        <div class="chain-contact">
+          <div class="chain-row">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+            rmorgenstern@zprad.com
+            <span class="chain-tag" style="background:rgba(22,163,74,.1);color:var(--green);">✓ SMTP</span>
+          </div>
+          <div class="chain-row">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72"/></svg>
+            (212) 570-2075
+            <span class="chain-tag" style="background:rgba(217,119,6,.1);color:var(--orange);">active</span>
+          </div>
         </div>
-        <div style="margin-top:12px;font-weight:800;font-size:15px;color:var(--text-dark);">Randi Morgenstern</div>
-        <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Accounting Manager</div>
-        <div style="font-size:10px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.5px;margin-top:8px;">Escalation · +5 days</div>
+        <div class="chain-label" style="background:rgba(217,119,6,.1);color:var(--orange);">Escalation · +5 days</div>
       </div>
 
-      <!-- Arrow -->
-      <div style="display:flex;align-items:center;padding-top:36px;color:var(--border);font-size:24px;margin:0 8px;">→</div>
-
-      <!-- Step 3 -->
-      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;width:180px;">
-        <div style="position:relative;">
-          <img src="https://ui-avatars.com/api/?name=John+Fargnoli&background=6366f1&color=fff&size=160&bold=true&font-size=0.35" style="width:80px;height:80px;border-radius:50%;border:3px solid var(--indigo);" />
-          <div style="position:absolute;bottom:-4px;right:-4px;background:var(--indigo);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;border:2px solid #fff;">3</div>
+      <!-- 3 — CFO -->
+      <div class="chain-card">
+        <div class="chain-step" style="background:var(--indigo);">3</div>
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="chain-photo" style="border:3px solid var(--indigo);" alt="John Fargnoli" />
+        <div class="chain-name">John Fargnoli</div>
+        <div class="chain-role">CFO</div>
+        <div class="chain-contact">
+          <div class="chain-row">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
+            jfargnoli@zprad.com
+            <span class="chain-tag" style="background:rgba(22,163,74,.1);color:var(--green);">✓ SMTP</span>
+          </div>
+          <div class="chain-row">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72"/></svg>
+            (516) 458-5660
+            <span class="chain-tag" style="background:rgba(22,163,74,.1);color:var(--green);">mobile</span>
+          </div>
         </div>
-        <div style="margin-top:12px;font-weight:800;font-size:15px;color:var(--text-dark);">John Fargnoli</div>
-        <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">CFO</div>
-        <div style="font-size:10px;font-weight:700;color:var(--indigo);text-transform:uppercase;letter-spacing:.5px;margin-top:8px;">Senior escalation</div>
+        <div class="chain-label" style="background:rgba(99,102,241,.1);color:var(--indigo);">Senior escalation</div>
       </div>
 
-      <!-- Arrow (blocked) -->
-      <div style="display:flex;align-items:center;padding-top:36px;color:var(--border);font-size:24px;margin:0 8px;">⛔</div>
-
-      <!-- CEO excluded -->
-      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;width:180px;opacity:.4;">
-        <div style="position:relative;">
-          <img src="https://ui-avatars.com/api/?name=Steven+Mendelsohn&background=6b7280&color=fff&size=160&bold=true&font-size=0.35" style="width:80px;height:80px;border-radius:50%;border:3px dashed #d1d5db;filter:grayscale(1);" />
+      <!-- CEO — excluded -->
+      <div class="chain-card excluded">
+        <div class="chain-step" style="background:#9ca3af;">⛔</div>
+        <img src="https://randomuser.me/api/portraits/men/75.jpg" class="chain-photo" style="border:3px dashed #d1d5db;filter:grayscale(1);" alt="Steven Mendelsohn" />
+        <div class="chain-name" style="color:#9ca3af;text-decoration:line-through;">Steven Mendelsohn, MD</div>
+        <div class="chain-role">CEO</div>
+        <div class="chain-contact">
+          <div class="chain-row" style="color:#d1d5db;">
+            Protects your commercial relationship
+          </div>
         </div>
-        <div style="margin-top:12px;font-weight:800;font-size:15px;color:#9ca3af;text-decoration:line-through;">Steven Mendelsohn, MD</div>
-        <div style="font-size:12px;color:#9ca3af;margin-top:2px;">CEO</div>
-        <div style="font-size:10px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.5px;margin-top:8px;">Never contacted</div>
-      </div>
-    </div>
-
-    <!-- Bottom note -->
-    <div class="reveal" style="text-align:center;margin-top:28px;">
-      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(22,163,74,.06);border:1px solid rgba(22,163,74,.15);border-radius:8px;padding:10px 20px;font-size:13px;color:var(--text-muted);">
-        <svg width="14" height="14" fill="none" stroke="var(--green)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <span>AP first · escalation pre-mapped · <strong style="color:var(--green);">CEO always protected</strong></span>
+        <div class="chain-label" style="background:rgba(220,38,38,.08);color:var(--red);">Never contacted</div>
       </div>
     </div>
   </div>
