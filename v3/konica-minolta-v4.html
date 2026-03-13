@@ -357,88 +357,76 @@ section{display:flex;flex-direction:column;justify-content:center;align-items:ce
 </section>
 
 <!-- ============================================================ -->
-<!-- S4 — DOSSIER (light) -->
+<!-- S4 — DECISION CHAIN (visual, 1 screen) -->
 <!-- ============================================================ -->
 <section id="s4" data-screen="4">
   <div class="container">
-    <div class="reveal" style="margin-bottom:32px;">
-      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
-        <div style="width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:#fff;letter-spacing:-.5px;flex-shrink:0;">ZP</div>
-        <div>
-          <div style="font-weight:800;font-size:16px;">Zwanger-Pesiri Radiology</div>
-          <div style="font-size:12px;color:var(--text-muted);">23 locations · Long Island, NY · ~$134M revenue · confirmed Konica Minolta customer</div>
-        </div>
-      </div>
-      <h2 class="section-title">If they stopped paying<br><strong>their Konica invoice.</strong></h2>
-      <p class="section-sub">Here's exactly who the AI contacts, in order. AP first. CEO never.</p>
+    <div class="reveal" style="text-align:center;margin-bottom:40px;">
+      <h2 class="section-title">Who we contact.<br><strong>And who we protect.</strong></h2>
+      <p class="section-sub" style="margin:0 auto;">Real contacts from Zwanger-Pesiri Radiology — a confirmed Konica Minolta customer, 23 locations.</p>
     </div>
 
-    <div class="escalation-row reveal">
+    <!-- Visual chain -->
+    <div class="reveal" style="display:flex;align-items:flex-start;justify-content:center;gap:0;flex-wrap:wrap;">
       <!-- Step 1 -->
-      <div class="esc-card step-1">
-        <span class="esc-step-badge">● Step 1 — First contact</span>
-        <img src="https://ui-avatars.com/api/?name=Donna+Montalbano&background=16a34a&color=fff&size=80&bold=true" class="esc-avatar" />
-        <div class="esc-name">Donna Montalbano</div>
-        <div class="esc-title">Accounts Payable</div>
-        <div class="esc-data">
-          <div class="esc-data-row">
-            <svg width="11" height="11" fill="none" stroke="var(--text-muted)" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
-            dmontalbano@zprad.com
-          </div>
-          <div class="esc-data-row">
-            <svg width="11" height="11" fill="none" stroke="var(--text-muted)" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
-            (516) 7██-████
-          </div>
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;width:180px;">
+        <div style="position:relative;">
+          <img src="https://ui-avatars.com/api/?name=Donna+Montalbano&background=16a34a&color=fff&size=160&bold=true&font-size=0.35" style="width:80px;height:80px;border-radius:50%;border:3px solid var(--green);" />
+          <div style="position:absolute;bottom:-4px;right:-4px;background:var(--green);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;border:2px solid #fff;">1</div>
         </div>
+        <div style="margin-top:12px;font-weight:800;font-size:15px;color:var(--text-dark);">Donna Montalbano</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Accounts Payable</div>
+        <div style="font-size:10px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.5px;margin-top:8px;">First contact</div>
       </div>
+
+      <!-- Arrow -->
+      <div style="display:flex;align-items:center;padding-top:36px;color:var(--border);font-size:24px;margin:0 8px;">→</div>
+
       <!-- Step 2 -->
-      <div class="esc-card step-2">
-        <span class="esc-step-badge">● Step 2 — Escalation · +5 days</span>
-        <img src="https://ui-avatars.com/api/?name=Randi+Morgenstern&background=d97706&color=fff&size=80&bold=true" class="esc-avatar" />
-        <div class="esc-name">Randi Morgenstern</div>
-        <div class="esc-title">Accounting Manager</div>
-        <div class="esc-data">
-          <div class="esc-data-row">
-            <svg width="11" height="11" fill="none" stroke="var(--text-muted)" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
-            rmorgenstern@zprad.com
-            <span class="data-tag tag-v">✓ SMTP</span>
-          </div>
-          <div class="esc-data-row">
-            <svg width="11" height="11" fill="none" stroke="var(--text-muted)" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
-            (212) 570-2075
-            <span class="data-tag tag-a">active</span>
-          </div>
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;width:180px;">
+        <div style="position:relative;">
+          <img src="https://ui-avatars.com/api/?name=Randi+Morgenstern&background=d97706&color=fff&size=160&bold=true&font-size=0.35" style="width:80px;height:80px;border-radius:50%;border:3px solid var(--orange);" />
+          <div style="position:absolute;bottom:-4px;right:-4px;background:var(--orange);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;border:2px solid #fff;">2</div>
         </div>
+        <div style="margin-top:12px;font-weight:800;font-size:15px;color:var(--text-dark);">Randi Morgenstern</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">Accounting Manager</div>
+        <div style="font-size:10px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.5px;margin-top:8px;">Escalation · +5 days</div>
       </div>
+
+      <!-- Arrow -->
+      <div style="display:flex;align-items:center;padding-top:36px;color:var(--border);font-size:24px;margin:0 8px;">→</div>
+
       <!-- Step 3 -->
-      <div class="esc-card step-3">
-        <span class="esc-step-badge">● Step 3 — Senior escalation</span>
-        <img src="https://ui-avatars.com/api/?name=John+Fargnoli&background=6366f1&color=fff&size=80&bold=true" class="esc-avatar" />
-        <div class="esc-name">John Fargnoli</div>
-        <div class="esc-title">CFO</div>
-        <div class="esc-data">
-          <div class="esc-data-row">
-            <svg width="11" height="11" fill="none" stroke="var(--text-muted)" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg>
-            jfargnoli@zprad.com
-            <span class="data-tag tag-v">✓ SMTP</span>
-          </div>
-          <div class="esc-data-row">
-            <svg width="11" height="11" fill="none" stroke="var(--text-muted)" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
-            (516) 458-5660
-            <span class="data-tag tag-m">📱 Verizon</span>
-          </div>
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;width:180px;">
+        <div style="position:relative;">
+          <img src="https://ui-avatars.com/api/?name=John+Fargnoli&background=6366f1&color=fff&size=160&bold=true&font-size=0.35" style="width:80px;height:80px;border-radius:50%;border:3px solid var(--indigo);" />
+          <div style="position:absolute;bottom:-4px;right:-4px;background:var(--indigo);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;border:2px solid #fff;">3</div>
         </div>
+        <div style="margin-top:12px;font-weight:800;font-size:15px;color:var(--text-dark);">John Fargnoli</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:2px;">CFO</div>
+        <div style="font-size:10px;font-weight:700;color:var(--indigo);text-transform:uppercase;letter-spacing:.5px;margin-top:8px;">Senior escalation</div>
+      </div>
+
+      <!-- Arrow (blocked) -->
+      <div style="display:flex;align-items:center;padding-top:36px;color:var(--border);font-size:24px;margin:0 8px;">⛔</div>
+
+      <!-- CEO excluded -->
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;width:180px;opacity:.4;">
+        <div style="position:relative;">
+          <img src="https://ui-avatars.com/api/?name=Steven+Mendelsohn&background=6b7280&color=fff&size=160&bold=true&font-size=0.35" style="width:80px;height:80px;border-radius:50%;border:3px dashed #d1d5db;filter:grayscale(1);" />
+        </div>
+        <div style="margin-top:12px;font-weight:800;font-size:15px;color:#9ca3af;text-decoration:line-through;">Steven Mendelsohn, MD</div>
+        <div style="font-size:12px;color:#9ca3af;margin-top:2px;">CEO</div>
+        <div style="font-size:10px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.5px;margin-top:8px;">Never contacted</div>
       </div>
     </div>
 
-    <!-- CEO excluded -->
-    <div class="ceo-excluded reveal">
-      <img src="https://ui-avatars.com/api/?name=Steven+Mendelsohn&background=6b7280&color=fff&size=80&bold=true" style="width:36px;height:36px;border-radius:50%;filter:grayscale(1);flex-shrink:0;" />
-      <div>
-        <div class="ceo-name">Steven Mendelsohn, MD — CEO</div>
-        <div class="ceo-note">Not contacted — risks damaging Konica Minolta's commercial relationship.</div>
+    <!-- Bottom note -->
+    <div class="reveal" style="text-align:center;margin-top:28px;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(22,163,74,.06);border:1px solid rgba(22,163,74,.15);border-radius:8px;padding:10px 20px;font-size:13px;color:var(--text-muted);">
+        <svg width="14" height="14" fill="none" stroke="var(--green)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>AP first · escalation pre-mapped · <strong style="color:var(--green);">CEO always protected</strong></span>
       </div>
-      <span class="excluded-pill">⛔ excluded</span>
     </div>
   </div>
 </section>
