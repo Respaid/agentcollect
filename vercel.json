@@ -2,6 +2,7 @@
   "rewrites": [
 { "source": "/konica-minolta", "destination": "/konica-minolta.html" },
 { "source": "/konica-minolta-v3", "destination": "/v3/konica-minolta.html" },
+{ "source": "/konica-minolta-v4", "destination": "/v3/konica-minolta-v4.html" },
 { "source": "/konica2", "destination": "/konica2.html" },
 { "source": "/about", "destination": "/about.html" },
     { "source": "/careers", "destination": "/careers.html" },
