@@ -4,6 +4,7 @@
 { "source": "/konica-minolta2", "destination": "/v3/konica-minolta-v4-brian.html" },
 { "source": "/konica-minolta3", "destination": "/v3/konica-minolta-v4-marc.html" },
 { "source": "/konica-minolta4", "destination": "/v3/konica-minolta-v4-final.html" },
+{ "source": "/konica-minolta5", "destination": "/v3/konica-minolta-v5-kyle.html" },
 { "source": "/konica-minolta-v3", "destination": "/v3/konica-minolta.html" },
 { "source": "/konica-minolta-v4", "destination": "/v3/konica-minolta-v4.html" },
 { "source": "/konica2", "destination": "/konica2.html" },
