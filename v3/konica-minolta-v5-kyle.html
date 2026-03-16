@@ -40,7 +40,7 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',syst
 .demo-row{display:flex;gap:8px}
 .demo-input{flex:1;background:var(--bg-alt);border:1.5px solid var(--border);border-radius:100px;padding:16px 24px;font-family:inherit;font-size:16px;color:var(--text);outline:none;transition:border-color .2s}
 .demo-input:focus{border-color:var(--primary)}
-.demo-btn{background:var(--red);color:#fff;border:none;border-radius:100px;padding:16px 28px;font-family:inherit;font-weight:800;font-size:15px;cursor:pointer;white-space:nowrap;transition:transform .2s;display:flex;align-items:center;gap:8px}
+.demo-btn{background:var(--primary);color:#fff;border:none;border-radius:100px;padding:16px 28px;font-family:inherit;font-weight:800;font-size:15px;cursor:pointer;white-space:nowrap;transition:transform .2s;display:flex;align-items:center;gap:8px}
 .demo-btn:hover{transform:scale(1.03)}
 .demo-enriching{display:flex;align-items:center;justify-content:center;gap:12px;font-size:15px;color:var(--muted);padding:16px 0}
 .demo-found{display:flex;align-items:center;gap:14px;background:#f0fdf4;border-radius:100px;padding:12px 20px 12px 12px;margin-bottom:12px}
@@ -66,7 +66,7 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',syst
 
 /* Reviews — one line each */
 .reviews{max-width:700px;margin:64px auto 0;display:flex;flex-direction:column;gap:16px}
-.review{padding:24px 28px;border-radius:16px;background:#fef2f2;text-align:left}
+.review{padding:24px 28px;border-radius:16px;background:var(--bg-alt);text-align:left}
 .review q{font-size:16px;line-height:1.6;font-style:italic;display:block}
 .review-src{font-size:12px;color:var(--muted);margin-top:8px}
 .review-verdict{font-size:15px;color:var(--red);font-weight:700;text-align:center;margin-top:40px}
@@ -154,7 +154,7 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',syst
 .cta-or a{color:rgba(255,255,255,.3);text-decoration:none}
 
 /* Footer */
-.foot{padding:32px;text-align:center;font-size:12px;color:rgba(0,0,0,.15)}
+.foot{padding:32px;text-align:center;font-size:12px;color:rgba(0,0,0,.4)}
 
 /* Mobile */
 @media(max-width:768px){
@@ -191,6 +191,7 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',syst
 <!-- 1. HERO — Problem statement + demo dare -->
 <section class="hero">
   <div class="rv">
+    <img src="https://cdn.brandfetch.io/konicaminolta.com/w/512/h/80/logo" alt="Konica Minolta" style="height:32px;margin-bottom:24px;opacity:.7">
     <h1>Your collection agency<br>is <strong>destroying</strong> your brand.</h1>
     <p class="hero-sub">DLL Finance collects your bizhub leases with a 1-star BBB rating and FDCPA violations. New leadership starts April 1 &mdash; same agency.</p>
 
