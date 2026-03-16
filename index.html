@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
-    <title>AgentCollect — Agents, Not Agencies</title>
-    <meta name="description" content="AI agents that call, email, and negotiate your unpaid invoices — under your brand. Replace your collection agency and your manual process.">
-    <meta property="og:title" content="AgentCollect — Agents, Not Agencies">
-    <meta property="og:description" content="AI agents that call, email, and negotiate your unpaid invoices — under your brand. Try the $1 live demo.">
+    <title>AgentCollect — Stop Collecting Manually</title>
+    <meta name="description" content="AI agents and licensed attorneys handle your unpaid invoices — under your brand or ours. Replace your collection agency and your manual AR process.">
+    <meta property="og:title" content="AgentCollect — Stop Collecting Manually">
+    <meta property="og:description" content="AI agents and licensed attorneys handle your unpaid invoices — under your brand or ours. The end of manual collection.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.agentcollect.com">
-    <meta property="og:image" content="https://www.agentcollect.com/og.png?v=3">
+    <meta property="og:image" content="https://www.agentcollect.com/og.png?v=4">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AgentCollect — Agents, Not Agencies">
-    <meta name="twitter:description" content="AI agents that call, email, and negotiate your unpaid invoices — under your brand. Try the $1 live demo.">
-    <meta name="twitter:image" content="https://www.agentcollect.com/og.png?v=3">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ffffff'/%3E%3Ctext x='32' y='36' dominant-baseline='middle' text-anchor='middle' fill='%231e293b' font-family='system-ui' font-weight='900' font-size='32' letter-spacing='-2'%3Ea%3C/text%3E%3Cline x1='16' y1='48' x2='48' y2='16' stroke='%23ef4444' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+    <meta name="twitter:title" content="AgentCollect — Stop Collecting Manually">
+    <meta name="twitter:description" content="AI agents and licensed attorneys handle your unpaid invoices — under your brand or ours.">
+    <meta name="twitter:image" content="https://www.agentcollect.com/og.png?v=4">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -23,36 +23,34 @@
         *{margin:0;padding:0;box-sizing:border-box}
         :root{
             --bg:#FAFBFF;--bg-card:#fff;--bg-dark:#0B1B3D;
-            --border:#E8ECF2;--border-hover:rgba(37,99,235,.25);
+            --border:#E8ECF2;--border-hover:rgba(79,70,229,.25);
             --text:#0B1B3D;--text-mid:#475569;--text-muted:#94A3B8;--text-dim:#CBD5E1;
-            --blue:#2563EB;--blue-dark:#1D4ED8;--blue-light:rgba(37,99,235,.06);--blue-glow:rgba(37,99,235,.15);
+            --indigo:#4F46E5;--indigo-dark:#4338CA;--indigo-light:rgba(79,70,229,.06);--indigo-glow:rgba(79,70,229,.15);
             --green:#10B981;--green-dark:#059669;--green-light:rgba(16,185,129,.06);
-            --amber:#F59E0B;--red:#EF4444;--pink:#EC4899;--sf-blue:#00A1E0;
+            --amber:#F59E0B;--red:#EF4444;
             --mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
             --shadow-sm:0 1px 2px rgba(0,0,0,.05);
             --shadow-md:0 4px 12px rgba(0,0,0,.06);
             --shadow-lg:0 12px 40px rgba(0,0,0,.08);
-            --shadow-xl:0 24px 64px rgba(37,99,235,.1);
+            --shadow-xl:0 24px 64px rgba(79,70,229,.1);
             --max-w:1140px;
         }
         html{scroll-behavior:smooth}
         body{font-family:var(--sans);background:#fff;color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
         h1,h2,h3,h4,h5{font-family:var(--display)}
-        ::selection{background:rgba(37,99,235,.12)}
+        ::selection{background:rgba(79,70,229,.12)}
 
         @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
         @keyframes spin{to{transform:rotate(360deg)}}
         @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
-        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
         @keyframes gradient-shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-        @keyframes wave{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
-        @keyframes counter-pop{0%{transform:scale(.8);opacity:0}60%{transform:scale(1.05)}100%{transform:scale(1);opacity:1}}
         @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-        @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-        @keyframes pop-in{0%{opacity:0;transform:scale(.9)}100%{opacity:1;transform:scale(1)}}
-        @keyframes glow-ring{0%,100%{box-shadow:0 0 0 0 rgba(37,99,235,.3)}50%{box-shadow:0 0 0 10px rgba(37,99,235,0)}}
-        @keyframes check-draw{0%{stroke-dashoffset:24}100%{stroke-dashoffset:0}}
         @keyframes dot-typing{0%{opacity:.2}20%{opacity:1}100%{opacity:.2}}
+        @keyframes pop-in{0%{opacity:0;transform:scale(.9)}100%{opacity:1;transform:scale(1)}}
+        @keyframes check-draw{0%{stroke-dashoffset:24}100%{stroke-dashoffset:0}}
+        @keyframes counter-pop{0%{transform:scale(.8);opacity:0}60%{transform:scale(1.05)}100%{transform:scale(1);opacity:1}}
+        @keyframes pulse-ring{0%{box-shadow:0 0 0 0 rgba(79,70,229,.3)}70%{box-shadow:0 0 0 8px rgba(79,70,229,0)}100%{box-shadow:0 0 0 0 rgba(79,70,229,0)}}
+        @keyframes typewriter{from{width:0}to{width:100%}}
 
         .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
         .reveal.visible{opacity:1;transform:translateY(0)}
@@ -62,39 +60,80 @@
         .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
         .nav.scrolled{box-shadow:0 1px 8px rgba(0,0,0,.04)}
         .nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:60px}
-        .logo{display:flex;align-items:center;gap:8px;text-decoration:none;margin-right:40px;font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:-.04em;color:var(--text)}
-        .logo span{color:var(--blue)}
-        .logo-icon{width:26px;height:26px;background:#fff;border:1.5px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
-        .logo-icon .logo-a{font-weight:900;font-size:15px;color:var(--text);position:relative;z-index:1}
-        .logo-icon .logo-slash{position:absolute;width:16px;height:2px;background:#ef4444;transform:rotate(-45deg);border-radius:1px}
-        .nav-links{display:flex;gap:28px;flex:1}
+        .logo{display:flex;align-items:center;gap:8px;text-decoration:none;margin-right:auto;font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:-.04em;color:var(--text)}
+        .dot-circle{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--indigo);margin-left:2px;margin-bottom:2px;vertical-align:baseline}
+        .logo-tagline{font-size:11px;color:var(--text-muted);font-weight:500;margin-left:12px;padding-left:12px;border-left:1px solid var(--border);white-space:nowrap}
+        .nav-links{display:flex;gap:28px;margin-right:24px}
         .nav-links a{color:var(--text-mid);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
         .nav-links a:hover{color:var(--text)}
-        .nav-right{display:flex;align-items:center;gap:20px}
-        .nav-cta{padding:9px 20px;min-height:44px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center}
-        .nav-cta:hover{background:var(--blue-dark)}
+        .nav-right{display:flex;align-items:center;gap:12px}
+        .nav-cta{padding:9px 20px;min-height:44px;background:var(--indigo);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center}
+        .nav-cta:hover{background:var(--indigo-dark)}
+        .nav-cta-ghost{padding:9px 20px;min-height:44px;background:transparent;color:var(--text);border:1px solid var(--border);border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center}
+        .nav-cta-ghost:hover{border-color:var(--indigo);color:var(--indigo)}
         .nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px}
 
         /* ═══ HERO ═══ */
-        .hero{padding:160px 32px 100px;text-align:center;position:relative;overflow:hidden;background:#fff}
+        .hero{padding:140px 32px 80px;text-align:center;position:relative;overflow:hidden;background:#fff}
         .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid var(--border);border-radius:100px;font-size:12px;font-weight:600;color:var(--text-mid);margin-bottom:28px}
         .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green)}
         .hero h1{font-size:clamp(36px,5.5vw,64px);font-weight:900;letter-spacing:-.04em;line-height:1.05;margin-bottom:20px;max-width:700px;margin-left:auto;margin-right:auto;color:var(--text)}
-        .hero h1 em{font-style:normal;position:relative;color:var(--text)}
-        .hero h1 em::after{content:'';position:absolute;left:-.04em;right:-.04em;top:50%;height:5px;background:#ef4444;transform:translateY(-50%) rotate(-2deg);border-radius:2px}
-        .hero-sub{font-size:clamp(15px,1.6vw,18px);color:var(--text-mid);max-width:460px;margin:0 auto 40px;line-height:1.6}
+        .hero-sub{font-size:clamp(15px,1.6vw,18px);color:var(--text-mid);max-width:520px;margin:0 auto 40px;line-height:1.6}
 
-        /* ═══ INPUT ═══ */
+        /* ═══ URL INPUT ═══ */
         .input-wrap{max-width:520px;margin:0 auto}
         .input-box{display:flex;align-items:center;background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:5px;transition:all .2s;box-shadow:var(--shadow-md)}
-        .input-box:focus-within{border-color:var(--blue);box-shadow:var(--shadow-lg),0 0 0 3px rgba(37,99,235,.08)}
+        .input-box:focus-within{border-color:var(--indigo);box-shadow:var(--shadow-lg),0 0 0 3px rgba(79,70,229,.08)}
         .input-field{flex:1;padding:14px 16px;background:transparent;border:none;font-family:var(--sans);font-size:15px;color:var(--text);outline:none}
         .input-field::placeholder{color:var(--text-muted)}
         .input-field.error{animation:shake .4s}
-        .input-btn{padding:14px 28px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:6px}
-        .input-btn:hover{background:var(--blue-dark)}
+        .input-btn{padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:6px}
+        .input-btn:hover{background:var(--indigo-dark)}
         .input-btn:disabled{opacity:.5;cursor:not-allowed}
         .input-hint{margin-top:12px;font-size:13px;color:var(--text-muted);text-align:center}
+
+        /* ═══ ANALYSIS CONSOLE ═══ */
+        .analysis{max-width:720px;margin:0 auto;padding:0 24px;display:none}
+        .analysis.active{display:block;animation:fadeUp .5s ease}
+        .analysis-header{text-align:center;margin-bottom:32px}
+        .analysis-target{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;background:#fff;border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow-sm)}
+        .analysis-target-url{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--indigo)}
+        .analysis-target-status{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse-ring 2s infinite}
+        .a-step{margin-bottom:24px;opacity:0;transform:translateY(16px);transition:all .4s ease}
+        .a-step.active{opacity:1;transform:translateY(0)}
+        .a-step.done .a-step-icon{background:var(--green-light);border-color:rgba(16,185,129,.15)}
+        .a-step.done .a-step-icon svg{color:var(--green)}
+        .a-step-header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+        .a-step-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--indigo-light);border:1px solid rgba(79,70,229,.08);transition:all .3s;flex-shrink:0}
+        .a-step-icon svg{width:16px;height:16px;color:var(--indigo)}
+        .a-step-icon.spinning svg{animation:spin .8s linear infinite}
+        .a-step-title{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text)}
+        .a-step-sub{font-size:12px;color:var(--text-muted);margin-top:1px}
+        .a-step-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px;margin-left:48px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+        .a-step-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--indigo),var(--green));transform:scaleX(0);transform-origin:left;transition:transform 1s ease}
+        .a-step-card.loaded::before{transform:scaleX(1)}
+        .a-row{display:flex;justify-content:space-between;align-items:flex-start;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.04);opacity:0;transform:translateX(8px);transition:all .3s ease}
+        .a-row:last-child{border-bottom:none}
+        .a-row.show{opacity:1;transform:translateX(0)}
+        .a-row-key{font-size:12px;color:var(--text-muted);font-weight:500;min-width:120px;flex-shrink:0}
+        .a-row-val{font-size:13px;color:var(--text);font-weight:500;text-align:right;flex:1}
+        .a-row-val.found{color:var(--indigo)}
+        .a-row-val.green{color:var(--green)}
+        .thinking{display:flex;align-items:center;gap:4px;padding:8px 0}
+        .thinking-dot{width:5px;height:5px;border-radius:50%;background:var(--indigo);animation:dot-typing 1.4s infinite}
+        .thinking-dot:nth-child(2){animation-delay:.2s}
+        .thinking-dot:nth-child(3){animation-delay:.4s}
+        .a-actions{display:flex;gap:12px;justify-content:center;margin-top:40px;flex-wrap:wrap;opacity:0;transform:translateY(12px);transition:all .4s}
+        .a-actions.show{opacity:1;transform:translateY(0)}
+
+        /* ═══ PERSON CARD ═══ */
+        .person-card{display:flex;align-items:center;gap:14px;padding:12px 16px;background:var(--bg);border-radius:10px;margin-bottom:12px}
+        .person-avatar{width:48px;height:48px;border-radius:50%;background:var(--indigo-light);border:2px solid rgba(79,70,229,.1);overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+        .person-avatar img{width:100%;height:100%;object-fit:cover}
+        .person-info{flex:1}
+        .person-name{font-family:var(--display);font-size:15px;font-weight:800;color:var(--text)}
+        .person-title{font-size:12px;color:var(--text-mid);margin-top:1px}
+        .person-badge{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:4px;background:var(--indigo-light);color:var(--indigo)}
 
         /* ═══ LOGOS ═══ */
         .logos{padding:56px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:#fff}
@@ -104,20 +143,45 @@
         .marquee img{height:28px;margin:0 40px;opacity:.4;filter:grayscale(100%);transition:all .4s;object-fit:contain}
         .marquee img:hover{opacity:.8;filter:grayscale(0%)}
 
-        /* ═══ STATS ═══ */
-        .stats{padding:0 32px;background:#fff}
-        .stats-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
-        .stat-item{padding:48px 20px;text-align:center}
-        .stat-item:not(:last-child){border-right:1px solid var(--border)}
-        .stat-num{font-family:var(--display);font-size:clamp(28px,3.5vw,44px);font-weight:900;letter-spacing:-.04em;line-height:1}
-        .stat-label{font-size:13px;color:var(--text-mid);margin-top:6px}
+        /* ═══ TWO PATHS ═══ */
+        .paths{padding:100px 32px;background:#fff}
+        .paths-inner{max-width:var(--max-w);margin:0 auto}
+        .paths-header{text-align:center;margin-bottom:56px}
+        .paths-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:900px;margin:0 auto}
+        .path-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:36px 32px;transition:all .3s;position:relative;overflow:hidden}
+        .path-card:hover{border-color:var(--border-hover);box-shadow:var(--shadow-lg)}
+        .path-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+        .path-card h3{font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:-.02em;color:var(--text);margin-bottom:8px}
+        .path-card .path-desc{font-size:14px;color:var(--text-mid);line-height:1.6;margin-bottom:24px}
+        .path-features{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+        .path-feature{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-mid);line-height:1.5}
+        .path-feature svg{flex-shrink:0;margin-top:2px}
+        .path-cta{display:inline-flex;align-items:center;gap:6px;padding:12px 24px;border-radius:8px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;text-decoration:none;border:none}
+        .path-cta:hover{transform:translateY(-1px)}
+        .path-cta-primary{background:var(--indigo);color:#fff}
+        .path-cta-primary:hover{background:var(--indigo-dark)}
+        .path-cta-outline{background:#fff;color:var(--text);border:1.5px solid var(--border)}
+        .path-cta-outline:hover{border-color:var(--indigo);color:var(--indigo)}
+        .path-card.recommended{border-color:var(--green);box-shadow:0 0 0 4px rgba(16,185,129,.06)}
+        .path-card.recommended::before{content:'Easiest to start';position:absolute;top:16px;right:16px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:4px 10px;border-radius:20px;background:var(--green-light);color:var(--green-dark)}
 
         /* ═══ SECTIONS ═══ */
         .section{padding:100px 32px;background:#fff}
         .section-inner{max-width:var(--max-w);margin:0 auto}
-        .section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--blue);margin-bottom:12px}
+        .section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--indigo);margin-bottom:12px}
         .section-title{font-size:clamp(26px,3.5vw,40px);font-weight:800;letter-spacing:-.03em;color:var(--text);margin-bottom:10px;line-height:1.15}
         .section-sub{font-size:15px;color:var(--text-mid);max-width:420px;line-height:1.6}
+
+        /* ═══ AGENCY VS AGENT ═══ */
+        .compare{padding:72px 32px;background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+        .compare-inner{max-width:var(--max-w);margin:0 auto;text-align:center}
+        .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:800px;margin:0 auto;text-align:left}
+        .compare-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:28px}
+        .compare-card.good{border-color:var(--green);box-shadow:0 0 0 4px rgba(16,185,129,.06)}
+        .compare-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:20px}
+        .compare-rows{display:flex;flex-direction:column;gap:14px}
+        .compare-row{display:flex;align-items:flex-start;gap:10px}
+        .compare-row span{font-size:14px;color:var(--text-mid);line-height:1.5}
 
         /* ═══ CUSTOMER CARDS ═══ */
         .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:56px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden}
@@ -127,102 +191,27 @@
         .card:hover .card-logo{opacity:.65;filter:grayscale(0%)}
         .card-headline{font-family:var(--display);font-size:14px;font-weight:600;color:var(--text);line-height:1.5;flex:1}
         .card-metric{display:flex;align-items:baseline;gap:8px;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
-        .card-num{font-family:var(--display);font-size:15px;font-weight:800;color:var(--blue);letter-spacing:-.02em}
+        .card-num{font-family:var(--display);font-size:15px;font-weight:800;color:var(--indigo);letter-spacing:-.02em}
         .card-desc{font-size:12px;color:var(--text-muted);line-height:1.4}
-        .card-expand{display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--text-mid);line-height:1.7}
-        .card-expand.open{display:block;animation:fadeUp .3s ease}
-        .card-expand strong{color:var(--text);font-weight:600}
-        .card-toggle{display:flex;align-items:center;gap:4px;margin-top:8px;font-size:12px;font-weight:600;color:var(--blue);border:none;background:none;cursor:pointer;padding:8px 0;min-height:44px;font-family:var(--sans)}
-        .card-toggle svg{transition:transform .2s}
-        .card-toggle.open svg{transform:rotate(180deg)}
-
-        /* ═══ RICH CASE STUDY (Microsoft) ═══ */
-        .card.card-featured .card-expand{padding-top:20px}
-        .card-featured .card-inner{display:grid;grid-template-columns:1fr 1fr;gap:0}
-        .card-featured .card-left{padding-right:24px;border-right:1px solid var(--border)}
-        .card-featured .card-right{padding-left:24px}
-        .cs-video-wrap{position:relative;border-radius:10px;overflow:hidden;background:#000;margin-bottom:20px;cursor:pointer}
-        .cs-video-wrap video{width:100%;display:block;aspect-ratio:16/9;object-fit:contain;background:#000}
-        .cs-video-wrap img.cs-poster{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;transition:opacity .3s}
-        .cs-video-wrap img.cs-poster.hidden{opacity:0;pointer-events:none}
-        .cs-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.2);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1.5px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;transition:transform .2s,background .2s}
-        .cs-video-wrap:hover .cs-play-btn{transform:translate(-50%,-50%) scale(1.08);background:rgba(255,255,255,.3)}
-        .cs-play-btn.hidden{display:none}
-        .cs-quote-block{padding:16px 20px;background:rgba(37,99,235,.03);border-left:3px solid var(--blue);border-radius:0 8px 8px 0;margin-bottom:20px}
-        .cs-quote-block p{font-size:14px;font-style:italic;color:var(--text);line-height:1.6;margin-bottom:8px}
-        .cs-quote-block cite{display:flex;align-items:center;gap:8px;font-style:normal;font-size:12px;color:var(--text-muted)}
-        .cs-quote-block cite img{width:28px;height:28px;border-radius:50%;object-fit:cover}
-        .cs-quote-block cite strong{color:var(--text);font-weight:600}
-        .cs-mini-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:20px}
-        .cs-mini-stat{padding:14px;background:var(--bg);border-radius:8px;text-align:center}
-        .cs-mini-stat-num{font-family:var(--display);font-size:22px;font-weight:900;letter-spacing:-.03em;color:var(--blue)}
-        .cs-mini-stat-label{font-size:11px;color:var(--text-muted);margin-top:2px}
-        .cs-evo-bar{display:flex;align-items:flex-end;gap:8px;margin-bottom:16px;padding-top:8px}
-        .cs-evo-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
-        .cs-evo-fill{width:100%;border-radius:6px 6px 0 0}
-        .cs-evo-label-sm{font-size:12px;color:var(--text-muted);font-weight:500}
-        .cs-evo-num{font-family:var(--display);font-size:13px;font-weight:800;color:var(--text)}
-        .cs-region-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-        .cs-region{padding:10px 12px;border-radius:8px;border:1px solid var(--border);font-size:11px;line-height:1.4}
-        .cs-region strong{display:block;font-size:12px;margin-bottom:2px}
-        @media(max-width:768px){
-            .card-featured .card-inner{grid-template-columns:1fr}
-            .card-featured .card-left{padding-right:0;border-right:none;padding-bottom:20px;border-bottom:1px solid var(--border)}
-            .card-featured .card-right{padding-left:0;padding-top:20px}
-            .cs-mini-stats{grid-template-columns:repeat(2,1fr)}
-            .cs-region-grid{grid-template-columns:1fr}
-        }
 
         /* ═══ PULL QUOTE ═══ */
         .pull-quote{padding:80px 32px;background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
         .pull-quote-inner{max-width:800px;margin:0 auto;text-align:center}
         .pull-quote blockquote{font-family:var(--display);font-size:clamp(22px,3vw,32px);font-weight:700;letter-spacing:-.02em;color:var(--text);line-height:1.35;margin-bottom:28px;position:relative}
-        .pull-quote blockquote::before{content:'"';font-size:80px;font-weight:900;color:var(--blue);opacity:.2;line-height:1;display:block;margin-bottom:-20px}
+        .pull-quote blockquote::before{content:'\201C';font-size:80px;font-weight:900;color:var(--indigo);opacity:.2;line-height:1;display:block;margin-bottom:-20px}
         .pull-quote-cite{display:flex;align-items:center;justify-content:center;gap:12px}
         .pull-quote-cite img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--border)}
         .pull-quote-cite-text{text-align:left}
         .pull-quote-cite-text strong{font-size:14px;color:var(--text);display:block}
         .pull-quote-cite-text span{font-size:13px;color:var(--text-muted)}
 
-        /* ═══ INTEGRATIONS ═══ */
-        .integrations{padding:100px 32px;background:#fff;border-top:1px solid var(--border)}
-        .integrations-inner{max-width:var(--max-w);margin:0 auto}
-        .integrations-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;margin-top:48px}
-        .appex-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:32px;position:relative;overflow:hidden}
-        .appex-header{display:flex;align-items:center;gap:6px;margin-bottom:24px;font-size:12px;color:var(--text-muted);font-weight:500}
-        .appex-header img{height:20px}
-        .appex-listing{display:flex;gap:20px;align-items:flex-start}
-        .appex-icon{width:72px;height:72px;border-radius:16px;background:#f1f5f9;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(0,0,0,.08);overflow:hidden;border:1px solid var(--border)}
-        .appex-icon svg{width:100%;height:100%}
-        .appex-info{flex:1}
-        .appex-info h4{font-family:var(--display);font-size:18px;font-weight:800;color:var(--text);margin-bottom:4px}
-        .appex-info .appex-by{font-size:12px;color:var(--text-muted);margin-bottom:8px}
-        .appex-stars{display:flex;align-items:center;gap:4px;margin-bottom:12px}
-        .appex-stars svg{color:#F59E0B}
-        .appex-stars span{font-size:12px;color:var(--text-muted);margin-left:4px}
-        .appex-btn{display:inline-flex;align-items:center;gap:6px;padding:12px 24px;min-height:44px;background:var(--sf-blue);color:#fff;border:none;border-radius:6px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:default}
-        .appex-tags{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
-        .appex-tag{padding:4px 10px;background:#fff;border:1px solid var(--border);border-radius:20px;font-size:11px;color:var(--text-mid);font-weight:500}
-        .integ-logos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-        .integ-logo{display:flex;align-items:center;justify-content:center;padding:20px 16px;background:var(--bg);border:1px solid var(--border);border-radius:12px;transition:all .3s}
-        .integ-logo:hover{border-color:var(--border-hover);box-shadow:var(--shadow-sm)}
-        .integ-logo img{height:24px;opacity:.5;filter:grayscale(100%);transition:all .4s;object-fit:contain}
-        .integ-logo:hover img{opacity:.8;filter:grayscale(0%)}
-        .integ-logo.integ-featured{border-color:var(--sf-blue);background:rgba(0,161,224,.03)}
-        .integ-logo.integ-featured img{opacity:.7;filter:grayscale(0%)}
-        .integ-count{grid-column:1/-1;text-align:center;font-size:13px;color:var(--text-muted);font-weight:500;padding:12px}
-        @media(max-width:768px){
-            .integrations-grid{grid-template-columns:1fr;gap:32px}
-            .integ-logos{grid-template-columns:repeat(3,1fr)}
-        }
-
-        /* ═══ HOW ═══ */
-        .how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:56px;counter-reset:step}
-        .how-card{position:relative;padding:24px 20px;border:1px solid var(--border);border-radius:12px;transition:border-color .3s}
-        .how-card:hover{border-color:var(--border-hover)}
-        .how-num{font-family:var(--display);font-size:32px;font-weight:900;color:var(--text-muted);opacity:.5;margin-bottom:12px}
-        .how-card h3{font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px}
-        .how-card p{font-size:13px;color:var(--text-mid);line-height:1.5}
+        /* ═══ STATS ═══ */
+        .stats{padding:0 32px;background:#fff}
+        .stats-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
+        .stat-item{padding:48px 20px;text-align:center}
+        .stat-item:not(:last-child){border-right:1px solid var(--border)}
+        .stat-num{font-family:var(--display);font-size:clamp(28px,3.5vw,44px);font-weight:900;letter-spacing:-.04em;line-height:1}
+        .stat-label{font-size:13px;color:var(--text-mid);margin-top:6px}
 
         /* ═══ TRUST ═══ */
         .trust{padding:32px;border-top:1px solid var(--border);background:#fff}
@@ -233,17 +222,22 @@
 
         /* ═══ CTA ═══ */
         .cta{padding:120px 32px;text-align:center;background:var(--bg-dark);color:#fff;position:relative;overflow:hidden}
-        .cta-price{font-family:var(--display);font-size:clamp(80px,14vw,140px);font-weight:900;letter-spacing:-.06em;background:linear-gradient(135deg,var(--blue),#4F8BFF,var(--green));background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gradient-shift 5s ease infinite;line-height:.9;margin-bottom:20px}
-        .cta h2{font-size:clamp(18px,2.5vw,28px);font-weight:600;margin-bottom:36px;opacity:.85}
-        .cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 36px;background:#fff;color:var(--bg-dark);border:none;border-radius:8px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s}
-        .cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(255,255,255,.1)}
+        .cta h2{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-.04em;margin-bottom:16px;line-height:1.1}
+        .cta p{font-size:clamp(15px,1.6vw,18px);opacity:.7;max-width:460px;margin:0 auto 40px;line-height:1.6}
+        .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+        .cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 36px;border:none;border-radius:8px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s}
+        .cta-btn:hover{transform:translateY(-2px)}
+        .cta-btn-primary{background:#fff;color:var(--bg-dark)}
+        .cta-btn-primary:hover{box-shadow:0 12px 40px rgba(255,255,255,.15)}
+        .cta-btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.25)}
+        .cta-btn-ghost:hover{border-color:rgba(255,255,255,.5)}
 
         /* ═══ FOOTER ═══ */
         footer{background:#fff;border-top:1px solid var(--border);padding:56px 32px 32px}
         .footer-inner{max-width:var(--max-w);margin:0 auto}
         .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
         .footer-brand{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:12px}
-        .footer-brand span{color:var(--blue)}
+        .footer-brand span{color:var(--indigo)}
         .footer-tagline{font-size:13px;color:var(--text-muted);line-height:1.5;max-width:260px}
         .footer-col h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text);margin-bottom:16px}
         .footer-col a{display:block;font-size:13px;color:var(--text-muted);text-decoration:none;margin-bottom:10px;transition:color .2s}
@@ -253,90 +247,44 @@
         .footer-badges{display:flex;gap:8px}
         .footer-badge{padding:4px 10px;border:1px solid var(--border);border-radius:6px;font-size:10px;color:var(--text-muted);font-weight:600}
 
-        /* ═══ AGENT CONSOLE ═══ */
-        .agent-console{max-width:720px;margin:0 auto;padding:0 24px;display:none}
-        .agent-console.active{display:block;animation:fadeUp .5s ease}
-        .agent-header{text-align:center;margin-bottom:40px}
-        .agent-target{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;background:#fff;border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow-sm)}
-        .agent-target-email{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--blue)}
-        .agent-target-status{width:8px;height:8px;border-radius:50%;background:var(--green);animation:glow-ring 2s infinite}
-        .agent-step{margin-bottom:28px;opacity:0;transform:translateY(16px);transition:all .4s ease}
-        .agent-step.active{opacity:1;transform:translateY(0)}
-        .agent-step.done .step-icon{background:var(--green-light);border-color:rgba(16,185,129,.15)}
-        .agent-step.done .step-icon svg{color:var(--green)}
-        .step-header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-        .step-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--blue-light);border:1px solid rgba(37,99,235,.08);transition:all .3s;flex-shrink:0}
-        .step-icon svg{width:16px;height:16px;color:var(--blue)}
-        .step-icon.spinning svg{animation:spin .8s linear infinite}
-        .step-title{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text)}
-        .step-subtitle{font-size:12px;color:var(--text-muted);margin-top:1px}
-        .step-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px;margin-left:48px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
-        .step-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--green));transform:scaleX(0);transform-origin:left;transition:transform 1s ease}
-        .step-card.loaded::before{transform:scaleX(1)}
-        .data-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.04);opacity:0;transform:translateX(8px);transition:all .3s ease}
-        .data-row:last-child{border-bottom:none}
-        .data-row.show{opacity:1;transform:translateX(0)}
-        .data-key{font-size:12px;color:var(--text-muted);font-weight:500}
-        .data-val{font-size:13px;color:var(--text);font-weight:600;text-align:right}
-        .data-val.found{color:var(--green);font-weight:700}
-        .data-val.typing::after{content:'|';animation:blink .6s infinite;color:var(--blue);margin-left:2px}
-        .thinking{display:flex;align-items:center;gap:4px;padding:8px 0}
-        .thinking-dot{width:5px;height:5px;border-radius:50%;background:var(--blue);animation:dot-typing 1.4s infinite}
-        .thinking-dot:nth-child(2){animation-delay:.2s}
-        .thinking-dot:nth-child(3){animation-delay:.4s}
-        .strategy-card{background:rgba(37,99,235,.02);border:1px solid var(--border);border-radius:10px;padding:20px;margin-left:48px}
-        .strategy-row{margin-bottom:10px;font-size:13px;color:var(--text-mid);line-height:1.6;opacity:0;transform:translateY(6px);transition:all .3s ease}
-        .strategy-row.show{opacity:1;transform:translateY(0)}
-        .strategy-row strong{color:var(--text);font-weight:600}
-        .confidence-bar{display:flex;align-items:center;gap:10px;margin-top:14px;opacity:0;transition:all .4s}
-        .confidence-bar.show{opacity:1}
-        .conf-track{flex:1;height:4px;background:rgba(0,0,0,.04);border-radius:2px;overflow:hidden}
-        .conf-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--green));border-radius:2px;transition:width 1.2s ease;width:0}
-        .conf-label{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--green)}
-        .agent-actions{display:flex;gap:10px;justify-content:center;margin-top:40px;flex-wrap:wrap;opacity:0;transform:translateY(12px);transition:all .4s}
-        .agent-actions.show{opacity:1;transform:translateY(0)}
-        .action-btn{display:flex;align-items:center;gap:8px;padding:12px 24px;border-radius:8px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;border:none}
-        .action-btn:hover{transform:translateY(-1px)}
-        .action-btn-call{background:var(--blue);color:#fff}
-        .action-btn-call:hover{background:var(--blue-dark)}
-        .action-btn-email{background:#fff;color:var(--text);border:1px solid var(--border)}
-        .action-btn-email:hover{border-color:var(--border-hover)}
-        .call-active{text-align:center;padding:28px;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-md);display:none}
-        .call-active.show{display:block;animation:pop-in .3s ease}
-        .call-countdown{font-family:var(--display);font-size:56px;font-weight:900;background:linear-gradient(135deg,var(--blue),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:float 2s ease-in-out infinite}
-        .waveform{display:flex;align-items:center;justify-content:center;gap:3px;height:36px;margin:12px 0}
-        .wave-bar{width:3px;background:linear-gradient(to top,var(--blue),var(--green));border-radius:2px;animation:wave 1.2s ease-in-out infinite}
-        .wave-bar:nth-child(1){height:35%;animation-delay:0s}.wave-bar:nth-child(2){height:65%;animation-delay:.1s}.wave-bar:nth-child(3){height:100%;animation-delay:.2s}.wave-bar:nth-child(4){height:55%;animation-delay:.3s}.wave-bar:nth-child(5){height:80%;animation-delay:.4s}.wave-bar:nth-child(6){height:40%;animation-delay:.5s}.wave-bar:nth-child(7){height:90%;animation-delay:.15s}
+        /* ═══ EMAIL CAPTURE ═══ */
+        .email-capture{text-align:center;padding:20px;background:var(--bg);border-radius:10px;margin-top:12px}
+        .email-capture-input{display:flex;gap:8px;max-width:380px;margin:12px auto 0}
+        .email-capture-input input{flex:1;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:var(--sans);font-size:14px;outline:none}
+        .email-capture-input input:focus{border-color:var(--indigo)}
+        .email-capture-input button{padding:10px 20px;background:var(--indigo);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer}
 
         /* ═══ RESPONSIVE ═══ */
         @media(max-width:1024px){
             .cards-grid{grid-template-columns:repeat(2,1fr);border-radius:12px}
-            .how-grid{grid-template-columns:repeat(2,1fr)}
             .stats-inner{grid-template-columns:repeat(2,1fr)}
             .stat-item:nth-child(2){border-right:none}
             .footer-top{grid-template-columns:1fr 1fr}
         }
         @media(max-width:768px){
-            .agency-vs [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
             .nav-links{display:none}
             .nav-mobile{display:block}
             .nav-inner{padding:0 20px}
+            .logo-tagline{display:none}
             .hero{padding:120px 20px 60px}
             .input-box{flex-direction:column;padding:5px}
             .input-btn{width:100%;justify-content:center;border-radius:8px}
             .input-field{text-align:center}
             .marquee img{height:22px;margin:0 28px}
+            .paths-grid{grid-template-columns:1fr}
+            .compare-grid{grid-template-columns:1fr}
             .cards-grid{grid-template-columns:1fr;border-radius:12px}
-            .how-grid{grid-template-columns:1fr;max-width:360px;margin-left:auto;margin-right:auto}
             .stats-inner{grid-template-columns:repeat(2,1fr)}
             .stat-item{padding:28px 16px}
             .section{padding:64px 20px}
+            .paths{padding:64px 20px}
+            .compare{padding:48px 20px}
             .footer-top{grid-template-columns:1fr;gap:28px}
             .footer-bottom{flex-direction:column;text-align:center}
             .footer-badges{justify-content:center}
-            .step-card,.strategy-card{margin-left:0}
-            .agent-actions{flex-direction:column}
-            .action-btn{width:100%;justify-content:center}
+            .a-step-card{margin-left:0}
+            .a-actions{flex-direction:column}
+            .cta-btns{flex-direction:column;align-items:center}
         }
         @media(max-width:480px){
             .stats-inner{grid-template-columns:1fr}
@@ -357,16 +305,18 @@
 <!-- NAV -->
 <nav class="nav" id="nav">
 <div class="nav-inner">
-    <a href="/" class="logo"><div class="logo-icon"><span class="logo-a">a</span><div class="logo-slash"></div></div>agent<span>collect</span></a>
+    <a href="/" class="logo">Agent<span>Collect</span><span class="dot-circle"></span></a>
+    <span class="logo-tagline">The end of manual collection.</span>
     <div class="nav-links">
-        <a href="#results">Customers</a>
+        <a href="#paths">Products</a>
+        <a href="#results">Results</a>
         <a href="#how">How it works</a>
-        <a href="#security">Security</a>
     </div>
     <div class="nav-right">
-        <a href="#hero-input" class="nav-cta">Try the demo</a>
+        <a href="https://cal.com/agentcollect/demo" class="nav-cta-ghost" target="_blank">Talk to us</a>
+        <a href="#hero-input" class="nav-cta" onclick="document.getElementById('url-input').focus()">Try the demo</a>
     </div>
-    <button class="nav-mobile" onclick="document.getElementById('hero-input').scrollIntoView({behavior:'smooth'})">
+    <button class="nav-mobile" onclick="document.getElementById('url-input').scrollIntoView({behavior:'smooth'});document.getElementById('url-input').focus()">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
     </button>
 </div>
@@ -374,89 +324,73 @@
 
 <!-- HERO -->
 <section class="hero" id="hero">
-    <div class="hero-badge"><span class="dot"></span> Trusted by Fortune 500 finance teams</div>
-    <h1>Agents, not <em>agencies</em>.</h1>
-    <p class="hero-sub">AI agents that call, email, and negotiate — under your brand. Replace your collection agency and your manual AR process. In 30 seconds.</p>
+    <div class="hero-badge"><span class="dot"></span> Trusted by Microsoft, Dell, and Plaid</div>
+    <h1>Stop collecting manually.</h1>
+    <p class="hero-sub">AI agents and licensed attorneys handle your unpaid invoices — under your brand or ours.</p>
 
     <div class="input-wrap" id="hero-input">
         <div class="input-box">
-            <input type="email" class="input-field" id="email-input" placeholder="marc@salesforce.com" autocomplete="email">
-            <button class="input-btn" id="go-btn" onclick="startAgent()">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                Try it now
+            <input type="text" class="input-field" id="url-input" placeholder="yourcompany.com" autocomplete="off" spellcheck="false">
+            <button class="input-btn" id="go-btn" onclick="startAnalysis()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                Analyze
             </button>
         </div>
-        <div class="input-hint">Your agency charges 30% and takes 6 months. See why that's over — in 30 seconds.</div>
+        <div class="input-hint">Enter any company website. We'll show you what we see in 30 seconds.</div>
     </div>
 </section>
 
-<!-- AGENT CONSOLE -->
-<section class="agent-console" id="agent-console">
-    <div class="agent-header">
-        <div class="agent-target">
-            <div class="agent-target-status"></div>
-            <span class="agent-target-email" id="target-email"></span>
+<!-- ANALYSIS CONSOLE -->
+<section class="analysis" id="analysis-console">
+    <div class="analysis-header">
+        <div class="analysis-target">
+            <div class="analysis-target-status"></div>
+            <span class="analysis-target-url" id="target-url"></span>
         </div>
     </div>
-    <div class="agent-step" id="step-identity">
-        <div class="step-header">
-            <div class="step-icon" id="icon-identity"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-            <div><div class="step-title" id="title-identity">Investigating...</div><div class="step-subtitle" id="sub-identity"></div></div>
+
+    <div class="a-step" id="step-business">
+        <div class="a-step-header">
+            <div class="a-step-icon" id="icon-business"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+            <div><div class="a-step-title" id="title-business">Analyzing business...</div><div class="a-step-sub" id="sub-business"></div></div>
         </div>
-        <div class="step-card" id="card-identity">
-            <div id="profile-card" style="display:none">
-                <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px">
-                    <div id="avatar-wrap" style="width:56px;height:56px;border-radius:50%;background:var(--blue-light);border:2px solid rgba(37,99,235,.1);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" opacity=".3"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    </div>
-                    <div>
-                        <div id="profile-name" style="font-family:var(--display);font-size:18px;font-weight:800;color:var(--text)"></div>
-                        <div id="profile-title" style="font-size:13px;color:var(--text-mid);margin-top:2px"></div>
-                        <div id="profile-location" style="font-size:12px;color:var(--text-muted);margin-top:2px;display:flex;align-items:center;gap:4px"></div>
-                    </div>
-                </div>
-                <div id="profile-linkedin" style="display:none;margin-bottom:14px;padding:10px 14px;background:rgba(10,102,194,.03);border:1px solid rgba(10,102,194,.08);border-radius:8px">
-                    <div style="display:flex;align-items:center;gap:6px">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                        <span style="font-size:11px;color:#0A66C2;font-weight:600" id="linkedin-text"></span>
-                    </div>
-                </div>
-            </div>
-            <div id="identity-rows"></div>
-        </div>
+        <div class="a-step-card" id="card-business"><div id="business-rows"></div></div>
     </div>
-    <div class="agent-step" id="step-intel">
-        <div class="step-header">
-            <div class="step-icon" id="icon-intel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg></div>
-            <div><div class="step-title" id="title-intel">Profiling...</div><div class="step-subtitle" id="sub-intel"></div></div>
+
+    <div class="a-step" id="step-disputes">
+        <div class="a-step-header">
+            <div class="a-step-icon" id="icon-disputes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg></div>
+            <div><div class="a-step-title" id="title-disputes">Identifying disputes...</div><div class="a-step-sub" id="sub-disputes"></div></div>
         </div>
-        <div class="step-card" id="card-intel"><div id="intel-rows"></div></div>
+        <div class="a-step-card" id="card-disputes"><div id="disputes-rows"></div></div>
     </div>
-    <div class="agent-step" id="step-strategy">
-        <div class="step-header">
-            <div class="step-icon" id="icon-strategy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
-            <div><div class="step-title" id="title-strategy">Designing approach...</div><div class="step-subtitle" id="sub-strategy"></div></div>
+
+    <div class="a-step" id="step-decision">
+        <div class="a-step-header">
+            <div class="a-step-icon" id="icon-decision"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <div><div class="a-step-title" id="title-decision">Finding decision-maker...</div><div class="a-step-sub" id="sub-decision"></div></div>
         </div>
-        <div class="strategy-card" id="card-strategy"></div>
+        <div class="a-step-card" id="card-decision"><div id="decision-rows"></div></div>
     </div>
-    <div class="agent-step" id="step-collect">
-        <div class="step-header">
-            <div class="step-icon" id="icon-collect"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></div>
-            <div><div class="step-title" id="title-collect">Collecting...</div><div class="step-subtitle" id="sub-collect"></div></div>
+
+    <div class="a-step" id="step-plan">
+        <div class="a-step-header">
+            <div class="a-step-icon" id="icon-plan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></div>
+            <div><div class="a-step-title" id="title-plan">Building collection plan...</div><div class="a-step-sub" id="sub-plan"></div></div>
         </div>
-        <div class="step-card" id="card-collect"><div id="collect-content"></div></div>
+        <div class="a-step-card" id="card-plan"><div id="plan-rows"></div></div>
     </div>
-    <div class="agent-actions" id="agent-actions">
-        <button class="action-btn action-btn-call" id="call-action-btn" onclick="triggerCall()">
+
+    <div class="a-actions" id="a-actions">
+        <a href="https://cal.com/agentcollect/demo" target="_blank" class="path-cta path-cta-primary" style="padding:14px 32px;font-size:15px">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <span id="call-btn-text">Call me now</span>
-        </button>
-        <button class="action-btn action-btn-email" onclick="scrollTo({top:0,behavior:'smooth'})">
+            Talk to us about this
+        </a>
+        <button class="path-cta path-cta-outline" onclick="resetAndScroll()">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
-            Try another email
+            Try another company
         </button>
     </div>
-    <div class="call-active" id="call-active"><div id="call-inner"></div></div>
 </section>
 
 <!-- LOGOS -->
@@ -482,7 +416,46 @@
     </div>
 </section>
 
-<!-- PULL QUOTE — moved above stats for immediate credibility -->
+<!-- TWO PATHS -->
+<section class="paths reveal" id="paths">
+    <div class="paths-inner">
+        <div class="paths-header">
+            <div class="section-label" style="text-align:center">Two ways to collect</div>
+            <div class="section-title" style="text-align:center;max-width:600px;margin:0 auto">Your brand or ours. Your call.</div>
+            <div class="section-sub" style="text-align:center;max-width:500px;margin:12px auto 0">Use them together or separately. Most clients start with Third Party — zero friction, zero risk — then add First Party when ready.</div>
+        </div>
+        <div class="paths-grid">
+            <div class="path-card">
+                <div class="path-label" style="color:var(--indigo)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg> First Party Collection</div>
+                <h3>AI agents, your brand.</h3>
+                <div class="path-desc">White-label AI agents call, email, and negotiate your unpaid invoices. Your debtors think they're talking to you.</div>
+                <div class="path-features">
+                    <div class="path-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Your brand on every touchpoint</div>
+                    <div class="path-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>AI voice calls + email + SMS</div>
+                    <div class="path-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Contact enrichment + decision-maker research</div>
+                    <div class="path-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Replace or augment your internal team</div>
+                </div>
+                <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px">Best for: companies with internal AR teams or high-volume collections</div>
+                <a href="https://cal.com/agentcollect/demo" target="_blank" class="path-cta path-cta-outline">Learn more</a>
+            </div>
+            <div class="path-card recommended">
+                <div class="path-label" style="color:var(--green)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Third Party Collection</div>
+                <h3>Licensed attorney, our network.</h3>
+                <div class="path-desc">A real attorney sends demand letters with legal weight. Bar number, legal address, formal notice. The debtor takes it seriously.</div>
+                <div class="path-features">
+                    <div class="path-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Licensed attorney with bar number</div>
+                    <div class="path-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Formal demand letters with legal standing</div>
+                    <div class="path-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Just upload an Excel file — plug and play</div>
+                    <div class="path-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Debtor pays you directly — not an agency</div>
+                </div>
+                <div style="font-size:12px;color:var(--text-muted);margin-bottom:12px">Best for: quick start, no internal process changes, immediate results</div>
+                <a href="https://cal.com/agentcollect/demo" target="_blank" class="path-cta path-cta-primary">Start a free pilot</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PULL QUOTE -->
 <section class="pull-quote reveal">
     <div class="pull-quote-inner">
         <blockquote>Not one of them complained about the tone or the engagement. That's unheard of in collections.</blockquote>
@@ -499,7 +472,7 @@
 <!-- STATS -->
 <section class="stats reveal">
     <div class="stats-inner">
-        <div class="stat-item"><div class="stat-num" style="color:var(--blue)" data-count="85" data-prefix="" data-suffix="K">0</div><div class="stat-label">Collections per day</div></div>
+        <div class="stat-item"><div class="stat-num" style="color:var(--indigo)" data-count="85" data-prefix="" data-suffix="K">0</div><div class="stat-label">Collections per day</div></div>
         <div class="stat-item"><div class="stat-num" style="color:var(--green)" data-count="50" data-prefix="~" data-suffix="%">0</div><div class="stat-label">Average recovery rate</div></div>
         <div class="stat-item"><div class="stat-num" style="color:var(--amber)" data-count="20" data-prefix="" data-suffix=" min">0</div><div class="stat-label">Time to go live</div></div>
         <div class="stat-item"><div class="stat-num" data-count="0" data-prefix="" data-suffix="">0</div><div class="stat-label">Compliance incidents</div></div>
@@ -507,256 +480,65 @@
 </section>
 
 <!-- AGENCY VS AGENT -->
-<section class="agency-vs reveal" style="padding:72px 32px;background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
-    <div style="max-width:var(--max-w);margin:0 auto">
-        <div class="section-label" style="text-align:center">The old model is broken</div>
-        <h2 style="font-family:var(--display);font-size:clamp(26px,3.5vw,42px);font-weight:900;letter-spacing:-.03em;text-align:center;margin-bottom:48px;color:var(--text)">Collection agencies: a 1980s model for a 2025 problem.</h2>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:800px;margin:0 auto">
-            <div style="background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:28px">
-                <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:20px">Collection Agency</div>
-                <div style="display:flex;flex-direction:column;gap:14px">
-                    <div style="display:flex;align-items:flex-start;gap:10px"><span style="color:var(--red);font-size:16px;flex-shrink:0;margin-top:1px">✕</span><span style="font-size:14px;color:var(--text-mid)">25–35% of every dollar recovered — whether they work hard or not</span></div>
-                    <div style="display:flex;align-items:flex-start;gap:10px"><span style="color:var(--red);font-size:16px;flex-shrink:0;margin-top:1px">✕</span><span style="font-size:14px;color:var(--text-mid)">4–6 months to see results</span></div>
-                    <div style="display:flex;align-items:flex-start;gap:10px"><span style="color:var(--red);font-size:16px;flex-shrink:0;margin-top:1px">✕</span><span style="font-size:14px;color:var(--text-mid)">FDCPA violations that damage your brand</span></div>
-                    <div style="display:flex;align-items:flex-start;gap:10px"><span style="color:var(--red);font-size:16px;flex-shrink:0;margin-top:1px">✕</span><span style="font-size:14px;color:var(--text-mid)">Your debtors hear a stranger's name, not yours</span></div>
-                    <div style="display:flex;align-items:flex-start;gap:10px"><span style="color:var(--red);font-size:16px;flex-shrink:0;margin-top:1px">✕</span><span style="font-size:14px;color:var(--text-mid)">No visibility. No data. No feedback loop.</span></div>
+<section class="compare reveal">
+    <div class="compare-inner">
+        <div class="section-label">The old model is broken</div>
+        <h2 style="font-family:var(--display);font-size:clamp(26px,3.5vw,42px);font-weight:900;letter-spacing:-.03em;margin-bottom:48px;color:var(--text)">Collection agencies: a 1980s model for a 2026 problem.</h2>
+        <div class="compare-grid">
+            <div class="compare-card">
+                <div class="compare-label" style="color:var(--text-muted)">Collection Agency</div>
+                <div class="compare-rows">
+                    <div class="compare-row"><span style="color:var(--red);font-size:16px;flex-shrink:0">&#10005;</span><span>25 to 35% of every dollar recovered</span></div>
+                    <div class="compare-row"><span style="color:var(--red);font-size:16px;flex-shrink:0">&#10005;</span><span>4 to 6 months to see results</span></div>
+                    <div class="compare-row"><span style="color:var(--red);font-size:16px;flex-shrink:0">&#10005;</span><span>FDCPA violations that damage your brand</span></div>
+                    <div class="compare-row"><span style="color:var(--red);font-size:16px;flex-shrink:0">&#10005;</span><span>Your debtors hear a stranger's name</span></div>
+                    <div class="compare-row"><span style="color:var(--red);font-size:16px;flex-shrink:0">&#10005;</span><span>No visibility. No data. No feedback loop.</span></div>
                 </div>
             </div>
-            <div style="background:#fff;border:1.5px solid var(--green);border-radius:16px;padding:28px;box-shadow:0 0 0 4px rgba(16,185,129,.06)">
-                <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--green);margin-bottom:20px">AI Agent</div>
-                <div style="display:flex;flex-direction:column;gap:14px">
-                    <div style="display:flex;align-items:flex-start;gap:10px"><span style="color:var(--green);font-size:16px;flex-shrink:0;margin-top:1px">✓</span><span style="font-size:14px;color:var(--text-mid)">Success-fee only — you pay nothing if we recover nothing</span></div>
-                    <div style="display:flex;align-items:flex-start;gap:10px"><span style="color:var(--green);font-size:16px;flex-shrink:0;margin-top:1px">✓</span><span style="font-size:14px;color:var(--text-mid)">First results in 20 days</span></div>
-                    <div style="display:flex;align-items:flex-start;gap:10px"><span style="color:var(--green);font-size:16px;flex-shrink:0;margin-top:1px">✓</span><span style="font-size:14px;color:var(--text-mid)">Zero compliance incidents — 99.7% positive CX score</span></div>
-                    <div style="display:flex;align-items:flex-start;gap:10px"><span style="color:var(--green);font-size:16px;flex-shrink:0;margin-top:1px">✓</span><span style="font-size:14px;color:var(--text-mid)">Your brand, your tone — invisible to the debtor</span></div>
-                    <div style="display:flex;align-items:flex-start;gap:10px"><span style="color:var(--green);font-size:16px;flex-shrink:0;margin-top:1px">✓</span><span style="font-size:14px;color:var(--text-mid)">Full dashboard. Every call, every email, every outcome.</span></div>
+            <div class="compare-card good">
+                <div class="compare-label" style="color:var(--green)">AgentCollect</div>
+                <div class="compare-rows">
+                    <div class="compare-row"><span style="color:var(--green);font-size:16px;flex-shrink:0">&#10003;</span><span>Success-fee only — $0 if nothing recovered</span></div>
+                    <div class="compare-row"><span style="color:var(--green);font-size:16px;flex-shrink:0">&#10003;</span><span>First results in 20 days</span></div>
+                    <div class="compare-row"><span style="color:var(--green);font-size:16px;flex-shrink:0">&#10003;</span><span>Zero compliance incidents — 99.7% positive CX</span></div>
+                    <div class="compare-row"><span style="color:var(--green);font-size:16px;flex-shrink:0">&#10003;</span><span>Your brand or a licensed attorney — your choice</span></div>
+                    <div class="compare-row"><span style="color:var(--green);font-size:16px;flex-shrink:0">&#10003;</span><span>Full dashboard. Every call, email, outcome.</span></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- CUSTOMERS -->
+<!-- RESULTS PREVIEW -->
 <section class="section reveal" id="results">
     <div class="section-inner">
-        <div class="section-label">Customers</div>
-        <div class="section-title">They fired their collection agency.</div>
-        <div class="section-sub">Microsoft, Dell, and Plaid already replaced their agency. They're not going back.</div>
+        <div class="section-label">Results</div>
+        <div class="section-title">They stopped collecting manually.</div>
+        <div class="section-sub">Microsoft, Dell, and Plaid replaced their old process. They're not going back.</div>
         <div class="cards-grid">
-            <div class="card card-featured reveal s1" onclick="toggleCard(this)">
+            <div class="card reveal s1">
                 <img src="https://cdn.brandfetch.io/microsoft.com/w/512/h/80/logo" alt="Microsoft" class="card-logo">
-                <div class="card-headline">Fired their agency. AI recovers 3.2× more. Zero complaints.</div>
+                <div class="card-headline">Fired their agency. AI recovers 3.2x more. Zero complaints.</div>
                 <div class="card-metric">
-                    <div class="card-num">3.2×</div>
+                    <div class="card-num">3.2x</div>
                     <div class="card-desc">recovery rate vs. previous agency</div>
                 </div>
-                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">See case study <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
-                <div class="card-expand">
-                    <div class="card-inner">
-                        <div class="card-left">
-                            <div class="cs-video-wrap" onclick="event.stopPropagation();playMsVideo(this)">
-                                <img src="https://respaid.com/customers/microsoft/poster.jpg" alt="Neil Doyle - Microsoft" class="cs-poster">
-                                <video playsinline webkit-playsinline preload="metadata" id="ms-video">
-                                    <source src="https://respaid.com/customers/microsoft/case-study-v14-ios.mp4" type="video/mp4; codecs=avc1.4D401F">
-                                </video>
-                                <div class="cs-play-btn" id="ms-play-btn">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="rgba(255,255,255,.95)"><polygon points="6 3 20 12 6 21 6 3"/></svg>
-                                </div>
-                            </div>
-                            <div class="cs-quote-block">
-                                <p>"Not one of them complained about the tone or the engagement. That's unheard of in collections."</p>
-                                <cite>
-                                    <img src="https://respaid.com/images/neil-doyle.png" alt="Neil Doyle">
-                                    <div><strong>Neil Doyle</strong> · OTC Transformation Lead, Microsoft</div>
-                                </cite>
-                            </div>
-                            <strong>Challenge:</strong> Collections is one of the riskiest places to deploy AI. Microsoft needed to recover across hundreds of enterprise accounts in 44 states — without damaging a single relationship.<br><br>
-                            <strong>Solution:</strong> AI agents adapt tone by region, discover decision-makers beyond AP (+130% enrichment), and resolve 86% of disputes — 40% with zero human intervention.<br><br>
-                            <strong>Result:</strong> 3.2× the recovery rate of their previous agency. 99.7% positive CX score. Zero complaints.
-                        </div>
-                        <div class="card-right">
-                            <div class="cs-mini-stats">
-                                <div class="cs-mini-stat"><div class="cs-mini-stat-num">99.7%</div><div class="cs-mini-stat-label">positive CX score</div></div>
-                                <div class="cs-mini-stat"><div class="cs-mini-stat-num">3.2×</div><div class="cs-mini-stat-label">recovery vs. agency</div></div>
-                                <div class="cs-mini-stat"><div class="cs-mini-stat-num">+130%</div><div class="cs-mini-stat-label">contacts enriched</div></div>
-                                <div class="cs-mini-stat"><div class="cs-mini-stat-num">44</div><div class="cs-mini-stat-label">US states reached</div></div>
-                            </div>
-                            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:10px">Every batch gets smarter</div>
-                            <div class="cs-evo-bar">
-                                <div class="cs-evo-col"><div class="cs-evo-num">1×</div><div class="cs-evo-fill" style="height:20px;background:var(--border)"></div><div class="cs-evo-label-sm">Batch 1</div></div>
-                                <div class="cs-evo-col"><div class="cs-evo-num">1.3×</div><div class="cs-evo-fill" style="height:32px;background:rgba(37,99,235,.3)"></div><div class="cs-evo-label-sm">+ AI Calls</div></div>
-                                <div class="cs-evo-col"><div class="cs-evo-num">3.2×</div><div class="cs-evo-fill" style="height:60px;background:var(--blue)"></div><div class="cs-evo-label-sm">+ Enrichment</div></div>
-                                <div class="cs-evo-col"><div class="cs-evo-num" style="color:var(--green)">5×+</div><div class="cs-evo-fill" style="height:80px;background:linear-gradient(to top,var(--blue),var(--green))"></div><div class="cs-evo-label-sm">+ Invoices</div></div>
-                            </div>
-                            <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin:20px 0 10px">AI adapts by region</div>
-                            <div class="cs-region-grid">
-                                <div class="cs-region" style="border-left:3px solid #ea580c"><strong>South</strong>Warmer tone, phone-first.</div>
-                                <div class="cs-region" style="border-left:3px solid #3b82f6"><strong>Northeast</strong>Direct, email-first.</div>
-                                <div class="cs-region" style="border-left:3px solid #16a34a"><strong>West Coast</strong>Self-service preferred.</div>
-                                <div class="cs-region" style="border-left:3px solid #6366f1"><strong>Midwest</strong>Steady follow-ups.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <div class="card reveal s2" onclick="toggleCard(this)">
+            <div class="card reveal s2">
                 <img src="https://cdn.brandfetch.io/dell.com/w/512/h/80/logo" alt="Dell" class="card-logo">
                 <div class="card-headline">4 business units. No API. No IT. Just a spreadsheet.</div>
                 <div class="card-metric">
                     <div class="card-num">20 min</div>
                     <div class="card-desc">to go live per unit</div>
                 </div>
-                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">Read more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
-                <div class="card-expand">
-                    <strong>Challenge:</strong> Dell needed to collect overdue invoices across 4 divisions simultaneously, each with different ERP systems and processes.<br><br>
-                    <strong>Solution:</strong> Each division uploads their own Excel file. AI agents handle multi-language outreach, follow-ups, and escalations independently per business unit.<br><br>
-                    <strong>Result:</strong> All 4 units went live in under 20 minutes each. No IT involvement. No API integration required.
-                </div>
             </div>
-            <div class="card reveal s3" onclick="toggleCard(this)">
+            <div class="card reveal s3">
                 <img src="https://cdn.brandfetch.io/plaid.com/w/512/h/80/logo" alt="Plaid" class="card-logo">
                 <div class="card-headline">Agency: 6 months, 5%. Our AI: 20 days, 50%.</div>
                 <div class="card-metric">
-                    <div class="card-num">10×</div>
+                    <div class="card-num">10x</div>
                     <div class="card-desc">faster than their agency</div>
                 </div>
-                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">Read more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
-                <div class="card-expand">
-                    <strong>Challenge:</strong> Plaid's previous collection agency spent 6 months on their portfolio and recovered only 5%.<br><br>
-                    <strong>Solution:</strong> AI agents researched each debtor, identified the right contact at each company, and executed a multi-channel strategy (email + phone + LinkedIn).<br><br>
-                    <strong>Result:</strong> 10x the recovery rate in 1/9th the time. AI's persistence and speed outperformed human agents dramatically.
-                </div>
-            </div>
-            <div class="card reveal s1" onclick="toggleCard(this)">
-                <img src="https://cdn.brandfetch.io/checkr.com/w/512/h/80/logo" alt="Checkr" class="card-logo">
-                <div class="card-headline">Debtors prefer the AI. No judgment. No hold music. Just resolution.</div>
-                <div class="card-metric">
-                    <div class="card-num">0</div>
-                    <div class="card-desc">client relationships damaged</div>
-                </div>
-                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">Read more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
-                <div class="card-expand">
-                    <strong>Challenge:</strong> Checkr needed to collect from clients they wanted to keep. Aggressive agencies were damaging relationships.<br><br>
-                    <strong>Solution:</strong> AI agents use a respectful, compliance-first approach. When a debtor disputes, AI responds in under 60 seconds with documentation. Payment plans are offered automatically.<br><br>
-                    <strong>Result:</strong> Zero client relationships lost. Debtors prefer dealing with AI — no judgment, no pressure, just clear next steps.
-                </div>
-            </div>
-            <div class="card reveal s2" onclick="toggleCard(this)">
-                <img src="https://cdn.brandfetch.io/redis.com/w/512/h/80/logo" alt="Redis" class="card-logo">
-                <div class="card-headline">12 languages. 2 continents. 1 AI. Zero localization cost.</div>
-                <div class="card-metric">
-                    <div class="card-num">12</div>
-                    <div class="card-desc">languages, zero incidents</div>
-                </div>
-                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">Read more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
-                <div class="card-expand">
-                    <strong>Challenge:</strong> Redis has debtors across Europe and the US. Different languages, regulations, and business cultures.<br><br>
-                    <strong>Solution:</strong> A single AI agent handles all regions natively — French for France, German for DACH, English for US/UK — while respecting local regulations (GDPR, Reg F, CCPA).<br><br>
-                    <strong>Result:</strong> 12 languages supported simultaneously. Zero compliance incidents across all jurisdictions.
-                </div>
-            </div>
-            <div class="card reveal s3" onclick="toggleCard(this)">
-                <img src="https://cdn.brandfetch.io/doordash.com/w/512/h/80/logo" alt="DoorDash" class="card-logo">
-                <div class="card-headline">Collects from partners. Keeps the relationship. Agency couldn't.</div>
-                <div class="card-metric">
-                    <div class="card-num">&lt;60s</div>
-                    <div class="card-desc">AI dispute response</div>
-                </div>
-                <button class="card-toggle" onclick="event.stopPropagation();toggleCard(this.closest('.card'))">Read more <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
-                <div class="card-expand">
-                    <strong>Challenge:</strong> DoorDash needs to collect from restaurant partners they depend on. Burning a bridge means losing a partner and their customers.<br><br>
-                    <strong>Solution:</strong> AI agents de-escalate automatically, reference specific invoices and delivery data, and offer flexible resolution paths. Tone is firm but fair.<br><br>
-                    <strong>Result:</strong> Disputes resolved in under 60 seconds. Restaurant partners continue operating on the platform while resolving their balance.
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- INTEGRATIONS -->
-<section class="integrations reveal" id="integrations">
-    <div class="integrations-inner">
-        <div class="section-label">Integrations</div>
-        <div class="section-title">Lives inside your stack. Not next to it.</div>
-        <div class="section-sub">Drop a spreadsheet or connect your ERP. Either way, you're live in 20 minutes.</div>
-        <div class="integrations-grid">
-            <!-- AppExchange Mockup -->
-            <div class="appex-card">
-                <div class="appex-header">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#00A1E0"/><path d="M7.5 10.5c0-1.1.9-2 2-2 .7 0 1.4.4 1.7 1 .4-.6 1-1 1.8-1 1.1 0 2 .9 2 2 0 .3 0 .5-.1.7.7.3 1.1 1 1.1 1.8 0 1.1-.9 2-2 2h-6c-1.1 0-2-.9-2-2 0-.8.5-1.5 1.2-1.8-.1-.2-.2-.5-.2-.7z" fill="#fff"/></svg>
-                    Salesforce AppExchange
-                </div>
-                <div class="appex-listing">
-                    <div class="appex-icon"><svg viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg"><rect width="72" height="72" rx="16" fill="#ffffff"/><text x="36" y="40" text-anchor="middle" dominant-baseline="middle" fill="#1e293b" font-family="system-ui,sans-serif" font-weight="900" font-size="36" letter-spacing="-2">a</text><line x1="18" y1="54" x2="54" y2="18" stroke="#ef4444" stroke-width="5" stroke-linecap="round"/></svg></div>
-                    <div class="appex-info">
-                        <h4>AgentCollect for Salesforce</h4>
-                        <div class="appex-by">by AgentCollect, Inc.</div>
-                        <div class="appex-stars">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                            <span>5.0 (47 reviews)</span>
-                        </div>
-                        <button class="appex-btn">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
-                            Get It Now
-                        </button>
-                    </div>
-                </div>
-                <div class="appex-tags">
-                    <span class="appex-tag">Collections Automation</span>
-                    <span class="appex-tag">AI Agents</span>
-                    <span class="appex-tag">Accounts Receivable</span>
-                    <span class="appex-tag">Dispute Resolution</span>
-                </div>
-            </div>
-            <!-- Integration Logos -->
-            <div>
-                <div class="integ-logos">
-                    <div class="integ-logo integ-featured"><img src="https://www.logo.wine/a/logo/Salesforce.com/Salesforce.com-Logo.wine.svg" alt="Salesforce"></div>
-                    <div class="integ-logo"><img src="https://cdn.worldvectorlogo.com/logos/netsuite.svg" alt="NetSuite"></div>
-                    <div class="integ-logo"><img src="https://cdn.worldvectorlogo.com/logos/quickbooks-2.svg" alt="QuickBooks"></div>
-                    <div class="integ-logo"><img src="https://www.logo.wine/a/logo/SAP_SE/SAP_SE-Logo.wine.svg" alt="SAP"></div>
-                    <div class="integ-logo"><img src="https://www.logo.wine/a/logo/Xero_(software)/Xero_(software)-Logo.wine.svg" alt="Xero"></div>
-                    <div class="integ-logo"><img src="https://www.logo.wine/a/logo/HubSpot/HubSpot-Logo.wine.svg" alt="HubSpot"></div>
-                    <div class="integ-logo"><img src="https://cdn.worldvectorlogo.com/logos/freshbooks-1.svg" alt="FreshBooks"></div>
-                    <div class="integ-logo"><img src="https://www.logo.wine/a/logo/Sage_Group/Sage_Group-Logo.wine.svg" alt="Sage"></div>
-                    <div class="integ-logo"><img src="https://www.logo.wine/a/logo/Zuora/Zuora-Logo.wine.svg" alt="Zuora"></div>
-                    <div class="integ-count">+ 500 more via API, CSV, or direct integration</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="section reveal" id="how" style="border-top:1px solid var(--border)">
-    <div class="section-inner" style="text-align:center">
-        <div class="section-label">How it works</div>
-        <div class="section-title" style="margin-left:auto;margin-right:auto">Drop a spreadsheet. We do the rest.</div>
-        <div class="section-sub" style="margin-left:auto;margin-right:auto;text-align:center">No API. No onboarding call. No minimum. You'll be live before your coffee gets cold.</div>
-        <div class="how-grid">
-            <div class="how-card">
-                <div class="how-num">01</div>
-                <h3>Upload</h3>
-                <p>Drop your Excel or CSV with outstanding invoices.</p>
-            </div>
-            <div class="how-card">
-                <div class="how-num">02</div>
-                <h3>AI researches</h3>
-                <p>Finds phones, emails, LinkedIn, and company intel for each debtor.</p>
-            </div>
-            <div class="how-card">
-                <div class="how-num">03</div>
-                <h3>AI collects</h3>
-                <p>Sends demand letters, makes calls, handles disputes and payment plans.</p>
-            </div>
-            <div class="how-card">
-                <div class="how-num">04</div>
-                <h3>You get paid</h3>
-                <p>Success-based pricing. You only pay when we recover money.</p>
             </div>
         </div>
     </div>
@@ -765,7 +547,7 @@
 <!-- TRUST -->
 <section class="trust reveal" id="security">
     <div class="trust-inner">
-        <div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>SOC 2 Type II</div>
+        <div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>SOC 2 Type II</div>
         <div class="trust-sep"></div>
         <div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>CCPA / CPRA</div>
         <div class="trust-sep"></div>
@@ -779,9 +561,12 @@
 
 <!-- CTA -->
 <section class="cta">
-    <div class="cta-price">$1</div>
-    <h2>See if you can tell it's not human.</h2>
-    <a href="#hero-input" class="cta-btn" onclick="document.getElementById('email-input').focus()">Try the live demo</a>
+    <h2>Upload your first batch.<br>Free pilot.</h2>
+    <p>No setup fee. No minimum. No contract. Just results in 20 days or you walk away.</p>
+    <div class="cta-btns">
+        <a href="https://cal.com/agentcollect/demo" target="_blank" class="cta-btn cta-btn-primary">Talk to our team</a>
+        <a href="#hero-input" class="cta-btn cta-btn-ghost" onclick="document.getElementById('url-input').focus()">Try the demo</a>
+    </div>
 </section>
 
 <!-- FOOTER -->
@@ -789,19 +574,19 @@
     <div class="footer-inner">
         <div class="footer-top">
             <div>
-                <div class="footer-brand"><span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:#fff;border:1px solid #e2e8f0;border-radius:4px;position:relative;vertical-align:middle;margin-right:6px"><span style="font-weight:900;font-size:12px;color:#1e293b;position:relative;z-index:1">a</span><span style="position:absolute;width:12px;height:1.5px;background:#ef4444;transform:rotate(-45deg);border-radius:1px"></span></span>agent<span>collect</span></div>
-                <div class="footer-tagline">Agents, not agencies. AI-powered recovery under your brand. Faster, cheaper, fairer.</div>
+                <div class="footer-brand">Agent<span>Collect</span><span class="dot-circle" style="width:6px;height:6px;display:inline-block;border-radius:50%;background:var(--indigo);margin-left:2px"></span></div>
+                <div class="footer-tagline">The end of manual collection. AI agents and licensed attorneys for your unpaid invoices.</div>
             </div>
             <div class="footer-col">
                 <h4>Product</h4>
-                <a href="#how">How it works</a>
-                <a href="#results">Customers</a>
-                <a href="#security">Security</a>
-                <a href="#hero-input">Live demo</a>
+                <a href="#paths">First Party Collection</a>
+                <a href="#paths">Third Party Collection</a>
+                <a href="#results">Results</a>
+                <a href="#hero-input">Live Demo</a>
             </div>
             <div class="footer-col">
                 <h4>Compliance</h4>
-                <a href="/#security">SOC 2 Type II</a>
+                <a href="#security">SOC 2 Type II</a>
                 <a href="/privacy">CCPA / CPRA</a>
                 <a href="/terms">Regulation F</a>
                 <a href="/privacy">GDPR</a>
@@ -816,281 +601,313 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <div class="footer-copy">&copy; 2026 AgentCollect, Inc. New York, NY</div>
+            <div class="footer-copy">&copy; 2026 AgentCollect, Inc. San Francisco, CA</div>
             <div class="footer-badges"><span class="footer-badge">SOC 2</span><span class="footer-badge">CCPA</span><span class="footer-badge">Reg F</span></div>
         </div>
     </div>
 </footer>
 
 <script>
-const API = 'https://backend.widr.app/api/demo';
-let agentEmail = '', agentPhone = null, contactData = null, agentName = '', agentCompany = '', agentTitle = '';
-
-const KNOWN = {
-    'j@respaid.com': {name:'John Banner',title:'Founder',company:'Respaid',location:'San Francisco, CA',phone:'+1 (415) 867-4010',linkedin:'linkedin.com/in/johnbanner',linkedinUrl:'https://linkedin.com/in/johnbanner',avatarUrl:'https://bookface-images.s3.us-west-2.amazonaws.com/avatars/bf7121767f5c4c09c95bcc3e780b0b43f7af6217.jpg',profile_type:'YC S23 founder, AI-powered collections',company_health:'Respaid — YC S23, serving Microsoft, Dell, Plaid, Checkr',payment_behavior:'Founder — responds to direct, personal outreach',risk:'Low — high ability to pay',recommended_tone:'Direct, professional',strategy:{likely_reason:'Founder-operator, likely saw the invoice but prioritized product over AP',approach:'Direct email to John, reference his YC network and enterprise clients. Follow up with call in 48h.',expected_days:5,confidence:96}},
-    'marc@salesforce.com': {name:'Marc Benioff',title:'Chair & CEO',company:'Salesforce',location:'San Francisco, CA',phone:'+1 (415) 901-7000',mobile:'+1 (415) 734-7459',linkedin:'linkedin.com/in/marcbenioff',linkedinUrl:'https://linkedin.com/in/marcbenioff',avatarUrl:'https://www.salesforce.com/news/wp-content/uploads/sites/3/2023/09/Marc-Benioff.jpg?w=400',noSend:true,profile_type:'Fortune 500 CEO, $34B revenue',company_health:'Salesforce — $34B revenue, 80K+ employees, #1 CRM',payment_behavior:'Enterprise AP — invoices routed through procurement',risk:'Low ability / Complex process',recommended_tone:'Formal, legal-grade notice',strategy:{likely_reason:'Enterprise AP process — invoice likely stuck in procurement routing or PO matching',approach:'Formal demand letter to AP department, escalation to VP Finance within 5 business days, executive engagement via legal counsel if unresolved.',expected_days:15,confidence:94}},
-    'benioff@gmail.com': {name:'Marc Benioff',title:'Chair & CEO',company:'Salesforce',location:'San Francisco, CA',phone:'+1 (415) 901-7000',mobile:'+1 (415) 734-7459',linkedin:'linkedin.com/in/marcbenioff',linkedinUrl:'https://linkedin.com/in/marcbenioff',avatarUrl:'https://www.salesforce.com/news/wp-content/uploads/sites/3/2023/09/Marc-Benioff.jpg?w=400',noSend:true,profile_type:'Fortune 500 CEO, philanthropist, Time Magazine owner',company_health:'Salesforce — $34B revenue, 80K+ employees, #1 CRM',payment_behavior:'Personal email — likely bypasses corporate AP, direct decision-maker',risk:'Low — billionaire, high ability to pay',recommended_tone:'Personal, respectful of status',strategy:{likely_reason:'Personal account — invoice may not have reached the right channel, or low priority relative to scale',approach:'Direct personal outreach referencing Salesforce relationship. Professional but personal tone. Escalation to Salesforce AP as backup channel.',expected_days:10,confidence:92}},
-    'satya@microsoft.com': {name:'Satya Nadella',title:'CEO',company:'Microsoft',location:'Redmond, WA',linkedin:'linkedin.com/in/satyanadella',linkedinUrl:'https://linkedin.com/in/satyanadella',avatarUrl:'https://msthesource.thesourcemediaassets.com/2024/10/MS-Exec-Nadella-Satya.jpg',profile_type:'Enterprise CEO, $245B revenue',company_health:'Microsoft — $245B revenue, 220K+ employees',payment_behavior:'30-90 day cycles, escalation to controller unlocks payment',risk:'Low',recommended_tone:'Formal, reference existing relationship'},
-    'jensen@nvidia.com': {name:'Jensen Huang',title:'CEO & Founder',company:'NVIDIA',location:'Santa Clara, CA',linkedin:'linkedin.com/in/jensenhuang',linkedinUrl:'https://linkedin.com/in/jensenhuang',avatarUrl:'https://s3.amazonaws.com/cms.ipressroom.com/219/files/202601/202601301946/697d0a8c3d6332dfae26f7cb_jensen-huang-headshot-gray-background/jensen-huang-headshot-gray-background_thmb.jpg',profile_type:'Tech visionary, $60B+ revenue',company_health:'NVIDIA — $60B+ revenue, 30K+ employees',payment_behavior:'Engineering-led org, efficient finance team',risk:'Low',recommended_tone:'Tech-forward, concise'},
+// ═══ PRE-LOADED COMPANY DATA ═══
+const COMPANIES = {
+    'konicaminolta.com': {
+        name: 'Konica Minolta', industry: 'Office Equipment / Managed Print',
+        products: 'bizhub C series multifunction printers, managed print services, IT solutions',
+        size: '39,000+ employees, $8.2B revenue',
+        disputes: ['Early lease termination fees on bizhub copier contracts', 'Maintenance billing disputes on service agreements', 'Auto-renewal disagreements on managed print contracts'],
+        dm: {name: 'Head of Credit & Collections', title: 'Director of Credit', photo: null},
+        plan: {d1: 'AI email from your brand referencing specific lease agreement', d3: 'AI phone call to AP contact with invoice details', d7: 'Attorney demand letter with bar number and legal notice', d14: 'Payment portal live — debtor pays you directly'}
+    },
+    'pitneyBowes.com': {
+        name: 'Pitney Bowes', industry: 'Shipping & Mailing Technology',
+        products: 'Postage meters, shipping solutions, SendPro, global ecommerce',
+        size: '11,000+ employees, $3.3B revenue',
+        disputes: ['Postage meter lease early termination penalties', 'Overcharges on shipping volume commitments', 'Service level agreement disputes on SendPro'],
+        dm: {name: 'VP of Finance', title: 'VP Finance & Treasury', photo: null},
+        plan: {d1: 'AI email referencing specific meter lease or shipping contract', d3: 'AI call to accounts receivable with documentation', d7: 'Attorney demand letter — formal legal notice', d14: 'Payment portal live with installment options'}
+    },
+    'ironmountain.com': {
+        name: 'Iron Mountain', industry: 'Information Management / Storage',
+        products: 'Records storage, data center colocation, secure shredding, digital transformation',
+        size: '26,000+ employees, $5.5B revenue',
+        disputes: ['Storage contract minimum commitment disputes', 'Retrieval and access fee disagreements', 'Auto-renewal terms on records management contracts'],
+        dm: {name: 'Director of Accounts Receivable', title: 'Director AR', photo: null},
+        plan: {d1: 'AI email referencing storage contract and outstanding balance', d3: 'AI call to AP with full documentation trail', d7: 'Attorney demand with contract terms cited', d14: 'Direct payment portal — no middleman'}
+    },
+    'brinks.com': {
+        name: "Brink's", industry: 'Cash Management / Security Services',
+        products: 'Cash-in-transit, ATM management, CompuSafe, smart safe solutions',
+        size: '67,000+ employees, $4.8B revenue',
+        disputes: ['Service level disputes on cash-in-transit contracts', 'CompuSafe billing discrepancies', 'Contract term disputes on security service agreements'],
+        dm: {name: 'SVP Finance', title: 'SVP Finance & Controller', photo: null},
+        plan: {d1: 'AI email with specific contract and service references', d3: 'AI call to finance team with invoice documentation', d7: 'Attorney letter with legal standing', d14: 'Payment portal with direct settlement options'}
+    },
+    'ricoh.com': {
+        name: 'Ricoh', industry: 'Office Equipment / Digital Services',
+        products: 'Multifunction printers, production printing, IT services, document management',
+        size: '80,000+ employees, $15B revenue',
+        disputes: ['Printer lease early termination on large fleet contracts', 'Toner and consumables billing disputes', 'Managed print service SLA disagreements'],
+        dm: {name: 'Head of Credit Management', title: 'Director Credit & Collections', photo: null},
+        plan: {d1: 'AI email referencing fleet contract and outstanding balance', d3: 'AI call with complete documentation', d7: 'Attorney demand letter — formal legal weight', d14: 'Self-service payment portal live'}
+    },
+    'microsoft.com': {
+        name: 'Microsoft', industry: 'Technology / Enterprise Software',
+        products: 'Azure, Microsoft 365, Dynamics, Surface, Xbox, enterprise licensing',
+        size: '220,000+ employees, $245B revenue',
+        disputes: ['Enterprise license true-up billing disputes', 'Azure consumption overages vs. committed spend', 'Multi-year EA renewal disagreements'],
+        dm: {name: 'Neil Doyle', title: 'OTC Transformation Lead', photo: 'https://respaid.com/images/neil-doyle.png'},
+        plan: {d1: 'AI email under your brand to AP department', d3: 'AI call to procurement with PO reference', d7: 'Escalation to VP Finance via attorney notice', d14: 'Direct payment through branded portal'}
+    },
+    'dell.com': {
+        name: 'Dell Technologies', industry: 'Technology / Hardware',
+        products: 'Servers, storage, laptops, VMware, IT infrastructure',
+        size: '130,000+ employees, $102B revenue',
+        disputes: ['Hardware lease return condition disputes', 'Service contract auto-renewal disagreements', 'Volume licensing true-up disputes across business units'],
+        dm: {name: 'VP Credit & Collections', title: 'VP Credit Operations', photo: null},
+        plan: {d1: 'AI email per business unit with specific PO references', d3: 'AI call to each division independently', d7: 'Attorney letter referencing master service agreement', d14: 'Centralized payment portal — all units, one view'}
+    },
+    'checkr.com': {
+        name: 'Checkr', industry: 'Background Check / HR Tech',
+        products: 'Background checks, continuous monitoring, compliance solutions, Checkr Pay',
+        size: '1,000+ employees, high-growth',
+        disputes: ['Volume commitment shortfall on annual contracts', 'Per-check pricing disputes on enterprise plans', 'API integration billing vs. actual usage'],
+        dm: {name: 'Head of Finance', title: 'VP Finance', photo: null},
+        plan: {d1: 'AI email to finance referencing contract terms', d3: 'AI call with usage data and invoice detail', d7: 'Attorney notice with contract citation', d14: 'Payment portal with flexible resolution options'}
+    },
+    'doordash.com': {
+        name: 'DoorDash', industry: 'Food Delivery / Marketplace',
+        products: 'DoorDash marketplace, DashPass, Drive (white-label), Storefront',
+        size: '19,000+ employees, $8.6B revenue',
+        disputes: ['Restaurant partner commission disputes', 'Promotional credit billing disagreements', 'Marketplace fee structure changes'],
+        dm: {name: 'Director of Partner Finance', title: 'Director Partner Finance', photo: null},
+        plan: {d1: 'AI email referencing specific partner agreement', d3: 'AI call with delivery data and commission detail', d7: 'Attorney letter — preserves partnership while collecting', d14: 'Partner payment portal — settle while staying active'}
+    },
+    'plaid.com': {
+        name: 'Plaid', industry: 'Fintech / Financial Infrastructure',
+        products: 'API for bank connections, identity verification, income verification, Plaid Transfer',
+        size: '1,000+ employees, high-growth fintech',
+        disputes: ['API call volume overage disputes', 'Enterprise contract minimum commitment shortfalls', 'Implementation fee disagreements'],
+        dm: {name: 'Head of Finance Operations', title: 'Director Finance Ops', photo: null},
+        plan: {d1: 'AI email with API usage data and contract reference', d3: 'AI call to finance with detailed breakdown', d7: 'Attorney notice citing SaaS agreement terms', d14: 'Self-service resolution portal'}
+    }
 };
 
-function toggleCard(card){
-    const expand=card.querySelector('.card-expand');
-    const toggle=card.querySelector('.card-toggle');
-    const isOpen=expand.classList.contains('open');
-    const isFeatured=card.classList.contains('card-featured');
-    const openLabel=isFeatured?'See full case study':'See use case';
-    // Close all others
-    document.querySelectorAll('.card-expand.open').forEach(e=>{
-        e.classList.remove('open');
-        const c=e.closest('.card'),t=c.querySelector('.card-toggle');
-        t.classList.remove('open');
-        const lbl=c.classList.contains('card-featured')?'See full case study':'See use case';
-        t.innerHTML=lbl+' <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>';
-        // Pause video if closing featured card
-        const vid=c.querySelector('video');if(vid){vid.pause()}
-    });
-    if(!isOpen){
-        expand.classList.add('open');
-        toggle.classList.add('open');
-        toggle.innerHTML='Close <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>';
-    }
-}
-function playMsVideo(wrap){
-    const vid=wrap.querySelector('video');
-    const poster=wrap.querySelector('.cs-poster');
-    const btn=wrap.querySelector('.cs-play-btn');
-    if(vid.paused){
-        vid.play();
-        if(poster)poster.classList.add('hidden');
-        if(btn)btn.classList.add('hidden');
-    }else{
-        vid.pause();
-    }
-    vid.onended=()=>{if(poster)poster.classList.remove('hidden');if(btn)btn.classList.remove('hidden')};
-}
-
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20));
-const rev=document.querySelectorAll('.reveal');
-const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target)}})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
-rev.forEach(el=>io.observe(el));
-setTimeout(()=>rev.forEach(el=>el.classList.add('visible')),4000);
-
-const cEls=document.querySelectorAll('[data-count]');
-const cIO=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){animC(x.target);cIO.unobserve(x.target)}})},{threshold:.1});
-cEls.forEach(el=>cIO.observe(el));
-function animC(el){const t=parseInt(el.dataset.count),p=el.dataset.prefix||'',s=el.dataset.suffix||'';if(t===0){el.textContent=p+'0'+s;el.style.animation='counter-pop .5s cubic-bezier(.16,1,.3,1)';return}const d=1800,st=performance.now();function tick(n){const e=n-st,pr=Math.min(e/d,1),ea=1-Math.pow(1-pr,3);el.textContent=p+Math.round(t*ea)+s;if(pr<1)requestAnimationFrame(tick)}requestAnimationFrame(tick)}
-
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'})})});
-
-function formatPhone(p){if(!p)return p;const c=p.replace(/[^0-9+]/g,'');const m1=c.match(/^\+1(\d{3})(\d{3})(\d{4})$/);if(m1)return`+1 (${m1[1]}) ${m1[2]}-${m1[3]}`;const m2=c.match(/^\+33(\d)(\d{2})(\d{2})(\d{2})(\d{2})$/);if(m2)return`+33 ${m2[1]} ${m2[2]} ${m2[3]} ${m2[4]} ${m2[5]}`;const m3=c.match(/^\+44(\d{4})(\d{6})$/);if(m3)return`+44 ${m3[1]} ${m3[2]}`;// Generic international: group digits after country code in blocks of 3
-const mg=c.match(/^(\+\d{1,3})(\d+)$/);if(mg){const d=mg[2];const blocks=d.match(/.{1,3}/g)||[d];return`${mg[1]} ${blocks.join(' ')}`}return c}
 function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
+
+function normalizeDomain(input) {
+    let d = input.trim().toLowerCase()
+        .replace(/^https?:\/\//,'')
+        .replace(/^www\./,'')
+        .replace(/\/.*$/,'');
+    return d;
+}
+
+function findCompany(domain) {
+    // Direct match
+    if (COMPANIES[domain]) return COMPANIES[domain];
+    // Try without TLD variations
+    const base = domain.replace(/\.(com|io|co|org|net|app|us)$/,'');
+    for (const [key, val] of Object.entries(COMPANIES)) {
+        const keyBase = key.replace(/\.(com|io|co|org|net|app|us)$/,'');
+        if (keyBase === base) return val;
+        if (val.name.toLowerCase().replace(/[^a-z0-9]/g,'').includes(base.replace(/[^a-z0-9]/g,''))) return val;
+    }
+    return null;
+}
+
 function showStep(id){document.getElementById('step-'+id).classList.add('active')}
 function doneStep(id){document.getElementById('step-'+id).classList.add('done')}
 function setIcon(id,done){
     const ic=document.getElementById('icon-'+id);
     if(done){ic.classList.remove('spinning');ic.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="color:var(--green)"><path d="M20 6L9 17l-5-5" stroke-dasharray="24" stroke-dashoffset="0" style="animation:check-draw .4s ease forwards"/></svg>'}
-    else{ic.classList.add('spinning');ic.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--blue)"><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg>'}
-}
-async function addDataRow(cid,key,val,cls=''){const c=document.getElementById(cid);const r=document.createElement('div');r.className='data-row';r.innerHTML=`<span class="data-key">${key}</span><span class="data-val ${cls}">${val}</span>`;c.appendChild(r);await sleep(50);r.classList.add('show');await sleep(150)}
-async function addStrategyRow(text){const c=document.getElementById('card-strategy');const r=document.createElement('div');r.className='strategy-row';r.innerHTML=text;c.appendChild(r);await sleep(50);r.classList.add('show');await sleep(200)}
-async function typeText(el,text,speed=30){el.textContent='';el.classList.add('typing');for(let i=0;i<text.length;i++){el.textContent+=text[i];await sleep(speed)}el.classList.remove('typing')}
-
-async function resetConsole(){
-    ['identity','intel','strategy','collect'].forEach(id=>{const s=document.getElementById('step-'+id);if(s)s.classList.remove('active','done');const c=document.getElementById('card-'+id);if(c)c.classList.remove('loaded')});
-    ['identity-rows','intel-rows'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=''});
-    const sc=document.getElementById('card-strategy');if(sc)sc.querySelectorAll('.strategy-row,.confidence-bar').forEach(el=>el.remove());
-    const pc=document.getElementById('profile-card');if(pc)pc.style.display='none';
-    document.getElementById('avatar-wrap').innerHTML='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" opacity=".3"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
-    document.getElementById('profile-name').textContent='';document.getElementById('profile-title').textContent='';document.getElementById('profile-location').innerHTML='';document.getElementById('profile-linkedin').style.display='none';
-    agentPhone=null;
-    document.querySelectorAll('#card-identity > div:not(#profile-card):not(#identity-rows)').forEach(el=>el.remove());
-    const cc=document.getElementById('collect-content');if(cc)cc.innerHTML='';
-    document.getElementById('agent-actions').classList.remove('show');
-    const callEl=document.getElementById('call-active');if(callEl)callEl.classList.remove('show');
+    else{ic.classList.add('spinning');ic.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--indigo)"><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg>'}
 }
 
-async function startAgent(){
-    const email=document.getElementById('email-input').value.trim();
-    if(!email||!email.includes('@')){document.getElementById('email-input').classList.add('error');setTimeout(()=>document.getElementById('email-input').classList.remove('error'),600);return}
-    agentEmail=email;const btn=document.getElementById('go-btn');btn.disabled=true;
-    // Activate real $1 demo sequence (creates campaign + triggers email + AI call)
-    fetch(API+'/activate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})}).catch(()=>{});
+async function addRow(containerId, key, val, cls='') {
+    const c = document.getElementById(containerId);
+    const r = document.createElement('div');
+    r.className = 'a-row';
+    r.innerHTML = `<span class="a-row-key">${key}</span><span class="a-row-val ${cls}">${val}</span>`;
+    c.appendChild(r);
+    await sleep(50);
+    r.classList.add('show');
+    await sleep(150);
+}
+
+async function resetConsole() {
+    ['business','disputes','decision','plan'].forEach(id => {
+        const s = document.getElementById('step-'+id);
+        if(s) s.classList.remove('active','done');
+        const c = document.getElementById('card-'+id);
+        if(c) c.classList.remove('loaded');
+    });
+    ['business-rows','disputes-rows','decision-rows','plan-rows'].forEach(id => {
+        const el = document.getElementById(id);
+        if(el) el.innerHTML = '';
+    });
+    document.getElementById('a-actions').classList.remove('show');
+}
+
+function resetAndScroll() {
+    document.getElementById('analysis-console').classList.remove('active');
+    document.getElementById('url-input').value = '';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    setTimeout(() => document.getElementById('url-input').focus(), 600);
+}
+
+async function startAnalysis() {
+    const raw = document.getElementById('url-input').value.trim();
+    if (!raw) {
+        document.getElementById('url-input').classList.add('error');
+        setTimeout(() => document.getElementById('url-input').classList.remove('error'), 600);
+        return;
+    }
+
+    const domain = normalizeDomain(raw);
+    const company = findCompany(domain);
+    const btn = document.getElementById('go-btn');
+    btn.disabled = true;
+
     await resetConsole();
-    const ce=document.getElementById('agent-console');ce.classList.add('active');document.getElementById('target-email').textContent=email;
-    await sleep(200);ce.scrollIntoView({behavior:'smooth',block:'start'});
-
-    const [local,domain]=email.split('@');
-    const parts=local.replace(/[._\-]/g,' ').split(' ');
-    const guessName=parts.map(p=>p.charAt(0).toUpperCase()+p.slice(1)).join(' ');
-    const personalDomains=['gmail.com','yahoo.com','hotmail.com','outlook.com','icloud.com','aol.com','protonmail.com','live.com','me.com','msn.com','ymail.com'];
-    const isPersonal=personalDomains.includes(domain.toLowerCase());
-    const co=domain.replace(/\.(com|io|co|org|net|app)$/i,'');
-    const coName=isPersonal?null:co.charAt(0).toUpperCase()+co.slice(1);
-    const known=KNOWN[email.toLowerCase()]||Object.values(KNOWN).find(k=>{const ln=k.name.split(' ').pop().toLowerCase();return ln.length>=4&&email.toLowerCase().includes(ln)})||null;
-
-    let apiData=null;
-    const fetchP=known?Promise.resolve():fetch(API+'/find-contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email})}).then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}).then(d=>{if(d.success&&d.data)apiData=d.data}).catch(err=>{console.warn('API:',err.message)});
-
-    showStep('identity');setIcon('identity',false);
-    document.getElementById('sub-identity').textContent='Searching for '+email+'...';
-    await sleep(1200);await fetchP;contactData=apiData;
-
-    const nm=known?.name||contactData?.person?.name||guessName;
-    const apiCo=contactData?.company?.name;
-    const cp=known?.company||(apiCo&&!personalDomains.includes(apiCo.toLowerCase()+'.com')&&apiCo.toLowerCase()!=='gmail'&&apiCo.toLowerCase()!=='yahoo'?apiCo:null)||coName;
-    const ti=known?.title||contactData?.person?.title||null;
-    agentName=nm||'';agentCompany=cp||'';agentTitle=ti||'';
-    const lo=known?.location||contactData?.person?.location||null;
-    const li=known?.linkedin||contactData?.person?.linkedin||null;
-    const ph=known?.phone||contactData?.phones?.[0]?.number||null;
-    const ph2=known?.mobile||contactData?.phones?.[1]?.number||null;
-
-    const profileCard=document.getElementById('profile-card');
-    const avatarWrap=document.getElementById('avatar-wrap');
-    const initialsFallback=`https://ui-avatars.com/api/?name=${encodeURIComponent(nm)}&size=200&background=2563EB&color=fff&bold=true`;
-    const avatarCandidates=[
-        known?.avatarUrl,
-        contactData?.person?.photo_url,
-        contactData?.person?.avatar,
-        contactData?.person?.profile_pic,
-        // unavatar tries Twitter/GitHub/Gravatar in sequence
-        `https://unavatar.io/${encodeURIComponent(email)}`,
-        initialsFallback
-    ].filter(Boolean);
-    (function tryNext(sources){const src=sources[0];if(!src){avatarWrap.innerHTML=`<img src="${initialsFallback}" style="width:100%;height:100%;object-fit:cover">`;return}const img=new Image();img.onload=()=>{avatarWrap.innerHTML=`<img src="${src}" style="width:100%;height:100%;object-fit:cover">`};img.onerror=()=>tryNext(sources.slice(1));img.src=src})(avatarCandidates);
-    profileCard.style.display='block';profileCard.style.animation='pop-in .3s ease';
-    document.getElementById('card-identity').classList.add('loaded');
-
-    await typeText(document.getElementById('profile-name'),nm,35);await sleep(150);
-    const titleText=ti&&cp?ti+' at '+cp:ti||cp||'';
-    if(titleText){document.getElementById('profile-title').textContent=titleText;document.getElementById('profile-title').style.animation='fadeUp .3s ease'}
-    await sleep(150);
-    if(lo){document.getElementById('profile-location').innerHTML='<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>'+lo;document.getElementById('profile-location').style.animation='fadeUp .3s ease'}
+    const console_el = document.getElementById('analysis-console');
+    console_el.classList.add('active');
+    document.getElementById('target-url').textContent = domain;
     await sleep(200);
-    if(li){const liDiv=document.getElementById('profile-linkedin');liDiv.style.display='block';liDiv.style.animation='fadeUp .3s ease';const liUrl=known?.linkedinUrl||contactData?.person?.linkedinUrl||(li.startsWith('http')?li:'https://'+li);document.getElementById('linkedin-text').innerHTML=`<a href="${liUrl}" target="_blank" rel="noopener" style="color:#0A66C2;text-decoration:none">Found — ${li}</a>`}
-    await sleep(200);
-    // No greeting banner — let the data speak
-    await sleep(150);
+    console_el.scrollIntoView({behavior:'smooth', block:'start'});
 
-    const hasPhone=known?.phone||contactData?.phones?.[0]?.number;
-    const hasMobile=known?.mobile||contactData?.phones?.[1]?.number;
-    if(hasPhone)await addDataRow('identity-rows','Phone',formatPhone(ph),'found');
-    if(hasMobile)await addDataRow('identity-rows','Mobile',formatPhone(ph2),'found');
-    if(!hasPhone&&!hasMobile&&contactData?.phones?.length)await addDataRow('identity-rows','Phone',formatPhone(contactData.phones[0].number),'found');
-    await addDataRow('identity-rows','Email','Verified deliverable','found');
+    if (!company) {
+        // Unknown company — show email capture
+        showStep('business'); setIcon('business', false);
+        document.getElementById('sub-business').textContent = 'Scanning ' + domain + '...';
+        await sleep(2000);
+        document.getElementById('card-business').classList.add('loaded');
+        await addRow('business-rows', 'Domain', domain, 'found');
+        await sleep(500);
+        document.getElementById('card-business').innerHTML += `
+            <div class="email-capture" style="margin-top:16px">
+                <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px">We need 24 hours to analyze this business.</div>
+                <div style="font-size:13px;color:var(--text-mid)">Drop your email and we'll send you a full report.</div>
+                <div class="email-capture-input">
+                    <input type="email" placeholder="you@company.com" id="capture-email">
+                    <button onclick="captureEmail()">Send report</button>
+                </div>
+                <div id="capture-msg" style="font-size:12px;color:var(--green);margin-top:8px;display:none"></div>
+            </div>`;
+        setIcon('business', true);
+        document.getElementById('title-business').textContent = 'Analysis queued';
+        document.getElementById('sub-business').textContent = domain + ' — report in 24h';
+        doneStep('business');
+        btn.disabled = false;
+        return;
+    }
 
-    setIcon('identity',true);document.getElementById('title-identity').textContent=nm;
-    document.getElementById('sub-identity').textContent=titleText||'Identity confirmed';doneStep('identity');
-    // Update lead with resolved identity
-    fetch(API+'/track',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,name:nm,company:cp,title:ti,action:'identity_resolved'})}).catch(()=>{});
+    // ═══ STEP 1: BUSINESS ═══
+    showStep('business'); setIcon('business', false);
+    document.getElementById('sub-business').textContent = 'Scanning ' + domain + '...';
+    await sleep(1200);
+    document.getElementById('card-business').classList.add('loaded');
+    await addRow('business-rows', 'Company', company.name, 'found');
+    await addRow('business-rows', 'Industry', company.industry);
+    await addRow('business-rows', 'Products', company.products);
+    await addRow('business-rows', 'Size', company.size);
+    setIcon('business', true);
+    document.getElementById('title-business').textContent = company.name;
+    document.getElementById('sub-business').textContent = company.industry;
+    doneStep('business');
     await sleep(400);
 
-    showStep('intel');setIcon('intel',false);
-    document.getElementById('sub-intel').textContent=cp?'Analyzing '+cp+'...':'Building profile...';await sleep(700);
-    document.getElementById('card-intel').classList.add('loaded');
-
-    if(known){
-        await addDataRow('intel-rows','Profile',known.profile_type,'found');
-        await addDataRow('intel-rows','Company',known.company_health);
-        await addDataRow('intel-rows','Payment behavior',known.payment_behavior);
-        await addDataRow('intel-rows','Risk assessment',known.risk);
-        await addDataRow('intel-rows','Recommended approach',known.recommended_tone);
-    } else {
-        const rs=contactData?.recovery_strategy||buildStrat(cp||nm,domain);
-        const isEnt=rs.confidence>90;
-        if(cp)await addDataRow('intel-rows','Company',rs.company_profile||rs.profile||cp);
-        await addDataRow('intel-rows','Profile',ti?(ti+' — decision-maker'):(isEnt?'Enterprise decision-maker':'Individual contact'),'found');
-        await addDataRow('intel-rows','Risk assessment',isEnt?'Low — high ability to pay':'Medium — direct outreach needed');
-        await addDataRow('intel-rows','Recommended approach',isEnt?'Formal notice referencing contract terms':'Direct outreach + payment plan option');
-    }
-
-    setIcon('intel',true);document.getElementById('title-intel').textContent='Profile complete';
-    document.getElementById('sub-intel').textContent=cp?cp+' — analyzed':'Analysis complete';doneStep('intel');await sleep(400);
-
-    showStep('strategy');setIcon('strategy',false);
-    document.getElementById('sub-strategy').textContent='Analyzing '+nm+'...';await sleep(500);
-    const rs=known?.strategy||contactData?.recovery_strategy||buildStrat(cp,domain);
-    await addStrategyRow(`<strong>Likely reason:</strong> ${rs.likely_reason}`);
-    await addStrategyRow(`<strong>Action plan:</strong> ${rs.approach}`);
-
-    const confDiv=document.createElement('div');confDiv.className='confidence-bar';
-    confDiv.innerHTML=`<span style="font-size:12px;color:var(--text-muted)">Recovery confidence</span><div class="conf-track"><div class="conf-fill" id="conf-bar"></div></div><span class="conf-label">${rs.confidence}%</span>`;
-    document.getElementById('card-strategy').appendChild(confDiv);
-    await sleep(80);confDiv.classList.add('show');await sleep(80);document.getElementById('conf-bar').style.width=rs.confidence+'%';
-    // Timeline
-    const timeline=document.createElement('div');timeline.className='strategy-row';
-    timeline.innerHTML=`<div style="display:flex;align-items:center;gap:12px;margin-top:8px"><div style="display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span style="font-size:12px;color:var(--text-mid);font-weight:600">Expected resolution: ${rs.expected_days} days</span></div></div>`;
-    document.getElementById('card-strategy').appendChild(timeline);await sleep(50);timeline.classList.add('show');
-    setIcon('strategy',true);document.getElementById('title-strategy').textContent='Strategy ready';
-    document.getElementById('sub-strategy').textContent=rs.confidence+'% confidence — '+rs.expected_days+' day resolution';doneStep('strategy');await sleep(300);
-
-    showStep('collect');setIcon('collect',false);document.getElementById('sub-collect').textContent='Deploying AI agent...';await sleep(250);
-    const safeToSend=!known?.noSend;
-    document.getElementById('collect-content').innerHTML='<div class="thinking"><div class="thinking-dot"></div><div class="thinking-dot"></div><div class="thinking-dot"></div></div><div style="font-size:13px;color:var(--text-muted)">'+(safeToSend?'Sending collection notice to '+nm+'...':'Simulating collection notice...')+'</div>';
-    if(safeToSend){try{await fetch(API+'/email',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,name:nm,company:cp})})}catch{}}
+    // ═══ STEP 2: DISPUTES ═══
+    showStep('disputes'); setIcon('disputes', false);
+    document.getElementById('sub-disputes').textContent = 'Analyzing ' + company.industry + '...';
     await sleep(1000);
-
-    document.getElementById('card-collect').classList.add('loaded');
-    const repCompany=cp||nm;
-    if(safeToSend){
-        document.getElementById('collect-content').innerHTML=`<div style="text-align:center;padding:12px 0">
-            <div style="font-family:var(--display);font-size:16px;font-weight:800;color:var(--green);margin-bottom:6px">Collection notice sent</div>
-            <div style="font-size:13px;color:var(--text);margin-bottom:4px">Email sent to <strong>${nm}</strong> from <strong>Schweber Law</strong> on behalf of <strong>${repCompany}</strong></div>
-            <div style="font-size:12px;color:var(--text-mid);margin-top:8px">Check your inbox. Reply to dispute — AI responds in under 60 seconds.</div>
-        </div>`;
-        document.getElementById('sub-collect').textContent='Email sent to '+nm;
-    } else {
-        document.getElementById('collect-content').innerHTML=`<div style="text-align:center;padding:12px 0">
-            <div style="font-family:var(--display);font-size:16px;font-weight:800;color:var(--blue);margin-bottom:6px">Simulation complete</div>
-            <div style="font-size:13px;color:var(--text);margin-bottom:4px">We would send <strong>${nm}</strong> a formal notice from <strong>Schweber Law</strong> referencing the $1 outstanding balance with <strong>${repCompany}</strong></div>
-            <div style="font-size:12px;color:var(--text-mid);margin-top:8px">In production: personalized email, AI phone call, dispute handling — all automated.</div>
-        </div>`;
-        document.getElementById('sub-collect').textContent='Simulation — no email sent';
+    document.getElementById('card-disputes').classList.add('loaded');
+    for (let i = 0; i < company.disputes.length; i++) {
+        await addRow('disputes-rows', 'Dispute ' + (i+1), company.disputes[i]);
     }
-    setIcon('collect',true);document.getElementById('title-collect').textContent=safeToSend?'Collection in progress':'Simulation complete';
-    doneStep('collect');await sleep(400);
+    setIcon('disputes', true);
+    document.getElementById('title-disputes').textContent = company.disputes.length + ' common dispute patterns';
+    document.getElementById('sub-disputes').textContent = 'Based on ' + company.industry + ' data';
+    doneStep('disputes');
+    await sleep(400);
 
-    agentPhone=ph2||ph;
-    document.getElementById('call-btn-text').textContent=agentPhone?'Call '+formatPhone(agentPhone)+' now':'Call me now';
-    document.getElementById('agent-actions').classList.add('show');btn.disabled=false;
-}
+    // ═══ STEP 3: DECISION MAKER ═══
+    showStep('decision'); setIcon('decision', false);
+    document.getElementById('sub-decision').textContent = 'Searching ' + company.name + '...';
+    await sleep(1200);
+    document.getElementById('card-decision').classList.add('loaded');
 
-async function triggerCall(){
-    const btn=document.getElementById('call-action-btn');btn.disabled=true;
-    const callEl=document.getElementById('call-active');callEl.classList.add('show');callEl.scrollIntoView({behavior:'smooth',block:'center'});
-    if(agentPhone){doCall(agentPhone);return}
-    document.getElementById('call-inner').innerHTML=`<div style="margin-bottom:10px;font-family:var(--display);font-size:15px;font-weight:700">Your phone number</div><div style="display:flex;gap:8px;max-width:380px;margin:0 auto"><input type="tel" id="call-phone" placeholder="+1 (555) 000-0000" style="flex:1;padding:12px 16px;border:1.5px solid var(--border);border-radius:8px;font-family:var(--mono);font-size:14px;outline:none;transition:border .2s" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'"><button onclick="doCall()" style="padding:12px 24px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-weight:600;cursor:pointer;font-size:14px">Call</button></div>`;
-}
+    const dmHtml = `<div class="person-card">
+        <div class="person-avatar">${company.dm.photo
+            ? `<img src="${company.dm.photo}" alt="${company.dm.name}">`
+            : `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="1.5" opacity=".4"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`
+        }</div>
+        <div class="person-info">
+            <div class="person-name">${company.dm.name}</div>
+            <div class="person-title">${company.dm.title} at ${company.name}</div>
+        </div>
+        <div class="person-badge">Decision Maker</div>
+    </div>`;
+    document.getElementById('decision-rows').innerHTML = dmHtml;
+    await sleep(200);
+    await addRow('decision-rows', 'Role', 'Manages AR/collections and vendor payments');
+    await addRow('decision-rows', 'Outreach', 'This is who we contact — or who deploys us', 'found');
 
-async function doCall(prefilledPhone){
-    const rawPhone=prefilledPhone||document.getElementById('call-phone')?.value?.trim();
-    if(!rawPhone||rawPhone.length<6){const inp=document.getElementById('call-phone');if(inp)inp.style.borderColor='var(--red)';return}
-    const display=rawPhone.replace(/[^0-9+() \-]/g,'');const e164=rawPhone.replace(/[^0-9+]/g,'');const inner=document.getElementById('call-inner');
-    inner.innerHTML=`<div style="text-align:center"><div class="thinking" style="justify-content:center"><div class="thinking-dot"></div><div class="thinking-dot"></div><div class="thinking-dot"></div></div><div style="font-size:13px;color:var(--text-muted)">Analyzing number...</div><div style="font-family:var(--mono);font-size:18px;font-weight:700;color:var(--blue);margin-top:6px">${display}</div></div>`;
-    try{await fetch(API+'/phone-lookup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone:e164})});} catch{}
-    await sleep(500);
-    inner.innerHTML=`<div style="text-align:center"><div style="font-size:12px;color:var(--text-muted);margin-bottom:4px">Calling</div><div style="font-family:var(--mono);font-size:18px;font-weight:700;color:var(--text);margin-bottom:10px">${display}</div><div class="call-countdown" id="cd"></div></div>`;
-    const cd=document.getElementById('cd');for(let i=5;i>=1;i--){cd.textContent=i;await sleep(1000)}
-    inner.innerHTML=`<div style="text-align:center"><div class="thinking" style="justify-content:center"><div class="thinking-dot"></div><div class="thinking-dot"></div><div class="thinking-dot"></div></div><div style="font-family:var(--mono);font-size:16px;font-weight:700;color:var(--blue);margin-bottom:4px">${display}</div><div style="font-size:13px;color:var(--text-muted)">Dialing...</div></div>`;
-    try{await fetch(API+'/call',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone:e164,name:agentName,email:agentEmail,company:agentCompany,title:agentTitle})})}catch{}
+    setIcon('decision', true);
+    document.getElementById('title-decision').textContent = company.dm.name;
+    document.getElementById('sub-decision').textContent = company.dm.title + ' at ' + company.name;
+    doneStep('decision');
+    await sleep(400);
+
+    // ═══ STEP 4: COLLECTION PLAN ═══
+    showStep('plan'); setIcon('plan', false);
+    document.getElementById('sub-plan').textContent = 'Designing approach for ' + company.name + '...';
     await sleep(800);
-    const isFR=phone.startsWith('+33'),amt=isFR?'1':'$1';
-    inner.innerHTML=`<div style="text-align:center"><div class="waveform" style="margin:0 auto 12px">${'<div class="wave-bar"></div>'.repeat(7)}</div><div style="font-family:var(--mono);font-size:14px;color:var(--text-muted);margin-bottom:6px">${phone}</div><div style="font-family:var(--display);font-size:18px;font-weight:800;color:var(--green);margin-bottom:4px">Call in progress</div><div style="font-size:13px;color:var(--text-muted)">Your phone is ringing. AI is collecting ${amt}.</div><div style="font-size:11px;color:var(--text-dim);margin-top:6px">Try to negotiate or refuse — it handles everything.</div></div>`;
-    setTimeout(()=>document.getElementById('call-action-btn').disabled=false,30000);
+    document.getElementById('card-plan').classList.add('loaded');
+    await addRow('plan-rows', 'Day 1', company.plan.d1);
+    await addRow('plan-rows', 'Day 3', company.plan.d3);
+    await addRow('plan-rows', 'Day 7', company.plan.d7, 'found');
+    await addRow('plan-rows', 'Day 14', company.plan.d14, 'green');
+
+    setIcon('plan', true);
+    document.getElementById('title-plan').textContent = 'Collection plan ready';
+    document.getElementById('sub-plan').textContent = '14-day resolution timeline';
+    doneStep('plan');
+    await sleep(400);
+
+    document.getElementById('a-actions').classList.add('show');
+    btn.disabled = false;
 }
 
-function buildStrat(company,domain){
-    const ent={'salesforce':{r:'$34B',e:'80K+',i:'Enterprise SaaS'},'microsoft':{r:'$245B',e:'220K+',i:'Technology'},'google':{r:'$307B',e:'180K+',i:'Technology'},'apple':{r:'$383B',e:'160K+',i:'Technology'},'amazon':{r:'$575B',e:'1.5M+',i:'E-commerce/Cloud'},'dell':{r:'$102B',e:'130K+',i:'Technology/Hardware'},'uberfreight':{r:'$5B+',e:'5K+',i:'Freight/Logistics'},'stripe':{r:'$14B',e:'8K+',i:'Fintech'},'plaid':{r:'$500M+',e:'1K+',i:'Fintech'},'meta':{r:'$135B',e:'67K+',i:'Social/Technology'},'oracle':{r:'$53B',e:'160K+',i:'Enterprise Software'},'doordash':{r:'$8.6B',e:'19K+',i:'Food Delivery'}};
-    const co=domain.replace(/\.(com|io|co|org|net|app)$/i,'').toLowerCase(),k=ent[co];
-    if(k)return{profile:`${company} — ${k.i}, ${k.r} revenue, ${k.e} employees`,likely_reason:'PO routing delay, AP process backlog, or invoice not matched to internal reference number',approach:'Direct outreach to AP manager, escalation to controller within 5 days, executive engagement if unresolved',expected_days:15,confidence:94};
-    const isS=['io','co','app'].some(e=>domain.endsWith('.'+e));
-    if(isS)return{profile:`${company} — Growth-stage company`,likely_reason:'Invoice not received by decision-maker, or cash flow timing',approach:'Direct outreach to founder/CFO + LinkedIn, payment plan option',expected_days:8,confidence:87};
-    return{profile:`${company} — Mid-market company`,likely_reason:'AP process delay, disputed amount, or missing documentation',approach:'Multi-channel outreach: email to AP + phone, escalation to CFO within 7 days',expected_days:12,confidence:91};
+function captureEmail() {
+    const email = document.getElementById('capture-email')?.value?.trim();
+    if (!email || !email.includes('@')) return;
+    const domain = document.getElementById('target-url').textContent;
+    const msg = document.getElementById('capture-msg');
+    msg.textContent = 'Report queued. Check your inbox in 24h.';
+    msg.style.display = 'block';
+    // Track
+    fetch('https://backend.widr.app/api/demo/track', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({email, company: domain, action: 'report_requested'})
+    }).catch(() => {});
 }
 
-document.getElementById('email-input').addEventListener('keydown',e=>{if(e.key==='Enter')startAgent()});
+// ═══ SCROLL / REVEAL / COUNTERS ═══
+window.addEventListener('scroll', () => document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20));
+const rev = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(e => {e.forEach(x => {if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target)}})}, {threshold:.08, rootMargin:'0px 0px -40px 0px'});
+rev.forEach(el => io.observe(el));
+setTimeout(() => rev.forEach(el => el.classList.add('visible')), 4000);
+
+const cEls = document.querySelectorAll('[data-count]');
+const cIO = new IntersectionObserver(e => {e.forEach(x => {if(x.isIntersecting){animC(x.target);cIO.unobserve(x.target)}})}, {threshold:.1});
+cEls.forEach(el => cIO.observe(el));
+function animC(el){const t=parseInt(el.dataset.count),p=el.dataset.prefix||'',s=el.dataset.suffix||'';if(t===0){el.textContent=p+'0'+s;el.style.animation='counter-pop .5s cubic-bezier(.16,1,.3,1)';return}const d=1800,st=performance.now();function tick(n){const e=n-st,pr=Math.min(e/d,1),ea=1-Math.pow(1-pr,3);el.textContent=p+Math.round(t*ea)+s;if(pr<1)requestAnimationFrame(tick)}requestAnimationFrame(tick)}
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {a.addEventListener('click', e => {e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-70, behavior:'smooth'})})});
+
+document.getElementById('url-input').addEventListener('keydown', e => {if(e.key==='Enter') startAnalysis()});
 </script>
 </body>
 </html>
