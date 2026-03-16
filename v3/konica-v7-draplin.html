@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentCollect x Konica Minolta</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GRZZT9K05B"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GRZZT9K05B');</script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","vr6uvxdalw");</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --orange:#E85D26;
+  --cream:#F5F0EB;
+  --dark:#1A1A1A;
+  --navy:#0A0A14;
+  --green:#2D8C3C;
+  --red:#C42B2B;
+  --blue:#2563eb;
+  --border-w:5px;
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--cream);color:var(--dark);font-family:'Plus Jakarta Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;font-weight:900}
+
+/* DRAPLIN TYPOGRAPHY */
+h1,h2,h3,.drap-title{font-weight:900;text-transform:uppercase;letter-spacing:-1px;line-height:1}
+p,td,th,span,div,input,button,a{font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
+.rv.v{opacity:1;transform:none}
+
+/* ===== NAV ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between;background:var(--dark);border-bottom:var(--border-w) solid var(--orange)}
+.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;font-weight:900;font-size:15px;color:#fff;letter-spacing:-.3px;text-transform:uppercase}
+.nav-logo .mark{background:var(--blue);color:#fff;width:26px;height:26px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900}
+.nav-expiry{font-size:12px;color:rgba(255,255,255,.5);letter-spacing:1px;text-transform:uppercase;font-weight:700}
+.nav-phone{color:var(--orange);font-weight:900;font-size:15px;text-decoration:none;letter-spacing:1px}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;background:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 40px 80px;position:relative}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:var(--border-w);background:var(--dark)}
+.hero-badge{display:inline-block;border:var(--border-w) solid var(--dark);padding:8px 24px;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:3px;margin-bottom:40px;color:var(--dark)}
+.hero h1{font-size:clamp(48px,8vw,110px);font-weight:900;text-transform:uppercase;letter-spacing:-3px;line-height:.92;max-width:900px;color:var(--dark)}
+.hero h1 .accent{color:var(--orange)}
+.hero-sub{font-size:clamp(16px,2vw,20px);font-weight:700;color:var(--dark);opacity:.6;margin-top:32px;max-width:640px;line-height:1.5;text-transform:none;letter-spacing:0}
+
+/* Demo box - badge style */
+.demo-wrap{margin-top:56px;width:100%;max-width:520px}
+.demo-box{background:var(--dark);border:var(--border-w) solid var(--dark);padding:40px 36px;position:relative}
+.demo-box::before{content:'TRY THE AGENT';position:absolute;top:-14px;left:32px;background:var(--orange);color:#fff;font-size:10px;font-weight:900;letter-spacing:3px;padding:4px 16px;text-transform:uppercase}
+.demo-label{font-size:18px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:1px}
+.demo-sub{font-size:14px;color:rgba(255,255,255,.5);margin-top:8px;margin-bottom:24px;font-weight:700}
+.demo-row{display:flex;gap:0}
+.demo-input{flex:1;background:#fff;border:none;border:var(--border-w) solid var(--dark);padding:16px 20px;font-family:inherit;font-size:16px;font-weight:900;color:var(--dark);outline:none}
+.demo-input::placeholder{color:rgba(0,0,0,.3)}
+.demo-btn{background:var(--orange);color:#fff;border:none;padding:16px 28px;font-family:inherit;font-weight:900;font-size:14px;cursor:pointer;text-transform:uppercase;letter-spacing:2px;white-space:nowrap;transition:background .15s;display:flex;align-items:center;gap:10px}
+.demo-btn:hover{background:#D14D1A}
+.demo-enriching{display:flex;align-items:center;justify-content:center;gap:12px;font-size:15px;color:rgba(255,255,255,.6);padding:16px 0;font-weight:700}
+.demo-found{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.08);border:3px solid rgba(255,255,255,.15);padding:12px 20px 12px 12px;margin-bottom:16px}
+.demo-found-init{width:44px;height:44px;border-radius:0;background:var(--orange);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:15px;flex-shrink:0}
+.demo-found-tag{margin-left:auto;background:var(--green);color:#fff;font-size:10px;font-weight:900;padding:4px 12px;text-transform:uppercase;letter-spacing:1px}
+.demo-calling{display:flex;align-items:center;justify-content:center;gap:10px;font-size:15px;font-weight:900;color:var(--orange);text-transform:uppercase;letter-spacing:1px}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.3}}
+.pulse{width:10px;height:10px;border-radius:50%;background:var(--orange);animation:pulse 1.2s infinite;flex-shrink:0}
+.demo-note{font-size:12px;color:rgba(255,255,255,.35);margin-top:20px;text-align:center;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.hidden{display:none!important}
+
+/* ===== DLL SECTION ===== */
+.problem{background:var(--dark);color:#fff;padding:120px 40px;position:relative}
+.problem::before,.problem::after{content:'';position:absolute;left:0;right:0;height:var(--border-w);background:var(--orange)}
+.problem::before{top:0}
+.problem::after{bottom:0}
+.problem-inner{max-width:1100px;margin:0 auto}
+.problem h2{font-size:clamp(40px,6vw,80px);text-transform:uppercase;letter-spacing:-2px;line-height:.95;text-align:center;color:#fff}
+.problem h2 .accent{color:var(--orange)}
+.problem-sub{font-size:16px;color:rgba(255,255,255,.45);margin-top:24px;text-align:center;max-width:600px;margin-left:auto;margin-right:auto;font-weight:700;line-height:1.5}
+
+/* Rating badges */
+.ratings{display:flex;justify-content:center;gap:32px;margin-top:64px;flex-wrap:wrap}
+.rating{text-align:center;text-decoration:none;color:inherit;border:var(--border-w) solid var(--orange);padding:32px 48px;transition:transform .15s;background:rgba(232,93,38,.06)}
+.rating:hover{transform:scale(1.03)}
+.rating-num{font-size:72px;font-weight:900;letter-spacing:-3px;color:var(--orange);line-height:1}
+.rating-label{font-size:11px;color:rgba(255,255,255,.5);margin-top:10px;text-transform:uppercase;letter-spacing:2px;font-weight:900}
+
+/* Reviews as stamps */
+.reviews{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:56px}
+.review{padding:36px 32px;border:var(--border-w) solid rgba(255,255,255,.12);position:relative}
+.review::before{content:'REVIEW';position:absolute;top:-1px;right:24px;background:var(--orange);color:#fff;font-size:9px;font-weight:900;letter-spacing:2px;padding:3px 12px}
+.review q{font-size:16px;line-height:1.6;font-style:normal;display:block;color:rgba(255,255,255,.8);font-weight:700}
+.review q strong{color:#fff;font-weight:900}
+.review-src{font-size:11px;color:rgba(255,255,255,.3);margin-top:14px;text-transform:uppercase;letter-spacing:1px;font-weight:900}
+.review-verdict{font-size:18px;color:var(--orange);font-weight:900;text-align:center;margin-top:56px;text-transform:uppercase;letter-spacing:2px;border:var(--border-w) solid var(--orange);display:inline-block;padding:12px 32px}
+.review-verdict-wrap{text-align:center}
+
+/* ===== TRANSCRIPT PLAYER ===== */
+.player-section{padding:120px 40px;background:var(--cream);position:relative}
+.player-section h2{font-size:clamp(40px,6vw,80px);text-transform:uppercase;letter-spacing:-2px;line-height:.95;text-align:center;max-width:700px;margin:0 auto 64px}
+.dark-player{background:var(--navy);overflow:hidden;max-width:960px;margin:0 auto;border:var(--border-w) solid var(--dark)}
+.dark-header{padding:32px 40px 0;display:flex;align-items:center;justify-content:space-between}
+.dark-header-label{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:3px;color:rgba(255,255,255,.25)}
+.dark-live{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:900;color:var(--orange);text-transform:uppercase;letter-spacing:2px}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.3}}
+.dark-live-dot{width:7px;height:7px;background:var(--orange);animation:pulse-dot 2s infinite}
+.dark-body{display:grid;grid-template-columns:1.2fr 1fr;min-height:320px}
+.dark-transcript{padding:32px 40px 40px;display:flex;flex-direction:column;justify-content:center;gap:24px}
+.dark-line{opacity:0;transform:translateY(12px);transition:all .5s ease}
+.dark-line.shown{opacity:1;transform:none}
+.dark-speaker{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:2px;margin-bottom:6px;display:block}
+.dark-speaker.ai{color:var(--orange)}
+.dark-speaker.hu{color:rgba(255,255,255,.3)}
+.dark-text{font-size:clamp(16px,2vw,20px);font-weight:700;line-height:1.5;color:#fff}
+.dark-text.hu{color:rgba(255,255,255,.45);font-size:clamp(15px,1.8vw,18px)}
+.dark-reasoning{padding:32px 40px 40px;border-left:var(--border-w) solid rgba(255,255,255,.06);display:flex;flex-direction:column;justify-content:center;gap:12px}
+.dark-reasoning h3{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:3px;color:rgba(255,255,255,.2);margin-bottom:12px}
+.dark-badge{padding:14px 20px;font-size:13px;font-weight:900;opacity:0;transform:translateX(12px);transition:all .5s ease;text-transform:uppercase;letter-spacing:1px;border-left:4px solid}
+.dark-badge.shown{opacity:1;transform:none}
+.dark-badge.green{background:rgba(45,140,60,.1);color:#4ade80;border-color:#4ade80}
+.dark-badge.orange{background:rgba(232,93,38,.1);color:var(--orange);border-color:var(--orange)}
+.dark-controls{display:flex;align-items:center;gap:20px;padding:20px 40px;border-top:var(--border-w) solid rgba(255,255,255,.06)}
+.dark-play{width:52px;height:52px;background:var(--orange);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .15s}
+.dark-play:hover{transform:scale(1.05)}
+.dark-track{flex:1;height:4px;background:rgba(255,255,255,.1);cursor:pointer}
+.dark-fill{height:100%;background:var(--orange);width:0%;transition:width .1s linear}
+.dark-time{font-size:12px;color:rgba(255,255,255,.3);font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:900}
+.dark-hint{text-align:center;padding:0 0 16px;font-size:11px;color:rgba(255,255,255,.15);text-transform:uppercase;letter-spacing:2px;font-weight:900}
+
+/* ===== CONTACT CHAIN ===== */
+.chain-section{padding:120px 40px;text-align:center;background:var(--cream);position:relative}
+.chain-section::before{content:'';position:absolute;top:0;left:0;right:0;height:var(--border-w);background:var(--dark)}
+.chain-section h2{font-size:clamp(40px,6vw,80px);text-transform:uppercase;letter-spacing:-2px;line-height:.95;max-width:700px;margin:0 auto}
+.chain-section h2 .accent{color:var(--orange)}
+.chain-sub{font-size:14px;color:var(--dark);opacity:.5;margin-top:20px;max-width:500px;margin-left:auto;margin-right:auto;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.chain-strip{display:flex;justify-content:center;gap:0;margin-top:64px;flex-wrap:wrap}
+.chain-card{background:#fff;border:var(--border-w) solid var(--dark);padding:36px 28px;text-align:center;width:230px;margin-left:-5px;position:relative}
+.chain-card:first-child{margin-left:0}
+.chain-card.protected{background:repeating-linear-gradient(45deg,#F5F0EB,#F5F0EB 8px,#EDE8E2 8px,#EDE8E2 16px);border-color:var(--red)}
+.chain-avatar{width:60px;height:60px;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:900;margin-bottom:16px;letter-spacing:-.5px}
+.chain-avatar.grad-green{background:var(--green)}
+.chain-avatar.grad-orange{background:var(--orange)}
+.chain-avatar.grad-blue{background:var(--blue)}
+.chain-avatar.grad-red{background:var(--red);position:relative}
+.chain-name{font-weight:900;font-size:15px;text-transform:uppercase;letter-spacing:.5px}
+.chain-role{font-size:12px;color:var(--dark);opacity:.5;margin-top:4px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.chain-contact-info{margin-top:14px;display:flex;flex-direction:column;gap:4px}
+.chain-contact-line{display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;color:var(--dark);opacity:.4;font-weight:700}
+.chain-contact-line svg{flex-shrink:0;opacity:.5}
+.chain-tag{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:1.5px;margin-top:16px;display:inline-block;padding:5px 14px;border:3px solid}
+.chain-tag.tag-green{border-color:var(--green);color:var(--green);background:rgba(45,140,60,.06)}
+.chain-tag.tag-orange{border-color:var(--orange);color:var(--orange);background:rgba(232,93,38,.06)}
+.chain-tag.tag-blue{border-color:var(--blue);color:var(--blue);background:rgba(37,99,235,.06)}
+.chain-tag.tag-red{border-color:var(--red);color:var(--red);background:rgba(196,43,43,.06)}
+
+/* ===== COMPARISON TABLE ===== */
+.compare-section{padding:120px 40px;text-align:center;background:var(--dark);color:#fff;position:relative}
+.compare-section::before,.compare-section::after{content:'';position:absolute;left:0;right:0;height:var(--border-w);background:var(--orange)}
+.compare-section::before{top:0}
+.compare-section::after{bottom:0}
+.compare-section h2{font-size:clamp(40px,6vw,80px);text-transform:uppercase;letter-spacing:-2px;line-height:.95;max-width:600px;margin:0 auto;color:#fff}
+.compare-table{width:100%;max-width:760px;margin:64px auto 0;border-collapse:collapse;border:var(--border-w) solid rgba(255,255,255,.15)}
+.compare-table th,.compare-table td{padding:18px 24px;text-align:left;font-size:14px;font-weight:900;border-bottom:3px solid rgba(255,255,255,.06);text-transform:uppercase;letter-spacing:.5px}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table th{font-size:11px;letter-spacing:3px;color:rgba(255,255,255,.35);background:rgba(255,255,255,.03);border-bottom:var(--border-w) solid rgba(255,255,255,.1)}
+.compare-table th:nth-child(2){color:var(--red)}
+.compare-table th:nth-child(3){color:var(--orange)}
+.compare-table td:first-child{color:rgba(255,255,255,.5)}
+.compare-table td:nth-child(2){color:rgba(255,255,255,.35)}
+.compare-table td:nth-child(3){color:rgba(255,255,255,.85)}
+.verdict{border-top:var(--border-w) solid var(--orange);background:rgba(232,93,38,.05)}
+.verdict td{font-weight:900!important;font-size:16px!important;letter-spacing:2px}
+.verdict td:nth-child(2){color:var(--red)!important}
+.verdict td:nth-child(3){color:var(--orange)!important}
+
+/* Logos */
+.logos{display:flex;align-items:center;justify-content:center;gap:48px;opacity:.3;margin-top:72px;flex-wrap:wrap}
+.logos img{height:18px;filter:brightness(10)}
+
+/* ===== CTA ===== */
+.cta-section{padding:120px 40px;text-align:center;background:var(--navy);color:#fff;position:relative}
+.cta-section h2{font-size:clamp(36px,5.5vw,72px);font-weight:900;text-transform:uppercase;letter-spacing:-2px;line-height:.95;max-width:700px;margin:0 auto;color:#fff}
+.cta-section h2 .accent{color:var(--orange)}
+.cta-detail{font-size:16px;color:rgba(255,255,255,.4);margin-top:28px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.cta-price{font-size:28px;font-weight:900;color:var(--orange);margin-top:16px;text-transform:uppercase;letter-spacing:1px}
+.cta-btn{display:inline-block;margin-top:48px;background:var(--orange);color:#fff;padding:20px 52px;font-weight:900;font-size:16px;text-decoration:none;letter-spacing:2px;text-transform:uppercase;transition:transform .15s,background .15s;border:var(--border-w) solid var(--orange)}
+.cta-btn:hover{transform:scale(1.03);background:#D14D1A}
+.cta-or{display:block;margin-top:20px;font-size:13px;color:rgba(255,255,255,.3);font-weight:900;text-transform:uppercase;letter-spacing:1px}
+.cta-or a{color:rgba(255,255,255,.4);text-decoration:none}
+.cta-forward{margin-top:36px;font-size:13px;color:rgba(255,255,255,.2);font-weight:700;text-transform:uppercase;letter-spacing:1px}
+
+/* Footer */
+.foot{padding:32px 40px;text-align:center;font-size:11px;color:var(--dark);opacity:.35;background:var(--cream);font-weight:700;text-transform:uppercase;letter-spacing:1px;border-top:var(--border-w) solid var(--dark)}
+
+/* ===== MOBILE ===== */
+@media(max-width:900px){
+  .reviews{grid-template-columns:1fr}
+  .dark-body{grid-template-columns:1fr}
+  .dark-reasoning{border-left:none;border-top:var(--border-w) solid rgba(255,255,255,.06)}
+}
+@media(max-width:768px){
+  .nav{padding:0 20px;height:56px}
+  .nav-expiry{display:none}
+  .hero{padding:100px 24px 64px}
+  .demo-wrap{max-width:100%}
+  .demo-row{flex-direction:column}
+  .demo-btn{justify-content:center}
+  .problem{padding:80px 24px}
+  .ratings{gap:16px}
+  .rating{padding:24px 32px}
+  .rating-num{font-size:52px}
+  .reviews{margin-top:40px}
+  .review{padding:28px 24px}
+  .player-section{padding:80px 16px}
+  .player-section h2{margin-bottom:40px}
+  .dark-header,.dark-transcript,.dark-reasoning,.dark-controls{padding-left:20px;padding-right:20px}
+  .chain-section{padding:80px 24px}
+  .chain-strip{flex-direction:column;align-items:center}
+  .chain-card{width:100%;max-width:300px;margin-left:0;margin-top:-5px}
+  .chain-card:first-child{margin-top:0}
+  .compare-section{padding:80px 16px}
+  .compare-table th,.compare-table td{padding:12px 10px;font-size:11px}
+  .cta-section{padding:80px 24px}
+  .logos{gap:24px}
+  .logos img{height:14px}
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <a href="https://agentcollect.com" class="nav-logo">
+    <span class="mark">a</span><span>agentcollect</span>
+  </a>
+  <span class="nav-expiry">Konica Minolta, <strong id="days-left"></strong></span>
+  <a href="tel:+12016277551" class="nav-phone" onclick="gtag('event','call_nav',{})">(201) 627-7551</a>
+</nav>
+
+<!-- 1. HERO -->
+<section class="hero">
+  <div class="rv">
+    <img src="https://cdn.brandfetch.io/konicaminolta.com/w/512/h/80/logo" alt="Konica Minolta" style="height:32px;margin-bottom:40px;opacity:.6">
+    <h1>Your collection agency is <span class="accent">destroying</span> your brand.</h1>
+    <p class="hero-sub">DLL Finance collects your bizhub leases with a 2.2-star Google rating and FDCPA violations on record.</p>
+
+    <div class="demo-wrap">
+      <div class="demo-box">
+        <div id="ds1">
+          <p class="demo-label">We already built your agent.</p>
+          <p class="demo-sub">Enter your number. Try not to pay $4,750.</p>
+          <div class="demo-row">
+            <input type="tel" id="demo-phone" placeholder="(201) 555-0100" class="demo-input" maxlength="14" />
+            <button class="demo-btn" onclick="startDemo()">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+              Prove us wrong
+            </button>
+          </div>
+        </div>
+        <div id="ds2" class="hidden">
+          <div class="demo-enriching"><div class="pulse"></div><span>Looking you up...</span></div>
+        </div>
+        <div id="ds3" class="hidden">
+          <div class="demo-found">
+            <div class="demo-found-init" id="fi">?</div>
+            <div style="text-align:left"><div style="font-weight:900;font-size:14px;color:#fff" id="fn">Identifying...</div><div style="font-size:12px;color:rgba(255,255,255,.5)" id="ft"></div></div>
+            <span class="demo-found-tag">identified</span>
+          </div>
+          <div class="demo-calling"><div class="pulse"></div>Calling you now. Try not to pay $4,750.</div>
+        </div>
+        <p class="demo-note">Real AI agent. Real call. Matched to your area code.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. DLL EXPOSED -->
+<section class="problem">
+  <div class="problem-inner">
+    <div class="rv">
+      <h2>This is who calls debtors <span class="accent">in your name.</span></h2>
+      <p class="problem-sub">Every negative review is a review of your brand. Every FDCPA complaint is a lawsuit risk for you.</p>
+    </div>
+
+    <div class="rv">
+      <div class="ratings">
+        <a href="https://www.google.com/maps/place/DLL+Finance" target="_blank" rel="noopener" class="rating">
+          <div class="rating-num">2.2</div>
+          <div class="rating-label">Google Reviews</div>
+        </a>
+        <a href="https://lemberglaw.com/dll-finance-collections-complaints/" target="_blank" rel="noopener" class="rating">
+          <div class="rating-num" style="font-size:52px">FDCPA</div>
+          <div class="rating-label">Violations Flagged</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="reviews rv">
+      <div class="review">
+        <q>The <strong>Konica Bizhub</strong> cost us $8,000 over seven years. NO customer service. STAY AWAY.</q>
+        <div class="review-src">RevDex, Verified review</div>
+      </div>
+      <div class="review">
+        <q>Equivalent to owning a timeshare. They don't return calls, don't negotiate.</q>
+        <div class="review-src">BBB, Feb 2026</div>
+      </div>
+    </div>
+
+    <div class="review-verdict-wrap rv">
+      <div class="review-verdict">These aren't our words. These are your customers' words.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. TRANSCRIPT PLAYER -->
+<section class="player-section">
+  <div class="rv">
+    <h2>Hear it. Then try to <span style="color:var(--orange)">say no.</span></h2>
+  </div>
+  <div class="rv dark-player">
+    <div class="dark-header">
+      <span class="dark-header-label">Live Call Recording</span>
+      <span class="dark-live"><span class="dark-live-dot"></span>Konica Minolta Agent</span>
+    </div>
+    <div class="dark-body">
+      <div class="dark-transcript" id="dt">
+        <div class="dark-line" data-at="0">
+          <span class="dark-speaker ai">AI Agent</span>
+          <div class="dark-text">Hi, this is Sarah from Konica Minolta. Calling about an outstanding invoice.</div>
+        </div>
+        <div class="dark-line" data-at="12">
+          <span class="dark-speaker hu">Contact</span>
+          <div class="dark-text hu">"...is it AI?"</div>
+        </div>
+        <div class="dark-line" data-at="16">
+          <span class="dark-speaker ai">AI Agent</span>
+          <div class="dark-text">Ha, no, I'm Sarah. About that invoice, someone else on your team?</div>
+        </div>
+      </div>
+      <div class="dark-reasoning">
+        <h3>AI Reasoning</h3>
+        <div class="dark-badge green" id="r1">Contact verified</div>
+        <div class="dark-badge orange" id="r2">Skepticism detected</div>
+        <div class="dark-badge green" id="r3">Resolved. Follow-up in 3 days</div>
+      </div>
+    </div>
+    <div class="dark-controls">
+      <button class="dark-play" id="pbtn" onclick="toggle()">
+        <svg id="picon" width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="6,3 20,12 6,21"/></svg>
+      </button>
+      <div class="dark-track" onclick="seek(event)">
+        <div class="dark-fill" id="pbar"></div>
+      </div>
+      <div class="dark-time" id="ptime">0:00 / 1:25</div>
+      <audio id="aud" preload="none">
+        <source src="https://dxc03zgurdly9.cloudfront.net/74fb900c432127ea0f920d6c76def8852e6ff88fb08fd02db7fd3b37da54a7d9/recording.wav" type="audio/wav">
+      </audio>
+    </div>
+    <div class="dark-hint">Press play. Transcript syncs with audio.</div>
+  </div>
+</section>
+
+<!-- 4. CONTACT CHAIN -->
+<section class="chain-section">
+  <div class="rv">
+    <h2>If a client stopped paying, <span class="accent">here's who we'd call.</span></h2>
+    <p class="chain-sub">Simulation on Zwanger-Pesiri Radiology, a real Konica Minolta customer.</p>
+
+    <div class="chain-strip">
+      <div class="chain-card">
+        <div class="chain-avatar grad-green">DM</div>
+        <div class="chain-name">Donna M.</div>
+        <div class="chain-role">Accounts Payable</div>
+        <div class="chain-contact-info">
+          <div class="chain-contact-line">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+            d...@zprad.com
+          </div>
+          <div class="chain-contact-line">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+            (516) ...&#8722;3421
+          </div>
+        </div>
+        <div class="chain-tag tag-green">First contact</div>
+      </div>
+      <div class="chain-card">
+        <div class="chain-avatar grad-orange">RM</div>
+        <div class="chain-name">Randi M.</div>
+        <div class="chain-role">Accounting Mgr</div>
+        <div class="chain-contact-info">
+          <div class="chain-contact-line">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+            r...@zprad.com
+          </div>
+          <div class="chain-contact-line">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+            (516) ...&#8722;8104
+          </div>
+        </div>
+        <div class="chain-tag tag-orange">+5 days</div>
+      </div>
+      <div class="chain-card">
+        <div class="chain-avatar grad-blue">JF</div>
+        <div class="chain-name">John F.</div>
+        <div class="chain-role">CFO</div>
+        <div class="chain-contact-info">
+          <div class="chain-contact-line">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+            j...@zprad.com
+          </div>
+          <div class="chain-contact-line">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+            (516) ...&#8722;7200
+          </div>
+        </div>
+        <div class="chain-tag tag-blue">Escalation</div>
+      </div>
+      <div class="chain-card protected">
+        <div class="chain-avatar grad-red">
+          <svg width="24" height="24" fill="none" stroke="white" stroke-width="3" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="chain-name">Steven M., MD</div>
+        <div class="chain-role">CEO</div>
+        <div class="chain-tag tag-red">Protected</div>
+        <div style="font-size:11px;color:var(--red);margin-top:6px;font-weight:900;text-transform:uppercase;letter-spacing:1px">Do not contact</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. COMPARISON TABLE -->
+<section class="compare-section">
+  <div class="rv">
+    <h2>Side by side. <span style="color:var(--orange)">No contest.</span></h2>
+
+    <table class="compare-table">
+      <tr><th style="width:28%"></th><th>DLL Finance</th><th>AgentCollect</th></tr>
+      <tr><td>Google Reviews</td><td>2.2 / 5</td><td>Brand-preserving</td></tr>
+      <tr><td>Speed</td><td>60 to 120 days</td><td>49% in 20 days</td></tr>
+      <tr><td>Call Experience</td><td>"Rude, aggressive"</td><td>Branded Konica Minolta</td></tr>
+      <tr><td>Disputes</td><td>Ignored voicemails</td><td>AI handles 86%</td></tr>
+      <tr><td>Compliance</td><td>FDCPA violations</td><td>Reg F by design</td></tr>
+      <tr><td>CEO Protected</td><td>No control</td><td>Never contacted</td></tr>
+      <tr class="verdict"><td>Verdict</td><td>Liability</td><td>Asset</td></tr>
+    </table>
+
+    <div class="logos">
+      <img src="https://cdn.brandfetch.io/microsoft.com/w/512/h/80/logo" alt="Microsoft" />
+      <img src="https://cdn.brandfetch.io/dell.com/w/512/h/80/logo" alt="Dell" />
+      <img src="https://cdn.brandfetch.io/plaid.com/w/512/h/80/logo" alt="Plaid" />
+      <img src="https://cdn.brandfetch.io/checkr.com/w/512/h/80/logo" alt="Checkr" />
+    </div>
+  </div>
+</section>
+
+<!-- 6. CTA -->
+<section class="cta-section">
+  <div class="rv">
+    <h2>200 of your worst accounts. <span class="accent">60 days. $0 upfront.</span></h2>
+    <p class="cta-detail">Success-based pricing. You pay nothing if we recover nothing.</p>
+    <div class="cta-price">$4,750 per bizhub. We'll get it.</div>
+    <a href="https://cal.com/johnb/30" target="_blank" class="cta-btn" onclick="gtag('event','book_cta',{})">I dare you to prove it</a>
+    <span class="cta-or"><a href="tel:+12016277551" onclick="gtag('event','call_cta',{})">or call (201) 627-7551</a></span>
+    <p class="cta-forward">Not the right person? Forward this to your Head of Collections.</p>
+  </div>
+</section>
+
+<div class="foot">Zwanger-Pesiri Radiology used as sample. All contacts from public sources.</div>
+
+<script>
+// Expiry
+(function(){var d=new Date('2026-04-11'),diff=Math.ceil((d-new Date())/864e5);document.getElementById('days-left').textContent=diff>0?'expires in '+diff+' day'+(diff!==1?'s':''):'expired'})();
+
+// Reveal
+var ro=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('v')})},{threshold:.15});
+document.querySelectorAll('.rv').forEach(function(el){ro.observe(el)});
+
+// Phone format
+var ph=document.getElementById('demo-phone');
+ph.addEventListener('input',function(e){var v=e.target.value.replace(/\D/g,'').substring(0,10),o='';if(v.length>0)o='('+v.substring(0,3);if(v.length>=4)o+=') '+v.substring(3,6);if(v.length>=7)o+='-'+v.substring(6,10);e.target.value=o});
+ph.addEventListener('keydown',function(e){if(e.key==='Enter')startDemo()});
+
+// Demo
+function startDemo(){
+  var r=ph.value.replace(/\D/g,'');if(r.length<10){ph.focus();return}
+  var p='+1'+r;
+  gtag('event','demo_call_requested',{phone_entered:true});
+  document.getElementById('ds1').classList.add('hidden');
+  document.getElementById('ds2').classList.remove('hidden');
+  fetch('https://backend.widr.app/api/v1/demo/phone-lookup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone:p})}).then(function(r){return r.json()}).then(function(d){showFound(p,d.data&&d.data.person?d.data.person:null)}).catch(function(){showFound(p,null)})
+}
+function showFound(p,d){
+  document.getElementById('ds2').classList.add('hidden');
+  document.getElementById('ds3').classList.remove('hidden');
+  if(d&&d.name){
+    var i=d.name.split(' ').map(function(w){return w[0]}).join('').substring(0,2).toUpperCase();
+    document.getElementById('fi').textContent=i;
+    document.getElementById('fn').textContent=d.name;
+    document.getElementById('ft').textContent=d.title||d.company||''
+  }else{
+    document.getElementById('fi').textContent='?';
+    document.getElementById('fn').textContent='Identity confirmed';
+    document.getElementById('ft').textContent=''
+  }
+  fetch('https://backend.widr.app/api/v1/demo/prospect-call',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone:p,prospect:'Konica Minolta',product:'bizhub C3110i copier lease',amount:'$4,750',from_number:'+12016277551',name:d&&d.name?d.name:null})}).catch(function(){window.location.href='tel:+12016277551'})
+}
+
+// Audio player
+var aud=document.getElementById('aud'),raf=null;
+var rTimings=[{id:'r1',at:2},{id:'r2',at:14},{id:'r3',at:20}];
+var rShown={};
+function fmt(t){var m=Math.floor(t/60),s=Math.floor(t%60);return m+':'+(s<10?'0':'')+s}
+function tick(){
+  if(!aud)return;var d=aud.duration||85;
+  document.getElementById('pbar').style.width=(aud.currentTime/d*100)+'%';
+  document.getElementById('ptime').textContent=fmt(aud.currentTime)+' / '+fmt(d);
+  document.querySelectorAll('.dark-line').forEach(function(el){
+    if(aud.currentTime>=parseFloat(el.dataset.at))el.classList.add('shown');
+  });
+  rTimings.forEach(function(r){
+    if(!rShown[r.id]&&aud.currentTime>=r.at){rShown[r.id]=true;document.getElementById(r.id).classList.add('shown')}
+  });
+  if(!aud.paused&&!aud.ended)raf=requestAnimationFrame(tick);
+}
+function toggle(){
+  if(!aud)return;
+  if(aud.paused||aud.ended){
+    aud.play().then(function(){
+      document.getElementById('picon').innerHTML='<rect x="6" y="4" width="4" height="16" fill="white"/><rect x="14" y="4" width="4" height="16" fill="white"/>';
+      raf=requestAnimationFrame(tick);
+    }).catch(function(){});
+  }else{
+    aud.pause();document.getElementById('picon').innerHTML='<polygon points="6,3 20,12 6,21"/>';cancelAnimationFrame(raf);
+  }
+}
+function seek(e){var r=e.currentTarget.getBoundingClientRect();aud.currentTime=((e.clientX-r.left)/r.width)*(aud.duration||85);if(!aud.paused)tick()}
+aud&&aud.addEventListener('ended',function(){document.getElementById('picon').innerHTML='<polygon points="6,3 20,12 6,21"/>';cancelAnimationFrame(raf)});
+</script>
+</body>
+</html>
