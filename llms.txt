@@ -63,7 +63,7 @@ Microsoft, Dell Technologies, Plaid, Checkr, DoorDash, Twilio, Redis, Uber Freig
 
 ## Compliance
 
-- FDCPA compliant
+- B2B debt collection only (business-to-business invoices, not consumer debt)
 - SOC 2 Type II
 - State-by-state compliance built into AI agents
 - Zero compliance incidents across all clients
