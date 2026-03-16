@@ -25,8 +25,9 @@ html{scroll-behavior:smooth;overflow-x:hidden}
 body{background:var(--cream);color:var(--dark);font-family:'Plus Jakarta Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;font-weight:900}
 
 /* DRAPLIN TYPOGRAPHY */
-h1,h2,h3,.drap-title{font-weight:900;text-transform:uppercase;letter-spacing:-1px;line-height:1}
-p,td,th,span,div,input,button,a{font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+h1,h2,h3,.drap-title{font-weight:900;text-transform:uppercase;letter-spacing:-1px;line-height:1.1}
+p,td,th,span,div,input,button,a{font-family:'Plus Jakarta Sans',system-ui,sans-serif;line-height:1.55}
+body{font-size:16px}
 
 /* Reveal */
 .rv{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
@@ -45,14 +46,14 @@ p,td,th,span,div,input,button,a{font-family:'Plus Jakarta Sans',system-ui,sans-s
 .hero-badge{display:inline-block;border:var(--border-w) solid var(--dark);padding:8px 24px;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:3px;margin-bottom:40px;color:var(--dark)}
 .hero h1{font-size:clamp(48px,8vw,110px);font-weight:900;text-transform:uppercase;letter-spacing:-3px;line-height:.92;max-width:900px;color:var(--dark)}
 .hero h1 .accent{color:var(--orange)}
-.hero-sub{font-size:clamp(16px,2vw,20px);font-weight:700;color:var(--dark);opacity:.6;margin-top:32px;max-width:640px;line-height:1.5;text-transform:none;letter-spacing:0}
+.hero-sub{font-size:clamp(18px,2vw,22px);font-weight:700;color:var(--dark);opacity:.7;margin-top:32px;max-width:640px;line-height:1.6;text-transform:none;letter-spacing:0}
 
 /* Demo box - badge style */
 .demo-wrap{margin-top:56px;width:100%;max-width:520px}
 .demo-box{background:var(--dark);border:var(--border-w) solid var(--dark);padding:40px 36px;position:relative}
 .demo-box::before{content:'TRY THE AGENT';position:absolute;top:-14px;left:32px;background:var(--orange);color:#fff;font-size:10px;font-weight:900;letter-spacing:3px;padding:4px 16px;text-transform:uppercase}
 .demo-label{font-size:18px;font-weight:900;color:#fff;text-transform:uppercase;letter-spacing:1px}
-.demo-sub{font-size:14px;color:rgba(255,255,255,.5);margin-top:8px;margin-bottom:24px;font-weight:700}
+.demo-sub{font-size:16px;color:rgba(255,255,255,.55);margin-top:8px;margin-bottom:24px;font-weight:700}
 .demo-row{display:flex;gap:0}
 .demo-input{flex:1;background:#fff;border:none;border:var(--border-w) solid var(--dark);padding:16px 20px;font-family:inherit;font-size:16px;font-weight:900;color:var(--dark);outline:none}
 .demo-input::placeholder{color:rgba(0,0,0,.3)}
@@ -76,22 +77,22 @@ p,td,th,span,div,input,button,a{font-family:'Plus Jakarta Sans',system-ui,sans-s
 .problem-inner{max-width:1100px;margin:0 auto}
 .problem h2{font-size:clamp(40px,6vw,80px);text-transform:uppercase;letter-spacing:-2px;line-height:.95;text-align:center;color:#fff}
 .problem h2 .accent{color:var(--orange)}
-.problem-sub{font-size:16px;color:rgba(255,255,255,.45);margin-top:24px;text-align:center;max-width:600px;margin-left:auto;margin-right:auto;font-weight:700;line-height:1.5}
+.problem-sub{font-size:18px;color:rgba(255,255,255,.55);margin-top:24px;text-align:center;max-width:600px;margin-left:auto;margin-right:auto;font-weight:700;line-height:1.6}
 
 /* Rating badges */
 .ratings{display:flex;justify-content:center;gap:32px;margin-top:64px;flex-wrap:wrap}
 .rating{text-align:center;text-decoration:none;color:inherit;border:var(--border-w) solid var(--orange);padding:32px 48px;transition:transform .15s;background:rgba(232,93,38,.06)}
 .rating:hover{transform:scale(1.03)}
 .rating-num{font-size:72px;font-weight:900;letter-spacing:-3px;color:var(--orange);line-height:1}
-.rating-label{font-size:11px;color:rgba(255,255,255,.5);margin-top:10px;text-transform:uppercase;letter-spacing:2px;font-weight:900}
+.rating-label{font-size:13px;color:rgba(255,255,255,.55);margin-top:10px;text-transform:uppercase;letter-spacing:2px;font-weight:900}
 
 /* Reviews as stamps */
 .reviews{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:56px}
 .review{padding:36px 32px;border:var(--border-w) solid rgba(255,255,255,.12);position:relative}
 .review::before{content:'REVIEW';position:absolute;top:-1px;right:24px;background:var(--orange);color:#fff;font-size:9px;font-weight:900;letter-spacing:2px;padding:3px 12px}
-.review q{font-size:16px;line-height:1.6;font-style:normal;display:block;color:rgba(255,255,255,.8);font-weight:700}
+.review q{font-size:18px;line-height:1.65;font-style:normal;display:block;color:rgba(255,255,255,.85);font-weight:700}
 .review q strong{color:#fff;font-weight:900}
-.review-src{font-size:11px;color:rgba(255,255,255,.3);margin-top:14px;text-transform:uppercase;letter-spacing:1px;font-weight:900}
+.review-src{font-size:13px;color:rgba(255,255,255,.4);margin-top:14px;text-transform:uppercase;letter-spacing:1px;font-weight:900}
 .review-verdict{font-size:18px;color:var(--orange);font-weight:900;text-align:center;margin-top:56px;text-transform:uppercase;letter-spacing:2px;border:var(--border-w) solid var(--orange);display:inline-block;padding:12px 32px}
 .review-verdict-wrap{text-align:center}
 
@@ -132,20 +133,21 @@ p,td,th,span,div,input,button,a{font-family:'Plus Jakarta Sans',system-ui,sans-s
 .chain-section::before{content:'';position:absolute;top:0;left:0;right:0;height:var(--border-w);background:var(--dark)}
 .chain-section h2{font-size:clamp(40px,6vw,80px);text-transform:uppercase;letter-spacing:-2px;line-height:.95;max-width:700px;margin:0 auto}
 .chain-section h2 .accent{color:var(--orange)}
-.chain-sub{font-size:14px;color:var(--dark);opacity:.5;margin-top:20px;max-width:500px;margin-left:auto;margin-right:auto;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.chain-sub{font-size:16px;color:var(--dark);opacity:.55;margin-top:20px;max-width:500px;margin-left:auto;margin-right:auto;font-weight:700;text-transform:uppercase;letter-spacing:1px}
 .chain-strip{display:flex;justify-content:center;gap:0;margin-top:64px;flex-wrap:wrap}
 .chain-card{background:#fff;border:var(--border-w) solid var(--dark);padding:36px 28px;text-align:center;width:230px;margin-left:-5px;position:relative}
 .chain-card:first-child{margin-left:0}
 .chain-card.protected{background:repeating-linear-gradient(45deg,#F5F0EB,#F5F0EB 8px,#EDE8E2 8px,#EDE8E2 16px);border-color:var(--red)}
-.chain-avatar{width:60px;height:60px;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:900;margin-bottom:16px;letter-spacing:-.5px}
-.chain-avatar.grad-green{background:var(--green)}
-.chain-avatar.grad-orange{background:var(--orange)}
-.chain-avatar.grad-blue{background:var(--blue)}
-.chain-avatar.grad-red{background:var(--red);position:relative}
-.chain-name{font-weight:900;font-size:15px;text-transform:uppercase;letter-spacing:.5px}
-.chain-role{font-size:12px;color:var(--dark);opacity:.5;margin-top:4px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
-.chain-contact-info{margin-top:14px;display:flex;flex-direction:column;gap:4px}
-.chain-contact-line{display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;color:var(--dark);opacity:.4;font-weight:700}
+.chain-avatar{width:64px;height:64px;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:900;margin-bottom:16px;letter-spacing:-.5px;border-radius:50%;overflow:hidden}
+.chain-avatar img{width:64px;height:64px;border-radius:50%;object-fit:cover;display:block}
+.chain-avatar.grad-green{background:var(--green);border:2px solid var(--green)}
+.chain-avatar.grad-orange{background:var(--orange);border:2px solid var(--orange)}
+.chain-avatar.grad-blue{background:var(--blue);border:2px solid var(--blue)}
+.chain-avatar.grad-red{background:var(--red);border:2px solid var(--red);position:relative}
+.chain-name{font-weight:900;font-size:16px;text-transform:uppercase;letter-spacing:.5px}
+.chain-role{font-size:13px;color:var(--dark);opacity:.55;margin-top:6px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.chain-contact-info{margin-top:14px;display:flex;flex-direction:column;gap:6px}
+.chain-contact-line{display:flex;align-items:center;justify-content:center;gap:6px;font-size:14px;color:var(--dark);opacity:.5;font-weight:700}
 .chain-contact-line svg{flex-shrink:0;opacity:.5}
 .chain-tag{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:1.5px;margin-top:16px;display:inline-block;padding:5px 14px;border:3px solid}
 .chain-tag.tag-green{border-color:var(--green);color:var(--green);background:rgba(45,140,60,.06)}
@@ -160,14 +162,14 @@ p,td,th,span,div,input,button,a{font-family:'Plus Jakarta Sans',system-ui,sans-s
 .compare-section::after{bottom:0}
 .compare-section h2{font-size:clamp(40px,6vw,80px);text-transform:uppercase;letter-spacing:-2px;line-height:.95;max-width:600px;margin:0 auto;color:#fff}
 .compare-table{width:100%;max-width:760px;margin:64px auto 0;border-collapse:collapse;border:var(--border-w) solid rgba(255,255,255,.15)}
-.compare-table th,.compare-table td{padding:18px 24px;text-align:left;font-size:14px;font-weight:900;border-bottom:3px solid rgba(255,255,255,.06);text-transform:uppercase;letter-spacing:.5px}
+.compare-table th,.compare-table td{padding:20px 24px;text-align:left;font-size:16px;font-weight:900;border-bottom:3px solid rgba(255,255,255,.06);text-transform:uppercase;letter-spacing:.5px;line-height:1.4}
 .compare-table tr:last-child td{border-bottom:none}
-.compare-table th{font-size:11px;letter-spacing:3px;color:rgba(255,255,255,.35);background:rgba(255,255,255,.03);border-bottom:var(--border-w) solid rgba(255,255,255,.1)}
+.compare-table th{font-size:13px;letter-spacing:3px;color:rgba(255,255,255,.45);background:rgba(255,255,255,.03);border-bottom:var(--border-w) solid rgba(255,255,255,.1)}
 .compare-table th:nth-child(2){color:var(--red)}
 .compare-table th:nth-child(3){color:var(--orange)}
-.compare-table td:first-child{color:rgba(255,255,255,.5)}
-.compare-table td:nth-child(2){color:rgba(255,255,255,.35)}
-.compare-table td:nth-child(3){color:rgba(255,255,255,.85)}
+.compare-table td:first-child{color:rgba(255,255,255,.6)}
+.compare-table td:nth-child(2){color:rgba(255,255,255,.5)}
+.compare-table td:nth-child(3){color:rgba(255,255,255,.9)}
 .verdict{border-top:var(--border-w) solid var(--orange);background:rgba(232,93,38,.05)}
 .verdict td{font-weight:900!important;font-size:16px!important;letter-spacing:2px}
 .verdict td:nth-child(2){color:var(--red)!important}
@@ -181,16 +183,16 @@ p,td,th,span,div,input,button,a{font-family:'Plus Jakarta Sans',system-ui,sans-s
 .cta-section{padding:120px 40px;text-align:center;background:var(--navy);color:#fff;position:relative}
 .cta-section h2{font-size:clamp(36px,5.5vw,72px);font-weight:900;text-transform:uppercase;letter-spacing:-2px;line-height:.95;max-width:700px;margin:0 auto;color:#fff}
 .cta-section h2 .accent{color:var(--orange)}
-.cta-detail{font-size:16px;color:rgba(255,255,255,.4);margin-top:28px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.cta-detail{font-size:18px;color:rgba(255,255,255,.55);margin-top:28px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
 .cta-price{font-size:28px;font-weight:900;color:var(--orange);margin-top:16px;text-transform:uppercase;letter-spacing:1px}
 .cta-btn{display:inline-block;margin-top:48px;background:var(--orange);color:#fff;padding:20px 52px;font-weight:900;font-size:16px;text-decoration:none;letter-spacing:2px;text-transform:uppercase;transition:transform .15s,background .15s;border:var(--border-w) solid var(--orange)}
 .cta-btn:hover{transform:scale(1.03);background:#D14D1A}
 .cta-or{display:block;margin-top:20px;font-size:13px;color:rgba(255,255,255,.3);font-weight:900;text-transform:uppercase;letter-spacing:1px}
 .cta-or a{color:rgba(255,255,255,.4);text-decoration:none}
-.cta-forward{margin-top:36px;font-size:13px;color:rgba(255,255,255,.2);font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.cta-forward{margin-top:36px;font-size:14px;color:rgba(255,255,255,.35);font-weight:700;text-transform:uppercase;letter-spacing:1px}
 
 /* Footer */
-.foot{padding:32px 40px;text-align:center;font-size:11px;color:var(--dark);opacity:.35;background:var(--cream);font-weight:700;text-transform:uppercase;letter-spacing:1px;border-top:var(--border-w) solid var(--dark)}
+.foot{padding:32px 40px;text-align:center;font-size:13px;color:var(--dark);opacity:.45;background:var(--cream);font-weight:700;text-transform:uppercase;letter-spacing:1px;border-top:var(--border-w) solid var(--dark)}
 
 /* ===== MOBILE ===== */
 @media(max-width:900px){
@@ -219,7 +221,7 @@ p,td,th,span,div,input,button,a{font-family:'Plus Jakarta Sans',system-ui,sans-s
   .chain-card{width:100%;max-width:300px;margin-left:0;margin-top:-5px}
   .chain-card:first-child{margin-top:0}
   .compare-section{padding:80px 16px}
-  .compare-table th,.compare-table td{padding:12px 10px;font-size:11px}
+  .compare-table th,.compare-table td{padding:14px 10px;font-size:13px}
   .cta-section{padding:80px 24px}
   .logos{gap:24px}
   .logos img{height:14px}
@@ -368,7 +370,7 @@ p,td,th,span,div,input,button,a{font-family:'Plus Jakarta Sans',system-ui,sans-s
 
     <div class="chain-strip">
       <div class="chain-card">
-        <div class="chain-avatar grad-green">DM</div>
+        <div class="chain-avatar grad-green"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face" alt="Donna M."></div>
         <div class="chain-name">Donna M.</div>
         <div class="chain-role">Accounts Payable</div>
         <div class="chain-contact-info">
@@ -384,7 +386,7 @@ p,td,th,span,div,input,button,a{font-family:'Plus Jakarta Sans',system-ui,sans-s
         <div class="chain-tag tag-green">First contact</div>
       </div>
       <div class="chain-card">
-        <div class="chain-avatar grad-orange">RM</div>
+        <div class="chain-avatar grad-orange"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face" alt="Randi M."></div>
         <div class="chain-name">Randi M.</div>
         <div class="chain-role">Accounting Mgr</div>
         <div class="chain-contact-info">
@@ -400,7 +402,7 @@ p,td,th,span,div,input,button,a{font-family:'Plus Jakarta Sans',system-ui,sans-s
         <div class="chain-tag tag-orange">+5 days</div>
       </div>
       <div class="chain-card">
-        <div class="chain-avatar grad-blue">JF</div>
+        <div class="chain-avatar grad-blue"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt="John F."></div>
         <div class="chain-name">John F.</div>
         <div class="chain-role">CFO</div>
         <div class="chain-contact-info">
