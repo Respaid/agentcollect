@@ -55,15 +55,15 @@ body{background:var(--cream);color:var(--black);font-family:'Plus Jakarta Sans',
 .hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:120px;background:var(--cream);clip-path:polygon(0 100%,100% 0,100% 100%)}
 
 .hero .km-logo{height:32px;margin-bottom:48px;opacity:.7;filter:grayscale(0)}
-.hero h1{font-family:Georgia,serif;font-size:clamp(38px,5.5vw,68px);font-weight:400;line-height:1.06;letter-spacing:-2px;color:var(--black);max-width:600px}
+.hero h1{font-family:Georgia,serif;font-size:clamp(38px,5.5vw,68px);font-weight:400;line-height:1.1;letter-spacing:-2px;color:var(--black);max-width:600px}
 .hero h1 em{font-style:italic;color:var(--red);font-weight:400}
-.hero-sub{font-size:17px;color:var(--muted);margin-top:28px;max-width:480px;line-height:1.7;font-weight:400}
+.hero-sub{font-size:18px;color:var(--muted);margin-top:28px;max-width:480px;line-height:1.6;font-weight:400}
 .hero-sub strong{color:var(--red);font-weight:700}
 
 /* Demo box */
 .demo-wrap{margin-top:56px;max-width:420px}
 .demo-label{font-size:18px;font-weight:800;color:var(--black);margin-bottom:4px;letter-spacing:-.3px}
-.demo-sub{font-size:14px;color:var(--muted);margin-bottom:20px}
+.demo-sub{font-size:16px;color:var(--muted);margin-bottom:20px;line-height:1.5}
 .demo-row{display:flex;gap:8px}
 .demo-input{flex:1;background:#fff;border:2px solid var(--black);border-radius:0;padding:16px 20px;font-family:inherit;font-size:16px;color:var(--black);outline:none;transition:border-color .2s}
 .demo-input::placeholder{color:#bbb}
@@ -77,7 +77,7 @@ body{background:var(--cream);color:var(--black);font-family:'Plus Jakarta Sans',
 .demo-calling{display:flex;align-items:center;justify-content:center;gap:10px;font-size:15px;font-weight:700;color:var(--red)}
 @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.3}}
 .pulse{width:10px;height:10px;border-radius:50%;background:var(--red);animation:pulse 1.2s infinite;flex-shrink:0}
-.demo-note{font-size:12px;color:var(--muted);margin-top:16px;font-style:italic}
+.demo-note{font-size:14px;color:var(--muted);margin-top:16px;font-style:italic;line-height:1.5}
 
 /* ===== GEOMETRIC DIVIDER ===== */
 .divider-angular{height:120px;background:var(--black);clip-path:polygon(0 0,100% 40%,100% 100%,0 60%);margin:0}
@@ -90,31 +90,31 @@ body{background:var(--cream);color:var(--black);font-family:'Plus Jakarta Sans',
 .problem::after{content:'';position:absolute;bottom:-60px;left:0;right:0;height:120px;background:var(--cream);clip-path:polygon(0 0,100% 60%,100% 100%,0 100%)}
 
 .problem-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center}
-.problem-text h2{font-family:Georgia,serif;font-size:clamp(32px,4.5vw,56px);font-weight:400;line-height:1.08;letter-spacing:-1.5px;color:var(--cream)}
+.problem-text h2{font-family:Georgia,serif;font-size:clamp(32px,4.5vw,56px);font-weight:400;line-height:1.12;letter-spacing:-1.5px;color:var(--cream)}
 .problem-text h2 em{color:var(--red);font-style:italic}
-.problem-text p{font-size:16px;color:rgba(255,248,240,.5);margin-top:24px;line-height:1.7;max-width:380px}
+.problem-text p{font-size:18px;color:rgba(255,248,240,.6);margin-top:24px;line-height:1.7;max-width:380px}
 
 /* Ratings */
 .ratings-col{display:flex;flex-direction:column;gap:32px}
 .rating-card{padding:32px;background:rgba(255,248,240,.04);border:1px solid rgba(255,248,240,.08);position:relative}
 .rating-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--red)}
 .rating-num{font-family:Georgia,serif;font-size:72px;font-weight:400;color:var(--red);line-height:1;letter-spacing:-3px}
-.rating-label{font-size:12px;color:rgba(255,248,240,.4);margin-top:4px;text-transform:uppercase;letter-spacing:1px;font-weight:600}
-.rating-link{font-size:11px;color:rgba(255,248,240,.25);text-decoration:none;margin-top:4px;display:inline-block}
+.rating-label{font-size:14px;color:rgba(255,248,240,.5);margin-top:4px;text-transform:uppercase;letter-spacing:1px;font-weight:600}
+.rating-link{font-size:14px;color:rgba(255,248,240,.35);text-decoration:none;margin-top:4px;display:inline-block}
 .rating-link:hover{color:var(--red)}
 
 /* Reviews */
 .reviews-wrap{max-width:800px;margin:80px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .review{padding:32px;background:rgba(255,248,240,.03);border:1px solid rgba(255,248,240,.06);position:relative}
 .review::before{content:'\201C';font-family:Georgia,serif;font-size:80px;color:var(--red);opacity:.3;position:absolute;top:-10px;left:16px;line-height:1}
-.review q{font-family:Georgia,serif;font-size:15px;line-height:1.7;font-style:italic;display:block;color:rgba(255,248,240,.6);quotes:none}
+.review q{font-family:Georgia,serif;font-size:18px;line-height:1.7;font-style:italic;display:block;color:rgba(255,248,240,.7);quotes:none}
 .review q strong{font-weight:700;color:var(--cream)}
-.review-src{font-size:11px;color:rgba(255,248,240,.25);margin-top:14px;text-transform:uppercase;letter-spacing:.5px;font-weight:600}
-.review-verdict{text-align:center;margin-top:64px;font-family:Georgia,serif;font-size:20px;font-style:italic;color:var(--red)}
+.review-src{font-size:14px;color:rgba(255,248,240,.35);margin-top:14px;text-transform:uppercase;letter-spacing:.5px;font-weight:600}
+.review-verdict{text-align:center;margin-top:64px;font-family:Georgia,serif;font-size:22px;font-style:italic;color:var(--red)}
 
 /* ===== SCENE 3: TRANSCRIPT PLAYER ===== */
 .player-section{padding:140px 40px 160px;background:var(--cream);position:relative}
-.player-section h2{font-family:Georgia,serif;font-size:clamp(32px,4.5vw,56px);font-weight:400;line-height:1.08;letter-spacing:-1.5px;text-align:center;max-width:500px;margin:0 auto 64px}
+.player-section h2{font-family:Georgia,serif;font-size:clamp(32px,4.5vw,56px);font-weight:400;line-height:1.12;letter-spacing:-1.5px;text-align:center;max-width:500px;margin:0 auto 64px}
 .player-section h2 em{color:var(--red);font-style:italic}
 
 /* Film-strip player */
@@ -139,7 +139,7 @@ body{background:var(--cream);color:var(--black);font-family:'Plus Jakarta Sans',
 .film-text.hu{color:rgba(255,248,240,.4);font-size:clamp(14px,1.6vw,17px)}
 .film-reasoning{padding:28px 40px 40px;border-left:1px solid rgba(255,248,240,.06);display:flex;flex-direction:column;justify-content:center;gap:14px}
 .film-reasoning h3{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:rgba(255,248,240,.2);margin-bottom:8px}
-.film-badge{padding:14px 18px;font-size:13px;font-weight:700;opacity:0;transform:translateX(20px);transition:all .6s cubic-bezier(.22,1,.36,1);border-left:3px solid transparent}
+.film-badge{padding:14px 18px;font-size:16px;font-weight:700;opacity:0;transform:translateX(20px);transition:all .6s cubic-bezier(.22,1,.36,1);border-left:3px solid transparent}
 .film-badge.shown{opacity:1;transform:none}
 .film-badge.green{background:rgba(22,163,74,.08);color:#4ade80;border-left-color:#16a34a}
 .film-badge.orange{background:rgba(251,191,36,.08);color:#fbbf24;border-left-color:#d97706}
@@ -149,13 +149,13 @@ body{background:var(--cream);color:var(--black);font-family:'Plus Jakarta Sans',
 .film-track{flex:1;height:2px;background:rgba(255,248,240,.1);cursor:pointer;position:relative}
 .film-fill{height:100%;background:var(--red);width:0%;transition:width .1s linear}
 .film-time{font-size:11px;color:rgba(255,248,240,.25);font-variant-numeric:tabular-nums;white-space:nowrap;letter-spacing:.5px}
-.film-hint{text-align:center;padding:12px 0 20px;font-size:11px;color:rgba(255,248,240,.15);position:relative;z-index:3;text-transform:uppercase;letter-spacing:1px}
+.film-hint{text-align:center;padding:12px 0 20px;font-size:14px;color:rgba(255,248,240,.2);position:relative;z-index:3;text-transform:uppercase;letter-spacing:1px}
 
 /* ===== SCENE 4: CONTACT CHAIN ===== */
 .chain-section{padding:140px 40px 160px;background:var(--cream);text-align:center;position:relative}
-.chain-section h2{font-family:Georgia,serif;font-size:clamp(32px,4.5vw,56px);font-weight:400;line-height:1.08;letter-spacing:-1.5px;max-width:600px;margin:0 auto}
+.chain-section h2{font-family:Georgia,serif;font-size:clamp(32px,4.5vw,56px);font-weight:400;line-height:1.12;letter-spacing:-1.5px;max-width:600px;margin:0 auto}
 .chain-section h2 em{color:var(--red);font-style:italic}
-.chain-sub{font-size:15px;color:var(--muted);margin-top:20px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.6}
+.chain-sub{font-size:16px;color:var(--muted);margin-top:20px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.6}
 
 .chain-strip{display:flex;justify-content:center;gap:3px;margin-top:64px;flex-wrap:wrap}
 .chain-card{background:#fff;padding:36px 24px;text-align:center;width:210px;position:relative;border:1px solid rgba(12,11,10,.06);transition:transform .3s ease}
@@ -165,36 +165,38 @@ body{background:var(--cream);color:var(--black);font-family:'Plus Jakarta Sans',
 .chain-card:nth-child(3){border-left:4px solid var(--blue)}
 .chain-card:last-child{border-left:4px solid var(--red)}
 .chain-card.protected{background:repeating-linear-gradient(45deg,#fff,#fff 8px,#FAFAF8 8px,#FAFAF8 16px)}
-.chain-avatar{width:52px;height:52px;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:800;margin-bottom:14px;letter-spacing:-.5px}
+.chain-avatar{width:68px;height:68px;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:18px;font-weight:800;margin-bottom:14px;letter-spacing:-.5px;border-radius:50%;overflow:hidden}
 .chain-avatar.g1{background:var(--black)}
 .chain-avatar.g2{background:var(--muted)}
 .chain-avatar.g3{background:var(--blue)}
 .chain-avatar.g4{background:var(--red)}
-.chain-name{font-weight:800;font-size:14px;color:var(--black)}
-.chain-role{font-size:12px;color:var(--muted);margin-top:2px}
-.chain-contact-info{margin-top:12px;display:flex;flex-direction:column;gap:4px}
-.chain-contact-line{display:flex;align-items:center;justify-content:center;gap:6px;font-size:11px;color:var(--muted)}
+.chain-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.chain-avatar.has-photo{border:3px solid var(--black)}
+.chain-name{font-weight:800;font-size:16px;color:var(--black)}
+.chain-role{font-size:14px;color:var(--muted);margin-top:2px;line-height:1.5}
+.chain-contact-info{margin-top:12px;display:flex;flex-direction:column;gap:6px}
+.chain-contact-line{display:flex;align-items:center;justify-content:center;gap:6px;font-size:14px;color:var(--muted);line-height:1.5}
 .chain-contact-line svg{flex-shrink:0;opacity:.4}
-.chain-tag{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-top:14px;display:inline-block;padding:4px 12px}
+.chain-tag{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-top:14px;display:inline-block;padding:5px 14px}
 
 /* ===== SCENE 5: COMPARISON ===== */
 .compare-section{background:var(--black);color:var(--cream);padding:140px 40px 160px;text-align:center;position:relative}
 .compare-section::before{content:'';position:absolute;top:-60px;left:0;right:0;height:120px;background:var(--cream);clip-path:polygon(0 0,100% 0,0 100%)}
-.compare-section h2{font-family:Georgia,serif;font-size:clamp(32px,4.5vw,56px);font-weight:400;line-height:1.08;letter-spacing:-1.5px;max-width:500px;margin:0 auto}
+.compare-section h2{font-family:Georgia,serif;font-size:clamp(32px,4.5vw,56px);font-weight:400;line-height:1.12;letter-spacing:-1.5px;max-width:500px;margin:0 auto}
 .compare-section h2 em{color:var(--red);font-style:italic}
 
 .compare-table{width:100%;max-width:740px;margin:64px auto 0;border-collapse:collapse}
-.compare-table th,.compare-table td{padding:18px 24px;text-align:left;font-size:14px;border-bottom:1px solid rgba(255,248,240,.06)}
+.compare-table th,.compare-table td{padding:18px 24px;text-align:left;font-size:16px;line-height:1.5;border-bottom:1px solid rgba(255,248,240,.06)}
 .compare-table tr:last-child td{border-bottom:none}
-.compare-table th{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,248,240,.3);border-bottom:2px solid rgba(255,248,240,.1)}
+.compare-table th{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,248,240,.4);border-bottom:2px solid rgba(255,248,240,.1)}
 .compare-table th:nth-child(2){color:var(--red)}
 .compare-table th:nth-child(3){color:var(--blue)}
-.compare-table td:first-child{font-weight:700;color:var(--cream);font-size:13px;text-transform:uppercase;letter-spacing:.5px}
-.compare-table td:nth-child(2){color:rgba(255,248,240,.35)}
+.compare-table td:first-child{font-weight:700;color:var(--cream);font-size:14px;text-transform:uppercase;letter-spacing:.5px}
+.compare-table td:nth-child(2){color:rgba(255,248,240,.45)}
 .compare-table td:nth-child(3){font-weight:600;color:var(--cream)}
 .verdict td{border-top:2px solid var(--red)!important;padding-top:24px}
-.verdict td:nth-child(2){color:var(--red)!important;font-weight:900!important;font-size:16px}
-.verdict td:nth-child(3){color:var(--blue)!important;font-weight:900!important;font-size:16px}
+.verdict td:nth-child(2){color:var(--red)!important;font-weight:900!important;font-size:18px}
+.verdict td:nth-child(3){color:var(--blue)!important;font-weight:900!important;font-size:18px}
 
 .logos{display:flex;justify-content:center;gap:48px;margin-top:72px;flex-wrap:wrap;align-items:center}
 .logos img{height:20px;opacity:.2;filter:brightness(10);transition:opacity .3s}
@@ -203,19 +205,19 @@ body{background:var(--cream);color:var(--black);font-family:'Plus Jakarta Sans',
 /* ===== SCENE 6: CTA ===== */
 .cta-section{background:var(--black);color:var(--cream);padding:120px 40px 140px;text-align:center;position:relative}
 .cta-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--red)}
-.cta-section h2{font-family:Georgia,serif;font-size:clamp(30px,4vw,52px);font-weight:400;line-height:1.08;letter-spacing:-1.5px;max-width:600px;margin:0 auto}
+.cta-section h2{font-family:Georgia,serif;font-size:clamp(30px,4vw,52px);font-weight:400;line-height:1.12;letter-spacing:-1.5px;max-width:600px;margin:0 auto}
 .cta-section h2 em{color:var(--red);font-style:italic}
-.cta-detail{font-size:16px;color:rgba(255,248,240,.45);margin-top:24px;line-height:1.7}
+.cta-detail{font-size:18px;color:rgba(255,248,240,.55);margin-top:24px;line-height:1.7}
 .cta-price{font-family:Georgia,serif;font-size:24px;font-style:italic;color:var(--cream);margin-top:32px;letter-spacing:-.5px}
-.cta-btn{display:inline-block;margin-top:40px;background:var(--red);color:#fff;text-decoration:none;padding:20px 48px;font-family:inherit;font-weight:900;font-size:15px;text-transform:uppercase;letter-spacing:2px;transition:transform .15s,background .2s}
+.cta-btn{display:inline-block;margin-top:40px;background:var(--red);color:#fff;text-decoration:none;padding:20px 48px;font-family:inherit;font-weight:900;font-size:16px;text-transform:uppercase;letter-spacing:2px;transition:transform .15s,background .2s}
 .cta-btn:hover{background:#A01830;transform:scale(1.03)}
-.cta-or{display:block;margin-top:20px;font-size:14px;color:rgba(255,248,240,.35)}
-.cta-or a{color:rgba(255,248,240,.5);text-decoration:none;font-weight:600}
+.cta-or{display:block;margin-top:20px;font-size:16px;color:rgba(255,248,240,.45)}
+.cta-or a{color:rgba(255,248,240,.6);text-decoration:none;font-weight:600}
 .cta-or a:hover{color:var(--cream)}
-.cta-forward{font-size:13px;color:rgba(255,248,240,.25);margin-top:32px;font-style:italic}
+.cta-forward{font-size:16px;color:rgba(255,248,240,.35);margin-top:32px;font-style:italic;line-height:1.5}
 
 /* Footer */
-.foot{padding:40px;text-align:center;font-size:11px;color:var(--muted);background:var(--cream);letter-spacing:.5px}
+.foot{padding:40px;text-align:center;font-size:14px;color:var(--muted);background:var(--cream);letter-spacing:.5px;line-height:1.5}
 
 /* ===== VERTICAL ACCENT TEXT ===== */
 .vert-text{position:absolute;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:3px;writing-mode:vertical-rl;color:rgba(12,11,10,.08);pointer-events:none}
@@ -240,7 +242,7 @@ body{background:var(--cream);color:var(--black);font-family:'Plus Jakarta Sans',
   .film-reasoning{border-left:none;border-top:1px solid rgba(255,248,240,.06);padding:20px 56px 28px}
   .chain-strip{flex-direction:column;align-items:center}
   .chain-card{width:280px}
-  .compare-table th,.compare-table td{padding:14px 12px;font-size:12px}
+  .compare-table th,.compare-table td{padding:14px 12px;font-size:14px}
   .nav{padding:14px 20px}
   .nav-expiry{display:none}
 }
@@ -419,7 +421,7 @@ body{background:var(--cream);color:var(--black);font-family:'Plus Jakarta Sans',
 
   <div class="chain-strip rv-up">
     <div class="chain-card">
-      <div class="chain-avatar g1">DM</div>
+      <div class="chain-avatar g1 has-photo"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face" alt="Donna M."></div>
       <div class="chain-name">Donna M.</div>
       <div class="chain-role">Accounts Payable</div>
       <div class="chain-contact-info">
@@ -436,7 +438,7 @@ body{background:var(--cream);color:var(--black);font-family:'Plus Jakarta Sans',
     </div>
 
     <div class="chain-card">
-      <div class="chain-avatar g2">RM</div>
+      <div class="chain-avatar g2 has-photo"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face" alt="Randi M."></div>
       <div class="chain-name">Randi M.</div>
       <div class="chain-role">Accounting Mgr</div>
       <div class="chain-contact-info">
@@ -453,7 +455,7 @@ body{background:var(--cream);color:var(--black);font-family:'Plus Jakarta Sans',
     </div>
 
     <div class="chain-card">
-      <div class="chain-avatar g3">JF</div>
+      <div class="chain-avatar g3 has-photo"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt="John F."></div>
       <div class="chain-name">John F.</div>
       <div class="chain-role">CFO</div>
       <div class="chain-contact-info">
@@ -476,7 +478,7 @@ body{background:var(--cream);color:var(--black);font-family:'Plus Jakarta Sans',
       <div class="chain-name">Steven M., MD</div>
       <div class="chain-role">CEO</div>
       <div class="chain-tag" style="background:rgba(196,30,58,.1);color:var(--red)">Protected</div>
-      <div style="font-size:11px;color:var(--muted);margin-top:6px">Do not contact</div>
+      <div style="font-size:14px;color:var(--muted);margin-top:6px;line-height:1.5">Do not contact</div>
     </div>
   </div>
 </section>
