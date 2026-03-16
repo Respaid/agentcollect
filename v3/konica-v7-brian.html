@@ -74,6 +74,11 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',syst
 .demo-btn:active{transform:translateY(0)}
 .demo-note{font-size:14px;color:var(--muted);text-align:center;margin-top:16px}
 .demo-enriching{display:flex;align-items:center;justify-content:center;gap:12px;font-size:16px;color:var(--muted);padding:20px 0}
+.enrich-steps{display:flex;flex-direction:column;gap:14px;padding:20px 0}
+.enrich-step{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--muted);transition:opacity .4s ease,transform .4s ease;transform:translateY(0)}
+.enrich-step.done{color:var(--green)}
+.enrich-step.done .pulse{background:var(--green);animation:none}
+.enrich-step.done::after{content:'\2713';margin-left:auto;color:var(--green);font-weight:700}
 .demo-found{display:flex;align-items:center;gap:14px;background:var(--warm);border-radius:14px;padding:14px 18px;margin-bottom:14px}
 .demo-found-init{width:42px;height:42px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;flex-shrink:0}
 .demo-found-tag{margin-left:auto;background:rgba(5,150,105,.1);color:var(--green);font-size:13px;font-weight:700;padding:5px 14px;border-radius:100px}
@@ -101,7 +106,8 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',syst
 .review-card{background:var(--bg);border-radius:16px;padding:28px 32px;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,.03);text-align:left;transition:transform .15s}
 .review-card:hover{transform:translateY(-1px)}
 .review-card q{font-size:16px;line-height:1.7;font-style:normal;display:block;color:var(--text)}
-.review-src{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);margin-top:12px;font-weight:500}
+.review-src{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);margin-top:12px;font-weight:500;text-decoration:none;transition:color .2s}
+a.review-src:hover{color:var(--blue)}
 .review-src::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--muted)}
 .review-verdict{font-size:17px;color:var(--muted);font-weight:600;text-align:center;margin-top:48px;font-style:italic}
 
@@ -275,7 +281,11 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',syst
         </button>
       </div>
       <div id="ds2" class="hidden">
-        <div class="demo-enriching"><div class="pulse"></div><span>Looking you up...</span></div>
+        <div class="enrich-steps">
+          <div class="enrich-step" id="es1"><div class="pulse"></div><span>Matching phone number...</span></div>
+          <div class="enrich-step" id="es2" style="opacity:0"><div class="pulse"></div><span id="es2t">Searching contact databases...</span></div>
+          <div class="enrich-step" id="es3" style="opacity:0"><div class="pulse"></div><span>Building contact profile...</span></div>
+        </div>
       </div>
       <div id="ds3" class="hidden">
         <div class="demo-found">
@@ -313,11 +323,11 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',syst
     <div class="review-cards rv rv-d2">
       <div class="review-card">
         <q>The <strong>Konica Bizhub</strong> cost us $8,000 over seven years. NO customer service. STAY AWAY.</q>
-        <div class="review-src">RevDex, Verified review</div>
+        <a href="https://www.revdex.com/reviews/dll-group" target="_blank" rel="noopener" class="review-src">RevDex, Verified review &#8599;</a>
       </div>
       <div class="review-card">
         <q>Equivalent to owning a timeshare. They don't return calls, don't negotiate.</q>
-        <div class="review-src">BBB, Feb 2026</div>
+        <a href="https://www.bbb.org/us/pa/wayne/profile/leasing-services/dll-finance-llc-0241-236006637/complaints" target="_blank" rel="noopener" class="review-src">BBB, Feb 2026 &#8599;</a>
       </div>
     </div>
 
@@ -497,7 +507,8 @@ ph.addEventListener('input',function(e){
 });
 ph.addEventListener('keydown',function(e){if(e.key==='Enter')startDemo()});
 
-// Demo flow
+// Demo flow - progressive enrichment
+var lookupResult=null;
 function startDemo(){
   var r=ph.value.replace(/\D/g,'');
   if(r.length<10){ph.focus();return}
@@ -505,13 +516,48 @@ function startDemo(){
   gtag('event','demo_call_requested',{phone_entered:true});
   document.getElementById('ds1').classList.add('hidden');
   document.getElementById('ds2').classList.remove('hidden');
+
+  // Step 1: Matching phone (immediate)
+  var es1=document.getElementById('es1');
+  var es2=document.getElementById('es2');
+  var es3=document.getElementById('es3');
+
+  // Start API call immediately
+  var apiDone=false;
   fetch('https://backend.widr.app/api/v1/demo/phone-lookup',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify({phone:p})
   }).then(function(r){return r.json()}).then(function(d){
-    showFound(p,d.data&&d.data.person?d.data.person:null);
-  }).catch(function(){showFound(p,null)});
+    lookupResult=d.data&&d.data.person?d.data.person:null;
+    apiDone=true;
+    // Update step 2 text with company if found
+    if(lookupResult&&lookupResult.company){
+      document.getElementById('es2t').textContent='Analyzing '+lookupResult.company+'...';
+    }
+  }).catch(function(){lookupResult=null;apiDone=true});
+
+  // Progressive reveal of steps
+  setTimeout(function(){
+    es1.classList.add('done');
+    es2.style.opacity='1';
+  },800);
+
+  setTimeout(function(){
+    es2.classList.add('done');
+    es3.style.opacity='1';
+  },1800);
+
+  setTimeout(function(){
+    es3.classList.add('done');
+    // Wait for API if not done yet
+    var waitForApi=setInterval(function(){
+      if(apiDone){
+        clearInterval(waitForApi);
+        setTimeout(function(){showFound(p,lookupResult)},400);
+      }
+    },100);
+  },2600);
 }
 function showFound(p,d){
   document.getElementById('ds2').classList.add('hidden');
@@ -520,7 +566,10 @@ function showFound(p,d){
     var i=d.name.split(' ').map(function(w){return w[0]}).join('').substring(0,2).toUpperCase();
     document.getElementById('fi').textContent=i;
     document.getElementById('fn').textContent=d.name;
-    document.getElementById('ft').textContent=d.title||d.company||'';
+    var subtitle=[];
+    if(d.title)subtitle.push(d.title);
+    if(d.company)subtitle.push(d.company);
+    document.getElementById('ft').textContent=subtitle.join(' at ');
   }else{
     document.getElementById('fi').textContent='?';
     document.getElementById('fn').textContent='Identity confirmed';
