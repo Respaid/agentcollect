@@ -21,6 +21,7 @@
 { "source": "/iron-mountain", "destination": "/v3/iron-mountain.html" },
 { "source": "/brinks", "destination": "/v3/brinks.html" },
 { "source": "/ricoh", "destination": "/v3/ricoh.html" },
+{ "source": "/compliance/california", "destination": "/compliance/california.html" },
 { "source": "/about", "destination": "/about.html" },
     { "source": "/careers", "destination": "/careers.html" },
     { "source": "/contact", "destination": "/contact.html" },
