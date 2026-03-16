@@ -119,34 +119,58 @@ a.review-src:hover{color:var(--blue)}
 .player-section h2{font-size:clamp(32px,4vw,48px);font-weight:800;letter-spacing:-.02em;line-height:1.1;max-width:480px;margin:0 auto 48px;text-align:center}
 
 /* Dark player - elevated card */
-.dark-player{background:#0a0a14;border-radius:24px;overflow:hidden;max-width:960px;margin:0 auto;box-shadow:0 25px 50px -12px rgba(0,0,0,.25)}
-.dark-header{padding:32px 40px 0;display:flex;align-items:center;justify-content:space-between}
+.dark-player{background:#0a0a14;border-radius:24px;overflow:hidden;max-width:960px;margin:0 auto;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);max-height:700px}
+.dark-header{padding:24px 40px 0;display:flex;align-items:center;justify-content:space-between}
 .dark-header-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.45)}
 .dark-live{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#34d399}
 @keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.3}}
 .dark-live-dot{width:6px;height:6px;border-radius:50%;background:#34d399;animation:pulse-dot 2s infinite}
+
+/* Before-play overlay */
+.dark-preplay{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:380px;position:relative;cursor:pointer;user-select:none}
+.dark-preplay.hidden{display:none}
+.dark-waveform{display:flex;align-items:center;gap:5px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:0}
+@keyframes wave-bar{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+.wave-bar{width:3px;height:32px;background:rgba(37,99,235,.35);border-radius:2px;animation:wave-bar 1.2s ease-in-out infinite}
+.wave-bar:nth-child(1){animation-delay:0s;height:28px}
+.wave-bar:nth-child(2){animation-delay:.15s;height:36px}
+.wave-bar:nth-child(3){animation-delay:.3s;height:24px}
+.wave-bar:nth-child(4){animation-delay:.1s;height:40px}
+.wave-bar:nth-child(5){animation-delay:.25s;height:30px}
+.wave-bar:nth-child(6){animation-delay:.05s;height:34px}
+.wave-bar:nth-child(7){animation-delay:.2s;height:26px}
+.preplay-btn{width:72px;height:72px;border-radius:50%;background:var(--blue);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1;transition:transform .15s,box-shadow .15s;box-shadow:0 0 0 0 rgba(37,99,235,.3)}
+.preplay-btn:hover{transform:scale(1.08);box-shadow:0 0 0 12px rgba(37,99,235,.15)}
+.preplay-text{margin-top:20px;font-size:15px;color:rgba(255,255,255,.45);font-weight:500;z-index:1;letter-spacing:.2px}
+
+/* Playing body */
 .dark-body{display:grid;grid-template-columns:1.2fr 1fr;min-height:320px}
-.dark-transcript{padding:32px 40px 40px;display:flex;flex-direction:column;justify-content:center;gap:24px}
-.dark-line{opacity:0;transform:translateY(10px);transition:all .5s ease}
-.dark-line.shown{opacity:1;transform:none}
-.dark-speaker{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;display:block}
+.dark-body.hidden{display:none}
+.dark-transcript{padding:24px 40px 32px;display:flex;flex-direction:column;justify-content:flex-start;gap:20px;overflow-y:auto;max-height:340px}
+.dark-line{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+.dark-line.shown{opacity:.6;transform:none}
+.dark-line.active{opacity:1}
+.dark-speaker{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;display:block}
 .dark-speaker.ai{color:#60a5fa}
 .dark-speaker.hu{color:rgba(255,255,255,.5)}
-.dark-text{font-size:clamp(16px,2vw,20px);font-weight:400;line-height:1.55;color:rgba(255,255,255,.92)}
-.dark-text.hu{color:rgba(255,255,255,.6);font-size:clamp(16px,1.8vw,18px)}
-.dark-reasoning{padding:32px 40px 40px;border-left:1px solid rgba(255,255,255,.05);display:flex;flex-direction:column;justify-content:center;gap:14px}
-.dark-reasoning h3{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.4);margin-bottom:8px}
-.dark-badge{padding:14px 20px;border-radius:14px;font-size:16px;font-weight:600;opacity:0;transform:translateX(10px);transition:all .5s ease}
+.dark-text{font-size:clamp(15px,1.8vw,18px);font-weight:400;line-height:1.55;color:rgba(255,255,255,.92);min-height:1.55em}
+.dark-text.hu{color:rgba(255,255,255,.6)}
+@keyframes blink-cursor{0%,100%{opacity:1}50%{opacity:0}}
+.typing-cursor{display:inline-block;width:2px;height:1em;background:rgba(255,255,255,.7);vertical-align:text-bottom;margin-left:2px;animation:blink-cursor .7s step-end infinite}
+.dark-reasoning{padding:24px 40px 32px;border-left:1px solid rgba(255,255,255,.05);display:flex;flex-direction:column;justify-content:flex-start;gap:12px}
+.dark-reasoning.hidden{display:none}
+.dark-reasoning h3{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.4);margin-bottom:6px}
+.dark-badge{padding:12px 18px;border-radius:14px;font-size:15px;font-weight:600;opacity:0;transform:translateX(20px);transition:opacity .5s ease,transform .5s ease}
 .dark-badge.shown{opacity:1;transform:none}
 .dark-badge.green{background:rgba(5,150,105,.12);color:#34d399}
 .dark-badge.orange{background:rgba(251,191,36,.1);color:#fbbf24}
-.dark-controls{display:flex;align-items:center;gap:20px;padding:20px 40px;border-top:1px solid rgba(255,255,255,.05)}
-.dark-play{width:48px;height:48px;border-radius:50%;background:var(--blue);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .15s,box-shadow .15s}
+.dark-controls{display:flex;align-items:center;gap:20px;padding:16px 40px;border-top:1px solid rgba(255,255,255,.05)}
+.dark-controls.hidden{display:none}
+.dark-play{width:44px;height:44px;border-radius:50%;background:var(--blue);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .15s,box-shadow .15s}
 .dark-play:hover{transform:scale(1.06);box-shadow:0 0 0 4px rgba(37,99,235,.2)}
 .dark-track{flex:1;height:4px;background:rgba(255,255,255,.08);border-radius:4px;cursor:pointer;position:relative}
 .dark-fill{height:100%;background:var(--blue);border-radius:4px;width:0%;transition:width .1s linear}
 .dark-time{font-size:14px;color:rgba(255,255,255,.45);font-variant-numeric:tabular-nums;white-space:nowrap}
-.dark-hint{text-align:center;padding:0 0 20px;font-size:14px;color:rgba(255,255,255,.35)}
 
 /* ========== CONTACT CHAIN ========== */
 .chain-section{padding:140px 0;background:var(--warm)}
@@ -235,9 +259,12 @@ a.review-src:hover{color:var(--blue)}
   .player-section h2{margin-bottom:32px}
   .rating-cards{gap:16px}
   .rating-card{min-width:140px;padding:24px}
+  .dark-player{max-height:none}
   .dark-body{grid-template-columns:1fr}
   .dark-reasoning{border-left:none;border-top:1px solid rgba(255,255,255,.05)}
   .dark-header,.dark-transcript,.dark-reasoning,.dark-controls{padding-left:24px;padding-right:24px}
+  .dark-preplay{min-height:280px}
+  .preplay-btn{width:60px;height:60px}
   .chain-grid{grid-template-columns:1fr 1fr;gap:14px}
   .compare-header,.compare-row,.compare-verdict{grid-template-columns:1fr 1fr 1fr;padding:14px 16px}
   .compare-header span,.compare-row span,.compare-verdict span{font-size:14px}
@@ -352,31 +379,39 @@ a.review-src:hover{color:var(--blue)}
       <span class="dark-header-label">Live call recording</span>
       <span class="dark-live"><span class="dark-live-dot"></span>Konica Minolta agent</span>
     </div>
-    <div class="dark-body">
-      <div class="dark-transcript" id="dt">
-        <div class="dark-line" data-at="0">
-          <span class="dark-speaker ai">AI Agent</span>
-          <div class="dark-text">Hi, this is Sarah from Konica Minolta. Calling about an outstanding invoice.</div>
-        </div>
-        <div class="dark-line" data-at="12">
-          <span class="dark-speaker hu">Contact</span>
-          <div class="dark-text hu">"...is it AI?"</div>
-        </div>
-        <div class="dark-line" data-at="16">
-          <span class="dark-speaker ai">AI Agent</span>
-          <div class="dark-text">Ha, no, I'm Sarah. About that invoice, someone else on your team?</div>
-        </div>
+
+    <!-- Before play: waveform + big play button -->
+    <div class="dark-preplay" id="preplay" onclick="startPlayback()">
+      <div class="dark-waveform">
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
       </div>
-      <div class="dark-reasoning">
+      <button class="preplay-btn" aria-label="Play recording">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="8,4 20,12 8,20"/></svg>
+      </button>
+      <div class="preplay-text">Press play to hear a real collection call</div>
+    </div>
+
+    <!-- During play: live transcript + reasoning -->
+    <div class="dark-body hidden" id="dark-body">
+      <div class="dark-transcript" id="dt"></div>
+      <div class="dark-reasoning" id="dark-reasoning">
         <h3>AI Reasoning</h3>
         <div class="dark-badge green" id="r1">Contact verified</div>
         <div class="dark-badge orange" id="r2">Skepticism detected</div>
         <div class="dark-badge green" id="r3">Resolved. Follow-up in 3 days</div>
       </div>
     </div>
-    <div class="dark-controls">
+
+    <!-- Controls (hidden until play) -->
+    <div class="dark-controls hidden" id="dark-controls">
       <button class="dark-play" id="pbtn" onclick="toggle()">
-        <svg id="picon" width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="6,3 20,12 6,21"/></svg>
+        <svg id="picon" width="16" height="16" viewBox="0 0 24 24" fill="white"><rect x="6" y="4" width="4" height="16" fill="white"/><rect x="14" y="4" width="4" height="16" fill="white"/></svg>
       </button>
       <div class="dark-track" onclick="seek(event)">
         <div class="dark-fill" id="pbar"></div>
@@ -386,7 +421,6 @@ a.review-src:hover{color:var(--blue)}
         <source src="https://dxc03zgurdly9.cloudfront.net/74fb900c432127ea0f920d6c76def8852e6ff88fb08fd02db7fd3b37da54a7d9/recording.wav" type="audio/wav">
       </audio>
     </div>
-    <div class="dark-hint">Press play. Transcript syncs with audio.</div>
   </div>
 </section>
 
@@ -589,44 +623,167 @@ function showFound(p,d){
   }).catch(function(){window.location.href='tel:+12016277551'});
 }
 
-// Audio player with synced transcript + reasoning
+// Audio player with word-by-word synced transcript + reasoning
 var aud=document.getElementById('aud'),raf=null;
+var playerStarted=false;
+
+// Transcript data with timestamps
+var transcriptData=[
+  {at:0, speaker:'ai', label:'AI Agent', text:"Hi, this is Sarah from Konica Minolta. Calling about an outstanding invoice."},
+  {at:12, speaker:'hu', label:'Contact', text:'"...is it AI?"'},
+  {at:16, speaker:'ai', label:'AI Agent', text:"Ha, no, I'm Sarah. About that invoice, someone else on your team?"}
+];
+
+// Reasoning badge timings
 var rTimings=[{id:'r1',at:2},{id:'r2',at:14},{id:'r3',at:20}];
 var rShown={};
+
+// Typewriter state per line
+var lineStates=[];
+transcriptData.forEach(function(){lineStates.push({started:false,wordIndex:0,words:[],timer:null,done:false})});
+
 function fmt(t){var m=Math.floor(t/60),s=Math.floor(t%60);return m+':'+(s<10?'0':'')+s}
+
+function createLineEl(idx){
+  var d=transcriptData[idx];
+  var el=document.createElement('div');
+  el.className='dark-line';
+  el.dataset.idx=idx;
+  el.innerHTML='<span class="dark-speaker '+(d.speaker==='ai'?'ai':'hu')+'">'+d.label+'</span><div class="dark-text'+(d.speaker==='hu'?' hu':'')+'"><span class="line-words"></span></div>';
+  return el;
+}
+
+function startTypewriter(idx){
+  var st=lineStates[idx];
+  if(st.started)return;
+  st.started=true;
+  st.words=transcriptData[idx].text.split(' ');
+  st.wordIndex=0;
+  st.done=false;
+  var dt=document.getElementById('dt');
+  var el=dt.querySelectorAll('.dark-line')[idx];
+  if(!el)return;
+  // Show line, make it active
+  el.classList.add('shown','active');
+  // Deactivate previous lines
+  dt.querySelectorAll('.dark-line').forEach(function(l,i){if(i<idx)l.classList.remove('active')});
+  var wordsEl=el.querySelector('.line-words');
+  // Add cursor
+  var cursor=document.createElement('span');
+  cursor.className='typing-cursor';
+  wordsEl.parentNode.appendChild(cursor);
+
+  function typeNext(){
+    if(st.wordIndex>=st.words.length){
+      st.done=true;
+      if(cursor.parentNode)cursor.parentNode.removeChild(cursor);
+      return;
+    }
+    wordsEl.textContent+=(st.wordIndex>0?' ':'')+st.words[st.wordIndex];
+    st.wordIndex++;
+    st.timer=setTimeout(typeNext,80);
+  }
+  typeNext();
+}
+
+function stopAllTypewriters(){
+  lineStates.forEach(function(st){if(st.timer){clearTimeout(st.timer);st.timer=null}});
+}
+
+function resetPlayer(){
+  stopAllTypewriters();
+  lineStates.forEach(function(st){st.started=false;st.wordIndex=0;st.done=false;st.timer=null});
+  rShown={};
+  // Clear transcript
+  var dt=document.getElementById('dt');
+  dt.innerHTML='';
+  transcriptData.forEach(function(d,i){dt.appendChild(createLineEl(i))});
+  // Reset badges
+  document.querySelectorAll('.dark-badge').forEach(function(b){b.classList.remove('shown')});
+}
+
 function tick(){
   if(!aud)return;
   var d=aud.duration||85;
   document.getElementById('pbar').style.width=(aud.currentTime/d*100)+'%';
   document.getElementById('ptime').textContent=fmt(aud.currentTime)+' / '+fmt(d);
-  document.querySelectorAll('.dark-line').forEach(function(el){
-    if(aud.currentTime>=parseFloat(el.dataset.at))el.classList.add('shown');
+
+  // Trigger transcript lines at timestamps
+  transcriptData.forEach(function(line,i){
+    if(aud.currentTime>=line.at&&!lineStates[i].started){
+      startTypewriter(i);
+    }
   });
+
+  // Trigger reasoning badges
   rTimings.forEach(function(r){
     if(!rShown[r.id]&&aud.currentTime>=r.at){rShown[r.id]=true;document.getElementById(r.id).classList.add('shown')}
   });
+
   if(!aud.paused&&!aud.ended)raf=requestAnimationFrame(tick);
 }
+
+function startPlayback(){
+  if(!aud)return;
+  // Hide preplay, show body + controls
+  document.getElementById('preplay').classList.add('hidden');
+  document.getElementById('dark-body').classList.remove('hidden');
+  document.getElementById('dark-controls').classList.remove('hidden');
+  playerStarted=true;
+  resetPlayer();
+  aud.play().then(function(){
+    raf=requestAnimationFrame(tick);
+  }).catch(function(){});
+}
+
 function toggle(){
   if(!aud)return;
+  if(!playerStarted){startPlayback();return}
   if(aud.paused||aud.ended){
+    if(aud.ended){aud.currentTime=0;resetPlayer()}
     aud.play().then(function(){
       document.getElementById('picon').innerHTML='<rect x="6" y="4" width="4" height="16" fill="white"/><rect x="14" y="4" width="4" height="16" fill="white"/>';
       raf=requestAnimationFrame(tick);
     }).catch(function(){});
   }else{
     aud.pause();
+    stopAllTypewriters();
     document.getElementById('picon').innerHTML='<polygon points="6,3 20,12 6,21"/>';
     cancelAnimationFrame(raf);
   }
 }
 function seek(e){
   var r=e.currentTarget.getBoundingClientRect();
-  aud.currentTime=((e.clientX-r.left)/r.width)*(aud.duration||85);
+  var newTime=((e.clientX-r.left)/r.width)*(aud.duration||85);
+  // Reset and fast-forward
+  resetPlayer();
+  aud.currentTime=newTime;
+  // Instantly show lines that should already be visible
+  transcriptData.forEach(function(line,i){
+    if(newTime>=line.at){
+      var st=lineStates[i];
+      st.started=true;st.done=true;
+      st.words=line.text.split(' ');
+      st.wordIndex=st.words.length;
+      var el=document.getElementById('dt').querySelectorAll('.dark-line')[i];
+      if(el){
+        el.classList.add('shown');
+        el.querySelector('.line-words').textContent=line.text;
+      }
+    }
+  });
+  // Mark active line (last shown)
+  var lines=document.getElementById('dt').querySelectorAll('.dark-line');
+  var lastShown=-1;
+  lines.forEach(function(l,i){if(l.classList.contains('shown'))lastShown=i});
+  lines.forEach(function(l,i){l.classList.toggle('active',i===lastShown)});
+  // Show badges that should be visible
+  rTimings.forEach(function(r){if(newTime>=r.at){rShown[r.id]=true;document.getElementById(r.id).classList.add('shown')}});
   if(!aud.paused)tick();
 }
 aud&&aud.addEventListener('ended',function(){
   document.getElementById('picon').innerHTML='<polygon points="6,3 20,12 6,21"/>';
+  stopAllTypewriters();
   cancelAnimationFrame(raf);
 });
 </script>
