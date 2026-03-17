@@ -51,9 +51,9 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',syst
 .nav-phone:hover{background:#e8e9ed}
 
 /* ===== SECTION 1: THE PROBLEM ===== */
-.hero{padding:160px 32px 120px;text-align:center;max-width:800px;margin:0 auto}
+.hero{padding:160px 32px 120px;text-align:center;max-width:1080px;margin:0 auto}
 .hero-km{height:28px;opacity:.6;margin-bottom:32px}
-.hero h1{font-size:clamp(38px,5vw,60px);font-weight:900;letter-spacing:-.03em;line-height:1.08}
+.hero h1{font-size:clamp(38px,5vw,60px);font-weight:900;letter-spacing:-.03em;line-height:1.08;max-width:800px;margin:0 auto}
 .hero h1 .red{color:var(--red)}
 .hero-sub{font-size:18px;color:var(--muted);margin-top:20px;line-height:1.65;max-width:560px;margin-left:auto;margin-right:auto}
 
@@ -61,22 +61,25 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',syst
 .proof-card{background:#fff;border-radius:16px;padding:28px 36px;box-shadow:var(--shadow-lg);border:1px solid rgba(0,0,0,.04);text-decoration:none;color:inherit;text-align:center;transition:transform .2s;min-width:180px}
 .proof-card:hover{transform:translateY(-2px)}
 .proof-num{font-size:44px;font-weight:900;color:var(--red);line-height:1;letter-spacing:-1px}
+.proof-num-sm{font-size:32px}
 .proof-label{font-size:14px;color:var(--muted);margin-top:6px;font-weight:500}
+.proof-card img{height:20px;opacity:.5;margin-bottom:10px}
 
 .reviews{max-width:640px;margin:32px auto 0;display:flex;flex-direction:column;gap:14px}
 .review{background:#fff;border-radius:14px;padding:24px 28px;box-shadow:var(--shadow-sm);border:1px solid rgba(0,0,0,.04);text-align:left}
 .review q{font-size:16px;line-height:1.7;font-style:italic;display:block;color:var(--text)}
 .review q strong{font-weight:700;font-style:normal}
-.review-src{font-size:14px;color:var(--muted);margin-top:8px;text-decoration:none;transition:color .2s}
+.review-src{font-size:14px;color:var(--muted);margin-top:8px;text-decoration:none;transition:color .2s;display:inline-flex;align-items:center;gap:6px}
 a.review-src:hover{color:var(--blue)}
+.review-src img{height:18px;opacity:.7;flex-shrink:0}
 .proof-closer{font-size:16px;color:var(--muted);margin-top:32px;font-style:italic;font-weight:500}
 
 /* ===== SECTION 2: THE PROOF (AUDIO) ===== */
-.audio-section{padding:120px 32px;max-width:1080px;margin:0 auto}
-.audio-section h2{font-size:clamp(30px,4vw,44px);font-weight:800;letter-spacing:-.02em;line-height:1.1;text-align:center;max-width:500px;margin:0 auto 40px}
-.audio-sub{text-align:center;font-size:16px;color:var(--muted);margin-top:0;margin-bottom:32px}
+.audio-section{padding:120px 32px;max-width:1080px;margin:0 auto;text-align:center}
+.audio-section h2{font-size:clamp(30px,4vw,44px);font-weight:800;letter-spacing:-.02em;line-height:1.1;text-align:center;max-width:500px;margin:0 auto 16px}
+.audio-sub{text-align:center;font-size:16px;color:var(--muted);margin-top:0;margin-bottom:40px}
 
-.dark-player{background:#0a0a14;border-radius:24px;overflow:hidden;max-width:900px;margin:0 auto;box-shadow:0 25px 50px -12px rgba(0,0,0,.25)}
+.dark-player{background:#0a0a14;border-radius:24px;overflow:hidden;max-width:920px;margin:0 auto;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);text-align:left}
 .dark-header{padding:20px 36px 0;display:flex;align-items:center;justify-content:space-between}
 .dark-header-label{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.45)}
 .dark-live{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#34d399}
@@ -119,14 +122,17 @@ a.review-src:hover{color:var(--blue)}
 .dark-track{flex:1;height:4px;background:rgba(255,255,255,.08);border-radius:4px;cursor:pointer}
 .dark-fill{height:100%;background:var(--blue);border-radius:4px;width:0%;transition:width .1s linear}
 .dark-time{font-size:14px;color:rgba(255,255,255,.45);font-variant-numeric:tabular-nums}
+.more-calls{text-align:center;margin-top:32px}
+.more-calls a{font-size:16px;color:var(--blue);font-weight:600;text-decoration:none;transition:opacity .2s}
+.more-calls a:hover{opacity:.8}
 
 /* ===== SCENARIO TABS ===== */
 .scenario-badge{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--muted);margin-bottom:24px;padding:6px 16px;border-radius:100px;background:rgba(79,70,229,.06)}
 .scenario-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--blue)}
-.scenario-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;margin:0 auto 32px}
-.scenario-tab{background:#fff;border-radius:16px;padding:20px 22px;box-shadow:var(--shadow);border:1px solid var(--border);cursor:pointer;text-align:left;transition:border-color .2s,box-shadow .2s;position:relative}
+.scenario-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:920px;margin:0 auto 32px}
+.scenario-tab{background:#fff;border-radius:16px;padding:20px 22px;box-shadow:var(--shadow);border:2px solid var(--border);cursor:pointer;text-align:left;transition:border-color .2s,box-shadow .2s;position:relative}
 .scenario-tab:hover{box-shadow:var(--shadow-lg)}
-.scenario-tab.active{border:2px solid var(--blue)}
+.scenario-tab.active{border-color:var(--blue)}
 .scenario-tab.active::after{content:'';position:absolute;top:12px;right:12px;width:8px;height:8px;border-radius:50%;background:var(--blue)}
 .scenario-tab-title{font-weight:700;font-size:16px;color:var(--text);margin-bottom:6px}
 .scenario-tab-desc{font-size:14px;color:var(--muted);line-height:1.5;margin-bottom:10px}
@@ -136,13 +142,14 @@ a.review-src:hover{color:var(--blue)}
 .strategy-section{padding:120px 32px;background:var(--warm)}
 .strategy-inner{max-width:1080px;margin:0 auto;text-align:center}
 .strategy-inner h2{font-size:clamp(30px,4vw,44px);font-weight:800;letter-spacing:-.02em;line-height:1.1;max-width:600px;margin:0 auto}
-.strategy-sub{font-size:16px;color:var(--muted);margin-top:12px;max-width:500px;margin-left:auto;margin-right:auto}
+.strategy-sub{font-size:16px;color:var(--muted);margin-top:16px;max-width:500px;margin-left:auto;margin-right:auto}
 .chain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px;max-width:920px;margin-left:auto;margin-right:auto}
 .contact-card{background:#fff;border-radius:18px;padding:28px 20px;text-align:center;box-shadow:var(--shadow-lg);border:1px solid rgba(0,0,0,.04);transition:transform .2s}
 .contact-card:hover{transform:translateY(-3px)}
 .contact-card.protected::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 12px,rgba(0,0,0,.01) 12px,rgba(0,0,0,.01) 24px);pointer-events:none;border-radius:18px}
 .contact-card.protected{position:relative;overflow:hidden}
 .contact-photo{width:68px;height:68px;border-radius:50%;object-fit:cover;margin:0 auto 14px;display:block;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.contact-card.protected .contact-photo{filter:grayscale(.3)}
 .contact-name{font-weight:700;font-size:16px;color:var(--text)}
 .contact-role{font-size:14px;color:var(--muted);margin-top:3px}
 .contact-info{margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
@@ -154,18 +161,33 @@ a.review-src:hover{color:var(--blue)}
 .tag-blue{background:rgba(79,70,229,.08);color:var(--blue)}
 .tag-red{background:rgba(220,38,38,.08);color:var(--red)}
 
+/* ===== HOW IT WORKS ===== */
+.how-section{padding:120px 32px;max-width:1080px;margin:0 auto;text-align:center}
+.how-section h2{font-size:clamp(26px,3.5vw,36px);font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:48px}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:center;max-width:800px;margin:0 auto}
+.how-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.how-icon.phone{background:rgba(79,70,229,.08)}
+.how-icon.check{background:rgba(16,185,129,.08)}
+.how-icon.shield{background:rgba(220,38,38,.08)}
+.how-title{font-weight:700;font-size:16px;margin-bottom:6px}
+.how-desc{font-size:15px;color:var(--muted);line-height:1.5}
+.trusted-bar{display:flex;align-items:center;justify-content:center;gap:36px;margin-top:48px;flex-wrap:wrap}
+.trusted-label{font-size:14px;color:var(--muted);font-weight:600}
+.trusted-logo{height:18px;opacity:.4;filter:grayscale(1)}
+
 /* ===== SECTION 4: CTA ===== */
-.cta-section{padding:140px 32px;text-align:center;background:#0a0a14;color:#fff;position:relative;overflow:hidden}
+.cta-section{padding:120px 32px;text-align:center;background:#0a0a14;color:#fff;position:relative;overflow:hidden}
 .cta-section::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(79,70,229,.08),transparent 70%);pointer-events:none}
-.cta-section h2{font-size:clamp(30px,4vw,44px);font-weight:800;letter-spacing:-.02em;line-height:1.12;max-width:520px;margin:0 auto;position:relative}
-.cta-detail{font-size:18px;color:rgba(255,255,255,.7);margin-top:20px;position:relative}
-.cta-price{font-size:22px;font-weight:800;color:var(--blue);margin-top:12px;position:relative}
-.cta-btn{display:inline-block;margin-top:40px;background:var(--blue);color:#fff;padding:18px 44px;border-radius:14px;font-weight:700;font-size:17px;text-decoration:none;transition:transform .15s,box-shadow .15s;position:relative}
+.cta-section h2{font-size:clamp(30px,4vw,44px);font-weight:800;letter-spacing:-.02em;line-height:1.12;max-width:520px;margin:0 auto}
+.cta-inner{max-width:1080px;margin:0 auto;position:relative;z-index:1}
+.cta-detail{font-size:18px;color:rgba(255,255,255,.7);margin-top:20px}
+.cta-price{font-size:22px;font-weight:800;color:var(--blue);margin-top:12px}
+.cta-btn{display:inline-block;margin-top:40px;background:var(--blue);color:#fff;padding:18px 44px;border-radius:14px;font-weight:700;font-size:17px;text-decoration:none;transition:transform .15s,box-shadow .15s}
 .cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,70,229,.35)}
-.cta-or{display:block;margin-top:14px;font-size:16px;color:rgba(255,255,255,.6);position:relative}
+.cta-or{display:block;margin-top:14px;font-size:16px;color:rgba(255,255,255,.6)}
 .cta-or a{color:rgba(255,255,255,.7);text-decoration:none}
-.cta-forward{margin-top:28px;font-size:16px;color:rgba(255,255,255,.55);position:relative}
-.foot{padding:28px;text-align:center;font-size:14px;color:var(--muted)}
+.cta-forward{margin-top:28px;font-size:16px;color:rgba(255,255,255,.55)}
+.foot{padding:28px 32px;text-align:center;font-size:14px;color:var(--muted);max-width:1080px;margin:0 auto}
 
 /* MOBILE */
 @media(max-width:768px){
@@ -174,6 +196,9 @@ a.review-src:hover{color:var(--blue)}
   .hero{padding:120px 24px 80px}
   .proof-strip{gap:16px}
   .proof-card{min-width:140px;padding:20px 24px}
+  .how-section{padding:80px 24px}
+  .how-grid{grid-template-columns:1fr;gap:24px;max-width:320px}
+  .trusted-bar{gap:24px}
   .audio-section{padding:80px 16px}
   .dark-body{grid-template-columns:1fr}
   .dark-reasoning{border-left:none;border-top:1px solid rgba(255,255,255,.05)}
@@ -183,7 +208,6 @@ a.review-src:hover{color:var(--blue)}
   .strategy-section{padding:80px 24px}
   .chain-grid{grid-template-columns:1fr 1fr;gap:14px}
   .cta-section{padding:80px 24px}
-  .how-grid{grid-template-columns:1fr!important}
 }
 @media(max-width:480px){
   .chain-grid{grid-template-columns:1fr}
@@ -215,12 +239,12 @@ a.review-src:hover{color:var(--blue)}
 
   <div class="proof-strip rv rv-d1">
     <a href="https://www.bbb.org/us/ia/johnston/profile/financing/dll-finance-llc-0664-32006959/customer-reviews" target="_blank" rel="noopener" class="proof-card">
-      <img src="https://cdn.brandfetch.io/bbb.org/w/200/h/40/logo" alt="BBB" style="height:20px;opacity:.5;margin-bottom:10px">
+      <img src="https://cdn.brandfetch.io/bbb.org/w/200/h/40/logo" alt="BBB">
       <div class="proof-num">2.1</div>
       <div class="proof-label">Rating (20 reviews)</div>
     </a>
     <a href="https://lemberglaw.com/dll-finance-collections-complaints/" target="_blank" rel="noopener" class="proof-card">
-      <div class="proof-num" style="font-size:32px">FDCPA</div>
+      <div class="proof-num proof-num-sm">FDCPA</div>
       <div class="proof-label">Violations on record</div>
     </a>
   </div>
@@ -228,55 +252,55 @@ a.review-src:hover{color:var(--blue)}
   <div class="reviews rv rv-d2">
     <div class="review">
       <q>The <strong>Konica Bizhub</strong> cost us $8,000 over seven years. NO customer service. STAY AWAY.</q>
-      <a href="https://www.bbb.org/us/ia/johnston/profile/financing/dll-finance-llc-0664-32006959/customer-reviews" target="_blank" class="review-src"><img src="https://cdn.brandfetch.io/bbb.org/w/200/h/40/logo" alt="BBB" style="height:18px;vertical-align:middle;margin-right:6px;opacity:.7">BBB Customer Reviews</a>
+      <a href="https://www.bbb.org/us/ia/johnston/profile/financing/dll-finance-llc-0664-32006959/customer-reviews" target="_blank" class="review-src"><img src="https://cdn.brandfetch.io/bbb.org/w/200/h/40/logo" alt="BBB">BBB Customer Reviews</a>
     </div>
     <div class="review">
       <q>Equivalent to owning a timeshare. They don't return calls, don't negotiate.</q>
-      <a href="https://www.trustpilot.com/review/dllgroup.com" target="_blank" class="review-src"><img src="https://cdn.brandfetch.io/trustpilot.com/w/200/h/40/logo" alt="Trustpilot" style="height:18px;vertical-align:middle;margin-right:6px;opacity:.7">Trustpilot</a>
+      <a href="https://www.trustpilot.com/review/dllgroup.com" target="_blank" class="review-src"><img src="https://cdn.brandfetch.io/trustpilot.com/w/200/h/40/logo" alt="Trustpilot">Trustpilot</a>
     </div>
   </div>
   <p class="proof-closer rv rv-d2">These aren't our words. These are your customers' words.</p>
 </section>
 
 <!-- SECTION 2: WHO WE ARE + HOW -->
-<section style="padding:80px 32px;max-width:1080px;margin:0 auto">
-  <div class="rv" style="text-align:center">
-    <h2 style="font-size:clamp(26px,3.5vw,36px);font-weight:800;letter-spacing:-.02em;margin-bottom:48px">AI agents that call, email, and negotiate. Under your brand.</h2>
-    <div class="how-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:center;max-width:800px;margin:0 auto">
+<section class="how-section">
+  <div class="rv">
+    <h2>AI agents that call, email, and negotiate. Under your brand.</h2>
+    <div class="how-grid">
       <div>
-        <div style="width:48px;height:48px;border-radius:14px;background:rgba(79,70,229,.08);display:flex;align-items:center;justify-content:center;margin:0 auto 14px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg></div>
-        <div style="font-weight:700;font-size:16px;margin-bottom:6px">Branded calls</div>
-        <div style="font-size:15px;color:var(--muted);line-height:1.5">AI calls as "Konica Minolta", not a third party</div>
+        <div class="how-icon phone"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg></div>
+        <div class="how-title">Branded calls</div>
+        <div class="how-desc">AI calls as "Konica Minolta", not a third party</div>
       </div>
       <div>
-        <div style="width:48px;height:48px;border-radius:14px;background:rgba(16,185,129,.08);display:flex;align-items:center;justify-content:center;margin:0 auto 14px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>
-        <div style="font-weight:700;font-size:16px;margin-bottom:6px">Reg F compliant</div>
-        <div style="font-size:15px;color:var(--muted);line-height:1.5">Every call recorded, every dispute handled automatically</div>
+        <div class="how-icon check"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>
+        <div class="how-title">Reg F compliant</div>
+        <div class="how-desc">Every call recorded, every dispute handled automatically</div>
       </div>
       <div>
-        <div style="width:48px;height:48px;border-radius:14px;background:rgba(220,38,38,.08);display:flex;align-items:center;justify-content:center;margin:0 auto 14px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <div style="font-weight:700;font-size:16px;margin-bottom:6px">CEO protected</div>
-        <div style="font-size:15px;color:var(--muted);line-height:1.5">Your key relationships are never contacted</div>
+        <div class="how-icon shield"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="how-title">CEO protected</div>
+        <div class="how-desc">Your key relationships are never contacted</div>
       </div>
     </div>
-    <div style="display:flex;align-items:center;justify-content:center;gap:36px;margin-top:48px;flex-wrap:wrap">
-      <span style="font-size:14px;color:var(--muted);font-weight:600">Trusted by</span>
-      <img src="https://cdn.brandfetch.io/microsoft.com/w/512/h/80/logo" alt="Microsoft" style="height:18px;opacity:.4;filter:grayscale(1)">
-      <img src="https://cdn.brandfetch.io/dell.com/w/512/h/80/logo" alt="Dell" style="height:18px;opacity:.4;filter:grayscale(1)">
-      <img src="https://cdn.brandfetch.io/plaid.com/w/512/h/80/logo" alt="Plaid" style="height:18px;opacity:.4;filter:grayscale(1)">
-      <img src="https://cdn.brandfetch.io/checkr.com/w/512/h/80/logo" alt="Checkr" style="height:18px;opacity:.4;filter:grayscale(1)">
+    <div class="trusted-bar">
+      <span class="trusted-label">Trusted by</span>
+      <img src="https://cdn.brandfetch.io/microsoft.com/w/512/h/80/logo" alt="Microsoft" class="trusted-logo">
+      <img src="https://cdn.brandfetch.io/dell.com/w/512/h/80/logo" alt="Dell" class="trusted-logo">
+      <img src="https://cdn.brandfetch.io/plaid.com/w/512/h/80/logo" alt="Plaid" class="trusted-logo">
+      <img src="https://cdn.brandfetch.io/checkr.com/w/512/h/80/logo" alt="Checkr" class="trusted-logo">
     </div>
   </div>
 </section>
 
 <!-- SECTION 3: THE PROOF (AUDIO) -->
 <section class="audio-section">
-  <div class="rv" style="text-align:center">
+  <div class="rv">
     <h2>This is what it sounds like when we collect.</h2>
     <p class="audio-sub">Real AI calls. Real debtors. Real results.</p>
   </div>
 
-  <div class="rv rv-d1" style="text-align:center">
+  <div class="rv rv-d1">
     <div class="scenario-badge"><span class="scenario-badge-dot"></span>Live Call Examples</div>
     <div class="scenario-tabs">
       <div class="scenario-tab active" data-scenario="0" onclick="switchScenario(0)">
@@ -322,8 +346,8 @@ a.review-src:hover{color:var(--blue)}
       <audio id="aud" preload="none"></audio>
     </div>
   </div>
-  <div class="rv rv-d2" style="text-align:center;margin-top:32px">
-    <a href="https://showcase.respaid.com" target="_blank" style="font-size:16px;color:var(--blue);font-weight:600;text-decoration:none;transition:opacity .2s">Hear more real calls &#8594;</a>
+  <div class="rv rv-d2 more-calls">
+    <a href="https://showcase.respaid.com" target="_blank">Hear more real calls &#8594;</a>
   </div>
 </section>
 
@@ -366,7 +390,7 @@ a.review-src:hover{color:var(--blue)}
         <div class="contact-tag tag-blue">Day 15</div>
       </div>
       <div class="contact-card protected">
-        <img class="contact-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="Steven Mendelsohn" style="filter:grayscale(.3)">
+        <img class="contact-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="Steven Mendelsohn">
         <div class="contact-name">Steven Mendelsohn, MD</div>
         <div class="contact-role">CEO</div>
         <div class="contact-info">
@@ -381,7 +405,7 @@ a.review-src:hover{color:var(--blue)}
 
 <!-- SECTION 4: CTA -->
 <section class="cta-section">
-  <div class="rv">
+  <div class="cta-inner rv">
     <h2>200 of your worst accounts. 60 days. $0 upfront.</h2>
     <p class="cta-detail">Success-based pricing. You pay nothing if we recover nothing.</p>
     <div class="cta-price">$4,750 per bizhub. We'll get it.</div>
