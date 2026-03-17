@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentCollect - Recovery Intelligence</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GRZZT9K05B"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GRZZT9K05B');</script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","vr6uvxdalw");</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --indigo:#4F46E5;
+  --green:#10B981;
+  --text:#0B1B3D;
+  --muted:#6b7280;
+  --light:#9ca3af;
+  --border:#e5e7eb;
+  --bg:#FAFBFF;
+  --warm:#f9fafb;
+  --red:#dc2626;
+  --orange:#d97706;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+  --shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);
+  --shadow-md:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);
+  --shadow-lg:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);
+  --shadow-xl:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.6}
+h1,h2,h3,.hero-title,.section-title{font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+
+/* Reveal animations */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.rv.v{opacity:1;transform:none}
+.rv-d1{transition-delay:.1s}
+.rv-d2{transition-delay:.2s}
+.rv-d3{transition-delay:.3s}
+.rv-d4{transition-delay:.4s}
+
+/* Fade in */
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes fadeInScale{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+.fade-in{animation:fadeIn .6s ease forwards}
+.fade-in-scale{animation:fadeInScale .5s ease forwards}
+
+/* ========== NAV ========== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,0,0,.04)}
+.nav-inner{max-width:1152px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;text-decoration:none;font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:17px;color:var(--text);letter-spacing:-.4px}
+.nav-logo .c{color:var(--indigo)}
+.nav-logo .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--indigo);margin-left:1px;vertical-align:baseline}
+.nav-phone{color:var(--text);font-weight:700;font-size:15px;text-decoration:none;letter-spacing:-.2px;padding:8px 18px;border-radius:100px;background:var(--warm);border:1px solid var(--border);transition:background .2s}
+.nav-phone:hover{background:#f0f0f5}
+
+/* ========== HERO ========== */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 32px 80px;text-align:center;position:relative}
+.hero-inner{max-width:720px;margin:0 auto;width:100%}
+.hero-title{font-size:clamp(36px,5vw,58px);font-weight:900;letter-spacing:-.03em;line-height:1.08;color:var(--text);margin-bottom:20px}
+.hero-sub{font-size:18px;color:var(--muted);line-height:1.65;font-weight:400;max-width:520px;margin:0 auto 48px}
+
+/* Search bar */
+.search-wrap{max-width:560px;margin:0 auto;position:relative}
+.search-bar{display:flex;background:#fff;border:2px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow-lg);transition:border-color .2s,box-shadow .2s}
+.search-bar:focus-within{border-color:var(--indigo);box-shadow:0 0 0 4px rgba(79,70,229,.1),var(--shadow-lg)}
+.search-input{flex:1;border:none;padding:20px 24px;font-family:'Inter',sans-serif;font-size:17px;color:var(--text);outline:none;background:transparent;min-width:0}
+.search-input::placeholder{color:var(--light)}
+.search-btn{background:var(--indigo);color:#fff;border:none;padding:12px 32px;margin:8px;border-radius:12px;font-family:'Inter',sans-serif;font-weight:700;font-size:15px;cursor:pointer;transition:transform .15s,box-shadow .15s;white-space:nowrap}
+.search-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(79,70,229,.3)}
+.search-btn:active{transform:translateY(0)}
+.hero-note{font-size:14px;color:var(--light);margin-top:20px;font-weight:500}
+
+/* ========== LOADING STATE ========== */
+.loading-wrap{max-width:480px;margin:0 auto;text-align:left}
+.load-step{display:flex;align-items:center;gap:16px;padding:18px 0;font-size:16px;color:var(--muted);font-weight:500;opacity:0;transform:translateY(8px);transition:opacity .4s ease,transform .4s ease}
+.load-step.visible{opacity:1;transform:none}
+.load-step.done{color:var(--green)}
+.load-step .step-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(79,70,229,.08);transition:background .3s}
+.load-step.done .step-icon{background:rgba(16,185,129,.1)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spinner{width:16px;height:16px;border:2px solid rgba(79,70,229,.2);border-top-color:var(--indigo);border-radius:50%;animation:spin .7s linear infinite}
+.load-step.done .spinner{display:none}
+.checkmark{display:none;color:var(--green);font-weight:700;font-size:16px}
+.load-step.done .checkmark{display:block}
+
+/* ========== RESULTS ========== */
+.results{display:none;padding-top:40px}
+.results.show{display:block}
+
+/* Section spacing */
+.result-section{padding:100px 32px}
+.result-section:first-child{padding-top:60px}
+.container{max-width:1152px;margin:0 auto}
+.section-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--indigo);margin-bottom:12px}
+.section-title{font-size:clamp(28px,3.5vw,42px);font-weight:800;letter-spacing:-.02em;line-height:1.12;color:var(--text)}
+.section-sub{font-size:16px;color:var(--muted);margin-top:12px;line-height:1.6;max-width:520px}
+
+/* ========== COMPANY PROFILE ========== */
+.company-card{display:flex;align-items:center;gap:32px;background:#fff;border-radius:20px;padding:40px;box-shadow:var(--shadow-lg);border:1px solid rgba(0,0,0,.03);margin-top:40px}
+.company-logo{width:80px;height:80px;border-radius:16px;object-fit:contain;background:var(--warm);padding:12px;flex-shrink:0}
+.company-info{flex:1}
+.company-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:28px;font-weight:800;letter-spacing:-.02em;color:var(--text)}
+.company-meta{display:flex;flex-wrap:wrap;gap:24px;margin-top:12px}
+.meta-item{font-size:14px;color:var(--muted);font-weight:500}
+.meta-item strong{color:var(--text);font-weight:700}
+.company-alert{margin-top:16px;display:inline-flex;align-items:center;gap:8px;background:rgba(220,38,38,.06);color:var(--red);padding:8px 16px;border-radius:100px;font-size:14px;font-weight:600}
+.company-alert-dot{width:6px;height:6px;border-radius:50%;background:var(--red)}
+
+/* ========== ESCALATION CHAIN ========== */
+.escalation-section{background:var(--warm)}
+.chain-timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:48px;position:relative;max-width:960px;margin-left:auto;margin-right:auto}
+.chain-line{position:absolute;top:60px;left:calc(12.5% + 20px);right:calc(12.5% + 20px);height:3px;border-radius:3px;background:linear-gradient(90deg,var(--green),#fbbf24,var(--orange),var(--red));z-index:0}
+.contact-card{background:#fff;border-radius:20px;padding:28px 20px;text-align:center;box-shadow:var(--shadow-lg);border:1px solid rgba(0,0,0,.03);position:relative;z-index:1;transition:transform .2s,box-shadow .2s;margin:0 8px}
+.contact-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-xl)}
+.contact-photo{width:72px;height:72px;border-radius:50%;object-fit:cover;margin:0 auto 14px;display:block;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.contact-name{font-weight:700;font-size:15px;color:var(--text)}
+.contact-role{font-size:13px;color:var(--muted);margin-top:3px;font-weight:500}
+.contact-details{margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+.contact-detail{font-size:13px;color:var(--muted);margin-top:5px;font-family:'JetBrains Mono',monospace;letter-spacing:.2px}
+.contact-day{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:16px}
+.contact-tag{display:inline-block;font-size:12px;font-weight:700;margin-top:14px;padding:5px 14px;border-radius:100px;letter-spacing:.2px}
+.tag-green{background:rgba(16,185,129,.08);color:var(--green)}
+.tag-yellow{background:rgba(251,191,36,.1);color:#d97706}
+.tag-orange{background:rgba(217,119,6,.08);color:var(--orange)}
+.tag-red{background:rgba(220,38,38,.08);color:var(--red)}
+
+/* ========== OBJECTION PLAYBOOK ========== */
+.objection-section{background:#0a0a14;color:#fff}
+.objection-section .section-label{color:rgba(255,255,255,.4)}
+.objection-section .section-title{color:#fff}
+.objection-section .section-sub{color:rgba(255,255,255,.5)}
+.objection-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.objection-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:32px;transition:background .2s,transform .2s}
+.objection-card:hover{background:rgba(255,255,255,.06);transform:translateY(-2px)}
+.objection-quote{font-size:20px;font-weight:700;color:rgba(255,255,255,.9);line-height:1.35;margin-bottom:16px;font-family:'Plus Jakarta Sans',sans-serif}
+.objection-freq{font-size:13px;font-weight:600;color:var(--indigo);margin-bottom:20px;display:inline-block;background:rgba(79,70,229,.12);padding:4px 12px;border-radius:100px}
+.objection-response-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.35);margin-bottom:8px}
+.objection-response{font-size:15px;color:rgba(255,255,255,.7);line-height:1.6;margin-bottom:20px}
+.objection-legal{font-size:13px;color:rgba(255,255,255,.35);font-family:'JetBrains Mono',monospace;padding-top:16px;border-top:1px solid rgba(255,255,255,.06)}
+
+/* ========== AUDIO PLAYER ========== */
+.player-section{padding:100px 32px}
+.player-section .section-title{text-align:center;max-width:480px;margin:0 auto 48px}
+
+/* Dark player */
+.dark-player{background:#0a0a14;border-radius:24px;overflow:hidden;max-width:960px;margin:0 auto;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);max-height:700px}
+.dark-header{padding:24px 40px 0;display:flex;align-items:center;justify-content:space-between}
+.dark-header-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.45)}
+.dark-live{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#34d399}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.3}}
+.dark-live-dot{width:6px;height:6px;border-radius:50%;background:#34d399;animation:pulse-dot 2s infinite}
+
+.dark-preplay{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:380px;position:relative;cursor:pointer;user-select:none}
+.dark-preplay.hidden{display:none}
+.dark-waveform{display:flex;align-items:center;gap:5px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:0}
+@keyframes wave-bar{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+.wave-bar{width:3px;height:32px;background:rgba(79,70,229,.35);border-radius:2px;animation:wave-bar 1.2s ease-in-out infinite}
+.wave-bar:nth-child(1){animation-delay:0s;height:28px}
+.wave-bar:nth-child(2){animation-delay:.15s;height:36px}
+.wave-bar:nth-child(3){animation-delay:.3s;height:24px}
+.wave-bar:nth-child(4){animation-delay:.1s;height:40px}
+.wave-bar:nth-child(5){animation-delay:.25s;height:30px}
+.wave-bar:nth-child(6){animation-delay:.05s;height:34px}
+.wave-bar:nth-child(7){animation-delay:.2s;height:26px}
+.preplay-btn{width:72px;height:72px;border-radius:50%;background:var(--indigo);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1;transition:transform .15s,box-shadow .15s;box-shadow:0 0 0 0 rgba(79,70,229,.3)}
+.preplay-btn:hover{transform:scale(1.08);box-shadow:0 0 0 12px rgba(79,70,229,.15)}
+.preplay-text{margin-top:20px;font-size:15px;color:rgba(255,255,255,.45);font-weight:500;z-index:1;letter-spacing:.2px}
+
+.dark-body{display:grid;grid-template-columns:1.2fr 1fr;min-height:320px}
+.dark-body.hidden{display:none}
+.dark-transcript{padding:24px 40px 32px;display:flex;flex-direction:column;justify-content:flex-start;gap:20px;overflow-y:auto;max-height:340px}
+.dark-line{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+.dark-line.shown{opacity:.6;transform:none}
+.dark-line.active{opacity:1}
+.dark-speaker{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;display:block}
+.dark-speaker.ai{color:#818cf8}
+.dark-speaker.hu{color:rgba(255,255,255,.5)}
+.dark-text{font-size:clamp(15px,1.8vw,18px);font-weight:400;line-height:1.55;color:rgba(255,255,255,.92);min-height:1.55em}
+.dark-text.hu{color:rgba(255,255,255,.6)}
+@keyframes blink-cursor{0%,100%{opacity:1}50%{opacity:0}}
+.typing-cursor{display:inline-block;width:2px;height:1em;background:rgba(255,255,255,.7);vertical-align:text-bottom;margin-left:2px;animation:blink-cursor .7s step-end infinite}
+.dark-reasoning{padding:24px 40px 32px;border-left:1px solid rgba(255,255,255,.05);display:flex;flex-direction:column;justify-content:flex-start;gap:12px}
+.dark-reasoning.hidden{display:none}
+.dark-reasoning h3{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.4);margin-bottom:6px}
+.dark-badge{padding:12px 18px;border-radius:14px;font-size:15px;font-weight:600;opacity:0;transform:translateX(20px);transition:opacity .5s ease,transform .5s ease}
+.dark-badge.shown{opacity:1;transform:none}
+.dark-badge.green{background:rgba(5,150,105,.12);color:#34d399}
+.dark-badge.orange{background:rgba(251,191,36,.1);color:#fbbf24}
+.dark-controls{display:flex;align-items:center;gap:20px;padding:16px 40px;border-top:1px solid rgba(255,255,255,.05)}
+.dark-controls.hidden{display:none}
+.dark-play{width:44px;height:44px;border-radius:50%;background:var(--indigo);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .15s,box-shadow .15s}
+.dark-play:hover{transform:scale(1.06);box-shadow:0 0 0 4px rgba(79,70,229,.2)}
+.dark-track{flex:1;height:4px;background:rgba(255,255,255,.08);border-radius:4px;cursor:pointer;position:relative}
+.dark-fill{height:100%;background:var(--indigo);border-radius:4px;width:0%;transition:width .1s linear}
+.dark-time{font-size:14px;color:rgba(255,255,255,.45);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* ========== CTA ========== */
+.cta-section{padding:140px 32px;text-align:center;background:#0a0a14;color:#fff;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(79,70,229,.08),transparent 70%);pointer-events:none}
+.cta-section h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(32px,4vw,48px);font-weight:900;letter-spacing:-.02em;line-height:1.12;max-width:560px;margin:0 auto;color:#fff;position:relative}
+.cta-detail{font-size:18px;color:rgba(255,255,255,.65);margin-top:20px;line-height:1.6;position:relative}
+.cta-btn{display:inline-block;margin-top:48px;background:var(--indigo);color:#fff;padding:18px 44px;border-radius:14px;font-family:'Inter',sans-serif;font-weight:700;font-size:17px;text-decoration:none;letter-spacing:-.2px;transition:transform .15s,box-shadow .15s;position:relative}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,70,229,.35)}
+.cta-or{display:block;margin-top:16px;font-size:16px;color:rgba(255,255,255,.5);position:relative}
+.cta-or a{color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s}
+.cta-or a:hover{color:rgba(255,255,255,.85)}
+
+/* Footer */
+.foot{padding:32px;text-align:center;font-size:14px;color:var(--light)}
+
+.hidden{display:none!important}
+
+/* ========== MOBILE ========== */
+@media(max-width:768px){
+  .nav-inner{padding:14px 20px}
+  .hero{padding:100px 24px 60px}
+  .hero-title{font-size:clamp(30px,7vw,40px)}
+  .search-bar{flex-direction:column}
+  .search-input{padding:16px 20px}
+  .search-btn{margin:0 8px 8px;padding:14px 24px}
+  .company-card{flex-direction:column;text-align:center;padding:28px 24px}
+  .company-meta{justify-content:center}
+  .chain-timeline{grid-template-columns:1fr 1fr;gap:16px}
+  .chain-line{display:none}
+  .contact-card{margin:0}
+  .objection-grid{grid-template-columns:1fr}
+  .result-section{padding:80px 24px}
+  .player-section{padding:80px 16px}
+  .dark-player{max-height:none}
+  .dark-body{grid-template-columns:1fr}
+  .dark-reasoning{border-left:none;border-top:1px solid rgba(255,255,255,.05)}
+  .dark-header,.dark-transcript,.dark-reasoning,.dark-controls{padding-left:24px;padding-right:24px}
+  .dark-preplay{min-height:280px}
+  .preplay-btn{width:60px;height:60px}
+  .cta-section{padding:100px 24px}
+}
+@media(max-width:480px){
+  .chain-timeline{grid-template-columns:1fr}
+  .company-meta{flex-direction:column;gap:8px;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://agentcollect.com" class="nav-logo">
+      <span>Agent<span class="c">Collect</span><span class="dot"></span></span>
+    </a>
+    <a href="tel:+12016277551" class="nav-phone" onclick="gtag('event','call_nav',{})">(201) 627-7551</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero-section">
+  <div class="hero-inner" id="hero-content">
+    <h1 class="hero-title">What if your clients actually paid?</h1>
+    <p class="hero-sub">Enter any company domain. We'll show you exactly how we'd recover their unpaid invoices.</p>
+    <div class="search-wrap">
+      <div class="search-bar">
+        <input type="text" id="domain-input" class="search-input" placeholder="konicaminolta.com" value="konicaminolta.com">
+        <button class="search-btn" id="analyze-btn" onclick="startAnalysis()">Analyze</button>
+      </div>
+      <p class="hero-note">Try it. It's real.</p>
+    </div>
+  </div>
+
+  <!-- Loading state (hidden) -->
+  <div class="hero-inner hidden" id="loading-content">
+    <div class="loading-wrap">
+      <div class="load-step" id="ls1">
+        <div class="step-icon"><div class="spinner"></div><span class="checkmark">&#10003;</span></div>
+        <span>Analyzing company profile...</span>
+      </div>
+      <div class="load-step" id="ls2">
+        <div class="step-icon"><div class="spinner"></div><span class="checkmark">&#10003;</span></div>
+        <span>Finding AR decision makers...</span>
+      </div>
+      <div class="load-step" id="ls3">
+        <div class="step-icon"><div class="spinner"></div><span class="checkmark">&#10003;</span></div>
+        <span>Building escalation strategy...</span>
+      </div>
+      <div class="load-step" id="ls4">
+        <div class="step-icon"><div class="spinner"></div><span class="checkmark">&#10003;</span></div>
+        <span>Generating objection playbook...</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS (hidden until analysis) -->
+<div class="results" id="results">
+
+  <!-- Section 1: Company Profile -->
+  <section class="result-section rv">
+    <div class="container">
+      <span class="section-label">Company Intel</span>
+      <div class="company-card" id="company-card">
+        <img class="company-logo" id="company-logo" src="" alt="">
+        <div class="company-info">
+          <div class="company-name" id="company-name"></div>
+          <div class="company-meta">
+            <div class="meta-item"><strong id="company-industry"></strong></div>
+            <div class="meta-item"><strong id="company-size"></strong> employees</div>
+            <div class="meta-item">Est. revenue: <strong id="company-revenue"></strong></div>
+          </div>
+          <div class="company-alert" id="company-alert" style="display:none">
+            <span class="company-alert-dot"></span>
+            <span id="company-alert-text"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Escalation Chain -->
+  <section class="result-section escalation-section rv">
+    <div class="container">
+      <span class="section-label">Escalation Strategy</span>
+      <h2 class="section-title">Here's exactly who we'd contact, and when.</h2>
+      <div class="chain-timeline" id="chain-timeline">
+        <div class="chain-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Objection Playbook -->
+  <section class="result-section objection-section rv">
+    <div class="container">
+      <span class="section-label">Objection Playbook</span>
+      <h2 class="section-title">Your clients don't pay for 3 reasons. Here's how AI handles each one.</h2>
+      <div class="objection-grid" id="objection-grid"></div>
+    </div>
+  </section>
+
+  <!-- Section 4: Audio Proof -->
+  <section class="player-section rv">
+    <h2 class="section-title">Hear it. Then try to say no.</h2>
+    <div class="dark-player">
+      <div class="dark-header">
+        <span class="dark-header-label">Live call recording</span>
+        <span class="dark-live"><span class="dark-live-dot"></span>AI Collection Agent</span>
+      </div>
+
+      <div class="dark-preplay" id="preplay" onclick="startPlayback()">
+        <div class="dark-waveform">
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+        </div>
+        <button class="preplay-btn" aria-label="Play recording">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="8,4 20,12 8,20"/></svg>
+        </button>
+        <div class="preplay-text">Press play to hear a real collection call</div>
+      </div>
+
+      <div class="dark-body hidden" id="dark-body">
+        <div class="dark-transcript" id="dt"></div>
+        <div class="dark-reasoning" id="dark-reasoning">
+          <h3>AI Reasoning</h3>
+          <div class="dark-badge green" id="r1">Contact verified</div>
+          <div class="dark-badge orange" id="r2">Skepticism detected</div>
+          <div class="dark-badge green" id="r3">Resolved. Follow-up in 3 days</div>
+        </div>
+      </div>
+
+      <div class="dark-controls hidden" id="dark-controls">
+        <button class="dark-play" id="pbtn" onclick="toggle()">
+          <svg id="picon" width="16" height="16" viewBox="0 0 24 24" fill="white"><rect x="6" y="4" width="4" height="16" fill="white"/><rect x="14" y="4" width="4" height="16" fill="white"/></svg>
+        </button>
+        <div class="dark-track" onclick="seek(event)">
+          <div class="dark-fill" id="pbar"></div>
+        </div>
+        <div class="dark-time" id="ptime">0:00 / 1:25</div>
+        <audio id="aud" preload="none">
+          <source src="https://dxc03zgurdly9.cloudfront.net/74fb900c432127ea0f920d6c76def8852e6ff88fb08fd02db7fd3b37da54a7d9/recording.wav" type="audio/wav">
+        </audio>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: CTA -->
+  <section class="cta-section rv">
+    <h2>Your accounts are waiting.</h2>
+    <p class="cta-detail">Book a 30-minute demo. We'll run this on 10 of your real past-due accounts.</p>
+    <a href="https://cal.com/johnb/30" target="_blank" class="cta-btn" onclick="gtag('event','book_cta',{})">Book a live demo</a>
+    <span class="cta-or"><a href="tel:+12016277551" onclick="gtag('event','call_cta',{})">or call (201) 627-7551</a></span>
+  </section>
+
+</div>
+
+<div class="foot">Contact data from public sources. Powered by AgentCollect.</div>
+
+<script>
+// ========== FALLBACK DATA ==========
+var FALLBACK = {
+  company: {
+    name: 'Konica Minolta',
+    domain: 'konicaminolta.com',
+    industry: 'Office Equipment & Imaging',
+    employee_count: '10,000+',
+    estimated_revenue: '$8.5B',
+    collection_partner: 'DLL Finance',
+    collection_partner_rating: '2.1'
+  },
+  contacts: [
+    {name:'Donna M.', title:'Accounts Payable', email_masked:'d...@zprad.com', phone_masked:'(516) ...-3421', escalation_order:1, escalation_label:'First Contact', escalation_day:'Day 1', photo:'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face'},
+    {name:'Randi M.', title:'Accounting Mgr', email_masked:'r...@zprad.com', phone_masked:'(516) ...-8104', escalation_order:2, escalation_label:'Follow-up', escalation_day:'Day 5', photo:'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face'},
+    {name:'John F.', title:'CFO', email_masked:'j...@zprad.com', phone_masked:'(516) ...-7200', escalation_order:3, escalation_label:'Escalation', escalation_day:'Day 15', photo:'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'},
+    {name:'Steven M.', title:'CEO', email_masked:'s...@zprad.com', phone_masked:'(516) ...-9100', escalation_order:4, escalation_label:'Protected', escalation_day:'Day 30', photo:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face'}
+  ],
+  strategy: {
+    objections: [
+      {
+        objection: '"I already paid this."',
+        frequency: '~35% of cases',
+        ai_response: 'The AI cross-references payment records in real-time. If payment was received, it confirms and closes the case instantly. If not, it provides the exact invoice number, date, and amount with a secure payment link.',
+        legal_basis: 'FDCPA 809(b) - Validation of debts'
+      },
+      {
+        objection: '"I\'m disputing this charge."',
+        frequency: '~28% of cases',
+        ai_response: 'The AI acknowledges the dispute, pauses collection activity within 30 seconds, logs the dispute reason, and routes to your AR team with full context. No escalation until resolution.',
+        legal_basis: 'FDCPA 809(a)(3) - Right to dispute within 30 days'
+      },
+      {
+        objection: '"I need more time to pay."',
+        frequency: '~22% of cases',
+        ai_response: 'The AI offers a structured payment plan based on the outstanding balance. It can set up 2, 3, or 4 installments with automated reminders. 86% of payment plans are completed on time.',
+        legal_basis: 'Reg F 1006.34 - Limited-content messages'
+      }
+    ]
+  }
+};
+
+// ========== ANALYSIS FLOW ==========
+function startAnalysis() {
+  var domain = document.getElementById('domain-input').value.trim();
+  if (!domain) { document.getElementById('domain-input').focus(); return; }
+
+  gtag('event', 'analyze_domain', {domain: domain});
+
+  // Switch to loading
+  document.getElementById('hero-content').classList.add('hidden');
+  document.getElementById('loading-content').classList.remove('hidden');
+
+  // Progressive loading steps
+  var steps = ['ls1','ls2','ls3','ls4'];
+  var apiData = null;
+  var apiDone = false;
+
+  // Try API call
+  fetch('https://backend.widr.app/api/v1/demo/company-intel', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({domain: domain})
+  }).then(function(r) { return r.json(); }).then(function(d) {
+    if (d && d.data) apiData = d.data;
+    apiDone = true;
+  }).catch(function() { apiDone = true; });
+
+  // Step 1 (0ms)
+  setTimeout(function() {
+    document.getElementById(steps[0]).classList.add('visible');
+  }, 100);
+
+  // Step 1 done, step 2 starts (800ms)
+  setTimeout(function() {
+    document.getElementById(steps[0]).classList.add('done');
+    document.getElementById(steps[1]).classList.add('visible');
+  }, 900);
+
+  // Step 2 done, step 3 starts (1800ms)
+  setTimeout(function() {
+    document.getElementById(steps[1]).classList.add('done');
+    document.getElementById(steps[2]).classList.add('visible');
+  }, 1900);
+
+  // Step 3 done, step 4 starts (2600ms)
+  setTimeout(function() {
+    document.getElementById(steps[2]).classList.add('done');
+    document.getElementById(steps[3]).classList.add('visible');
+  }, 2800);
+
+  // Step 4 done, show results (3500ms)
+  setTimeout(function() {
+    document.getElementById(steps[3]).classList.add('done');
+
+    // Wait for API if not done
+    var waitInterval = setInterval(function() {
+      if (apiDone) {
+        clearInterval(waitInterval);
+        setTimeout(function() {
+          showResults(apiData || FALLBACK, domain);
+        }, 500);
+      }
+    }, 100);
+  }, 3600);
+}
+
+// Enter key on input
+document.getElementById('domain-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') startAnalysis();
+});
+
+// ========== RENDER RESULTS ==========
+function showResults(data, domain) {
+  var heroSection = document.getElementById('hero-section');
+  heroSection.style.minHeight = 'auto';
+  heroSection.style.padding = '120px 32px 0';
+
+  // Hide loading
+  document.getElementById('loading-content').classList.add('hidden');
+
+  // Show a small search bar at top
+  document.getElementById('hero-content').classList.remove('hidden');
+  document.getElementById('hero-content').innerHTML = '<div class="search-wrap" style="max-width:480px"><div class="search-bar" style="box-shadow:var(--shadow)"><input type="text" id="domain-input" class="search-input" style="padding:14px 20px;font-size:15px" placeholder="Enter another domain..." value="' + domain + '"><button class="search-btn" style="padding:10px 24px;font-size:14px" onclick="resetAndAnalyze()">Analyze</button></div></div>';
+  document.getElementById('domain-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') resetAndAnalyze();
+  });
+
+  // Populate company
+  var co = data.company || FALLBACK.company;
+  document.getElementById('company-logo').src = 'https://cdn.brandfetch.io/' + (co.domain || domain) + '/w/512/h/80/logo';
+  document.getElementById('company-logo').alt = co.name;
+  document.getElementById('company-name').textContent = co.name;
+  document.getElementById('company-industry').textContent = co.industry;
+  document.getElementById('company-size').textContent = co.employee_count;
+  document.getElementById('company-revenue').textContent = co.estimated_revenue;
+
+  if (co.collection_partner) {
+    document.getElementById('company-alert').style.display = 'inline-flex';
+    document.getElementById('company-alert-text').textContent = 'Current collection partner: ' + co.collection_partner + ' \u2014 ' + co.collection_partner_rating + ' rating';
+  }
+
+  // Populate contacts
+  var contacts = data.contacts || FALLBACK.contacts;
+  var timeline = document.getElementById('chain-timeline');
+  // Keep the gradient line
+  var lineEl = timeline.querySelector('.chain-line');
+  timeline.innerHTML = '';
+  timeline.appendChild(lineEl);
+
+  var tagClasses = ['tag-green', 'tag-yellow', 'tag-orange', 'tag-red'];
+  var defaultPhotos = [
+    'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face',
+    'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face',
+    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
+    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face'
+  ];
+
+  contacts.forEach(function(c, i) {
+    var card = document.createElement('div');
+    card.className = 'contact-card';
+    var photoSrc = c.photo || defaultPhotos[i] || defaultPhotos[0];
+    var tagClass = tagClasses[i] || tagClasses[tagClasses.length - 1];
+    var emailIcon = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="vertical-align:-2px;margin-right:3px"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>';
+    var phoneIcon = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="vertical-align:-2px;margin-right:3px"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>';
+
+    card.innerHTML = '<span class="contact-day">' + (c.escalation_day || 'Day ' + ((i+1)*5)) + '</span>' +
+      '<img class="contact-photo" src="' + photoSrc + '" alt="' + c.name + '">' +
+      '<div class="contact-name">' + c.name + '</div>' +
+      '<div class="contact-role">' + c.title + '</div>' +
+      '<div class="contact-details">' +
+        '<div class="contact-detail">' + emailIcon + c.email_masked + '</div>' +
+        '<div class="contact-detail">' + phoneIcon + c.phone_masked + '</div>' +
+      '</div>' +
+      '<span class="contact-tag ' + tagClass + '">' + c.escalation_label + '</span>';
+    timeline.appendChild(card);
+  });
+
+  // Populate objections
+  var objections = (data.strategy && data.strategy.objections) || FALLBACK.strategy.objections;
+  var grid = document.getElementById('objection-grid');
+  grid.innerHTML = '';
+
+  objections.forEach(function(obj) {
+    var card = document.createElement('div');
+    card.className = 'objection-card';
+    card.innerHTML = '<div class="objection-quote">' + obj.objection + '</div>' +
+      '<span class="objection-freq">' + obj.frequency + '</span>' +
+      '<div class="objection-response-label">AI Response</div>' +
+      '<div class="objection-response">' + obj.ai_response + '</div>' +
+      '<div class="objection-legal">' + obj.legal_basis + '</div>';
+    grid.appendChild(card);
+  });
+
+  // Show results
+  document.getElementById('results').classList.add('show');
+
+  // Trigger scroll reveals
+  setTimeout(function() {
+    document.querySelectorAll('.rv').forEach(function(el) { ro.observe(el); });
+  }, 100);
+
+  // Smooth scroll to results
+  setTimeout(function() {
+    document.querySelector('.result-section').scrollIntoView({behavior: 'smooth', block: 'start'});
+  }, 200);
+}
+
+function resetAndAnalyze() {
+  var domain = document.getElementById('domain-input').value.trim();
+  if (!domain) return;
+
+  // Reset results
+  document.getElementById('results').classList.remove('show');
+
+  // Reset hero
+  var heroSection = document.getElementById('hero-section');
+  heroSection.style.minHeight = '100vh';
+  heroSection.style.padding = '120px 32px 80px';
+
+  // Rebuild hero content
+  document.getElementById('hero-content').innerHTML = '<h1 class="hero-title">What if your clients actually paid?</h1><p class="hero-sub">Enter any company domain. We\'ll show you exactly how we\'d recover their unpaid invoices.</p><div class="search-wrap"><div class="search-bar"><input type="text" id="domain-input" class="search-input" placeholder="konicaminolta.com" value="' + domain + '"><button class="search-btn" id="analyze-btn" onclick="startAnalysis()">Analyze</button></div><p class="hero-note">Try it. It\'s real.</p></div>';
+  document.getElementById('domain-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') startAnalysis();
+  });
+
+  // Reset loading steps
+  ['ls1','ls2','ls3','ls4'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) { el.classList.remove('visible','done'); }
+  });
+
+  // Start analysis
+  startAnalysis();
+}
+
+// ========== SCROLL REVEAL ==========
+var ro = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('v'); });
+}, {threshold: .12});
+
+// ========== AUDIO PLAYER ==========
+var aud = document.getElementById('aud'), raf = null;
+var playerStarted = false;
+
+var transcriptData = [
+  {at:0, speaker:'ai', label:'AI Agent', text:"Hi, this is Sarah from Konica Minolta. Calling about an outstanding invoice."},
+  {at:12, speaker:'hu', label:'Contact', text:'"...is it AI?"'},
+  {at:16, speaker:'ai', label:'AI Agent', text:"Ha, no, I'm Sarah. About that invoice, someone else on your team?"}
+];
+
+var rTimings = [{id:'r1',at:2},{id:'r2',at:14},{id:'r3',at:20}];
+var rShown = {};
+
+var lineStates = [];
+transcriptData.forEach(function() { lineStates.push({started:false,wordIndex:0,words:[],timer:null,done:false}); });
+
+function fmt(t) { var m=Math.floor(t/60),s=Math.floor(t%60); return m+':'+(s<10?'0':'')+s; }
+
+function createLineEl(idx) {
+  var d = transcriptData[idx];
+  var el = document.createElement('div');
+  el.className = 'dark-line';
+  el.dataset.idx = idx;
+  el.innerHTML = '<span class="dark-speaker '+(d.speaker==='ai'?'ai':'hu')+'">'+d.label+'</span><div class="dark-text'+(d.speaker==='hu'?' hu':'')+'"><span class="line-words"></span></div>';
+  return el;
+}
+
+function startTypewriter(idx) {
+  var st = lineStates[idx];
+  if (st.started) return;
+  st.started = true;
+  st.words = transcriptData[idx].text.split(' ');
+  st.wordIndex = 0;
+  st.done = false;
+  var dt = document.getElementById('dt');
+  var el = dt.querySelectorAll('.dark-line')[idx];
+  if (!el) return;
+  el.classList.add('shown','active');
+  dt.querySelectorAll('.dark-line').forEach(function(l,i) { if(i<idx) l.classList.remove('active'); });
+  var wordsEl = el.querySelector('.line-words');
+  var cursor = document.createElement('span');
+  cursor.className = 'typing-cursor';
+  wordsEl.parentNode.appendChild(cursor);
+
+  function typeNext() {
+    if (st.wordIndex >= st.words.length) {
+      st.done = true;
+      if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
+      return;
+    }
+    wordsEl.textContent += (st.wordIndex > 0 ? ' ' : '') + st.words[st.wordIndex];
+    st.wordIndex++;
+    st.timer = setTimeout(typeNext, 80);
+  }
+  typeNext();
+}
+
+function stopAllTypewriters() {
+  lineStates.forEach(function(st) { if (st.timer) { clearTimeout(st.timer); st.timer = null; } });
+}
+
+function resetPlayer() {
+  stopAllTypewriters();
+  lineStates.forEach(function(st) { st.started=false; st.wordIndex=0; st.done=false; st.timer=null; });
+  rShown = {};
+  var dt = document.getElementById('dt');
+  dt.innerHTML = '';
+  transcriptData.forEach(function(d,i) { dt.appendChild(createLineEl(i)); });
+  document.querySelectorAll('.dark-badge').forEach(function(b) { b.classList.remove('shown'); });
+}
+
+function tick() {
+  if (!aud) return;
+  var d = aud.duration || 85;
+  document.getElementById('pbar').style.width = (aud.currentTime/d*100)+'%';
+  document.getElementById('ptime').textContent = fmt(aud.currentTime)+' / '+fmt(d);
+
+  transcriptData.forEach(function(line,i) {
+    if (aud.currentTime >= line.at && !lineStates[i].started) {
+      startTypewriter(i);
+    }
+  });
+
+  rTimings.forEach(function(r) {
+    if (!rShown[r.id] && aud.currentTime >= r.at) { rShown[r.id]=true; document.getElementById(r.id).classList.add('shown'); }
+  });
+
+  if (!aud.paused && !aud.ended) raf = requestAnimationFrame(tick);
+}
+
+function startPlayback() {
+  if (!aud) return;
+  document.getElementById('preplay').classList.add('hidden');
+  document.getElementById('dark-body').classList.remove('hidden');
+  document.getElementById('dark-controls').classList.remove('hidden');
+  playerStarted = true;
+  resetPlayer();
+  aud.play().then(function() {
+    raf = requestAnimationFrame(tick);
+  }).catch(function() {});
+}
+
+function toggle() {
+  if (!aud) return;
+  if (!playerStarted) { startPlayback(); return; }
+  if (aud.paused || aud.ended) {
+    if (aud.ended) { aud.currentTime = 0; resetPlayer(); }
+    aud.play().then(function() {
+      document.getElementById('picon').innerHTML = '<rect x="6" y="4" width="4" height="16" fill="white"/><rect x="14" y="4" width="4" height="16" fill="white"/>';
+      raf = requestAnimationFrame(tick);
+    }).catch(function() {});
+  } else {
+    aud.pause();
+    stopAllTypewriters();
+    document.getElementById('picon').innerHTML = '<polygon points="6,3 20,12 6,21"/>';
+    cancelAnimationFrame(raf);
+  }
+}
+
+function seek(e) {
+  var r = e.currentTarget.getBoundingClientRect();
+  var newTime = ((e.clientX-r.left)/r.width)*(aud.duration||85);
+  resetPlayer();
+  aud.currentTime = newTime;
+  transcriptData.forEach(function(line,i) {
+    if (newTime >= line.at) {
+      var st = lineStates[i];
+      st.started=true; st.done=true;
+      st.words = line.text.split(' ');
+      st.wordIndex = st.words.length;
+      var el = document.getElementById('dt').querySelectorAll('.dark-line')[i];
+      if (el) {
+        el.classList.add('shown');
+        el.querySelector('.line-words').textContent = line.text;
+      }
+    }
+  });
+  var lines = document.getElementById('dt').querySelectorAll('.dark-line');
+  var lastShown = -1;
+  lines.forEach(function(l,i) { if (l.classList.contains('shown')) lastShown=i; });
+  lines.forEach(function(l,i) { l.classList.toggle('active', i===lastShown); });
+  rTimings.forEach(function(r) { if (newTime>=r.at) { rShown[r.id]=true; document.getElementById(r.id).classList.add('shown'); } });
+  if (!aud.paused) tick();
+}
+
+aud && aud.addEventListener('ended', function() {
+  document.getElementById('picon').innerHTML = '<polygon points="6,3 20,12 6,21"/>';
+  stopAllTypewriters();
+  cancelAnimationFrame(raf);
+});
+</script>
+</body>
+</html>
