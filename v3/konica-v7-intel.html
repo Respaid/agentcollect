@@ -542,8 +542,8 @@ function showResults(data, domain) {
     document.getElementById('company-alert-text').textContent = 'Current collection partner: ' + co.collection_partner + ' \u2014 ' + co.collection_partner_rating + ' rating';
   }
 
-  // Populate contacts
-  var contacts = data.contacts || FALLBACK.contacts;
+  // Populate contacts (fallback if API returns empty array)
+  var contacts = (data.contacts && data.contacts.length > 0) ? data.contacts : FALLBACK.contacts;
   var timeline = document.getElementById('chain-timeline');
   // Keep the gradient line
   var lineEl = timeline.querySelector('.chain-line');
@@ -579,7 +579,7 @@ function showResults(data, domain) {
   });
 
   // Populate objections
-  var objections = (data.strategy && data.strategy.objections) || FALLBACK.strategy.objections;
+  var objections = (data.strategy && data.strategy.objections && data.strategy.objections.length > 0) ? data.strategy.objections : FALLBACK.strategy.objections;
   var grid = document.getElementById('objection-grid');
   grid.innerHTML = '';
 
