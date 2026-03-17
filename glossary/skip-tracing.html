@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<title>What is Skip Tracing in B2B Debt Collection? | AgentCollect</title>
+<meta name="description" content="Skip tracing is the process of locating a debtor who has become unreachable — finding their current contact information, decision-makers, or business address. How it works in B2B.">
+<meta property="og:title" content="What is Skip Tracing in B2B Debt Collection? | AgentCollect Glossary">
+<meta property="og:description" content="Skip tracing finds unreachable debtors — phone, email, decision-maker hierarchy, business address. In B2B, it means finding the right person with budget authority, not just the company.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.agentcollect.com/glossary/skip-tracing">
+<link rel="canonical" href="https://www.agentcollect.com/glossary/skip-tracing">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"DefinedTerm","name":"Skip Tracing","description":"Skip tracing is the process of locating a debtor who has become unreachable — finding their current contact information, decision-makers, or business address.","inDefinedTermSet":{"@type":"DefinedTermSet","name":"B2B Debt Collection Glossary","url":"https://www.agentcollect.com/glossary"}}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What does skip tracing cost for B2B debt collection?", "acceptedAnswer": {"@type": "Answer", "text": "Skip tracing costs vary widely: manual research (LinkedIn, public records) can be done internally at the cost of staff time; commercial data providers like ZoomInfo or Apollo charge $500–$5,000/month for platform access; per-record services typically run $0.10–$2.00 per contact depending on data quality and depth. For most B2B use cases, using an enrichment platform that auto-runs skip tracing at the start of every collection campaign is the most cost-effective approach."}},
+    {"@type": "Question", "name": "Is skip tracing legal in B2B debt collection?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — skip tracing using publicly available information (LinkedIn, business registries, USPS NCOA, public court records, professional databases) is fully legal in B2B collections. The legal line is drawn at methods involving deception (pretexting — pretending to be someone else to extract contact information) or accessing private systems without authorization. Always use licensed data providers and ensure your skip tracing practices comply with applicable state laws."}},
+    {"@type": "Question", "name": "What data sources does AgentCollect use for skip tracing?", "acceptedAnswer": {"@type": "Answer", "text": "AgentCollect's contact enrichment pipeline cross-references multiple sources before outreach: LinkedIn profiles for decision-maker verification, commercial email databases (Apollo, ZoomInfo-class data), phone lookup services with direct dial numbers, USPS NCOA for address validation, and business registry records for entity verification. Every contact is verified before an AI agent attempts outreach — reducing wrong-number calls and bounced emails that waste time and damage deliverability."}},
+    {"@type": "Question", "name": "How long does skip tracing take?", "acceptedAnswer": {"@type": "Answer", "text": "Manual skip tracing by an AR specialist takes 30 minutes to 2 hours per account depending on complexity. Automated skip tracing (API-driven enrichment pipelines) runs in seconds to minutes per account. AgentCollect enriches contact data automatically before the first outreach attempt — there is no manual step, and there is no delay between receiving an account and having verified contact information ready."}}
+  ]
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FAFBFF;--bg-card:#fff;--bg-dark:#0B1B3D;
+  --border:#E8ECF2;
+  --text:#0B1B3D;--text-mid:#475569;--text-muted:#94A3B8;
+  --indigo:#4F46E5;--indigo-dark:#4338CA;--indigo-light:rgba(79,70,229,.06);--indigo-glow:rgba(79,70,229,.15);
+  --green:#10B981;--green-light:rgba(16,185,129,.06);
+  --red:#EF4444;--yellow:#F59E0B;
+  --mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+  --shadow-md:0 4px 12px rgba(0,0,0,.06);
+  --max-w:1140px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--display);letter-spacing:-.03em;line-height:1.15}
+::selection{background:rgba(79,70,229,.12)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);height:60px}
+.nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:100%}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;margin-right:40px;font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:-.04em;color:var(--text)}
+.logo-dot{color:var(--indigo)}
+.nav-links{display:flex;gap:28px;flex:1}
+.nav-links a{color:var(--text-mid);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.nav-cta{padding:9px 20px;background:var(--indigo);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s;display:inline-flex;align-items:center}
+.nav-cta:hover{background:var(--indigo-dark)}
+.hero{padding:120px 32px 64px;max-width:var(--max-w);margin:0 auto}
+.breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:32px}
+.breadcrumb a{color:var(--indigo);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;background:var(--indigo-light);border:1px solid rgba(79,70,229,.15);border-radius:100px;font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--indigo);margin-bottom:20px}
+.hero h1{font-size:clamp(32px,4.5vw,48px);font-weight:900;color:var(--text);margin-bottom:20px;max-width:760px}
+.hero h1 em{font-style:normal;color:var(--indigo)}
+.hero-sub{font-size:17px;line-height:1.7;color:var(--text-mid);max-width:640px;margin-bottom:32px}
+.content{max-width:var(--max-w);margin:0 auto;padding:0 32px 80px}
+.section{margin-bottom:64px}
+.section-tag{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--indigo);margin-bottom:12px;font-weight:500}
+.section h2{font-size:28px;font-weight:800;margin-bottom:16px}
+.section p{font-size:16px;line-height:1.8;color:var(--text-mid);margin-bottom:16px;max-width:720px}
+.section p strong{color:var(--text);font-weight:600}
+.def-card{background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--indigo);border-radius:16px;padding:32px;margin-bottom:32px}
+.def-card p{font-size:16px;color:var(--text-mid);line-height:1.8;margin-bottom:12px;max-width:none}
+.def-card p:last-child{margin-bottom:0}
+.key-points{list-style:none;padding:0;margin:0}
+.key-points li{font-size:15px;color:var(--text-mid);line-height:1.7;padding:10px 0 10px 28px;position:relative;border-bottom:1px solid var(--border)}
+.key-points li:last-child{border-bottom:none}
+.key-points li::before{content:'';position:absolute;left:0;top:18px;width:8px;height:8px;border-radius:50%;background:var(--indigo)}
+.key-points li strong{color:var(--text)}
+.formula-box{background:var(--bg-dark);border-radius:16px;padding:32px;margin:32px 0;text-align:center}
+.formula-box .formula-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:16px}
+.formula-box .formula-text{font-family:var(--mono);font-size:clamp(16px,2.5vw,22px);color:#fff;font-weight:500;line-height:1.5}
+.formula-box .formula-text em{color:var(--indigo);font-style:normal}
+.example-box{background:var(--indigo-light);border:1px solid rgba(79,70,229,.15);border-radius:16px;padding:32px;margin:32px 0}
+.example-box h3{font-size:18px;font-weight:800;margin-bottom:12px;color:var(--text)}
+.example-box p{font-size:15px;color:var(--text-mid);line-height:1.7;margin-bottom:8px;max-width:none}
+.example-box p:last-child{margin-bottom:0}
+.benchmark-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
+.benchmark-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center}
+.benchmark-card.good{border-color:var(--green);background:var(--green-light)}
+.benchmark-card.ok{border-color:var(--yellow);background:rgba(245,158,11,.06)}
+.benchmark-card.bad{border-color:var(--red);background:rgba(239,68,68,.06)}
+.benchmark-value{font-family:var(--display);font-size:22px;font-weight:900;letter-spacing:-.03em;margin-bottom:6px}
+.benchmark-card.good .benchmark-value{color:var(--green)}
+.benchmark-card.ok .benchmark-value{color:var(--yellow)}
+.benchmark-card.bad .benchmark-value{color:var(--red)}
+.benchmark-label{font-size:13px;color:var(--text-muted);font-weight:500;margin-bottom:4px}
+.benchmark-desc{font-size:12px;color:var(--text-muted)}
+.agentcollect-box{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;margin:32px 0;position:relative;overflow:hidden}
+.agentcollect-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--indigo),var(--green))}
+.agentcollect-box h3{font-size:18px;font-weight:800;margin-bottom:12px}
+.agentcollect-box p{font-size:15px;color:var(--text-mid);line-height:1.7;margin-bottom:10px;max-width:none}
+.agentcollect-box p:last-child{margin-bottom:0}
+.related-terms{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.related-term{display:inline-flex;padding:8px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:100px;font-size:13px;font-weight:500;color:var(--text-mid);text-decoration:none;transition:all .15s}
+.related-term:hover{border-color:var(--indigo);color:var(--indigo);background:var(--indigo-light)}
+.faq-item{border-bottom:1px solid var(--border);padding:24px 0}
+.faq-q{font-family:var(--display);font-size:17px;font-weight:700;color:var(--text);margin-bottom:10px}
+.faq-a{font-size:15px;color:var(--text-mid);line-height:1.7;max-width:720px}
+.cta-box{background:var(--bg-dark);border-radius:20px;padding:64px 40px;text-align:center;margin:64px 0;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:-40%;left:-40%;width:180%;height:180%;background:radial-gradient(ellipse at 50% 80%,rgba(79,70,229,.12) 0%,transparent 50%);pointer-events:none}
+.cta-box h2{font-size:32px;font-weight:900;color:#fff;margin-bottom:12px;position:relative}
+.cta-box p{font-size:16px;color:var(--text-muted);margin-bottom:28px;position:relative}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:10px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s;position:relative}
+.cta-btn:hover{background:var(--indigo-dark)}
+.footer{border-top:1px solid var(--border);padding:40px 32px;text-align:center}
+.footer-inner{max-width:var(--max-w);margin:0 auto}
+.footer-logo{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:8px}
+.footer-logo span{color:var(--indigo)}
+.footer-links{display:flex;gap:24px;justify-content:center;margin-bottom:12px}
+.footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{font-size:12px;color:var(--text-muted)}
+@media(max-width:768px){
+  .hero{padding:100px 20px 48px}
+  .content{padding:0 20px 60px}
+  .benchmark-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .cta-box{padding:48px 24px}
+  .formula-box .formula-text{font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">AgentCollect<span class="logo-dot">.</span></a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/glossary" class="active">Glossary</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <a href="/contact" class="nav-cta">Get a demo</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="breadcrumb">
+    <a href="/">Home</a> / <a href="/glossary">Glossary</a> / Skip Tracing
+  </div>
+  <div class="hero-tag">AR Glossary</div>
+  <h1>What is <em>Skip Tracing</em> in B2B Debt Collection?</h1>
+  <p class="hero-sub">Skip tracing is the process of locating a debtor who has become unreachable — finding their current contact information, decision-makers, or business address.</p>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- DEFINITION -->
+  <div class="section">
+    <div class="section-tag">Definition</div>
+    <h2>Skip Tracing Explained</h2>
+    <div class="def-card">
+      <p><strong>Skip tracing is the process of locating a debtor or the correct contact at a debtor company when existing contact information is outdated, wrong, or unavailable.</strong> The term comes from "skip" — someone who has left without paying — and "trace" — finding where they went. In practice, skip tracing means finding the right phone number, verified email address, current business address, or decision-maker name.</p>
+      <p>In consumer debt collection, skip tracing typically means finding a specific individual who has moved or changed their phone number. In B2B, the challenge is different and often more nuanced: the company still exists, but you do not know who the right person is. Is it the AP Specialist? The Controller? The CFO? Finding the right contact with actual authority to approve payment — and verifying their direct line — is the B2B version of skip tracing.</p>
+      <p>Skip tracing is the prerequisite for effective collection. Sending a demand to the wrong email, calling a disconnected number, or addressing a letter to a former employee wastes time and kills recovery rates. Before any outreach can succeed, you need accurate, verified contact data for the specific person who can authorize payment.</p>
+    </div>
+  </div>
+
+  <!-- KEY POINTS -->
+  <div class="section">
+    <div class="section-tag">Key Points</div>
+    <h2>What You Need to Know About B2B Skip Tracing</h2>
+    <ul class="key-points">
+      <li><strong>Finding the AP Specialist is not enough.</strong> In B2B, effective skip tracing builds an escalation chain: AP Specialist &rarr; Controller &rarr; CFO. When the AP contact ignores you, you need the next contact ready immediately.</li>
+      <li><strong>Phone lookup is the highest-value action.</strong> A verified direct dial number for the right decision-maker delivers 4–6x higher response rates than email alone. Skip tracing that does not include phone verification is incomplete.</li>
+      <li><strong>Email verification prevents deliverability damage.</strong> Sending to bad email addresses increases your bounce rate and harms the sender reputation of your domain. Always verify emails before adding them to outreach sequences.</li>
+      <li><strong>LinkedIn decision-maker research is standard practice.</strong> For mid-to-large companies, LinkedIn reveals the current org structure — who is actually in the AP, Finance, and CFO roles today, not 18 months ago.</li>
+      <li><strong>Business address updates matter for attorney escalation.</strong> If legal action is needed, the attorney needs a verified current business address for service of process. Stale addresses invalidate demand letters and slow litigation.</li>
+    </ul>
+  </div>
+
+  <!-- B2B VS CONSUMER -->
+  <div class="section">
+    <div class="section-tag">B2B vs. Consumer</div>
+    <h2>How B2B Skip Tracing Differs from Consumer</h2>
+    <div class="formula-box">
+      <div class="formula-label">The Core Difference</div>
+      <div class="formula-text">Consumer: find <em>the person</em> &nbsp;|&nbsp; B2B: find <em>the right person</em> at the company</div>
+    </div>
+    <p>In consumer collections, the debtor and the responsible party are the same individual. Skip tracing means locating them physically — new address, new phone number, new employer.</p>
+    <p>In B2B, the company still exists and you know where they are. The skip tracing challenge is organizational: <strong>who inside that company has the authority and the responsibility to pay this invoice?</strong> The AP Specialist who opened the account may have left. The Controller may have changed. The CFO may have been replaced in a recent acquisition. B2B skip tracing is as much about org chart research as it is about contact data lookup.</p>
+  </div>
+
+  <!-- EXAMPLE -->
+  <div class="section">
+    <div class="section-tag">Example</div>
+    <h2>Skip Tracing in Practice: B2B Example</h2>
+    <div class="example-box">
+      <h3>Scenario: $40K Invoice, AP Contact Gone Dark</h3>
+      <p><strong>Situation:</strong> A staffing agency is owed $40,000 from a client. Their AP contact, Sarah M., left the company 3 months ago. Emails bounce. The main company number rings with no answer.</p>
+      <p><strong>Skip tracing process:</strong> LinkedIn search reveals the new AP Manager (Jason T.) and Controller (Maria R.). Phone lookup returns Jason's direct dial. Email verification confirms jason.t@company.com is active. Controller email added as escalation backup.</p>
+      <p><strong>Outreach result:</strong> First call to Jason's direct line — answered on the second attempt. Invoice approved for payment within 14 days. No agency needed. No legal escalation required.</p>
+      <p style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(79,70,229,.15)"><strong>Without skip tracing:</strong> All outreach goes to a bouncing email address and a dead phone number. Account ages into 120-day-past-due territory. Recovery rate drops from ~95% to ~60%. Skip tracing was the difference between collecting in full and writing off 40% of the balance.</p>
+    </div>
+  </div>
+
+  <!-- DATA SOURCES -->
+  <div class="section">
+    <div class="section-tag">Data Sources</div>
+    <h2>Common Skip Tracing Tools and Data Sources</h2>
+    <div class="benchmark-grid">
+      <div class="benchmark-card good">
+        <div class="benchmark-value">LinkedIn</div>
+        <div class="benchmark-label">Org chart research</div>
+        <div class="benchmark-desc">Current role verification, decision-maker identification, direct connection to AP and Finance contacts.</div>
+      </div>
+      <div class="benchmark-card good">
+        <div class="benchmark-value">Apollo / ZoomInfo</div>
+        <div class="benchmark-label">Contact databases</div>
+        <div class="benchmark-desc">Direct dial phone numbers, verified work emails, company org chart data at scale.</div>
+      </div>
+      <div class="benchmark-card ok">
+        <div class="benchmark-value">USPS NCOA</div>
+        <div class="benchmark-label">Address validation</div>
+        <div class="benchmark-desc">National Change of Address database. Verifies and updates business mailing addresses.</div>
+      </div>
+    </div>
+    <p>Most professional AR teams use a combination of sources — no single provider has complete, current data for every company. Cross-referencing two independent sources (e.g., Apollo email + LinkedIn role verification) before outreach is the standard for quality skip tracing.</p>
+  </div>
+
+  <!-- HOW AGENTCOLLECT HELPS -->
+  <div class="section">
+    <div class="section-tag">AgentCollect</div>
+    <h2>AgentCollect: Automatic Contact Enrichment Before Every Outreach</h2>
+    <div class="agentcollect-box">
+      <h3>Zero Manual Skip Tracing — Every Account Pre-Enriched</h3>
+      <p>AgentCollect automatically enriches every account before the first outreach attempt — no manual research required. The enrichment pipeline cross-references LinkedIn profiles, commercial contact databases, phone lookup services, and email verification to build a complete, verified contact chain for each debtor company.</p>
+      <p>This means AgentCollect agents always know who to call and how to reach them: the AP Specialist as the first contact, the Controller as the escalation, the CFO as the final escalation. If the first contact is unreachable (bounced email, disconnected number, no answer after 3 attempts), the AI automatically escalates to the next contact in the hierarchy — without any human intervention.</p>
+      <p>For clients, this eliminates the most common reason collection attempts fail: not having the right contact information. Every account that enters AgentCollect's pipeline leaves with a verified phone number, verified email, and a decision-maker escalation chain ready to use.</p>
+    </div>
+  </div>
+
+  <!-- RELATED TERMS -->
+  <div class="section">
+    <div class="section-tag">Related Terms</div>
+    <h2>Related AR Glossary Terms</h2>
+    <div class="related-terms">
+      <a href="/glossary/first-party-collection" class="related-term">First-Party Collection</a>
+      <a href="/glossary/third-party-collection" class="related-term">Third-Party Collection</a>
+      <a href="/glossary/contingency-fee" class="related-term">Contingency Fee</a>
+      <a href="/glossary/days-sales-outstanding" class="related-term">Days Sales Outstanding</a>
+      <a href="/glossary/bad-debt" class="related-term">Bad Debt</a>
+      <a href="/glossary/dunning" class="related-term">Dunning</a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section">
+    <div class="section-tag">FAQ</div>
+    <h2>Skip Tracing FAQ</h2>
+    <div class="faq-item">
+      <div class="faq-q">What does skip tracing cost for B2B debt collection?</div>
+      <div class="faq-a">Skip tracing costs vary widely: manual research (LinkedIn, public records) can be done internally at the cost of staff time; commercial data providers like ZoomInfo or Apollo charge $500–$5,000/month for platform access; per-record services typically run $0.10–$2.00 per contact depending on data quality and depth. For most B2B use cases, using an enrichment platform that auto-runs skip tracing at the start of every collection campaign is the most cost-effective approach.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is skip tracing legal in B2B debt collection?</div>
+      <div class="faq-a">Yes — skip tracing using publicly available information (LinkedIn, business registries, USPS NCOA, public court records, professional databases) is fully legal in B2B collections. The legal line is drawn at methods involving deception (pretexting — pretending to be someone else to extract contact information) or accessing private systems without authorization. Always use licensed data providers and ensure your skip tracing practices comply with applicable state laws.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What data sources does AgentCollect use for skip tracing?</div>
+      <div class="faq-a">AgentCollect's contact enrichment pipeline cross-references multiple sources before outreach: LinkedIn profiles for decision-maker verification, commercial email databases (Apollo, ZoomInfo-class data), phone lookup services with direct dial numbers, USPS NCOA for address validation, and business registry records for entity verification. Every contact is verified before an AI agent attempts outreach — reducing wrong-number calls and bounced emails that waste time and damage deliverability.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How long does skip tracing take?</div>
+      <div class="faq-a">Manual skip tracing by an AR specialist takes 30 minutes to 2 hours per account depending on complexity. Automated skip tracing (API-driven enrichment pipelines) runs in seconds to minutes per account. AgentCollect enriches contact data automatically before the first outreach attempt — there is no manual step, and there is no delay between receiving an account and having verified contact information ready.</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h2>Stop losing recoveries to bad contact data.</h2>
+    <p>AgentCollect automatically enriches every account with verified phones, emails, and decision-maker escalation chains before the first outreach attempt.</p>
+    <a href="/contact" class="cta-btn">Start a free pilot &rarr;</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">AgentCollect<span>.</span></div>
+    <div class="footer-links">
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 AgentCollect (YC S23). All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
