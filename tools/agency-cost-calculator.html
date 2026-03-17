@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<title>Agency Cost Calculator — See What You're Really Paying | AgentCollect</title>
+<meta name="description" content="Calculate the true cost of your collection agency. See how much you'd save with AI-powered, success-only debt collection.">
+<meta property="og:title" content="Agency Cost Calculator — See What You're Really Paying | AgentCollect">
+<meta property="og:description" content="Calculate the true cost of your collection agency. See how much you'd save with AI-powered, success-only debt collection.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.agentcollect.com/tools/agency-cost-calculator">
+<link rel="canonical" href="https://www.agentcollect.com/tools/agency-cost-calculator">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Agency Cost Calculator",
+  "description": "Calculate the true cost of your collection agency and see how much you'd save with AI-powered debt collection.",
+  "url": "https://www.agentcollect.com/tools/agency-cost-calculator",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "AgentCollect",
+    "url": "https://www.agentcollect.com"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What do collection agencies typically charge?", "acceptedAnswer": {"@type": "Answer", "text": "Most collection agencies charge between 20% and 50% of the amount they recover. The rate depends on the age and size of the debt, with older and smaller accounts commanding higher commissions. Some agencies also charge upfront fees or monthly minimums in addition to their contingency rate."}},
+    {"@type": "Question", "name": "What's the average recovery rate for collection agencies?", "acceptedAnswer": {"@type": "Answer", "text": "The industry average recovery rate for third-party collection agencies is between 11% and 15% of the total amount placed. This means for every $100 you hand to an agency, they typically recover $11 to $15 — and then take their commission from that amount."}},
+    {"@type": "Question", "name": "Are success-only fees really cheaper?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, when the recovery rate is significantly higher. A lower fee on a higher recovery amount means you keep more dollars. AgentCollect's AI agents recover substantially more than traditional agencies because they contact every account immediately, follow up persistently, and never take a day off."}},
+    {"@type": "Question", "name": "What's the ROI of switching from an agency to AI collection?", "acceptedAnswer": {"@type": "Answer", "text": "Most companies see 2-4x more net recovery after switching from a traditional agency to AI-powered collection. The combination of higher recovery rates, lower fees, and preserved customer relationships means you keep significantly more of every dollar owed to you."}}
+  ]
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FAFBFF;--bg-card:#fff;--bg-dark:#0B1B3D;
+  --border:#E8ECF2;
+  --text:#0B1B3D;--text-mid:#475569;--text-muted:#94A3B8;
+  --indigo:#4F46E5;--indigo-dark:#4338CA;--indigo-light:rgba(79,70,229,.06);--indigo-glow:rgba(79,70,229,.15);
+  --green:#10B981;--green-light:rgba(16,185,129,.06);
+  --red:#EF4444;--red-light:rgba(239,68,68,.06);--yellow:#F59E0B;
+  --mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+  --shadow-md:0 4px 12px rgba(0,0,0,.06);
+  --max-w:1140px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--display);letter-spacing:-.03em;line-height:1.15}
+::selection{background:rgba(79,70,229,.12)}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);height:60px}
+.nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:100%}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;margin-right:40px;font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:-.04em;color:var(--text)}
+.logo-dot{color:var(--indigo)}
+.nav-links{display:flex;gap:28px;flex:1}
+.nav-links a{color:var(--text-mid);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.nav-cta{padding:9px 20px;background:var(--indigo);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s;display:inline-flex;align-items:center}
+.nav-cta:hover{background:var(--indigo-dark)}
+
+/* HERO */
+.hero{padding:120px 32px 64px;max-width:var(--max-w);margin:0 auto}
+.breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:32px}
+.breadcrumb a{color:var(--indigo);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;background:var(--green-light);border:1px solid rgba(16,185,129,.2);border-radius:100px;font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:20px}
+.hero h1{font-size:clamp(32px,4.5vw,48px);font-weight:900;color:var(--text);margin-bottom:20px;max-width:760px}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero-sub{font-size:17px;line-height:1.7;color:var(--text-mid);max-width:640px;margin-bottom:32px}
+
+/* CONTENT */
+.content{max-width:var(--max-w);margin:0 auto;padding:0 32px 80px}
+.section{margin-bottom:64px}
+.section-tag{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--indigo);margin-bottom:12px;font-weight:500}
+.section h2{font-size:28px;font-weight:800;margin-bottom:16px}
+.section p{font-size:16px;line-height:1.8;color:var(--text-mid);margin-bottom:16px;max-width:720px}
+.section p strong{color:var(--text);font-weight:600}
+
+/* CALCULATOR */
+.calc-container{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:40px;margin-bottom:48px;box-shadow:var(--shadow-md)}
+.calc-inputs{margin-bottom:40px}
+.input-group{margin-bottom:32px}
+.input-label{font-family:var(--display);font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
+.input-hint{font-size:13px;color:var(--text-muted);font-weight:400;font-family:var(--sans)}
+.dollar-input-wrap{position:relative;max-width:360px}
+.dollar-input-wrap::before{content:'$';position:absolute;left:16px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:18px;font-weight:500;color:var(--text-muted)}
+.dollar-input{width:100%;padding:14px 16px 14px 32px;font-family:var(--mono);font-size:18px;font-weight:500;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);outline:none;transition:border-color .2s}
+.dollar-input:focus{border-color:var(--indigo);box-shadow:0 0 0 3px var(--indigo-glow)}
+.slider-wrap{display:flex;align-items:center;gap:16px;max-width:480px}
+.slider-wrap input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:6px;background:var(--border);border-radius:3px;outline:none;cursor:pointer}
+.slider-wrap input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--indigo);border:3px solid #fff;box-shadow:0 2px 6px rgba(79,70,229,.3);cursor:pointer;transition:transform .15s}
+.slider-wrap input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.15)}
+.slider-wrap input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--indigo);border:3px solid #fff;box-shadow:0 2px 6px rgba(79,70,229,.3);cursor:pointer}
+.slider-value{font-family:var(--mono);font-size:18px;font-weight:600;color:var(--indigo);min-width:52px;text-align:right}
+
+/* RESULTS */
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px}
+.result-card{border-radius:16px;padding:32px;position:relative;overflow:hidden}
+.result-card.agency{background:var(--red-light);border:1px solid rgba(239,68,68,.2)}
+.result-card.ac{background:var(--green-light);border:1px solid rgba(16,185,129,.2)}
+.result-card-title{font-family:var(--display);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.result-card.agency .result-card-title{color:var(--red)}
+.result-card.ac .result-card-title{color:var(--green)}
+.result-row{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-bottom:1px solid rgba(0,0,0,.05)}
+.result-row:last-child{border-bottom:none}
+.result-label{font-size:14px;color:var(--text-mid)}
+.result-val{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--text)}
+.result-val.red{color:var(--red)}
+.result-val.green{color:var(--green)}
+.result-val.big{font-size:24px;font-weight:800;font-family:var(--display)}
+
+/* SAVINGS BOX */
+.savings-box{background:var(--bg-dark);border-radius:16px;padding:40px;text-align:center;position:relative;overflow:hidden}
+.savings-box::before{content:'';position:absolute;top:-40%;left:-40%;width:180%;height:180%;background:radial-gradient(ellipse at 50% 80%,rgba(16,185,129,.15) 0%,transparent 50%);pointer-events:none}
+.savings-label{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:12px;position:relative}
+.savings-amount{font-family:var(--display);font-size:clamp(36px,5vw,56px);font-weight:900;color:var(--green);margin-bottom:8px;position:relative;letter-spacing:-.03em}
+.savings-sub{font-size:16px;color:var(--text-muted);position:relative}
+.savings-sub strong{color:#fff}
+
+/* COMPARISON BARS */
+.comparison-section{margin-top:48px}
+.bar-chart{display:flex;gap:32px;align-items:flex-end;justify-content:center;padding:40px 0;min-height:300px}
+.bar-col{display:flex;flex-direction:column;align-items:center;gap:12px;flex:1;max-width:200px}
+.bar-wrapper{width:100%;background:var(--border);border-radius:10px;overflow:hidden;position:relative;min-height:240px;display:flex;flex-direction:column;justify-content:flex-end}
+.bar-fill{width:100%;border-radius:10px;transition:height .6s cubic-bezier(.34,1.56,.64,1);position:relative}
+.bar-fill.agency-fee{background:var(--red);border-radius:0 0 10px 10px}
+.bar-fill.agency-kept{background:rgba(239,68,68,.3);border-radius:10px 10px 0 0}
+.bar-fill.ac-fee{background:rgba(16,185,129,.4);border-radius:0 0 10px 10px}
+.bar-fill.ac-kept{background:var(--green);border-radius:10px 10px 0 0}
+.bar-label-top{font-family:var(--mono);font-size:14px;font-weight:600;text-align:center}
+.bar-label-top.red{color:var(--red)}
+.bar-label-top.green{color:var(--green)}
+.bar-label-bottom{font-size:14px;font-weight:600;color:var(--text);text-align:center}
+.bar-legend{display:flex;gap:24px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.bar-legend-item{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-mid)}
+.bar-legend-dot{width:10px;height:10px;border-radius:3px}
+
+/* REASONS */
+.reasons-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px}
+.reason-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;transition:border-color .2s}
+.reason-card:hover{border-color:var(--indigo)}
+.reason-icon{width:44px;height:44px;border-radius:12px;background:var(--red-light);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+.reason-card h3{font-size:17px;font-weight:800;margin-bottom:8px}
+.reason-card p{font-size:14px;color:var(--text-mid);line-height:1.7}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--border);padding:24px 0}
+.faq-q{font-family:var(--display);font-size:17px;font-weight:700;color:var(--text);margin-bottom:10px}
+.faq-a{font-size:15px;color:var(--text-mid);line-height:1.7;max-width:720px}
+
+/* RELATED */
+.related-terms{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.related-term{display:inline-flex;padding:8px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:100px;font-size:13px;font-weight:500;color:var(--text-mid);text-decoration:none;transition:all .15s}
+.related-term:hover{border-color:var(--indigo);color:var(--indigo);background:var(--indigo-light)}
+
+/* CTA */
+.cta-box{background:var(--bg-dark);border-radius:20px;padding:64px 40px;text-align:center;margin:64px 0;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:-40%;left:-40%;width:180%;height:180%;background:radial-gradient(ellipse at 50% 80%,rgba(79,70,229,.12) 0%,transparent 50%);pointer-events:none}
+.cta-box h2{font-size:32px;font-weight:900;color:#fff;margin-bottom:12px;position:relative}
+.cta-box p{font-size:16px;color:var(--text-muted);margin-bottom:28px;position:relative}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:10px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s;position:relative}
+.cta-btn:hover{background:var(--indigo-dark)}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--border);padding:40px 32px;text-align:center}
+.footer-inner{max-width:var(--max-w);margin:0 auto}
+.footer-logo{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:8px}
+.footer-logo span{color:var(--indigo)}
+.footer-links{display:flex;gap:24px;justify-content:center;margin-bottom:12px}
+.footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{font-size:12px;color:var(--text-muted)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero{padding:100px 20px 48px}
+  .content{padding:0 20px 60px}
+  .calc-container{padding:24px}
+  .results-grid{grid-template-columns:1fr}
+  .reasons-grid{grid-template-columns:1fr}
+  .bar-chart{gap:16px}
+  .bar-col{max-width:140px}
+  .nav-links{display:none}
+  .cta-box{padding:48px 24px}
+  .savings-amount{font-size:36px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">AgentCollect<span class="logo-dot">.</span></a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/tools" class="active">Tools</a>
+      <a href="/glossary">Glossary</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <a href="/contact" class="nav-cta">Get a demo</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="breadcrumb">
+    <a href="/">Home</a> / <a href="/tools">Tools</a> / Agency Cost Calculator
+  </div>
+  <div class="hero-tag">Free Tool</div>
+  <h1>How Much Is Your Collection Agency <em>Really Costing You</em>?</h1>
+  <p class="hero-sub">Calculate the true cost of agency fees &mdash; and see how much you'd save with AI-powered, success-only debt collection.</p>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- CALCULATOR -->
+  <div class="section">
+    <div class="section-tag">Calculator</div>
+    <h2>Enter Your Numbers</h2>
+    <div class="calc-container">
+      <div class="calc-inputs">
+
+        <div class="input-group">
+          <div class="input-label">
+            Total receivables placed with agency
+            <span class="input-hint">Annual amount sent to collections</span>
+          </div>
+          <div class="dollar-input-wrap">
+            <input type="text" class="dollar-input" id="totalPlaced" value="500,000" inputmode="numeric">
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div class="input-label">
+            Agency recovery rate
+            <span class="input-hint">Industry average: 11-15%</span>
+          </div>
+          <div class="slider-wrap">
+            <input type="range" id="recoveryRate" min="5" max="40" value="15" step="1">
+            <span class="slider-value" id="recoveryRateVal">15%</span>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div class="input-label">
+            Agency commission rate
+            <span class="input-hint">What your agency charges on recovered amounts</span>
+          </div>
+          <div class="slider-wrap">
+            <input type="range" id="commissionRate" min="15" max="45" value="30" step="1">
+            <span class="slider-value" id="commissionRateVal">30%</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RESULTS -->
+      <div class="results-grid">
+        <div class="result-card agency">
+          <div class="result-card-title">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8" cy="8" r="7"/><line x1="8" y1="5" x2="8" y2="8"/><line x1="8" y1="11" x2="8.01" y2="11"/></svg>
+            With Your Agency
+          </div>
+          <div class="result-row">
+            <span class="result-label">Amount recovered</span>
+            <span class="result-val" id="agencyRecovered">$75,000</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Agency keeps</span>
+            <span class="result-val red big" id="agencyKeeps">$22,500</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">You receive</span>
+            <span class="result-val" id="agencyNet">$52,500</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Left unrecovered</span>
+            <span class="result-val red" id="agencyUnrecovered">$425,000</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Cost per dollar recovered</span>
+            <span class="result-val red" id="agencyCostPerDollar">30&cent;</span>
+          </div>
+        </div>
+
+        <div class="result-card ac">
+          <div class="result-card-title">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="4 8 7 11 12 5"/></svg>
+            With AgentCollect
+          </div>
+          <div class="result-row">
+            <span class="result-label">Estimated recovery</span>
+            <span class="result-val green" id="acRecovered">$225,000</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">AgentCollect fee</span>
+            <span class="result-val" id="acFee">Success-only</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">You receive</span>
+            <span class="result-val green big" id="acNet">$191,250</span>
+          </div>
+          <div class="result-row">
+            <span class="result-label">Additional recovered vs agency</span>
+            <span class="result-val green" id="acAdditional">+$150,000</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SAVINGS -->
+      <div class="savings-box">
+        <div class="savings-label">Your Annual Savings with AgentCollect</div>
+        <div class="savings-amount" id="savingsAmount">$138,750</div>
+        <div class="savings-sub">That's <strong id="savingsMonthly">$11,562</strong>/month back in your pocket</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- COMPARISON VISUAL -->
+  <div class="section comparison-section">
+    <div class="section-tag">Visual Comparison</div>
+    <h2>Where Your Money Goes</h2>
+    <p>See how much of each recovered dollar you actually keep.</p>
+
+    <div class="bar-chart">
+      <div class="bar-col">
+        <div class="bar-label-top red" id="barAgencyLabel">$52,500</div>
+        <div class="bar-wrapper">
+          <div class="bar-fill agency-kept" id="barAgencyKept" style="height:30%"></div>
+          <div class="bar-fill agency-fee" id="barAgencyFee" style="height:15%"></div>
+        </div>
+        <div class="bar-label-bottom">Traditional Agency</div>
+      </div>
+      <div class="bar-col">
+        <div class="bar-label-top green" id="barAcLabel">$191,250</div>
+        <div class="bar-wrapper">
+          <div class="bar-fill ac-kept" id="barAcKept" style="height:70%"></div>
+          <div class="bar-fill ac-fee" id="barAcFee" style="height:10%"></div>
+        </div>
+        <div class="bar-label-bottom">AgentCollect</div>
+      </div>
+    </div>
+    <div class="bar-legend">
+      <div class="bar-legend-item"><div class="bar-legend-dot" style="background:var(--red)"></div> Agency fees</div>
+      <div class="bar-legend-item"><div class="bar-legend-dot" style="background:rgba(239,68,68,.3)"></div> You keep (agency)</div>
+      <div class="bar-legend-item"><div class="bar-legend-dot" style="background:var(--green)"></div> You keep (AgentCollect)</div>
+      <div class="bar-legend-item"><div class="bar-legend-dot" style="background:rgba(16,185,129,.4)"></div> AgentCollect fee</div>
+    </div>
+  </div>
+
+  <!-- WHY AGENCIES COST MORE -->
+  <div class="section">
+    <div class="section-tag">The Hidden Costs</div>
+    <h2>Why Collection Agencies Cost You More Than You Think</h2>
+    <div class="reasons-grid">
+      <div class="reason-card">
+        <div class="reason-icon">&#x1F4B8;</div>
+        <h3>Misaligned Incentives</h3>
+        <p>Agencies are incentivized to collect fast, not protect your brand. They use aggressive tactics that burn customer relationships because their commission is the same whether your customer comes back or not.</p>
+      </div>
+      <div class="reason-card">
+        <div class="reason-icon">&#x1F4C9;</div>
+        <h3>Low Recovery Rates</h3>
+        <p>Industry average recovery is just 11-15%. Agencies cherry-pick easy accounts and let the rest expire. With 85%+ of your receivables going unrecovered, the math simply doesn't work in your favor.</p>
+      </div>
+      <div class="reason-card">
+        <div class="reason-icon">&#x26A0;&#xFE0F;</div>
+        <h3>Hidden Costs Everywhere</h3>
+        <p>Beyond commissions, you're paying with lost customer lifetime value, brand damage from aggressive tactics, and compliance risk. One CFPB complaint can cost more than the entire placement was worth.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section">
+    <div class="section-tag">FAQ</div>
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What do collection agencies typically charge?</div>
+      <div class="faq-a">Most collection agencies charge between 20% and 50% of the amount they recover. The rate depends on the age and size of the debt, with older and smaller accounts commanding higher commissions. Some agencies also charge upfront fees or monthly minimums in addition to their contingency rate.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What's the average recovery rate for collection agencies?</div>
+      <div class="faq-a">The industry average recovery rate for third-party collection agencies is between 11% and 15% of the total amount placed. This means for every $100 you hand to an agency, they typically recover $11 to $15 &mdash; and then take their commission from that amount.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Are success-only fees really cheaper?</div>
+      <div class="faq-a">Yes, when the recovery rate is significantly higher. A lower fee on a higher recovery amount means you keep more dollars. AgentCollect's AI agents recover substantially more than traditional agencies because they contact every account immediately, follow up persistently, and never take a day off.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What's the ROI of switching from an agency to AI collection?</div>
+      <div class="faq-a">Most companies see 2-4x more net recovery after switching from a traditional agency to AI-powered collection. The combination of higher recovery rates, lower fees, and preserved customer relationships means you keep significantly more of every dollar owed to you.</div>
+    </div>
+  </div>
+
+  <!-- RELATED TOOLS -->
+  <div class="section">
+    <div class="section-tag">Related Tools</div>
+    <h2>More Free Tools</h2>
+    <div class="related-terms">
+      <a href="/tools/dso-calculator" class="related-term">DSO Calculator</a>
+      <a href="/glossary/days-sales-outstanding" class="related-term">What is DSO?</a>
+      <a href="/glossary/collection-agency" class="related-term">Collection Agency</a>
+      <a href="/glossary/first-party-collection" class="related-term">First-Party Collection</a>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h2>Stop paying 30% to agencies.</h2>
+    <p>Send us 200 accounts and see the difference. Success-only fees &mdash; you pay nothing unless we collect.</p>
+    <a href="/contact" class="cta-btn">Start a free pilot &rarr;</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">AgentCollect<span>.</span></div>
+    <div class="footer-links">
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 AgentCollect (YC S23). All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  // DOM refs
+  const totalPlacedInput = document.getElementById('totalPlaced');
+  const recoverySlider = document.getElementById('recoveryRate');
+  const commissionSlider = document.getElementById('commissionRate');
+  const recoveryValEl = document.getElementById('recoveryRateVal');
+  const commissionValEl = document.getElementById('commissionRateVal');
+
+  // Format number with commas
+  function fmt(n) {
+    return Math.round(n).toLocaleString('en-US');
+  }
+
+  // Parse dollar input
+  function parseDollar(str) {
+    return parseInt(str.replace(/[^0-9]/g, ''), 10) || 0;
+  }
+
+  // Format dollar input field
+  function formatInput(val) {
+    return fmt(val);
+  }
+
+  function calculate() {
+    const placed = parseDollar(totalPlacedInput.value);
+    const recoveryRate = parseInt(recoverySlider.value, 10) / 100;
+    const commissionRate = parseInt(commissionSlider.value, 10) / 100;
+
+    // Update slider labels
+    recoveryValEl.textContent = Math.round(recoveryRate * 100) + '%';
+    commissionValEl.textContent = Math.round(commissionRate * 100) + '%';
+
+    // Agency calculations
+    const agencyRecovered = placed * recoveryRate;
+    const agencyKeeps = agencyRecovered * commissionRate;
+    const agencyNet = agencyRecovered - agencyKeeps;
+    const agencyUnrecovered = placed - agencyRecovered;
+    const agencyCostPerDollar = commissionRate * 100;
+
+    // AgentCollect calculations
+    // ~3x agency rate, capped at 60%
+    const acRecoveryRate = Math.min(recoveryRate * 3, 0.60);
+    const acRecovered = placed * acRecoveryRate;
+    // Conservative: customer keeps 85% of recovered (fee ~15%, but we don't show the exact %)
+    const acKeepRate = 0.85;
+    const acNet = acRecovered * acKeepRate;
+    const acFeeAmount = acRecovered * (1 - acKeepRate);
+    const acAdditional = acRecovered - agencyRecovered;
+
+    // Savings
+    const savings = acNet - agencyNet;
+    const savingsMonthly = savings / 12;
+
+    // Update agency card
+    document.getElementById('agencyRecovered').textContent = '$' + fmt(agencyRecovered);
+    document.getElementById('agencyKeeps').textContent = '$' + fmt(agencyKeeps);
+    document.getElementById('agencyNet').textContent = '$' + fmt(agencyNet);
+    document.getElementById('agencyUnrecovered').textContent = '$' + fmt(agencyUnrecovered);
+    document.getElementById('agencyCostPerDollar').textContent = Math.round(agencyCostPerDollar) + '\u00A2';
+
+    // Update AC card
+    document.getElementById('acRecovered').textContent = '$' + fmt(acRecovered);
+    document.getElementById('acNet').textContent = '$' + fmt(acNet);
+    document.getElementById('acAdditional').textContent = '+$' + fmt(acAdditional);
+
+    // Savings
+    document.getElementById('savingsAmount').textContent = '$' + fmt(Math.max(savings, 0));
+    document.getElementById('savingsMonthly').textContent = '$' + fmt(Math.max(savingsMonthly, 0));
+
+    // Bar chart — scale to placed amount as 100%
+    const maxVal = placed || 1;
+    const agencyKeptPct = (agencyNet / maxVal) * 100;
+    const agencyFeePct = (agencyKeeps / maxVal) * 100;
+    const acKeptPct = (acNet / maxVal) * 100;
+    const acFeePct = (acFeeAmount / maxVal) * 100;
+
+    // Scale bars so the tallest reaches ~90%
+    const maxBarPct = Math.max(agencyKeptPct + agencyFeePct, acKeptPct + acFeePct) || 1;
+    const scale = 85 / maxBarPct;
+
+    document.getElementById('barAgencyKept').style.height = (agencyKeptPct * scale) + '%';
+    document.getElementById('barAgencyFee').style.height = (agencyFeePct * scale) + '%';
+    document.getElementById('barAcKept').style.height = (acKeptPct * scale) + '%';
+    document.getElementById('barAcFee').style.height = (acFeePct * scale) + '%';
+
+    document.getElementById('barAgencyLabel').textContent = '$' + fmt(agencyNet);
+    document.getElementById('barAcLabel').textContent = '$' + fmt(acNet);
+  }
+
+  // Event listeners
+  recoverySlider.addEventListener('input', calculate);
+  commissionSlider.addEventListener('input', calculate);
+
+  totalPlacedInput.addEventListener('input', function() {
+    const raw = parseDollar(this.value);
+    const pos = this.selectionStart;
+    const oldLen = this.value.length;
+    this.value = formatInput(raw);
+    const newLen = this.value.length;
+    this.setSelectionRange(pos + (newLen - oldLen), pos + (newLen - oldLen));
+    calculate();
+  });
+
+  totalPlacedInput.addEventListener('focus', function() {
+    this.select();
+  });
+
+  // Initial calculation
+  calculate();
+})();
+</script>
+
+</body>
+</html>

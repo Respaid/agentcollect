@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<title>DSO Calculator — Free Days Sales Outstanding Tool | AgentCollect</title>
+<meta name="description" content="Calculate your Days Sales Outstanding instantly. See if your DSO is healthy and how much cash you're leaving on the table.">
+<meta property="og:title" content="DSO Calculator — Free Days Sales Outstanding Tool | AgentCollect">
+<meta property="og:description" content="Calculate your Days Sales Outstanding instantly. See if your DSO is healthy and how much cash you're leaving on the table.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.agentcollect.com/tools/dso-calculator">
+<link rel="canonical" href="https://www.agentcollect.com/tools/dso-calculator">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "DSO Calculator",
+  "description": "Calculate your Days Sales Outstanding instantly. See if your DSO is healthy and how much cash you're leaving on the table.",
+  "url": "https://www.agentcollect.com/tools/dso-calculator",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "AgentCollect",
+    "url": "https://www.agentcollect.com"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What is Days Sales Outstanding (DSO)?", "acceptedAnswer": {"@type": "Answer", "text": "Days Sales Outstanding (DSO) is the average number of days it takes a company to collect payment after a sale has been made on credit. It measures how quickly a business converts its accounts receivable into cash. A lower DSO means faster collections and healthier cash flow."}},
+    {"@type": "Question", "name": "What is a good DSO?", "acceptedAnswer": {"@type": "Answer", "text": "Under 30 days is considered excellent — it means your collections are highly effective. 30-45 days is the industry average for most B2B companies. 45-60 days indicates growing cash flow pressure. Over 60 days is a warning sign that requires immediate attention."}},
+    {"@type": "Question", "name": "How do I reduce my DSO?", "acceptedAnswer": {"@type": "Answer", "text": "Key strategies include: shortening payment terms (Net 30 instead of Net 60), sending invoices immediately upon delivery, following up on overdue accounts within 7 days, offering early payment discounts (2/10 Net 30), and using automated AI collection agents that contact debtors the moment an invoice goes past due."}},
+    {"@type": "Question", "name": "How does DSO affect cash flow?", "acceptedAnswer": {"@type": "Answer", "text": "DSO directly impacts your available cash. Every extra day of DSO means more money is locked in unpaid invoices instead of your bank account. For example, a company with $10M in annual revenue and a DSO of 60 days has roughly $1.6M tied up in receivables. Reducing DSO by just 10 days would free up approximately $274K in working capital."}},
+    {"@type": "Question", "name": "What is the difference between DSO and AR turnover?", "acceptedAnswer": {"@type": "Answer", "text": "DSO and AR turnover measure the same thing from different angles. AR Turnover Ratio = Total Credit Sales / Average Accounts Receivable — it tells you how many times per year you collect your average AR balance. DSO = 365 / AR Turnover — it converts that ratio into days. A higher AR turnover (or lower DSO) indicates more efficient collections."}}
+  ]
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FAFBFF;--bg-card:#fff;--bg-dark:#0B1B3D;
+  --border:#E8ECF2;
+  --text:#0B1B3D;--text-mid:#475569;--text-muted:#94A3B8;
+  --indigo:#4F46E5;--indigo-dark:#4338CA;--indigo-light:rgba(79,70,229,.06);--indigo-glow:rgba(79,70,229,.15);
+  --green:#10B981;--green-light:rgba(16,185,129,.06);
+  --red:#EF4444;--yellow:#F59E0B;--orange:#F97316;
+  --mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+  --shadow-md:0 4px 12px rgba(0,0,0,.06);
+  --max-w:1140px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--display);letter-spacing:-.03em;line-height:1.15}
+::selection{background:rgba(79,70,229,.12)}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);height:60px}
+.nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:100%}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;margin-right:40px;font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:-.04em;color:var(--text)}
+.logo-dot{color:var(--indigo)}
+.nav-links{display:flex;gap:28px;flex:1}
+.nav-links a{color:var(--text-mid);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.nav-cta{padding:9px 20px;background:var(--indigo);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s;display:inline-flex;align-items:center}
+.nav-cta:hover{background:var(--indigo-dark)}
+
+/* HERO */
+.hero{padding:120px 32px 64px;max-width:var(--max-w);margin:0 auto}
+.breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:32px}
+.breadcrumb a{color:var(--indigo);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;background:var(--indigo-light);border:1px solid rgba(79,70,229,.15);border-radius:100px;font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--indigo);margin-bottom:20px}
+.hero h1{font-size:clamp(32px,4.5vw,48px);font-weight:900;color:var(--text);margin-bottom:20px;max-width:760px}
+.hero h1 em{font-style:normal;color:var(--indigo)}
+.hero-sub{font-size:17px;line-height:1.7;color:var(--text-mid);max-width:640px;margin-bottom:32px}
+
+/* CONTENT */
+.content{max-width:var(--max-w);margin:0 auto;padding:0 32px 80px}
+.section{margin-bottom:64px}
+.section-tag{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--indigo);margin-bottom:12px;font-weight:500}
+.section h2{font-size:28px;font-weight:800;margin-bottom:16px}
+.section p{font-size:16px;line-height:1.8;color:var(--text-mid);margin-bottom:16px;max-width:720px}
+.section p strong{color:var(--text);font-weight:600}
+
+/* CALCULATOR */
+.calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:40px;box-shadow:var(--shadow-md)}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:28px}
+.calc-field{display:flex;flex-direction:column;gap:8px}
+.calc-field.full-width{grid-column:1/-1}
+.calc-label{font-size:14px;font-weight:600;color:var(--text)}
+.calc-label span{font-weight:400;color:var(--text-muted);font-size:13px}
+.calc-input-wrap{position:relative;display:flex;align-items:center}
+.calc-input-wrap .prefix{position:absolute;left:16px;font-size:15px;font-weight:600;color:var(--text-muted);pointer-events:none}
+.calc-input{width:100%;padding:14px 16px;padding-left:32px;border:1px solid var(--border);border-radius:10px;font-family:var(--sans);font-size:15px;color:var(--text);background:var(--bg);transition:border-color .2s,box-shadow .2s;outline:none}
+.calc-input:focus{border-color:var(--indigo);box-shadow:0 0 0 3px var(--indigo-glow)}
+.calc-input.no-prefix{padding-left:16px}
+.calc-select{width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:10px;font-family:var(--sans);font-size:15px;color:var(--text);background:var(--bg);transition:border-color .2s,box-shadow .2s;outline:none;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%2394A3B8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.calc-select:focus{border-color:var(--indigo);box-shadow:0 0 0 3px var(--indigo-glow)}
+.calc-btn{width:100%;padding:16px 28px;background:var(--indigo);color:#fff;border:none;border-radius:10px;font-family:var(--sans);font-size:16px;font-weight:700;cursor:pointer;transition:background .2s,transform .1s}
+.calc-btn:hover{background:var(--indigo-dark)}
+.calc-btn:active{transform:scale(.985)}
+
+/* RESULT */
+.result-card{display:none;margin-top:32px;background:var(--bg-card);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md)}
+.result-card.visible{display:block;animation:fadeSlideIn .5s ease}
+@keyframes fadeSlideIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.result-header{display:flex;align-items:center;justify-content:center;flex-direction:column;padding:40px 32px 32px;border-bottom:1px solid var(--border);gap:12px}
+.result-dso{font-family:var(--display);font-size:72px;font-weight:900;letter-spacing:-.04em;line-height:1}
+.result-dso-label{font-size:18px;font-weight:600;color:var(--text-mid)}
+.result-badge{display:inline-flex;padding:6px 16px;border-radius:100px;font-size:13px;font-weight:700;letter-spacing:.02em}
+.result-badge.excellent{background:rgba(16,185,129,.1);color:#059669}
+.result-badge.average{background:rgba(245,158,11,.1);color:#D97706}
+.result-badge.watch{background:rgba(249,115,22,.1);color:#EA580C}
+.result-badge.at-risk{background:rgba(239,68,68,.1);color:#DC2626}
+.result-body{padding:32px}
+.result-insight{font-size:16px;line-height:1.8;color:var(--text-mid);margin-bottom:16px}
+.result-insight strong{color:var(--text)}
+.result-cash{background:var(--indigo-light);border:1px solid rgba(79,70,229,.15);border-radius:12px;padding:24px;margin-bottom:20px}
+.result-cash p{font-size:15px;color:var(--text-mid);line-height:1.7;margin:0}
+.result-cash strong{color:var(--text)}
+.result-cash .cash-amount{font-family:var(--display);font-weight:800;color:var(--indigo);font-size:20px}
+.result-agent{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:24px;position:relative;overflow:hidden}
+.result-agent::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--indigo),var(--green))}
+.result-agent p{font-size:14px;color:var(--text-mid);line-height:1.7;margin:0}
+.result-agent strong{color:var(--text)}
+
+/* FORMULA */
+.formula-box{background:var(--bg-dark);border-radius:16px;padding:32px;margin:32px 0;text-align:center}
+.formula-box .formula-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:16px}
+.formula-box .formula-text{font-family:var(--mono);font-size:clamp(16px,2.5vw,22px);color:#fff;font-weight:500;line-height:1.5}
+.formula-box .formula-text em{color:var(--indigo);font-style:normal}
+.formula-breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
+.formula-part{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center}
+.formula-part-icon{font-size:28px;margin-bottom:8px}
+.formula-part-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--indigo);margin-bottom:6px;font-weight:500}
+.formula-part-desc{font-size:13px;color:var(--text-mid);line-height:1.5}
+
+/* TABLES */
+.data-table{width:100%;border-collapse:collapse;margin:24px 0;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.data-table th{background:var(--bg);font-family:var(--display);font-size:13px;font-weight:700;color:var(--text);text-align:left;padding:14px 20px;border-bottom:1px solid var(--border)}
+.data-table td{font-size:14px;color:var(--text-mid);padding:14px 20px;border-bottom:1px solid var(--border)}
+.data-table tr:last-child td{border-bottom:none}
+.data-table .rating{font-weight:600;font-size:13px;padding:4px 10px;border-radius:100px;display:inline-block}
+.rating-excellent{background:rgba(16,185,129,.1);color:#059669}
+.rating-average{background:rgba(245,158,11,.1);color:#D97706}
+.rating-watch{background:rgba(249,115,22,.1);color:#EA580C}
+.rating-risk{background:rgba(239,68,68,.1);color:#DC2626}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--border);padding:24px 0}
+.faq-q{font-family:var(--display);font-size:17px;font-weight:700;color:var(--text);margin-bottom:10px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-size:20px;color:var(--text-muted);font-weight:400;transition:transform .2s}
+.faq-item.open .faq-q::after{content:'\2212'}
+.faq-a{font-size:15px;color:var(--text-mid);line-height:1.7;max-width:720px;max-height:0;overflow:hidden;transition:max-height .3s ease,opacity .3s ease;opacity:0}
+.faq-item.open .faq-a{max-height:300px;opacity:1}
+
+/* RELATED TOOLS */
+.tool-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;text-decoration:none;display:block;transition:border-color .2s,box-shadow .2s}
+.tool-card:hover{border-color:var(--indigo);box-shadow:0 4px 16px rgba(79,70,229,.08)}
+.tool-card-tag{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--indigo);margin-bottom:8px;font-weight:500}
+.tool-card h3{font-size:18px;font-weight:800;color:var(--text);margin-bottom:8px}
+.tool-card p{font-size:14px;color:var(--text-mid);line-height:1.6;margin:0}
+
+/* CTA */
+.cta-box{background:var(--bg-dark);border-radius:20px;padding:64px 40px;text-align:center;margin:64px 0;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:-40%;left:-40%;width:180%;height:180%;background:radial-gradient(ellipse at 50% 80%,rgba(79,70,229,.12) 0%,transparent 50%);pointer-events:none}
+.cta-box h2{font-size:32px;font-weight:900;color:#fff;margin-bottom:12px;position:relative}
+.cta-box p{font-size:16px;color:var(--text-muted);margin-bottom:28px;position:relative}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:10px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s;position:relative}
+.cta-btn:hover{background:var(--indigo-dark)}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--border);padding:40px 32px;text-align:center}
+.footer-inner{max-width:var(--max-w);margin:0 auto}
+.footer-logo{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:8px}
+.footer-logo span{color:var(--indigo)}
+.footer-links{display:flex;gap:24px;justify-content:center;margin-bottom:12px}
+.footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{font-size:12px;color:var(--text-muted)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero{padding:100px 20px 48px}
+  .content{padding:0 20px 60px}
+  .calc-grid{grid-template-columns:1fr}
+  .calc-card{padding:24px}
+  .result-header{padding:28px 20px 24px}
+  .result-dso{font-size:56px}
+  .result-body{padding:20px}
+  .formula-breakdown{grid-template-columns:1fr}
+  .data-table{font-size:13px}
+  .data-table th,.data-table td{padding:10px 14px}
+  .nav-links{display:none}
+  .cta-box{padding:48px 24px}
+  .formula-box .formula-text{font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">AgentCollect<span class="logo-dot">.</span></a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/tools" class="active">Tools</a>
+      <a href="/glossary">Glossary</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <a href="/contact" class="nav-cta">Get a demo</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="breadcrumb">
+    <a href="/">Home</a> / <a href="/tools">Tools</a> / DSO Calculator
+  </div>
+  <div class="hero-tag">Free Tool</div>
+  <h1><em>DSO</em> Calculator</h1>
+  <p class="hero-sub">Calculate your Days Sales Outstanding and see how much cash you're leaving on the table.</p>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- CALCULATOR -->
+  <div class="section">
+    <div class="calc-card">
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label class="calc-label" for="ar-input">Total Accounts Receivable <span>($)</span></label>
+          <div class="calc-input-wrap">
+            <span class="prefix">$</span>
+            <input type="text" id="ar-input" class="calc-input" placeholder="500,000" inputmode="decimal" autocomplete="off">
+          </div>
+        </div>
+        <div class="calc-field">
+          <label class="calc-label" for="sales-input">Total Credit Sales <span>(period)</span></label>
+          <div class="calc-input-wrap">
+            <span class="prefix">$</span>
+            <input type="text" id="sales-input" class="calc-input" placeholder="2,000,000" inputmode="decimal" autocomplete="off">
+          </div>
+        </div>
+        <div class="calc-field full-width">
+          <label class="calc-label" for="days-select">Number of Days in Period</label>
+          <select id="days-select" class="calc-select">
+            <option value="30">30 days (Monthly)</option>
+            <option value="60">60 days</option>
+            <option value="90" selected>90 days (Quarterly)</option>
+            <option value="180">180 days (Semi-annual)</option>
+            <option value="365">365 days (Annual)</option>
+          </select>
+        </div>
+      </div>
+      <button class="calc-btn" id="calc-btn" onclick="calculateDSO()">Calculate DSO</button>
+    </div>
+
+    <!-- RESULT CARD -->
+    <div class="result-card" id="result-card">
+      <div class="result-header" id="result-header">
+        <div class="result-dso" id="result-dso">0</div>
+        <div class="result-dso-label">days</div>
+        <div class="result-badge" id="result-badge"></div>
+      </div>
+      <div class="result-body">
+        <div class="result-cash" id="result-cash"></div>
+        <div class="result-agent" id="result-agent">
+          <p><strong>AgentCollect customers typically reduce DSO by 30-40% within 60 days.</strong> AI agents contact overdue accounts automatically the moment an invoice goes past due — the single biggest driver of DSO improvement.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMULA SECTION -->
+  <div class="section">
+    <div class="section-tag">Formula</div>
+    <h2>How DSO Is Calculated</h2>
+    <div class="formula-box">
+      <div class="formula-label">DSO Formula</div>
+      <div class="formula-text"><em>DSO</em> = (Accounts Receivable &divide; Total Credit Sales) &times; Number of Days</div>
+    </div>
+    <div class="formula-breakdown">
+      <div class="formula-part">
+        <div class="formula-part-icon">&#128176;</div>
+        <div class="formula-part-label">Accounts Receivable</div>
+        <div class="formula-part-desc">Total amount owed to you by customers at the end of the period</div>
+      </div>
+      <div class="formula-part">
+        <div class="formula-part-icon">&#128200;</div>
+        <div class="formula-part-label">Total Credit Sales</div>
+        <div class="formula-part-desc">Total revenue from sales made on credit during the period</div>
+      </div>
+      <div class="formula-part">
+        <div class="formula-part-icon">&#128197;</div>
+        <div class="formula-part-label">Number of Days</div>
+        <div class="formula-part-desc">Days in the measurement period (30, 90, or 365)</div>
+      </div>
+    </div>
+    <p>Use the same time period for both your AR balance and credit sales. Most CFOs calculate DSO quarterly (90 days) for the clearest picture of trends.</p>
+  </div>
+
+  <!-- BENCHMARKS TABLE -->
+  <div class="section">
+    <div class="section-tag">Benchmarks</div>
+    <h2>DSO Rating Scale</h2>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>DSO Range</th>
+          <th>Rating</th>
+          <th>What It Means</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>&lt; 30 days</strong></td>
+          <td><span class="rating rating-excellent">Excellent</span></td>
+          <td>Strong cash position. Collections are working effectively.</td>
+        </tr>
+        <tr>
+          <td><strong>30 &ndash; 45 days</strong></td>
+          <td><span class="rating rating-average">Average</span></td>
+          <td>Industry norm for most B2B companies. Monitor for upward trends.</td>
+        </tr>
+        <tr>
+          <td><strong>45 &ndash; 60 days</strong></td>
+          <td><span class="rating rating-watch">Watch</span></td>
+          <td>Cash flow pressure building. Time to review collection processes.</td>
+        </tr>
+        <tr>
+          <td><strong>&gt; 60 days</strong></td>
+          <td><span class="rating rating-risk">At Risk</span></td>
+          <td>Immediate action needed. You're financing your customers' operations.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- INDUSTRY BENCHMARKS -->
+  <div class="section">
+    <div class="section-tag">By Industry</div>
+    <h2>Typical DSO by Industry</h2>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Industry</th>
+          <th>Typical DSO</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>SaaS</td><td>35 &ndash; 45 days</td></tr>
+        <tr><td>Manufacturing</td><td>50 &ndash; 65 days</td></tr>
+        <tr><td>Professional Services</td><td>40 &ndash; 55 days</td></tr>
+        <tr><td>Construction</td><td>60 &ndash; 80 days</td></tr>
+        <tr><td>Healthcare</td><td>45 &ndash; 60 days</td></tr>
+        <tr><td>Equipment Leasing</td><td>50 &ndash; 70 days</td></tr>
+      </tbody>
+    </table>
+    <p>Industry benchmarks are useful as a reference but your best comparison is your own historical trend. A rising DSO over consecutive quarters is always a warning sign, regardless of industry averages.</p>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section">
+    <div class="section-tag">FAQ</div>
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item open">
+      <div class="faq-q" onclick="toggleFaq(this)">What is Days Sales Outstanding (DSO)?</div>
+      <div class="faq-a">Days Sales Outstanding (DSO) is the average number of days it takes a company to collect payment after a sale has been made on credit. It measures how quickly a business converts its accounts receivable into cash. A lower DSO means faster collections and healthier cash flow.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is a good DSO?</div>
+      <div class="faq-a">Under 30 days is considered excellent — it means your collections are highly effective. 30-45 days is the industry average for most B2B companies. 45-60 days indicates growing cash flow pressure. Over 60 days is a warning sign that requires immediate attention.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How do I reduce my DSO?</div>
+      <div class="faq-a">Key strategies include: shortening payment terms (Net 30 instead of Net 60), sending invoices immediately upon delivery, following up on overdue accounts within 7 days, offering early payment discounts (2/10 Net 30), and using automated AI collection agents that contact debtors the moment an invoice goes past due.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How does DSO affect cash flow?</div>
+      <div class="faq-a">DSO directly impacts your available cash. Every extra day of DSO means more money is locked in unpaid invoices instead of your bank account. For example, a company with $10M in annual revenue and a DSO of 60 days has roughly $1.6M tied up in receivables. Reducing DSO by just 10 days would free up approximately $274K in working capital.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is the difference between DSO and AR turnover?</div>
+      <div class="faq-a">DSO and AR turnover measure the same thing from different angles. AR Turnover Ratio = Total Credit Sales / Average Accounts Receivable — it tells you how many times per year you collect your average AR balance. DSO = 365 / AR Turnover — it converts that ratio into days. A higher AR turnover (or lower DSO) indicates more efficient collections.</div>
+    </div>
+  </div>
+
+  <!-- RELATED TOOLS -->
+  <div class="section">
+    <div class="section-tag">Related Tools</div>
+    <h2>More Free AR Tools</h2>
+    <a href="/tools/agency-cost-calculator" class="tool-card">
+      <div class="tool-card-tag">Calculator</div>
+      <h3>Agency Cost Calculator</h3>
+      <p>Compare the cost of traditional collection agencies vs. AI-powered collections. See how much you could save.</p>
+    </a>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h2>Ready to reduce your DSO?</h2>
+    <p>Upload a spreadsheet and see first results in 20 days. Success-only fees — you pay nothing unless we collect.</p>
+    <a href="/contact" class="cta-btn">Start a free pilot &rarr;</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">AgentCollect<span>.</span></div>
+    <div class="footer-links">
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 AgentCollect (YC S23). All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+// Format number as currency
+function formatCurrency(n) {
+  return n.toLocaleString('en-US', { maximumFractionDigits: 0 });
+}
+
+// Parse currency string to number
+function parseCurrency(s) {
+  return parseFloat(s.replace(/[^0-9.]/g, '')) || 0;
+}
+
+// Format input on blur
+function formatInputOnBlur(el) {
+  var val = parseCurrency(el.value);
+  if (val > 0) {
+    el.value = formatCurrency(val);
+  }
+}
+
+// Attach blur formatters
+document.getElementById('ar-input').addEventListener('blur', function() { formatInputOnBlur(this); });
+document.getElementById('sales-input').addEventListener('blur', function() { formatInputOnBlur(this); });
+
+// Allow Enter key to trigger calculate
+document.querySelectorAll('.calc-input, .calc-select').forEach(function(el) {
+  el.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') { calculateDSO(); }
+  });
+});
+
+// Animate counter
+function animateCounter(el, target, duration, suffix) {
+  var start = 0;
+  var startTime = null;
+  suffix = suffix || '';
+
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    var progress = Math.min((timestamp - startTime) / duration, 1);
+    // Ease out quad
+    var eased = 1 - (1 - progress) * (1 - progress);
+    var current = Math.round(eased * target * 10) / 10;
+    el.textContent = (target < 10 ? current.toFixed(1) : Math.round(current)) + suffix;
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    } else {
+      el.textContent = (target % 1 === 0 ? Math.round(target) : target.toFixed(1)) + suffix;
+    }
+  }
+  requestAnimationFrame(step);
+}
+
+function calculateDSO() {
+  var ar = parseCurrency(document.getElementById('ar-input').value);
+  var sales = parseCurrency(document.getElementById('sales-input').value);
+  var days = parseInt(document.getElementById('days-select').value);
+
+  if (!ar || !sales) {
+    // Shake button
+    var btn = document.getElementById('calc-btn');
+    btn.style.animation = 'none';
+    btn.offsetHeight; // trigger reflow
+    btn.style.animation = 'shake 0.4s ease';
+    return;
+  }
+
+  var dso = (ar / sales) * days;
+  var dsoRounded = Math.round(dso * 10) / 10;
+
+  // Determine rating
+  var rating, ratingClass, color;
+  if (dso < 30) {
+    rating = 'Excellent';
+    ratingClass = 'excellent';
+    color = '#10B981';
+  } else if (dso < 45) {
+    rating = 'Average';
+    ratingClass = 'average';
+    color = '#F59E0B';
+  } else if (dso < 60) {
+    rating = 'Watch';
+    ratingClass = 'watch';
+    color = '#F97316';
+  } else {
+    rating = 'At Risk';
+    ratingClass = 'at-risk';
+    color = '#EF4444';
+  }
+
+  // Cash impact: freed_cash = (AR / DSO) * 10 (days_reduced)
+  var dailyAR = ar / dso;
+  var freedCash = dailyAR * 10;
+
+  // Estimated DSO with AgentCollect (35% reduction)
+  var estimatedDSO = Math.round(dso * 0.65);
+
+  // Show result card
+  var card = document.getElementById('result-card');
+  card.classList.add('visible');
+
+  // Set DSO color
+  var dsoEl = document.getElementById('result-dso');
+  dsoEl.style.color = color;
+  animateCounter(dsoEl, dsoRounded, 800);
+
+  // Set badge
+  var badge = document.getElementById('result-badge');
+  badge.className = 'result-badge ' + ratingClass;
+  badge.textContent = rating;
+
+  // Cash impact
+  document.getElementById('result-cash').innerHTML =
+    '<p>You have <span class="cash-amount">$' + formatCurrency(Math.round(ar)) + '</span> tied up in receivables.</p>' +
+    '<p style="margin-top:8px">If you reduced DSO by just <strong>10 days</strong>, you\'d free up <span class="cash-amount">$' + formatCurrency(Math.round(freedCash)) + '</span> in cash.</p>';
+
+  // Scroll to result
+  setTimeout(function() {
+    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 100);
+}
+
+// FAQ toggle
+function toggleFaq(el) {
+  var item = el.parentElement;
+  item.classList.toggle('open');
+}
+
+// Shake animation (injected)
+var style = document.createElement('style');
+style.textContent = '@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}50%{transform:translateX(6px)}75%{transform:translateX(-4px)}}';
+document.head.appendChild(style);
+</script>
+
+</body>
+</html>
