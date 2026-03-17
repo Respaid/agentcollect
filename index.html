@@ -84,8 +84,14 @@
         .nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px}
 
         /* HERO */
-        .hero{padding:72px 32px 16px;text-align:center;position:relative;background:#fff;overflow:hidden}
-        .hero h1{font-size:clamp(34px,3.5vw,52px);font-weight:900;letter-spacing:-.04em;line-height:1.05;margin-bottom:12px;max-width:700px;margin-left:auto;margin-right:auto;color:var(--text)}
+        .hero{padding:112px 32px 48px;text-align:center;position:relative;background:#fff;overflow:hidden}
+        .hero h1{font-size:clamp(52px,6.5vw,88px);font-weight:900;letter-spacing:-.05em;line-height:1.0;margin-bottom:16px;max-width:900px;margin-left:auto;margin-right:auto;color:var(--text)}
+
+        /* HERO TRUST */
+        .hero-trust{display:flex;align-items:center;justify-content:center;gap:28px;margin:28px auto 28px;flex-wrap:wrap}
+        .hero-trust-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);white-space:nowrap;margin-right:4px}
+        .hero-trust img{height:17px;opacity:.25;filter:grayscale(100%);object-fit:contain;max-width:90px;transition:opacity .3s}
+        .hero-trust img:hover{opacity:.5}
 
         /* GRADIENT MESH */
         .hero::after{content:'';position:absolute;inset:0;pointer-events:none;
@@ -138,11 +144,11 @@
         .typing-dot:nth-child(3){animation-delay:.4s}
 
         /* Company card — polished */
-        .dash-company-logo{height:32px;opacity:.5;margin-bottom:12px;transition:opacity .3s}
-        .dash-card:hover .dash-company-logo{opacity:.7}
-        .dash-company-name{font-family:var(--display);font-size:20px;font-weight:800;color:var(--text);margin-bottom:4px;letter-spacing:-.02em}
-        .dash-company-industry{font-size:14px;color:var(--text-mid);line-height:1.4}
-        .dash-company-size{font-size:13px;color:var(--text-muted);margin-top:6px}
+        .dash-company-logo{height:36px;opacity:.75;margin-bottom:14px;transition:opacity .3s;object-fit:contain;max-width:140px}
+        .dash-card:hover .dash-company-logo{opacity:.9}
+        .dash-company-name{font-family:var(--display);font-size:26px;font-weight:900;color:var(--text);margin-bottom:6px;letter-spacing:-.04em;line-height:1.1}
+        .dash-company-industry{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-dim);line-height:1.4;margin-bottom:6px}
+        .dash-company-size{font-size:12px;color:var(--text-muted);margin-top:0;font-family:var(--mono)}
 
         /* Disputes card — polished */
         .dash-dispute{display:flex;align-items:flex-start;gap:10px;padding:6px 0;font-size:14px;color:var(--text-mid);line-height:1.5;
@@ -432,8 +438,17 @@
 
 <!-- 1. HERO — Clean: title + search + explanation -->
 <section class="hero" id="hero">
-    <h1 style="white-space:nowrap">The end of manual collection.</h1>
-    <p style="font-size:17px;color:var(--text-muted);margin-bottom:24px;letter-spacing:-.01em">Upload a spreadsheet. AI does the rest. First results in hours.</p>
+    <h1>The end of manual collection.</h1>
+    <p style="font-size:18px;color:var(--text-muted);margin-bottom:0;letter-spacing:-.01em;max-width:480px;margin-left:auto;margin-right:auto">Upload a spreadsheet. AI does the rest. First results in hours.</p>
+
+    <div class="hero-trust">
+        <span class="hero-trust-label">Trusted by</span>
+        <img src="https://cdn.brandfetch.io/microsoft.com/w/512/h/80/logo" alt="Microsoft">
+        <img src="https://cdn.brandfetch.io/dell.com/w/512/h/80/logo" alt="Dell">
+        <img src="https://cdn.brandfetch.io/plaid.com/w/512/h/80/logo" alt="Plaid">
+        <img src="https://cdn.brandfetch.io/checkr.com/w/512/h/80/logo" alt="Checkr">
+        <img src="https://cdn.brandfetch.io/doordash.com/w/512/h/80/logo" alt="DoorDash">
+    </div>
 
     <div class="hero-input-wrap" id="hero-input">
         <div class="input-box" style="max-width:520px;margin:0 auto">
