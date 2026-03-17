@@ -1083,25 +1083,6 @@ function fillDashboardAnimated(domain) {
     // Update carousel dots
     const idx = CYCLE_COMPANIES.indexOf(domain);
     if (idx >= 0) updateCarouselDots(idx);
-
-    // Keep old render functions for when user enters their own domain (full analysis)
-    void 0; // placeholder to keep code structure
-        document.getElementById('dash-dm').classList.add('loaded');
-    }, 1500);
-
-    // Card 4: Plan — 2s
-    const planEl = document.getElementById('dash-plan-content');
-    planEl.style.opacity = '0';
-    setTimeout(() => {
-        planEl.innerHTML = renderPlanCard(company.plan);
-        planEl.style.opacity = '1';
-        document.getElementById('dash-plan').classList.add('loaded');
-        // Animate confidence bar
-        setTimeout(() => {
-            const confBar = document.getElementById('conf-bar');
-            if (confBar) confBar.style.width = '94%';
-        }, 100);
-    }, 2000);
 }
 
 function startCycling() {
