@@ -382,11 +382,15 @@
     </div>
 
     <div class="a-actions" id="a-actions">
-        <a href="https://cal.com/agentcollect/demo" target="_blank" class="path-cta path-cta-primary" style="padding:14px 32px;font-size:15px">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Talk to us about this
+        <div style="text-align:center;margin-bottom:16px;max-width:440px;margin-left:auto;margin-right:auto">
+            <div style="font-family:var(--display);font-size:18px;font-weight:800;color:var(--text);margin-bottom:6px">Your AI collection agent is ready to build.</div>
+            <div style="font-size:13px;color:var(--text-mid);line-height:1.5">Book a meeting. We'll show up with a working agent branded for your company — zero commitment, just a live demo with your data.</div>
+        </div>
+        <a href="https://cal.com/agentcollect/demo" target="_blank" class="path-cta path-cta-primary" style="padding:16px 36px;font-size:15px;gap:10px">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            Book a demo — we'll bring your agent
         </a>
-        <button class="path-cta path-cta-outline" onclick="resetAndScroll()">
+        <button class="path-cta path-cta-outline" onclick="resetAndScroll()" style="padding:14px 28px">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
             Try another company
         </button>
@@ -608,6 +612,8 @@
 </footer>
 
 <script>
+const API = 'https://backend.widr.app/api/v1/demo';
+
 // ═══ PRE-LOADED COMPANY DATA ═══
 const COMPANIES = {
     'konicaminolta.com': {
@@ -615,7 +621,7 @@ const COMPANIES = {
         products: 'bizhub C series multifunction printers, managed print services, IT solutions',
         size: '39,000+ employees, $8.2B revenue',
         disputes: ['Early lease termination fees on bizhub copier contracts', 'Maintenance billing disputes on service agreements', 'Auto-renewal disagreements on managed print contracts'],
-        dm: {name: 'Head of Credit & Collections', title: 'Director of Credit', photo: null},
+        dm: {name: 'Head of Credit & Collections', title: 'Director of Credit', photo: null, phone_masked: '+1 (***) ***-**18', email_masked: 'c***s@konicaminolta.com'},
         plan: {d1: 'AI email from your brand referencing specific lease agreement', d3: 'AI phone call to AP contact with invoice details', d7: 'Attorney demand letter with bar number and legal notice', d14: 'Payment portal live — debtor pays you directly'}
     },
     'pitneyBowes.com': {
@@ -655,7 +661,7 @@ const COMPANIES = {
         products: 'Azure, Microsoft 365, Dynamics, Surface, Xbox, enterprise licensing',
         size: '220,000+ employees, $245B revenue',
         disputes: ['Enterprise license true-up billing disputes', 'Azure consumption overages vs. committed spend', 'Multi-year EA renewal disagreements'],
-        dm: {name: 'Neil Doyle', title: 'OTC Transformation Lead', photo: 'https://respaid.com/images/neil-doyle.png'},
+        dm: {name: 'Neil Doyle', title: 'OTC Transformation Lead', photo: 'https://respaid.com/images/neil-doyle.png', phone_masked: '+1 (425) ***-**37', email_masked: 'n***e@microsoft.com', linkedin_url: 'https://linkedin.com/in/neildoyle'},
         plan: {d1: 'AI email under your brand to AP department', d3: 'AI call to procurement with PO reference', d7: 'Escalation to VP Finance via attorney notice', d14: 'Direct payment through branded portal'}
     },
     'dell.com': {
@@ -663,7 +669,7 @@ const COMPANIES = {
         products: 'Servers, storage, laptops, VMware, IT infrastructure',
         size: '130,000+ employees, $102B revenue',
         disputes: ['Hardware lease return condition disputes', 'Service contract auto-renewal disagreements', 'Volume licensing true-up disputes across business units'],
-        dm: {name: 'VP Credit & Collections', title: 'VP Credit Operations', photo: null},
+        dm: {name: 'VP Credit & Collections', title: 'VP Credit Operations', photo: null, phone_masked: '+1 (512) ***-**44', email_masked: 'c***t@dell.com'},
         plan: {d1: 'AI email per business unit with specific PO references', d3: 'AI call to each division independently', d7: 'Attorney letter referencing master service agreement', d14: 'Centralized payment portal — all units, one view'}
     },
     'checkr.com': {
@@ -775,102 +781,143 @@ async function startAnalysis() {
     await sleep(200);
     console_el.scrollIntoView({behavior:'smooth', block:'start'});
 
-    if (!company) {
-        // Unknown company — show email capture
-        showStep('business'); setIcon('business', false);
-        document.getElementById('sub-business').textContent = 'Scanning ' + domain + '...';
-        await sleep(2000);
-        document.getElementById('card-business').classList.add('loaded');
-        await addRow('business-rows', 'Domain', domain, 'found');
-        await sleep(500);
-        document.getElementById('card-business').innerHTML += `
-            <div class="email-capture" style="margin-top:16px">
-                <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px">We need 24 hours to analyze this business.</div>
-                <div style="font-size:13px;color:var(--text-mid)">Drop your email and we'll send you a full report.</div>
-                <div class="email-capture-input">
-                    <input type="email" placeholder="you@company.com" id="capture-email">
-                    <button onclick="captureEmail()">Send report</button>
-                </div>
-                <div id="capture-msg" style="font-size:12px;color:var(--green);margin-top:8px;display:none"></div>
-            </div>`;
-        setIcon('business', true);
-        document.getElementById('title-business').textContent = 'Analysis queued';
-        document.getElementById('sub-business').textContent = domain + ' — report in 24h';
-        doneStep('business');
-        btn.disabled = false;
-        return;
-    }
+    // For unknown companies, call the real API
+    let data = company ? {
+        company: { name: company.name, domain, industry: company.industry, products: company.products, size: company.size, logo_url: 'https://cdn.brandfetch.io/'+domain+'/w/512/h/80/logo' },
+        disputes: company.disputes,
+        decision_maker: { name: company.dm.name, title: company.dm.title, photo_url: company.dm.photo, phone_masked: company.dm.phone_masked||null, email_masked: company.dm.email_masked||null, linkedin_url: company.dm.linkedin_url||null },
+        plan: { day_1: company.plan.d1, day_3: company.plan.d3, day_7: company.plan.d7, day_14: company.plan.d14 }
+    } : null;
+
+    let apiPromise = company ? Promise.resolve() : fetch(API+'/analyze-company', {
+        method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({domain})
+    }).then(r => r.json()).then(r => { if(r.success && r.data) data = r.data; }).catch(e => console.warn('API:', e));
 
     // ═══ STEP 1: BUSINESS ═══
     showStep('business'); setIcon('business', false);
     document.getElementById('sub-business').textContent = 'Scanning ' + domain + '...';
-    await sleep(1200);
+
+    // Show logo immediately
+    const logoUrl = 'https://cdn.brandfetch.io/'+domain+'/w/512/h/80/logo';
+    const logoRow = document.createElement('div');
+    logoRow.style.cssText = 'text-align:center;padding:16px 0 8px';
+    logoRow.innerHTML = `<img src="${logoUrl}" alt="${domain}" style="height:32px;opacity:.6;filter:grayscale(30%)" onerror="this.style.display='none'">`;
+    document.getElementById('card-business').appendChild(logoRow);
+
+    await sleep(800);
+    if (!company) await apiPromise; // wait for API if not pre-loaded
+    await sleep(400);
+
+    if (!data) {
+        // API also failed — show basic info with what we have
+        data = {
+            company: { name: domain.replace(/\.(com|io|co|org|net)$/,'').replace(/^./,c=>c.toUpperCase()), domain, industry: 'Analyzing...', products: 'Scanning website...', size: 'Researching...', logo_url: logoUrl },
+            disputes: ['Invoice payment delays beyond agreed terms', 'Service delivery or quality disagreements', 'Contract renewal or pricing disputes'],
+            decision_maker: { name: 'Finance Team', title: 'Accounts Receivable', photo_url: null, phone_masked: null, email_masked: null },
+            plan: { day_1: 'AI email referencing specific outstanding invoice', day_3: 'AI phone call to AP department', day_7: 'Attorney demand letter with legal notice', day_14: 'Payment portal live — debtor pays you directly' }
+        };
+    }
+
     document.getElementById('card-business').classList.add('loaded');
-    await addRow('business-rows', 'Company', company.name, 'found');
-    await addRow('business-rows', 'Industry', company.industry);
-    await addRow('business-rows', 'Products', company.products);
-    await addRow('business-rows', 'Size', company.size);
+    await addRow('business-rows', 'Company', data.company.name, 'found');
+    await addRow('business-rows', 'Industry', data.company.industry);
+    if (data.company.products) await addRow('business-rows', 'Products', data.company.products);
+    if (data.company.size) await addRow('business-rows', 'Size', data.company.size);
     setIcon('business', true);
-    document.getElementById('title-business').textContent = company.name;
-    document.getElementById('sub-business').textContent = company.industry;
+    document.getElementById('title-business').textContent = data.company.name;
+    document.getElementById('sub-business').textContent = data.company.industry;
     doneStep('business');
     await sleep(400);
 
     // ═══ STEP 2: DISPUTES ═══
     showStep('disputes'); setIcon('disputes', false);
-    document.getElementById('sub-disputes').textContent = 'Analyzing ' + company.industry + '...';
+    document.getElementById('sub-disputes').textContent = 'Analyzing ' + (data.company.industry||domain) + '...';
     await sleep(1000);
     document.getElementById('card-disputes').classList.add('loaded');
-    for (let i = 0; i < company.disputes.length; i++) {
-        await addRow('disputes-rows', 'Dispute ' + (i+1), company.disputes[i]);
+
+    // Visual dispute cards instead of plain rows
+    const disputesContainer = document.getElementById('disputes-rows');
+    for (let i = 0; i < data.disputes.length; i++) {
+        const d = document.createElement('div');
+        d.className = 'a-row';
+        d.innerHTML = `<span class="a-row-key" style="min-width:auto;display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4"/></svg><span style="color:var(--amber);font-weight:700;font-size:11px">#${i+1}</span></span><span class="a-row-val" style="text-align:left;margin-left:8px">${data.disputes[i]}</span>`;
+        disputesContainer.appendChild(d);
+        await sleep(50); d.classList.add('show'); await sleep(250);
     }
     setIcon('disputes', true);
-    document.getElementById('title-disputes').textContent = company.disputes.length + ' common dispute patterns';
-    document.getElementById('sub-disputes').textContent = 'Based on ' + company.industry + ' data';
+    document.getElementById('title-disputes').textContent = data.disputes.length + ' common dispute patterns';
+    document.getElementById('sub-disputes').textContent = 'Specific to ' + (data.company.industry||data.company.name);
     doneStep('disputes');
     await sleep(400);
 
     // ═══ STEP 3: DECISION MAKER ═══
     showStep('decision'); setIcon('decision', false);
-    document.getElementById('sub-decision').textContent = 'Searching ' + company.name + '...';
+    document.getElementById('sub-decision').textContent = 'Searching ' + data.company.name + '...';
     await sleep(1200);
     document.getElementById('card-decision').classList.add('loaded');
 
-    const dmHtml = `<div class="person-card">
-        <div class="person-avatar">${company.dm.photo
-            ? `<img src="${company.dm.photo}" alt="${company.dm.name}">`
-            : `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="1.5" opacity=".4"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`
-        }</div>
+    const dm = data.decision_maker;
+    const avatarSrc = dm.photo_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(dm.name)}&size=200&background=4F46E5&color=fff&bold=true`;
+    const dmHtml = `<div class="person-card" style="animation:pop-in .3s ease">
+        <div class="person-avatar"><img src="${avatarSrc}" alt="${dm.name}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(dm.name)}&size=200&background=4F46E5&color=fff&bold=true'"></div>
         <div class="person-info">
-            <div class="person-name">${company.dm.name}</div>
-            <div class="person-title">${company.dm.title} at ${company.name}</div>
+            <div class="person-name">${dm.name}</div>
+            <div class="person-title">${dm.title}${data.company.name?' at '+data.company.name:''}</div>
         </div>
         <div class="person-badge">Decision Maker</div>
     </div>`;
     document.getElementById('decision-rows').innerHTML = dmHtml;
-    await sleep(200);
-    await addRow('decision-rows', 'Role', 'Manages AR/collections and vendor payments');
-    await addRow('decision-rows', 'Outreach', 'This is who we contact — or who deploys us', 'found');
+    await sleep(300);
+
+    // Show masked contact info with reveal effect
+    if (dm.phone_masked) {
+        await addRow('decision-rows', '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2" style="vertical-align:middle"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg> Phone', '<span style="font-family:var(--mono);letter-spacing:.05em">'+dm.phone_masked+'</span>', 'found');
+    }
+    if (dm.email_masked) {
+        await addRow('decision-rows', '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2" style="vertical-align:middle"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg> Email', '<span style="font-family:var(--mono);letter-spacing:.05em">'+dm.email_masked+'</span>', 'found');
+    }
+    if (dm.linkedin_url) {
+        await addRow('decision-rows', '<svg width="12" height="12" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286z"/></svg> LinkedIn', 'Profile found', 'found');
+    }
 
     setIcon('decision', true);
-    document.getElementById('title-decision').textContent = company.dm.name;
-    document.getElementById('sub-decision').textContent = company.dm.title + ' at ' + company.name;
+    document.getElementById('title-decision').textContent = dm.name;
+    document.getElementById('sub-decision').textContent = dm.title + (data.company.name?' at '+data.company.name:'');
     doneStep('decision');
     await sleep(400);
 
     // ═══ STEP 4: COLLECTION PLAN ═══
     showStep('plan'); setIcon('plan', false);
-    document.getElementById('sub-plan').textContent = 'Designing approach for ' + company.name + '...';
+    document.getElementById('sub-plan').textContent = 'Building custom AI collection strategy...';
     await sleep(800);
     document.getElementById('card-plan').classList.add('loaded');
-    await addRow('plan-rows', 'Day 1', company.plan.d1);
-    await addRow('plan-rows', 'Day 3', company.plan.d3);
-    await addRow('plan-rows', 'Day 7', company.plan.d7, 'found');
-    await addRow('plan-rows', 'Day 14', company.plan.d14, 'green');
+
+    // Visual timeline
+    const planContainer = document.getElementById('plan-rows');
+    const steps = [
+        {day: '1', label: 'First contact', text: data.plan.day_1, color: 'var(--indigo)', icon: '✉'},
+        {day: '3', label: 'Follow-up', text: data.plan.day_3, color: 'var(--indigo)', icon: '📞'},
+        {day: '7', label: 'Escalation', text: data.plan.day_7, color: 'var(--amber)', icon: '⚖'},
+        {day: '14', label: 'Resolution', text: data.plan.day_14, color: 'var(--green)', icon: '✓'}
+    ];
+    for (const s of steps) {
+        const row = document.createElement('div');
+        row.className = 'a-row';
+        row.innerHTML = `<span class="a-row-key" style="min-width:auto;display:flex;align-items:center;gap:6px"><span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:${s.color};color:#fff;font-size:11px;font-weight:800;font-family:var(--display)">D${s.day}</span></span><span class="a-row-val" style="text-align:left;margin-left:8px;line-height:1.5"><strong style="color:var(--text);font-size:12px">${s.label}</strong><br><span style="color:var(--text-mid);font-size:12px">${s.text}</span></span>`;
+        planContainer.appendChild(row);
+        await sleep(50); row.classList.add('show'); await sleep(300);
+    }
+
+    // Confidence bar
+    const confDiv = document.createElement('div');
+    confDiv.style.cssText = 'display:flex;align-items:center;gap:10px;margin-top:14px;padding-top:14px;border-top:1px solid var(--border);opacity:0;transition:opacity .4s';
+    confDiv.innerHTML = `<span style="font-size:12px;color:var(--text-muted)">Recovery confidence</span><div style="flex:1;height:4px;background:rgba(0,0,0,.04);border-radius:2px;overflow:hidden"><div id="conf-bar" style="height:100%;background:linear-gradient(90deg,var(--indigo),var(--green));border-radius:2px;transition:width 1.2s ease;width:0"></div></div><span style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--green)">94%</span>`;
+    planContainer.appendChild(confDiv);
+    await sleep(80); confDiv.style.opacity='1'; await sleep(80); document.getElementById('conf-bar').style.width='94%';
 
     setIcon('plan', true);
-    document.getElementById('title-plan').textContent = 'Collection plan ready';
-    document.getElementById('sub-plan').textContent = '14-day resolution timeline';
+    document.getElementById('title-plan').textContent = 'Custom AI collection plan ready';
+    document.getElementById('sub-plan').textContent = '14-day resolution timeline — 94% confidence';
     doneStep('plan');
     await sleep(400);
 
