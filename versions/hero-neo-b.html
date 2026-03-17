@@ -387,18 +387,40 @@
 </nav>
 
 <!-- ═══════════════ 1. HERO — GRADIENT MESH ═══════════════ -->
+<style>
+    .hero-input-big .input-box{padding:6px;border-radius:18px;border:2px solid var(--border);box-shadow:0 4px 20px rgba(79,70,229,.08)}
+    .hero-input-big .input-box:focus-within{border-color:var(--indigo);box-shadow:0 4px 24px rgba(79,70,229,.15)}
+    .hero-input-big .input-field{padding:18px 22px;font-size:18px}
+    .hero-input-big .input-btn{padding:18px 32px;font-size:16px;border-radius:14px}
+    .hero-preview{max-width:520px;margin:28px auto 0;padding:16px 20px;background:rgba(79,70,229,.03);border:1px solid rgba(79,70,229,.08);border-radius:12px;text-align:left;cursor:pointer;transition:all .2s}
+    .hero-preview:hover{background:rgba(79,70,229,.05);border-color:rgba(79,70,229,.15)}
+    .hero-preview-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--indigo);margin-bottom:8px}
+    .hero-preview-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--text-mid);padding:4px 0}
+    .hero-preview-val{font-family:var(--mono);font-weight:600;color:var(--text);font-size:13px}
+    .hero-preview-cta{font-size:12px;color:var(--indigo);font-weight:600;margin-top:8px;display:flex;align-items:center;gap:4px}
+    @keyframes cycle-placeholder{0%,18%{opacity:1}20%,22%{opacity:0}24%,42%{opacity:1}44%,46%{opacity:0}48%,66%{opacity:1}68%,70%{opacity:0}72%,90%{opacity:1}92%,94%{opacity:0}96%,100%{opacity:1}}
+</style>
 <section class="hero" id="hero">
     <div class="hero-badge"><span class="dot"></span> Trusted by Microsoft, Dell, and Plaid</div>
     <h1>The end of manual<br>collection.</h1>
 
-    <div class="input-wrap" id="hero-input">
+    <div class="input-wrap hero-input-big" id="hero-input">
         <div class="input-box">
-            <input type="text" class="input-field" id="url-input" placeholder="Enter your website — see your collection plan" autocomplete="off" spellcheck="false">
+            <input type="text" class="input-field" id="url-input" placeholder="microsoft.com" autocomplete="off" spellcheck="false">
             <button class="input-btn" id="go-btn" onclick="startAnalysis()">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                 Analyze
             </button>
         </div>
+    </div>
+
+    <!-- Mini preview teaser -->
+    <div class="hero-preview" onclick="document.getElementById('url-input').value='microsoft.com';startAnalysis()">
+        <div class="hero-preview-label">Example: what we found for Microsoft</div>
+        <div class="hero-preview-row"><span>Recovery rate</span><span class="hero-preview-val" style="color:var(--green)">3.2x vs agency</span></div>
+        <div class="hero-preview-row"><span>Decision maker</span><span class="hero-preview-val">Neil D. — OTC Lead</span></div>
+        <div class="hero-preview-row"><span>Top dispute</span><span class="hero-preview-val">License true-up billing</span></div>
+        <div class="hero-preview-cta">See full analysis <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
     </div>
 </section>
 
@@ -1099,6 +1121,18 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {a.addEventListener('clic
 
 // Enter key triggers analysis
 document.getElementById('url-input').addEventListener('keydown', e => {if(e.key==='Enter') startAnalysis()});
+
+// Cycling placeholder
+const placeholders = ['microsoft.com', 'dell.com', 'konicaminolta.com', 'yourcompany.com'];
+let pIdx = 0;
+const urlInput = document.getElementById('url-input');
+setInterval(() => {
+    if (document.activeElement === urlInput && urlInput.value) return;
+    pIdx = (pIdx + 1) % placeholders.length;
+    urlInput.style.transition = 'opacity .3s';
+    urlInput.style.opacity = '0';
+    setTimeout(() => { urlInput.placeholder = placeholders[pIdx]; urlInput.style.opacity = '1'; }, 300);
+}, 3000);
 </script>
 </body>
 </html>
