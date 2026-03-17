@@ -342,30 +342,17 @@ a.review-src:hover{color:var(--blue)}
     </div>
   </div>
 
-  <div class="rv rv-d1 dark-player">
-    <div class="dark-header">
-      <span class="dark-header-label">Recording excerpt</span>
-      <span class="dark-live"><span class="dark-live-dot"></span>Konica Minolta agent</span>
+  <div class="rv rv-d1 dark-player" style="padding:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:280px;text-align:center">
+    <div style="font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.45);margin-bottom:24px">Real AI call recording</div>
+    <button id="pbtn" onclick="toggle()" style="width:72px;height:72px;border-radius:50%;background:var(--blue);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .15s,box-shadow .15s;box-shadow:0 0 0 8px rgba(79,70,229,.15)">
+      <svg id="picon" width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="8,4 20,12 8,20"/></svg>
+    </button>
+    <div style="display:flex;align-items:center;gap:16px;width:100%;max-width:500px;margin-top:24px">
+      <div class="dark-time" id="ptime" style="font-size:14px;color:rgba(255,255,255,.5);font-variant-numeric:tabular-nums;min-width:40px">0:00</div>
+      <div class="dark-track" onclick="seek(event)" style="flex:1;height:4px;background:rgba(255,255,255,.1);border-radius:4px;cursor:pointer"><div class="dark-fill" id="pbar" style="height:100%;background:var(--blue);border-radius:4px;width:0%;transition:width .1s linear"></div></div>
+      <div id="pdur" style="font-size:14px;color:rgba(255,255,255,.5);font-variant-numeric:tabular-nums;min-width:40px">0:00</div>
     </div>
-    <div class="dark-preplay" id="preplay" onclick="startPlayback()">
-      <div class="dark-waveform"><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div></div>
-      <button class="preplay-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="8,4 20,12 8,20"/></svg></button>
-      <div class="preplay-text">Click to play real AI call</div>
-    </div>
-    <div class="dark-body hidden" id="dark-body">
-      <div class="dark-transcript" id="dt"></div>
-      <div class="dark-reasoning" id="dr">
-        <h3>AI Reasoning</h3>
-      </div>
-    </div>
-    <div class="dark-controls hidden" id="dark-controls">
-      <button class="dark-play" id="pbtn" onclick="toggle()">
-        <svg id="picon" width="14" height="14" viewBox="0 0 24 24" fill="white"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-      </button>
-      <div class="dark-track" onclick="seek(event)"><div class="dark-fill" id="pbar"></div></div>
-      <div class="dark-time" id="ptime">0:00 / 0:00</div>
-      <audio id="aud" preload="none"></audio>
-    </div>
+    <audio id="aud" preload="none"></audio>
   </div>
   <div class="rv rv-d2 more-calls">
     <a href="https://showcase.respaid.com" target="_blank">Hear more real calls &#8594;</a>
