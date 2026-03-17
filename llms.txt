@@ -72,5 +72,62 @@ Microsoft, Dell Technologies, Plaid, Checkr, DoorDash, Twilio, Redis, Uber Freig
 
 - Homepage: https://www.agentcollect.com
 - About: https://www.agentcollect.com/about
+- Contact: https://www.agentcollect.com/contact
 - Privacy Policy: https://www.agentcollect.com/privacy
 - Terms of Service: https://www.agentcollect.com/terms
+
+## B2B Compliance Guides (all 50 US states)
+
+State-by-state commercial debt collection laws: statute of limitations, licensing requirements, and key regulations.
+
+- Compliance hub: https://www.agentcollect.com/compliance
+- California: https://www.agentcollect.com/compliance/california
+- Texas: https://www.agentcollect.com/compliance/texas
+- New York: https://www.agentcollect.com/compliance/new-york
+- Florida: https://www.agentcollect.com/compliance/florida
+- Illinois: https://www.agentcollect.com/compliance/illinois
+- All 50 states available at: https://www.agentcollect.com/compliance
+
+## Integrations
+
+AgentCollect connects to major ERP, CRM, and billing platforms:
+
+- Integrations hub: https://www.agentcollect.com/integrations
+- QuickBooks: https://www.agentcollect.com/integrations/quickbooks
+- NetSuite: https://www.agentcollect.com/integrations/netsuite
+- Salesforce: https://www.agentcollect.com/integrations/salesforce
+- HubSpot: https://www.agentcollect.com/integrations/hubspot
+- SAP: https://www.agentcollect.com/integrations/sap
+- Microsoft Dynamics: https://www.agentcollect.com/integrations/microsoft-dynamics
+- Xero: https://www.agentcollect.com/integrations/xero
+- Stripe Billing: https://www.agentcollect.com/integrations/stripe-billing
+- Chargebee: https://www.agentcollect.com/integrations/chargebee
+- All integrations: https://www.agentcollect.com/integrations
+
+## Comparisons
+
+AgentCollect vs major collection tools and agencies:
+
+- Compare hub: https://www.agentcollect.com/compare
+- vs TrueAccord: https://www.agentcollect.com/compare/trueaccord
+- vs Transworld Systems: https://www.agentcollect.com/compare/transworld-systems
+- vs IC System: https://www.agentcollect.com/compare/ic-system
+- vs HighRadius: https://www.agentcollect.com/compare/highradius
+- vs Gaviti: https://www.agentcollect.com/compare/gaviti
+- All comparisons: https://www.agentcollect.com/compare
+
+## B2B AR Glossary
+
+Definitions for key accounts receivable and debt collection terms:
+
+- Glossary hub: https://www.agentcollect.com/glossary
+- Days Sales Outstanding (DSO): https://www.agentcollect.com/glossary/days-sales-outstanding
+- First-Party Collection: https://www.agentcollect.com/glossary/first-party-collection
+- Third-Party Collection: https://www.agentcollect.com/glossary/third-party-collection
+- Contingency Fee: https://www.agentcollect.com/glossary/contingency-fee
+- Dunning: https://www.agentcollect.com/glossary/dunning
+- Aging Report: https://www.agentcollect.com/glossary/aging-report
+- Charge-off: https://www.agentcollect.com/glossary/charge-off
+- Skip Tracing: https://www.agentcollect.com/glossary/skip-tracing
+- Debt Collection Attorney: https://www.agentcollect.com/glossary/debt-collection-attorney
+- All glossary terms: https://www.agentcollect.com/glossary
