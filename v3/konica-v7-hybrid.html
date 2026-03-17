@@ -408,170 +408,42 @@ a.review-src:hover{color:var(--blue)}
 var ro=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('v')})},{threshold:.12});
 document.querySelectorAll('.rv').forEach(function(el){ro.observe(el)});
 
-// ===== TRANSCRIPT DATA =====
-var wrongContactTranscript=[{start:0,end:1.68,text:"This is Sarah on a recorded line.",type:"speech",words:[{word:"This",time:0},{word:"is",time:.22},{word:"Sarah",time:.6},{word:"on",time:.6},{word:"a",time:.84},{word:"recorded",time:.98},{word:"line.",time:1.3}]},{start:1.82,end:2.74,text:"How may I assist you?",type:"speech",words:[{word:"How",time:1.82},{word:"may",time:1.94},{word:"I",time:2.06},{word:"assist",time:2.28},{word:"you?",time:2.4}]},{start:2.74,end:3.5,text:"Contact answered \u2713",type:"thinking"},{start:3.56,end:4.48,text:"I'm returning a phone call.",type:"debtor",words:[{word:"I'm",time:3.56},{word:"returning",time:3.56},{word:"a",time:3.8},{word:"phone",time:4.1},{word:"call.",time:4.26}]},{start:4.48,end:5,text:"Proceeding with disclosure...",type:"thinking"},{start:5.06,end:8.96,text:"I'm calling about $25,830 owed to [creditor].",type:"speech",words:[{word:"I'm",time:5.06},{word:"calling",time:5.38},{word:"about",time:5.38},{word:"$25,830",time:5.64},{word:"owed",time:7.22},{word:"to",time:7.8},{word:"[creditor].",time:8.42}]},{start:9.36,end:11.28,text:"Do you recognize the outstanding balance?",type:"speech",words:[{word:"Do",time:9.36},{word:"you",time:9.9},{word:"recognize",time:10.32},{word:"the",time:10.32},{word:"outstanding",time:10.56},{word:"balance?",time:10.9}]},{start:11.28,end:12,text:"Awaiting confirmation...",type:"thinking"},{start:12.12,end:12.46,text:"No.",type:"debtor",words:[{word:"No.",time:12.12}]},{start:12.46,end:13.6,text:"\u26a0\ufe0f Balance not recognized",type:"thinking"},{start:13.7,end:17.84,text:"Maybe it was a colleague since I haven't worked for [company] for almost 10 years.",type:"debtor",words:[{word:"Maybe",time:13.7},{word:"it",time:14.24},{word:"was",time:14.36},{word:"a",time:14.44},{word:"colleague",time:14.6},{word:"since",time:14.88},{word:"I",time:15.36},{word:"haven't",time:15.52},{word:"worked",time:15.8},{word:"for",time:16.06},{word:"[company]",time:16.44},{word:"for",time:16.72},{word:"almost",time:17},{word:"10",time:17.28},{word:"years.",time:17.58}]},{start:17.84,end:18.4,text:"\ud83d\udd0d Wrong contact detected",type:"thinking"},{start:18.48,end:19.62,text:"Thanks for letting me know.",type:"speech",words:[{word:"Thanks",time:18.48},{word:"for",time:18.84},{word:"letting",time:19.1},{word:"me",time:19.12},{word:"know.",time:19.44}]},{start:19.76,end:21.78,text:"Uh, it sounds like this may be a wrong contact.",type:"speech",words:[{word:"Uh,",time:19.76},{word:"it",time:20.3},{word:"sounds",time:20.42},{word:"like",time:20.42},{word:"this",time:20.6},{word:"may",time:20.78},{word:"be",time:20.94},{word:"a",time:21},{word:"wrong",time:21.2},{word:"contact.",time:21.32}]},{start:22.34,end:23.26,text:"I'll update our records.",type:"speech",words:[{word:"I'll",time:22.34},{word:"update",time:22.56},{word:"our",time:22.72},{word:"records.",time:22.94}]},{start:23.26,end:23.8,text:"Updating CRM \u2192 Wrong contact",type:"action"},{start:23.86,end:25.06,text:"You won't be contacted further.",type:"speech",words:[{word:"You",time:23.86},{word:"won't",time:23.96},{word:"be",time:24.08},{word:"contacted",time:24.24},{word:"further.",time:24.62}]},{start:25.6,end:26,text:"Take care.",type:"speech",words:[{word:"Take",time:25.6},{word:"care.",time:25.74}]},{start:26,end:26.2,text:"Call completed \u2192 Contact removed",type:"action"}];
-
-var gatekeeperTranscript=[{start:0,end:.4,text:"Initiating call \u2713",type:"thinking"},{start:.5,end:2.28,text:"This is B.T., how can I help you?",type:"debtor",words:[{word:"This",time:.5},{word:"is",time:.98},{word:"B.T.,",time:1.2},{word:"how",time:1.66},{word:"can",time:1.84},{word:"I",time:1.84},{word:"help",time:1.92},{word:"you?",time:2.12}]},{start:2.28,end:2.9,text:"Contact answered \u2713",type:"thinking"},{start:2.96,end:6.86,text:"Hi B.T., this is Sarah from the recovery team calling on a recorded line.",type:"speech",words:[{word:"Hi",time:2.96},{word:"B.T.,",time:3.1},{word:"this",time:3.52},{word:"is",time:3.66},{word:"Sarah",time:4.14},{word:"from",time:4.14},{word:"the",time:4.5},{word:"recovery",time:4.88},{word:"team",time:5.32},{word:"calling",time:5.56},{word:"on",time:5.86},{word:"a",time:6.06},{word:"recorded",time:6.18},{word:"line.",time:6.46}]},{start:7.4,end:13.24,text:"I'm reaching out about the outstanding balance of $31.24 owed to [creditor].",type:"speech",words:[{word:"I'm",time:7.4},{word:"reaching",time:7.52},{word:"out",time:7.68},{word:"about",time:7.98},{word:"the",time:8.18},{word:"outstanding",time:8.34},{word:"balance",time:8.8},{word:"of",time:9.22},{word:"$31.24",time:9.46},{word:"owed",time:11.2},{word:"to",time:12.04},{word:"[creditor].",time:12.7}]},{start:13.74,end:15.68,text:"Did you get an email from us regarding this matter?",type:"speech",words:[{word:"Did",time:13.74},{word:"you",time:13.96},{word:"get",time:14.08},{word:"an",time:14.18},{word:"email",time:14.52},{word:"from",time:14.52},{word:"us",time:14.76},{word:"regarding",time:14.98},{word:"this",time:15.24},{word:"matter?",time:15.68}]},{start:15.68,end:16.4,text:"Awaiting response...",type:"thinking"},{start:16.52,end:20.12,text:"Let me get you over to our accounting department.",type:"debtor",words:[{word:"Let",time:16.52},{word:"me",time:17},{word:"get",time:17.12},{word:"you",time:17.3},{word:"over",time:17.56},{word:"to",time:17.86},{word:"our",time:19.1},{word:"accounting",time:19.66},{word:"department.",time:19.66}]},{start:20.12,end:20.7,text:"\ud83d\udccb Transfer to accounting offered",type:"thinking"},{start:20.82,end:22,text:"Thanks, and I appreciate it.",type:"speech",words:[{word:"Thanks,",time:20.82},{word:"and",time:21.08},{word:"I",time:21.34},{word:"appreciate",time:21.38},{word:"it.",time:21.72}]},{start:22.22,end:28.1,text:"Who in accounting should I ask for, and could you share their direct phone number or email so I can reach out to them directly?",type:"speech",words:[{word:"Who",time:22.22},{word:"in",time:22.46},{word:"accounting",time:22.7},{word:"should",time:22.88},{word:"I",time:23.12},{word:"ask",time:23.42},{word:"for,",time:23.48},{word:"and",time:23.94},{word:"could",time:24.1},{word:"you",time:24.22},{word:"share",time:24.4},{word:"their",time:24.52},{word:"direct",time:24.78},{word:"phone",time:25.1},{word:"number",time:25.26},{word:"or",time:25.6},{word:"email",time:26.52},{word:"so",time:26.86},{word:"I",time:27.02},{word:"can",time:27.12},{word:"reach",time:27.3},{word:"out",time:27.42},{word:"to",time:27.58},{word:"them",time:27.66},{word:"directly?",time:27.8}]},{start:28.1,end:33.84,text:"We do not have direct emails, or we have direct emails, we do not have direct phone numbers.",type:"debtor",words:[{word:"We",time:28.1},{word:"do",time:28.8},{word:"not",time:29},{word:"have",time:29.18},{word:"direct",time:29.5},{word:"emails,",time:29.9},{word:"or",time:31.08},{word:"we",time:31.14},{word:"have",time:31.3},{word:"direct",time:31.54},{word:"emails,",time:31.82},{word:"we",time:32.14},{word:"do",time:32.24},{word:"not",time:32.34},{word:"have",time:32.46},{word:"direct",time:32.6},{word:"phone",time:32.82},{word:"numbers.",time:33.06}]},{start:33.84,end:34.3,text:"\u2713 Email available, no phone",type:"thinking"},{start:34.38,end:34.86,text:"No problem.",type:"speech",words:[{word:"No",time:34.38},{word:"problem.",time:34.52}]},{start:35.3,end:40.26,text:"Could you please provide the name and email address of the person in accounting who handles these matters?",type:"speech",words:[{word:"Could",time:35.3},{word:"you",time:35.48},{word:"please",time:35.62},{word:"provide",time:35.92},{word:"the",time:36.18},{word:"name",time:36.5},{word:"and",time:36.68},{word:"email",time:36.96},{word:"address",time:37.24},{word:"of",time:37.62},{word:"the",time:37.84},{word:"person",time:38.06},{word:"in",time:38.32},{word:"accounting",time:38.98},{word:"who",time:38.98},{word:"handles",time:39.3},{word:"these",time:39.58},{word:"matters?",time:39.98}]},{start:40.26,end:41,text:"Requesting contact details...",type:"thinking"},{start:41.04,end:45.1,text:"It would be [email].",type:"debtor",words:[{word:"It",time:41.04},{word:"would",time:41.06},{word:"be",time:41.08},{word:"[email].",time:42.04}]},{start:45.1,end:45.7,text:"\ud83d\udce7 Email collected \u2713",type:"action"},{start:45.78,end:49.28,text:"Thank you for providing that email address, and we will reach out as soon as possible.",type:"speech",words:[{word:"Thank",time:45.78},{word:"you",time:46},{word:"for",time:46.1},{word:"providing",time:46.56},{word:"that",time:46.56},{word:"email",time:46.84},{word:"address,",time:47.06},{word:"and",time:47.44},{word:"we",time:47.88},{word:"will",time:47.96},{word:"reach",time:48.14},{word:"out",time:48.36},{word:"as",time:48.52},{word:"soon",time:48.7},{word:"as",time:48.74},{word:"possible.",time:49.28}]},{start:49.28,end:49.5,text:"Call completed \u2192 Contact data collected",type:"action"}];
-
-var disputeTranscript=[{start:0,end:1.96,text:"Sarah on a recorded line. How may I assist you?",type:"speech",words:[{word:"Sarah",time:0},{word:"on",time:.3},{word:"a",time:.52},{word:"recorded",time:.68},{word:"line.",time:1},{word:"How",time:1.54},{word:"may",time:1.54},{word:"I",time:1.64},{word:"assist",time:1.82},{word:"you?",time:1.96}]},{start:1.96,end:2.6,text:"\ud83d\udcde Incoming call \u2192 Listening for caller ID",type:"thinking"},{start:2.64,end:5.24,text:"Well, my name is M.C. I'm calling with [company]",type:"debtor",words:[{word:"Well,",time:2.64},{word:"my",time:2.66},{word:"name",time:3.44},{word:"is",time:3.56},{word:"M.C.",time:3.78},{word:"I'm",time:4.46},{word:"calling",time:4.46},{word:"with",time:4.46},{word:"[company]",time:5.24}]},{start:5.24,end:5.7,text:"\ud83d\udd0d Looking up account...",type:"thinking"},{start:5.78,end:9.6,text:"here in Chicago returning your phone call regarding a $610",type:"debtor",words:[{word:"here",time:5.78},{word:"in",time:6},{word:"Chicago",time:6.44},{word:"returning",time:6.44},{word:"your",time:6.84},{word:"phone",time:7.1},{word:"call",time:7.4},{word:"regarding",time:7.64},{word:"a",time:8.36},{word:"$610",time:8.74}]},{start:9.6,end:11.2,text:"\ud83d\udccb Account found: $610 balance - Invoice INV-XXXXX",type:"thinking"},{start:11.24,end:13.8,text:"bill from [creditor], which we gave them the check stubs on.",type:"debtor",words:[{word:"bill",time:11.24},{word:"from",time:11.72},{word:"[creditor],",time:12.28},{word:"which",time:12.4},{word:"we",time:12.74},{word:"gave",time:12.9},{word:"them",time:13.14},{word:"the",time:13.34},{word:"check",time:13.6},{word:"stubs",time:13.8},{word:"on.",time:13.8}]},{start:13.8,end:14.5,text:"\u26a0\ufe0f Claims paid by check \u2192 Need proof of payment",type:"thinking"},{start:14.58,end:18.74,text:"If you pay [creditor] directly, just send us the payment proof so we can close this out.",type:"speech",words:[{word:"If",time:14.58},{word:"you",time:14.92},{word:"pay",time:15.06},{word:"[creditor]",time:15.66},{word:"directly,",time:15.66},{word:"just",time:16.54},{word:"send",time:16.9},{word:"us",time:17.04},{word:"the",time:17.2},{word:"payment",time:17.42},{word:"proof",time:17.6},{word:"so",time:17.88},{word:"we",time:18.04},{word:"can",time:18.18},{word:"close",time:18.38},{word:"this",time:18.54},{word:"out.",time:18.74}]},{start:19.34,end:22.28,text:"Use the portal link in your email and click I've Already Paid.",type:"speech",words:[{word:"Use",time:19.34},{word:"the",time:19.34},{word:"portal",time:19.54},{word:"link",time:19.86},{word:"in",time:20.16},{word:"your",time:20.38},{word:"email",time:20.56},{word:"and",time:20.84},{word:"click",time:21.18},{word:"I've",time:21.82},{word:"Already",time:22},{word:"Paid.",time:22.28}]},{start:22.6,end:24.34,text:"We'll check and follow up if we don't receive it.",type:"speech",words:[{word:"We'll",time:22.6},{word:"check",time:22.94},{word:"and",time:23.12},{word:"follow",time:23.36},{word:"up",time:23.48},{word:"if",time:23.66},{word:"we",time:23.78},{word:"don't",time:23.92},{word:"receive",time:24.1},{word:"it.",time:24.34}]},{start:24.34,end:24.6,text:"\ud83d\udccb Guiding to payment portal",type:"thinking"},{start:24.7,end:25.06,text:"One moment, please.",type:"speech",words:[{word:"One",time:24.7},{word:"moment,",time:24.88},{word:"please.",time:25.06}]},{start:25.06,end:25.3,text:"\ud83d\udce7 Sending email with instructions...",type:"action"},{start:25.5,end:27.5,text:"I just sent you an email with instructions.",type:"speech",words:[{word:"I",time:25.5},{word:"just",time:25.8},{word:"sent",time:26.1},{word:"you",time:26.3},{word:"an",time:26.5},{word:"email",time:26.8},{word:"with",time:27.1},{word:"instructions.",time:27.5}]},{start:27.5,end:27.7,text:"\u2705 Decision: Wait for check proof, then close account",type:"action"}];
-
-// ===== SCENARIO CONFIG =====
-var scenarios=[
-  {label:"Wrong Contact",audio:"https://showcase.respaid.com/call-wrong-contact.mp3",transcript:wrongContactTranscript},
-  {label:"Gatekeeper Bypass",audio:"https://showcase.respaid.com/call-gatekeeper.mp3",transcript:gatekeeperTranscript},
-  {label:"Payment Dispute",audio:"https://showcase.respaid.com/call-dispute.mp3",transcript:disputeTranscript}
+// Simple audio player
+var audioSources=[
+  "https://showcase.respaid.com/call-wrong-contact.mp3",
+  "https://showcase.respaid.com/call-gatekeeper.mp3",
+  "https://showcase.respaid.com/call-dispute.mp3"
 ];
 var currentScenario=0;
+var aud=document.getElementById('aud');
+var raf=null;
+var playing=false;
 
-// ===== PLAYER STATE =====
-var aud=document.getElementById('aud'),raf=null,playerStarted=false;
-var activeTranscript=[];
-var lineEls=[];  // DOM elements for transcript lines (speech/debtor only)
-var badgeEls=[]; // DOM elements for thinking/action badges
-var lineMap=[];  // maps lineEls index -> activeTranscript index
-var badgeMap=[]; // maps badgeEls index -> activeTranscript index
+// Load first scenario
+aud.src=audioSources[0];
 
 function fmt(t){var m=Math.floor(t/60),s=Math.floor(t%60);return m+':'+(s<10?'0':'')+s}
 
-function buildPlayer(){
-  var sc=scenarios[currentScenario];
-  activeTranscript=sc.transcript.filter(function(e){return e.type==='speech'||e.type==='debtor'||e.type==='thinking'||e.type==='action'});
-  // Set audio source
-  aud.src=sc.audio;
-  aud.load();
-  // Build transcript panel (speech + debtor lines)
-  var dt=document.getElementById('dt');
-  dt.innerHTML='';
-  lineEls=[];lineMap=[];
-  activeTranscript.forEach(function(entry,i){
-    if(entry.type==='speech'||entry.type==='debtor'){
-      var el=document.createElement('div');
-      el.className='dark-line'+(entry.type==='debtor'?' transcript-line-debtor':'');
-      var speakerClass=entry.type==='speech'?'ai':'hu';
-      var speakerLabel=entry.type==='speech'?'AI Agent':'Contact';
-      el.innerHTML='<span class="dark-speaker '+speakerClass+'">'+speakerLabel+'</span><div class="dark-text'+(entry.type==='debtor'?' hu':'')+'"><span class="line-words"></span></div>';
-      dt.appendChild(el);
-      lineEls.push(el);
-      lineMap.push(i);
-    }
-  });
-  // Build reasoning panel (thinking + action badges)
-  var dr=document.getElementById('dr');
-  dr.innerHTML='<h3>AI Reasoning</h3>';
-  badgeEls=[];badgeMap=[];
-  activeTranscript.forEach(function(entry,i){
-    if(entry.type==='thinking'||entry.type==='action'){
-      var badge=document.createElement('div');
-      var colorClass=entry.type==='action'?'blue':(entry.text.indexOf('\u26a0')===-1&&entry.text.indexOf('Wrong')===-1&&entry.text.indexOf('not recognized')===-1?'green':'orange');
-      badge.className='dark-badge '+colorClass;
-      badge.textContent=entry.text;
-      dr.appendChild(badge);
-      badgeEls.push(badge);
-      badgeMap.push(i);
-    }
-  });
-}
-
-// Word-by-word rendering state
-var wordStates=[];// one per lineEls entry: {revealed: number of words shown}
-
-function resetWordStates(){
-  wordStates=[];
-  lineEls.forEach(function(){wordStates.push({revealed:0})});
-}
-
 function tick(){
   if(!aud||isNaN(aud.duration))return;
-  var dur=aud.duration;
-  var ct=aud.currentTime;
-  document.getElementById('pbar').style.width=(ct/dur*100)+'%';
-  document.getElementById('ptime').textContent=fmt(ct)+' / '+fmt(dur);
-
-  // Update transcript lines word-by-word
-  lineEls.forEach(function(el,li){
-    var entry=activeTranscript[lineMap[li]];
-    if(ct<entry.start)return;
-    // Show line
-    if(!el.classList.contains('shown')){
-      el.classList.add('shown','active');
-      // Remove active from previous lines
-      lineEls.forEach(function(prev,pi){if(pi<li)prev.classList.remove('active')});
-      // Auto-scroll
-      var dt=document.getElementById('dt');
-      dt.scrollTop=el.offsetTop-dt.offsetTop-20;
-    }
-    // Word-by-word
-    if(entry.words&&entry.words.length){
-      var ws=wordStates[li];
-      var wordsEl=el.querySelector('.line-words');
-      var newRevealed=0;
-      for(var w=0;w<entry.words.length;w++){
-        if(ct>=entry.words[w].time)newRevealed=w+1;
-      }
-      if(newRevealed>ws.revealed){
-        var txt='';
-        for(var w2=0;w2<newRevealed;w2++){
-          txt+=(w2>0?' ':'')+entry.words[w2].word;
-        }
-        wordsEl.textContent=txt;
-        ws.revealed=newRevealed;
-        // Add cursor if still typing
-        var existingCursor=el.querySelector('.typing-cursor');
-        if(newRevealed<entry.words.length){
-          if(!existingCursor){var cur=document.createElement('span');cur.className='typing-cursor';wordsEl.parentNode.appendChild(cur)}
-        }else{
-          if(existingCursor)existingCursor.parentNode.removeChild(existingCursor);
-        }
-      }
-    }
-  });
-
-  // Update reasoning badges
-  badgeEls.forEach(function(badge,bi){
-    var entry=activeTranscript[badgeMap[bi]];
-    if(ct>=entry.start&&!badge.classList.contains('shown')){
-      badge.classList.add('shown');
-      // Auto-scroll reasoning panel
-      var dr=document.getElementById('dr');
-      dr.scrollTop=badge.offsetTop-dr.offsetTop-20;
-    }
-  });
-
+  document.getElementById('pbar').style.width=(aud.currentTime/aud.duration*100)+'%';
+  document.getElementById('ptime').textContent=fmt(aud.currentTime);
+  document.getElementById('pdur').textContent=fmt(aud.duration);
   if(!aud.paused&&!aud.ended)raf=requestAnimationFrame(tick);
-}
-
-function resetPlayer(){
-  var dt=document.getElementById('dt');
-  lineEls.forEach(function(el){el.classList.remove('shown','active');var w=el.querySelector('.line-words');if(w)w.textContent='';var c=el.querySelector('.typing-cursor');if(c)c.parentNode.removeChild(c)});
-  badgeEls.forEach(function(b){b.classList.remove('shown')});
-  resetWordStates();
-  if(dt)dt.scrollTop=0;
-  var dr=document.getElementById('dr');if(dr)dr.scrollTop=0;
-}
-
-function startPlayback(){
-  if(!aud)return;
-  document.getElementById('preplay').classList.add('hidden');
-  document.getElementById('dark-body').classList.remove('hidden');
-  document.getElementById('dark-controls').classList.remove('hidden');
-  playerStarted=true;
-  buildPlayer();
-  resetWordStates();
-  aud.play().then(function(){raf=requestAnimationFrame(tick)}).catch(function(){});
 }
 
 function toggle(){
   if(!aud)return;
-  if(!playerStarted){startPlayback();return}
   if(aud.paused||aud.ended){
-    if(aud.ended){aud.currentTime=0;resetPlayer()}
+    if(aud.ended)aud.currentTime=0;
     aud.play().then(function(){
+      playing=true;
       document.getElementById('picon').innerHTML='<rect x="6" y="4" width="4" height="16" fill="white"/><rect x="14" y="4" width="4" height="16" fill="white"/>';
       raf=requestAnimationFrame(tick);
     }).catch(function(){});
   }else{
-    aud.pause();
-    document.getElementById('picon').innerHTML='<polygon points="6,3 20,12 6,21"/>';
+    aud.pause();playing=false;
+    document.getElementById('picon').innerHTML='<polygon points="8,4 20,12 8,20"/>';
     cancelAnimationFrame(raf);
   }
 }
@@ -579,56 +451,33 @@ function toggle(){
 function seek(e){
   if(!aud||isNaN(aud.duration))return;
   var r=e.currentTarget.getBoundingClientRect();
-  var newTime=((e.clientX-r.left)/r.width)*aud.duration;
-  aud.currentTime=newTime;
-  // Reset and fast-forward display
-  resetPlayer();
-  // Instantly reveal everything up to newTime
-  lineEls.forEach(function(el,li){
-    var entry=activeTranscript[lineMap[li]];
-    if(newTime>=entry.start){
-      el.classList.add('shown');
-      if(entry.words&&entry.words.length){
-        var txt='';var count=0;
-        for(var w=0;w<entry.words.length;w++){
-          if(newTime>=entry.words[w].time){txt+=(w>0?' ':'')+entry.words[w].word;count=w+1}
-        }
-        el.querySelector('.line-words').textContent=txt;
-        wordStates[li].revealed=count;
-      }
-    }
-  });
-  badgeEls.forEach(function(badge,bi){
-    var entry=activeTranscript[badgeMap[bi]];
-    if(newTime>=entry.start)badge.classList.add('shown');
-  });
+  aud.currentTime=((e.clientX-r.left)/r.width)*aud.duration;
   if(!aud.paused)raf=requestAnimationFrame(tick);
 }
 
 aud&&aud.addEventListener('ended',function(){
-  document.getElementById('picon').innerHTML='<polygon points="6,3 20,12 6,21"/>';
+  playing=false;
+  document.getElementById('picon').innerHTML='<polygon points="8,4 20,12 8,20"/>';
   cancelAnimationFrame(raf);
 });
 
-// Scenario tab switching
+aud&&aud.addEventListener('loadedmetadata',function(){
+  document.getElementById('pdur').textContent=fmt(aud.duration);
+});
+
 function switchScenario(idx){
-  if(idx===currentScenario&&!playerStarted)return;
   currentScenario=idx;
   document.querySelectorAll('.scenario-tab').forEach(function(t,i){
     if(i===idx)t.classList.add('active');else t.classList.remove('active');
   });
-  // Pause and reset to pre-play state
-  if(aud){aud.pause();aud.currentTime=0}
+  aud.pause();aud.src=audioSources[idx];aud.load();
+  playing=false;
+  document.getElementById('pbar').style.width='0%';
+  document.getElementById('ptime').textContent='0:00';
+  document.getElementById('pdur').textContent='0:00';
+  document.getElementById('picon').innerHTML='<polygon points="8,4 20,12 8,20"/>';
   cancelAnimationFrame(raf);
-  document.getElementById('preplay').classList.remove('hidden');
-  document.getElementById('dark-body').classList.add('hidden');
-  document.getElementById('dark-controls').classList.add('hidden');
-  document.getElementById('picon').innerHTML='<rect x="6" y="4" width="4" height="16" fill="white"/><rect x="14" y="4" width="4" height="16" fill="white"/>';
-  playerStarted=false;
 }
-
-// Initialize first scenario audio source
-buildPlayer();
 </script>
 </body>
 </html>
