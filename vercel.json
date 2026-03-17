@@ -1,5 +1,6 @@
 {
   "rewrites": [
+{ "source": "/xerox", "destination": "/v3/xerox.html" },
 { "source": "/konica-minolta", "destination": "/v3/konica-v7-hybrid.html" },
 { "source": "/analyze", "destination": "/v3/konica-v7-intel.html" },
 { "source": "/konica-minolta2", "destination": "/v3/konica-minolta-v4-brian.html" },
