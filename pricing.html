@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>Pricing — AgentCollect</title>
+    <meta name="description" content="AgentCollect pricing: success-only fees, $0 upfront. AI-powered first party collection or licensed attorney third party collection. No minimums, no contracts.">
+    <meta property="og:title" content="Pricing — AgentCollect">
+    <meta property="og:description" content="Success-only fees. $0 upfront. No minimums, no contracts. AI agents and licensed attorneys for your unpaid invoices.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.agentcollect.com/pricing">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#FAFBFF;--bg-card:#fff;--bg-dark:#0B1B3D;
+            --border:#E8ECF2;--border-hover:rgba(79,70,229,.25);
+            --text:#0B1B3D;--text-mid:#475569;--text-muted:#94A3B8;--text-dim:#CBD5E1;
+            --indigo:#4F46E5;--indigo-dark:#4338CA;--indigo-light:rgba(79,70,229,.06);--indigo-glow:rgba(79,70,229,.15);
+            --green:#10B981;--green-dark:#059669;--green-light:rgba(16,185,129,.06);
+            --amber:#F59E0B;--red:#EF4444;
+            --mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
+            --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+            --shadow-md:0 4px 12px rgba(0,0,0,.06);
+            --shadow-lg:0 12px 40px rgba(0,0,0,.08);
+            --shadow-xl:0 24px 64px rgba(79,70,229,.1);
+            --max-w:1140px;
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:var(--sans);background:#fff;color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+        h1,h2,h3,h4,h5{font-family:var(--display)}
+        ::selection{background:rgba(79,70,229,.12)}
+
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+        .nav.scrolled{box-shadow:0 1px 8px rgba(0,0,0,.04)}
+        .nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:60px}
+        .logo{display:inline-flex;align-items:baseline;text-decoration:none;margin-right:auto;font-family:var(--display);font-size:18px;font-weight:900;letter-spacing:-.04em;color:var(--text)}
+        .dot-circle{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--indigo);margin-left:2px;margin-bottom:2px;vertical-align:baseline}
+        .logo-tagline{font-size:11px;color:var(--text-muted);font-weight:500;margin-left:12px;padding-left:12px;border-left:1px solid var(--border);white-space:nowrap}
+        .nav-links{display:flex;gap:28px;margin-right:24px}
+        .nav-links a{color:var(--text-mid);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+        .nav-links a:hover{color:var(--text)}
+        .nav-right{display:flex;align-items:center;gap:12px}
+        .nav-cta{padding:9px 20px;min-height:44px;background:var(--indigo);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center}
+        .nav-cta:hover{background:var(--indigo-dark)}
+        .nav-cta-ghost{padding:9px 20px;min-height:44px;background:transparent;color:var(--text);border:1px solid var(--border);border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center}
+        .nav-cta-ghost:hover{border-color:var(--indigo);color:var(--indigo)}
+        .nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px}
+
+        .page-hero{padding:140px 32px 20px;text-align:center}
+        .page-hero h1{font-size:clamp(36px,5vw,56px);font-weight:900;letter-spacing:-.04em;line-height:1.05;margin-bottom:16px}
+        .page-hero h1 em{font-style:normal;color:var(--indigo)}
+        .page-hero p{font-size:17px;color:var(--text-mid);max-width:520px;margin:0 auto;line-height:1.7}
+
+        .pricing-section{max-width:var(--max-w);margin:0 auto;padding:60px 32px 40px}
+        .pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:900px;margin:0 auto}
+
+        .pricing-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:36px 32px;transition:all .3s;position:relative;overflow:hidden;display:flex;flex-direction:column}
+        .pricing-card:hover{border-color:var(--border-hover);box-shadow:var(--shadow-lg)}
+        .pricing-card.recommended{border-color:var(--green);box-shadow:0 0 0 4px rgba(16,185,129,.06)}
+        .pricing-card.recommended::before{content:'Most popular';position:absolute;top:16px;right:16px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:4px 10px;border-radius:20px;background:var(--green-light);color:var(--green-dark)}
+
+        .pricing-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+        .pricing-card h3{font-family:var(--display);font-size:22px;font-weight:800;letter-spacing:-.02em;color:var(--text);margin-bottom:8px}
+        .pricing-desc{font-size:14px;color:var(--text-mid);line-height:1.6;margin-bottom:24px}
+
+        .pricing-price{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+        .pricing-amount{font-family:var(--display);font-size:36px;font-weight:900;letter-spacing:-.03em;color:var(--text)}
+        .pricing-period{font-size:14px;color:var(--text-muted);margin-top:4px}
+        .pricing-model{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;background:var(--indigo-light);font-size:13px;font-weight:600;color:var(--indigo);margin-top:12px}
+
+        .pricing-features{display:flex;flex-direction:column;gap:12px;margin-bottom:28px;flex:1}
+        .pricing-feature{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-mid);line-height:1.5}
+        .pricing-feature svg{flex-shrink:0;margin-top:2px}
+
+        .pricing-cta{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:14px 28px;border-radius:8px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;text-decoration:none;border:none;width:100%}
+        .pricing-cta:hover{transform:translateY(-1px)}
+        .pricing-cta-primary{background:var(--indigo);color:#fff}
+        .pricing-cta-primary:hover{background:var(--indigo-dark)}
+        .pricing-cta-outline{background:#fff;color:var(--text);border:1.5px solid var(--border)}
+        .pricing-cta-outline:hover{border-color:var(--indigo);color:var(--indigo)}
+
+        .enterprise{max-width:900px;margin:0 auto;padding:0 32px 80px}
+        .enterprise-card{background:var(--indigo-light);border:1px solid rgba(79,70,229,.1);border-radius:16px;padding:40px;display:flex;align-items:center;justify-content:space-between;gap:32px}
+        .enterprise-info h3{font-size:22px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+        .enterprise-info p{font-size:15px;color:var(--text-mid);line-height:1.6;max-width:480px}
+        .enterprise-cta{padding:14px 32px;background:var(--indigo);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;white-space:nowrap;flex-shrink:0}
+        .enterprise-cta:hover{background:var(--indigo-dark)}
+
+        .faq{max-width:720px;margin:0 auto;padding:0 32px 80px}
+        .faq h2{font-size:28px;font-weight:800;letter-spacing:-.03em;text-align:center;margin-bottom:40px}
+        .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
+        .faq-item:first-of-type{border-top:1px solid var(--border)}
+        .faq-q{font-family:var(--display);font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px}
+        .faq-q::after{content:'+';font-size:20px;color:var(--text-muted);transition:transform .2s;flex-shrink:0}
+        .faq-item.open .faq-q::after{transform:rotate(45deg)}
+        .faq-a{font-size:14px;color:var(--text-mid);line-height:1.8;max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding-top:0}
+        .faq-item.open .faq-a{max-height:200px;padding-top:12px}
+
+        .final-cta{text-align:center;padding:0 32px 100px}
+        .final-cta h2{font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-.03em;margin-bottom:12px}
+        .final-cta p{font-size:15px;color:var(--text-mid);margin-bottom:28px;max-width:420px;margin-left:auto;margin-right:auto}
+        .final-cta a{display:inline-flex;align-items:center;gap:6px;padding:14px 32px;background:var(--indigo);color:#fff;border-radius:8px;font-family:var(--sans);font-size:15px;font-weight:600;text-decoration:none;transition:all .2s}
+        .final-cta a:hover{background:var(--indigo-dark);transform:translateY(-1px)}
+
+        footer{background:#fff;border-top:1px solid var(--border);padding:56px 32px 32px}
+        .footer-inner{max-width:var(--max-w);margin:0 auto}
+        .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+        .footer-brand{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:12px}
+        .footer-brand span{color:var(--indigo)}
+        .footer-tagline{font-size:13px;color:var(--text-muted);line-height:1.5;max-width:260px}
+        .footer-col h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text);margin-bottom:16px}
+        .footer-col a{display:block;font-size:13px;color:var(--text-muted);text-decoration:none;margin-bottom:10px;transition:color .2s}
+        .footer-col a:hover{color:var(--text)}
+        .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;gap:16px}
+        .footer-copy{font-size:12px;color:var(--text-muted)}
+        .footer-badges{display:flex;gap:8px}
+        .footer-badge{padding:4px 10px;border:1px solid var(--border);border-radius:6px;font-size:10px;color:var(--text-muted);font-weight:600}
+
+        @media(max-width:768px){
+            .nav-links,.logo-tagline{display:none}
+            .nav-mobile{display:block}
+            .nav-inner{padding:0 20px}
+            .page-hero{padding:120px 20px 20px}
+            .pricing-section{padding:40px 20px 40px}
+            .pricing-grid{grid-template-columns:1fr}
+            .enterprise{padding:0 20px 60px}
+            .enterprise-card{flex-direction:column;text-align:center;padding:28px}
+            .enterprise-cta{width:100%;text-align:center}
+            .faq{padding:0 20px 60px}
+            .final-cta{padding:0 20px 80px}
+            .footer-top{grid-template-columns:1fr;gap:28px}
+            .footer-bottom{flex-direction:column;text-align:center}
+            .footer-badges{justify-content:center}
+        }
+    </style>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vtpmvp6kvr");
+    </script>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+<div class="nav-inner">
+    <a href="/" class="logo">Agent<span>Collect</span><span class="dot-circle"></span></a>
+    <span class="logo-tagline">The end of manual collection.</span>
+    <div class="nav-links">
+        <a href="/#paths">Products</a>
+        <a href="/#results">Results</a>
+        <a href="/#how">How it works</a>
+    </div>
+    <div class="nav-right">
+        <a href="https://cal.com/agentcollect/demo" class="nav-cta-ghost" target="_blank">Talk to us</a>
+        <a href="/#hero-input" class="nav-cta">Try the demo</a>
+    </div>
+    <button class="nav-mobile" onclick="window.location='/'">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+</div>
+</nav>
+
+<section class="page-hero">
+    <h1>Success-only fees. <em>$0 upfront.</em></h1>
+    <p>You only pay when we recover money. No setup fees, no minimums, no long-term contracts.</p>
+</section>
+
+<div class="pricing-section">
+    <div class="pricing-grid">
+        <!-- First Party Collection -->
+        <div class="pricing-card recommended">
+            <div class="pricing-label" style="color:var(--indigo)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                First Party Collection
+            </div>
+            <h3>AI Agents, Your Brand</h3>
+            <p class="pricing-desc">AI agents contact your customers via phone, email, and SMS under your brand. You keep the relationship.</p>
+
+            <div class="pricing-price">
+                <div class="pricing-amount">$0 setup</div>
+                <div class="pricing-period">Success-only fees on recovered amounts</div>
+                <div class="pricing-model">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Pay only when you get paid
+                </div>
+            </div>
+
+            <div class="pricing-features">
+                <div class="pricing-feature">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    AI phone calls, emails, and SMS
+                </div>
+                <div class="pricing-feature">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    White-label under your brand
+                </div>
+                <div class="pricing-feature">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Real-time dashboard and reporting
+                </div>
+                <div class="pricing-feature">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Payment plans and negotiation
+                </div>
+                <div class="pricing-feature">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    FDCPA, Reg F, TCPA compliant
+                </div>
+                <div class="pricing-feature">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    No minimums, cancel anytime
+                </div>
+            </div>
+
+            <a href="https://cal.com/agentcollect/demo" class="pricing-cta pricing-cta-primary" target="_blank">Start a free pilot</a>
+        </div>
+
+        <!-- Third Party Collection -->
+        <div class="pricing-card">
+            <div class="pricing-label" style="color:var(--text-mid)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Third Party Collection
+            </div>
+            <h3>Licensed Attorney</h3>
+            <p class="pricing-desc">When AI outreach isn't enough, a licensed attorney sends demand letters and escalates on your behalf.</p>
+
+            <div class="pricing-price">
+                <div class="pricing-amount">$0 setup</div>
+                <div class="pricing-period">Success-only fees on recovered amounts</div>
+                <div class="pricing-model">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Pay only when you get paid
+                </div>
+            </div>
+
+            <div class="pricing-features">
+                <div class="pricing-feature">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Licensed attorney demand letters
+                </div>
+                <div class="pricing-feature">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Legal escalation when needed
+                </div>
+                <div class="pricing-feature">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Credit bureau reporting
+                </div>
+                <div class="pricing-feature">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Skip tracing and contact enrichment
+                </div>
+                <div class="pricing-feature">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    Full regulatory compliance
+                </div>
+                <div class="pricing-feature">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    No minimums, cancel anytime
+                </div>
+            </div>
+
+            <a href="https://cal.com/agentcollect/demo" class="pricing-cta pricing-cta-outline" target="_blank">Start a free pilot</a>
+        </div>
+    </div>
+</div>
+
+<!-- Enterprise -->
+<div class="enterprise">
+    <div class="enterprise-card">
+        <div class="enterprise-info">
+            <h3>Enterprise: $1M+/month volume</h3>
+            <p>No license fee. Custom SLA, dedicated account manager, API integration, and volume-based pricing. We'll build a custom recovery program for your portfolio.</p>
+        </div>
+        <a href="https://cal.com/agentcollect/demo" class="enterprise-cta" target="_blank">Talk to sales</a>
+    </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+        <div class="faq-q">What are the success-only fees?</div>
+        <div class="faq-a">Our fees are a percentage of the amount we recover for you. You pay nothing upfront and nothing if we don't recover. Specific rates depend on your volume, invoice age, and industry. Book a demo to get a custom quote.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q">How is this different from a collection agency?</div>
+        <div class="faq-a">Traditional agencies take 25-50% commissions, damage your brand, and take months to act. AgentCollect uses AI agents that contact your customers within minutes, under your brand, at a fraction of the cost. Licensed attorneys handle escalation when needed.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q">What's the difference between first party and third party?</div>
+        <div class="faq-a">First party collection means AI agents reach out under your brand name. Your customers see your company, not a collection agency. Third party collection involves a licensed attorney sending demand letters and escalating on your behalf when first party outreach is exhausted.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q">Is there a minimum volume or contract?</div>
+        <div class="faq-a">No minimums and no long-term contracts. Start with a single invoice or your entire portfolio. Cancel anytime. Enterprise accounts ($1M+/month) get custom pricing with no license fees.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q">How long does setup take?</div>
+        <div class="faq-a">Most customers are live within 24 hours. Upload a CSV or connect via API. We handle phone number provisioning, compliance configuration, and brand customization.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q">Is this compliant with FDCPA and Regulation F?</div>
+        <div class="faq-a">Yes. Every outreach follows FDCPA, Regulation F, TCPA, and state-specific regulations. Call timing, frequency limits, opt-out handling, and required disclosures are all built into the platform. We're SOC 2 Type II certified.</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-q">What does the free pilot include?</div>
+        <div class="faq-a">Upload a batch of invoices and let our AI agents work them for 30 days. You pay nothing upfront. If we recover money, you pay the agreed success fee. If we don't recover anything, you pay nothing. Zero risk.</div>
+    </div>
+</div>
+
+<!-- Final CTA -->
+<div class="final-cta">
+    <h2>Ready to stop collecting manually?</h2>
+    <p>Start a free pilot. Upload your invoices and see results within days.</p>
+    <a href="https://cal.com/agentcollect/demo" target="_blank">
+        Start a free pilot
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+</div>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div>
+                <div class="footer-brand">Agent<span>Collect</span><span class="dot-circle" style="width:6px;height:6px;display:inline-block;border-radius:50%;background:var(--indigo);margin-left:2px"></span></div>
+                <div class="footer-tagline">The end of manual collection. AI agents and licensed attorneys for your unpaid invoices.</div>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <a href="/#paths">First Party Collection</a>
+                <a href="/#paths">Third Party Collection</a>
+                <a href="/#results">Results</a>
+                <a href="/#hero-input">Live Demo</a>
+            </div>
+            <div class="footer-col">
+                <h4>Compliance</h4>
+                <a href="/#security">SOC 2 Type II</a>
+                <a href="/privacy">CCPA / CPRA</a>
+                <a href="/terms">Regulation F</a>
+                <a href="/privacy">GDPR</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="/about">About</a>
+                <a href="/careers">Careers</a>
+                <a href="/contact">Contact</a>
+                <a href="/pricing">Pricing</a>
+                <a href="/privacy">Privacy</a>
+                <a href="/terms">Terms</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-copy">&copy; 2026 AgentCollect, Inc. San Francisco, CA</div>
+            <div class="footer-badges"><span class="footer-badge">SOC 2</span><span class="footer-badge">CCPA</span><span class="footer-badge">Reg F</span></div>
+        </div>
+    </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>10)});
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+    });
+});
+</script>
+</body>
+</html>

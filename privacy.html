@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
+    <meta name="robots" content="index, follow">
     <title>Privacy Policy — AgentCollect</title>
     <meta name="description" content="AgentCollect privacy policy. How we collect, use, and protect your data. GDPR and CCPA compliant.">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ffffff'/%3E%3Ctext x='32' y='36' dominant-baseline='middle' text-anchor='middle' fill='%231e293b' font-family='system-ui' font-weight='900' font-size='32' letter-spacing='-2'%3Ea%3C/text%3E%3Cline x1='16' y1='48' x2='48' y2='16' stroke='%23ef4444' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+    <meta property="og:title" content="Privacy Policy — AgentCollect">
+    <meta property="og:description" content="How AgentCollect collects, uses, and protects your data. GDPR and CCPA compliant.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.agentcollect.com/privacy">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -14,11 +18,11 @@
         *{margin:0;padding:0;box-sizing:border-box}
         :root{
             --bg:#FAFBFF;--bg-card:#fff;--bg-dark:#0B1B3D;
-            --border:#E8ECF2;--border-hover:rgba(37,99,235,.25);
+            --border:#E8ECF2;--border-hover:rgba(79,70,229,.25);
             --text:#0B1B3D;--text-mid:#475569;--text-muted:#94A3B8;--text-dim:#CBD5E1;
-            --blue:#2563EB;--blue-dark:#1D4ED8;--blue-light:rgba(37,99,235,.06);--blue-glow:rgba(37,99,235,.15);
+            --indigo:#4F46E5;--indigo-dark:#4338CA;--indigo-light:rgba(79,70,229,.06);--indigo-glow:rgba(79,70,229,.15);
             --green:#10B981;--green-dark:#059669;--green-light:rgba(16,185,129,.06);
-            --amber:#F59E0B;--red:#EF4444;--pink:#EC4899;--sf-blue:#00A1E0;
+            --amber:#F59E0B;--red:#EF4444;
             --mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
             --shadow-sm:0 1px 2px rgba(0,0,0,.05);
             --shadow-md:0 4px 12px rgba(0,0,0,.06);
@@ -28,20 +32,23 @@
         html{scroll-behavior:smooth}
         body{font-family:var(--sans);background:#fff;color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
         h1,h2,h3,h4,h5{font-family:var(--display)}
-        ::selection{background:rgba(37,99,235,.12)}
+        ::selection{background:rgba(79,70,229,.12)}
 
         .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
         .nav.scrolled{box-shadow:0 1px 8px rgba(0,0,0,.04)}
         .nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:60px}
-        .logo{display:flex;align-items:center;gap:0;text-decoration:none;margin-right:40px;font-family:var(--display);font-size:18px;font-weight:900;letter-spacing:-.04em;color:var(--text)}
-        .logo span{color:var(--blue)}
-        .nav-links{display:flex;gap:28px;flex:1}
+        .logo{display:inline-flex;align-items:baseline;text-decoration:none;margin-right:auto;font-family:var(--display);font-size:18px;font-weight:900;letter-spacing:-.04em;color:var(--text)}
+        .dot-circle{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--indigo);margin-left:2px;margin-bottom:2px;vertical-align:baseline}
+        .logo-tagline{font-size:11px;color:var(--text-muted);font-weight:500;margin-left:12px;padding-left:12px;border-left:1px solid var(--border);white-space:nowrap}
+        .nav-links{display:flex;gap:28px;margin-right:24px}
         .nav-links a{color:var(--text-mid);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
         .nav-links a:hover{color:var(--text)}
-        .nav-right{display:flex;align-items:center;gap:20px}
-        .nav-cta{padding:9px 20px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s}
-        .nav-cta:hover{background:var(--blue-dark)}
-        .nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px}
+        .nav-right{display:flex;align-items:center;gap:12px}
+        .nav-cta{padding:9px 20px;min-height:44px;background:var(--indigo);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center}
+        .nav-cta:hover{background:var(--indigo-dark)}
+        .nav-cta-ghost{padding:9px 20px;min-height:44px;background:transparent;color:var(--text);border:1px solid var(--border);border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center}
+        .nav-cta-ghost:hover{border-color:var(--indigo);color:var(--indigo)}
+        .nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px}
 
         .page-hero{padding:140px 32px 40px;text-align:center}
         .page-hero h1{font-size:clamp(32px,4vw,48px);font-weight:900;letter-spacing:-.04em;line-height:1.1;margin-bottom:16px}
@@ -53,14 +60,14 @@
         .legal h3{font-size:16px;font-weight:700;margin:24px 0 8px}
         .legal p{font-size:14px;color:var(--text-mid);line-height:1.8;margin-bottom:12px}
         .legal ul{margin:0 0 12px 20px;font-size:14px;color:var(--text-mid);line-height:1.8}
-        .legal a{color:var(--blue);text-decoration:none}
+        .legal a{color:var(--indigo);text-decoration:none}
         .legal a:hover{text-decoration:underline}
 
         footer{background:#fff;border-top:1px solid var(--border);padding:56px 32px 32px}
         .footer-inner{max-width:var(--max-w);margin:0 auto}
         .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
         .footer-brand{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:12px}
-        .footer-brand span{color:var(--blue)}
+        .footer-brand span{color:var(--indigo)}
         .footer-tagline{font-size:13px;color:var(--text-muted);line-height:1.5;max-width:260px}
         .footer-col h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text);margin-bottom:16px}
         .footer-col a{display:block;font-size:13px;color:var(--text-muted);text-decoration:none;margin-bottom:10px;transition:color .2s}
@@ -71,7 +78,7 @@
         .footer-badge{padding:4px 10px;border:1px solid var(--border);border-radius:6px;font-size:10px;color:var(--text-muted);font-weight:600}
 
         @media(max-width:768px){
-            .nav-links{display:none}
+            .nav-links,.logo-tagline{display:none}
             .nav-mobile{display:block}
             .nav-inner{padding:0 20px}
             .page-hero{padding:120px 20px 32px}
@@ -93,13 +100,15 @@
 
 <nav class="nav" id="nav">
 <div class="nav-inner">
-    <a href="/" class="logo">Agent<span>Collect</span><span style="color:#433196;font-size:inherit;">.</span></a>
+    <a href="/" class="logo">Agent<span>Collect</span><span class="dot-circle"></span></a>
+    <span class="logo-tagline">The end of manual collection.</span>
     <div class="nav-links">
-        <a href="/#results">Customers</a>
+        <a href="/#paths">Products</a>
+        <a href="/#results">Results</a>
         <a href="/#how">How it works</a>
-        <a href="/#security">Security</a>
     </div>
     <div class="nav-right">
+        <a href="https://cal.com/agentcollect/demo" class="nav-cta-ghost" target="_blank">Talk to us</a>
         <a href="/#hero-input" class="nav-cta">Try the demo</a>
     </div>
     <button class="nav-mobile" onclick="window.location='/'">
@@ -207,22 +216,22 @@
     <p>For privacy-related inquiries, data access requests, or complaints:</p>
     <p>Email: <a href="mailto:privacy@agentcollect.com">privacy@agentcollect.com</a><br>
     AgentCollect, Inc.<br>
-    New York, NY</p>
+    San Francisco, CA</p>
 </div>
 
 <footer>
     <div class="footer-inner">
         <div class="footer-top">
             <div>
-                <div class="footer-brand">Agent<span>Collect</span><span style="color:#433196;font-size:inherit;">.</span></div>
-                <div class="footer-tagline">Agents, not agencies. AI-powered recovery under your brand. Faster, cheaper, fairer.</div>
+                <div class="footer-brand">Agent<span>Collect</span><span class="dot-circle" style="width:6px;height:6px;display:inline-block;border-radius:50%;background:var(--indigo);margin-left:2px"></span></div>
+                <div class="footer-tagline">The end of manual collection. AI agents and licensed attorneys for your unpaid invoices.</div>
             </div>
             <div class="footer-col">
                 <h4>Product</h4>
-                <a href="/#how">How it works</a>
-                <a href="/#results">Customers</a>
-                <a href="/#security">Security</a>
-                <a href="/#hero-input">Live demo</a>
+                <a href="/#paths">First Party Collection</a>
+                <a href="/#paths">Third Party Collection</a>
+                <a href="/#results">Results</a>
+                <a href="/#hero-input">Live Demo</a>
             </div>
             <div class="footer-col">
                 <h4>Compliance</h4>
@@ -241,7 +250,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <div class="footer-copy">&copy; 2026 AgentCollect, Inc. New York, NY</div>
+            <div class="footer-copy">&copy; 2026 AgentCollect, Inc. San Francisco, CA</div>
             <div class="footer-badges"><span class="footer-badge">SOC 2</span><span class="footer-badge">CCPA</span><span class="footer-badge">Reg F</span></div>
         </div>
     </div>
