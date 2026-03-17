@@ -262,7 +262,7 @@ h1,h2,h3,.hero-title,.section-title{font-family:'Plus Jakarta Sans',system-ui,sa
 <section class="hero" id="hero-section">
   <div class="hero-inner" id="hero-content">
     <h1 class="hero-title">What if your clients actually paid?</h1>
-    <p class="hero-sub">Enter any company domain below. We'll analyze their AR contacts, build an escalation strategy, and show you exactly how we'd recover their unpaid invoices.</p>
+    <p class="hero-sub">Enter any company domain. We'll show you exactly how we'd recover their unpaid invoices.</p>
     <div class="search-wrap">
       <div class="search-bar">
         <input type="text" id="domain-input" class="search-input" placeholder="konicaminolta.com" value="konicaminolta.com">
@@ -270,11 +270,9 @@ h1,h2,h3,.hero-title,.section-title{font-family:'Plus Jakarta Sans',system-ui,sa
       </div>
       <p class="hero-note">Try it. It's real.</p>
     </div>
-  </div>
 
-  <!-- Loading state (hidden) -->
-  <div class="hero-inner hidden" id="loading-content">
-    <div class="loading-wrap">
+    <!-- Loading steps (inline, under search bar) -->
+    <div class="loading-wrap hidden" id="loading-content" style="margin-top:32px">
       <div class="load-step" id="ls1">
         <div class="step-icon"><div class="spinner"></div><span class="checkmark">&#10003;</span></div>
         <span>Analyzing company profile...</span>
@@ -453,8 +451,9 @@ function startAnalysis() {
 
   gtag('event', 'analyze_domain', {domain: domain});
 
-  // Switch to loading
-  document.getElementById('hero-content').classList.add('hidden');
+  // Show loading steps (keep hero visible)
+  document.getElementById('analyze-btn').disabled = true;
+  document.getElementById('analyze-btn').textContent = 'Analyzing...';
   document.getElementById('loading-content').classList.remove('hidden');
 
   // Progressive loading steps
@@ -522,12 +521,9 @@ function showResults(data, domain) {
   heroSection.style.minHeight = 'auto';
   heroSection.style.padding = '120px 32px 0';
 
-  // Hide loading
+  // Hide loading, collapse hero to compact search
   document.getElementById('loading-content').classList.add('hidden');
-
-  // Show a small search bar at top
-  document.getElementById('hero-content').classList.remove('hidden');
-  document.getElementById('hero-content').innerHTML = '<div class="search-wrap" style="max-width:480px"><div class="search-bar" style="box-shadow:var(--shadow)"><input type="text" id="domain-input" class="search-input" style="padding:14px 20px;font-size:15px" placeholder="Enter another domain..." value="' + domain + '"><button class="search-btn" style="padding:10px 24px;font-size:14px" onclick="resetAndAnalyze()">Analyze</button></div></div>';
+  document.getElementById('hero-content').innerHTML = '<div class="search-wrap" style="max-width:560px"><h2 style="font-size:24px;font-weight:800;margin-bottom:16px;letter-spacing:-.02em">Recovery analysis: ' + (data.company ? data.company.name : domain) + '</h2><div class="search-bar" style="box-shadow:var(--shadow)"><input type="text" id="domain-input" class="search-input" style="padding:14px 20px;font-size:15px" placeholder="Try another domain..." value="' + domain + '"><button class="search-btn" style="padding:10px 24px;font-size:14px" onclick="resetAndAnalyze()">Analyze</button></div></div>';
   document.getElementById('domain-input').addEventListener('keydown', function(e) {
     if (e.key === 'Enter') resetAndAnalyze();
   });
