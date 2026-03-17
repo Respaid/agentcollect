@@ -101,41 +101,52 @@
         .input-hint{margin-top:16px;font-size:14px;color:var(--text-mid);text-align:center;letter-spacing:-.01em}
 
         /* ANALYSIS CONSOLE */
-        .analysis{max-width:680px;margin:0 auto;padding:0 24px;display:none}
+        .analysis{max-width:780px;margin:0 auto;padding:0 24px;display:none}
         .analysis.active{display:block;animation:fadeUp .5s ease}
-        .analysis-header{text-align:center;margin-bottom:32px}
+        .analysis-header{text-align:center;margin-bottom:24px}
         .analysis-target{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;background:#fff;border:1px solid var(--border);border-radius:8px}
         .analysis-target-url{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--indigo)}
         .analysis-target-status{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse-ring 2s infinite}
-        .a-step{margin-bottom:20px;opacity:0;transform:translateY(12px);transition:all .4s ease}
-        .a-step.active{opacity:1;transform:translateY(0)}
-        .a-step.done .a-step-icon{background:var(--green-light);border-color:rgba(16,185,129,.1)}
-        .a-step.done .a-step-icon svg{color:var(--green)}
-        .a-step-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-        .a-step-icon{width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;background:var(--indigo-light);border:1px solid rgba(79,70,229,.06);transition:all .3s;flex-shrink:0}
-        .a-step-icon svg{width:14px;height:14px;color:var(--indigo)}
-        .a-step-icon.spinning svg{animation:spin .8s linear infinite}
-        .a-step-title{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text)}
-        .a-step-sub{font-size:12px;color:var(--text-muted);margin-top:1px}
-        .a-step-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-left:44px;position:relative;overflow:hidden}
-        .a-step-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--indigo),var(--green));transform:scaleX(0);transform-origin:left;transition:transform 1s ease}
-        .a-step-card.loaded::before{transform:scaleX(1)}
-        .a-row{display:flex;justify-content:space-between;align-items:flex-start;padding:7px 0;border-bottom:1px solid rgba(0,0,0,.03);opacity:0;transform:translateX(6px);transition:all .3s ease}
-        .a-row:last-child{border-bottom:none}
-        .a-row.show{opacity:1;transform:translateX(0)}
-        .a-row-key{font-size:12px;color:var(--text-muted);font-weight:500;min-width:100px;flex-shrink:0}
-        .a-row-val{font-size:13px;color:var(--text);font-weight:500;text-align:right;flex:1}
-        .a-row-val.found{color:var(--indigo)}
-        .a-row-val.green{color:var(--green)}
         .a-actions{display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap;opacity:0;transform:translateY(12px);transition:all .4s}
         .a-actions.show{opacity:1;transform:translateY(0)}
-        .person-card{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--bg);border-radius:8px;margin-bottom:10px}
-        .person-avatar{width:40px;height:40px;border-radius:50%;background:var(--indigo-light);border:1px solid rgba(79,70,229,.08);overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center}
-        .person-avatar img{width:100%;height:100%;object-fit:cover}
-        .person-info{flex:1}
-        .person-name{font-family:var(--display);font-size:14px;font-weight:800;color:var(--text)}
-        .person-title{font-size:12px;color:var(--text-mid);margin-top:1px}
-        .person-badge{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:4px;background:var(--indigo-light);color:var(--indigo)}
+
+        /* DASHBOARD GRID */
+        .dashboard-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:720px;margin:0 auto;opacity:0;transform:translateY(12px);transition:all .5s cubic-bezier(.16,1,.3,1)}
+        .dashboard-grid.visible{opacity:1;transform:translateY(0)}
+        .dash-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px;min-height:180px;position:relative;overflow:hidden;transition:all .3s}
+        .dash-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--indigo),var(--green));transform:scaleX(0);transform-origin:left;transition:transform 1s ease}
+        .dash-card.loaded::before{transform:scaleX(1)}
+        .dash-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);margin-bottom:12px}
+        .dash-content{font-size:14px;color:var(--text);line-height:1.6}
+        .dash-loading{display:flex;gap:4px;padding:8px 0}
+        .typing-dot{width:5px;height:5px;border-radius:50%;background:var(--indigo);animation:typing-dot 1.4s infinite}
+        .typing-dot:nth-child(2){animation-delay:.2s}
+        .typing-dot:nth-child(3){animation-delay:.4s}
+        .dash-company-name{font-family:var(--display);font-size:18px;font-weight:800;color:var(--text);margin-bottom:4px}
+        .dash-company-industry{font-size:13px;color:var(--text-mid)}
+        .dash-company-size{font-size:12px;color:var(--text-muted);margin-top:4px}
+        .dash-company-logo{height:20px;opacity:.4;margin-bottom:10px}
+        .dash-dispute{display:flex;align-items:flex-start;gap:8px;padding:4px 0;font-size:13px;color:var(--text-mid);line-height:1.4}
+        .dash-dispute-num{font-size:10px;font-weight:800;color:var(--amber);min-width:16px}
+        .dash-dm-card{display:flex;align-items:center;gap:12px}
+        .dash-dm-avatar{width:44px;height:44px;border-radius:50%;overflow:hidden;flex-shrink:0;background:var(--indigo-light);display:flex;align-items:center;justify-content:center}
+        .dash-dm-avatar img{width:100%;height:100%;object-fit:cover}
+        .dash-dm-name{font-family:var(--display);font-size:15px;font-weight:700;color:var(--text)}
+        .dash-dm-title{font-size:12px;color:var(--text-mid)}
+        .dash-dm-contact{margin-top:10px;font-size:12px;color:var(--text-muted)}
+        .dash-dm-contact span{font-family:var(--mono);color:var(--indigo);font-weight:500}
+        .dash-plan-step{display:flex;align-items:center;gap:8px;padding:3px 0}
+        .dash-plan-day{display:inline-flex;align-items:center;justify-content:center;width:28px;height:20px;border-radius:4px;font-size:10px;font-weight:800;font-family:var(--display);color:#fff;flex-shrink:0}
+        .dash-plan-text{font-size:12px;color:var(--text-mid);line-height:1.3}
+        .dash-conf{margin-top:10px;display:flex;align-items:center;gap:8px}
+        .dash-conf-bar{flex:1;height:3px;background:rgba(0,0,0,.04);border-radius:2px;overflow:hidden}
+        .dash-conf-fill{height:100%;background:linear-gradient(90deg,var(--indigo),var(--green));border-radius:2px;width:0;transition:width 1.2s ease}
+        .dash-conf-label{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--green)}
+
+        @media(max-width:768px){
+            .dashboard-grid{grid-template-columns:1fr;gap:10px}
+            .dash-card{min-height:auto;padding:16px}
+        }
 
         /* ═══ PROOF BAR — static logos with hover stats ═══ */
         .proof-bar{padding:48px 32px;background:#fff}
@@ -324,7 +335,6 @@
             .footer-top{grid-template-columns:1fr;gap:24px}
             .footer-bottom{flex-direction:column;text-align:center}
             .footer-badges{justify-content:center}
-            .a-step-card{margin-left:0}
             .a-actions{flex-direction:column}
             .cta-btns{flex-direction:column;align-items:center}
             .path-card{padding:24px}
@@ -432,50 +442,31 @@
             <span class="analysis-target-url" id="target-url"></span>
         </div>
     </div>
-
-    <div class="a-step" id="step-business">
-        <div class="a-step-header">
-            <div class="a-step-icon" id="icon-business"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
-            <div><div class="a-step-title" id="title-business">Analyzing business...</div><div class="a-step-sub" id="sub-business"></div></div>
+    <div class="dashboard-grid" id="dashboard">
+        <div class="dash-card" id="dash-company">
+            <div class="dash-label">Company</div>
+            <div id="dash-company-content" class="dash-content"><div class="dash-loading"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>
         </div>
-        <div class="a-step-card" id="card-business"><div id="business-rows"></div></div>
-    </div>
-
-    <div class="a-step" id="step-disputes">
-        <div class="a-step-header">
-            <div class="a-step-icon" id="icon-disputes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg></div>
-            <div><div class="a-step-title" id="title-disputes">Identifying disputes...</div><div class="a-step-sub" id="sub-disputes"></div></div>
+        <div class="dash-card" id="dash-disputes">
+            <div class="dash-label">Top disputes</div>
+            <div id="dash-disputes-content" class="dash-content"><div class="dash-loading"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>
         </div>
-        <div class="a-step-card" id="card-disputes"><div id="disputes-rows"></div></div>
-    </div>
-
-    <div class="a-step" id="step-decision">
-        <div class="a-step-header">
-            <div class="a-step-icon" id="icon-decision"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-            <div><div class="a-step-title" id="title-decision">Finding decision-maker...</div><div class="a-step-sub" id="sub-decision"></div></div>
+        <div class="dash-card" id="dash-dm">
+            <div class="dash-label">Decision maker</div>
+            <div id="dash-dm-content" class="dash-content"><div class="dash-loading"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>
         </div>
-        <div class="a-step-card" id="card-decision"><div id="decision-rows"></div></div>
-    </div>
-
-    <div class="a-step" id="step-plan">
-        <div class="a-step-header">
-            <div class="a-step-icon" id="icon-plan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></div>
-            <div><div class="a-step-title" id="title-plan">Building collection plan...</div><div class="a-step-sub" id="sub-plan"></div></div>
+        <div class="dash-card" id="dash-plan">
+            <div class="dash-label">Collection plan</div>
+            <div id="dash-plan-content" class="dash-content"><div class="dash-loading"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div></div>
         </div>
-        <div class="a-step-card" id="card-plan"><div id="plan-rows"></div></div>
     </div>
-
     <div class="a-actions" id="a-actions">
-        <div style="text-align:center;margin-bottom:16px;max-width:420px;margin-left:auto;margin-right:auto">
-            <div style="font-family:var(--display);font-size:18px;font-weight:800;color:var(--text);margin-bottom:8px">Your AI collection agent is ready.</div>
-            <div style="font-size:14px;color:var(--text-muted);line-height:1.65">We'll show up with a working agent branded for your company.</div>
+        <div style="text-align:center;margin-bottom:16px;max-width:440px;margin-left:auto;margin-right:auto">
+            <div style="font-family:var(--display);font-size:18px;font-weight:800;color:var(--text);margin-bottom:6px">Your AI collection agent is ready to build.</div>
+            <div style="font-size:13px;color:var(--text-mid);line-height:1.5">Book a meeting. We'll show up with a working agent branded for your company.</div>
         </div>
-        <a href="https://cal.com/johnb/30" target="_blank" class="path-cta path-cta-primary" style="padding:14px 28px;font-size:14px;gap:8px">
-            Book a demo
-        </a>
-        <button class="path-cta path-cta-outline" onclick="resetAndScroll()" style="padding:12px 24px;font-size:13px">
-            Try another company
-        </button>
+        <a href="https://cal.com/johnb/30" target="_blank" class="path-cta path-cta-primary" style="padding:16px 36px;font-size:15px;gap:10px">Book a demo — we'll bring your agent</a>
+        <button class="path-cta path-cta-outline" onclick="resetAndScroll()" style="padding:14px 28px">Try another company</button>
     </div>
 </section>
 
@@ -881,36 +872,16 @@ function findCompany(domain) {
     return null;
 }
 
-function showStep(id){document.getElementById('step-'+id).classList.add('active')}
-function doneStep(id){document.getElementById('step-'+id).classList.add('done')}
-function setIcon(id,done){
-    const ic=document.getElementById('icon-'+id);
-    if(done){ic.classList.remove('spinning');ic.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="color:var(--green)"><path d="M20 6L9 17l-5-5" stroke-dasharray="24" stroke-dashoffset="0" style="animation:check-draw .4s ease forwards"/></svg>'}
-    else{ic.classList.add('spinning');ic.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--indigo)"><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg>'}
-}
-
-async function addRow(containerId, key, val, cls='') {
-    const c = document.getElementById(containerId);
-    const r = document.createElement('div');
-    r.className = 'a-row';
-    r.innerHTML = `<span class="a-row-key">${key}</span><span class="a-row-val ${cls}">${val}</span>`;
-    c.appendChild(r);
-    await sleep(50);
-    r.classList.add('show');
-    await sleep(150);
-}
-
-async function resetConsole() {
-    ['business','disputes','decision','plan'].forEach(id => {
-        const s = document.getElementById('step-'+id);
-        if(s) s.classList.remove('active','done');
-        const c = document.getElementById('card-'+id);
-        if(c) c.classList.remove('loaded');
+function resetConsole() {
+    const loadingDots = '<div class="dash-loading"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+    document.getElementById('dash-company-content').innerHTML = loadingDots;
+    document.getElementById('dash-disputes-content').innerHTML = loadingDots;
+    document.getElementById('dash-dm-content').innerHTML = loadingDots;
+    document.getElementById('dash-plan-content').innerHTML = loadingDots;
+    ['dash-company','dash-disputes','dash-dm','dash-plan'].forEach(id => {
+        document.getElementById(id).classList.remove('loaded');
     });
-    ['business-rows','disputes-rows','decision-rows','plan-rows'].forEach(id => {
-        const el = document.getElementById(id);
-        if(el) el.innerHTML = '';
-    });
+    document.getElementById('dashboard').classList.remove('visible');
     document.getElementById('a-actions').classList.remove('show');
 }
 
@@ -934,12 +905,16 @@ async function startAnalysis() {
     const btn = document.getElementById('go-btn');
     btn.disabled = true;
 
-    await resetConsole();
+    resetConsole();
     const console_el = document.getElementById('analysis-console');
     console_el.classList.add('active');
     document.getElementById('target-url').textContent = domain;
     await sleep(200);
     console_el.scrollIntoView({behavior:'smooth', block:'start'});
+
+    // Show the grid with loading dots
+    await sleep(300);
+    document.getElementById('dashboard').classList.add('visible');
 
     let data = company ? {
         company: { name: company.name, domain, industry: company.industry, products: company.products, size: company.size, logo_url: 'https://cdn.brandfetch.io/'+domain+'/w/512/h/80/logo' },
@@ -952,19 +927,9 @@ async function startAnalysis() {
         method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({domain})
     }).then(r => r.json()).then(r => { if(r.success && r.data) data = r.data; }).catch(e => console.warn('API:', e));
 
-    // STEP 1: BUSINESS
-    showStep('business'); setIcon('business', false);
-    document.getElementById('sub-business').textContent = 'Scanning ' + domain + '...';
-
-    const logoUrl = 'https://cdn.brandfetch.io/'+domain+'/w/512/h/80/logo';
-    const logoRow = document.createElement('div');
-    logoRow.style.cssText = 'text-align:center;padding:12px 0 6px';
-    logoRow.innerHTML = `<img src="${logoUrl}" alt="${domain}" style="height:24px;opacity:.4;filter:grayscale(30%)" onerror="this.style.display='none'">`;
-    document.getElementById('card-business').appendChild(logoRow);
-
+    // Wait for data
     await sleep(800);
     if (!company) await apiPromise;
-    await sleep(400);
 
     if (!data) {
         const coName = domain.replace(/\.(com|io|co|org|net|app|us)$/,'').replace(/[-_]/g,' ').replace(/^./,c=>c.toUpperCase());
@@ -973,113 +938,81 @@ async function startAnalysis() {
             ? ['Subscription cancellation mid-contract with outstanding balance', 'Usage overage disputes on annual commitment', 'Disputed charges after free trial conversion']
             : ['Outstanding balance past agreed payment terms', 'Disputed invoice amount or missing purchase order', 'Service completed but payment not released by AP'];
         data = {
-            company: { name: coName, domain, industry: isSaas ? 'Technology / SaaS' : 'Business Services', products: 'Analyzing...', size: 'Researching...', logo_url: logoUrl },
+            company: { name: coName, domain, industry: isSaas ? 'Technology / SaaS' : 'Business Services', products: 'Analyzing...', size: 'Researching...', logo_url: 'https://cdn.brandfetch.io/'+domain+'/w/512/h/80/logo' },
             disputes: fallbackDisputes,
             decision_maker: { name: 'Finance Team', title: 'Accounts Receivable', photo_url: null, phone_masked: null, email_masked: null },
             plan: { day_1: 'AI email referencing specific outstanding invoice', day_3: 'AI phone call to AP with full documentation', day_7: 'Attorney demand letter with legal notice', day_14: 'Payment portal live — debtor pays you directly' }
         };
     }
 
-    document.getElementById('card-business').classList.add('loaded');
-    await addRow('business-rows', 'Company', data.company.name, 'found');
-    await addRow('business-rows', 'Industry', data.company.industry);
-    if (data.company.products) await addRow('business-rows', 'Products', data.company.products);
-    if (data.company.size) await addRow('business-rows', 'Size', data.company.size);
-    setIcon('business', true);
-    document.getElementById('title-business').textContent = data.company.name;
-    document.getElementById('sub-business').textContent = data.company.industry;
-    doneStep('business');
-    await sleep(400);
+    const logoUrl = 'https://cdn.brandfetch.io/'+domain+'/w/512/h/80/logo';
 
-    // STEP 2: DISPUTES
-    showStep('disputes'); setIcon('disputes', false);
-    document.getElementById('sub-disputes').textContent = 'Analyzing ' + (data.company.industry||domain) + '...';
-    await sleep(1000);
-    document.getElementById('card-disputes').classList.add('loaded');
+    // CARD 1: COMPANY (after 0.8s total — already waited)
+    const companyEl = document.getElementById('dash-company-content');
+    companyEl.innerHTML = `
+        <img src="${logoUrl}" alt="${data.company.name}" class="dash-company-logo" onerror="this.style.display='none'">
+        <div class="dash-company-name">${data.company.name}</div>
+        <div class="dash-company-industry">${data.company.industry}</div>
+        ${data.company.size ? '<div class="dash-company-size">'+data.company.size+'</div>' : ''}
+    `;
+    document.getElementById('dash-company').classList.add('loaded');
 
-    const disputesContainer = document.getElementById('disputes-rows');
+    // CARD 2: DISPUTES (after 1.5s)
+    await sleep(700);
+    const disputesEl = document.getElementById('dash-disputes-content');
     const topDisputes = data.disputes.slice(0, 3);
-    for (let i = 0; i < topDisputes.length; i++) {
-        const d = document.createElement('div');
-        d.className = 'a-row';
-        d.innerHTML = `<span class="a-row-key" style="min-width:auto;display:flex;align-items:center;gap:6px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4"/></svg><span style="color:var(--amber);font-weight:700;font-size:10px">#${i+1}</span></span><span class="a-row-val" style="text-align:left;margin-left:8px">${topDisputes[i]}</span>`;
-        disputesContainer.appendChild(d);
-        await sleep(50); d.classList.add('show'); await sleep(250);
-    }
-    setIcon('disputes', true);
-    document.getElementById('title-disputes').textContent = 'Top 3 dispute patterns';
-    document.getElementById('sub-disputes').textContent = 'Specific to ' + (data.company.industry||data.company.name);
-    doneStep('disputes');
-    await sleep(400);
+    disputesEl.innerHTML = topDisputes.map((d, i) =>
+        `<div class="dash-dispute"><span class="dash-dispute-num">#${i+1}</span><span>${d}</span></div>`
+    ).join('');
+    document.getElementById('dash-disputes').classList.add('loaded');
 
-    // STEP 3: DECISION MAKER
-    showStep('decision'); setIcon('decision', false);
-    document.getElementById('sub-decision').textContent = 'Searching ' + data.company.name + '...';
-    await sleep(1200);
-    document.getElementById('card-decision').classList.add('loaded');
-
+    // CARD 3: DECISION MAKER (after 2.2s)
+    await sleep(700);
     const dm = data.decision_maker;
     const avatarSrc = dm.photo_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(dm.name)}&size=200&background=4F46E5&color=fff&bold=true`;
-    const dmHtml = `<div class="person-card" style="animation:pop-in .3s ease">
-        <div class="person-avatar"><img src="${avatarSrc}" alt="${dm.name}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(dm.name)}&size=200&background=4F46E5&color=fff&bold=true'"></div>
-        <div class="person-info">
-            <div class="person-name">${dm.name}</div>
-            <div class="person-title">${dm.title}${data.company.name?' at '+data.company.name:''}</div>
+    const dmEl = document.getElementById('dash-dm-content');
+    let dmContactHtml = '';
+    if (dm.phone_masked || dm.email_masked) {
+        const parts = [];
+        if (dm.phone_masked) parts.push('<span>'+dm.phone_masked+'</span>');
+        if (dm.email_masked) parts.push('<span>'+dm.email_masked+'</span>');
+        dmContactHtml = '<div class="dash-dm-contact">'+parts.join(' &middot; ')+'</div>';
+    }
+    dmEl.innerHTML = `
+        <div class="dash-dm-card">
+            <div class="dash-dm-avatar"><img src="${avatarSrc}" alt="${dm.name}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(dm.name)}&size=200&background=4F46E5&color=fff&bold=true'"></div>
+            <div>
+                <div class="dash-dm-name">${dm.name}</div>
+                <div class="dash-dm-title">${dm.title}${data.company.name ? ' at '+data.company.name : ''}</div>
+            </div>
         </div>
-        <div class="person-badge">Decision Maker</div>
-    </div>`;
-    document.getElementById('decision-rows').innerHTML = dmHtml;
-    await sleep(300);
+        ${dmContactHtml}
+    `;
+    document.getElementById('dash-dm').classList.add('loaded');
 
-    if (dm.phone_masked) {
-        await addRow('decision-rows', '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2" style="vertical-align:middle"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg> Phone', '<span style="font-family:var(--mono);letter-spacing:.05em;font-size:12px">'+dm.phone_masked+'</span>', 'found');
-    }
-    if (dm.email_masked) {
-        await addRow('decision-rows', '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2" style="vertical-align:middle"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg> Email', '<span style="font-family:var(--mono);letter-spacing:.05em;font-size:12px">'+dm.email_masked+'</span>', 'found');
-    }
-    if (dm.linkedin_url) {
-        await addRow('decision-rows', '<svg width="11" height="11" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286z"/></svg> LinkedIn', 'Profile found', 'found');
-    }
-
-    setIcon('decision', true);
-    document.getElementById('title-decision').textContent = dm.name;
-    document.getElementById('sub-decision').textContent = dm.title + (data.company.name?' at '+data.company.name:'');
-    doneStep('decision');
-    await sleep(400);
-
-    // STEP 4: COLLECTION PLAN
-    showStep('plan'); setIcon('plan', false);
-    document.getElementById('sub-plan').textContent = 'Building custom AI collection strategy...';
+    // CARD 4: PLAN (after 3s)
     await sleep(800);
-    document.getElementById('card-plan').classList.add('loaded');
-
-    const planContainer = document.getElementById('plan-rows');
+    const planEl = document.getElementById('dash-plan-content');
     const steps = [
-        {day: '1', label: 'First contact', text: data.plan.day_1, color: 'var(--indigo)'},
-        {day: '3', label: 'Follow-up', text: data.plan.day_3, color: 'var(--indigo)'},
-        {day: '7', label: 'Escalation', text: data.plan.day_7, color: 'var(--amber)'},
-        {day: '14', label: 'Resolution', text: data.plan.day_14, color: 'var(--green)'}
+        {day: 'D1', text: data.plan.day_1, color: 'var(--indigo)'},
+        {day: 'D3', text: data.plan.day_3, color: 'var(--indigo)'},
+        {day: 'D7', text: data.plan.day_7, color: 'var(--amber)'},
+        {day: 'D14', text: data.plan.day_14, color: 'var(--green)'}
     ];
-    for (const s of steps) {
-        const row = document.createElement('div');
-        row.className = 'a-row';
-        row.innerHTML = `<span class="a-row-key" style="min-width:auto;display:flex;align-items:center;gap:6px"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:5px;background:${s.color};color:#fff;font-size:10px;font-weight:800;font-family:var(--display)">D${s.day}</span></span><span class="a-row-val" style="text-align:left;margin-left:8px;line-height:1.5"><strong style="color:var(--text);font-size:12px">${s.label}</strong><br><span style="color:var(--text-mid);font-size:12px">${s.text}</span></span>`;
-        planContainer.appendChild(row);
-        await sleep(50); row.classList.add('show'); await sleep(300);
-    }
+    planEl.innerHTML = steps.map(s =>
+        `<div class="dash-plan-step"><span class="dash-plan-day" style="background:${s.color}">${s.day}</span><span class="dash-plan-text">${s.text}</span></div>`
+    ).join('') + `
+        <div class="dash-conf">
+            <div class="dash-conf-bar"><div class="dash-conf-fill" id="conf-bar"></div></div>
+            <div class="dash-conf-label">94%</div>
+        </div>
+    `;
+    document.getElementById('dash-plan').classList.add('loaded');
+    await sleep(100);
+    document.getElementById('conf-bar').style.width = '94%';
 
-    const confDiv = document.createElement('div');
-    confDiv.style.cssText = 'display:flex;align-items:center;gap:10px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);opacity:0;transition:opacity .4s';
-    confDiv.innerHTML = `<span style="font-size:12px;color:var(--text-dim)">Recovery confidence</span><div style="flex:1;height:3px;background:rgba(0,0,0,.03);border-radius:2px;overflow:hidden"><div id="conf-bar" style="height:100%;background:linear-gradient(90deg,var(--indigo),var(--green));border-radius:2px;transition:width 1.2s ease;width:0"></div></div><span style="font-family:var(--mono);font-size:12px;font-weight:500;color:var(--green)">94%</span>`;
-    planContainer.appendChild(confDiv);
-    await sleep(80); confDiv.style.opacity='1'; await sleep(80); document.getElementById('conf-bar').style.width='94%';
-
-    setIcon('plan', true);
-    document.getElementById('title-plan').textContent = 'Custom AI collection plan ready';
-    document.getElementById('sub-plan').textContent = '14-day resolution timeline — 94% confidence';
-    doneStep('plan');
-    await sleep(400);
-
+    // SHOW CTA (after 3.5s)
+    await sleep(500);
     document.getElementById('a-actions').classList.add('show');
     btn.disabled = false;
 }
