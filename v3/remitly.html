@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentCollect × Remitly</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="AgentCollect × Remitly">
+<meta property="og:description" content="We analyzed Remitly's chargeback recovery setup. Here's what we found.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.agentcollect.com/og.png?v=3">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GRZZT9K05B"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GRZZT9K05B');</script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","vr6uvxdalw");</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --blue:#4F46E5;
+  --text:#0B1B3D;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --bg:#FAFBFF;
+  --warm:#f4f5f7;
+  --green:#10B981;
+  --green-dark:#059669;
+  --red:#dc2626;
+  --orange:#d97706;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+  --shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);
+  --shadow-lg:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);
+  --shadow-xl:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.6}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.rv.v{opacity:1;transform:none}
+.rv-d1{transition-delay:.15s}
+.rv-d2{transition-delay:.3s}
+
+/* ===== NAV ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(250,251,255,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,0,0,.04)}
+.nav-inner{max-width:1080px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{text-decoration:none;font-weight:900;font-size:17px;color:var(--text);letter-spacing:-.4px}
+.nav-logo .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--blue);margin-left:1px;vertical-align:baseline}
+.nav-right{display:flex;align-items:center;gap:20px}
+.nav-expiry{font-size:14px;color:var(--muted)}
+.nav-phone{color:var(--text);font-weight:700;font-size:15px;text-decoration:none;padding:8px 16px;border-radius:100px;background:var(--warm);transition:background .2s}
+.nav-phone:hover{background:#e8e9ed}
+
+/* ===== SECTION 1: THE PROBLEM ===== */
+.hero{padding:160px 32px 120px;text-align:center;max-width:1080px;margin:0 auto}
+.hero-km{height:28px;opacity:.6;margin-bottom:32px}
+.hero h1{font-size:clamp(38px,5vw,60px);font-weight:900;letter-spacing:-.03em;line-height:1.08;max-width:800px;margin:0 auto}
+.hero h1 .red{color:var(--red)}
+.hero-sub{font-size:18px;color:var(--muted);margin-top:20px;line-height:1.65;max-width:560px;margin-left:auto;margin-right:auto}
+
+.proof-strip{display:flex;justify-content:center;gap:32px;margin-top:48px;flex-wrap:wrap;align-items:stretch}
+.proof-card{background:#fff;border-radius:16px;padding:28px 36px;box-shadow:var(--shadow-lg);border:1px solid rgba(0,0,0,.04);text-decoration:none;color:inherit;text-align:center;transition:transform .2s;min-width:180px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.proof-card:hover{transform:translateY(-2px)}
+.proof-num{font-size:44px;font-weight:900;color:var(--red);line-height:1;letter-spacing:-1px}
+.proof-num-sm{font-size:32px}
+.proof-label{font-size:14px;color:var(--muted);margin-top:6px;font-weight:500}
+.proof-card img{height:20px;opacity:.5;margin-bottom:10px}
+
+.reviews{max-width:640px;margin:32px auto 0;display:flex;flex-direction:column;gap:14px}
+.review{background:#fff;border-radius:14px;padding:24px 28px;box-shadow:var(--shadow-sm);border:1px solid rgba(0,0,0,.04);text-align:left}
+.review q{font-size:16px;line-height:1.7;font-style:italic;display:block;color:var(--text)}
+.review q strong{font-weight:700;font-style:normal}
+.review-src{font-size:14px;color:var(--muted);margin-top:8px;text-decoration:none;transition:color .2s;display:inline-flex;align-items:center;gap:6px}
+a.review-src:hover{color:var(--blue)}
+.review-src img{height:18px;opacity:.7;flex-shrink:0}
+.proof-closer{font-size:16px;color:var(--muted);margin-top:32px;font-style:italic;font-weight:500}
+
+/* ===== SECTION 2: THE PROOF (AUDIO) ===== */
+.audio-section{padding:120px 32px;max-width:1080px;margin:0 auto;text-align:center}
+.audio-section h2{font-size:clamp(30px,4vw,44px);font-weight:800;letter-spacing:-.02em;line-height:1.1;text-align:center;max-width:500px;margin:0 auto 16px}
+.audio-sub{text-align:center;font-size:16px;color:var(--muted);margin-top:0;margin-bottom:40px}
+
+/* ===== DARK PLAYER ===== */
+.dark-player{background:#0a0a14;border-radius:24px;overflow:hidden;max-width:920px;margin:0 auto;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);text-align:left;height:340px;display:flex;flex-direction:column}
+.dark-header{padding:16px 28px 0;display:flex;align-items:center}
+.dark-header-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.4)}
+/* Pre-play state */
+.dark-preplay{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;cursor:pointer;user-select:none;padding:40px 0}
+.dark-preplay.hidden{display:none}
+.preplay-btn{width:64px;height:64px;border-radius:50%;background:var(--blue);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .15s,box-shadow .15s}
+.preplay-btn:hover{transform:scale(1.08);box-shadow:0 0 0 12px rgba(79,70,229,.15)}
+.preplay-text{margin-top:14px;font-size:15px;color:rgba(255,255,255,.4)}
+/* Split layout */
+.dark-body{display:grid;grid-template-columns:3fr 2fr;flex:1;min-height:0;overflow:hidden;height:100%}
+.dark-body.hidden{display:none}
+/* Transcript */
+.dark-transcript{padding:14px 24px;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;overflow:hidden;position:relative}
+.dark-transcript::before{content:'';position:absolute;top:0;left:0;right:0;height:40px;background:linear-gradient(to bottom,#0a0a14,transparent);z-index:2;pointer-events:none}
+.dark-line{transition:opacity .4s ease,transform .4s ease;opacity:1;transform:none}
+.dark-line.fading{opacity:0;transform:translateY(-8px)}
+.dark-speaker{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:2px;display:block}
+.dark-speaker.ai{color:#a5b4fc}
+.dark-speaker.hu{color:rgba(255,255,255,.5)}
+.dark-text{font-size:14px;font-weight:400;line-height:1.45;color:rgba(255,255,255,.9)}
+.dark-text.hu{color:rgba(255,255,255,.6)}
+@keyframes blink-cursor{0%,100%{opacity:1}50%{opacity:0}}
+.typing-cursor{display:inline-block;width:2px;height:1em;background:rgba(255,255,255,.7);vertical-align:text-bottom;margin-left:2px;animation:blink-cursor .7s step-end infinite}
+/* Reasoning */
+.dark-reasoning{padding:14px 24px;border-left:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;justify-content:flex-end;gap:8px;overflow:hidden;position:relative}
+.dark-reasoning.hidden{display:none}
+.dark-reasoning::before{content:'';position:absolute;top:0;left:0;right:0;height:30px;background:linear-gradient(to bottom,#0a0a14,transparent);z-index:2;pointer-events:none}
+.dark-badge{padding:8px 14px;border-radius:10px;font-size:13px;font-weight:600;opacity:0;transform:translateX(16px);transition:opacity .4s ease,transform .4s ease}
+.dark-badge.shown{opacity:1;transform:none}
+.dark-badge.green{background:rgba(16,185,129,.12);color:#6ee7b7}
+.dark-badge.orange{background:rgba(251,191,36,.12);color:#fde68a}
+.dark-badge.blue{background:rgba(99,102,241,.12);color:#c7d2fe}
+/* Controls */
+.dark-controls{display:flex;align-items:center;gap:14px;padding:12px 24px;border-top:1px solid rgba(255,255,255,.06)}
+.dark-controls.hidden{display:none}
+.dark-play{width:36px;height:36px;border-radius:50%;background:var(--blue);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .15s}
+.dark-play:hover{transform:scale(1.06)}
+.dark-track{flex:1;height:4px;background:rgba(255,255,255,.08);border-radius:4px;cursor:pointer;position:relative}
+.dark-fill{height:100%;background:var(--blue);border-radius:4px;width:0%;transition:width .1s linear}
+.dark-time{font-size:13px;color:rgba(255,255,255,.4);font-variant-numeric:tabular-nums;min-width:36px}
+.more-calls{text-align:center;margin-top:32px}
+.more-calls a{font-size:16px;color:var(--blue);font-weight:600;text-decoration:none;transition:opacity .2s}
+.more-calls a:hover{opacity:.8}
+
+/* ===== SCENARIO TABS ===== */
+.scenario-badge{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--muted);margin-bottom:24px;padding:6px 16px;border-radius:100px;background:rgba(79,70,229,.06)}
+.scenario-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--blue)}
+.scenario-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:920px;margin:0 auto 32px}
+.scenario-tab{background:#fff;border-radius:16px;padding:20px 22px;box-shadow:var(--shadow);border:2px solid var(--border);cursor:pointer;text-align:left;transition:border-color .2s,box-shadow .2s;position:relative}
+.scenario-tab:hover{box-shadow:var(--shadow-lg)}
+.scenario-tab.active{border-color:var(--blue)}
+.scenario-tab.active::after{content:'';position:absolute;top:12px;right:12px;width:8px;height:8px;border-radius:50%;background:var(--blue)}
+.scenario-tab-title{font-weight:700;font-size:16px;color:var(--text);margin-bottom:6px}
+.scenario-tab-desc{font-size:14px;color:var(--muted);line-height:1.5;margin-bottom:10px}
+.scenario-tab-result{font-size:14px;font-weight:600;color:var(--green-dark)}
+
+/* ===== SECTION 3: HOW WE'D DO IT ===== */
+.strategy-section{padding:120px 32px;background:var(--warm)}
+.strategy-inner{max-width:1080px;margin:0 auto;text-align:center}
+.strategy-inner h2{font-size:clamp(30px,4vw,44px);font-weight:800;letter-spacing:-.02em;line-height:1.1;max-width:600px;margin:0 auto}
+.strategy-sub{font-size:16px;color:var(--muted);margin-top:16px;max-width:500px;margin-left:auto;margin-right:auto}
+.chain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px;max-width:920px;margin-left:auto;margin-right:auto}
+.contact-card{background:#fff;border-radius:18px;padding:28px 20px;text-align:center;box-shadow:var(--shadow-lg);border:1px solid rgba(0,0,0,.04);transition:transform .2s}
+.contact-card:hover{transform:translateY(-3px)}
+.contact-card.protected::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 12px,rgba(0,0,0,.01) 12px,rgba(0,0,0,.01) 24px);pointer-events:none;border-radius:18px}
+.contact-card.protected{position:relative;overflow:hidden}
+.contact-photo{width:68px;height:68px;border-radius:50%;object-fit:cover;margin:0 auto 14px;display:block;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.contact-card.protected .contact-photo{filter:grayscale(.3)}
+.contact-name{font-weight:700;font-size:16px;color:var(--text)}
+.contact-role{font-size:14px;color:var(--muted);margin-top:3px}
+.contact-info{margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+.contact-detail{font-size:14px;color:var(--muted);margin-top:5px;font-family:monospace;letter-spacing:.3px}
+.contact-detail svg{vertical-align:-2px;margin-right:3px}
+.contact-tag{display:inline-block;font-size:14px;font-weight:700;margin-top:14px;padding:5px 14px;border-radius:100px}
+.tag-green{background:rgba(5,150,105,.08);color:var(--green-dark)}
+.tag-yellow{background:rgba(234,179,8,.08);color:#b45309}
+.tag-orange{background:rgba(217,119,6,.08);color:var(--orange)}
+.tag-blue{background:rgba(79,70,229,.08);color:var(--blue)}
+.tag-red{background:rgba(220,38,38,.08);color:var(--red)}
+
+/* ===== HOW IT WORKS ===== */
+.how-section{padding:120px 32px;max-width:1080px;margin:0 auto;text-align:center}
+.how-section h2{font-size:clamp(26px,3.5vw,36px);font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:48px}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:center;max-width:800px;margin:0 auto}
+.how-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.how-icon.phone{background:rgba(79,70,229,.08)}
+.how-icon.check{background:rgba(16,185,129,.08)}
+.how-icon.shield{background:rgba(220,38,38,.08)}
+.how-title{font-weight:700;font-size:16px;margin-bottom:6px}
+.how-desc{font-size:15px;color:var(--muted);line-height:1.5}
+.trusted-bar{display:flex;align-items:center;justify-content:center;gap:36px;margin-top:48px;flex-wrap:wrap}
+.trusted-label{font-size:14px;color:var(--muted);font-weight:600}
+.trusted-logo{height:18px;opacity:.4;filter:grayscale(1)}
+
+/* ===== SECTION 4: CTA ===== */
+.cta-section{padding:120px 32px;text-align:center;background:#0a0a14;color:#fff;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(79,70,229,.08),transparent 70%);pointer-events:none}
+.cta-section h2{font-size:clamp(30px,4vw,44px);font-weight:800;letter-spacing:-.02em;line-height:1.12;max-width:520px;margin:0 auto}
+.cta-inner{max-width:1080px;margin:0 auto;position:relative;z-index:1}
+.cta-detail{font-size:18px;color:rgba(255,255,255,.7);margin-top:20px}
+.cta-price{font-size:22px;font-weight:800;color:var(--blue);margin-top:12px}
+.cta-btn{display:inline-block;margin-top:40px;background:var(--blue);color:#fff;padding:18px 44px;border-radius:14px;font-weight:700;font-size:17px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,70,229,.35)}
+.cta-or{display:block;margin-top:14px;font-size:16px;color:rgba(255,255,255,.6)}
+.cta-or a{color:rgba(255,255,255,.7);text-decoration:none}
+.cta-forward{margin-top:28px;font-size:16px;color:rgba(255,255,255,.55)}
+.foot{padding:28px 32px;text-align:center;font-size:14px;color:var(--muted);max-width:1080px;margin:0 auto}
+
+/* MOBILE */
+@media(max-width:768px){
+  .nav-inner{padding:14px 20px}
+  .nav-expiry{display:none}
+  .hero{padding:120px 24px 80px}
+  .proof-strip{gap:16px}
+  .proof-card{min-width:140px;padding:20px 24px}
+  .how-section{padding:80px 24px}
+  .how-grid{grid-template-columns:1fr;gap:24px;max-width:320px}
+  .trusted-bar{gap:24px}
+  .audio-section{padding:80px 16px}
+  .dark-player{height:auto;min-height:340px}
+  .dark-body{grid-template-columns:1fr;grid-template-rows:auto auto}
+  .dark-reasoning{border-left:none;border-top:1px solid rgba(255,255,255,.06);max-height:120px}
+  .dark-transcript{max-height:160px}
+  .dark-header,.dark-transcript,.dark-reasoning,.dark-controls{padding-left:16px;padding-right:16px}
+  .scenario-tabs{grid-template-columns:1fr}
+  .strategy-section{padding:80px 24px}
+  .chain-grid{grid-template-columns:1fr 1fr;gap:14px}
+  .cta-section{padding:80px 24px}
+}
+@media(max-width:480px){
+  .chain-grid{grid-template-columns:1fr}
+  .proof-strip{flex-direction:column;align-items:center}
+  .proof-card{width:100%;max-width:240px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://agentcollect.com" class="nav-logo">AgentCollect<span class="dot"></span></a>
+    <div class="nav-right">
+      <span class="nav-expiry">Remitly, <strong id="days-left"></strong></span>
+      <a href="tel:+12016277551" class="nav-phone">(201) 627-7551</a>
+    </div>
+  </div>
+</nav>
+
+<!-- SECTION 1: THE PROBLEM -->
+<section class="hero">
+  <div class="rv">
+    <img src="https://cdn.brandfetch.io/remitly.com/w/512/h/80/logo" alt="Remitly" class="hero-km">
+    <h1>Your chargeback process is <span class="red">costing</span> you more than the disputed amount.</h1>
+    <p class="hero-sub">Every unresolved dispute is a lost customer AND a lost transaction.</p>
+  </div>
+
+  <div class="proof-strip rv rv-d1">
+    <a href="https://www.complaintsboard.com/remitly-b355070.html" target="_blank" rel="noopener" class="proof-card">
+      <div class="proof-num">2.2</div>
+      <div class="proof-label">Complaints on record</div>
+    </a>
+    <a href="https://www.bbb.org/us/wa/seattle/profile/money-transfers/remitly-1296-22713804/complaints" target="_blank" rel="noopener" class="proof-card">
+      <div class="proof-num proof-num-sm">CFPB</div>
+      <div class="proof-label">Active complaints filed</div>
+    </a>
+  </div>
+
+  <div class="reviews rv rv-d2">
+    <div class="review">
+      <q>"They suspended my account and kept my money. No explanation, no appeal process."</q>
+      <a href="https://www.bbb.org/us/wa/seattle/profile/money-transfers/remitly-1296-22713804/complaints" target="_blank" class="review-src">BBB &#8599;</a>
+    </div>
+    <div class="review">
+      <q>"Transfer failed but they refused to refund for weeks. Had to file a chargeback."</q>
+      <a href="https://www.complaintsboard.com/remitly-b355070.html" target="_blank" class="review-src">ComplaintsBoard &#8599;</a>
+    </div>
+  </div>
+  <p class="proof-closer rv rv-d2">These aren't our words. These are your customers' words.</p>
+</section>
+
+<!-- SECTION 2: THE SIMULATION -->
+<section class="strategy-section">
+  <div class="strategy-inner">
+    <div class="rv">
+      <h2>RECOVERY SIMULATION: DISPUTED $500 TRANSFER</h2>
+      <p class="strategy-sub" style="font-size:18px;margin-top:16px">If a customer disputed a transfer, here's how we'd recover it.</p>
+      <p class="strategy-sub">Real recovery strategy. AI handles the entire process automatically.</p>
+    </div>
+    <div class="chain-grid rv rv-d1">
+      <div class="contact-card">
+        <img class="contact-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="Automated Outreach">
+        <div class="contact-name">Automated Outreach</div>
+        <div class="contact-role">AI Phone Call</div>
+        <div class="contact-info">
+          <div class="contact-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>a...@remitly.com</div>
+          <div class="contact-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>(206) ...&#8722;4100</div>
+        </div>
+        <div class="contact-tag tag-green">DAY 1 — First Contact</div>
+      </div>
+      <div class="contact-card">
+        <img class="contact-photo" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop" alt="Documentation">
+        <div class="contact-name">Documentation</div>
+        <div class="contact-role">Email Request</div>
+        <div class="contact-info">
+          <div class="contact-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>d...@remitly.com</div>
+          <div class="contact-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>(206) ...&#8722;4200</div>
+        </div>
+        <div class="contact-tag tag-yellow">DAY 3 — Follow-up</div>
+      </div>
+      <div class="contact-card">
+        <img class="contact-photo" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop" alt="Attorney Letter">
+        <div class="contact-name">Attorney Letter</div>
+        <div class="contact-role">Legal Escalation</div>
+        <div class="contact-info">
+          <div class="contact-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>l...@remitly.com</div>
+          <div class="contact-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>(206) ...&#8722;4300</div>
+        </div>
+        <div class="contact-tag tag-orange">DAY 7 — Escalation</div>
+      </div>
+      <div class="contact-card protected">
+        <img class="contact-photo" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop" alt="Settlement">
+        <div class="contact-name">Settlement</div>
+        <div class="contact-role">Resolution</div>
+        <div class="contact-info">
+          <div class="contact-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>s...@remitly.com</div>
+          <div class="contact-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>(206) ...&#8722;4400</div>
+        </div>
+        <div class="contact-tag tag-red">DAY 14 — Protected</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: THE PROOF (AUDIO) -->
+<section class="audio-section">
+  <div class="rv">
+    <h2>This is what it sounds like when we collect.</h2>
+    <p class="audio-sub">Real AI calls. Real debtors. Real results.</p>
+  </div>
+
+  <div class="rv rv-d1">
+    <div class="scenario-badge"><span class="scenario-badge-dot"></span>Live Call Examples</div>
+    <div class="scenario-tabs">
+      <div class="scenario-tab active" data-scenario="0" onclick="switchScenario(0)">
+        <div class="scenario-tab-title">Wrong Contact</div>
+        <div class="scenario-tab-desc">AI handles outdated contact info gracefully</div>
+        <div class="scenario-tab-result">&#10003; Contact updated</div>
+      </div>
+      <div class="scenario-tab" data-scenario="1" onclick="switchScenario(1)">
+        <div class="scenario-tab-title">Gatekeeper Bypass</div>
+        <div class="scenario-tab-desc">AI gets accounting email from receptionist</div>
+        <div class="scenario-tab-result">&#10003; Email obtained</div>
+      </div>
+      <div class="scenario-tab" data-scenario="2" onclick="switchScenario(2)">
+        <div class="scenario-tab-title">Payment Dispute</div>
+        <div class="scenario-tab-desc">AI handles already-paid claim</div>
+        <div class="scenario-tab-result">&#10003; Dispute resolved</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rv rv-d1 dark-player" id="darkPlayer">
+    <div class="dark-header"><span class="dark-header-label">Real AI call recording</span></div>
+    <!-- Pre-play state -->
+    <div class="dark-preplay" id="preplay" onclick="startPlay()">
+      <button class="preplay-btn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="8,4 20,12 8,20"/></svg>
+      </button>
+      <div class="preplay-text">Click to play</div>
+    </div>
+    <!-- Split layout (hidden until play) -->
+    <div class="dark-body hidden" id="darkBody">
+      <div class="dark-transcript" id="transcriptArea"></div>
+      <div class="dark-reasoning" id="reasoningArea"></div>
+    </div>
+    <!-- Controls (hidden until play) -->
+    <div class="dark-controls hidden" id="darkControls">
+      <button class="dark-play" id="playPauseBtn" onclick="togglePlay()">
+        <svg id="playIcon" width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="8,4 20,12 8,20"/></svg>
+      </button>
+      <div class="dark-track" onclick="seekTrack(event)">
+        <div class="dark-fill" id="progressBar"></div>
+      </div>
+      <span class="dark-time" id="timeDisplay">0:00 / 0:00</span>
+    </div>
+    <audio id="aud" preload="none"></audio>
+  </div>
+  <div class="rv rv-d2 more-calls">
+    <a href="https://showcase.respaid.com" target="_blank">Hear more real calls &#8594;</a>
+  </div>
+</section>
+
+<!-- SECTION 4: TWO WAYS -->
+<section class="how-section">
+  <div class="rv" style="text-align:center">
+    <h2>Two ways to collect. Both replace your agency.</h2>
+    <div class="how-grid" style="grid-template-columns:repeat(2,1fr);max-width:700px;gap:24px;margin-top:40px">
+      <div style="background:#fff;border-radius:18px;padding:32px 28px;box-shadow:var(--shadow-lg);border:1px solid rgba(0,0,0,.04);text-align:left">
+        <div class="how-icon phone" style="margin:0 0 16px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg></div>
+        <div class="how-title" style="font-size:18px;margin-bottom:8px">White-label</div>
+        <div class="how-desc">AI calls, emails, and negotiates as "Remitly." Your brand. Your voice. We're invisible.</div>
+      </div>
+      <div style="background:#fff;border-radius:18px;padding:32px 28px;box-shadow:var(--shadow-lg);border:1px solid rgba(0,0,0,.04);text-align:left">
+        <div class="how-icon shield" style="margin:0 0 16px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="how-title" style="font-size:18px;margin-bottom:8px">Attorney-backed</div>
+        <div class="how-desc">Our licensed attorneys send demand letters and escalate. Legal weight without in-house counsel.</div>
+      </div>
+    </div>
+    <p style="font-size:16px;color:var(--muted);margin-top:24px">Both options: Reg F compliant. branded as Remitly. Every call recorded.</p>
+    <div class="trusted-bar">
+      <span class="trusted-label">Trusted by</span>
+      <img src="https://cdn.brandfetch.io/microsoft.com/w/512/h/80/logo" alt="Microsoft" class="trusted-logo">
+      <img src="https://cdn.brandfetch.io/dell.com/w/512/h/80/logo" alt="Dell" class="trusted-logo">
+      <img src="https://cdn.brandfetch.io/plaid.com/w/512/h/80/logo" alt="Plaid" class="trusted-logo">
+      <img src="https://cdn.brandfetch.io/checkr.com/w/512/h/80/logo" alt="Checkr" class="trusted-logo">
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: CTA -->
+<section class="cta-section">
+  <div class="cta-inner rv">
+    <h2>Recover more. Pay nothing until we do.</h2>
+    <p class="cta-detail">Success-based pricing. Zero upfront cost.</p>
+    <a href="https://cal.com/johnb/30" target="_blank" class="cta-btn" onclick="gtag('event','book_cta',{})">Book a live demo</a>
+    <span class="cta-or"><a href="tel:+12016277551" onclick="gtag('event','call_cta',{})">or call (201) 627-7551</a></span>
+    <p class="cta-forward">Not the right person? Forward this to your Head of Payments.</p>
+  </div>
+</section>
+
+<div class="foot">Simulation based on typical chargeback recovery scenarios. Powered by AgentCollect.</div>
+
+<script>
+// Expiry
+(function(){var d=new Date('2026-04-17'),diff=Math.ceil((d-new Date())/864e5);document.getElementById('days-left').textContent=diff>0?'expires in '+diff+' day'+(diff!==1?'s':''):'expired'})();
+
+// Reveal
+var ro=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('v')})},{threshold:.12});
+document.querySelectorAll('.rv').forEach(function(el){ro.observe(el)});
+
+// ===== TRANSCRIPT DATA =====
+var wrongContactTranscript=[{start:0,end:1.68,text:"This is Sarah on a recorded line.",type:"speech",words:[{word:"This",time:0},{word:"is",time:.22},{word:"Sarah",time:.6},{word:"on",time:.6},{word:"a",time:.84},{word:"recorded",time:.98},{word:"line.",time:1.3}]},{start:1.82,end:2.74,text:"How may I assist you?",type:"speech",words:[{word:"How",time:1.82},{word:"may",time:1.94},{word:"I",time:2.06},{word:"assist",time:2.28},{word:"you?",time:2.4}]},{start:2.74,end:3.5,text:"Contact answered",type:"thinking"},{start:3.56,end:4.48,text:"I'm returning a phone call.",type:"debtor",words:[{word:"I'm",time:3.56},{word:"returning",time:3.56},{word:"a",time:3.8},{word:"phone",time:4.1},{word:"call.",time:4.26}]},{start:4.48,end:5,text:"Proceeding with disclosure...",type:"thinking"},{start:5.06,end:8.96,text:"I'm calling about $25,830 owed to [creditor].",type:"speech",words:[{word:"I'm",time:5.06},{word:"calling",time:5.38},{word:"about",time:5.38},{word:"$25,830",time:5.64},{word:"owed",time:7.22},{word:"to",time:7.8},{word:"[creditor].",time:8.42}]},{start:9.36,end:11.28,text:"Do you recognize the outstanding balance?",type:"speech",words:[{word:"Do",time:9.36},{word:"you",time:9.9},{word:"recognize",time:10.32},{word:"the",time:10.32},{word:"outstanding",time:10.56},{word:"balance?",time:10.9}]},{start:11.28,end:12,text:"Awaiting confirmation...",type:"thinking"},{start:12.12,end:12.46,text:"No.",type:"debtor",words:[{word:"No.",time:12.12}]},{start:12.46,end:13.6,text:"Balance not recognized",type:"thinking"},{start:13.7,end:17.84,text:"Maybe it was a colleague since I haven't worked for [company] for almost 10 years.",type:"debtor",words:[{word:"Maybe",time:13.7},{word:"it",time:14.24},{word:"was",time:14.36},{word:"a",time:14.44},{word:"colleague",time:14.6},{word:"since",time:14.88},{word:"I",time:15.36},{word:"haven't",time:15.52},{word:"worked",time:15.8},{word:"for",time:16.06},{word:"[company]",time:16.44},{word:"for",time:16.72},{word:"almost",time:17},{word:"10",time:17.28},{word:"years.",time:17.58}]},{start:17.84,end:18.4,text:"Wrong contact detected",type:"thinking"},{start:18.48,end:19.62,text:"Thanks for letting me know.",type:"speech",words:[{word:"Thanks",time:18.48},{word:"for",time:18.84},{word:"letting",time:19.1},{word:"me",time:19.12},{word:"know.",time:19.44}]},{start:19.76,end:21.78,text:"Uh, it sounds like this may be a wrong contact.",type:"speech",words:[{word:"Uh,",time:19.76},{word:"it",time:20.3},{word:"sounds",time:20.42},{word:"like",time:20.42},{word:"this",time:20.6},{word:"may",time:20.78},{word:"be",time:20.94},{word:"a",time:21},{word:"wrong",time:21.2},{word:"contact.",time:21.32}]},{start:22.34,end:23.26,text:"I'll update our records.",type:"speech",words:[{word:"I'll",time:22.34},{word:"update",time:22.56},{word:"our",time:22.72},{word:"records.",time:22.94}]},{start:23.26,end:23.8,text:"Updating CRM: Wrong contact",type:"action"},{start:23.86,end:25.06,text:"You won't be contacted further.",type:"speech",words:[{word:"You",time:23.86},{word:"won't",time:23.96},{word:"be",time:24.08},{word:"contacted",time:24.24},{word:"further.",time:24.62}]},{start:25.6,end:26,text:"Take care.",type:"speech",words:[{word:"Take",time:25.6},{word:"care.",time:25.74}]},{start:26,end:26.2,text:"Call completed: Contact removed",type:"action"}];
+
+var gatekeeperTranscript=[{start:0,end:.4,text:"Initiating call",type:"thinking"},{start:.5,end:2.28,text:"This is B.T., how can I help you?",type:"debtor",words:[{word:"This",time:.5},{word:"is",time:.98},{word:"B.T.,",time:1.2},{word:"how",time:1.66},{word:"can",time:1.84},{word:"I",time:1.84},{word:"help",time:1.92},{word:"you?",time:2.12}]},{start:2.28,end:2.9,text:"Contact answered",type:"thinking"},{start:2.96,end:6.86,text:"Hi B.T., this is Sarah from the recovery team calling on a recorded line.",type:"speech",words:[{word:"Hi",time:2.96},{word:"B.T.,",time:3.1},{word:"this",time:3.52},{word:"is",time:3.66},{word:"Sarah",time:4.14},{word:"from",time:4.14},{word:"the",time:4.5},{word:"recovery",time:4.88},{word:"team",time:5.32},{word:"calling",time:5.56},{word:"on",time:5.86},{word:"a",time:6.06},{word:"recorded",time:6.18},{word:"line.",time:6.46}]},{start:7.4,end:13.24,text:"I'm reaching out about the outstanding balance of $31.24 owed to [creditor].",type:"speech",words:[{word:"I'm",time:7.4},{word:"reaching",time:7.52},{word:"out",time:7.68},{word:"about",time:7.98},{word:"the",time:8.18},{word:"outstanding",time:8.34},{word:"balance",time:8.8},{word:"of",time:9.22},{word:"$31.24",time:9.46},{word:"owed",time:11.2},{word:"to",time:12.04},{word:"[creditor].",time:12.7}]},{start:13.74,end:15.68,text:"Did you get an email from us regarding this matter?",type:"speech",words:[{word:"Did",time:13.74},{word:"you",time:13.96},{word:"get",time:14.08},{word:"an",time:14.18},{word:"email",time:14.52},{word:"from",time:14.52},{word:"us",time:14.76},{word:"regarding",time:14.98},{word:"this",time:15.24},{word:"matter?",time:15.68}]},{start:15.68,end:16.4,text:"Awaiting response...",type:"thinking"},{start:16.52,end:20.12,text:"Let me get you over to our accounting department.",type:"debtor",words:[{word:"Let",time:16.52},{word:"me",time:17},{word:"get",time:17.12},{word:"you",time:17.3},{word:"over",time:17.56},{word:"to",time:17.86},{word:"our",time:19.1},{word:"accounting",time:19.66},{word:"department.",time:19.66}]},{start:20.12,end:20.7,text:"Transfer to accounting offered",type:"thinking"},{start:20.82,end:22,text:"Thanks, and I appreciate it.",type:"speech",words:[{word:"Thanks,",time:20.82},{word:"and",time:21.08},{word:"I",time:21.34},{word:"appreciate",time:21.38},{word:"it.",time:21.72}]},{start:22.22,end:28.1,text:"Who in accounting should I ask for, and could you share their direct phone number or email so I can reach out to them directly?",type:"speech",words:[{word:"Who",time:22.22},{word:"in",time:22.46},{word:"accounting",time:22.7},{word:"should",time:22.88},{word:"I",time:23.12},{word:"ask",time:23.42},{word:"for,",time:23.48},{word:"and",time:23.94},{word:"could",time:24.1},{word:"you",time:24.22},{word:"share",time:24.4},{word:"their",time:24.52},{word:"direct",time:24.78},{word:"phone",time:25.1},{word:"number",time:25.26},{word:"or",time:25.6},{word:"email",time:26.52},{word:"so",time:26.86},{word:"I",time:27.02},{word:"can",time:27.12},{word:"reach",time:27.3},{word:"out",time:27.42},{word:"to",time:27.58},{word:"them",time:27.66},{word:"directly?",time:27.8}]},{start:28.1,end:33.84,text:"We do not have direct emails, or we have direct emails, we do not have direct phone numbers.",type:"debtor",words:[{word:"We",time:28.1},{word:"do",time:28.8},{word:"not",time:29},{word:"have",time:29.18},{word:"direct",time:29.5},{word:"emails,",time:29.9},{word:"or",time:31.08},{word:"we",time:31.14},{word:"have",time:31.3},{word:"direct",time:31.54},{word:"emails,",time:31.82},{word:"we",time:32.14},{word:"do",time:32.24},{word:"not",time:32.34},{word:"have",time:32.46},{word:"direct",time:32.6},{word:"phone",time:32.82},{word:"numbers.",time:33.06}]},{start:33.84,end:34.3,text:"Email available, no phone",type:"thinking"},{start:34.38,end:34.86,text:"No problem.",type:"speech",words:[{word:"No",time:34.38},{word:"problem.",time:34.52}]},{start:35.3,end:40.26,text:"Could you please provide the name and email address of the person in accounting who handles these matters?",type:"speech",words:[{word:"Could",time:35.3},{word:"you",time:35.48},{word:"please",time:35.62},{word:"provide",time:35.92},{word:"the",time:36.18},{word:"name",time:36.5},{word:"and",time:36.68},{word:"email",time:36.96},{word:"address",time:37.24},{word:"of",time:37.62},{word:"the",time:37.84},{word:"person",time:38.06},{word:"in",time:38.32},{word:"accounting",time:38.98},{word:"who",time:38.98},{word:"handles",time:39.3},{word:"these",time:39.58},{word:"matters?",time:39.98}]},{start:40.26,end:41,text:"Requesting contact details...",type:"thinking"},{start:41.04,end:45.1,text:"It would be [email].",type:"debtor",words:[{word:"It",time:41.04},{word:"would",time:41.06},{word:"be",time:41.08},{word:"[email].",time:42.04}]},{start:45.1,end:45.7,text:"Email collected",type:"action"},{start:45.78,end:49.28,text:"Thank you for providing that email address, and we will reach out as soon as possible.",type:"speech",words:[{word:"Thank",time:45.78},{word:"you",time:46},{word:"for",time:46.1},{word:"providing",time:46.56},{word:"that",time:46.56},{word:"email",time:46.84},{word:"address,",time:47.06},{word:"and",time:47.44},{word:"we",time:47.88},{word:"will",time:47.96},{word:"reach",time:48.14},{word:"out",time:48.36},{word:"as",time:48.52},{word:"soon",time:48.7},{word:"as",time:48.74},{word:"possible.",time:49.28}]},{start:49.28,end:49.5,text:"Call completed: Contact data collected",type:"action"}];
+
+var disputeTranscript=[{start:0,end:1.96,text:"Sarah on a recorded line. How may I assist you?",type:"speech",words:[{word:"Sarah",time:0},{word:"on",time:.3},{word:"a",time:.52},{word:"recorded",time:.68},{word:"line.",time:1},{word:"How",time:1.54},{word:"may",time:1.54},{word:"I",time:1.64},{word:"assist",time:1.82},{word:"you?",time:1.96}]},{start:1.96,end:2.6,text:"Incoming call: Listening for caller ID",type:"thinking"},{start:2.64,end:5.24,text:"Well, my name is M.C. I'm calling with [company]",type:"debtor",words:[{word:"Well,",time:2.64},{word:"my",time:2.66},{word:"name",time:3.44},{word:"is",time:3.56},{word:"M.C.",time:3.78},{word:"I'm",time:4.46},{word:"calling",time:4.46},{word:"with",time:4.46},{word:"[company]",time:5.24}]},{start:5.24,end:5.7,text:"Looking up account...",type:"thinking"},{start:5.78,end:9.6,text:"here in Chicago returning your phone call regarding a $610",type:"debtor",words:[{word:"here",time:5.78},{word:"in",time:6},{word:"Chicago",time:6.44},{word:"returning",time:6.44},{word:"your",time:6.84},{word:"phone",time:7.1},{word:"call",time:7.4},{word:"regarding",time:7.64},{word:"a",time:8.36},{word:"$610",time:8.74}]},{start:9.6,end:11.2,text:"Account found: $610 balance",type:"thinking"},{start:11.24,end:13.8,text:"bill from [creditor], which we gave them the check stubs on.",type:"debtor",words:[{word:"bill",time:11.24},{word:"from",time:11.72},{word:"[creditor],",time:12.28},{word:"which",time:12.4},{word:"we",time:12.74},{word:"gave",time:12.9},{word:"them",time:13.14},{word:"the",time:13.34},{word:"check",time:13.6},{word:"stubs",time:13.8},{word:"on.",time:13.8}]},{start:13.8,end:14.5,text:"Claims paid by check: Need proof",type:"thinking"},{start:14.58,end:18.74,text:"If you pay [creditor] directly, just send us the payment proof so we can close this out.",type:"speech",words:[{word:"If",time:14.58},{word:"you",time:14.92},{word:"pay",time:15.06},{word:"[creditor]",time:15.66},{word:"directly,",time:15.66},{word:"just",time:16.54},{word:"send",time:16.9},{word:"us",time:17.04},{word:"the",time:17.2},{word:"payment",time:17.42},{word:"proof",time:17.6},{word:"so",time:17.88},{word:"we",time:18.04},{word:"can",time:18.18},{word:"close",time:18.38},{word:"this",time:18.54},{word:"out.",time:18.74}]},{start:19.34,end:22.28,text:"Use the portal link in your email and click I've Already Paid.",type:"speech",words:[{word:"Use",time:19.34},{word:"the",time:19.34},{word:"portal",time:19.54},{word:"link",time:19.86},{word:"in",time:20.16},{word:"your",time:20.38},{word:"email",time:20.56},{word:"and",time:20.84},{word:"click",time:21.18},{word:"I've",time:21.82},{word:"Already",time:22},{word:"Paid.",time:22.28}]},{start:22.6,end:24.34,text:"We'll check and follow up if we don't receive it.",type:"speech",words:[{word:"We'll",time:22.6},{word:"check",time:22.94},{word:"and",time:23.12},{word:"follow",time:23.36},{word:"up",time:23.48},{word:"if",time:23.66},{word:"we",time:23.78},{word:"don't",time:23.92},{word:"receive",time:24.1},{word:"it.",time:24.34}]},{start:24.34,end:24.6,text:"Guiding to payment portal",type:"thinking"},{start:24.7,end:25.06,text:"One moment, please.",type:"speech",words:[{word:"One",time:24.7},{word:"moment,",time:24.88},{word:"please.",time:25.06}]},{start:25.06,end:25.3,text:"Sending email with instructions",type:"action"},{start:25.5,end:27.5,text:"I just sent you an email with instructions.",type:"speech",words:[{word:"I",time:25.5},{word:"just",time:25.8},{word:"sent",time:26.1},{word:"you",time:26.3},{word:"an",time:26.5},{word:"email",time:26.8},{word:"with",time:27.1},{word:"instructions.",time:27.5}]},{start:27.5,end:27.7,text:"Decision: Wait for check proof, close account",type:"action"}];
+
+// ===== PLAYER ENGINE =====
+var audioSources=[
+  "https://showcase.respaid.com/call-wrong-contact.mp3",
+  "https://showcase.respaid.com/call-gatekeeper.mp3",
+  "https://showcase.respaid.com/call-dispute.mp3"
+];
+var transcripts=[wrongContactTranscript, gatekeeperTranscript, disputeTranscript];
+var currentScenario=0;
+var aud=document.getElementById('aud');
+var raf=null;
+var playing=false;
+var shownLines=[];   // currently visible transcript line elements
+var shownBadges=[];  // currently visible reasoning badges
+var lastLineIdx=-1;  // index of last transcript line we rendered
+
+aud.src=audioSources[0];
+
+function fmt(t){var m=Math.floor(t/60),s=Math.floor(t%60);return m+':'+(s<10?'0':'')+s}
+
+function getTranscriptEntries(data){
+  return data.filter(function(e){return e.type==='speech'||e.type==='debtor'});
+}
+function getReasoningEntries(data){
+  return data.filter(function(e){return e.type==='thinking'||e.type==='action'});
+}
+
+function badgeColor(entry){
+  if(entry.type==='action') return 'blue';
+  var t=entry.text.toLowerCase();
+  if(t.indexOf('wrong')>=0||t.indexOf('not recognized')>=0||t.indexOf('claims')>=0||t.indexOf('need proof')>=0) return 'orange';
+  return 'green';
+}
+
+// Build word-by-word HTML for a transcript line
+function buildWordHTML(entry, currentTime){
+  if(!entry.words||!entry.words.length) return entry.text;
+  var html='';
+  var allRevealed=true;
+  for(var i=0;i<entry.words.length;i++){
+    var w=entry.words[i];
+    if(currentTime>=w.time){
+      html+=(i>0?' ':'')+w.word;
+    } else {
+      allRevealed=false;
+      break;
+    }
+  }
+  if(!allRevealed) html+='<span class="typing-cursor"></span>';
+  return html;
+}
+
+var MAX_LINES=4;
+var MAX_BADGES=5;
+
+function addTranscriptLine(entry){
+  var area=document.getElementById('transcriptArea');
+  var div=document.createElement('div');
+  div.className='dark-line';
+  var isDebtor=entry.type==='debtor';
+  var speakerLabel=isDebtor?'Contact':'AI Agent';
+  var speakerClass=isDebtor?'hu':'ai';
+  var textClass=isDebtor?'hu':'';
+  div.innerHTML='<span class="dark-speaker '+speakerClass+'">'+speakerLabel+'</span><span class="dark-text '+textClass+'" data-entry-idx="'+entry._idx+'"></span>';
+  area.appendChild(div);
+  shownLines.push(div);
+  // Remove oldest if over limit
+  while(shownLines.length>MAX_LINES){
+    var old=shownLines.shift();
+    old.classList.add('fading');
+    (function(el){setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el)},400)})(old);
+  }
+  return div;
+}
+
+function addReasoningBadge(entry){
+  var area=document.getElementById('reasoningArea');
+  var div=document.createElement('div');
+  var color=badgeColor(entry);
+  div.className='dark-badge '+color;
+  div.textContent=entry.text;
+  area.appendChild(div);
+  // Force reflow then animate
+  div.offsetHeight;
+  div.classList.add('shown');
+  shownBadges.push(div);
+  while(shownBadges.length>MAX_BADGES){
+    var old=shownBadges.shift();
+    old.style.opacity='0';
+    (function(el){setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el)},400)})(old);
+  }
+}
+
+function tick(){
+  if(!aud||isNaN(aud.duration))return;
+  var t=aud.currentTime;
+  var data=transcripts[currentScenario];
+  var progress=(t/aud.duration*100);
+  document.getElementById('progressBar').style.width=progress+'%';
+  document.getElementById('timeDisplay').textContent=fmt(t)+' / '+fmt(aud.duration);
+
+  // Process transcript entries
+  var tEntries=data;
+  for(var i=0;i<tEntries.length;i++){
+    var entry=tEntries[i];
+    if(t>=entry.start && !entry._rendered){
+      entry._rendered=true;
+      entry._idx=i;
+      if(entry.type==='speech'||entry.type==='debtor'){
+        addTranscriptLine(entry);
+      } else {
+        addReasoningBadge(entry);
+      }
+    }
+    // Update word-by-word for active speech/debtor lines
+    if(entry._rendered && (entry.type==='speech'||entry.type==='debtor') && entry.words && t>=entry.start && t<=entry.end+0.5){
+      var span=document.querySelector('[data-entry-idx="'+i+'"]');
+      if(span) span.innerHTML=buildWordHTML(entry, t);
+    }
+  }
+
+  if(!aud.paused&&!aud.ended) raf=requestAnimationFrame(tick);
+}
+
+function resetPlayerState(){
+  // Clear rendered flags on transcript
+  var data=transcripts[currentScenario];
+  if(data) data.forEach(function(e){delete e._rendered; delete e._idx});
+  // Clear DOM
+  var ta=document.getElementById('transcriptArea');
+  var ra=document.getElementById('reasoningArea');
+  if(ta) ta.innerHTML='';
+  if(ra) ra.innerHTML='';
+  shownLines=[];
+  shownBadges=[];
+  lastLineIdx=-1;
+}
+
+function showPlayingUI(){
+  document.getElementById('preplay').classList.add('hidden');
+  document.getElementById('darkBody').classList.remove('hidden');
+  document.getElementById('darkControls').classList.remove('hidden');
+}
+
+function showPreplayUI(){
+  document.getElementById('preplay').classList.remove('hidden');
+  document.getElementById('darkBody').classList.add('hidden');
+  document.getElementById('darkControls').classList.add('hidden');
+}
+
+function setPlayIcon(){
+  document.getElementById('playIcon').innerHTML='<polygon points="8,4 20,12 8,20" fill="white"/>';
+}
+function setPauseIcon(){
+  document.getElementById('playIcon').innerHTML='<rect x="6" y="4" width="4" height="16" fill="white"/><rect x="14" y="4" width="4" height="16" fill="white"/>';
+}
+
+function startPlay(){
+  showPlayingUI();
+  resetPlayerState();
+  aud.currentTime=0;
+  aud.play().then(function(){
+    playing=true;
+    setPauseIcon();
+    raf=requestAnimationFrame(tick);
+  }).catch(function(){});
+}
+
+function togglePlay(){
+  if(!aud)return;
+  if(aud.paused||aud.ended){
+    if(aud.ended){
+      resetPlayerState();
+      aud.currentTime=0;
+    }
+    aud.play().then(function(){
+      playing=true;
+      setPauseIcon();
+      raf=requestAnimationFrame(tick);
+    }).catch(function(){});
+  } else {
+    aud.pause();
+    playing=false;
+    setPlayIcon();
+    cancelAnimationFrame(raf);
+  }
+}
+
+function seekTrack(e){
+  if(!aud||isNaN(aud.duration))return;
+  var r=e.currentTarget.getBoundingClientRect();
+  var newTime=((e.clientX-r.left)/r.width)*aud.duration;
+  // Reset and re-render up to new time
+  resetPlayerState();
+  aud.currentTime=newTime;
+  // Pre-render all entries up to newTime
+  var data=transcripts[currentScenario];
+  for(var i=0;i<data.length;i++){
+    var entry=data[i];
+    if(newTime>=entry.start){
+      entry._rendered=true;
+      entry._idx=i;
+      if(entry.type==='speech'||entry.type==='debtor'){
+        addTranscriptLine(entry);
+        // Show full text for past entries
+        var span=document.querySelector('[data-entry-idx="'+i+'"]');
+        if(span) span.textContent=entry.text;
+      } else {
+        addReasoningBadge(entry);
+      }
+    }
+  }
+  if(!aud.paused) raf=requestAnimationFrame(tick);
+}
+
+aud&&aud.addEventListener('ended',function(){
+  playing=false;
+  setPlayIcon();
+  cancelAnimationFrame(raf);
+});
+
+aud&&aud.addEventListener('loadedmetadata',function(){
+  document.getElementById('timeDisplay').textContent='0:00 / '+fmt(aud.duration);
+});
+
+function switchScenario(idx){
+  currentScenario=idx;
+  document.querySelectorAll('.scenario-tab').forEach(function(t,i){
+    if(i===idx)t.classList.add('active');else t.classList.remove('active');
+  });
+  aud.pause();
+  cancelAnimationFrame(raf);
+  playing=false;
+  aud.src=audioSources[idx];
+  aud.load();
+  resetPlayerState();
+  // Reset to pre-play state
+  showPreplayUI();
+  document.getElementById('progressBar').style.width='0%';
+  document.getElementById('timeDisplay').textContent='0:00 / 0:00';
+  setPlayIcon();
+}
+</script>
+</body>
+</html>

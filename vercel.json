@@ -24,6 +24,7 @@
 { "source": "/iron-mountain", "destination": "/v3/iron-mountain.html" },
 { "source": "/brinks", "destination": "/v3/brinks.html" },
 { "source": "/ricoh", "destination": "/v3/ricoh.html" },
+{ "source": "/remitly", "destination": "/v3/remitly.html" },
 { "source": "/compliance", "destination": "/compliance/index.html" },
 { "source": "/compliance/alabama", "destination": "/compliance/alabama.html" },
 { "source": "/compliance/alaska", "destination": "/compliance/alaska.html" },
