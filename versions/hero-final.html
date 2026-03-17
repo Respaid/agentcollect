@@ -429,61 +429,54 @@
 </div>
 </nav>
 
-<!-- 1. HERO — Dashboard IS the demo -->
+<!-- 1. HERO — Single contact card cycling -->
+<style>
+    .hero-card{max-width:480px;margin:0 auto;background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px 28px;box-shadow:0 4px 24px rgba(0,0,0,.06);position:relative;overflow:hidden;transition:opacity .4s}
+    .hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--indigo),var(--green))}
+    .hero-card-domain{display:flex;align-items:center;gap:8px;margin-bottom:16px;font-family:var(--mono);font-size:13px;color:var(--indigo);font-weight:500}
+    .hero-card-domain .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse-ring 2s infinite}
+    .hero-card-contact{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+    .hero-card-avatar{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid rgba(79,70,229,.1);flex-shrink:0}
+    .hero-card-name{font-family:var(--display);font-size:18px;font-weight:800;color:var(--text)}
+    .hero-card-title{font-size:13px;color:var(--text-mid);margin-top:2px}
+    .hero-card-info{display:flex;gap:16px;padding:12px 0;border-top:1px solid var(--border);font-family:var(--mono);font-size:13px;color:var(--indigo);letter-spacing:-.01em}
+    .hero-card-summary{display:flex;gap:16px;font-size:13px;color:var(--text-mid)}
+    .hero-card-summary span{display:flex;align-items:center;gap:4px}
+    .carousel-dots{display:flex;justify-content:center;gap:6px;margin-top:16px}
+    .carousel-dot{width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all .2s}
+    .carousel-dot.active{background:var(--indigo);width:20px;border-radius:4px}
+</style>
 <section class="hero" id="hero">
     <h1>The end of manual<br>collection.</h1>
 
-    <!-- Cycling domain pill — ABOVE dashboard -->
-    <div style="text-align:center">
-        <div class="cycle-pill" id="cycle-pill">
-            <span class="cycle-pill-dot"></span>
-            <span class="cycle-pill-label">Analyzing</span>
-            <span class="cycle-pill-domain" id="cycle-domain">microsoft.com</span>
+    <!-- Single contact card — cycling -->
+    <div class="hero-card" id="hero-card">
+        <div class="hero-card-domain"><span class="dot"></span><span id="hero-domain">microsoft.com</span></div>
+        <div class="hero-card-contact">
+            <img class="hero-card-avatar" id="hero-avatar" src="https://respaid.com/images/neil-doyle.png" alt="">
+            <div>
+                <div class="hero-card-name" id="hero-name">Neil Doyle</div>
+                <div class="hero-card-title" id="hero-title">OTC Transformation Lead, Microsoft</div>
+            </div>
+        </div>
+        <div class="hero-card-info">
+            <span id="hero-phone">+1 (425) ***-**37</span>
+            <span id="hero-email">n***e@microsoft.com</span>
+        </div>
+        <div class="hero-card-summary">
+            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg> 3 disputes found</span>
+            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg> 94% confidence</span>
+            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 14-day plan</span>
         </div>
     </div>
 
-    <!-- Dashboard container with shadow -->
-    <div class="dashboard-container" id="dashboard-container">
-        <div class="dashboard-grid" id="dashboard">
-            <div class="dash-card dash-card-company" id="dash-company">
-                <div class="dash-label">
-                    <svg class="dash-label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9h1"/><path d="M9 13h1"/><path d="M9 17h1"/></svg>
-                    Company
-                </div>
-                <div id="dash-company-content" class="dash-content"></div>
-            </div>
-            <div class="dash-card dash-card-disputes" id="dash-disputes">
-                <div class="dash-label">
-                    <svg class="dash-label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                    Top disputes
-                </div>
-                <div id="dash-disputes-content" class="dash-content"></div>
-            </div>
-            <div class="dash-card dash-card-contacts" id="dash-dm">
-                <div class="dash-label">
-                    <svg class="dash-label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                    Contacts found
-                </div>
-                <div id="dash-dm-content" class="dash-content"></div>
-            </div>
-            <div class="dash-card dash-card-plan" id="dash-plan">
-                <div class="dash-label">
-                    <svg class="dash-label-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-                    Collection plan
-                </div>
-                <div id="dash-plan-content" class="dash-content"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Carousel dots -->
     <div class="carousel-dots" id="carousel-dots">
         <div class="carousel-dot active" data-idx="0"></div>
         <div class="carousel-dot" data-idx="1"></div>
         <div class="carousel-dot" data-idx="2"></div>
     </div>
 
-    <!-- Input below dashboard -->
+    <!-- Input below -->
     <div class="hero-input-wrap" id="hero-input">
         <div class="hero-input-label">Enter your website to see yours.</div>
         <div class="input-box">
@@ -1021,48 +1014,32 @@ let cycleTimer = null;
 function fillDashboardAnimated(domain) {
     const company = findCompany(domain);
     if (!company) return;
+    const contact = company.contacts[0];
 
-    // Update cycle pill domain
-    const domainEl = document.getElementById('cycle-domain');
-    domainEl.style.opacity = '0';
+    // Fade out the hero card
+    const card = document.getElementById('hero-card');
+    card.style.opacity = '0';
+
     setTimeout(() => {
-        domainEl.textContent = domain;
-        domainEl.style.opacity = '1';
-    }, 200);
+        // Update domain
+        document.getElementById('hero-domain').textContent = domain;
+        // Update contact
+        const avatarUrl = contact.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(contact.name)}&background=4F46E5&color=fff&size=200`;
+        document.getElementById('hero-avatar').src = avatarUrl;
+        document.getElementById('hero-name').textContent = contact.name;
+        document.getElementById('hero-title').textContent = contact.title + (company.name ? ' at ' + company.name : '');
+        document.getElementById('hero-phone').textContent = contact.phone_masked || '+1 (***) ***-**XX';
+        document.getElementById('hero-email').textContent = contact.email_masked || contact.name.charAt(0).toLowerCase() + '***@' + domain;
+        // Fade in
+        card.style.opacity = '1';
+    }, 400);
 
     // Update carousel dots
     const idx = CYCLE_COMPANIES.indexOf(domain);
     if (idx >= 0) updateCarouselDots(idx);
 
-    // Remove loaded state from all cards
-    ['dash-company','dash-disputes','dash-dm','dash-plan'].forEach(id => {
-        document.getElementById(id).classList.remove('loaded');
-    });
-
-    // Card 1: Company — 0.5s
-    const companyEl = document.getElementById('dash-company-content');
-    companyEl.style.opacity = '0';
-    setTimeout(() => {
-        companyEl.innerHTML = renderCompanyCard(company, domain);
-        companyEl.style.opacity = '1';
-        document.getElementById('dash-company').classList.add('loaded');
-    }, 500);
-
-    // Card 2: Disputes — 1s
-    const disputesEl = document.getElementById('dash-disputes-content');
-    disputesEl.style.opacity = '0';
-    setTimeout(() => {
-        disputesEl.innerHTML = renderDisputesCard(company.disputes);
-        disputesEl.style.opacity = '1';
-        document.getElementById('dash-disputes').classList.add('loaded');
-    }, 1000);
-
-    // Card 3: Contacts — 1.5s
-    const dmEl = document.getElementById('dash-dm-content');
-    dmEl.style.opacity = '0';
-    setTimeout(() => {
-        dmEl.innerHTML = renderContactsCard(company.contacts);
-        dmEl.style.opacity = '1';
+    // Keep old render functions for when user enters their own domain (full analysis)
+    void 0; // placeholder to keep code structure
         document.getElementById('dash-dm').classList.add('loaded');
     }, 1500);
 
