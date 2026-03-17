@@ -601,15 +601,20 @@ function showResults(data, domain) {
   // Show results
   document.getElementById('results').classList.add('show');
 
-  // Trigger scroll reveals
+  // Force all result sections visible (don't wait for scroll)
+  document.querySelectorAll('.results .rv').forEach(function(el) {
+    el.classList.add('v');
+  });
+
+  // Also observe for any future scrolling
   setTimeout(function() {
     document.querySelectorAll('.rv').forEach(function(el) { ro.observe(el); });
   }, 100);
 
-  // Smooth scroll to results
+  // Smooth scroll to first result
   setTimeout(function() {
     document.querySelector('.result-section').scrollIntoView({behavior: 'smooth', block: 'start'});
-  }, 200);
+  }, 300);
 }
 
 function resetAndAnalyze() {
