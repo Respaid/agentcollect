@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>AgentCollect — The End of Manual Collection</title>
+    <meta name="description" content="Your customers owe you money. We help you get it back — without losing a single relationship. AI agents and licensed attorneys handle your unpaid invoices.">
+    <meta property="og:title" content="AgentCollect — The End of Manual Collection">
+    <meta property="og:description" content="Your customers owe you money. We help you get it back — without losing a single relationship.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.agentcollect.com">
+    <meta property="og:image" content="https://www.agentcollect.com/og.png?v=5">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AgentCollect — The End of Manual Collection">
+    <meta name="twitter:description" content="Your customers owe you money. We help you get it back — without losing a single relationship.">
+    <meta name="twitter:image" content="https://www.agentcollect.com/og.png?v=5">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#FAFBFF;--bg-card:#fff;--bg-dark:#0B1B3D;--bg-warm:#F8F7F5;
+            --border:#E8ECF2;--border-hover:rgba(79,70,229,.18);
+            --text:#0B1B3D;--text-mid:#475569;--text-muted:#94A3B8;--text-dim:#CBD5E1;
+            --indigo:#4F46E5;--indigo-dark:#4338CA;--indigo-light:rgba(79,70,229,.04);--indigo-glow:rgba(79,70,229,.08);
+            --green:#10B981;--green-dark:#059669;--green-light:rgba(16,185,129,.04);
+            --amber:#F59E0B;--red:#EF4444;
+            --mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
+            --shadow-sm:0 1px 2px rgba(0,0,0,.03);
+            --shadow-md:0 2px 8px rgba(0,0,0,.04);
+            --shadow-lg:0 8px 24px rgba(0,0,0,.06);
+            --shadow-warm:0 8px 32px rgba(79,70,229,.08);
+            --radius:16px;
+            --max-w:1120px;
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:var(--sans);background:#fff;color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;font-size:16px;line-height:1.65}
+        h1,h2,h3,h4,h5{font-family:var(--display);line-height:1.15}
+        ::selection{background:rgba(79,70,229,.08)}
+
+        @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+        @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+        @keyframes dot-typing{0%{opacity:.2}20%{opacity:1}100%{opacity:.2}}
+        @keyframes pop-in{0%{opacity:0;transform:scale(.95)}100%{opacity:1;transform:scale(1)}}
+        @keyframes check-draw{0%{stroke-dashoffset:24}100%{stroke-dashoffset:0}}
+        @keyframes counter-pop{0%{transform:scale(.8);opacity:0}60%{transform:scale(1.02)}100%{transform:scale(1);opacity:1}}
+        @keyframes pulse-ring{0%{box-shadow:0 0 0 0 rgba(79,70,229,.2)}70%{box-shadow:0 0 0 6px rgba(79,70,229,0)}100%{box-shadow:0 0 0 0 rgba(79,70,229,0)}}
+        @keyframes terminal-line{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+        .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+        .s1{transition-delay:.1s}.s2{transition-delay:.2s}.s3{transition-delay:.3s}
+
+        /* NAV */
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+        .nav.scrolled{box-shadow:0 1px 3px rgba(0,0,0,.02)}
+        .nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:64px}
+        .logo{display:inline-flex;align-items:baseline;text-decoration:none;margin-right:auto;font-family:var(--display);font-size:18px;font-weight:900;letter-spacing:-.04em;color:var(--text)}
+        .dot-circle{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--indigo);margin-left:1px;vertical-align:super}
+        .logo-tagline{font-size:11px;color:var(--text-muted);font-weight:400;margin-left:14px;padding-left:14px;border-left:1px solid var(--border);white-space:nowrap;letter-spacing:-.01em}
+        .nav-links{display:flex;gap:32px;margin-right:28px}
+        .nav-links a{color:var(--text-muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;letter-spacing:-.01em}
+        .nav-links a:hover{color:var(--text)}
+        .nav-right{display:flex;align-items:center;gap:10px}
+        .nav-cta{padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:var(--radius);font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;letter-spacing:-.01em}
+        .nav-cta:hover{background:var(--indigo-dark)}
+        .nav-cta-ghost{padding:14px 28px;background:transparent;color:var(--text-mid);border:1px solid var(--border);border-radius:var(--radius);font-family:var(--sans);font-size:14px;font-weight:500;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center}
+        .nav-cta-ghost:hover{border-color:var(--text-mid);color:var(--text)}
+        .nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px}
+
+        /* HERO */
+        .hero{padding:170px 32px 110px;text-align:center;position:relative;background:#fff}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border:1px solid var(--border);border-radius:100px;font-size:13px;font-weight:500;color:var(--text-muted);margin-bottom:32px;letter-spacing:-.01em}
+        .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green)}
+        .hero h1{font-size:clamp(36px,5.5vw,64px);font-weight:900;letter-spacing:-.04em;line-height:1.05;margin-bottom:24px;max-width:700px;margin-left:auto;margin-right:auto;color:var(--text)}
+        .hero-sub{font-size:18px;color:var(--text-muted);max-width:520px;margin:0 auto 52px;line-height:1.65;font-weight:400;letter-spacing:-.01em}
+
+        /* URL INPUT */
+        .input-wrap{max-width:520px;margin:0 auto}
+        .input-box{display:flex;align-items:center;background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:4px;transition:all .25s}
+        .input-box:focus-within{border-color:var(--indigo);box-shadow:0 0 0 3px rgba(79,70,229,.06)}
+        .input-field{flex:1;padding:14px 18px;background:transparent;border:none;font-family:var(--sans);font-size:16px;color:var(--text);outline:none;letter-spacing:-.01em}
+        .input-field::placeholder{color:var(--text-dim)}
+        .input-field.error{animation:shake .4s}
+        .input-btn{padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:calc(var(--radius) - 2px);font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:8px;letter-spacing:-.01em}
+        .input-btn:hover{background:var(--indigo-dark)}
+        .input-btn:disabled{opacity:.4;cursor:not-allowed}
+        .input-hint{margin-top:16px;font-size:13px;color:var(--text-dim);text-align:center;letter-spacing:-.01em}
+
+        /* ANALYSIS CONSOLE */
+        .analysis{max-width:680px;margin:0 auto;padding:0 24px;display:none}
+        .analysis.active{display:block;animation:fadeUp .5s ease}
+        .analysis-header{text-align:center;margin-bottom:32px}
+        .analysis-target{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;background:#fff;border:1px solid var(--border);border-radius:8px}
+        .analysis-target-url{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--indigo)}
+        .analysis-target-status{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse-ring 2s infinite}
+        .a-step{margin-bottom:20px;opacity:0;transform:translateY(12px);transition:all .4s ease}
+        .a-step.active{opacity:1;transform:translateY(0)}
+        .a-step.done .a-step-icon{background:var(--green-light);border-color:rgba(16,185,129,.1)}
+        .a-step.done .a-step-icon svg{color:var(--green)}
+        .a-step-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+        .a-step-icon{width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;background:var(--indigo-light);border:1px solid rgba(79,70,229,.06);transition:all .3s;flex-shrink:0}
+        .a-step-icon svg{width:14px;height:14px;color:var(--indigo)}
+        .a-step-icon.spinning svg{animation:spin .8s linear infinite}
+        .a-step-title{font-family:var(--display);font-size:14px;font-weight:700;color:var(--text)}
+        .a-step-sub{font-size:12px;color:var(--text-muted);margin-top:1px}
+        .a-step-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-left:44px;position:relative;overflow:hidden}
+        .a-step-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--indigo),var(--green));transform:scaleX(0);transform-origin:left;transition:transform 1s ease}
+        .a-step-card.loaded::before{transform:scaleX(1)}
+        .a-row{display:flex;justify-content:space-between;align-items:flex-start;padding:7px 0;border-bottom:1px solid rgba(0,0,0,.03);opacity:0;transform:translateX(6px);transition:all .3s ease}
+        .a-row:last-child{border-bottom:none}
+        .a-row.show{opacity:1;transform:translateX(0)}
+        .a-row-key{font-size:12px;color:var(--text-muted);font-weight:500;min-width:100px;flex-shrink:0}
+        .a-row-val{font-size:13px;color:var(--text);font-weight:500;text-align:right;flex:1}
+        .a-row-val.found{color:var(--indigo)}
+        .a-row-val.green{color:var(--green)}
+        .a-actions{display:flex;gap:12px;justify-content:center;margin-top:36px;flex-wrap:wrap;opacity:0;transform:translateY(12px);transition:all .4s}
+        .a-actions.show{opacity:1;transform:translateY(0)}
+        .person-card{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--bg);border-radius:8px;margin-bottom:10px}
+        .person-avatar{width:40px;height:40px;border-radius:50%;background:var(--indigo-light);border:1px solid rgba(79,70,229,.08);overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+        .person-avatar img{width:100%;height:100%;object-fit:cover}
+        .person-info{flex:1}
+        .person-name{font-family:var(--display);font-size:14px;font-weight:800;color:var(--text)}
+        .person-title{font-size:12px;color:var(--text-mid);margin-top:1px}
+        .person-badge{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:4px;background:var(--indigo-light);color:var(--indigo)}
+
+        /* LOGOS */
+        .logos{padding:52px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:#fff}
+        .logos-label{text-align:center;font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.16em;font-weight:600;margin-bottom:28px}
+        .marquee{display:flex;width:max-content;animation:marquee 40s linear infinite}
+        .marquee:hover{animation-play-state:paused}
+        .marquee img{height:28px;margin:0 48px;opacity:.4;filter:grayscale(100%);transition:all .4s;object-fit:contain}
+        .marquee img:hover{opacity:.7;filter:grayscale(0%)}
+
+        /* SECTIONS */
+        .section{padding:100px 32px;background:#fff}
+        .section-inner{max-width:var(--max-w);margin:0 auto}
+        .section-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--indigo);margin-bottom:12px}
+        .section-title{font-size:clamp(28px,3.5vw,42px);font-weight:900;letter-spacing:-.04em;color:var(--text);margin-bottom:12px}
+        .section-sub{font-size:16px;color:var(--text-muted);max-width:480px;line-height:1.65;letter-spacing:-.01em}
+
+        /* RESPECTFUL — warm bg */
+        .respectful{padding:110px 32px;background:var(--bg-warm)}
+        .respectful-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+        .respectful-text .section-sub{max-width:none;margin-bottom:0}
+        .respectful-text p{font-size:16px;color:var(--text-mid);line-height:1.75;margin-top:20px}
+        .respectful-text p + p{margin-top:16px}
+        .respectful-text p.story-lead{font-size:17px;color:var(--text);font-weight:500;line-height:1.7}
+        .respectful-text p.story-bridge{font-size:16px;color:var(--text);font-style:italic;margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,.06)}
+        .respectful-quote{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:32px}
+        .respectful-quote blockquote{font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-.02em;color:var(--text);line-height:1.4;margin-bottom:24px;position:relative}
+        .respectful-quote blockquote::before{content:'\201C';font-size:52px;font-weight:900;color:var(--indigo);opacity:.15;line-height:1;display:block;margin-bottom:-12px}
+        .respectful-cite{display:flex;align-items:center;gap:12px}
+        .respectful-cite img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:1px solid var(--border)}
+        .respectful-cite-text{text-align:left}
+        .respectful-cite-text strong{font-size:14px;color:var(--text);display:block;font-weight:700}
+        .respectful-cite-text span{font-size:13px;color:var(--text-muted)}
+
+        /* ONE MILLIMETER — dark terminal card */
+        .onemm{padding:110px 32px;background:#fff}
+        .onemm-inner{max-width:var(--max-w);margin:0 auto}
+        .onemm-header{text-align:center;margin-bottom:56px}
+        .onemm-header .section-sub{max-width:560px;margin:12px auto 0}
+        .terminal{background:#0c0e14;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:0;overflow:hidden;max-width:740px;margin:0 auto}
+        .terminal-bar{display:flex;align-items:center;gap:6px;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.06)}
+        .terminal-dot{width:8px;height:8px;border-radius:50%}
+        .terminal-dot.r{background:#ff5f57}.terminal-dot.y{background:#febc2e}.terminal-dot.g{background:#28c840}
+        .terminal-title{font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.3);margin-left:12px}
+        .terminal-body{padding:28px;font-family:var(--mono);font-size:13.5px;line-height:2.2;color:rgba(255,255,255,.55)}
+        .terminal-header{color:rgba(255,255,255,.35);font-size:12px;margin-bottom:8px;letter-spacing:.02em}
+        .terminal-header strong{color:rgba(255,255,255,.7);font-weight:500}
+        .terminal-divider{height:1px;background:rgba(255,255,255,.06);margin:12px 0 16px}
+        .terminal-prefix{color:rgba(255,255,255,.3);font-size:12px;margin-bottom:12px}
+        .terminal-line{display:flex;align-items:flex-start;gap:10px;opacity:0;transform:translateY(4px)}
+        .terminal-line.show{opacity:1;transform:translateY(0);transition:all .4s ease}
+        .terminal-check{color:var(--green);flex-shrink:0;font-size:14px;margin-top:1px}
+        .terminal-text{flex:1}
+        .terminal-highlight{color:rgba(255,255,255,.85);font-weight:500}
+        .terminal-sarah{margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.75);font-size:14px;font-style:italic;line-height:1.6;opacity:0;transform:translateY(4px)}
+        .terminal-sarah.show{opacity:1;transform:translateY(0);transition:all .4s ease}
+        .terminal-cursor{display:inline-block;width:7px;height:14px;background:var(--indigo);animation:blink 1s step-end infinite;vertical-align:middle;margin-left:2px}
+        .onemm-bottom{text-align:center;margin-top:44px;font-size:16px;color:var(--text-muted);max-width:560px;margin-left:auto;margin-right:auto;line-height:1.65}
+
+        /* TWO PATHS */
+        .paths{padding:110px 32px;background:#fff}
+        .paths-inner{max-width:var(--max-w);margin:0 auto}
+        .paths-header{text-align:center;margin-bottom:56px}
+        .paths-header .section-sub{max-width:560px;margin:12px auto 0}
+        .paths-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:900px;margin:0 auto}
+        .path-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:all .2s;position:relative;overflow:hidden}
+        .path-card:hover{border-color:var(--border-hover);transform:translateY(-2px);box-shadow:var(--shadow-warm)}
+        .path-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+        .path-card h3{font-family:var(--display);font-size:20px;font-weight:800;letter-spacing:-.03em;color:var(--text);margin-bottom:8px;line-height:1.2}
+        .path-card .path-desc{font-size:16px;color:var(--text-muted);line-height:1.65;margin-bottom:24px}
+        .path-features{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
+        .path-feature{display:flex;align-items:flex-start;gap:8px;font-size:15px;color:var(--text-mid);line-height:1.5}
+        .path-feature svg{flex-shrink:0;margin-top:3px}
+        .path-best{font-size:13px;color:var(--text-muted);margin-bottom:20px;font-style:italic}
+        .path-cta{display:inline-flex;align-items:center;gap:6px;padding:14px 28px;border-radius:var(--radius);font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;text-decoration:none;border:none;letter-spacing:-.01em}
+        .path-cta:hover{transform:translateY(-1px)}
+        .path-cta-primary{background:var(--indigo);color:#fff}
+        .path-cta-primary:hover{background:var(--indigo-dark)}
+        .path-cta-outline{background:#fff;color:var(--text);border:1px solid var(--border)}
+        .path-cta-outline:hover{border-color:var(--text-mid);color:var(--text)}
+        .path-card.recommended{border-color:var(--green)}
+        .path-card.recommended::before{content:'Easiest to start';position:absolute;top:16px;right:16px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:4px 10px;border-radius:100px;background:var(--green-light);color:var(--green-dark);border:1px solid rgba(16,185,129,.1)}
+
+        /* COMPARE */
+        .compare{padding:110px 32px;background:#F8F9FA}
+        .compare-inner{max-width:var(--max-w);margin:0 auto;text-align:center}
+        .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:800px;margin:0 auto;text-align:left}
+        .compare-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:all .2s}
+        .compare-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-warm)}
+        .compare-card.good{border-color:var(--green);box-shadow:0 0 0 1px rgba(16,185,129,.08)}
+        .compare-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:24px}
+        .compare-rows{display:flex;flex-direction:column;gap:14px}
+        .compare-row{display:flex;align-items:flex-start;gap:10px}
+        .compare-row span{font-size:15px;color:var(--text-mid);line-height:1.5}
+
+        /* STATS */
+        .stats{padding:0 32px;background:#fff}
+        .stats-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+        .stat-item{padding:64px 24px;text-align:center}
+        .stat-item:not(:last-child){border-right:1px solid var(--border)}
+        .stat-num{font-family:var(--mono);font-size:clamp(28px,3.5vw,40px);font-weight:500;letter-spacing:-.03em;line-height:1}
+        .stat-num.c-indigo{color:var(--indigo)}
+        .stat-num.c-green{color:var(--green)}
+        .stat-num.c-amber{color:var(--amber)}
+        .stat-num.c-default{color:var(--text)}
+        .stat-label{font-size:13px;color:var(--text-dim);margin-top:10px;letter-spacing:-.01em}
+
+        /* RESULTS */
+        .results{padding:110px 32px;background:#fff}
+        .results-inner{max-width:var(--max-w);margin:0 auto}
+        .results-header{margin-bottom:56px}
+        .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+        .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:32px;cursor:default;transition:all .2s;position:relative;display:flex;flex-direction:column}
+        .card:hover{transform:translateY(-2px);box-shadow:var(--shadow-warm);border-color:var(--border-hover)}
+        .card-logo{height:22px;opacity:.35;filter:grayscale(100%);margin-bottom:20px;transition:all .4s;object-fit:contain}
+        .card:hover .card-logo{opacity:.6;filter:grayscale(0%)}
+        .card-headline{font-size:16px;font-weight:500;color:var(--text-mid);line-height:1.65;flex:1}
+        .card-metric{display:flex;align-items:baseline;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
+        .card-num{font-family:var(--mono);font-size:16px;font-weight:500;color:var(--indigo);letter-spacing:-.01em}
+        .card-desc{font-size:13px;color:var(--text-dim);line-height:1.4}
+
+        /* TRUST BAR */
+        .trust{padding:32px;border-top:1px solid var(--border);background:#fff}
+        .trust-inner{max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap}
+        .trust-item{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-dim);font-weight:500}
+        .trust-item svg{flex-shrink:0;opacity:.4}
+        .trust-sep{width:1px;height:14px;background:var(--border)}
+
+        /* CTA */
+        .cta{padding:120px 32px;text-align:center;background:var(--bg-dark);color:#fff;position:relative;overflow:hidden}
+        .cta h2{font-size:clamp(30px,4vw,48px);font-weight:900;letter-spacing:-.04em;margin-bottom:16px;line-height:1.1}
+        .cta p{font-size:16px;opacity:.7;max-width:460px;margin:0 auto 44px;line-height:1.65;letter-spacing:-.01em}
+        .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+        .cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border:none;border-radius:var(--radius);font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;letter-spacing:-.01em}
+        .cta-btn:hover{transform:translateY(-1px)}
+        .cta-btn-primary{background:#fff;color:var(--bg-dark)}
+        .cta-btn-primary:hover{box-shadow:0 8px 24px rgba(255,255,255,.1)}
+        .cta-btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.15)}
+        .cta-btn-ghost:hover{border-color:rgba(255,255,255,.35)}
+
+        /* FOOTER */
+        footer{background:#fff;border-top:1px solid var(--border);padding:56px 32px 32px}
+        .footer-inner{max-width:var(--max-w);margin:0 auto}
+        .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+        .footer-brand{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:12px}
+        .footer-tagline{font-size:14px;color:var(--text-dim);line-height:1.65;max-width:260px}
+        .footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);margin-bottom:16px}
+        .footer-col a{display:block;font-size:14px;color:var(--text-muted);text-decoration:none;margin-bottom:10px;transition:color .2s}
+        .footer-col a:hover{color:var(--text)}
+        .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;gap:12px}
+        .footer-copy{font-size:12px;color:var(--text-dim)}
+        .footer-badges{display:flex;gap:8px}
+        .footer-badge{padding:4px 10px;border:1px solid var(--border);border-radius:4px;font-size:10px;color:var(--text-dim);font-weight:600;letter-spacing:.02em}
+
+        /* RESPONSIVE */
+        @media(max-width:1024px){
+            .respectful-inner{grid-template-columns:1fr;gap:48px}
+            .cards-grid{grid-template-columns:repeat(2,1fr)}
+            .stats-inner{grid-template-columns:repeat(2,1fr)}
+            .stat-item:nth-child(2){border-right:none}
+            .footer-top{grid-template-columns:1fr 1fr}
+        }
+        @media(max-width:768px){
+            .nav-links{display:none}
+            .nav-mobile{display:block}
+            .nav-inner{padding:0 20px}
+            .logo-tagline{display:none}
+            .nav-right .nav-cta-ghost{display:none}
+            .hero{padding:140px 20px 80px}
+            .input-box{flex-direction:column;padding:4px}
+            .input-btn{width:100%;justify-content:center;border-radius:calc(var(--radius) - 2px)}
+            .input-field{text-align:center}
+            .marquee img{height:22px;margin:0 32px}
+            .respectful-inner{grid-template-columns:1fr;gap:40px}
+            .paths-grid{grid-template-columns:1fr}
+            .compare-grid{grid-template-columns:1fr}
+            .cards-grid{grid-template-columns:1fr}
+            .stats-inner{grid-template-columns:repeat(2,1fr)}
+            .stat-item{padding:36px 16px}
+            .section{padding:80px 20px}
+            .respectful{padding:80px 20px}
+            .onemm{padding:80px 20px}
+            .paths{padding:80px 20px}
+            .compare{padding:80px 20px}
+            .results{padding:80px 20px}
+            .cta{padding:80px 20px}
+            .terminal-body{padding:20px;font-size:12px}
+            .footer-top{grid-template-columns:1fr;gap:24px}
+            .footer-bottom{flex-direction:column;text-align:center}
+            .footer-badges{justify-content:center}
+            .a-step-card{margin-left:0}
+            .a-actions{flex-direction:column}
+            .cta-btns{flex-direction:column;align-items:center}
+            .path-card{padding:24px}
+            .card{padding:24px}
+            .compare-card{padding:24px}
+        }
+        @media(max-width:480px){
+            .stats-inner{grid-template-columns:1fr}
+            .stat-item{border-right:none!important;border-bottom:1px solid var(--border)}
+            .stat-item:last-child{border-bottom:none}
+        }
+    </style>
+    <script>
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vtpmvp6kvr");
+    </script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+<div class="nav-inner">
+    <a href="/" class="logo">Agent<span>Collect</span><span class="dot-circle"></span></a>
+    <span class="logo-tagline">The end of manual collection.</span>
+    <div class="nav-links">
+        <a href="#paths">How you collect</a>
+        <a href="#results">Results</a>
+        <a href="#how">Our story</a>
+    </div>
+    <div class="nav-right">
+        <a href="https://cal.com/johnb/30" class="nav-cta-ghost" target="_blank">Let's talk</a>
+        <a href="#hero-input" class="nav-cta" onclick="document.getElementById('url-input').focus()">See your collection plan</a>
+    </div>
+    <button class="nav-mobile" onclick="document.getElementById('url-input').scrollIntoView({behavior:'smooth'});document.getElementById('url-input').focus()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="1.5"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+    <div class="hero-badge"><span class="dot"></span> Trusted by Microsoft, Dell, and Plaid</div>
+    <h1>The end of manual collection.</h1>
+    <p class="hero-sub">Your customers owe you money. We help you get it back — without losing a single relationship.</p>
+
+    <div class="input-wrap" id="hero-input">
+        <div class="input-box">
+            <input type="text" class="input-field" id="url-input" placeholder="acme.com" autocomplete="off" spellcheck="false">
+            <button class="input-btn" id="go-btn" onclick="startAnalysis()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                See your collection plan
+            </button>
+        </div>
+        <div class="input-hint">30-second AI analysis — no signup required.</div>
+    </div>
+</section>
+
+<!-- ANALYSIS CONSOLE -->
+<section class="analysis" id="analysis-console">
+    <div class="analysis-header">
+        <div class="analysis-target">
+            <div class="analysis-target-status"></div>
+            <span class="analysis-target-url" id="target-url"></span>
+        </div>
+    </div>
+
+    <div class="a-step" id="step-business">
+        <div class="a-step-header">
+            <div class="a-step-icon" id="icon-business"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+            <div><div class="a-step-title" id="title-business">Analyzing business...</div><div class="a-step-sub" id="sub-business"></div></div>
+        </div>
+        <div class="a-step-card" id="card-business"><div id="business-rows"></div></div>
+    </div>
+
+    <div class="a-step" id="step-disputes">
+        <div class="a-step-header">
+            <div class="a-step-icon" id="icon-disputes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg></div>
+            <div><div class="a-step-title" id="title-disputes">Identifying disputes...</div><div class="a-step-sub" id="sub-disputes"></div></div>
+        </div>
+        <div class="a-step-card" id="card-disputes"><div id="disputes-rows"></div></div>
+    </div>
+
+    <div class="a-step" id="step-decision">
+        <div class="a-step-header">
+            <div class="a-step-icon" id="icon-decision"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+            <div><div class="a-step-title" id="title-decision">Finding decision-maker...</div><div class="a-step-sub" id="sub-decision"></div></div>
+        </div>
+        <div class="a-step-card" id="card-decision"><div id="decision-rows"></div></div>
+    </div>
+
+    <div class="a-step" id="step-plan">
+        <div class="a-step-header">
+            <div class="a-step-icon" id="icon-plan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></div>
+            <div><div class="a-step-title" id="title-plan">Building collection plan...</div><div class="a-step-sub" id="sub-plan"></div></div>
+        </div>
+        <div class="a-step-card" id="card-plan"><div id="plan-rows"></div></div>
+    </div>
+
+    <div class="a-actions" id="a-actions">
+        <div style="text-align:center;margin-bottom:16px;max-width:420px;margin-left:auto;margin-right:auto">
+            <div style="font-family:var(--display);font-size:18px;font-weight:800;color:var(--text);margin-bottom:8px">Your collection agent is ready.</div>
+            <div style="font-size:14px;color:var(--text-muted);line-height:1.65">Book a conversation. We'll show up with a working agent built for your company.</div>
+        </div>
+        <a href="https://cal.com/johnb/30" target="_blank" class="path-cta path-cta-primary" style="padding:14px 28px;font-size:14px;gap:8px">
+            Let's have a conversation
+        </a>
+        <button class="path-cta path-cta-outline" onclick="resetAndScroll()" style="padding:12px 24px;font-size:13px">
+            Try another company
+        </button>
+    </div>
+</section>
+
+<!-- LOGOS MARQUEE -->
+<section class="logos reveal">
+    <div class="logos-label">Trusted by teams at</div>
+    <div class="marquee">
+        <img src="https://cdn.brandfetch.io/microsoft.com/w/512/h/80/logo" alt="Microsoft">
+        <img src="https://cdn.brandfetch.io/dell.com/w/512/h/80/logo" alt="Dell">
+        <img src="https://cdn.brandfetch.io/plaid.com/w/512/h/80/logo" alt="Plaid">
+        <img src="https://cdn.brandfetch.io/checkr.com/w/512/h/80/logo" alt="Checkr">
+        <img src="https://cdn.brandfetch.io/doordash.com/w/512/h/80/logo" alt="DoorDash">
+        <img src="https://cdn.brandfetch.io/twilio.com/w/512/h/80/logo" alt="Twilio">
+        <img src="https://cdn.brandfetch.io/redis.com/w/512/h/80/logo" alt="Redis">
+        <img src="https://cdn.brandfetch.io/uber.com/w/512/h/80/logo" alt="Uber Freight">
+        <img src="https://cdn.brandfetch.io/microsoft.com/w/512/h/80/logo" alt="Microsoft">
+        <img src="https://cdn.brandfetch.io/dell.com/w/512/h/80/logo" alt="Dell">
+        <img src="https://cdn.brandfetch.io/plaid.com/w/512/h/80/logo" alt="Plaid">
+        <img src="https://cdn.brandfetch.io/checkr.com/w/512/h/80/logo" alt="Checkr">
+        <img src="https://cdn.brandfetch.io/doordash.com/w/512/h/80/logo" alt="DoorDash">
+        <img src="https://cdn.brandfetch.io/twilio.com/w/512/h/80/logo" alt="Twilio">
+        <img src="https://cdn.brandfetch.io/redis.com/w/512/h/80/logo" alt="Redis">
+        <img src="https://cdn.brandfetch.io/uber.com/w/512/h/80/logo" alt="Uber Freight">
+    </div>
+</section>
+
+<!-- RESPECTFUL SECTION — THE EMOTIONAL HEART -->
+<section class="respectful reveal" id="how">
+    <div class="respectful-inner">
+        <div class="respectful-text">
+            <div class="section-label">Why we built this</div>
+            <div class="section-title">It started with a furniture store.</div>
+            <p class="story-lead">My grandfather opened MOBA in Colmar, France, just after World War II. A furniture store. He built it with his father. Three generations. Nearly a hundred years.</p>
+            <p>They never had a bank. When a family needed a dining table or a bed for a new baby, my grandfather would write their name in a ledger and say, "Pay me when you can." When they didn't, he'd put on his coat on a Sunday morning and knock on their door.</p>
+            <p>Not to threaten. Not to demand. Just to talk. Because he knew something the collection industry has forgotten: the person who owes you money is often someone you'll see at the market next week.</p>
+            <p class="story-bridge">When I started dealing with unpaid invoices myself, I saw the same impossible choice every business faces. Push too hard, they fight back — bad reviews, lawsuits, burned relationships. Push too soft, they disappear. We found the line.</p>
+        </div>
+        <div class="respectful-quote">
+            <blockquote>Every debtor was treated with respect. Not one complaint. That's unheard of in this industry.</blockquote>
+            <div class="respectful-cite">
+                <img src="https://respaid.com/images/neil-doyle.png" alt="Neil Doyle">
+                <div class="respectful-cite-text">
+                    <strong>Neil Doyle</strong>
+                    <span>Microsoft</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ONE MILLIMETER — CRAFT, NOT TECHNOLOGY -->
+<section class="onemm reveal">
+    <div class="onemm-inner">
+        <div class="onemm-header">
+            <div class="section-label" style="text-align:center">The craft behind every message</div>
+            <div class="section-title" style="text-align:center;max-width:640px;margin:0 auto">Every email we send is handcrafted by AI.</div>
+            <div class="section-sub" style="text-align:center;max-width:560px;margin:12px auto 0">The industry sends the same template to everyone. We write a unique message for every single person — because the details are what make someone pay.</div>
+        </div>
+        <div class="terminal" id="terminal">
+            <div class="terminal-bar">
+                <div class="terminal-dot r"></div>
+                <div class="terminal-dot y"></div>
+                <div class="terminal-dot g"></div>
+                <span class="terminal-title">agent_analysis.log</span>
+            </div>
+            <div class="terminal-body">
+                <div class="terminal-header">Debtor: <strong>Sarah Chen</strong>, AP Manager at Meridian HVAC</div>
+                <div class="terminal-header">Invoice: <strong>#4521</strong> — <strong>$12,400</strong> — 47 days overdue</div>
+                <div class="terminal-divider"></div>
+                <div class="terminal-prefix">Before we wrote a single word, we already knew:</div>
+                <div class="terminal-line" data-delay="200"><span class="terminal-check">&#10003;</span><span class="terminal-text">She opened your last 3 emails but couldn't bring herself to click</span></div>
+                <div class="terminal-line" data-delay="400"><span class="terminal-check">&#10003;</span><span class="terminal-text">She visited the payment page twice — almost paid</span></div>
+                <div class="terminal-line" data-delay="600"><span class="terminal-check">&#10003;</span><span class="terminal-text">Her company just closed a <span class="terminal-highlight">$4M deal</span> — she can pay</span></div>
+                <div class="terminal-line" data-delay="800"><span class="terminal-check">&#10003;</span><span class="terminal-text">She's in Chicago. It's <span class="terminal-highlight">Tuesday morning</span>. This is the moment.</span></div>
+                <div class="terminal-line" data-delay="1000"><span class="terminal-check">&#10003;</span><span class="terminal-text">Payment plan pre-calculated: <span class="terminal-highlight">3 &times; $4,133</span></span></div>
+                <div class="terminal-line" data-delay="1200"><span class="terminal-check">&#10003;</span><span class="terminal-text">Ohio compliance verified</span></div>
+                <div class="terminal-line" data-delay="1400"><span class="terminal-check">&#10003;</span><span class="terminal-text">Attorney demand letter queued if no response by Day 7</span></div>
+                <div class="terminal-sarah" data-delay="1800">This email was written for Sarah. Not for "Dear Accounts Payable."<span class="terminal-cursor"></span></div>
+            </div>
+        </div>
+        <div class="onemm-bottom reveal">That's the difference between a template and a craft. Our AI does this for every debtor, every time — automatically.</div>
+    </div>
+</section>
+
+<!-- TWO PATHS — CHOICES, NOT PRODUCTS -->
+<section class="paths reveal" id="paths">
+    <div class="paths-inner">
+        <div class="paths-header">
+            <div class="section-label" style="text-align:center">Choose how you collect</div>
+            <div class="section-title" style="text-align:center;max-width:600px;margin:0 auto">Two paths. Same care.</div>
+            <div class="section-sub" style="text-align:center;max-width:560px;margin:12px auto 0">Most clients start with attorney collection — zero friction, just an Excel file. Then add AI collection when they see the results.</div>
+        </div>
+        <div class="paths-grid">
+            <div class="path-card">
+                <div class="path-label" style="color:var(--indigo)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg> Under your name</div>
+                <h3>Your brand. Your voice. Our AI.</h3>
+                <div class="path-desc">White-label AI agents call, email, and negotiate your unpaid invoices. Your customers think they're talking to you — because they are.</div>
+                <div class="path-features">
+                    <div class="path-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Your brand on every touchpoint</div>
+                    <div class="path-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>AI voice calls + email + SMS</div>
+                    <div class="path-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>We find who to contact — you don't lift a finger</div>
+                    <div class="path-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Replace or augment your internal team</div>
+                </div>
+                <div class="path-best">Best for: active clients, recent invoices, preserving the relationship.</div>
+                <a href="https://cal.com/johnb/30" target="_blank" class="path-cta path-cta-outline">Learn more</a>
+            </div>
+            <div class="path-card recommended">
+                <div class="path-label" style="color:var(--green)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> With legal weight</div>
+                <h3>An attorney in your corner.</h3>
+                <div class="path-desc">Schweber Law, a licensed attorney in New York, officially represents your company. AI handles the outreach, documentation, and follow-up. The attorney reviews and signs.</div>
+                <div class="path-features">
+                    <div class="path-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Licensed attorney with bar number</div>
+                    <div class="path-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Formal demand letters with legal standing</div>
+                    <div class="path-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Just upload an Excel file — that's it</div>
+                    <div class="path-feature"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Money goes to you directly — not an agency</div>
+                </div>
+                <div class="path-best">Best for: aging invoices, unresponsive debtors, quick start.</div>
+                <a href="https://cal.com/johnb/30" target="_blank" class="path-cta path-cta-primary">Start a free pilot</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMPARE — OLD VS NEW -->
+<section class="compare reveal">
+    <div class="compare-inner">
+        <div class="section-label">There's a better way</div>
+        <h2 style="font-family:var(--display);font-size:clamp(28px,3.5vw,42px);font-weight:900;letter-spacing:-.04em;margin-bottom:52px;color:var(--text)">The old way is broken.</h2>
+        <div class="compare-grid">
+            <div class="compare-card">
+                <div class="compare-label" style="color:var(--text-dim)">The old way</div>
+                <div class="compare-rows">
+                    <div class="compare-row"><span style="color:var(--red);font-size:16px;flex-shrink:0">&#10005;</span><span>25-35% of every dollar recovered</span></div>
+                    <div class="compare-row"><span style="color:var(--red);font-size:16px;flex-shrink:0">&#10005;</span><span>4-6 months to see results</span></div>
+                    <div class="compare-row"><span style="color:var(--red);font-size:16px;flex-shrink:0">&#10005;</span><span>Compliance violations that damage your brand</span></div>
+                    <div class="compare-row"><span style="color:var(--red);font-size:16px;flex-shrink:0">&#10005;</span><span>Your customers hear a stranger's name</span></div>
+                    <div class="compare-row"><span style="color:var(--red);font-size:16px;flex-shrink:0">&#10005;</span><span>No visibility, no data, no feedback loop</span></div>
+                </div>
+            </div>
+            <div class="compare-card good">
+                <div class="compare-label" style="color:var(--green)">The new way</div>
+                <div class="compare-rows">
+                    <div class="compare-row"><span style="color:var(--green);font-size:16px;flex-shrink:0">&#10003;</span><span>Pay only when we recover — $0 otherwise</span></div>
+                    <div class="compare-row"><span style="color:var(--green);font-size:16px;flex-shrink:0">&#10003;</span><span>First results in hours, not months</span></div>
+                    <div class="compare-row"><span style="color:var(--green);font-size:16px;flex-shrink:0">&#10003;</span><span>Zero compliance incidents across billions of interactions</span></div>
+                    <div class="compare-row"><span style="color:var(--green);font-size:16px;flex-shrink:0">&#10003;</span><span>Your brand or a licensed attorney — you choose</span></div>
+                    <div class="compare-row"><span style="color:var(--green);font-size:16px;flex-shrink:0">&#10003;</span><span>Full dashboard — every call, email, outcome</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<section class="stats reveal">
+    <div class="stats-inner">
+        <div class="stat-item"><div class="stat-num c-indigo" data-count="20" data-prefix="" data-suffix="+">0</div><div class="stat-label">AI decisions per collection</div></div>
+        <div class="stat-item"><div class="stat-num c-green" data-count="3" data-prefix="" data-suffix=" sec">0</div><div class="stat-label">What most skip entirely</div></div>
+        <div class="stat-item"><div class="stat-num c-amber" data-count="50" data-prefix="~" data-suffix="%">0</div><div class="stat-label">Recovered in 20 days</div></div>
+        <div class="stat-item"><div class="stat-num c-default" data-count="0" data-prefix="" data-suffix="">0</div><div class="stat-label">Compliance incidents</div></div>
+    </div>
+</section>
+
+<!-- RESULTS — LEAD WITH HUMAN IMPACT -->
+<section class="results reveal" id="results">
+    <div class="results-inner">
+        <div class="results-header">
+            <div class="section-label">Results</div>
+            <div class="section-title">Microsoft trusted us with their most sensitive accounts.</div>
+            <div class="section-sub" style="max-width:560px">Not one relationship damaged. That's the standard we hold ourselves to.</div>
+        </div>
+        <div class="cards-grid">
+            <div class="card reveal s1">
+                <img src="https://cdn.brandfetch.io/microsoft.com/w/512/h/80/logo" alt="Microsoft" class="card-logo">
+                <div class="card-headline">They fired their agency and gave us their hardest accounts. Recovery went up 3.2x. Complaints went to zero.</div>
+                <div class="card-metric">
+                    <div class="card-num">3.2x</div>
+                    <div class="card-desc">recovery rate vs. previous agency</div>
+                </div>
+            </div>
+            <div class="card reveal s2">
+                <img src="https://cdn.brandfetch.io/dell.com/w/512/h/80/logo" alt="Dell" class="card-logo">
+                <div class="card-headline">4 business units went live in a single afternoon. No API. No IT ticket. Just a spreadsheet.</div>
+                <div class="card-metric">
+                    <div class="card-num">20 min</div>
+                    <div class="card-desc">to go live per unit</div>
+                </div>
+            </div>
+            <div class="card reveal s3">
+                <img src="https://cdn.brandfetch.io/plaid.com/w/512/h/80/logo" alt="Plaid" class="card-logo">
+                <div class="card-headline">Their agency took 6 months and recovered 5%. We recovered 50% in 20 days.</div>
+                <div class="card-metric">
+                    <div class="card-num">10x</div>
+                    <div class="card-desc">faster than their agency</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TRUST BAR -->
+<section class="trust reveal" id="security">
+    <div class="trust-inner">
+        <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>SOC 2 Type II compliant</div>
+        <div class="trust-sep"></div>
+        <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Microsoft SSPA</div>
+        <div class="trust-sep"></div>
+        <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>CCPA / CPRA</div>
+        <div class="trust-sep"></div>
+        <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>Regulation F</div>
+        <div class="trust-sep"></div>
+        <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>AES-256 encryption</div>
+        <div class="trust-sep"></div>
+        <div class="trust-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Pay on success only</div>
+    </div>
+</section>
+
+<!-- CTA — AN INVITATION, NOT A PITCH -->
+<section class="cta">
+    <h2>Curious?</h2>
+    <p>We'll build something for your company. No commitment — just a conversation.</p>
+    <div class="cta-btns">
+        <a href="https://cal.com/johnb/30" target="_blank" class="cta-btn cta-btn-primary">Let's have a conversation</a>
+        <a href="#hero-input" class="cta-btn cta-btn-ghost" onclick="document.getElementById('url-input').focus()">See your collection plan</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div>
+                <div class="footer-brand">Agent<span>Collect</span><span class="dot-circle" style="width:5px;height:5px"></span></div>
+                <div class="footer-tagline">The end of manual collection.</div>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <a href="#paths">Under your name</a>
+                <a href="#paths">With legal weight</a>
+                <a href="#results">Results</a>
+                <a href="https://cal.com/johnb/30" target="_blank">Live Demo</a>
+                <a href="/pricing">Pricing</a>
+            </div>
+            <div class="footer-col">
+                <h4>Compliance</h4>
+                <a href="#security">SOC 2</a>
+                <a href="/privacy">CCPA / CPRA</a>
+                <a href="/terms">Regulation F</a>
+                <a href="/privacy">GDPR</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="/about">About</a>
+                <a href="/pricing">Pricing</a>
+                <a href="/careers">Careers</a>
+                <a href="/contact">Contact</a>
+                <a href="/privacy">Privacy</a>
+                <a href="/terms">Terms</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-copy">&copy; 2026 AgentCollect, Inc. San Francisco, CA</div>
+            <div class="footer-badges"><span class="footer-badge">SOC 2</span><span class="footer-badge">CCPA</span><span class="footer-badge">Reg F</span></div>
+        </div>
+    </div>
+</footer>
+
+<script>
+const API = 'https://backend.widr.app/api/v1/demo';
+
+// PRE-LOADED COMPANY DATA
+const COMPANIES = {
+    'konicaminolta.com': {
+        name: 'Konica Minolta', industry: 'Office Equipment / Managed Print',
+        products: 'bizhub C series multifunction printers, managed print services, IT solutions',
+        size: '39,000+ employees, $8.2B revenue',
+        disputes: ['Early lease termination fees on bizhub copier contracts', 'Maintenance billing disputes on service agreements', 'Auto-renewal disagreements on managed print contracts'],
+        dm: {name: 'Head of Credit & Collections', title: 'Director of Credit', photo: null, phone_masked: '+1 (***) ***-**18', email_masked: 'c***s@konicaminolta.com'},
+        plan: {d1: 'AI email from your brand referencing specific lease agreement', d3: 'AI phone call to AP contact with invoice details', d7: 'Attorney demand letter with bar number and legal notice', d14: 'Payment portal live — debtor pays you directly'}
+    },
+    'pitneyBowes.com': {
+        name: 'Pitney Bowes', industry: 'Shipping & Mailing Technology',
+        products: 'Postage meters, shipping solutions, SendPro, global ecommerce',
+        size: '11,000+ employees, $3.3B revenue',
+        disputes: ['Postage meter lease early termination penalties', 'Overcharges on shipping volume commitments', 'Service level agreement disputes on SendPro'],
+        dm: {name: 'VP of Finance', title: 'VP Finance & Treasury', photo: null},
+        plan: {d1: 'AI email referencing specific meter lease or shipping contract', d3: 'AI call to accounts receivable with documentation', d7: 'Attorney demand letter — formal legal notice', d14: 'Payment portal live with installment options'}
+    },
+    'ironmountain.com': {
+        name: 'Iron Mountain', industry: 'Information Management / Storage',
+        products: 'Records storage, data center colocation, secure shredding, digital transformation',
+        size: '26,000+ employees, $5.5B revenue',
+        disputes: ['Storage contract minimum commitment disputes', 'Retrieval and access fee disagreements', 'Auto-renewal terms on records management contracts'],
+        dm: {name: 'Director of Accounts Receivable', title: 'Director AR', photo: null},
+        plan: {d1: 'AI email referencing storage contract and outstanding balance', d3: 'AI call to AP with full documentation trail', d7: 'Attorney demand with contract terms cited', d14: 'Direct payment portal — no middleman'}
+    },
+    'brinks.com': {
+        name: "Brink's", industry: 'Cash Management / Security Services',
+        products: 'Cash-in-transit, ATM management, CompuSafe, smart safe solutions',
+        size: '67,000+ employees, $4.8B revenue',
+        disputes: ['Service level disputes on cash-in-transit contracts', 'CompuSafe billing discrepancies', 'Contract term disputes on security service agreements'],
+        dm: {name: 'SVP Finance', title: 'SVP Finance & Controller', photo: null},
+        plan: {d1: 'AI email with specific contract and service references', d3: 'AI call to finance team with invoice documentation', d7: 'Attorney letter with legal standing', d14: 'Payment portal with direct settlement options'}
+    },
+    'ricoh.com': {
+        name: 'Ricoh', industry: 'Office Equipment / Digital Services',
+        products: 'Multifunction printers, production printing, IT services, document management',
+        size: '80,000+ employees, $15B revenue',
+        disputes: ['Printer lease early termination on large fleet contracts', 'Toner and consumables billing disputes', 'Managed print service SLA disagreements'],
+        dm: {name: 'Head of Credit Management', title: 'Director Credit & Collections', photo: null},
+        plan: {d1: 'AI email referencing fleet contract and outstanding balance', d3: 'AI call with complete documentation', d7: 'Attorney demand letter — formal legal weight', d14: 'Self-service payment portal live'}
+    },
+    'microsoft.com': {
+        name: 'Microsoft', industry: 'Technology / Enterprise Software',
+        products: 'Azure, Microsoft 365, Dynamics, Surface, Xbox, enterprise licensing',
+        size: '220,000+ employees, $245B revenue',
+        disputes: ['Enterprise license true-up billing disputes', 'Azure consumption overages vs. committed spend', 'Multi-year EA renewal disagreements'],
+        dm: {name: 'Neil Doyle', title: 'OTC Transformation Lead', photo: 'https://respaid.com/images/neil-doyle.png', phone_masked: '+1 (425) ***-**37', email_masked: 'n***e@microsoft.com', linkedin_url: 'https://linkedin.com/in/neildoyle'},
+        plan: {d1: 'AI email under your brand to AP department', d3: 'AI call to procurement with PO reference', d7: 'Escalation to VP Finance via attorney notice', d14: 'Direct payment through branded portal'}
+    },
+    'dell.com': {
+        name: 'Dell Technologies', industry: 'Technology / Hardware',
+        products: 'Servers, storage, laptops, VMware, IT infrastructure',
+        size: '130,000+ employees, $102B revenue',
+        disputes: ['Hardware lease return condition disputes', 'Service contract auto-renewal disagreements', 'Volume licensing true-up disputes across business units'],
+        dm: {name: 'VP Credit & Collections', title: 'VP Credit Operations', photo: null, phone_masked: '+1 (512) ***-**44', email_masked: 'c***t@dell.com'},
+        plan: {d1: 'AI email per business unit with specific PO references', d3: 'AI call to each division independently', d7: 'Attorney letter referencing master service agreement', d14: 'Centralized payment portal — all units, one view'}
+    },
+    'checkr.com': {
+        name: 'Checkr', industry: 'Background Check / HR Tech',
+        products: 'Background checks, continuous monitoring, compliance solutions, Checkr Pay',
+        size: '1,000+ employees, high-growth',
+        disputes: ['Volume commitment shortfall on annual contracts', 'Per-check pricing disputes on enterprise plans', 'API integration billing vs. actual usage'],
+        dm: {name: 'Head of Finance', title: 'VP Finance', photo: null},
+        plan: {d1: 'AI email to finance referencing contract terms', d3: 'AI call with usage data and invoice detail', d7: 'Attorney notice with contract citation', d14: 'Payment portal with flexible resolution options'}
+    },
+    'doordash.com': {
+        name: 'DoorDash', industry: 'Food Delivery / Marketplace',
+        products: 'DoorDash marketplace, DashPass, Drive (white-label), Storefront',
+        size: '19,000+ employees, $8.6B revenue',
+        disputes: ['Restaurant partner commission disputes', 'Promotional credit billing disagreements', 'Marketplace fee structure changes'],
+        dm: {name: 'Director of Partner Finance', title: 'Director Partner Finance', photo: null},
+        plan: {d1: 'AI email referencing specific partner agreement', d3: 'AI call with delivery data and commission detail', d7: 'Attorney letter — preserves partnership while collecting', d14: 'Partner payment portal — settle while staying active'}
+    },
+    'plaid.com': {
+        name: 'Plaid', industry: 'Fintech / Financial Infrastructure',
+        products: 'API for bank connections, identity verification, income verification, Plaid Transfer',
+        size: '1,000+ employees, high-growth fintech',
+        disputes: ['API call volume overage disputes', 'Enterprise contract minimum commitment shortfalls', 'Implementation fee disagreements'],
+        dm: {name: 'Head of Finance Operations', title: 'Director Finance Ops', photo: null},
+        plan: {d1: 'AI email with API usage data and contract reference', d3: 'AI call to finance with detailed breakdown', d7: 'Attorney notice citing SaaS agreement terms', d14: 'Self-service resolution portal'}
+    }
+};
+
+function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
+
+function normalizeDomain(input) {
+    let d = input.trim().toLowerCase()
+        .replace(/^https?:\/\//,'')
+        .replace(/^www\./,'')
+        .replace(/\/.*$/,'');
+    return d;
+}
+
+function findCompany(domain) {
+    if (COMPANIES[domain]) return COMPANIES[domain];
+    const base = domain.replace(/\.(com|io|co|org|net|app|us)$/,'');
+    for (const [key, val] of Object.entries(COMPANIES)) {
+        const keyBase = key.replace(/\.(com|io|co|org|net|app|us)$/,'');
+        if (keyBase === base) return val;
+        if (val.name.toLowerCase().replace(/[^a-z0-9]/g,'').includes(base.replace(/[^a-z0-9]/g,''))) return val;
+    }
+    return null;
+}
+
+function showStep(id){document.getElementById('step-'+id).classList.add('active')}
+function doneStep(id){document.getElementById('step-'+id).classList.add('done')}
+function setIcon(id,done){
+    const ic=document.getElementById('icon-'+id);
+    if(done){ic.classList.remove('spinning');ic.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="color:var(--green)"><path d="M20 6L9 17l-5-5" stroke-dasharray="24" stroke-dashoffset="0" style="animation:check-draw .4s ease forwards"/></svg>'}
+    else{ic.classList.add('spinning');ic.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--indigo)"><path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/></svg>'}
+}
+
+async function addRow(containerId, key, val, cls='') {
+    const c = document.getElementById(containerId);
+    const r = document.createElement('div');
+    r.className = 'a-row';
+    r.innerHTML = `<span class="a-row-key">${key}</span><span class="a-row-val ${cls}">${val}</span>`;
+    c.appendChild(r);
+    await sleep(50);
+    r.classList.add('show');
+    await sleep(150);
+}
+
+async function resetConsole() {
+    ['business','disputes','decision','plan'].forEach(id => {
+        const s = document.getElementById('step-'+id);
+        if(s) s.classList.remove('active','done');
+        const c = document.getElementById('card-'+id);
+        if(c) c.classList.remove('loaded');
+    });
+    ['business-rows','disputes-rows','decision-rows','plan-rows'].forEach(id => {
+        const el = document.getElementById(id);
+        if(el) el.innerHTML = '';
+    });
+    document.getElementById('a-actions').classList.remove('show');
+}
+
+function resetAndScroll() {
+    document.getElementById('analysis-console').classList.remove('active');
+    document.getElementById('url-input').value = '';
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    setTimeout(() => document.getElementById('url-input').focus(), 600);
+}
+
+async function startAnalysis() {
+    const raw = document.getElementById('url-input').value.trim();
+    if (!raw) {
+        document.getElementById('url-input').classList.add('error');
+        setTimeout(() => document.getElementById('url-input').classList.remove('error'), 600);
+        return;
+    }
+
+    const domain = normalizeDomain(raw);
+    const company = findCompany(domain);
+    const btn = document.getElementById('go-btn');
+    btn.disabled = true;
+
+    await resetConsole();
+    const console_el = document.getElementById('analysis-console');
+    console_el.classList.add('active');
+    document.getElementById('target-url').textContent = domain;
+    await sleep(200);
+    console_el.scrollIntoView({behavior:'smooth', block:'start'});
+
+    let data = company ? {
+        company: { name: company.name, domain, industry: company.industry, products: company.products, size: company.size, logo_url: 'https://cdn.brandfetch.io/'+domain+'/w/512/h/80/logo' },
+        disputes: company.disputes,
+        decision_maker: { name: company.dm.name, title: company.dm.title, photo_url: company.dm.photo, phone_masked: company.dm.phone_masked||null, email_masked: company.dm.email_masked||null, linkedin_url: company.dm.linkedin_url||null },
+        plan: { day_1: company.plan.d1, day_3: company.plan.d3, day_7: company.plan.d7, day_14: company.plan.d14 }
+    } : null;
+
+    let apiPromise = company ? Promise.resolve() : fetch(API+'/analyze-company', {
+        method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({domain})
+    }).then(r => r.json()).then(r => { if(r.success && r.data) data = r.data; }).catch(e => console.warn('API:', e));
+
+    // STEP 1: BUSINESS
+    showStep('business'); setIcon('business', false);
+    document.getElementById('sub-business').textContent = 'Scanning ' + domain + '...';
+
+    const logoUrl = 'https://cdn.brandfetch.io/'+domain+'/w/512/h/80/logo';
+    const logoRow = document.createElement('div');
+    logoRow.style.cssText = 'text-align:center;padding:12px 0 6px';
+    logoRow.innerHTML = `<img src="${logoUrl}" alt="${domain}" style="height:24px;opacity:.4;filter:grayscale(30%)" onerror="this.style.display='none'">`;
+    document.getElementById('card-business').appendChild(logoRow);
+
+    await sleep(800);
+    if (!company) await apiPromise;
+    await sleep(400);
+
+    if (!data) {
+        data = {
+            company: { name: domain.replace(/\.(com|io|co|org|net)$/,'').replace(/^./,c=>c.toUpperCase()), domain, industry: 'Analyzing...', products: 'Scanning website...', size: 'Researching...', logo_url: logoUrl },
+            disputes: ['Invoice payment delays beyond agreed terms', 'Service delivery or quality disagreements', 'Contract renewal or pricing disputes'],
+            decision_maker: { name: 'Finance Team', title: 'Accounts Receivable', photo_url: null, phone_masked: null, email_masked: null },
+            plan: { day_1: 'AI email referencing specific outstanding invoice', day_3: 'AI phone call to AP department', day_7: 'Attorney demand letter with legal notice', day_14: 'Payment portal live — debtor pays you directly' }
+        };
+    }
+
+    document.getElementById('card-business').classList.add('loaded');
+    await addRow('business-rows', 'Company', data.company.name, 'found');
+    await addRow('business-rows', 'Industry', data.company.industry);
+    if (data.company.products) await addRow('business-rows', 'Products', data.company.products);
+    if (data.company.size) await addRow('business-rows', 'Size', data.company.size);
+    setIcon('business', true);
+    document.getElementById('title-business').textContent = data.company.name;
+    document.getElementById('sub-business').textContent = data.company.industry;
+    doneStep('business');
+    await sleep(400);
+
+    // STEP 2: DISPUTES
+    showStep('disputes'); setIcon('disputes', false);
+    document.getElementById('sub-disputes').textContent = 'Analyzing ' + (data.company.industry||domain) + '...';
+    await sleep(1000);
+    document.getElementById('card-disputes').classList.add('loaded');
+
+    const disputesContainer = document.getElementById('disputes-rows');
+    for (let i = 0; i < data.disputes.length; i++) {
+        const d = document.createElement('div');
+        d.className = 'a-row';
+        d.innerHTML = `<span class="a-row-key" style="min-width:auto;display:flex;align-items:center;gap:6px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4"/></svg><span style="color:var(--amber);font-weight:700;font-size:10px">#${i+1}</span></span><span class="a-row-val" style="text-align:left;margin-left:8px">${data.disputes[i]}</span>`;
+        disputesContainer.appendChild(d);
+        await sleep(50); d.classList.add('show'); await sleep(250);
+    }
+    setIcon('disputes', true);
+    document.getElementById('title-disputes').textContent = data.disputes.length + ' common dispute patterns';
+    document.getElementById('sub-disputes').textContent = 'Specific to ' + (data.company.industry||data.company.name);
+    doneStep('disputes');
+    await sleep(400);
+
+    // STEP 3: DECISION MAKER
+    showStep('decision'); setIcon('decision', false);
+    document.getElementById('sub-decision').textContent = 'Searching ' + data.company.name + '...';
+    await sleep(1200);
+    document.getElementById('card-decision').classList.add('loaded');
+
+    const dm = data.decision_maker;
+    const avatarSrc = dm.photo_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(dm.name)}&size=200&background=4F46E5&color=fff&bold=true`;
+    const dmHtml = `<div class="person-card" style="animation:pop-in .3s ease">
+        <div class="person-avatar"><img src="${avatarSrc}" alt="${dm.name}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(dm.name)}&size=200&background=4F46E5&color=fff&bold=true'"></div>
+        <div class="person-info">
+            <div class="person-name">${dm.name}</div>
+            <div class="person-title">${dm.title}${data.company.name?' at '+data.company.name:''}</div>
+        </div>
+        <div class="person-badge">Decision Maker</div>
+    </div>`;
+    document.getElementById('decision-rows').innerHTML = dmHtml;
+    await sleep(300);
+
+    if (dm.phone_masked) {
+        await addRow('decision-rows', '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2" style="vertical-align:middle"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg> Phone', '<span style="font-family:var(--mono);letter-spacing:.05em;font-size:12px">'+dm.phone_masked+'</span>', 'found');
+    }
+    if (dm.email_masked) {
+        await addRow('decision-rows', '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2" style="vertical-align:middle"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg> Email', '<span style="font-family:var(--mono);letter-spacing:.05em;font-size:12px">'+dm.email_masked+'</span>', 'found');
+    }
+    if (dm.linkedin_url) {
+        await addRow('decision-rows', '<svg width="11" height="11" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286z"/></svg> LinkedIn', 'Profile found', 'found');
+    }
+
+    setIcon('decision', true);
+    document.getElementById('title-decision').textContent = dm.name;
+    document.getElementById('sub-decision').textContent = dm.title + (data.company.name?' at '+data.company.name:'');
+    doneStep('decision');
+    await sleep(400);
+
+    // STEP 4: COLLECTION PLAN
+    showStep('plan'); setIcon('plan', false);
+    document.getElementById('sub-plan').textContent = 'Building custom AI collection strategy...';
+    await sleep(800);
+    document.getElementById('card-plan').classList.add('loaded');
+
+    const planContainer = document.getElementById('plan-rows');
+    const steps = [
+        {day: '1', label: 'First contact', text: data.plan.day_1, color: 'var(--indigo)'},
+        {day: '3', label: 'Follow-up', text: data.plan.day_3, color: 'var(--indigo)'},
+        {day: '7', label: 'Escalation', text: data.plan.day_7, color: 'var(--amber)'},
+        {day: '14', label: 'Resolution', text: data.plan.day_14, color: 'var(--green)'}
+    ];
+    for (const s of steps) {
+        const row = document.createElement('div');
+        row.className = 'a-row';
+        row.innerHTML = `<span class="a-row-key" style="min-width:auto;display:flex;align-items:center;gap:6px"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:5px;background:${s.color};color:#fff;font-size:10px;font-weight:800;font-family:var(--display)">D${s.day}</span></span><span class="a-row-val" style="text-align:left;margin-left:8px;line-height:1.5"><strong style="color:var(--text);font-size:12px">${s.label}</strong><br><span style="color:var(--text-mid);font-size:12px">${s.text}</span></span>`;
+        planContainer.appendChild(row);
+        await sleep(50); row.classList.add('show'); await sleep(300);
+    }
+
+    const confDiv = document.createElement('div');
+    confDiv.style.cssText = 'display:flex;align-items:center;gap:10px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);opacity:0;transition:opacity .4s';
+    confDiv.innerHTML = `<span style="font-size:12px;color:var(--text-dim)">Recovery confidence</span><div style="flex:1;height:3px;background:rgba(0,0,0,.03);border-radius:2px;overflow:hidden"><div id="conf-bar" style="height:100%;background:linear-gradient(90deg,var(--indigo),var(--green));border-radius:2px;transition:width 1.2s ease;width:0"></div></div><span style="font-family:var(--mono);font-size:12px;font-weight:500;color:var(--green)">94%</span>`;
+    planContainer.appendChild(confDiv);
+    await sleep(80); confDiv.style.opacity='1'; await sleep(80); document.getElementById('conf-bar').style.width='94%';
+
+    setIcon('plan', true);
+    document.getElementById('title-plan').textContent = 'Custom AI collection plan ready';
+    document.getElementById('sub-plan').textContent = '14-day resolution timeline — 94% confidence';
+    doneStep('plan');
+    await sleep(400);
+
+    document.getElementById('a-actions').classList.add('show');
+    btn.disabled = false;
+}
+
+function captureEmail() {
+    const email = document.getElementById('capture-email')?.value?.trim();
+    if (!email || !email.includes('@')) return;
+    const domain = document.getElementById('target-url').textContent;
+    const msg = document.getElementById('capture-msg');
+    msg.textContent = 'Report queued. Check your inbox in 24h.';
+    msg.style.display = 'block';
+    fetch('https://backend.widr.app/api/demo/track', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({email, company: domain, action: 'report_requested'})
+    }).catch(() => {});
+}
+
+// SCROLL / REVEAL / COUNTERS / TERMINAL
+window.addEventListener('scroll', () => document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20));
+
+const rev = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(e => {e.forEach(x => {if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target)}})}, {threshold:.08, rootMargin:'0px 0px -40px 0px'});
+rev.forEach(el => io.observe(el));
+setTimeout(() => rev.forEach(el => el.classList.add('visible')), 4000);
+
+// Terminal animation
+const terminalObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const lines = entry.target.querySelectorAll('.terminal-line, .terminal-sarah');
+            lines.forEach((line, i) => {
+                const delay = parseInt(line.dataset.delay) || (i * 200);
+                setTimeout(() => line.classList.add('show'), delay);
+            });
+            terminalObs.unobserve(entry.target);
+        }
+    });
+}, {threshold: 0.3});
+const termEl = document.getElementById('terminal');
+if (termEl) terminalObs.observe(termEl);
+
+// Counter animation
+const cEls = document.querySelectorAll('[data-count]');
+const cIO = new IntersectionObserver(e => {e.forEach(x => {if(x.isIntersecting){animC(x.target);cIO.unobserve(x.target)}})}, {threshold:.1});
+cEls.forEach(el => cIO.observe(el));
+function animC(el){const t=parseInt(el.dataset.count),p=el.dataset.prefix||'',s=el.dataset.suffix||'';if(t===0){el.textContent=p+'0'+s;el.style.animation='counter-pop .5s cubic-bezier(.16,1,.3,1)';return}const d=1800,st=performance.now();function tick(n){const e=n-st,pr=Math.min(e/d,1),ea=1-Math.pow(1-pr,3);el.textContent=p+Math.round(t*ea)+s;if(pr<1)requestAnimationFrame(tick)}requestAnimationFrame(tick)}
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {a.addEventListener('click', e => {e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-70, behavior:'smooth'})})});
+
+// Enter key triggers analysis
+document.getElementById('url-input').addEventListener('keydown', e => {if(e.key==='Enter') startAnalysis()});
+</script>
+</body>
+</html>
