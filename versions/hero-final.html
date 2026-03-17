@@ -429,59 +429,17 @@
 </div>
 </nav>
 
-<!-- 1. HERO — Single contact card cycling -->
-<style>
-    .hero-card{max-width:480px;margin:0 auto;background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px 28px;box-shadow:0 4px 24px rgba(0,0,0,.06);position:relative;overflow:hidden;transition:opacity .4s}
-    .hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--indigo),var(--green))}
-    .hero-card-domain{display:flex;align-items:center;gap:8px;margin-bottom:16px;font-family:var(--mono);font-size:13px;color:var(--indigo);font-weight:500}
-    .hero-card-domain .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse-ring 2s infinite}
-    .hero-card-contact{display:flex;align-items:center;gap:14px;margin-bottom:14px}
-    .hero-card-avatar{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid rgba(79,70,229,.1);flex-shrink:0}
-    .hero-card-name{font-family:var(--display);font-size:18px;font-weight:800;color:var(--text)}
-    .hero-card-title{font-size:13px;color:var(--text-mid);margin-top:2px}
-    .hero-card-info{display:flex;gap:16px;padding:12px 0;border-top:1px solid var(--border);font-family:var(--mono);font-size:13px;color:var(--indigo);letter-spacing:-.01em}
-    .hero-card-summary{display:flex;gap:16px;font-size:13px;color:var(--text-mid)}
-    .hero-card-summary span{display:flex;align-items:center;gap:4px}
-    .carousel-dots{display:flex;justify-content:center;gap:6px;margin-top:16px}
-    .carousel-dot{width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all .2s}
-    .carousel-dot.active{background:var(--indigo);width:20px;border-radius:4px}
-</style>
+<!-- 1. HERO — Clean: title + search + explanation -->
 <section class="hero" id="hero">
+    <div class="hero-badge"><span class="dot"></span> Trusted by Microsoft, Dell, and Plaid</div>
     <h1>The end of manual<br>collection.</h1>
 
-    <!-- Single contact card — cycling -->
-    <div class="hero-card" id="hero-card">
-        <div class="hero-card-domain"><span class="dot"></span><span id="hero-domain">microsoft.com</span></div>
-        <div class="hero-card-contact">
-            <img class="hero-card-avatar" id="hero-avatar" src="https://respaid.com/images/neil-doyle.png" alt="">
-            <div>
-                <div class="hero-card-name" id="hero-name">Neil Doyle</div>
-                <div class="hero-card-title" id="hero-title">OTC Transformation Lead, Microsoft</div>
-            </div>
-        </div>
-        <div class="hero-card-info">
-            <span id="hero-phone">+1 (425) ***-**37</span>
-            <span id="hero-email">n***e@microsoft.com</span>
-        </div>
-        <div class="hero-card-summary">
-            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg> 3 disputes found</span>
-            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg> 94% confidence</span>
-            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 14-day plan</span>
-        </div>
-    </div>
-
-    <div class="carousel-dots" id="carousel-dots">
-        <div class="carousel-dot active" data-idx="0"></div>
-        <div class="carousel-dot" data-idx="1"></div>
-        <div class="carousel-dot" data-idx="2"></div>
-    </div>
-
-    <!-- Input below -->
     <div class="hero-input-wrap" id="hero-input">
-        <div class="hero-input-label">Enter your website to see yours.</div>
-        <div class="input-box">
-            <input type="text" class="input-field" id="url-input" placeholder="yourcompany.com" autocomplete="off" spellcheck="false">
-            <button class="input-btn" id="go-btn" onclick="startAnalysis()">
+        <div style="font-family:var(--display);font-size:16px;font-weight:700;color:var(--text);text-align:center;margin-bottom:6px">Enter your website.</div>
+        <div style="font-size:14px;color:var(--text-mid);text-align:center;margin-bottom:16px;max-width:380px;margin-left:auto;margin-right:auto">We'll find who owes you money, why they're not paying, and how to get it back.</div>
+        <div class="input-box" style="max-width:520px;margin:0 auto">
+            <input type="text" class="input-field" id="url-input" placeholder="yourcompany.com" autocomplete="off" spellcheck="false" style="font-size:17px;padding:18px 20px">
+            <button class="input-btn" id="go-btn" onclick="startAnalysis()" style="padding:18px 32px;font-size:16px;border-radius:12px">
                 See yours
             </button>
         </div>
