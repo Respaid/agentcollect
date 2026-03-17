@@ -1295,9 +1295,9 @@ async function startAnalysis() {
 window.addEventListener('scroll', () => document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20));
 
 const rev = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver(e => {e.forEach(x => {if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target)}})}, {threshold:.08, rootMargin:'0px 0px -40px 0px'});
+const io = new IntersectionObserver(e => {e.forEach(x => {if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target)}})}, {threshold:.02, rootMargin:"0px 0px 0px 0px"});
 rev.forEach(el => io.observe(el));
-setTimeout(() => rev.forEach(el => el.classList.add('visible')), 4000);
+setTimeout(() => rev.forEach(el => el.classList.add('visible')), 300);
 
 // Annotated email — reveal annotations when email scrolls into view
 const emailWrap = document.getElementById('email-mockup-wrap');
