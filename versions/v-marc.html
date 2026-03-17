@@ -890,7 +890,7 @@ async function startAnalysis() {
     if (!data) {
         data = {
             company: { name: domain.replace(/\.(com|io|co|org|net)$/,'').replace(/^./,c=>c.toUpperCase()), domain, industry: 'Analyzing...', products: 'Scanning website...', size: 'Researching...', logo_url: logoUrl },
-            disputes: ['Invoice payment delays beyond agreed terms', 'Service delivery or quality disagreements', 'Contract renewal or pricing disputes'],
+            disputes: ['Outstanding balance past agreed payment terms', 'Disputed invoice amount or missing purchase order', 'Service completed but payment not released by AP'],
             decision_maker: { name: 'Finance Team', title: 'Accounts Receivable', photo_url: null, phone_masked: null, email_masked: null },
             plan: { day_1: 'AI email referencing specific outstanding invoice', day_3: 'AI phone call to AP department', day_7: 'Attorney demand letter with legal notice', day_14: 'Payment portal live — debtor pays you directly' }
         };
@@ -914,15 +914,15 @@ async function startAnalysis() {
     document.getElementById('card-disputes').classList.add('loaded');
 
     const disputesContainer = document.getElementById('disputes-rows');
-    for (let i = 0; i < data.disputes.length; i++) {
+    const topDisputes = data.disputes.slice(0, 3); for (let i = 0; i < topDisputes.length; i++) {
         const d = document.createElement('div');
         d.className = 'a-row';
-        d.innerHTML = `<span class="a-row-key" style="min-width:auto;display:flex;align-items:center;gap:6px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4"/></svg><span style="color:var(--amber);font-weight:700;font-size:10px">#${i+1}</span></span><span class="a-row-val" style="text-align:left;margin-left:8px">${data.disputes[i]}</span>`;
+        d.innerHTML = `<span class="a-row-key" style="min-width:auto;display:flex;align-items:center;gap:6px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4"/></svg><span style="color:var(--amber);font-weight:700;font-size:10px">#${i+1}</span></span><span class="a-row-val" style="text-align:left;margin-left:8px">${topDisputes[i]}</span>`;
         disputesContainer.appendChild(d);
         await sleep(50); d.classList.add('show'); await sleep(250);
     }
     setIcon('disputes', true);
-    document.getElementById('title-disputes').textContent = data.disputes.length + ' common dispute patterns';
+    document.getElementById('title-disputes').textContent = 3 + ' top dispute patterns';
     document.getElementById('sub-disputes').textContent = 'Specific to ' + (data.company.industry||data.company.name);
     doneStep('disputes');
     await sleep(400);
