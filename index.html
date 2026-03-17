@@ -84,7 +84,7 @@
         .nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px}
 
         /* HERO */
-        .hero{padding:112px 32px 48px;text-align:center;position:relative;background:#fff;overflow:hidden}
+        .hero{min-height:100vh;padding:112px 32px 64px;text-align:center;position:relative;background:#fff;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center}
         .hero h1{font-size:clamp(52px,6.5vw,88px);font-weight:900;letter-spacing:-.05em;line-height:1.0;margin-bottom:16px;max-width:900px;margin-left:auto;margin-right:auto;color:var(--text)}
 
         /* HERO TRUST */
@@ -454,6 +454,7 @@
     </div>
 
     <div class="hero-input-wrap" id="hero-input">
+        <div style="font-size:13px;color:var(--text-muted);text-align:center;margin-bottom:10px;letter-spacing:-.01em">Enter your company domain — we'll build your collection plan</div>
         <div class="input-box" style="max-width:520px;margin:0 auto">
             <input type="text" class="input-field" id="url-input" placeholder="yourcompany.com" autocomplete="off" spellcheck="false" style="font-size:17px;padding:18px 20px">
             <button class="input-btn" id="go-btn" onclick="startAnalysis()" style="padding:18px 32px;font-size:16px;border-radius:12px">
