@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgentCollect — Hear What AI Collection Sounds Like</title>
+    <meta name="description" content="Real AI collection calls. Real debtors. Real payments. Listen to scenarios that will make you question everything about manual collection.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#09090b;--bg-card:rgba(255,255,255,.04);--bg-card-hover:rgba(255,255,255,.06);
+            --border:rgba(255,255,255,.06);--border-active:rgba(79,70,229,.4);
+            --text:#fafafa;--text-mid:rgba(255,255,255,.7);--text-muted:rgba(255,255,255,.4);--text-dim:rgba(255,255,255,.2);
+            --indigo:#818cf8;--indigo-bright:#a5b4fc;--indigo-glow:rgba(129,140,248,.15);--indigo-deep:#4f46e5;
+            --green:#34d399;--green-glow:rgba(52,211,153,.12);
+            --amber:#fbbf24;--red:#f87171;
+            --mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
+            --radius:16px;--max-w:1000px;
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:var(--sans);font-size:16px;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+
+        /* Subtle noise texture */
+        body::before{content:'';position:fixed;inset:0;z-index:0;opacity:.03;
+            background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            pointer-events:none}
+
+        /* Ambient glow */
+        .ambient{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+        .ambient-orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.12;transition:all 2s cubic-bezier(.16,1,.3,1)}
+        .ambient-orb.a{width:600px;height:600px;background:var(--indigo-deep);top:-200px;left:-100px}
+        .ambient-orb.b{width:500px;height:500px;background:#7c3aed;bottom:-200px;right:-100px}
+        .ambient-orb.c{width:300px;height:300px;background:var(--green);top:50%;left:50%;transform:translate(-50%,-50%);opacity:.06}
+
+        h1,h2,h3,h4{font-family:var(--display);line-height:1.1;letter-spacing:-.04em}
+        ::selection{background:rgba(129,140,248,.2)}
+
+        /* LAYOUT */
+        .container{position:relative;z-index:1;width:100%;max-width:var(--max-w);padding:48px 24px;display:flex;flex-direction:column;align-items:center;gap:32px}
+
+        /* HEADER */
+        .header{text-align:center}
+        .logo-row{display:inline-flex;align-items:baseline;font-family:var(--display);font-size:15px;font-weight:800;letter-spacing:-.03em;color:var(--text-muted);margin-bottom:20px;text-decoration:none}
+        .logo-row .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--indigo);margin-left:1px;vertical-align:super}
+        .header h1{font-size:clamp(36px,6vw,64px);font-weight:900;letter-spacing:-.05em;line-height:1.05;margin-bottom:12px;background:linear-gradient(135deg,#fff 0%,rgba(255,255,255,.7) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .header p{font-size:clamp(16px,2vw,20px);color:var(--text-muted);font-weight:400;max-width:520px;margin:0 auto;letter-spacing:-.01em}
+
+        /* SCENARIO PILLS */
+        .pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+        .pill{padding:10px 20px;background:var(--bg-card);border:1px solid var(--border);border-radius:100px;font-size:13px;font-weight:600;color:var(--text-muted);cursor:pointer;transition:all .3s cubic-bezier(.16,1,.3,1);white-space:nowrap;user-select:none;font-family:var(--sans)}
+        .pill:hover{background:var(--bg-card-hover);color:var(--text-mid);border-color:rgba(255,255,255,.1)}
+        .pill.active{background:var(--indigo-glow);border-color:var(--border-active);color:var(--indigo-bright)}
+        .pill .emoji{margin-right:6px}
+
+        /* PLAYER CARD */
+        .player{width:100%;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:20px;overflow:hidden;position:relative;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+        .player-glow{position:absolute;top:-1px;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--indigo),var(--green),transparent);opacity:.6}
+        .player-inner{padding:32px 36px 28px}
+
+        /* Player header */
+        .player-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+        .player-meta{display:flex;align-items:center;gap:10px}
+        .live-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px rgba(52,211,153,.5);animation:pulse 2s infinite}
+        @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.85)}}
+        .player-label{font-size:13px;color:var(--text-muted);font-weight:500;font-family:var(--mono);letter-spacing:-.01em}
+        .player-label strong{color:var(--text-mid);font-weight:600}
+        .player-time{font-family:var(--mono);font-size:13px;color:var(--text-dim);letter-spacing:.02em;tabular-nums:true}
+
+        /* Waveform */
+        .waveform{display:flex;align-items:center;justify-content:center;gap:2px;height:48px;margin-bottom:24px;cursor:pointer;position:relative}
+        .waveform .bar{width:3px;border-radius:3px;transition:height .12s ease,background .3s;min-height:4px}
+        .waveform .bar.past{background:linear-gradient(to top,var(--indigo),var(--indigo-bright))}
+        .waveform .bar.future{background:rgba(255,255,255,.08)}
+        .waveform .bar.active{background:var(--green);box-shadow:0 0 8px rgba(52,211,153,.3)}
+
+        /* Progress bar */
+        .progress{width:100%;height:3px;background:rgba(255,255,255,.06);border-radius:3px;margin-bottom:24px;cursor:pointer;position:relative}
+        .progress-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--indigo),var(--green));width:0%;transition:width .1s linear}
+        .progress-knob{position:absolute;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 0 10px rgba(255,255,255,.3);left:0%;transition:left .1s linear;opacity:0}
+        .progress:hover .progress-knob{opacity:1}
+
+        /* Transcript */
+        .transcript{display:flex;flex-direction:column;gap:16px;min-height:200px;padding:4px 0}
+        .t-line{opacity:0;transform:translateY(12px) scale(.98);transition:all .6s cubic-bezier(.16,1,.3,1);display:flex;gap:14px;align-items:flex-start}
+        .t-line.visible{opacity:1;transform:translateY(0) scale(1)}
+        .t-line.dim{opacity:.25}
+        .t-avatar{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px}
+        .t-line.agent .t-avatar{background:var(--indigo-glow);color:var(--indigo-bright);border:1px solid rgba(129,140,248,.15)}
+        .t-line.debtor .t-avatar{background:rgba(255,255,255,.04);color:var(--text-muted);border:1px solid var(--border)}
+        .t-body{flex:1}
+        .t-name{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px}
+        .t-line.agent .t-name{color:var(--indigo)}
+        .t-line.debtor .t-name{color:var(--text-dim)}
+        .t-text{font-size:15px;line-height:1.55;color:var(--text-mid)}
+        .t-line.agent .t-text{color:rgba(255,255,255,.9)}
+
+        /* Outcome badge */
+        .outcome{margin-top:20px;padding:14px 20px;border-radius:14px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:10px;opacity:0;transform:translateY(8px);transition:all .6s cubic-bezier(.16,1,.3,1);border:1px solid transparent}
+        .outcome.visible{opacity:1;transform:translateY(0)}
+        .outcome.green{background:var(--green-glow);border-color:rgba(52,211,153,.15);color:var(--green)}
+        .outcome.indigo{background:var(--indigo-glow);border-color:rgba(129,140,248,.15);color:var(--indigo-bright)}
+
+        /* Auto-play indicator */
+        .autoplay-bar{display:flex;align-items:center;justify-content:center;gap:8px;padding:16px 0 4px;opacity:0;transition:opacity .4s}
+        .autoplay-bar.visible{opacity:1}
+        .autoplay-bar span{font-size:12px;color:var(--text-dim);font-weight:500}
+        .autoplay-progress{width:120px;height:3px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden}
+        .autoplay-fill{height:100%;background:var(--indigo);width:0%;border-radius:3px}
+
+        /* Controls row */
+        .controls-row{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:24px}
+        .play-btn{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s cubic-bezier(.16,1,.3,1);flex-shrink:0}
+        .play-btn:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.15);transform:scale(1.06)}
+        .play-btn:active{transform:scale(.96)}
+        .play-btn svg{width:22px;height:22px;fill:#fff;transition:all .2s}
+        .play-btn.playing{background:var(--indigo-glow);border-color:var(--border-active)}
+        .play-btn.playing svg{fill:var(--indigo-bright)}
+
+        /* Skip buttons */
+        .skip-btn{width:36px;height:36px;border-radius:50%;background:transparent;border:1px solid rgba(255,255,255,.06);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;color:var(--text-dim)}
+        .skip-btn:hover{border-color:rgba(255,255,255,.12);color:var(--text-muted)}
+        .skip-btn svg{width:16px;height:16px;fill:currentColor}
+
+        /* CTA */
+        .cta-row{display:flex;align-items:center;gap:12px;justify-content:center;margin-top:8px}
+        .cta-main{padding:16px 36px;background:var(--indigo-deep);color:#fff;border:none;border-radius:14px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .25s;display:inline-flex;align-items:center;gap:8px;letter-spacing:-.01em}
+        .cta-main:hover{background:#4338ca;transform:translateY(-1px);box-shadow:0 8px 24px rgba(79,70,229,.3)}
+        .cta-ghost{padding:16px 28px;background:transparent;color:var(--text-muted);border:1px solid var(--border);border-radius:14px;font-family:var(--sans);font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;transition:all .2s}
+        .cta-ghost:hover{border-color:rgba(255,255,255,.12);color:var(--text-mid)}
+
+        /* Footer */
+        .footer{text-align:center;padding:24px 0 32px}
+        .footer-text{font-size:12px;color:var(--text-dim)}
+        .footer-text a{color:var(--text-muted);text-decoration:none}
+
+        /* RESPONSIVE */
+        @media(max-width:680px){
+            .container{padding:32px 16px;gap:24px}
+            .player-inner{padding:20px 18px 18px}
+            .pills{gap:6px}
+            .pill{padding:8px 14px;font-size:12px}
+            .t-avatar{width:28px;height:28px;font-size:10px}
+            .t-text{font-size:14px}
+            .controls-row{gap:12px}
+            .play-btn{width:46px;height:46px}
+            .cta-row{flex-direction:column;width:100%}
+            .cta-main,.cta-ghost{width:100%;justify-content:center;text-align:center}
+        }
+    </style>
+</head>
+<body>
+
+<div class="ambient">
+    <div class="ambient-orb a"></div>
+    <div class="ambient-orb b"></div>
+    <div class="ambient-orb c"></div>
+</div>
+
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <a href="/" class="logo-row">AgentCollect<span class="dot"></span></a>
+        <h1>This is what AI<br>collection sounds like.</h1>
+        <p>Real calls. Real debtors. Real payments collected — by an AI agent they thought was human.</p>
+    </div>
+
+    <!-- Scenario pills -->
+    <div class="pills" id="pills">
+        <div class="pill active" data-idx="0"><span class="emoji">&#128176;</span>Pays on the spot</div>
+        <div class="pill" data-idx="1"><span class="emoji">&#10067;</span>Handles objections</div>
+        <div class="pill" data-idx="2"><span class="emoji">&#128268;</span>Gets the right contact</div>
+    </div>
+
+    <!-- Player -->
+    <div class="player">
+        <div class="player-glow"></div>
+        <div class="player-inner">
+            <!-- Header -->
+            <div class="player-head">
+                <div class="player-meta">
+                    <div class="live-dot" id="liveDot"></div>
+                    <div class="player-label" id="playerLabel"><strong>Live call</strong> &middot; Checkr collection</div>
+                </div>
+                <div class="player-time" id="playerTime">0:00 / 0:00</div>
+            </div>
+
+            <!-- Waveform -->
+            <div class="waveform" id="waveform"></div>
+
+            <!-- Controls -->
+            <div class="controls-row">
+                <button class="skip-btn" id="prevBtn" aria-label="Previous">
+                    <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" transform="scale(-1,1) translate(-24,0)"/></svg>
+                </button>
+                <button class="play-btn" id="playBtn" aria-label="Play">
+                    <svg viewBox="0 0 24 24" id="playIcon"><polygon points="8,4 20,12 8,20"/></svg>
+                </button>
+                <button class="skip-btn" id="nextBtn" aria-label="Next">
+                    <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+                </button>
+            </div>
+
+            <!-- Progress -->
+            <div class="progress" id="progressBar">
+                <div class="progress-fill" id="progressFill"></div>
+                <div class="progress-knob" id="progressKnob"></div>
+            </div>
+
+            <!-- Transcript -->
+            <div class="transcript" id="transcript"></div>
+
+            <!-- Outcome -->
+            <div class="outcome" id="outcome"></div>
+
+            <!-- Auto-play next indicator -->
+            <div class="autoplay-bar" id="autoplayBar">
+                <span>Next scenario in</span>
+                <div class="autoplay-progress"><div class="autoplay-fill" id="autoplayFill"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-row">
+        <a href="https://cal.com/johnb/30" class="cta-main" target="_blank">
+            Book a demo
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="/" class="cta-ghost">See how it works</a>
+    </div>
+
+    <div class="footer">
+        <div class="footer-text">AgentCollect &copy; 2026 &middot; <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a></div>
+    </div>
+</div>
+
+<script>
+(function(){
+    // ═══════════════════════════════════════
+    // SCENARIOS — 10-15s highlight clips
+    // ═══════════════════════════════════════
+    const scenarios = [
+        {
+            id: 'pays',
+            label: 'Live call \u00b7 Checkr collection',
+            url: 'https://dxc03zgurdly9.cloudfront.net/10b4ec959b4a004a6bf47dcfa2da0a213c7ce231590e295d9c60faffde486685/recording.wav',
+            startTime: 35,
+            endTime: 52,
+            lines: [
+                { t: 0, role: 'agent', name: 'AI', text: 'We represent Checkr on an outstanding invoice.' },
+                { t: 3, role: 'debtor', name: 'Rachel', text: "I'm paying it right now! It slipped through the cracks. I really do apologize." },
+                { t: 8, role: 'agent', name: 'AI', text: 'No worries at all. I can stay on the line while you complete the payment.' },
+                { t: 13, role: 'debtor', name: 'Rachel', text: 'Payment sent.' },
+                { t: 15, role: 'agent', name: 'AI', text: "Awesome! We'll close your file. Thanks!" }
+            ],
+            outcome: { text: 'Paid during the call \u2014 $0 manual work', cls: 'green', icon: '\u2705' }
+        },
+        {
+            id: 'objection',
+            label: 'Inbound callback \u00b7 Checkr',
+            url: 'https://dxc03zgurdly9.cloudfront.net/075961824e83d68a634b91afb75f59fba97b1b2951c58dc43ec9a5e3bc58b806/recording.wav',
+            startTime: 8,
+            endTime: 24,
+            lines: [
+                { t: 0, role: 'debtor', name: 'Khalil', text: "What are we getting charged for exactly?" },
+                { t: 3, role: 'agent', name: 'AI', text: 'The amount due is $29.99 for a Background Check from Checkr.' },
+                { t: 7, role: 'debtor', name: 'Khalil', text: 'Can I pay this from the Checkr website?' },
+                { t: 10, role: 'agent', name: 'AI', text: "Use the portal link in the email \u2014 that way your balance gets closed out properly." },
+                { t: 14, role: 'debtor', name: 'Khalil', text: "I got it from here. Bye bye." }
+            ],
+            outcome: { text: 'Objection handled \u2014 directed to payment portal', cls: 'indigo', icon: '\ud83d\udccb' }
+        },
+        {
+            id: 'referral',
+            label: 'Outbound call \u00b7 CalOES',
+            url: 'https://dxc03zgurdly9.cloudfront.net/00d79b2208aee99e88fb7a0033974bba3140f3b905b388429b22133e4694c670/recording.wav',
+            startTime: 56,
+            endTime: 74,
+            lines: [
+                { t: 0, role: 'debtor', name: 'Employee', text: "I don't deal with that. You'd wanna call accounts payable." },
+                { t: 4, role: 'agent', name: 'AI', text: 'Could you provide the contact info for someone in AP?' },
+                { t: 8, role: 'debtor', name: 'Employee', text: "One second\u2026 916-845-8340." },
+                { t: 12, role: 'agent', name: 'AI', text: "Thanks. And what's their email?" },
+                { t: 15, role: 'debtor', name: 'Employee', text: 'a-p-invoices at caloes.ca.gov.' },
+                { t: 17, role: 'agent', name: 'AI', text: "Perfect. We'll reach out to accounts payable. Thanks for your help." }
+            ],
+            outcome: { text: 'New AP contact collected from gatekeeper', cls: 'indigo', icon: '\ud83d\udcde' }
+        }
+    ];
+
+    // ═══════════════════════════════════════
+    // STATE
+    // ═══════════════════════════════════════
+    let currentIdx = 0;
+    let audio = null;
+    let isPlaying = false;
+    let autoplayTimer = null;
+    let waveformBars = [];
+    let waveAnimFrame = null;
+
+    // ═══════════════════════════════════════
+    // DOM
+    // ═══════════════════════════════════════
+    const playBtn = document.getElementById('playBtn');
+    const playIcon = document.getElementById('playIcon');
+    const playerLabel = document.getElementById('playerLabel');
+    const playerTime = document.getElementById('playerTime');
+    const progressFill = document.getElementById('progressFill');
+    const progressKnob = document.getElementById('progressKnob');
+    const progressBar = document.getElementById('progressBar');
+    const transcriptEl = document.getElementById('transcript');
+    const outcomeEl = document.getElementById('outcome');
+    const autoplayBar = document.getElementById('autoplayBar');
+    const autoplayFillEl = document.getElementById('autoplayFill');
+    const waveformEl = document.getElementById('waveform');
+    const liveDot = document.getElementById('liveDot');
+    const pills = document.querySelectorAll('.pill');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    // ═══════════════════════════════════════
+    // WAVEFORM
+    // ═══════════════════════════════════════
+    function buildWaveform() {
+        waveformEl.innerHTML = '';
+        waveformBars = [];
+        const count = 80;
+        for (let i = 0; i < count; i++) {
+            const bar = document.createElement('div');
+            bar.className = 'bar future';
+            const center = count / 2;
+            const dist = Math.abs(i - center) / center;
+            const base = (1 - dist * 0.7) * 36;
+            const variation = (Math.sin(i * 0.8) * 8 + Math.random() * 6);
+            bar.style.height = Math.max(4, base + variation) + 'px';
+            bar._baseH = parseFloat(bar.style.height);
+            waveformEl.appendChild(bar);
+            waveformBars.push(bar);
+        }
+    }
+
+    function animateWaveform() {
+        if (!isPlaying) return;
+        const s = scenarios[currentIdx];
+        const elapsed = audio ? audio.currentTime - s.startTime : 0;
+        const duration = s.endTime - s.startTime;
+        const pct = duration > 0 ? elapsed / duration : 0;
+        const activeIdx = Math.floor(pct * waveformBars.length);
+
+        waveformBars.forEach((bar, i) => {
+            if (i < activeIdx) {
+                bar.className = 'bar past';
+                bar.style.height = bar._baseH + 'px';
+            } else if (i === activeIdx) {
+                bar.className = 'bar active';
+                bar.style.height = (bar._baseH + Math.random() * 14) + 'px';
+            } else {
+                bar.className = 'bar future';
+                bar.style.height = bar._baseH + 'px';
+            }
+        });
+        waveAnimFrame = requestAnimationFrame(animateWaveform);
+    }
+
+    function resetWaveform() {
+        cancelAnimationFrame(waveAnimFrame);
+        waveformBars.forEach(b => {
+            b.className = 'bar future';
+            b.style.height = b._baseH + 'px';
+        });
+    }
+
+    // ═══════════════════════════════════════
+    // TRANSCRIPT
+    // ═══════════════════════════════════════
+    function renderTranscript(s) {
+        transcriptEl.innerHTML = '';
+        s.lines.forEach(line => {
+            const div = document.createElement('div');
+            div.className = 't-line ' + (line.role === 'agent' ? 'agent' : 'debtor');
+            div.dataset.time = line.t;
+            div.innerHTML =
+                '<div class="t-avatar">' + (line.role === 'agent' ? 'AI' : line.name.charAt(0)) + '</div>' +
+                '<div class="t-body">' +
+                    '<div class="t-name">' + (line.role === 'agent' ? 'AI Agent' : line.name) + '</div>' +
+                    '<div class="t-text">\u201C' + line.text + '\u201D</div>' +
+                '</div>';
+            transcriptEl.appendChild(div);
+        });
+    }
+
+    function updateTranscript(elapsed) {
+        const s = scenarios[currentIdx];
+        const lines = transcriptEl.querySelectorAll('.t-line');
+        let lastVisible = -1;
+        lines.forEach((line, i) => {
+            const t = parseFloat(line.dataset.time);
+            if (elapsed >= t) {
+                line.classList.add('visible');
+                line.classList.remove('dim');
+                lastVisible = i;
+            } else {
+                line.classList.remove('visible');
+            }
+        });
+        // Dim older lines to keep focus on latest
+        lines.forEach((line, i) => {
+            if (i < lastVisible - 1 && line.classList.contains('visible')) {
+                line.classList.add('dim');
+            }
+        });
+    }
+
+    // ═══════════════════════════════════════
+    // FORMAT TIME
+    // ═══════════════════════════════════════
+    function fmt(s) {
+        if (isNaN(s) || s < 0) s = 0;
+        const m = Math.floor(s / 60);
+        const sec = Math.floor(s % 60);
+        return m + ':' + String(sec).padStart(2, '0');
+    }
+
+    // ═══════════════════════════════════════
+    // LOAD SCENARIO
+    // ═══════════════════════════════════════
+    function loadScenario(idx, autoPlay) {
+        // Stop current
+        if (audio) { audio.pause(); audio.ontimeupdate = null; audio.onended = null; audio = null; }
+        isPlaying = false;
+        clearAutoplay();
+        cancelAnimationFrame(waveAnimFrame);
+
+        currentIdx = idx;
+        const s = scenarios[idx];
+
+        // Update pills
+        pills.forEach((p, i) => p.classList.toggle('active', i === idx));
+
+        // Label
+        playerLabel.innerHTML = '<strong>Live call</strong> &middot; ' + s.label.split('\u00b7')[1].trim();
+
+        // Time
+        const dur = s.endTime - s.startTime;
+        playerTime.textContent = '0:00 / ' + fmt(dur);
+
+        // Progress
+        progressFill.style.width = '0%';
+        progressKnob.style.left = '0%';
+
+        // Transcript
+        renderTranscript(s);
+
+        // Outcome
+        outcomeEl.className = 'outcome';
+        outcomeEl.innerHTML = '';
+
+        // Waveform
+        resetWaveform();
+
+        // Play button state
+        playBtn.classList.remove('playing');
+        playIcon.innerHTML = '<polygon points="8,4 20,12 8,20"/>';
+
+        if (autoPlay) {
+            setTimeout(() => play(), 300);
+        }
+    }
+
+    // ═══════════════════════════════════════
+    // PLAY / PAUSE
+    // ═══════════════════════════════════════
+    function play() {
+        const s = scenarios[currentIdx];
+        clearAutoplay();
+
+        if (!audio) {
+            audio = new Audio(s.url);
+            audio.preload = 'auto';
+            audio.currentTime = s.startTime;
+
+            audio.ontimeupdate = function() {
+                const elapsed = audio.currentTime - s.startTime;
+                const duration = s.endTime - s.startTime;
+                if (elapsed < 0) return;
+
+                // Auto-stop at endTime
+                if (audio.currentTime >= s.endTime) {
+                    audio.pause();
+                    isPlaying = false;
+                    onClipEnd();
+                    return;
+                }
+
+                const pct = Math.min((elapsed / duration) * 100, 100);
+                progressFill.style.width = pct + '%';
+                progressKnob.style.left = pct + '%';
+                playerTime.textContent = fmt(elapsed) + ' / ' + fmt(duration);
+                updateTranscript(elapsed);
+            };
+        }
+
+        audio.play();
+        isPlaying = true;
+        playBtn.classList.add('playing');
+        playIcon.innerHTML = '<rect x="7" y="5" width="3.5" height="14" rx="1"/><rect x="13.5" y="5" width="3.5" height="14" rx="1"/>';
+        liveDot.style.background = 'var(--green)';
+        animateWaveform();
+    }
+
+    function pause() {
+        if (audio) audio.pause();
+        isPlaying = false;
+        playBtn.classList.remove('playing');
+        playIcon.innerHTML = '<polygon points="8,4 20,12 8,20"/>';
+        cancelAnimationFrame(waveAnimFrame);
+    }
+
+    function togglePlay() {
+        if (isPlaying) pause();
+        else play();
+    }
+
+    // ═══════════════════════════════════════
+    // CLIP END → SHOW OUTCOME → AUTO-NEXT
+    // ═══════════════════════════════════════
+    function onClipEnd() {
+        const s = scenarios[currentIdx];
+        playBtn.classList.remove('playing');
+        playIcon.innerHTML = '<polygon points="8,4 20,12 8,20"/>';
+        cancelAnimationFrame(waveAnimFrame);
+
+        // Show all transcript lines
+        transcriptEl.querySelectorAll('.t-line').forEach(l => {
+            l.classList.add('visible');
+            l.classList.remove('dim');
+        });
+
+        // Show outcome badge
+        outcomeEl.className = 'outcome ' + s.outcome.cls;
+        outcomeEl.innerHTML = '<span style="font-size:18px">' + s.outcome.icon + '</span> ' + s.outcome.text;
+        setTimeout(() => outcomeEl.classList.add('visible'), 100);
+
+        // Progress to 100
+        progressFill.style.width = '100%';
+        progressKnob.style.left = '100%';
+
+        // Auto-next after 3s
+        startAutoplay();
+    }
+
+    // ═══════════════════════════════════════
+    // AUTO-PLAY NEXT
+    // ═══════════════════════════════════════
+    const AUTOPLAY_DELAY = 3000;
+    let autoplayStart = 0;
+
+    function startAutoplay() {
+        autoplayBar.classList.add('visible');
+        autoplayFillEl.style.transition = 'none';
+        autoplayFillEl.style.width = '0%';
+
+        requestAnimationFrame(() => {
+            autoplayFillEl.style.transition = 'width ' + AUTOPLAY_DELAY + 'ms linear';
+            autoplayFillEl.style.width = '100%';
+        });
+
+        autoplayTimer = setTimeout(() => {
+            autoplayBar.classList.remove('visible');
+            const nextIdx = (currentIdx + 1) % scenarios.length;
+            loadScenario(nextIdx, true);
+        }, AUTOPLAY_DELAY);
+    }
+
+    function clearAutoplay() {
+        clearTimeout(autoplayTimer);
+        autoplayBar.classList.remove('visible');
+        autoplayFillEl.style.width = '0%';
+    }
+
+    // ═══════════════════════════════════════
+    // SEEK
+    // ═══════════════════════════════════════
+    progressBar.addEventListener('click', function(e) {
+        if (!audio) return;
+        const s = scenarios[currentIdx];
+        const rect = progressBar.getBoundingClientRect();
+        const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        const duration = s.endTime - s.startTime;
+        audio.currentTime = s.startTime + pct * duration;
+    });
+
+    // Click on waveform to seek
+    waveformEl.addEventListener('click', function(e) {
+        if (!audio) play(); // Start playing if not yet
+        const s = scenarios[currentIdx];
+        const rect = waveformEl.getBoundingClientRect();
+        const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        const duration = s.endTime - s.startTime;
+        audio.currentTime = s.startTime + pct * duration;
+    });
+
+    // ═══════════════════════════════════════
+    // EVENT LISTENERS
+    // ═══════════════════════════════════════
+    playBtn.addEventListener('click', togglePlay);
+
+    pills.forEach(pill => {
+        pill.addEventListener('click', () => {
+            loadScenario(parseInt(pill.dataset.idx), true);
+        });
+    });
+
+    prevBtn.addEventListener('click', () => {
+        const prev = (currentIdx - 1 + scenarios.length) % scenarios.length;
+        loadScenario(prev, true);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        const next = (currentIdx + 1) % scenarios.length;
+        loadScenario(next, true);
+    });
+
+    // Keyboard
+    document.addEventListener('keydown', function(e) {
+        if (e.code === 'Space') { e.preventDefault(); togglePlay(); }
+        if (e.code === 'ArrowRight') { nextBtn.click(); }
+        if (e.code === 'ArrowLeft') { prevBtn.click(); }
+    });
+
+    // ═══════════════════════════════════════
+    // INIT
+    // ═══════════════════════════════════════
+    buildWaveform();
+    loadScenario(0, false);
+})();
+</script>
+</body>
+</html>
