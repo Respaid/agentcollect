@@ -169,6 +169,13 @@
         /* CONTACTS */
         .agent-contacts-line{display:flex;align-items:center;gap:10px;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);font-size:13px}
         .agent-contacts-dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0;animation:pulse-ring 2s infinite}
+        .agent-business{font-size:13px;color:var(--text-mid);line-height:1.6;margin-bottom:4px}
+        .agent-contacts-grid{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:4px}
+        .agent-contact{display:flex;align-items:center;gap:8px}
+        .agent-contact-photo{width:32px;height:32px;border-radius:50%;object-fit:cover;flex-shrink:0}
+        .agent-contact-info{display:flex;flex-direction:column}
+        .agent-contact-name{font-size:13px;font-weight:600;color:var(--text);line-height:1.2}
+        .agent-contact-title{font-size:11px;color:var(--text-muted);line-height:1.2}
         .agent-contacts-text{color:var(--green);font-weight:600}
         .agent-contacts-fallback{color:var(--text-muted)}
 
@@ -485,13 +492,18 @@
                     <div id="dash-new-name" class="agent-name"></div>
                 </div>
                 <div id="dash-new-meta" class="agent-meta"></div>
-                <div class="agent-section-label">Your collection agent is ready</div>
+
+                <div class="agent-section-label">We understood your business</div>
+                <div class="agent-divider"></div>
+                <div id="dash-new-business" class="agent-business"></div>
+
+                <div class="agent-section-label" style="margin-top:16px">Decision makers we found</div>
+                <div class="agent-divider"></div>
+                <div id="dash-new-contacts-detail" class="agent-contacts-grid"></div>
+
+                <div class="agent-section-label" style="margin-top:16px">Your collection agent</div>
                 <div class="agent-divider"></div>
                 <div id="dash-new-plan"></div>
-                <div class="agent-contacts-line">
-                    <div class="agent-contacts-dot"></div>
-                    <div id="dash-new-contacts"></div>
-                </div>
             </div>
         </div>
     </div>
@@ -935,6 +947,28 @@ const COMPANIES = {
         ],
         plan: {d1: 'AI email with API usage data and contract reference', d3: 'AI call to finance with detailed breakdown', d7: 'Attorney notice citing SaaS agreement terms', d14: 'Self-service resolution portal'}
     },
+    'uber.com': {
+        name: 'Uber', industry: 'Ride-sharing & Delivery Platform',
+        products: 'Uber Rides, Uber Eats, Uber Freight, Uber for Business',
+        size: '30,000+ employees, $40B revenue',
+        disputes: ['Driver settlement disputes on ride commission rates', 'Restaurant partner payment disagreements on delivery fees', 'Enterprise client contract billing discrepancies on Uber for Business'],
+        contacts: [
+            {name: 'David Majors', title: 'Head of Order to Cash', photo: 'https://ui-avatars.com/api/?name=David+Majors&background=4F46E5&color=fff&size=200', email_masked: 'd***s@uber.com', role: 'Decision maker'},
+            {name: 'Shane Hood', title: 'Collections Manager', photo: 'https://ui-avatars.com/api/?name=Shane+Hood&background=10B981&color=fff&size=200', email_masked: 's***d@uber.com', role: 'First contact'}
+        ],
+        plan: {d1: 'AI email under Uber brand referencing specific delivery contract', d3: 'AI call to AP referencing ride/delivery data', d7: 'Attorney-supervised escalation — formal legal pressure', d14: 'Payment portal — they pay Uber directly'}
+    },
+    'fedex.com': {
+        name: 'FedEx', industry: 'Logistics & Shipping',
+        products: 'FedEx Express, FedEx Ground, FedEx Freight, FedEx Office',
+        size: '500,000+ employees, $88B revenue',
+        disputes: ['Shipping insurance claim disputes', 'Volume discount tier disagreements', 'Late delivery penalty waiver requests'],
+        contacts: [
+            {name: 'Ryan Patterson', title: 'Director of Credit', photo: 'https://ui-avatars.com/api/?name=Ryan+Patterson&background=6366F1&color=fff&size=200', email_masked: 'r***n@fedex.com', role: 'Decision maker'},
+            {name: 'Kevin Johnson', title: 'Collections Lead', photo: 'https://ui-avatars.com/api/?name=Kevin+Johnson&background=10B981&color=fff&size=200', email_masked: 'k***n@fedex.com', role: 'First contact'}
+        ],
+        plan: {d1: 'AI email under FedEx brand referencing shipping contract', d3: 'AI call to AP with tracking and invoice data', d7: 'Attorney-supervised escalation — formal legal pressure', d14: 'Payment portal — debtor pays FedEx directly'}
+    },
     'respaid.com': {
         name: 'Respaid', industry: 'Fintech / AR Automation',
         products: 'AI-powered accounts receivable platform, automated collections, dispute resolution',
@@ -1199,14 +1233,8 @@ async function startAnalysis() {
         {day: 'D14', text: planData.day_14 || planData.d14 || 'Payment portal — debtors pay you directly', color: 'var(--green)'}
     ];
 
-    // Build contacts line
+    // Build contacts line (legacy — kept for data ref)
     const contacts = data.contacts || [];
-    let contactsLineHtml;
-    if (contacts.length > 0) {
-        contactsLineHtml = `<span class="agent-contacts-text">We found ${contacts.length} AR contact${contacts.length !== 1 ? 's' : ''} at ${data.company.name}</span>`;
-    } else {
-        contactsLineHtml = `<span class="agent-contacts-fallback">We'd identify your AR contacts during onboarding</span>`;
-    }
 
     // Populate single card
     await sleep(800);
@@ -1223,7 +1251,22 @@ async function startAnalysis() {
     document.getElementById('dash-new-plan').innerHTML = steps.map(s =>
         `<div class="agent-plan-step"><span class="agent-plan-pill" style="background:${s.color}">${s.day}</span><span class="agent-plan-text">${s.text}</span></div>`
     ).join('');
-    document.getElementById('dash-new-contacts').innerHTML = contactsLineHtml;
+
+    // Business understanding
+    const products = data.company.products || data.company.industry || '';
+    document.getElementById('dash-new-business').textContent = products;
+
+    // Contacts detail with photos
+    const contactsDetail = (data.contacts || []).map(c =>
+        `<div class="agent-contact">
+            <img src="${c.photo || 'https://ui-avatars.com/api/?name='+encodeURIComponent(c.name)+'&background=94A3B8&color=fff&size=64'}" alt="${c.name}" class="agent-contact-photo">
+            <div class="agent-contact-info">
+                <span class="agent-contact-name">${c.name}</span>
+                <span class="agent-contact-title">${c.title || c.role || ''}</span>
+            </div>
+        </div>`
+    ).join('');
+    document.getElementById('dash-new-contacts-detail').innerHTML = contactsDetail || '<span style="font-size:13px;color:var(--text-muted)">We\'d identify your decision makers during onboarding</span>';
 
     // Show populated card
     document.getElementById('dash-loading-state').style.display = 'none';
