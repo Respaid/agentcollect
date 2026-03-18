@@ -163,16 +163,19 @@ a.review-src:hover{color:var(--blue)}
 /* ===== HOW IT WORKS ===== */
 .how-section{padding:120px 32px;max-width:1080px;margin:0 auto;text-align:center}
 .how-section h2{font-size:clamp(26px,3.5vw,36px);font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:48px}
-.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:center;max-width:800px;margin:0 auto}
-.how-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
-.how-icon.phone{background:rgba(79,70,229,.08)}
-.how-icon.check{background:rgba(16,185,129,.08)}
-.how-icon.shield{background:rgba(220,38,38,.08)}
-.how-title{font-weight:700;font-size:16px;margin-bottom:6px}
-.how-desc{font-size:15px;color:var(--muted);line-height:1.5}
 .trusted-bar{display:flex;align-items:center;justify-content:center;gap:36px;margin-top:48px;flex-wrap:wrap}
 .trusted-label{font-size:14px;color:var(--muted);font-weight:600}
 .trusted-logo{height:18px;opacity:.4;filter:grayscale(1)}
+.timeline{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:48px 0 32px}
+.timeline-line{position:absolute;top:44px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,var(--green),var(--blue),#f59e0b,var(--green));z-index:0}
+.timeline-step{position:relative;z-index:1;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px}
+.timeline-day{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--blue);text-transform:uppercase}
+.timeline-icon{width:48px;height:48px;border-radius:50%;background:#fff;border:2px solid #e5e7eb;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.timeline-title{font-size:15px;font-weight:700;color:var(--text)}
+.timeline-desc{font-size:13px;color:var(--muted);line-height:1.5;max-width:180px}
+.timeline-note{text-align:center;font-size:14px;color:var(--muted);margin-top:0}
+@media(max-width:768px){.timeline{grid-template-columns:1fr 1fr;gap:32px}.timeline-line{display:none}}
+@media(max-width:480px){.timeline{grid-template-columns:1fr}}
 
 /* ===== SECTION 4: CTA ===== */
 .cta-section{padding:120px 32px;text-align:center;background:#0a0a14;color:#fff;position:relative;overflow:hidden}
@@ -196,7 +199,6 @@ a.review-src:hover{color:var(--blue)}
   .proof-strip{gap:16px}
   .proof-card{min-width:140px;padding:20px 24px}
   .how-section{padding:80px 24px}
-  .how-grid{grid-template-columns:1fr;gap:24px;max-width:320px}
   .trusted-bar{gap:24px}
   .audio-section{padding:80px 16px}
   .dark-player{height:auto;min-height:340px}
@@ -373,23 +375,39 @@ a.review-src:hover{color:var(--blue)}
   </div>
 </section>
 
-<!-- SECTION 4: TWO WAYS -->
+<!-- SECTION 4: HOW IT WORKS -->
 <section class="how-section">
   <div class="rv" style="text-align:center">
-    <h2>Two ways to collect. Both replace your agency.</h2>
-    <div class="how-grid" style="grid-template-columns:repeat(2,1fr);max-width:700px;gap:24px;margin-top:40px">
-      <div style="background:#fff;border-radius:18px;padding:32px 28px;box-shadow:var(--shadow-lg);border:1px solid rgba(0,0,0,.04);text-align:left">
-        <div class="how-icon phone" style="margin:0 0 16px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg></div>
-        <div class="how-title" style="font-size:18px;margin-bottom:8px">White-label</div>
-        <div class="how-desc">AI calls, emails, and negotiates as "Remitly." Your brand. Your voice. We're invisible.</div>
+    <div class="hero-label">HOW IT WORKS</div>
+    <h2>From first call to resolution. Automatically.</h2>
+    <div class="timeline">
+      <div class="timeline-line"></div>
+      <div class="timeline-step">
+        <div class="timeline-day">DAY 1</div>
+        <div class="timeline-icon">📞</div>
+        <div class="timeline-title">AI Phone Call</div>
+        <div class="timeline-desc">AI calls under your brand. Identifies the right contact, discloses the debt, offers resolution.</div>
       </div>
-      <div style="background:#fff;border-radius:18px;padding:32px 28px;box-shadow:var(--shadow-lg);border:1px solid rgba(0,0,0,.04);text-align:left">
-        <div class="how-icon shield" style="margin:0 0 16px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <div class="how-title" style="font-size:18px;margin-bottom:8px">Attorney-backed</div>
-        <div class="how-desc">Our licensed attorneys send demand letters and escalate. Legal weight without in-house counsel.</div>
+      <div class="timeline-step">
+        <div class="timeline-day">DAY 5</div>
+        <div class="timeline-icon">✉️</div>
+        <div class="timeline-title">Email Follow-up</div>
+        <div class="timeline-desc">Automated email sequence with invoice copy, payment link, and deadline.</div>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-day">DAY 15</div>
+        <div class="timeline-icon">⚖️</div>
+        <div class="timeline-title">Attorney Letter</div>
+        <div class="timeline-desc">Licensed attorney sends demand letter. Legally binding. Triggers urgency.</div>
+      </div>
+      <div class="timeline-step">
+        <div class="timeline-day">DAY 30</div>
+        <div class="timeline-icon">✅</div>
+        <div class="timeline-title">Resolution</div>
+        <div class="timeline-desc">Payment received, plan agreed, or file escalated to litigation. You decide the threshold.</div>
       </div>
     </div>
-    <p style="font-size:16px;color:var(--muted);margin-top:24px">Both options: Reg F compliant. branded as Remitly. Every call recorded.</p>
+    <p class="timeline-note">Both options: Reg F compliant. CEO relationships protected. Every call recorded.</p>
     <div class="trusted-bar">
       <span class="trusted-label">Trusted by</span>
       <img src="https://cdn.brandfetch.io/microsoft.com/w/512/h/80/logo" alt="Microsoft" class="trusted-logo">
@@ -403,11 +421,10 @@ a.review-src:hover{color:var(--blue)}
 <!-- SECTION 5: CTA -->
 <section class="cta-section">
   <div class="cta-inner rv">
-    <h2>Recover more. Pay nothing until we do.</h2>
-    <p class="cta-detail">Success-based pricing. Zero upfront cost.</p>
+    <h2>Book a meeting. We'll have a live Remitly agent configured before you arrive.</h2>
+    <p class="cta-detail">If we don't recover anything before the demo, you pay nothing. Ever.</p>
     <a href="https://cal.com/johnb/30" target="_blank" class="cta-btn" onclick="gtag('event','book_cta',{})">Book a live demo</a>
-    <span class="cta-or"><a href="tel:+12016277551" onclick="gtag('event','call_cta',{})">or call (201) 627-7551</a></span>
-    <p class="cta-forward">Not the right person? Forward this to your Head of Payments.</p>
+    <p class="cta-forward">Not the right person? Forward to your Head of AR or CFO.</p>
   </div>
 </section>
 
