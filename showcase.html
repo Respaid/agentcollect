@@ -248,88 +248,63 @@
                 { delay: 4500, clear: true },
             ]
         },
-        // Scene 1: Objection → handled (real transcript from Khalil call)
+        // Scene 1: Objection → handled — synced to real audio timestamps
+        // audioStart=30 → Khalil asks "What are we getting charged for exactly?" at 32.7s (offset 2.7s)
+        // Agent answers at 35.8s (offset 5.8s)
         {
             audio: 'https://dxc03zgurdly9.cloudfront.net/075961824e83d68a634b91afb75f59fba97b1b2951c58dc43ec9a5e3bc58b806/recording.wav',
-            audioStart: 8,
+            audioStart: 30,
             navLabel: 'Objection handled',
             beats: [
-                { delay: 0, speaker: 'human', name: 'Khalil', text: '"I guess I do have', size: 'lg', style: 'human' },
-                { delay: 500, text: 'questions about it."', size: 'xxl', style: 'human hot' },
-                { delay: 2200, clear: true },
-                { delay: 2700, speaker: 'human', name: 'Khalil', text: '"What are we getting', size: 'lg', style: 'human' },
-                { delay: 3200, text: 'charged for exactly?"', size: 'xxl', style: 'human hot' },
-                { delay: 5500, clear: true },
-                { delay: 6000, speaker: 'ai', text: 'Twenty-nine ninety-nine.', size: 'xxl', style: 'ai bright' },
-                { delay: 6800, text: 'Background check from [Client].', size: 'lg', style: 'ai soft' },
-                { delay: 9000, clear: true },
-                { delay: 9500, speaker: 'human', name: 'Khalil', text: '"Can I pay this from', size: 'md', style: 'human mid' },
-                { delay: 10000, text: 'the website?"', size: 'xl', style: 'human' },
-                { delay: 12000, clear: true },
-                { delay: 12500, speaker: 'ai', text: 'Use the portal link in the email.', size: 'lg', style: 'ai' },
-                { delay: 13200, text: 'Your balance gets closed out properly.', size: 'md', style: 'ai soft' },
-                { delay: 15500, clear: true },
-                { delay: 16000, speaker: 'human', name: 'Khalil', text: '"I got it from here.', size: 'lg', style: 'human dim' },
-                { delay: 16500, text: 'Bye bye."', size: 'xl', style: 'human dim' },
-                { delay: 18500, clear: true },
-                { delay: 19000, badge: true, text: 'Objection handled. Directed to portal.', cls: 'indigo' },
+                { delay: 500, speaker: 'human', name: 'Khalil', text: '"I guess I do have', size: 'lg', style: 'human' },
+                { delay: 1500, text: 'questions about it."', size: 'xxl', style: 'human hot' },
+                { delay: 2700, text: '"What are we getting', size: 'lg', style: 'human' },
+                { delay: 3600, text: 'charged for exactly?"', size: 'xxl', style: 'human hot' },
+                { delay: 5000, clear: true },
+                { delay: 5800, speaker: 'ai', text: 'Twenty-nine ninety-nine.', size: 'xxl', style: 'ai bright' },
+                { delay: 7500, text: 'Background check from [Client].', size: 'lg', style: 'ai soft' },
+                { delay: 10000, clear: true },
+                { delay: 10500, badge: true, text: 'Objection handled. Directed to portal.', cls: 'indigo' },
             ]
         },
-        // Scene 2: Gatekeeper → contact collected (real transcript from CalOES call)
+        // Scene 2: Gatekeeper → contact collected — synced to real audio timestamps
+        // audioStart=56 → Jonathan says "I don't deal with that" at 56.9s (offset 0.9s)
+        // Agent asks for AP at 66.6s (offset 10.6s)
         {
             audio: 'https://dxc03zgurdly9.cloudfront.net/00d79b2208aee99e88fb7a0033974bba3140f3b905b388429b22133e4694c670/recording.wav',
             audioStart: 56,
             navLabel: 'Contact collected',
             beats: [
-                { delay: 0, speaker: 'human', name: 'Jonathan', text: '"I don\'t deal', size: 'xl', style: 'human' },
-                { delay: 400, text: 'with that."', size: 'xxl', style: 'human hot' },
-                { delay: 1800, speaker: 'human', name: 'Jonathan', text: '"You\'d wanna call', size: 'md', style: 'human mid' },
-                { delay: 2200, text: 'accounts payable."', size: 'xl', style: 'human' },
-                { delay: 4000, clear: true },
-                { delay: 4500, speaker: 'ai', text: 'Could you provide the name', size: 'lg', style: 'ai' },
-                { delay: 5000, text: 'or contact info for AP?', size: 'lg', style: 'ai bright' },
-                { delay: 7000, clear: true },
-                { delay: 7500, speaker: 'human', name: 'Jonathan', text: '"That\'s what I\'m trying', size: 'md', style: 'human dim' },
-                { delay: 8000, text: 'to look up for you."', size: 'lg', style: 'human mid' },
-                { delay: 10000, clear: true },
-                { delay: 10500, speaker: 'ai', text: 'No problem — take your time.', size: 'xl', style: 'ai bright' },
-                { delay: 12500, clear: true },
-                { delay: 13000, speaker: 'human', name: 'Jonathan', text: '"916-845-8340."', size: 'xxl', style: 'human hot' },
-                { delay: 15500, clear: true },
-                { delay: 16000, speaker: 'ai', text: 'And their email address?', size: 'xl', style: 'ai' },
-                { delay: 18000, clear: true },
-                { delay: 18500, speaker: 'human', name: 'Jonathan', text: '"ap-invoices@[redacted].gov"', size: 'lg', style: 'human mid' },
-                { delay: 21000, clear: true },
-                { delay: 21500, badge: true, text: 'New AP contact. Phone + email collected.', cls: 'indigo' },
+                { delay: 200, speaker: 'human', name: 'Jonathan', text: '"I don\'t deal', size: 'xl', style: 'human' },
+                { delay: 900, text: 'with that."', size: 'xxl', style: 'human hot' },
+                { delay: 1800, text: '"You\'d wanna call', size: 'md', style: 'human mid' },
+                { delay: 2900, text: 'accounts payable."', size: 'xl', style: 'human' },
+                { delay: 5000, clear: true },
+                { delay: 10600, speaker: 'ai', text: 'Could you provide the name', size: 'lg', style: 'ai' },
+                { delay: 11500, text: 'or contact info for AP?', size: 'lg', style: 'ai bright' },
+                { delay: 14000, clear: true },
+                { delay: 14500, badge: true, text: 'AP contact collected. Phone + email.', cls: 'indigo' },
             ]
         },
-        // Scene 3: Pays on the spot — the closer (real transcript from Rachel call)
+        // Scene 3: Pays on the spot — synced to real audio timestamps
+        // audioStart=50 → Rachel says "I'm paying it today" at 52s (offset 2s)
+        // "I am so sorry" at 55.7s (offset 5.7s)
         {
             audio: 'https://dxc03zgurdly9.cloudfront.net/10b4ec959b4a004a6bf47dcfa2da0a213c7ce231590e295d9c60faffde486685/recording.wav',
-            audioStart: 35,
+            audioStart: 50,
             navLabel: 'Paid on call',
             beats: [
-                { delay: 0, speaker: 'human', name: 'Rachel', text: '"I\'m paying it today.', size: 'xl', style: 'human' },
-                { delay: 500, text: 'I have it coming in."', size: 'lg', style: 'human' },
-                { delay: 2600, clear: true },
-                { delay: 3000, speaker: 'human', name: 'Rachel', text: '"It slipped through the cracks', size: 'lg', style: 'human dim' },
-                { delay: 3500, text: 'with our accounting team."', size: 'lg', style: 'human dim' },
-                { delay: 5500, clear: true },
-                { delay: 6000, speaker: 'human', name: 'Rachel', text: '"I really do apologize.', size: 'md', style: 'human mid' },
-                { delay: 6500, text: 'This was not meant to be malicious."', size: 'lg', style: 'human' },
-                { delay: 9000, clear: true },
-                { delay: 9500, speaker: 'ai', text: 'No worries at all.', size: 'xxl', style: 'ai bright' },
-                { delay: 10200, text: 'I can stay on the line.', size: 'lg', style: 'ai soft' },
-                { delay: 12500, clear: true },
-                { delay: 13000, speaker: 'human', name: 'Rachel', text: '"I\'m putting in my', size: 'md', style: 'human mid' },
-                { delay: 13400, text: 'ZIP code right now."', size: 'xl', style: 'human' },
-                { delay: 15500, clear: true },
-                { delay: 16000, speaker: 'ai', text: 'Perfect! Take your time.', size: 'xl', style: 'ai bright' },
-                { delay: 18000, clear: true },
-                { delay: 18500, speaker: 'human', name: 'Rachel', text: '"Payment', size: 'xl', style: 'human' },
-                { delay: 18900, text: 'sent."', size: 'xxl', style: 'win' },
-                { delay: 21000, clear: true },
-                { delay: 21500, badge: true, text: 'Paid during the call. $0 manual work.', cls: 'green' },
+                { delay: 1800, speaker: 'human', name: 'Rachel', text: '"I\'m paying it today.', size: 'xl', style: 'human' },
+                { delay: 3000, text: 'I have it coming in."', size: 'lg', style: 'human' },
+                { delay: 5200, clear: true },
+                { delay: 5700, speaker: 'human', name: 'Rachel', text: '"I, again,', size: 'md', style: 'human mid' },
+                { delay: 6200, text: 'am so sorry."', size: 'xxl', style: 'human hot' },
+                { delay: 8500, clear: true },
+                { delay: 9000, speaker: 'human', name: 'Rachel', text: '"It is being paid, honestly.', size: 'lg', style: 'human' },
+                { delay: 10200, text: 'I\'m in front of my computer', size: 'md', style: 'human mid' },
+                { delay: 11200, text: 'putting it in right now."', size: 'xl', style: 'human' },
+                { delay: 13000, clear: true },
+                { delay: 13500, badge: true, text: 'Paid during the call. $0 manual work.', cls: 'green' },
             ]
         }
     ];
