@@ -171,7 +171,7 @@ a.review-src:hover{color:var(--blue)}
 .tag-red{background:rgba(220,38,38,.08);color:var(--red)}
 
 /* ===== HOW IT WORKS ===== */
-.how-section{padding:120px 32px;max-width:1080px;margin:0 auto;text-align:center}
+.how-section{padding:80px 32px 100px;max-width:1080px;margin:0 auto;text-align:center}
 .how-section h2{font-size:clamp(28px,3.5vw,48px);font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:12px}
 .how-subtitle{font-size:17px;color:var(--muted);margin-bottom:48px;text-align:center}
 .trusted-bar{display:flex;align-items:center;justify-content:center;gap:36px;margin-top:48px;flex-wrap:wrap}
@@ -183,15 +183,16 @@ a.review-src:hover{color:var(--blue)}
 .phase-badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--green-dark);background:rgba(16,185,129,.1);padding:5px 14px;border-radius:100px;margin-bottom:28px}
 .phase-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green)}
 .phase-steps-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;margin-top:8px}
-.phase-line-track{position:relative;height:2px;background:#e5e7eb;margin:0 8%;border-radius:2px;overflow:hidden;margin-bottom:0;grid-column:1/-1;margin-top:0}
-.phase-line-fill{position:absolute;left:0;top:0;height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--blue));border-radius:2px;transition:width 1.4s cubic-bezier(.16,1,.3,1)}
+.phase-line-track{position:relative;height:3px;background:#e8eaf0;margin:0 12%;border-radius:3px;overflow:hidden;grid-column:1/-1;margin-top:0;margin-bottom:0}
+.phase-line-fill{position:absolute;left:0;top:0;height:100%;width:0;background:linear-gradient(90deg,var(--green) 0%,var(--blue) 60%,var(--blue) 100%);border-radius:3px;transition:width 1.6s cubic-bezier(.16,1,.3,1)}
 .phase-block.animated .phase-line-fill{width:100%}
 .phase-step{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease;text-align:center;padding:0 16px}
 .phase-block.animated .phase-step:nth-child(1){opacity:1;transform:none;transition-delay:.2s}
 .phase-block.animated .phase-step:nth-child(2){opacity:1;transform:none;transition-delay:.55s}
 .phase-block.animated .phase-step:nth-child(3){opacity:1;transform:none;transition-delay:.95s}
 .phase-day{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
-.phase-icon{width:52px;height:52px;border-radius:50%;background:var(--bg);border:2px solid #e5e7eb;display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 12px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.phase-icon{width:56px;height:56px;border-radius:50%;background:rgba(79,70,229,.07);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;color:var(--blue)}
+.phase-icon.green{background:rgba(16,185,129,.09);color:var(--green-dark)}
 .phase-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px}
 .phase-desc{font-size:13px;color:var(--muted);line-height:1.5;max-width:200px;margin:0 auto}
 .phase-track-wrap{grid-column:1/-1;padding:20px 8% 24px}
@@ -203,7 +204,7 @@ a.review-src:hover{color:var(--blue)}
 /* Attorney brick */
 .attorney-brick{background:#f0f4ff;border:1px solid rgba(79,70,229,.12);border-radius:20px;padding:40px;text-align:left;position:relative}
 .attorney-optional-badge{position:absolute;top:20px;right:20px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--blue);background:rgba(79,70,229,.1);padding:4px 12px;border-radius:100px}
-.attorney-icon{width:52px;height:52px;border-radius:50%;background:rgba(79,70,229,.1);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:18px}
+.attorney-icon{width:52px;height:52px;border-radius:50%;background:rgba(79,70,229,.09);display:flex;align-items:center;justify-content:center;margin-bottom:18px;color:var(--blue)}
 .attorney-title{font-size:22px;font-weight:800;color:var(--text);letter-spacing:-.02em;margin-bottom:8px}
 .attorney-subtitle{font-size:15px;color:var(--muted);margin-bottom:28px;line-height:1.5}
 .attorney-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
@@ -452,7 +453,7 @@ a.review-src:hover{color:var(--blue)}
   <div class="rv">
     <div class="hero-label">HOW IT WORKS</div>
     <h2>Two ways to recover. You choose.</h2>
-    <p class="how-subtitle">Start with AI, add Attorney pressure when needed — or activate either independently.</p>
+    <p class="how-subtitle">AI-first, attorney when needed — or either on its own.</p>
 
     <!-- Phase 1: AI Recovery -->
     <div class="phase-block" id="phaseBlock">
@@ -461,19 +462,19 @@ a.review-src:hover{color:var(--blue)}
         <!-- Step 1 -->
         <div class="phase-step">
           <div class="phase-day">Day 1</div>
-          <div class="phase-icon">📞</div>
+          <div class="phase-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.12 1.2 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.27 7.91a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
           <div class="phase-title">AI Phone Call</div>
           <div class="phase-desc">Calls under your brand. Identifies contact, discloses debt, offers payment.</div>
         </div>
         <div class="phase-step">
           <div class="phase-day">Day 5</div>
-          <div class="phase-icon">✉️</div>
+          <div class="phase-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg></div>
           <div class="phase-title">Email Follow-up</div>
           <div class="phase-desc">Invoice copy, payment link, deadline. Zero human intervention.</div>
         </div>
         <div class="phase-step">
           <div class="phase-day">Day 20</div>
-          <div class="phase-icon">✅</div>
+          <div class="phase-icon green"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
           <div class="phase-title">Result</div>
           <div class="phase-desc">Paid — or flagged for attorney escalation.</div>
         </div>
@@ -493,7 +494,7 @@ a.review-src:hover{color:var(--blue)}
     <!-- Attorney Escalation brick -->
     <div class="attorney-brick rv rv-d1">
       <div class="attorney-optional-badge">Optional add-on</div>
-      <div class="attorney-icon">⚖️</div>
+      <div class="attorney-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V2M5 12H2l7-7 7 7h-3M22 12h-3l-7 7-7-7h3"/><line x1="2" y1="22" x2="22" y2="22"/></svg></div>
       <div class="attorney-title">Attorney Escalation</div>
       <div class="attorney-subtitle">After Day 20 — or Day 1. Your call.</div>
       <div class="attorney-cols">
