@@ -143,6 +143,12 @@
         .typing-dot{width:5px;height:5px;border-radius:50%;background:var(--indigo);animation:typing-dot 1.4s infinite}
         .typing-dot:nth-child(2){animation-delay:.2s}
         .typing-dot:nth-child(3){animation-delay:.4s}
+        @keyframes spin-loader{to{transform:rotate(360deg)}}
+        .load-spinner{animation:spin-loader .8s linear infinite}
+        .load-step.active{opacity:1!important;color:var(--text)!important}
+        .load-step.done{opacity:.6!important}
+        .load-step.done .load-spinner{animation:none;border-color:var(--green)!important;border-top-color:var(--green)!important;background:var(--green);position:relative}
+        .load-step.done .load-spinner::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;font-weight:700}
 
         .agent-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:32px 32px 28px;max-width:640px;margin:0 auto;position:relative;overflow:hidden;animation:pop-in .4s cubic-bezier(.16,1,.3,1);box-shadow:0 8px 32px rgba(0,0,0,.06)}
         .agent-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--indigo),var(--green))}
@@ -476,9 +482,22 @@
         </div>
         <div id="carousel-dots" style="display:none"></div>
         <div class="agent-card" id="dash-agent-card">
-            <!-- Loading state -->
-            <div id="dash-loading-state">
-                <div class="dash-loading"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>
+            <!-- Loading state — progressive steps -->
+            <div id="dash-loading-state" style="padding:12px 0">
+                <div id="load-steps" style="display:flex;flex-direction:column;gap:10px">
+                    <div class="load-step" id="load-step-1" style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text-muted);opacity:.3;transition:opacity .4s">
+                        <div style="width:18px;height:18px;border:2px solid var(--border);border-radius:50%;border-top-color:var(--indigo);flex-shrink:0" class="load-spinner"></div>
+                        <span>Analyzing your company...</span>
+                    </div>
+                    <div class="load-step" id="load-step-2" style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text-muted);opacity:.3;transition:opacity .4s">
+                        <div style="width:18px;height:18px;border:2px solid var(--border);border-radius:50%;border-top-color:var(--green);flex-shrink:0" class="load-spinner"></div>
+                        <span>Finding decision makers...</span>
+                    </div>
+                    <div class="load-step" id="load-step-3" style="display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text-muted);opacity:.3;transition:opacity .4s">
+                        <div style="width:18px;height:18px;border:2px solid var(--border);border-radius:50%;border-top-color:var(--amber);flex-shrink:0" class="load-spinner"></div>
+                        <span>Building your collection agent...</span>
+                    </div>
+                </div>
             </div>
             <!-- Populated content (hidden until loaded) -->
             <div id="dash-populated" style="display:none">
@@ -1193,6 +1212,13 @@ async function startAnalysis() {
     // Reset single card to loading state
     document.getElementById('dash-loading-state').style.display = '';
     document.getElementById('dash-populated').style.display = 'none';
+    // Reset load steps
+    document.querySelectorAll('.load-step').forEach(s => { s.classList.remove('active','done'); s.style.opacity = '.3'; });
+
+    // Animate step 1
+    const step1 = document.getElementById('load-step-1');
+    step1.classList.add('active');
+    step1.querySelector('span').textContent = `Analyzing ${domain}...`;
 
     let data = company ? {
         company: { name: company.name, domain, industry: company.industry, products: company.products, size: company.size, logo_url: 'https://cdn.brandfetch.io/'+domain+'/w/512/h/80/logo' },
@@ -1205,7 +1231,17 @@ async function startAnalysis() {
         method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({domain})
     }).then(r => r.json()).then(r => { if(r.success && r.data) data = r.data; }).catch(e => console.warn('API:', e));
 
-    await sleep(800);
+    await sleep(600);
+    // Step 1 done, step 2 active
+    step1.classList.remove('active'); step1.classList.add('done');
+    const step2 = document.getElementById('load-step-2');
+    step2.classList.add('active');
+    await sleep(500);
+    // Step 2 done, step 3 active
+    step2.classList.remove('active'); step2.classList.add('done');
+    const step3 = document.getElementById('load-step-3');
+    step3.classList.add('active');
+    await sleep(400);
     if (!company) await apiPromise;
 
     if (!data) {
