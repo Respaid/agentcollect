@@ -170,38 +170,51 @@ a.review-src:hover{color:var(--blue)}
 .tag-blue{background:rgba(79,70,229,.08);color:var(--blue)}
 .tag-red{background:rgba(220,38,38,.08);color:var(--red)}
 
-/* ===== HOW IT WORKS ===== */
-.how-section-wrap{background:radial-gradient(ellipse at top center,rgba(79,70,229,.05) 0%,transparent 60%)}
+/* ===== HOW IT WORKS — Mercury/Stripe dark premium ===== */
+.how-section-wrap{background:linear-gradient(180deg,#060612 0%,#0d0d22 60%,#0a0818 100%);position:relative;overflow:hidden}
+.how-section-wrap::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(79,70,229,.12) 0%,transparent 65%);pointer-events:none;animation:blobPulse 4s ease-in-out infinite}
+.how-section-wrap::after{content:'';position:absolute;bottom:-50px;right:-100px;width:400px;height:300px;background:radial-gradient(ellipse,rgba(99,102,241,.08) 0%,transparent 65%);pointer-events:none}
+@keyframes blobPulse{0%,100%{opacity:.8;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.1)}}
 .how-section{padding:88px 32px 108px;max-width:1080px;margin:0 auto;text-align:center}
-.how-section h2{font-size:clamp(28px,3.5vw,48px);font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:12px;background:linear-gradient(135deg,var(--text) 30%,var(--blue) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.how-subtitle{font-size:17px;color:var(--muted);margin-bottom:52px;text-align:center}
+.how-section h2{font-size:clamp(28px,3.5vw,48px);font-weight:800;letter-spacing:-.02em;text-align:center;margin-bottom:12px;background:linear-gradient(135deg,#fff 20%,#818cf8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.how-section .hero-label{color:#818cf8}
+.how-subtitle{font-size:17px;color:rgba(255,255,255,.5);margin-bottom:52px;text-align:center}
 .trusted-bar{display:flex;align-items:center;justify-content:center;gap:36px;margin-top:52px;flex-wrap:wrap}
-.trusted-label{font-size:14px;color:var(--muted);font-weight:600}
-.trusted-logo{height:20px;width:auto}
+.how-section-wrap .trusted-label{font-size:14px;color:rgba(255,255,255,.4);font-weight:600}
+.how-section-wrap .trusted-logo{height:20px;width:auto;filter:brightness(10) opacity(.35)}
 
-/* 2-step how it works — premium cards */
+/* 2-step how it works — glassmorphism floating panels */
 .how-steps{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;margin-bottom:20px}
-.how-step{background:linear-gradient(145deg,#fff 0%,#f5f3ff 100%);border:1px solid rgba(79,70,229,.08);border-radius:24px;padding:40px;text-align:left;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden;box-shadow:0 1px 2px rgba(79,70,229,.04),0 8px 24px rgba(79,70,229,.08),0 32px 64px rgba(79,70,229,.06);transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s ease}
-.how-step:hover{transform:translateY(-4px);box-shadow:0 1px 2px rgba(79,70,229,.06),0 12px 32px rgba(79,70,229,.13),0 40px 80px rgba(79,70,229,.1)}
-.how-step::before{content:attr(data-num);position:absolute;bottom:-20px;right:-10px;font-size:140px;font-weight:900;background:linear-gradient(135deg,rgba(79,70,229,.07),transparent 70%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;pointer-events:none;line-height:1;user-select:none;font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-.04em}
-.how-step-num{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--blue);text-transform:uppercase}
-.how-step-icon{width:56px;height:56px;border-radius:50%;background:rgba(79,70,229,.1);display:flex;align-items:center;justify-content:center;color:var(--blue);box-shadow:0 0 0 8px rgba(79,70,229,.06),0 0 24px rgba(79,70,229,.15)}
-.how-step-title{font-size:23px;font-weight:800;color:var(--text);letter-spacing:-.02em;line-height:1.1}
-.how-step-desc{font-size:15px;color:var(--muted);line-height:1.65;flex:1}
-.how-step-badge{display:inline-block;font-size:13px;font-weight:600;color:var(--green-dark);background:rgba(16,185,129,.09);padding:6px 16px;border-radius:100px;width:fit-content;border:1px solid rgba(16,185,129,.15)}
-.how-step-badge.green{color:var(--green-dark)}
+/* float animation — delay 1.2s so .rv entry transition completes first */
+@keyframes floatCard{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+/* override: once revealed, apply float on the card. Use a separate keyframe that adds translateY on top of the settled state */
+.how-step.v{animation:floatCard 5s ease-in-out 1.2s infinite}
+.how-step.rv-d1.v{animation:floatCard 5s ease-in-out 1.35s infinite}
+.how-step{background:rgba(255,255,255,.04);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:40px;text-align:left;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden;box-shadow:0 1px 0 rgba(255,255,255,.07) inset,0 20px 60px rgba(0,0,0,.4),0 0 40px rgba(79,70,229,.1);transition:box-shadow .35s ease,border-color .35s ease}
+.how-step:hover{box-shadow:0 1px 0 rgba(255,255,255,.1) inset,0 32px 80px rgba(0,0,0,.5),0 0 60px rgba(79,70,229,.18);border-color:rgba(99,102,241,.4)}
+/* dramatic watermark number */
+.how-step::before{content:attr(data-num);position:absolute;bottom:-30px;right:-15px;font-size:160px;font-weight:900;background:linear-gradient(135deg,rgba(99,102,241,.15),transparent 70%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;pointer-events:none;line-height:1;user-select:none;font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-.04em}
+/* gradient border glow on hover */
+.how-step::after{content:'';position:absolute;inset:-1px;border-radius:25px;background:linear-gradient(135deg,rgba(99,102,241,.5),transparent 40%,rgba(139,92,246,.3));opacity:0;transition:opacity .3s ease;pointer-events:none;z-index:-1}
+.how-step:hover::after{opacity:1}
+.how-step-num{font-size:11px;font-weight:800;letter-spacing:.1em;color:#818cf8;text-transform:uppercase}
+.how-step-icon{width:56px;height:56px;border-radius:50%;background:rgba(99,102,241,.2);display:flex;align-items:center;justify-content:center;color:#a5b4fc;box-shadow:0 0 0 8px rgba(99,102,241,.08),0 0 24px rgba(99,102,241,.2)}
+.how-step-title{font-size:23px;font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1.1}
+.how-step-desc{font-size:15px;color:rgba(255,255,255,.6);line-height:1.65;flex:1}
+.how-step-badge{display:inline-block;font-size:13px;font-weight:600;color:#6ee7b7;background:rgba(16,185,129,.15);padding:6px 16px;border-radius:100px;width:fit-content;border:1px solid rgba(16,185,129,.25)}
+.how-step-badge.green{color:#6ee7b7}
 
-/* Animated SVG arrow connector */
+/* Animated SVG arrow connector — glowing */
 .how-arrow{display:flex;align-items:center;justify-content:center;padding:0 20px;align-self:center;flex-shrink:0}
-.how-arrow svg{overflow:visible}
+.how-arrow svg{overflow:visible;filter:drop-shadow(0 0 8px rgba(99,102,241,.5))}
 .how-arrow-line{stroke-dasharray:120;stroke-dashoffset:120;animation:drawArrow 1.2s cubic-bezier(.16,1,.3,1) .6s forwards}
 .how-arrow-head{opacity:0;animation:fadeArrowHead .3s ease 1.7s forwards}
 @keyframes drawArrow{to{stroke-dashoffset:0}}
 @keyframes fadeArrowHead{to{opacity:1}}
 
-/* Attorney compact add-on — DARK */
-.atty-addon{background:linear-gradient(135deg,#0d0d22 0%,#1a1040 100%);border:1px solid rgba(99,102,241,.25);border-radius:20px;padding:28px 32px;margin-bottom:0;text-align:left;box-shadow:0 8px 32px rgba(0,0,0,.25),0 2px 8px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.05);position:relative;overflow:hidden}
-.atty-addon::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(99,102,241,.18) 0%,transparent 65%);pointer-events:none}
+/* Attorney compact add-on — indigo glow on dark bg */
+.atty-addon{background:linear-gradient(135deg,rgba(79,70,229,.15) 0%,rgba(99,102,241,.08) 100%);border:1px solid rgba(99,102,241,.35);border-radius:20px;padding:28px 32px;margin-bottom:0;text-align:left;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 0 40px rgba(79,70,229,.2),0 2px 0 rgba(255,255,255,.06) inset;position:relative;overflow:hidden}
+.atty-addon::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(99,102,241,.25) 0%,transparent 65%);pointer-events:none}
 .atty-addon-badge{display:inline-block;font-size:11px;font-weight:700;color:#a5b4fc;text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px;background:rgba(99,102,241,.2);border:1px solid rgba(99,102,241,.35);padding:5px 14px;border-radius:100px}
 .atty-addon-body{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
 .atty-addon-icon{width:44px;height:44px;border-radius:50%;background:rgba(99,102,241,.2);display:flex;align-items:center;justify-content:center;color:#a5b4fc;flex-shrink:0;box-shadow:0 0 0 6px rgba(99,102,241,.08),0 0 20px rgba(99,102,241,.2)}
