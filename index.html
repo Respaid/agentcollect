@@ -227,6 +227,35 @@
         .respectful-inner{max-width:var(--max-w);margin:0 auto}
         .respectful-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:flex-start;max-width:900px;margin:0 auto}
         .respectful-text{font-size:20px;color:var(--text);line-height:1.7;font-weight:400;letter-spacing:-.01em}
+
+        /* AUDIO SHOWCASE */
+        .audio-showcase{max-width:620px;margin:0 auto}
+        .audio-tabs{display:flex;gap:6px;margin-bottom:16px;justify-content:center;flex-wrap:wrap}
+        .audio-tab{padding:8px 16px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--text-mid);transition:all .2s;white-space:nowrap}
+        .audio-tab:hover{border-color:var(--indigo);color:var(--indigo)}
+        .audio-tab.active{background:var(--indigo);color:#fff;border-color:var(--indigo)}
+        .audio-player{background:var(--bg-dark);border-radius:16px;padding:24px;color:#fff;position:relative;overflow:hidden}
+        .audio-player::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--indigo),var(--green))}
+        .audio-controls{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+        .audio-play-btn{width:44px;height:44px;border-radius:50%;background:var(--indigo);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s}
+        .audio-play-btn:hover{background:#4338ca}
+        .audio-play-btn svg{fill:#fff;width:16px;height:16px;margin-left:2px}
+        .audio-progress{flex:1;height:4px;background:rgba(255,255,255,.1);border-radius:2px;cursor:pointer;position:relative}
+        .audio-progress-fill{height:100%;background:linear-gradient(90deg,var(--indigo),var(--green));border-radius:2px;width:0%;transition:width .1s}
+        .audio-time{font-size:11px;color:rgba(255,255,255,.4);font-family:var(--mono);min-width:70px;text-align:right}
+        .audio-waveform{display:flex;align-items:center;justify-content:center;gap:2px;height:32px;margin-bottom:16px}
+        .audio-bar{width:3px;border-radius:2px;background:linear-gradient(to top,var(--indigo),var(--green));transition:height .15s;opacity:.4}
+        .audio-bar.playing{opacity:.9}
+        .audio-transcript{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+        .audio-line{font-size:13px;line-height:1.5;opacity:0;transform:translateY(4px);transition:opacity .3s,transform .3s}
+        .audio-line.visible{opacity:1;transform:translateY(0)}
+        .audio-line-agent{color:rgba(255,255,255,.9)}
+        .audio-line-user{color:rgba(255,255,255,.5);font-style:italic}
+        .audio-line-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+        .audio-line-label.agent{color:var(--indigo)}.audio-line-label.user{color:var(--green)}
+        .audio-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600}
+        .audio-badge.green{background:rgba(16,185,129,.15);color:var(--green)}
+        .audio-badge.indigo{background:rgba(79,70,229,.15);color:rgba(129,140,248,1)}
         .quote-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:32px;position:relative}
         .quote-card::before{content:'\201C';position:absolute;top:12px;left:20px;font-family:Georgia,serif;font-size:56px;color:var(--indigo);opacity:.12;line-height:1}
         .quote-card blockquote{font-family:Georgia,'Times New Roman',serif;font-size:20px;font-weight:400;font-style:italic;color:var(--text);line-height:1.5;letter-spacing:-.02em;margin-bottom:20px}
@@ -391,6 +420,7 @@
             .stats-grid{grid-template-columns:1fr 1fr}
             .cards-grid{grid-template-columns:1fr}
             .respectful{padding:48px 20px}
+            .audio-player{padding:18px;border-radius:12px}
             .email-section{padding:48px 20px}
             .paths{padding:80px 20px}
             .stats-results{padding:80px 20px}
@@ -564,17 +594,47 @@
 
 <div class="gradient-divider"></div>
 
-<!-- 3. RESPECTFUL -->
+<!-- 3. AUDIO SHOWCASE -->
 <section class="respectful reveal" id="how">
     <div class="respectful-inner" style="text-align:center">
-        <h2 style="font-family:var(--display);font-size:clamp(28px,3.5vw,42px);font-weight:900;letter-spacing:-.04em;color:var(--text);max-width:640px;margin:0 auto 40px;line-height:1.15">Push too hard, they fight back. Push too soft, they disappear. Our AI found the line.</h2>
-        <div class="quote-card" style="max-width:520px;margin:0 auto;text-align:left">
-            <blockquote>Every debtor was treated with respect. Not one complaint. That's unheard of.</blockquote>
-            <div class="quote-author">
-                <div class="quote-avatar"><img src="https://respaid.com/images/neil-doyle.png" alt="Neil Doyle" onerror="this.parentElement.innerHTML='ND'"></div>
-                <div class="quote-meta">
-                    <div class="quote-name">Neil Doyle</div>
-                    <div class="quote-title">OTC Transformation Lead, Microsoft</div>
+        <div class="section-label" style="text-align:center;margin-bottom:24px">Hear your AI agent in action</div>
+
+        <div class="audio-showcase">
+            <div class="audio-tabs" id="audio-tabs">
+                <div class="audio-tab active" data-tab="0">&#128293; Pays on the spot</div>
+                <div class="audio-tab" data-tab="1">&#129335; Wrong person</div>
+                <div class="audio-tab" data-tab="2">&#128176; Ready to pay</div>
+            </div>
+
+            <div class="audio-player" id="audio-player">
+                <div class="audio-controls">
+                    <button class="audio-play-btn" id="audio-play-btn" onclick="toggleAudio()">
+                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21" fill="white"/></svg>
+                    </button>
+                    <div class="audio-progress" id="audio-progress" onclick="seekAudio(event)">
+                        <div class="audio-progress-fill" id="audio-progress-fill"></div>
+                    </div>
+                    <div class="audio-time" id="audio-time">0:00</div>
+                </div>
+
+                <div class="audio-waveform" id="audio-waveform"></div>
+
+                <div class="audio-transcript" id="audio-transcript"></div>
+
+                <div id="audio-badge"></div>
+            </div>
+        </div>
+
+        <!-- Neil Doyle quote -->
+        <div style="max-width:520px;margin:32px auto 0">
+            <div class="quote-card" style="text-align:left">
+                <blockquote>Every debtor was treated with respect. Not one complaint. That's unheard of.</blockquote>
+                <div class="quote-author">
+                    <div class="quote-avatar"><img src="https://respaid.com/images/neil-doyle.png" alt="Neil Doyle" onerror="this.parentElement.innerHTML='ND'"></div>
+                    <div class="quote-meta">
+                        <div class="quote-name">Neil Doyle</div>
+                        <div class="quote-title">OTC Transformation Lead, Microsoft</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1407,6 +1467,133 @@ document.getElementById('url-input').addEventListener('keydown', e => {if(e.key=
 
 // ═══ START AUTO-CYCLING ON PAGE LOAD ═══
 startCycling();
+
+// ═══ AUDIO SHOWCASE ═══
+const audioScenarios = [
+    {
+        url: 'https://dxc03zgurdly9.cloudfront.net/10b4ec959b4a004a6bf47dcfa2da0a213c7ce231590e295d9c60faffde486685/recording.wav',
+        startTime: 35,
+        lines: [
+            { role: 'agent', text: 'We represent Checkr on an account matter.' },
+            { role: 'user', text: "I\u2019m paying it right now! It slipped through the cracks. I really do apologize." },
+            { role: 'agent', text: 'No worries at all. I can stay on the line while you complete the payment.' }
+        ],
+        badge: { text: '\u2705 Paid during the call', cls: 'green' }
+    },
+    {
+        url: 'https://dxc03zgurdly9.cloudfront.net/e7c05f3cf487ea6bf707e3497a0edff3a3b0a825d11ad0a745383890b6af89ea/recording.wav',
+        startTime: 33,
+        lines: [
+            { role: 'agent', text: 'Hi, is Marsha Smith available?' },
+            { role: 'user', text: 'She is not. Can I give her a message?' },
+            { role: 'agent', text: 'Could you let Marsha know that Sarah called? We can also be reached via email.' }
+        ],
+        badge: { text: '\uD83D\uDCCB Message left professionally', cls: 'indigo' }
+    },
+    {
+        url: 'https://dxc03zgurdly9.cloudfront.net/10b4ec959b4a004a6bf47dcfa2da0a213c7ce231590e295d9c60faffde486685/recording.wav',
+        startTime: 149,
+        lines: [
+            { role: 'user', text: "I\u2019m putting in my ZIP code right now." },
+            { role: 'agent', text: 'Perfect! Take your time.' },
+            { role: 'user', text: 'Payment sent.' },
+            { role: 'agent', text: "Awesome! We\u2019ll close your file. Thanks!" }
+        ],
+        badge: { text: '\uD83D\uDCB0 $0 manual work', cls: 'green' }
+    }
+];
+
+let currentAudio = null;
+let currentScenario = 0;
+let waveformBars = [];
+
+function initWaveform() {
+    const wf = document.getElementById('audio-waveform');
+    if (!wf) return;
+    wf.innerHTML = '';
+    waveformBars = [];
+    for (let i = 0; i < 50; i++) {
+        const bar = document.createElement('div');
+        bar.className = 'audio-bar';
+        bar.style.height = (Math.random() * 20 + 4) + 'px';
+        wf.appendChild(bar);
+        waveformBars.push(bar);
+    }
+}
+
+function switchScenario(idx) {
+    if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+    currentScenario = idx;
+    document.querySelectorAll('.audio-tab').forEach(function(t, i) {
+        t.classList.toggle('active', i === idx);
+    });
+    document.getElementById('audio-progress-fill').style.width = '0%';
+    document.getElementById('audio-time').textContent = '0:00';
+    document.getElementById('audio-play-btn').innerHTML = '<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21" fill="white"/></svg>';
+    waveformBars.forEach(function(b) { b.classList.remove('playing'); b.style.height = (Math.random() * 20 + 4) + 'px'; });
+
+    var scenario = audioScenarios[idx];
+    var transcript = document.getElementById('audio-transcript');
+    transcript.innerHTML = scenario.lines.map(function(l) {
+        return '<div class="audio-line visible">' +
+            '<div class="audio-line-label ' + l.role + '">' + (l.role === 'agent' ? 'Agent' : 'Debtor') + '</div>' +
+            '<div class="audio-line-' + l.role + '">\u201C' + l.text + '\u201D</div>' +
+            '</div>';
+    }).join('');
+
+    document.getElementById('audio-badge').innerHTML = '<div class="audio-badge ' + scenario.badge.cls + '">' + scenario.badge.text + '</div>';
+}
+
+function toggleAudio() {
+    var scenario = audioScenarios[currentScenario];
+    if (currentAudio && !currentAudio.paused) {
+        currentAudio.pause();
+        document.getElementById('audio-play-btn').innerHTML = '<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21" fill="white"/></svg>';
+        waveformBars.forEach(function(b) { b.classList.remove('playing'); });
+        return;
+    }
+    if (!currentAudio || currentAudio._scenarioIdx !== currentScenario) {
+        currentAudio = new Audio(scenario.url);
+        currentAudio._scenarioIdx = currentScenario;
+        currentAudio.currentTime = scenario.startTime;
+        currentAudio.ontimeupdate = function() {
+            var elapsed = currentAudio.currentTime - scenario.startTime;
+            if (elapsed < 0) elapsed = 0;
+            var dur = currentAudio.duration - scenario.startTime;
+            if (dur > 0) document.getElementById('audio-progress-fill').style.width = (elapsed / dur * 100) + '%';
+            var m = Math.floor(elapsed / 60);
+            var s = Math.floor(elapsed % 60);
+            document.getElementById('audio-time').textContent = m + ':' + String(s).padStart(2, '0');
+        };
+    }
+    currentAudio.play();
+    document.getElementById('audio-play-btn').innerHTML = '<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" fill="white"/><rect x="14" y="4" width="4" height="16" fill="white"/></svg>';
+    function animateWave() {
+        if (currentAudio && !currentAudio.paused) {
+            waveformBars.forEach(function(b) {
+                b.classList.add('playing');
+                b.style.height = (Math.random() * 28 + 4) + 'px';
+            });
+            requestAnimationFrame(animateWave);
+        }
+    }
+    animateWave();
+}
+
+function seekAudio(e) {
+    if (!currentAudio) return;
+    var rect = e.currentTarget.getBoundingClientRect();
+    var pct = (e.clientX - rect.left) / rect.width;
+    var scenario = audioScenarios[currentScenario];
+    currentAudio.currentTime = scenario.startTime + pct * (currentAudio.duration - scenario.startTime);
+}
+
+document.querySelectorAll('.audio-tab').forEach(function(tab) {
+    tab.onclick = function() { switchScenario(parseInt(tab.dataset.tab)); };
+});
+
+initWaveform();
+switchScenario(0);
 </script>
 </body>
 </html>
