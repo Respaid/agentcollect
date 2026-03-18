@@ -228,34 +228,30 @@
         .respectful-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:flex-start;max-width:900px;margin:0 auto}
         .respectful-text{font-size:20px;color:var(--text);line-height:1.7;font-weight:400;letter-spacing:-.01em}
 
-        /* AUDIO SHOWCASE */
+        /* AUDIO SHOWCASE — Ultra Premium */
         .audio-showcase{max-width:620px;margin:0 auto}
-        .audio-tabs{display:flex;gap:6px;margin-bottom:16px;justify-content:center;flex-wrap:wrap}
-        .audio-tab{padding:8px 16px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--text-mid);transition:all .2s;white-space:nowrap}
-        .audio-tab:hover{border-color:var(--indigo);color:var(--indigo)}
-        .audio-tab.active{background:var(--indigo);color:#fff;border-color:var(--indigo)}
-        .audio-player{background:var(--bg-dark);border-radius:16px;padding:24px;color:#fff;position:relative;overflow:hidden}
-        .audio-player::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--indigo),var(--green))}
-        .audio-controls{display:flex;align-items:center;gap:14px;margin-bottom:16px}
-        .audio-play-btn{width:44px;height:44px;border-radius:50%;background:var(--indigo);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s}
-        .audio-play-btn:hover{background:#4338ca}
-        .audio-play-btn svg{fill:#fff;width:16px;height:16px;margin-left:2px}
-        .audio-progress{flex:1;height:4px;background:rgba(255,255,255,.1);border-radius:2px;cursor:pointer;position:relative}
-        .audio-progress-fill{height:100%;background:linear-gradient(90deg,var(--indigo),var(--green));border-radius:2px;width:0%;transition:width .1s}
-        .audio-time{font-size:11px;color:rgba(255,255,255,.4);font-family:var(--mono);min-width:70px;text-align:right}
-        .audio-waveform{display:flex;align-items:center;justify-content:center;gap:2px;height:32px;margin-bottom:16px}
-        .audio-bar{width:3px;border-radius:2px;background:linear-gradient(to top,var(--indigo),var(--green));transition:height .15s;opacity:.4}
-        .audio-bar.playing{opacity:.9}
-        .audio-transcript{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
-        .audio-line{font-size:13px;line-height:1.5;opacity:0;transform:translateY(4px);transition:opacity .3s,transform .3s}
-        .audio-line.visible{opacity:1;transform:translateY(0)}
-        .audio-line-agent{color:rgba(255,255,255,.9)}
-        .audio-line-user{color:rgba(255,255,255,.5);font-style:italic}
-        .audio-line-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
-        .audio-line-label.agent{color:var(--indigo)}.audio-line-label.user{color:var(--green)}
+        .audio-tabs{display:flex;gap:8px;margin-bottom:20px;justify-content:center;flex-wrap:wrap}
+        .audio-tab{padding:8px 18px;border-radius:24px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid rgba(79,70,229,.18);background:rgba(79,70,229,.04);color:var(--text-mid);transition:all .25s;white-space:nowrap}
+        .audio-tab:hover{border-color:var(--indigo);color:var(--indigo);background:rgba(79,70,229,.08)}
+        .audio-tab.active{background:var(--indigo);color:#fff;border-color:var(--indigo);box-shadow:0 4px 16px rgba(79,70,229,.25)}
+        .audio-player{background:linear-gradient(135deg,#0B1B3D 0%,#1a1a3e 50%,#0d2847 100%);border-radius:20px;padding:28px 28px 24px;color:#fff;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 20px 60px rgba(11,27,61,.4)}
+        .audio-player::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--indigo),var(--green));opacity:.6}
+        .audio-live-dot{width:8px;height:8px;border-radius:50%;background:#10B981;animation:pulse-ring 2s infinite;flex-shrink:0}
+        .audio-label{font-size:12px;color:rgba(255,255,255,.4);font-weight:500;letter-spacing:.02em}
+        .audio-time{font-size:12px;color:rgba(255,255,255,.3);font-family:var(--mono);letter-spacing:.04em}
+        .audio-waveform{display:flex;align-items:center;justify-content:center;gap:3px;height:80px;margin-bottom:4px}
+        .audio-bar{width:4px;border-radius:3px;transition:height .12s ease;opacity:.35}
+        .audio-bar.playing{opacity:.85}
+        .audio-controls-row{display:flex;align-items:center;gap:16px;margin:12px 0}
+        .audio-play-btn{width:56px;height:56px;border-radius:50%;background:var(--indigo);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;box-shadow:0 0 24px rgba(79,70,229,.3)}
+        .audio-play-btn:hover{transform:scale(1.06);box-shadow:0 0 36px rgba(79,70,229,.5)}
+        .audio-play-btn svg{fill:#fff;width:18px;height:18px;margin-left:2px}
+        .audio-progress{flex:1;height:3px;background:rgba(255,255,255,.08);border-radius:2px;cursor:pointer;position:relative}
+        .audio-progress-fill{height:100%;background:linear-gradient(90deg,var(--indigo),var(--green));border-radius:2px;width:0%;transition:width .1s;box-shadow:0 0 8px rgba(79,70,229,.3)}
+        .audio-quote{font-size:20px;font-style:italic;font-weight:300;color:rgba(255,255,255,.8);text-align:center;max-width:440px;margin:16px auto 0;line-height:1.5;letter-spacing:-.01em}
         .audio-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600}
-        .audio-badge.green{background:rgba(16,185,129,.15);color:var(--green)}
-        .audio-badge.indigo{background:rgba(79,70,229,.15);color:rgba(129,140,248,1)}
+        .audio-badge.green{background:rgba(16,185,129,.12);color:var(--green)}
+        .audio-badge.indigo{background:rgba(79,70,229,.12);color:rgba(129,140,248,1)}
         .quote-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:32px;position:relative}
         .quote-card::before{content:'\201C';position:absolute;top:12px;left:20px;font-family:Georgia,serif;font-size:56px;color:var(--indigo);opacity:.12;line-height:1}
         .quote-card blockquote{font-family:Georgia,'Times New Roman',serif;font-size:20px;font-weight:400;font-style:italic;color:var(--text);line-height:1.5;letter-spacing:-.02em;margin-bottom:20px}
@@ -420,7 +416,10 @@
             .stats-grid{grid-template-columns:1fr 1fr}
             .cards-grid{grid-template-columns:1fr}
             .respectful{padding:48px 20px}
-            .audio-player{padding:18px;border-radius:12px}
+            .audio-player{padding:20px;border-radius:16px}
+            .audio-waveform{height:60px}
+            .audio-quote{font-size:17px}
+            .audio-play-btn{width:48px;height:48px}
             .email-section{padding:48px 20px}
             .paths{padding:80px 20px}
             .stats-results{padding:80px 20px}
@@ -607,21 +606,33 @@
             </div>
 
             <div class="audio-player" id="audio-player">
-                <div class="audio-controls">
-                    <button class="audio-play-btn" id="audio-play-btn" onclick="toggleAudio()">
-                        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21" fill="white"/></svg>
-                    </button>
-                    <div class="audio-progress" id="audio-progress" onclick="seekAudio(event)">
-                        <div class="audio-progress-fill" id="audio-progress-fill"></div>
+                <!-- Header -->
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+                    <div style="display:flex;align-items:center;gap:8px">
+                        <div class="audio-live-dot"></div>
+                        <span class="audio-label" id="audio-scenario-label">Live call &middot; Checkr collection</span>
                     </div>
                     <div class="audio-time" id="audio-time">0:00</div>
                 </div>
 
+                <!-- Waveform -->
                 <div class="audio-waveform" id="audio-waveform"></div>
 
-                <div class="audio-transcript" id="audio-transcript"></div>
+                <!-- Controls -->
+                <div class="audio-controls-row">
+                    <button class="audio-play-btn" id="audio-play-btn" onclick="toggleAudio()">
+                        <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21" fill="white"/></svg>
+                    </button>
+                    <div class="audio-progress" id="audio-progress" onclick="seekAudio(event)">
+                        <div class="audio-progress-fill" id="audio-progress-fill"></div>
+                    </div>
+                </div>
 
-                <div id="audio-badge"></div>
+                <!-- Quote -->
+                <div class="audio-quote" id="audio-quote"></div>
+
+                <!-- Badge -->
+                <div id="audio-badge" style="margin-top:16px;text-align:center"></div>
             </div>
         </div>
 
@@ -1483,7 +1494,9 @@ const audioScenarios = [
             { time: 35, role: 'user', text: 'Payment sent.' },
             { time: 38, role: 'agent', text: "Awesome! We'll verify and close your file. Thanks!" }
         ],
-        badge: { text: '✅ Paid during the call', cls: 'green' }
+        badge: { text: '✅ Paid during the call', cls: 'green' },
+        quote: "I\u2019m paying it right now! It slipped through the cracks.",
+        headerLabel: 'Live call \u00b7 Checkr collection'
     },
     {
         label: '❓ Questions about charge',
@@ -1498,7 +1511,9 @@ const audioScenarios = [
             { time: 25, role: 'agent', text: "Use the portal link in the email — that way your balance gets closed out properly." },
             { time: 32, role: 'user', text: "I got it from here. Bye bye." }
         ],
-        badge: { text: '📋 Questions answered, directed to portal', cls: 'indigo' }
+        badge: { text: '📋 Questions answered, directed to portal', cls: 'indigo' },
+        quote: "What are we getting charged for exactly?",
+        headerLabel: 'Inbound callback \u00b7 Checkr'
     },
     {
         label: '🤷 Wrong person → gets referral',
@@ -1514,7 +1529,9 @@ const audioScenarios = [
             { time: 35, role: 'user', text: 'a-p-invoices at caloes.ca.gov.' },
             { time: 40, role: 'agent', text: "Thanks for your help. We'll reach out to accounts payable." }
         ],
-        badge: { text: '📞 Contact info collected from gatekeeper', cls: 'indigo' }
+        badge: { text: '📞 Contact info collected from gatekeeper', cls: 'indigo' },
+        quote: "I don\u2019t deal with that \u2014 let me get you the AP contact.",
+        headerLabel: 'Outbound call \u00b7 CalOES'
     }
 ];
 
@@ -1527,10 +1544,21 @@ function initWaveform() {
     if (!wf) return;
     wf.innerHTML = '';
     waveformBars = [];
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 60; i++) {
         const bar = document.createElement('div');
         bar.className = 'audio-bar';
-        bar.style.height = (Math.random() * 20 + 4) + 'px';
+        // Create a natural waveform shape — taller in center
+        const center = 30;
+        const dist = Math.abs(i - center) / center;
+        const base = (1 - dist * 0.6) * 60;
+        const variation = Math.random() * 20 - 10;
+        bar.style.height = Math.max(6, base + variation) + 'px';
+        // Gradient from indigo to green across bars
+        const t = i / 59;
+        const r = Math.round(79 + (16 - 79) * t);
+        const g = Math.round(70 + (185 - 70) * t);
+        const b2 = Math.round(229 + (129 - 229) * t);
+        bar.style.background = 'rgb(' + r + ',' + g + ',' + b2 + ')';
         wf.appendChild(bar);
         waveformBars.push(bar);
     }
@@ -1544,18 +1572,20 @@ function switchScenario(idx) {
     });
     document.getElementById('audio-progress-fill').style.width = '0%';
     document.getElementById('audio-time').textContent = '0:00';
-    document.getElementById('audio-play-btn').innerHTML = '<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21" fill="white"/></svg>';
-    waveformBars.forEach(function(b) { b.classList.remove('playing'); b.style.height = (Math.random() * 20 + 4) + 'px'; });
+    document.getElementById('audio-play-btn').innerHTML = '<svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21" fill="white"/></svg>';
+    // Reset waveform with natural shape
+    waveformBars.forEach(function(b, i) {
+        b.classList.remove('playing');
+        var center = 30;
+        var dist = Math.abs(i - center) / center;
+        var base = (1 - dist * 0.6) * 60;
+        var variation = Math.random() * 20 - 10;
+        b.style.height = Math.max(6, base + variation) + 'px';
+    });
 
     var scenario = audioScenarios[idx];
-    var transcript = document.getElementById('audio-transcript');
-    transcript.innerHTML = scenario.lines.map(function(l) {
-        return '<div class="audio-line visible">' +
-            '<div class="audio-line-label ' + l.role + '">' + (l.role === 'agent' ? 'Agent' : 'Debtor') + '</div>' +
-            '<div class="audio-line-' + l.role + '">\u201C' + l.text + '\u201D</div>' +
-            '</div>';
-    }).join('');
-
+    document.getElementById('audio-scenario-label').textContent = scenario.headerLabel;
+    document.getElementById('audio-quote').innerHTML = '\u201C' + scenario.quote + '\u201D';
     document.getElementById('audio-badge').innerHTML = '<div class="audio-badge ' + scenario.badge.cls + '">' + scenario.badge.text + '</div>';
 }
 
@@ -1563,7 +1593,7 @@ function toggleAudio() {
     var scenario = audioScenarios[currentScenario];
     if (currentAudio && !currentAudio.paused) {
         currentAudio.pause();
-        document.getElementById('audio-play-btn').innerHTML = '<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21" fill="white"/></svg>';
+        document.getElementById('audio-play-btn').innerHTML = '<svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21" fill="white"/></svg>';
         waveformBars.forEach(function(b) { b.classList.remove('playing'); });
         return;
     }
@@ -1585,9 +1615,12 @@ function toggleAudio() {
     document.getElementById('audio-play-btn').innerHTML = '<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" fill="white"/><rect x="14" y="4" width="4" height="16" fill="white"/></svg>';
     function animateWave() {
         if (currentAudio && !currentAudio.paused) {
-            waveformBars.forEach(function(b) {
+            waveformBars.forEach(function(b, i) {
                 b.classList.add('playing');
-                b.style.height = (Math.random() * 28 + 4) + 'px';
+                var center = 30;
+                var dist = Math.abs(i - center) / center;
+                var base = (1 - dist * 0.5) * 65;
+                b.style.height = (Math.random() * 20 + base * 0.4 + 8) + 'px';
             });
             requestAnimationFrame(animateWave);
         }
