@@ -439,7 +439,14 @@
     const fixedEls = [navEl, audioBtn, document.querySelector('.cta-float')];
     const obs = new IntersectionObserver((entries) => {
         entries.forEach(e => {
-            fixedEls.forEach(el => { if(el) el.style.opacity = e.isIntersecting ? '0' : ''; el.style.pointerEvents = e.isIntersecting ? 'none' : ''; });
+            const hide = e.isIntersecting;
+            fixedEls.forEach(el => {
+                if (!el) return;
+                el.style.animation = hide ? 'none' : '';
+                el.style.opacity = hide ? '0' : '';
+                el.style.pointerEvents = hide ? 'none' : '';
+                el.style.transition = 'opacity .3s';
+            });
         });
     }, { threshold: 0.3 });
     if (searchSection) obs.observe(searchSection);
