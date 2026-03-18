@@ -122,22 +122,27 @@
         .scene-tab.active{color:var(--ai);background:rgba(129,140,248,.08)}
         .scene-tab .tab-num{font-family:var(--mono);font-size:10px;opacity:.4;margin-right:4px}
 
-        /* ═══ AUDIO — prominent, pulsing ═══ */
-        .audio-cta{position:fixed;top:24px;right:24px;z-index:100;padding:10px 20px;border-radius:100px;
-            border:1px solid rgba(129,140,248,.15);background:rgba(129,140,248,.05);backdrop-filter:blur(20px);
-            color:var(--ai);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--sans);
-            transition:all .3s;display:flex;align-items:center;gap:8px;animation:audio-glow 3s ease-in-out infinite}
-        .audio-cta:hover{border-color:rgba(129,140,248,.3);background:rgba(129,140,248,.1);transform:scale(1.03)}
-        .audio-cta.on{border-color:rgba(52,211,153,.2);background:rgba(52,211,153,.06);color:var(--green);animation:none}
-        .audio-cta svg{width:16px;height:16px;fill:currentColor}
-        .audio-cta .eq{display:flex;align-items:flex-end;gap:2px;height:14px}
-        .audio-cta .eq-bar{width:3px;background:var(--green);border-radius:2px;animation:eq 1s ease-in-out infinite}
-        .audio-cta .eq-bar:nth-child(1){height:6px;animation-delay:0s}
-        .audio-cta .eq-bar:nth-child(2){height:10px;animation-delay:.15s}
-        .audio-cta .eq-bar:nth-child(3){height:4px;animation-delay:.3s}
-        .audio-cta .eq-bar:nth-child(4){height:8px;animation-delay:.1s}
-        @keyframes eq{0%,100%{height:4px}50%{height:14px}}
-        @keyframes audio-glow{0%,100%{box-shadow:0 0 0 0 rgba(129,140,248,0)}50%{box-shadow:0 0 20px 4px rgba(129,140,248,.08)}}
+        /* ═══ PLAY BUTTON — big, centered, unmissable ═══ */
+        .play-btn{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);z-index:101;
+            width:56px;height:56px;border-radius:50%;border:2px solid rgba(129,140,248,.3);
+            background:rgba(129,140,248,.08);backdrop-filter:blur(20px);cursor:pointer;
+            display:flex;align-items:center;justify-content:center;transition:all .3s;
+            animation:play-pulse 2.5s ease-in-out infinite}
+        .play-btn:hover{border-color:rgba(129,140,248,.5);background:rgba(129,140,248,.15);transform:translateX(-50%) scale(1.08)}
+        .play-btn.on{border-color:rgba(52,211,153,.3);background:rgba(52,211,153,.08);animation:none}
+        .play-btn svg{width:22px;height:22px;fill:var(--ai);margin-left:2px}
+        .play-btn.on svg{fill:var(--green)}
+        .play-btn .eq{display:flex;align-items:flex-end;gap:2px;height:18px}
+        .play-btn .eq-bar{width:3px;background:var(--green);border-radius:2px;animation:eq 1s ease-in-out infinite}
+        .play-btn .eq-bar:nth-child(1){height:6px;animation-delay:0s}
+        .play-btn .eq-bar:nth-child(2){height:12px;animation-delay:.15s}
+        .play-btn .eq-bar:nth-child(3){height:5px;animation-delay:.3s}
+        .play-btn .eq-bar:nth-child(4){height:10px;animation-delay:.1s}
+        @keyframes eq{0%,100%{height:4px}50%{height:18px}}
+        @keyframes play-pulse{0%,100%{box-shadow:0 0 0 0 rgba(129,140,248,0)}50%{box-shadow:0 0 24px 8px rgba(129,140,248,.12)}}
+        .play-label{position:fixed;bottom:62px;left:50%;transform:translateX(-50%);z-index:100;
+            font-size:10px;font-weight:600;color:rgba(129,140,248,.5);letter-spacing:.08em;text-transform:uppercase;
+            font-family:var(--sans);white-space:nowrap;opacity:0;animation:hook-in .6s 2s forwards;pointer-events:none}
 
         /* ═══ SEARCH SECTION ═══ */
         .search-section{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px;
@@ -181,7 +186,8 @@
         /* ═══ RESPONSIVE ═══ */
         @media(max-width:640px){
             .scene{padding:0 20px}
-            .audio-cta{top:auto;bottom:70px;right:50%;transform:translateX(50%);padding:8px 16px;font-size:11px}
+            .play-btn{bottom:60px;width:48px;height:48px}
+            .play-label{bottom:42px;font-size:9px}
             .cta-float{top:auto;bottom:110px;left:50%;transform:translateX(-50%);right:auto}
             .logo{top:26px;left:16px;transform:none}
             .scene-nav{bottom:16px;gap:3px;padding:3px}
@@ -198,11 +204,11 @@
 <a href="/" class="logo">AgentCollect<span class="d"></span></a>
 <a href="https://cal.com/johnb/30" class="cta-float" target="_blank">Book a demo</a>
 
-<!-- Audio — prominent, can't miss it -->
-<button class="audio-cta" id="audioBtn">
-    <svg viewBox="0 0 24 24"><path d="M16.5 12A4.5 4.5 0 0014 8.5v7a4.49 4.49 0 002.5-3.5zM14 3.23v2.06a6.51 6.51 0 010 13.42v2.06A8.51 8.51 0 0014 3.23zM3 9v6h4l5 5V4L7 9H3z"/></svg>
-    <span id="audioLabel">Listen to the real call</span>
+<!-- Play button — big, centered, can't miss it -->
+<button class="play-btn" id="audioBtn">
+    <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21" fill="currentColor"/></svg>
 </button>
+<div class="play-label" id="playLabel">Listen to the real call</div>
 
 <!-- Scene navigation — labeled tabs -->
 <div class="scene-nav" id="sceneNav"></div>
@@ -324,15 +330,20 @@
         navEl.appendChild(tab);
     });
 
+    const playLabel = document.getElementById('playLabel');
     // Audio toggle
     audioBtn.addEventListener('click', () => {
         audioOn = !audioOn;
         audioBtn.classList.toggle('on', audioOn);
         if (audioOn) {
-            audioLabel.innerHTML = '<span class="eq"><span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span></span> Playing';
+            audioBtn.innerHTML = '<span class="eq"><span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span><span class="eq-bar"></span></span>';
+            playLabel.textContent = 'Playing';
+            playLabel.style.color = 'rgba(52,211,153,.5)';
             playScene(ci);
         } else {
-            audioLabel.textContent = 'Listen to the real call';
+            audioBtn.innerHTML = '<svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21" fill="currentColor"/></svg>';
+            playLabel.textContent = 'Listen to the real call';
+            playLabel.style.color = '';
             if (audioEl) { audioEl.pause(); audioEl = null; }
         }
     });
@@ -359,15 +370,10 @@
         container.className = 'scene active';
         stage.appendChild(container);
 
-        // Audio
-        if (audioOn && scene.audio) {
-            audioEl = new Audio(scene.audio);
-            audioEl.currentTime = scene.audioStart || 0;
-            audioEl.play().catch(() => {});
-        }
-
-        let lastEnd = 0;
-        scene.beats.forEach(beat => {
+        // Schedule beats — if audio is on, wait for audio to actually start playing
+        function scheduleBeats() {
+            let lastEnd = 0;
+            scene.beats.forEach(beat => {
             const t = setTimeout(() => {
                 if (beat.clear) {
                     container.querySelectorAll('.line,.hook-wrap').forEach(l => {
@@ -415,11 +421,25 @@
             lastEnd = Math.max(lastEnd, beat.delay + (beat.badge ? 2800 : beat.html ? 1000 : 0));
         });
 
-        const adv = setTimeout(() => {
-            container.style.opacity = '0';
-            setTimeout(() => playScene((idx + 1) % scenes.length), 500);
-        }, lastEnd + 2200);
-        timers.push(adv);
+            const adv = setTimeout(() => {
+                container.style.opacity = '0';
+                setTimeout(() => playScene((idx + 1) % scenes.length), 500);
+            }, lastEnd + 2200);
+            timers.push(adv);
+        }
+
+        // Audio: wait for actual playback before scheduling beats
+        if (audioOn && scene.audio) {
+            audioEl = new Audio(scene.audio);
+            audioEl.currentTime = scene.audioStart || 0;
+            audioEl.addEventListener('playing', function onPlay() {
+                audioEl.removeEventListener('playing', onPlay);
+                scheduleBeats();
+            }, { once: true });
+            audioEl.play().catch(() => { scheduleBeats(); });
+        } else {
+            scheduleBeats();
+        }
     }
 
     // Keyboard
@@ -431,7 +451,7 @@
 
     // Hide fixed UI when scrolled to search section
     const searchSection = document.querySelector('.search-section');
-    const fixedEls = [navEl, audioBtn, document.querySelector('.cta-float')];
+    const fixedEls = [navEl, audioBtn, document.querySelector('.cta-float'), playLabel];
     const obs = new IntersectionObserver((entries) => {
         entries.forEach(e => {
             const hide = e.isIntersecting;
