@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentCollect — Live Call Widget</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+body {
+  background: #050505;
+  color: #fff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100%;
+}
+
+/* Noise texture */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ============ TOP BAR ============ */
+.top-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+}
+
+.logo {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900;
+  font-size: 18px;
+  color: #fff;
+  opacity: 0.2;
+  letter-spacing: -0.02em;
+  user-select: none;
+}
+
+.logo-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #4F46E5;
+  border-radius: 50%;
+  margin-left: 1px;
+  vertical-align: super;
+  position: relative;
+  top: -4px;
+}
+
+.demo-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.3);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+.demo-link:hover { color: rgba(255,255,255,0.6); }
+
+/* ============ HERO SECTION ============ */
+.hero {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px 60px;
+  overflow: hidden;
+}
+
+/* Soft glow behind widget */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(79,70,229,0.06) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.hero-headline {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900;
+  font-size: clamp(32px, 5vw, 48px);
+  color: #fff;
+  letter-spacing: -0.03em;
+  text-align: center;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.3);
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============ CALL WIDGET ============ */
+.call-widget {
+  position: relative;
+  z-index: 2;
+  width: min(480px, 92vw);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+/* Widget Header */
+.widget-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.live-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  background: #34d399;
+  border-radius: 50%;
+  animation: livePulse 2s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(52,211,153,0.4); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(52,211,153,0); }
+}
+
+.live-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: #34d399;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.widget-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.call-timer {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+}
+
+/* Widget Waveform */
+.widget-waveform {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  height: 40px;
+  padding: 0 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.wave-bar {
+  width: 3px;
+  height: 4px;
+  background: #6366f1;
+  border-radius: 2px;
+  transition: height 0.15s ease;
+}
+
+.wave-bar.active {
+  animation: waveAnim 0.6s ease-in-out infinite;
+}
+
+@keyframes waveAnim {
+  0%, 100% { height: 4px; }
+  50% { height: var(--max-h, 20px); }
+}
+
+/* Widget Transcript */
+.widget-transcript {
+  height: 280px;
+  overflow-y: auto;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar but keep scrollable */
+.widget-transcript::-webkit-scrollbar { width: 0; }
+.widget-transcript { scrollbar-width: none; }
+
+.transcript-line {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: lineIn 0.4s ease forwards;
+}
+
+@keyframes lineIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.line-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.line-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.15);
+}
+
+.line-speaker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.line-speaker.debtor { color: rgba(255,255,255,0.5); }
+.line-speaker.agent { color: rgba(129,140,248,0.7); }
+
+.line-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+.line-text.debtor { color: #fff; }
+.line-text.agent { color: #818cf8; }
+
+.line-text .word {
+  display: inline;
+  opacity: 0;
+}
+
+.line-text .word.visible {
+  animation: wordIn 0.15s ease forwards;
+}
+
+@keyframes wordIn {
+  to { opacity: 1; }
+}
+
+/* Outcome badge in transcript */
+.outcome-line {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: lineIn 0.5s ease forwards;
+}
+
+.outcome-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(52,211,153,0.08);
+  border: 1px solid rgba(52,211,153,0.15);
+  border-radius: 10px;
+  padding: 10px 16px;
+}
+
+.outcome-icon {
+  font-size: 14px;
+}
+
+.outcome-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #34d399;
+}
+
+.outcome-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(52,211,153,0.6);
+  margin-left: 2px;
+}
+
+/* Widget Footer */
+.widget-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.footer-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  flex: 1;
+}
+
+.play-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid #6366f1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.play-btn:hover {
+  background: rgba(99,102,241,0.1);
+  border-color: #818cf8;
+}
+
+.play-btn svg {
+  fill: #818cf8;
+  width: 16px;
+  height: 16px;
+}
+
+.play-icon { display: block; }
+.pause-icon { display: none; }
+.play-btn.playing .play-icon { display: none; }
+.play-btn.playing .pause-icon { display: block; }
+
+.scene-counter {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  flex: 1;
+  text-align: right;
+}
+
+/* ============ SCENE SELECTOR ============ */
+.scene-selector {
+  display: flex;
+  gap: 10px;
+  margin-top: 28px;
+  position: relative;
+  z-index: 2;
+}
+
+.scene-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 12px 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.35);
+}
+
+.scene-card:hover {
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.5);
+}
+
+.scene-card.active {
+  border-color: rgba(99,102,241,0.4);
+  color: rgba(255,255,255,0.7);
+  background: rgba(99,102,241,0.06);
+}
+
+.scene-card-icon {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* ============ BUILD YOURS SECTION ============ */
+.build-section {
+  scroll-snap-align: start;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  background: #050505;
+  position: relative;
+}
+
+.build-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(79,70,229,0.06) 0%, transparent 70%);
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.build-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900;
+  font-size: clamp(40px, 8vw, 80px);
+  color: #fff;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.build-title-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #4F46E5;
+  border-radius: 50%;
+  margin-left: 2px;
+  vertical-align: super;
+  position: relative;
+  top: -8px;
+}
+
+.build-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 6px 6px 6px 24px;
+  width: min(560px, 90vw);
+  gap: 12px;
+  transition: border-color 0.2s;
+}
+
+.search-bar:focus-within {
+  border-color: rgba(79,70,229,0.4);
+}
+
+.search-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #fff;
+  min-width: 0;
+}
+
+.search-input::placeholder {
+  color: rgba(255,255,255,0.25);
+}
+
+.search-btn {
+  background: #4F46E5;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 28px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.search-btn:hover {
+  background: #4338ca;
+}
+
+/* Trust logos */
+.trust-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 56px;
+  flex-wrap: wrap;
+}
+
+.trust-logos img {
+  height: 22px;
+  opacity: 0.15;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.3s;
+}
+
+.trust-logos img:hover {
+  opacity: 0.35;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 600px) {
+  .hero {
+    padding: 80px 16px 40px;
+  }
+
+  .call-widget {
+    width: 100%;
+    border-radius: 16px;
+  }
+
+  .widget-transcript {
+    height: 240px;
+  }
+
+  .scene-selector {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .scene-card {
+    justify-content: center;
+  }
+
+  .trust-logos {
+    gap: 24px;
+  }
+
+  .trust-logos img {
+    height: 18px;
+  }
+
+  .hero-headline {
+    font-size: 28px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="top-bar">
+    <div class="logo">AgentCollect<span class="logo-dot"></span></div>
+    <a href="#" class="demo-link">Book a demo</a>
+  </div>
+
+  <h1 class="hero-headline">One of them isn't human.</h1>
+  <p class="hero-subtitle">Real AI calls. Real outcomes. Listen.</p>
+
+  <!-- Call Widget -->
+  <div class="call-widget">
+    <div class="widget-header">
+      <div class="live-badge">
+        <div class="live-dot"></div>
+        <span class="live-label">Live</span>
+      </div>
+      <div class="widget-title" id="widgetTitle">AI Agent → Khalil</div>
+      <div class="call-timer" id="callTimer">0:00</div>
+    </div>
+
+    <div class="widget-waveform" id="waveform"></div>
+
+    <div class="widget-transcript" id="transcript"></div>
+
+    <div class="widget-footer">
+      <div class="footer-label" id="footerLabel">Objection handled</div>
+      <button class="play-btn" id="playBtn" aria-label="Play/Pause">
+        <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
+      </button>
+      <div class="scene-counter" id="sceneCounter">1/3</div>
+    </div>
+  </div>
+
+  <!-- Scene Selector -->
+  <div class="scene-selector" id="sceneSelector">
+    <div class="scene-card active" data-scene="0">
+      <span class="scene-card-icon">&#x1F6E1;</span>
+      <span>Objection handled</span>
+    </div>
+    <div class="scene-card" data-scene="1">
+      <span class="scene-card-icon">&#x1F4DE;</span>
+      <span>Contact collected</span>
+    </div>
+    <div class="scene-card" data-scene="2">
+      <span class="scene-card-icon">&#x2705;</span>
+      <span>Paid on call</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUILD YOURS ============ -->
+<section class="build-section" id="buildSection">
+  <h2 class="build-title">Build yours<span class="build-title-dot"></span></h2>
+  <p class="build-subtitle">Deploy an AI collection agent trained on your brand, in minutes.</p>
+  <div class="search-bar">
+    <input class="search-input" type="text" placeholder="yourcompany.com" />
+    <button class="search-btn">Build my agent</button>
+  </div>
+  <div class="trust-logos">
+    <img src="https://cdn.brandfetch.io/microsoft.com/w/512/h/80/logo" alt="Microsoft">
+    <img src="https://cdn.brandfetch.io/dell.com/w/512/h/80/logo" alt="Dell">
+    <img src="https://cdn.brandfetch.io/plaid.com/w/512/h/80/logo" alt="Plaid">
+    <img src="https://cdn.brandfetch.io/checkr.com/w/512/h/80/logo" alt="Checkr">
+    <img src="https://cdn.brandfetch.io/doordash.com/w/512/h/80/logo" alt="DoorDash">
+  </div>
+</section>
+
+<!-- ============ AUDIO ELEMENTS ============ -->
+<audio id="audio0" preload="none" src="https://dxc03zgurdly9.cloudfront.net/075961824e83d68a634b91afb75f59fba97b1b2951c58dc43ec9a5e3bc58b806/recording.wav"></audio>
+<audio id="audio1" preload="none" src="https://dxc03zgurdly9.cloudfront.net/00d79b2208aee99e88fb7a0033974bba3140f3b905b388429b22133e4694c670/recording.wav"></audio>
+<audio id="audio2" preload="none" src="https://dxc03zgurdly9.cloudfront.net/10b4ec959b4a004a6bf47dcfa2da0a213c7ce231590e295d9c60faffde486685/recording.wav"></audio>
+
+<script>
+(function() {
+  'use strict';
+
+  // ============ SCENE DATA ============
+  const scenes = [
+    {
+      audioId: 'audio0',
+      audioStart: 30,
+      name: 'Khalil',
+      label: 'Objection handled',
+      beats: [
+        { delay: 500,   side: 'debtor', time: '0:02', text: 'I guess I do have questions about it.' },
+        { delay: 2700,  side: 'debtor', time: '0:05', text: 'What are we getting charged for exactly?' },
+        { delay: 5800,  side: 'agent',  time: '0:08', text: 'Twenty-nine ninety-nine. Background check from Client.' },
+        { delay: 10000, side: 'outcome', icon: '\u2713', text: 'Objection handled.', sub: 'Directed to portal.' }
+      ]
+    },
+    {
+      audioId: 'audio1',
+      audioStart: 56,
+      name: 'Jonathan',
+      label: 'Contact collected',
+      beats: [
+        { delay: 200,   side: 'debtor', time: '0:01', text: "I don\u2019t deal with that. You\u2019d wanna call accounts payable." },
+        { delay: 6000,  side: 'agent',  time: '0:10', text: 'Could you provide the name or contact info for AP?' },
+        { delay: 10000, side: 'outcome', icon: '\u2713', text: 'AP contact collected.', sub: 'Phone + email.' }
+      ]
+    },
+    {
+      audioId: 'audio2',
+      audioStart: 50,
+      name: 'Rachel',
+      label: 'Paid on call',
+      beats: [
+        { delay: 1800,  side: 'debtor', time: '0:02', text: "I\u2019m paying it today. I have it coming in." },
+        { delay: 5700,  side: 'debtor', time: '0:06', text: 'I, again, am so sorry.' },
+        { delay: 9000,  side: 'debtor', time: '0:09', text: "It is being paid, honestly. I\u2019m in front of my computer putting it in right now." },
+        { delay: 13000, side: 'outcome', icon: '\u2713', text: 'Paid during the call.', sub: '$0 manual work.' }
+      ]
+    }
+  ];
+
+  // ============ DOM REFS ============
+  const widgetTitle = document.getElementById('widgetTitle');
+  const callTimer = document.getElementById('callTimer');
+  const waveform = document.getElementById('waveform');
+  const transcript = document.getElementById('transcript');
+  const playBtn = document.getElementById('playBtn');
+  const footerLabel = document.getElementById('footerLabel');
+  const sceneCounter = document.getElementById('sceneCounter');
+  const sceneSelector = document.getElementById('sceneSelector');
+  const sceneCards = sceneSelector.querySelectorAll('.scene-card');
+
+  // ============ STATE ============
+  let currentScene = 0;
+  let isPlaying = false;
+  let beatTimeouts = [];
+  let timerInterval = null;
+  let timerSeconds = 0;
+  let wordIntervals = [];
+  let autoAdvanceTimeout = null;
+
+  // ============ INIT WAVEFORM ============
+  const BAR_COUNT = 30;
+  for (let i = 0; i < BAR_COUNT; i++) {
+    const bar = document.createElement('div');
+    bar.className = 'wave-bar';
+    const maxH = 8 + Math.random() * 22;
+    bar.style.setProperty('--max-h', maxH + 'px');
+    bar.style.animationDelay = (Math.random() * 0.6) + 's';
+    waveform.appendChild(bar);
+  }
+  const waveBars = waveform.querySelectorAll('.wave-bar');
+
+  function setWaveActive(active) {
+    waveBars.forEach(b => {
+      if (active) b.classList.add('active');
+      else b.classList.remove('active');
+    });
+  }
+
+  // ============ TIMER ============
+  function startTimer() {
+    timerSeconds = 0;
+    callTimer.textContent = '0:00';
+    timerInterval = setInterval(() => {
+      timerSeconds++;
+      const m = Math.floor(timerSeconds / 60);
+      const s = timerSeconds % 60;
+      callTimer.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+    }, 1000);
+  }
+
+  function stopTimer() {
+    if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+  }
+
+  // ============ WORD-BY-WORD REVEAL ============
+  function revealWords(container) {
+    const words = container.querySelectorAll('.word');
+    let idx = 0;
+    const iv = setInterval(() => {
+      if (idx >= words.length) { clearInterval(iv); return; }
+      words[idx].classList.add('visible');
+      idx++;
+    }, 60);
+    wordIntervals.push(iv);
+  }
+
+  // ============ ADD TRANSCRIPT LINE ============
+  function addTranscriptLine(beat) {
+    const line = document.createElement('div');
+
+    if (beat.side === 'outcome') {
+      line.className = 'outcome-line';
+      line.innerHTML = `
+        <div class="outcome-badge">
+          <span class="outcome-icon">${beat.icon}</span>
+          <span class="outcome-text">${beat.text}</span>
+          <span class="outcome-sub">${beat.sub}</span>
+        </div>`;
+      transcript.appendChild(line);
+      transcript.scrollTop = transcript.scrollHeight;
+      // Deactivate waveform on outcome
+      setWaveActive(false);
+      return;
+    }
+
+    line.className = 'transcript-line';
+    const speakerClass = beat.side;
+    const speakerLabel = beat.side === 'debtor' ? 'DEBTOR' : 'AI AGENT';
+
+    // Wrap each word in a span
+    const textWords = beat.text.split(' ').map(w => `<span class="word">${w} </span>`).join('');
+
+    line.innerHTML = `
+      <div class="line-meta">
+        <span class="line-time">${beat.time}</span>
+        <span class="line-speaker ${speakerClass}">${speakerLabel}</span>
+      </div>
+      <div class="line-text ${speakerClass}">${textWords}</div>`;
+
+    transcript.appendChild(line);
+    transcript.scrollTop = transcript.scrollHeight;
+
+    // Activate waveform
+    setWaveActive(true);
+
+    // Word-by-word reveal
+    revealWords(line.querySelector('.line-text'));
+  }
+
+  // ============ PLAY SCENE ============
+  function playScene(idx) {
+    // Clean up
+    cleanup();
+    currentScene = idx;
+
+    const scene = scenes[idx];
+    const audioEl = document.getElementById(scene.audioId);
+
+    // Update UI
+    widgetTitle.textContent = 'AI Agent \u2192 ' + scene.name;
+    footerLabel.textContent = scene.label;
+    sceneCounter.textContent = (idx + 1) + '/3';
+    transcript.innerHTML = '';
+
+    // Update scene cards
+    sceneCards.forEach(c => c.classList.remove('active'));
+    sceneCards[idx].classList.add('active');
+
+    // Set audio position
+    audioEl.currentTime = scene.audioStart;
+
+    // Play audio
+    const playPromise = audioEl.play();
+    if (playPromise) {
+      playPromise.then(() => {
+        isPlaying = true;
+        playBtn.classList.add('playing');
+        setWaveActive(true);
+        startTimer();
+        scheduleBeats(scene);
+      }).catch(() => {
+        // Autoplay blocked — still schedule beats visually
+        isPlaying = true;
+        playBtn.classList.add('playing');
+        setWaveActive(true);
+        startTimer();
+        scheduleBeats(scene);
+      });
+    }
+  }
+
+  function scheduleBeats(scene) {
+    const audioEl = document.getElementById(scene.audioId);
+
+    scene.beats.forEach(beat => {
+      const t = setTimeout(() => {
+        if (!isPlaying) return;
+        addTranscriptLine(beat);
+
+        // If outcome, schedule auto-advance
+        if (beat.side === 'outcome') {
+          autoAdvanceTimeout = setTimeout(() => {
+            if (isPlaying) {
+              const next = (currentScene + 1) % scenes.length;
+              playScene(next);
+            }
+          }, 3000);
+        }
+      }, beat.delay);
+      beatTimeouts.push(t);
+    });
+
+    // Stop audio after last beat + buffer
+    const lastBeat = scene.beats[scene.beats.length - 1];
+    const stopT = setTimeout(() => {
+      audioEl.pause();
+    }, lastBeat.delay + 2500);
+    beatTimeouts.push(stopT);
+  }
+
+  function cleanup() {
+    beatTimeouts.forEach(t => clearTimeout(t));
+    beatTimeouts = [];
+    wordIntervals.forEach(iv => clearInterval(iv));
+    wordIntervals = [];
+    if (autoAdvanceTimeout) { clearTimeout(autoAdvanceTimeout); autoAdvanceTimeout = null; }
+    stopTimer();
+    setWaveActive(false);
+
+    // Pause all audio
+    scenes.forEach(s => {
+      const a = document.getElementById(s.audioId);
+      a.pause();
+    });
+
+    isPlaying = false;
+    playBtn.classList.remove('playing');
+  }
+
+  function togglePlay() {
+    if (isPlaying) {
+      cleanup();
+      // Update display for paused state
+      const scene = scenes[currentScene];
+      widgetTitle.textContent = 'AI Agent \u2192 ' + scene.name;
+      footerLabel.textContent = scene.label;
+      sceneCounter.textContent = (currentScene + 1) + '/3';
+    } else {
+      playScene(currentScene);
+    }
+  }
+
+  // ============ INIT DISPLAY ============
+  function initDisplay() {
+    const scene = scenes[currentScene];
+    widgetTitle.textContent = 'AI Agent \u2192 ' + scene.name;
+    footerLabel.textContent = scene.label;
+    sceneCounter.textContent = (currentScene + 1) + '/3';
+    callTimer.textContent = '0:00';
+  }
+
+  // ============ EVENT LISTENERS ============
+  playBtn.addEventListener('click', togglePlay);
+
+  sceneCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const idx = parseInt(card.dataset.scene, 10);
+      cleanup();
+      currentScene = idx;
+
+      // Update active card
+      sceneCards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+
+      // Play the scene
+      playScene(idx);
+    });
+  });
+
+  // Keyboard controls
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT') return;
+
+    if (e.code === 'Space') {
+      e.preventDefault();
+      togglePlay();
+    } else if (e.code === 'ArrowLeft') {
+      e.preventDefault();
+      const prev = (currentScene - 1 + scenes.length) % scenes.length;
+      cleanup();
+      currentScene = prev;
+      playScene(prev);
+    } else if (e.code === 'ArrowRight') {
+      e.preventDefault();
+      const next = (currentScene + 1) % scenes.length;
+      cleanup();
+      currentScene = next;
+      playScene(next);
+    }
+  });
+
+  // Init
+  initDisplay();
+
+})();
+</script>
+</body>
+</html>
