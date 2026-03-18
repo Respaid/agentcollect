@@ -138,54 +138,53 @@
             background:#fff;border:1px solid var(--border);border-radius:18px;padding:4px;
             box-shadow:0 4px 24px rgba(0,0,0,.04),0 1px 3px rgba(0,0,0,.02)}
 
-        /* AGENT BUILD — VISUAL CARDS */
-        .build-container{max-width:600px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+        /* INTEL LINES */
+        .build-intel{display:flex;flex-direction:column;gap:6px;max-width:600px;margin:0 auto 16px;text-align:center}
+        .build-intel-line{font-size:12px;color:var(--text-muted);opacity:0;transform:translateY(4px);transition:opacity .4s,transform .4s}
+        .build-intel-line.visible{opacity:1;transform:translateY(0)}
+        .build-intel-line .green{color:var(--green)}.build-intel-line .amber{color:var(--amber)}
 
-        .build-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px;opacity:0;transform:translateY(12px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1);box-shadow:0 2px 8px rgba(0,0,0,.04)}
-        .build-card.visible{opacity:1;transform:translateY(0)}
+        /* EMAIL MOCKUP */
+        .build-email{background:#fff;border:1px solid var(--border);border-radius:12px;max-width:580px;margin:0 auto;box-shadow:0 4px 24px rgba(0,0,0,.08);overflow:hidden;animation:pop-in .4s}
+        .build-email-toolbar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--border);background:var(--bg)}
+        .build-email-dot{width:8px;height:8px;border-radius:50%}
+        .build-email-dot.r{background:#EF4444}.build-email-dot.y{background:#F59E0B}.build-email-dot.g{background:#10B981}
+        .build-email-header{padding:14px 20px;border-bottom:1px solid var(--border);font-size:12px;color:var(--text-muted);line-height:1.8}
+        .build-email-header strong{color:var(--text);font-weight:600}
+        .build-email-subject{padding:12px 20px;font-family:var(--display);font-size:16px;font-weight:700;color:var(--text);border-bottom:1px solid var(--border)}
+        .build-email-body{padding:20px;font-size:14px;color:var(--text-mid);line-height:1.7;min-height:160px;position:relative}
+        .build-email-body .cursor{display:inline-block;width:2px;height:16px;background:var(--indigo);animation:blink 1s infinite;vertical-align:text-bottom;margin-left:1px}
+        .build-email-blur{position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(transparent,#fff);z-index:1}
 
-        .build-card-header{display:flex;align-items:center;gap:12px}
-        .build-card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-        .build-card-icon.indigo{background:var(--indigo-light)}.build-card-icon.green{background:rgba(16,185,129,.08)}.build-card-icon.amber{background:rgba(245,158,11,.08)}
-        .build-card-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-dim);margin-bottom:2px}
-        .build-card-value{font-size:15px;font-weight:600;color:var(--text);line-height:1.3}
-        .build-card-meta{font-size:12px;color:var(--text-muted);margin-top:2px}
+        /* CALL WIDGET */
+        .build-call{position:relative;max-width:340px;margin:16px auto 0;background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 16px;box-shadow:0 4px 16px rgba(0,0,0,.06);opacity:0;transform:translateY(12px);transition:opacity .5s,transform .5s}
+        .build-call.visible{opacity:1;transform:translateY(0)}
+        .build-call-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:12px;font-weight:600;color:var(--text)}
+        .build-call-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse-ring 2s infinite}
+        .build-call-text{font-size:13px;color:var(--text-mid);font-style:italic;line-height:1.5}
+        .build-call-blur{position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(transparent,#fff);border-radius:0 0 12px 12px}
 
-        .build-card-contact{display:flex;align-items:center;gap:10px;margin-top:8px}
-        .build-card-avatar{width:36px;height:36px;border-radius:50%;object-fit:cover;flex-shrink:0}
-        .build-card-contact-name{font-size:14px;font-weight:600;color:var(--text)}
-        .build-card-contact-title{font-size:11px;color:var(--text-muted)}
-
-        .build-card-step{display:flex;align-items:flex-start;gap:10px;margin-top:6px}
-        .build-card-step-pill{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--indigo);background:var(--indigo-light);padding:2px 8px;border-radius:4px;flex-shrink:0;margin-top:2px}
-        .build-card-step-text{font-size:13px;color:var(--text-mid);line-height:1.4}
-
-        /* PROGRESS */
-        .build-progress-wrap{padding:8px 0}
-        .build-progress-bar{height:4px;background:var(--border);border-radius:2px;overflow:hidden}
-        .build-progress-fill{height:100%;background:linear-gradient(90deg,var(--indigo),var(--green));border-radius:2px;width:0%;transition:width 1s cubic-bezier(.16,1,.3,1)}
-        .build-progress-pct{font-size:11px;color:var(--text-dim);font-family:var(--mono);text-align:right;margin-top:4px}
-
-        /* EMAIL GATE */
+        /* GATE */
         .build-gate{text-align:center;padding:24px 0 8px}
         .build-gate-title{font-family:var(--display);font-size:20px;font-weight:800;color:var(--text);margin-bottom:4px}
         .build-gate-sub{font-size:13px;color:var(--text-muted);margin-bottom:16px}
         .build-gate-form{display:flex;gap:8px;max-width:400px;margin:0 auto}
         .build-gate-input{flex:1;padding:12px 16px;border:1px solid var(--border);border-radius:10px;font-family:var(--sans);font-size:14px;outline:none;transition:border-color .2s}
         .build-gate-input:focus{border-color:var(--indigo)}
-        .build-gate-btn{padding:12px 24px;background:var(--indigo);color:#fff;border:none;border-radius:10px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:background .2s;white-space:nowrap}
+        .build-gate-btn{padding:12px 24px;background:var(--indigo);color:#fff;border:none;border-radius:10px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap}
         .build-gate-btn:hover{background:var(--indigo-dark)}
 
-        /* BLUR OVERLAY */
-        .build-locked{position:relative}
-        .build-locked::after{content:'';position:absolute;inset:-8px;background:rgba(255,255,255,.7);backdrop-filter:blur(6px);border-radius:14px;z-index:1}
+        /* PROGRESS */
+        .build-progress-wrap{max-width:580px;margin:12px auto}
+        .build-progress-bar{height:3px;background:var(--border);border-radius:2px;overflow:hidden}
+        .build-progress-fill{height:100%;background:linear-gradient(90deg,var(--indigo),var(--green));border-radius:2px;width:0%;transition:width 1s cubic-bezier(.16,1,.3,1)}
 
         /* FINAL CTA */
         .build-final-cta{text-align:center;padding:16px 0}
-        .build-final-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--green);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s}
+        .build-final-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--green);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;text-decoration:none}
         .build-final-btn:hover{background:var(--green-dark)}
 
-        @media(max-width:768px){.build-gate-form{flex-direction:column}.build-card{padding:16px}}
+        @media(max-width:768px){.build-gate-form{flex-direction:column}}
 
         /* CAROUSEL DOTS */
         .carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:16px;position:relative;z-index:1}
@@ -457,7 +456,7 @@
         <div class="orb o6"></div>
     </div>
     <h1 style="position:relative;z-index:1">The end of manual collection.</h1>
-    <p style="font-size:18px;color:var(--text-muted);margin-bottom:0;letter-spacing:-.01em;white-space:nowrap;position:relative;z-index:1">AI agents collect under your brand. They never know it's AI.</p>
+    <p style="font-size:18px;color:var(--text-muted);margin-bottom:0;letter-spacing:-.01em;white-space:nowrap;position:relative;z-index:1">Respectful AI that recovers your money &mdash; as you.</p>
 
     <div class="hero-trust" style="position:relative;z-index:1">
         <span class="hero-trust-label">Trusted by</span>
@@ -484,30 +483,48 @@
         </div>
         <div id="carousel-dots" style="display:none"></div>
         <div id="dash-agent-card">
-            <div class="build-container" id="build-container">
-                <!-- Cards injected by JS -->
+            <!-- Intel lines -->
+            <div class="build-intel" id="build-intel"></div>
+
+            <!-- Email mockup -->
+            <div class="build-email" id="build-email" style="display:none">
+                <div class="build-email-toolbar">
+                    <div class="build-email-dot r"></div>
+                    <div class="build-email-dot y"></div>
+                    <div class="build-email-dot g"></div>
+                </div>
+                <div class="build-email-header" id="build-email-header"></div>
+                <div class="build-email-subject" id="build-email-subject"></div>
+                <div class="build-email-body" id="build-email-body"></div>
             </div>
-            <div class="build-progress-wrap" id="build-progress-wrap" style="max-width:600px;margin:8px auto">
+
+            <!-- Call widget -->
+            <div class="build-call" id="build-call">
+                <div class="build-call-header">
+                    <div class="build-call-dot"></div>
+                    <span id="build-call-label">AI calling...</span>
+                </div>
+                <div class="build-call-text" id="build-call-text"></div>
+            </div>
+
+            <!-- Progress -->
+            <div class="build-progress-wrap">
                 <div class="build-progress-bar"><div class="build-progress-fill" id="build-progress-fill"></div></div>
-                <div class="build-progress-pct" id="build-progress-pct">0%</div>
             </div>
-            <!-- Locked cards (blurred until email) -->
-            <div id="build-locked-container" style="max-width:600px;margin:0 auto;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;border-radius:14px">
-                <div id="build-locked-cards"></div>
-                <div id="build-locked-overlay" style="display:none"></div>
-            </div>
+
             <!-- Email gate -->
             <div class="build-gate" id="build-gate" style="display:none">
-                <div class="build-gate-title">Your agent is 80% ready.</div>
-                <div class="build-gate-sub">Enter your work email to unlock the full agent.</div>
+                <div class="build-gate-title">Your agent is ready.</div>
+                <div class="build-gate-sub">Enter your work email to see the full sequence.</div>
                 <div class="build-gate-form">
                     <input type="email" class="build-gate-input" id="build-gate-email" placeholder="you@company.com">
-                    <button class="build-gate-btn" id="build-gate-btn" onclick="unlockAgent()">Unlock →</button>
+                    <button class="build-gate-btn" onclick="unlockAgent()">Unlock &rarr;</button>
                 </div>
             </div>
-            <!-- Final CTA (after unlock) -->
+
+            <!-- Final CTA -->
             <div class="build-final-cta" id="build-final-cta" style="display:none">
-                <a href="https://cal.com/johnb/30" target="_blank" class="build-final-btn">See your full agent live →</a>
+                <a href="https://cal.com/johnb/30" target="_blank" class="build-final-btn">See your full agent live &rarr;</a>
             </div>
         </div>
     </div>
@@ -896,7 +913,8 @@ const COMPANIES = {
             {name: 'Priya Sharma', title: 'Senior Finance Manager', photo: 'https://ui-avatars.com/api/?name=Priya+Sharma&background=10B981&color=fff&size=200', email_masked: 'p***a@microsoft.com', role: 'Escalation'},
             {name: 'Kevin Torres', title: 'VP Finance Operations', photo: 'https://ui-avatars.com/api/?name=Kevin+Torres&background=F59E0B&color=fff&size=200', role: 'Decision maker'}
         ],
-        plan: {d1: 'AI email under your brand to AP department', d3: 'AI call to procurement with PO reference', d7: 'Escalation to VP Finance with formal compliance notice', d14: 'Direct payment through branded portal'}
+        plan: {d1: 'AI email under your brand to AP department', d3: 'AI call to procurement with PO reference', d7: 'Escalation to VP Finance with formal compliance notice', d14: 'Direct payment through branded portal'},
+        email: { from_name: 'Neil Doyle', from_email: 'n.doyle@microsoft.com', to_email: 'ap@contosoltd.com', subject: 'Microsoft Enterprise Agreement \u2014 balance due', body_visible: "Hi,\n\nI'm reaching out regarding an outstanding balance of $47,500 on your Microsoft Enterprise Agreement (EA-2024-8891).\n\nI understand enterprise billing can involve complex approval chains. I've prepared a summary of the charges with PO references to help expedite your review.", body_locked: "\n\nWe can also discuss a structured payment timeline if that's easier for your team.\n\nYou can review the full breakdown and pay securely here:\n\n[View Payment Options]\n\nBest regards,\nNeil Doyle\nMicrosoft OTC Operations\n(425) 882-8080", call_preview: "Hi, this is Neil Doyle from Microsoft's Order to Cash team. I'm calling about your Enterprise Agreement balance. I've sent over a detailed breakdown \u2014 wanted to see if there's anything I can help clarify to get this resolved." }
     },
     'dell.com': {
         name: 'Dell Technologies', industry: 'Technology / Hardware',
@@ -908,7 +926,8 @@ const COMPANIES = {
             {name: 'Mark Henderson', title: 'Director Credit Operations', photo: 'https://ui-avatars.com/api/?name=Mark+Henderson&background=10B981&color=fff&size=200', email_masked: 'm***n@dell.com', role: 'Escalation'},
             {name: 'Susan Blackwell', title: 'VP Credit & Collections', photo: 'https://ui-avatars.com/api/?name=Susan+Blackwell&background=EF4444&color=fff&size=200', role: 'Decision maker'}
         ],
-        plan: {d1: 'AI email per business unit with specific PO references', d3: 'AI call to each division independently', d7: 'Formal escalation referencing master service agreement', d14: 'Centralized payment portal — all units, one view'}
+        plan: {d1: 'AI email per business unit with specific PO references', d3: 'AI call to each division independently', d7: 'Formal escalation referencing master service agreement', d14: 'Centralized payment portal — all units, one view'},
+        email: { from_name: 'Catherine Torres', from_email: 'c.torres@dell.com', to_email: 'ap@globaltech.com', subject: 'Dell Technologies \u2014 $31,200 outstanding', body_visible: "Hi,\n\nI'm reaching out about an outstanding balance of $31,200 across two Dell purchase orders for your PowerEdge server deployment.\n\nI know hardware procurement cycles can be complex. I've attached a consolidated view of both POs with delivery confirmations to make reconciliation easier.", body_locked: "\n\nWe can set up a 3-month payment plan if that aligns better with your budget cycle.\n\nReview and pay here:\n\n[View Payment Options]\n\nBest regards,\nCatherine Torres\nDell Technologies Credit Operations\n(512) 728-4000", call_preview: "Hi, this is Catherine Torres from Dell's credit operations team. I'm calling about the outstanding balance on your PowerEdge server orders. I'd like to help get this resolved quickly so there's no impact on your support coverage." }
     },
     'checkr.com': {
         name: 'Checkr', industry: 'Background Check / HR Tech',
@@ -955,7 +974,8 @@ const COMPANIES = {
             {name: 'David Majors', title: 'Head of Order to Cash', photo: 'https://ui-avatars.com/api/?name=David+Majors&background=4F46E5&color=fff&size=200', email_masked: 'd***s@uber.com', role: 'Decision maker'},
             {name: 'Shane Hood', title: 'Collections Manager', photo: 'https://ui-avatars.com/api/?name=Shane+Hood&background=10B981&color=fff&size=200', email_masked: 's***d@uber.com', role: 'First contact'}
         ],
-        plan: {d1: 'AI email to restaurant partner as Uber — referencing Eats payout breakdown and outstanding commission', d3: 'AI call to restaurant owner with delivery reconciliation and payment plan offer', d7: 'Escalation to enterprise AP with contract terms and compliance notice', d14: 'Self-service payment portal — pay Uber directly, stay active on the platform'}
+        plan: {d1: 'AI email to restaurant partner as Uber — referencing Eats payout breakdown and outstanding commission', d3: 'AI call to restaurant owner with delivery reconciliation and payment plan offer', d7: 'Escalation to enterprise AP with contract terms and compliance notice', d14: 'Self-service payment portal — pay Uber directly, stay active on the platform'},
+        email: { from_name: 'David Majors', from_email: 'd.majors@uber.com', to_email: 'mario@luigispizza.com', subject: 'Your Uber Eats balance \u2014 $4,200', body_visible: "Hi Mario,\n\nI noticed your Eats payout has an outstanding balance of $4,200 from the last 3 delivery cycles.\n\nI know cash flow can be tight for restaurants \u2014 especially right now. That's why I've set up a flexible 3-payment plan: $1,400/month.", body_locked: "\n\nNo late fees, no penalties. You stay active on the platform.\n\nYou can review and pay in one click:\n\n[View Payment Options]\n\nBest,\nDavid Majors\nUber Accounts Receivable\n(800) 593-7069", call_preview: "Hi Mario, this is David from Uber's accounts team. I'm calling about your outstanding balance of $4,200 from the last few delivery cycles. I'd like to work out a simple payment plan so you can stay active on the platform." }
     },
     'fedex.com': {
         name: 'FedEx', industry: 'Logistics & Shipping',
@@ -966,7 +986,8 @@ const COMPANIES = {
             {name: 'Ryan Patterson', title: 'Director of Credit', photo: 'https://ui-avatars.com/api/?name=Ryan+Patterson&background=6366F1&color=fff&size=200', email_masked: 'r***n@fedex.com', role: 'Decision maker'},
             {name: 'Kevin Johnson', title: 'Collections Lead', photo: 'https://ui-avatars.com/api/?name=Kevin+Johnson&background=10B981&color=fff&size=200', email_masked: 'k***n@fedex.com', role: 'First contact'}
         ],
-        plan: {d1: 'AI email under FedEx brand referencing shipping contract', d3: 'AI call to AP with tracking and invoice data', d7: 'Escalation to senior finance with compliance notice and contract terms', d14: 'Payment portal — debtor pays FedEx directly'}
+        plan: {d1: 'AI email under FedEx brand referencing shipping contract', d3: 'AI call to AP with tracking and invoice data', d7: 'Escalation to senior finance with compliance notice and contract terms', d14: 'Payment portal — debtor pays FedEx directly'},
+        email: { from_name: 'Ryan Patterson', from_email: 'r.patterson@fedex.com', to_email: 'billing@acmelogistics.com', subject: 'FedEx shipping account \u2014 $8,900 past due', body_visible: "Hi,\n\nI'm reaching out about an outstanding balance of $8,900 on your FedEx commercial shipping account.\n\nI see you've been a valued customer for 3+ years \u2014 I'd like to make this easy to resolve while keeping your shipping rates and service level intact.", body_locked: "\n\nI've set up a simple payment arrangement: $2,967/month for 3 months. No service interruption.\n\nReview and pay here:\n\n[View Payment Options]\n\nBest,\nRyan Patterson\nFedEx Credit Operations\n(800) 463-3339", call_preview: "Hi, this is Ryan Patterson from FedEx's credit team. I'm calling about your commercial account balance. I'd like to set up a payment arrangement so there's no interruption to your shipping service." }
     },
     'respaid.com': {
         name: 'Respaid', industry: 'Fintech / AR Automation',
@@ -982,7 +1003,8 @@ const COMPANIES = {
             {name: 'Igor Kolomiets', title: 'CTO', photo: 'https://ui-avatars.com/api/?name=Igor+Kolomiets&background=10B981&color=fff&size=200', role: 'Technical lead'},
             {name: 'Andrew Helmi', title: 'Head of Product', photo: 'https://ui-avatars.com/api/?name=Andrew+Helmi&background=6366F1&color=fff&size=200', role: 'Product'}
         ],
-        plan: {d1: 'AI email under your brand to finance contacts', d3: 'AI call to AP with invoice and contract reference', d7: 'Escalation to senior finance with compliance notice and contract terms', d14: 'Payment portal live — debtor pays you directly'}
+        plan: {d1: 'AI email under your brand to finance contacts', d3: 'AI call to AP with invoice and contract reference', d7: 'Escalation to senior finance with compliance notice and contract terms', d14: 'Payment portal live — debtor pays you directly'},
+        email: { from_name: 'John Banner', from_email: 'j.banner@respaid.com', to_email: 'ap@techstartup.io', subject: 'Respaid platform \u2014 invoice #1847 past due', body_visible: "Hi,\n\nI noticed invoice #1847 for $12,000 is still outstanding \u2014 it was due 30 days ago.\n\nI know startups move fast and invoices can slip through the cracks. That's why I've set up a flexible payment option for you.", body_locked: "\n\nYou can pay the full amount or split it into 2 payments of $6,000. No penalties either way.\n\nPay securely here:\n\n[View Payment Options]\n\nBest,\nJohn Banner\nRespaid", call_preview: "Hi, this is John from Respaid. I'm calling about invoice 1847 for twelve thousand dollars. I'd love to work out a simple payment arrangement \u2014 no penalties, just want to get this resolved." }
     },
     'widr.app': {
         name: 'Respaid', industry: 'Fintech / AR Automation',
@@ -1194,42 +1216,39 @@ async function startAnalysis() {
         company: { name: company.name, domain, industry: company.industry, products: company.products, size: company.size, logo_url: 'https://cdn.brandfetch.io/'+domain+'/w/512/h/80/logo' },
         disputes: company.disputes,
         contacts: company.contacts,
-        plan: { day_1: company.plan.d1, day_3: company.plan.d3, day_7: company.plan.d7, day_14: company.plan.d14 }
+        plan: { day_1: company.plan.d1, day_3: company.plan.d3, day_7: company.plan.d7, day_14: company.plan.d14 },
+        email: company.email || null
     } : null;
 
     let apiPromise = company ? Promise.resolve() : fetch(API+'/analyze-company', {
         method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({domain})
     }).then(r => r.json()).then(r => { if(r.success && r.data) data = r.data; }).catch(e => console.warn('API:', e));
 
-    // === VISUAL CARD BUILD ===
-    const container = document.getElementById('build-container');
-    const lockedCards = document.getElementById('build-locked-cards');
-    const lockedOverlay = document.getElementById('build-locked-overlay');
+    // === EMAIL MOCKUP BUILD ===
+    const intel = document.getElementById('build-intel');
+    const emailEl = document.getElementById('build-email');
+    const emailHeader = document.getElementById('build-email-header');
+    const emailSubject = document.getElementById('build-email-subject');
+    const emailBody = document.getElementById('build-email-body');
+    const callEl = document.getElementById('build-call');
+    const callLabel = document.getElementById('build-call-label');
+    const callText = document.getElementById('build-call-text');
     const progressFill = document.getElementById('build-progress-fill');
-    const progressPct = document.getElementById('build-progress-pct');
     const gate = document.getElementById('build-gate');
     const finalCta = document.getElementById('build-final-cta');
 
-    container.innerHTML = '';
-    lockedCards.innerHTML = '';
-    lockedOverlay.style.display = 'none';
-    lockedOverlay.className = '';
+    // Reset
+    intel.innerHTML = '';
+    emailEl.style.display = 'none';
+    emailBody.innerHTML = '';
+    callEl.classList.remove('visible');
+    callEl.style.display = 'none';
+    callText.innerHTML = '';
     progressFill.style.width = '0%';
-    progressPct.textContent = '0%';
     gate.style.display = 'none';
     finalCta.style.display = 'none';
-
-    function setProgress(pct) { progressFill.style.width=pct+'%'; progressPct.textContent=pct+'%'; }
-
-    async function addCard(parentEl, html) {
-        const card = document.createElement('div');
-        card.className = 'build-card';
-        card.innerHTML = html;
-        parentEl.appendChild(card);
-        await sleep(80);
-        card.classList.add('visible');
-        await sleep(350);
-    }
+    // Remove any leftover blur elements
+    document.querySelectorAll('.build-email-blur, .build-call-blur').forEach(el => el.remove());
 
     // Wait for API data
     await sleep(400);
@@ -1244,121 +1263,99 @@ async function startAnalysis() {
                 ? ['Subscription cancellation mid-contract', 'Usage overage disputes on annual commitment', 'Disputed charges after free trial conversion']
                 : ['Outstanding balance past payment terms', 'Disputed invoice amount or missing PO', 'Service completed but payment not released'],
             contacts: [{name: 'Finance Team', title: 'Accounts Receivable', photo: null, role: 'First contact'}],
-            plan: { day_1: 'AI email referencing specific outstanding invoice', day_3: 'AI call to AP with full documentation', day_7: 'Formal escalation with compliance notice', day_14: 'Payment portal — debtor pays you directly' }
+            plan: { day_1: 'AI email referencing specific outstanding invoice', day_3: 'AI call to AP with full documentation', day_7: 'Formal escalation with compliance notice', day_14: 'Payment portal \u2014 debtor pays you directly' }
         };
     }
 
     const coName = data.company.name || 'Company';
-    const logoUrl = 'https://cdn.brandfetch.io/'+domain+'/w/512/h/80/logo';
-
-    // Card 1: Company understood
-    await addCard(container, `
-        <div class="build-card-header">
-            <div class="build-card-icon indigo">
-                <img src="${logoUrl}" style="width:28px;height:28px;object-fit:contain" onerror="this.textContent='${coName[0]}';this.style.cssText='font-size:18px;font-weight:900;color:var(--indigo)'">
-            </div>
-            <div>
-                <div class="build-card-label">Company analyzed</div>
-                <div class="build-card-value">${coName}</div>
-                <div class="build-card-meta">${data.company.industry || ''} · ${data.company.size || ''}</div>
-            </div>
-        </div>
-    `);
-    setProgress(20);
-
-    // Card 2: Top risk
-    const disputes = data.disputes || [];
-    const topDispute = disputes.length > 0 ? (typeof disputes[0]==='string' ? disputes[0] : disputes[0].text) : 'Payment delays on outstanding invoices';
-    await addCard(container, `
-        <div class="build-card-header">
-            <div class="build-card-icon amber">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
-            </div>
-            <div>
-                <div class="build-card-label">#1 reason they don't pay</div>
-                <div class="build-card-value" style="color:var(--amber)">${topDispute}</div>
-            </div>
-        </div>
-    `);
-    setProgress(40);
-
-    // Card 3: Decision maker found
     const contacts = data.contacts || [];
-    const dm = contacts[0] || {name:'Finance Team', title:'Accounts Receivable'};
-    const dmPhoto = dm.photo || 'https://ui-avatars.com/api/?name='+encodeURIComponent(dm.name)+'&background=4F46E5&color=fff&size=72';
-    await addCard(container, `
-        <div class="build-card-header">
-            <div class="build-card-icon green">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-            </div>
-            <div>
-                <div class="build-card-label">Decision maker found</div>
-                <div class="build-card-contact">
-                    <img src="${dmPhoto}" class="build-card-avatar" onerror="this.style.display='none'">
-                    <div>
-                        <div class="build-card-contact-name">${dm.name}</div>
-                        <div class="build-card-contact-title">${dm.title || dm.role || ''}</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `);
-    setProgress(60);
+    const dm = contacts[0] || {name: 'Finance Team', title: 'AR Manager'};
+    const disputes = data.disputes || [];
+    const topRisk = disputes.length > 0 ? (typeof disputes[0]==='string' ? disputes[0] : disputes[0].text) : 'Outstanding invoices';
 
-    // Card 4: Strategy preview
-    const planData = data.plan || {};
-    const d1 = planData.day_1 || planData.d1 || 'AI email under your brand';
-    const d3 = planData.day_3 || planData.d3 || 'AI call with documentation';
-    await addCard(container, `
-        <div>
-            <div class="build-card-label" style="margin-bottom:10px">Collection strategy</div>
-            <div class="build-card-step"><span class="build-card-step-pill">D1</span><span class="build-card-step-text">${d1}</span></div>
-            <div class="build-card-step" style="margin-top:6px"><span class="build-card-step-pill">D3</span><span class="build-card-step-text">${d3}</span></div>
-        </div>
-    `);
-    setProgress(80);
+    // Get email data (hardcoded or generate from company data)
+    const emailData = data.email || {
+        from_name: dm.name,
+        from_email: dm.name.toLowerCase().replace(/\s+/g,'.') + '@' + domain,
+        to_email: 'contact@debtor-example.com',
+        subject: 'Outstanding balance \u2014 ' + coName,
+        body_visible: "Hi there,\n\nI noticed there's an outstanding balance on your account with " + coName + ".\n\nI understand that managing cash flow can be challenging. That's why I'd like to offer a flexible payment arrangement that works for both of us.",
+        body_locked: "\n\nWe can set up a simple 3-payment plan with no penalties.\n\nYou can review and pay in one click:\n\n[View Payment Options]\n\nBest regards,\n" + dm.name + "\n" + coName + " Accounts",
+        call_preview: "Hi, this is " + dm.name + " from " + coName + "'s accounts team. I'm calling about your outstanding balance \u2014 I'd like to work out a simple payment arrangement."
+    };
 
-    // === LOCK AT 80% — show email gate ===
-    await sleep(400);
+    // Phase 1: Intel lines (2 sec)
+    async function addIntel(html) {
+        const line = document.createElement('div');
+        line.className = 'build-intel-line';
+        line.innerHTML = html;
+        intel.appendChild(line);
+        await sleep(60);
+        line.classList.add('visible');
+        await sleep(300);
+    }
 
-    // Add locked/blurred cards
-    const d7 = planData.day_7 || planData.d7 || 'Formal escalation with compliance notice';
-    const d14 = planData.day_14 || planData.d14 || 'Payment portal — debtors pay you directly';
-    lockedCards.innerHTML = `
-        <div class="build-card visible" style="opacity:1;transform:none">
-            <div class="build-card-label" style="margin-bottom:8px">Full escalation sequence</div>
-            <div class="build-card-step"><span class="build-card-step-pill">D7</span><span class="build-card-step-text">${d7}</span></div>
-            <div class="build-card-step" style="margin-top:6px"><span class="build-card-step-pill">D14</span><span class="build-card-step-text">${d14}</span></div>
-        </div>
-        <div class="build-card visible" style="opacity:1;transform:none">
-            <div class="build-card-header">
-                <div class="build-card-icon indigo">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.11 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                </div>
-                <div>
-                    <div class="build-card-label">AI voice agent</div>
-                    <div class="build-card-value">Configured for ${coName}</div>
-                    <div class="build-card-meta">Ready to make live calls</div>
-                </div>
-            </div>
-        </div>
-    `;
-    lockedOverlay.style.display = '';
-    lockedOverlay.className = 'build-locked';
-    lockedOverlay.style.cssText = 'position:absolute;inset:0;background:rgba(255,255,255,.75);backdrop-filter:blur(6px);border-radius:14px;z-index:1';
+    await addIntel('<span class="green">\u2713</span> ' + coName + ' \u2014 ' + (data.company.industry || 'Analyzing') + ' \u2014 ' + (data.company.size || ''));
+    await addIntel('<span class="amber">\u26A0</span> #1 risk: ' + topRisk);
+    await addIntel('<span class="green">\u2713</span> ' + dm.name + ', ' + (dm.title || '') + ' \u2014 found');
+    progressFill.style.width = '20%';
 
-    // Show email gate
+    // Phase 2: Email mockup
+    emailEl.style.display = '';
+    emailHeader.innerHTML = '<strong>From:</strong> ' + emailData.from_name + ' &lt;' + emailData.from_email + '&gt;<br><strong>To:</strong> ' + emailData.to_email;
+    emailSubject.textContent = emailData.subject;
+    progressFill.style.width = '30%';
+
+    // Typewriter effect on email body
+    const fullVisible = emailData.body_visible;
+    let typed = '';
+    const charsPerTick = 3;
+    for (let i = 0; i < fullVisible.length; i += charsPerTick) {
+        typed = fullVisible.substring(0, i + charsPerTick);
+        emailBody.innerHTML = typed.replace(/\n/g, '<br>') + '<span class="cursor"></span>';
+        await sleep(20);
+    }
+    emailBody.innerHTML = typed.replace(/\n/g, '<br>') + '<span class="cursor"></span>';
+    progressFill.style.width = '60%';
+
+    // Add blur to email
+    await sleep(300);
+    const blur = document.createElement('div');
+    blur.className = 'build-email-blur';
+    emailBody.appendChild(blur);
+    const cursorEl = emailBody.querySelector('.cursor');
+    if (cursorEl) cursorEl.remove();
+
+    // Phase 3: Call widget
+    await sleep(200);
+    callEl.style.display = '';
+    callLabel.textContent = 'AI calling ' + emailData.to_email.split('@')[0] + '...';
+    await sleep(100);
+    callEl.classList.add('visible');
+
+    // Type call preview (partial)
+    const callPreview = emailData.call_preview;
+    const callVisible = callPreview.substring(0, Math.floor(callPreview.length * 0.6));
+    callText.innerHTML = '\u201C' + callVisible + '...\u201D';
+
+    // Add call blur
+    const callBlur = document.createElement('div');
+    callBlur.className = 'build-call-blur';
+    callEl.appendChild(callBlur);
+
+    progressFill.style.width = '80%';
+
+    // Phase 4: Email gate
+    await sleep(500);
     gate.style.display = '';
 
-    // Show "try another" button
     document.getElementById('a-actions').classList.add('show');
     btn.disabled = false;
 
-    // Store data globally for unlock
-    window._buildData = { domain, coName, data };
+    // Store for unlock
+    window._buildData = { domain, coName, emailData, callPreview, data };
 }
 
-// Unlock agent after email
 function unlockAgent() {
     const email = document.getElementById('build-gate-email').value.trim();
     if (!email || !email.includes('@')) {
@@ -1366,23 +1363,33 @@ function unlockAgent() {
         return;
     }
 
-    // Log the lead (TODO: send to backend)
-    const leadData = window._buildData || {};
-    console.log('Lead captured:', { email, domain: leadData.domain, company: leadData.coName });
-
-    // Send to backend (fire and forget)
+    const d = window._buildData || {};
+    console.log('Lead:', { email, domain: d.domain, company: d.coName });
     fetch('https://backend.widr.app/api/v1/demo/track', {
         method: 'POST', headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({ event: 'email_unlock', email, domain: leadData.domain, company: leadData.coName })
-    }).catch(() => {});
+        body: JSON.stringify({ event: 'email_unlock', email, domain: d.domain, company: d.coName })
+    }).catch(function(){});
 
-    // Unlock: remove blur, hide gate, show final CTA, fill to 100%
-    const overlay = document.getElementById('build-locked-overlay');
-    overlay.remove();
+    // Remove email blur
+    const emailBlur = document.querySelector('.build-email-blur');
+    if (emailBlur) emailBlur.remove();
 
-    document.getElementById('build-gate').style.display = 'none';
+    // Show rest of email
+    const body = document.getElementById('build-email-body');
+    if (d.emailData && d.emailData.body_locked) {
+        body.innerHTML += d.emailData.body_locked.replace(/\n/g, '<br>').replace(/\[View Payment Options\]/, '<a href="#" style="display:inline-block;margin:8px 0;padding:10px 24px;background:var(--indigo);color:#fff;border-radius:8px;text-decoration:none;font-weight:600;font-size:13px" onclick="return false">View Payment Options</a>');
+    }
+
+    // Remove call blur + show full
+    const callBlur = document.querySelector('.build-call-blur');
+    if (callBlur) callBlur.remove();
+    if (d.callPreview) {
+        document.getElementById('build-call-text').innerHTML = '\u201C' + d.callPreview + '\u201D';
+    }
+
+    // Progress 100%, hide gate, show CTA
     document.getElementById('build-progress-fill').style.width = '100%';
-    document.getElementById('build-progress-pct').textContent = '100%';
+    document.getElementById('build-gate').style.display = 'none';
     document.getElementById('build-final-cta').style.display = '';
 }
 
