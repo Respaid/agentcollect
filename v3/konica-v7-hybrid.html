@@ -149,10 +149,16 @@ a.review-src:hover{color:var(--blue)}
 .contact-name{font-weight:700;font-size:16px;color:var(--text)}
 .contact-role{font-size:14px;color:var(--muted);margin-top:3px}
 .contact-info{margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
-.contact-detail{font-size:14px;color:var(--muted);margin-top:5px;font-family:monospace;letter-spacing:.3px}
+.contact-detail{font-size:14px;color:var(--muted);margin-top:5px;font-family:monospace;letter-spacing:.3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
 .contact-detail svg{vertical-align:-2px;margin-right:3px}
 .contact-protected-note{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.4}
 .contact-tag{display:inline-block;font-size:14px;font-weight:700;margin-top:14px;padding:5px 14px;border-radius:100px}
+.debtor-company-header{text-align:center;margin-bottom:40px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.debtor-logo{height:40px;object-fit:contain;opacity:.8}
+.debtor-logo-fallback{display:none;font-size:18px;font-weight:700;color:var(--text)}
+.debtor-sub{font-size:14px;color:var(--muted)}
+.contact-reason{font-size:12px;font-style:italic;color:var(--muted);text-align:center;margin-top:6px;padding:0 8px}
+.protected-reason{color:var(--green);font-style:normal;font-weight:600}
 .tag-green{background:rgba(5,150,105,.08);color:var(--green-dark)}
 .tag-orange{background:rgba(217,119,6,.08);color:var(--orange)}
 .tag-blue{background:rgba(79,70,229,.08);color:var(--blue)}
@@ -272,6 +278,14 @@ a.review-src:hover{color:var(--blue)}
       <h2>If this account stopped paying, here's exactly who we'd contact.</h2>
       <p class="strategy-sub">AR decision-makers identified from public sources. AI escalates automatically — you never make the call.</p>
     </div>
+    <div class="debtor-company-header">
+      <img src="https://cdn.brandfetch.io/zprad.com/w/300/h/60/logo"
+           alt="Zwanger-Pesiri Radiology"
+           class="debtor-logo"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block'">
+      <span class="debtor-logo-fallback">Zwanger-Pesiri Radiology</span>
+      <p class="debtor-sub">Konica Minolta client · Outstanding AR balance</p>
+    </div>
     <div class="chain-grid rv rv-d1">
       <div class="contact-card">
         <img class="contact-photo" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face" alt="Donna Montalbano">
@@ -282,6 +296,7 @@ a.review-src:hover{color:var(--blue)}
           <div class="contact-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>(516) ...&#8722;3421</div>
         </div>
         <div class="contact-tag tag-green">Day 1</div>
+        <p class="contact-reason">First point of contact for invoices</p>
       </div>
       <div class="contact-card">
         <img class="contact-photo" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face" alt="Randi Morgenstern">
@@ -292,6 +307,7 @@ a.review-src:hover{color:var(--blue)}
           <div class="contact-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>(516) ...&#8722;8104</div>
         </div>
         <div class="contact-tag tag-orange">Day 5</div>
+        <p class="contact-reason">Escalated after no AP response</p>
       </div>
       <div class="contact-card">
         <img class="contact-photo" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt="John Fargnoli">
@@ -302,16 +318,18 @@ a.review-src:hover{color:var(--blue)}
           <div class="contact-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>(516) ...&#8722;7200</div>
         </div>
         <div class="contact-tag tag-blue">Day 15</div>
+        <p class="contact-reason">Financial authority · receives attorney letter</p>
       </div>
       <div class="contact-card protected">
         <img class="contact-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="Steven Mendelsohn">
         <div class="contact-name">Steven Mendelsohn, MD</div>
         <div class="contact-role">CEO</div>
         <div class="contact-info">
-          <div class="contact-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>s.mendelsohn@zprad.com</div>
+          <div class="contact-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>s...@zprad.com</div>
           <div class="contact-detail"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>(516) ...&#8722;9100</div>
         </div>
         <div class="contact-tag tag-red">Never contacted</div>
+        <p class="contact-reason protected-reason">Never contacted — relationship preserved</p>
         <div class="contact-protected-note">We never contact the CEO. We protect your commercial relationship.</div>
       </div>
     </div>
