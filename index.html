@@ -602,8 +602,8 @@
         <div class="audio-showcase">
             <div class="audio-tabs" id="audio-tabs">
                 <div class="audio-tab active" data-tab="0">&#128293; Pays on the spot</div>
-                <div class="audio-tab" data-tab="1">&#129335; Wrong person</div>
-                <div class="audio-tab" data-tab="2">&#128176; Ready to pay</div>
+                <div class="audio-tab" data-tab="1">&#10067; Questions about charge</div>
+                <div class="audio-tab" data-tab="2">&#129335; Wrong person → gets referral</div>
             </div>
 
             <div class="audio-player" id="audio-player">
@@ -1471,35 +1471,50 @@ startCycling();
 // ═══ AUDIO SHOWCASE ═══
 const audioScenarios = [
     {
+        label: '🔥 Pays on the spot',
         url: 'https://dxc03zgurdly9.cloudfront.net/10b4ec959b4a004a6bf47dcfa2da0a213c7ce231590e295d9c60faffde486685/recording.wav',
         startTime: 35,
         lines: [
-            { role: 'agent', text: 'We represent Checkr on an account matter.' },
-            { role: 'user', text: "I\u2019m paying it right now! It slipped through the cracks. I really do apologize." },
-            { role: 'agent', text: 'No worries at all. I can stay on the line while you complete the payment.' }
+            { time: 0, role: 'agent', text: 'We represent Checkr on an account matter.' },
+            { time: 4, role: 'user', text: "I'm paying it right now! It slipped through the cracks with our accounting team. I really do apologize." },
+            { time: 15, role: 'agent', text: 'No worries at all. I can stay on the line while you complete the payment.' },
+            { time: 25, role: 'user', text: "I'm putting in my ZIP code right now." },
+            { time: 30, role: 'agent', text: 'Perfect! Take your time.' },
+            { time: 35, role: 'user', text: 'Payment sent.' },
+            { time: 38, role: 'agent', text: "Awesome! We'll verify and close your file. Thanks!" }
         ],
-        badge: { text: '\u2705 Paid during the call', cls: 'green' }
+        badge: { text: '✅ Paid during the call', cls: 'green' }
     },
     {
-        url: 'https://dxc03zgurdly9.cloudfront.net/e7c05f3cf487ea6bf707e3497a0edff3a3b0a825d11ad0a745383890b6af89ea/recording.wav',
-        startTime: 33,
+        label: '❓ Questions about charge',
+        url: 'https://dxc03zgurdly9.cloudfront.net/075961824e83d68a634b91afb75f59fba97b1b2951c58dc43ec9a5e3bc58b806/recording.wav',
+        startTime: 8,
         lines: [
-            { role: 'agent', text: 'Hi, is Marsha Smith available?' },
-            { role: 'user', text: 'She is not. Can I give her a message?' },
-            { role: 'agent', text: 'Could you let Marsha know that Sarah called? We can also be reached via email.' }
+            { time: 0, role: 'user', text: "My name is Khalil. I just got a call asking for a callback." },
+            { time: 5, role: 'agent', text: 'We tried to reach you regarding your outstanding balance with Checkr. Can I help with the payment?' },
+            { time: 12, role: 'user', text: 'What are we getting charged for exactly?' },
+            { time: 15, role: 'agent', text: 'The amount due is $29.99 for a Background Check from Checkr.' },
+            { time: 22, role: 'user', text: 'Can I pay this from the Checkr website?' },
+            { time: 25, role: 'agent', text: "Use the portal link in the email — that way your balance gets closed out properly." },
+            { time: 32, role: 'user', text: "I got it from here. Bye bye." }
         ],
-        badge: { text: '\uD83D\uDCCB Message left professionally', cls: 'indigo' }
+        badge: { text: '📋 Questions answered, directed to portal', cls: 'indigo' }
     },
     {
-        url: 'https://dxc03zgurdly9.cloudfront.net/10b4ec959b4a004a6bf47dcfa2da0a213c7ce231590e295d9c60faffde486685/recording.wav',
-        startTime: 149,
+        label: '🤷 Wrong person → gets referral',
+        url: 'https://dxc03zgurdly9.cloudfront.net/00d79b2208aee99e88fb7a0033974bba3140f3b905b388429b22133e4694c670/recording.wav',
+        startTime: 56,
         lines: [
-            { role: 'user', text: "I\u2019m putting in my ZIP code right now." },
-            { role: 'agent', text: 'Perfect! Take your time.' },
-            { role: 'user', text: 'Payment sent.' },
-            { role: 'agent', text: "Awesome! We\u2019ll close your file. Thanks!" }
+            { time: 0, role: 'user', text: "I don't deal with that. You'd wanna call accounts payable." },
+            { time: 5, role: 'agent', text: 'Could you provide the name or contact info for someone in accounts payable?' },
+            { time: 10, role: 'user', text: "One second... That's what I'm trying to look up for you." },
+            { time: 15, role: 'agent', text: 'No problem — take your time.' },
+            { time: 25, role: 'user', text: '916-845-8340.' },
+            { time: 28, role: 'agent', text: "Thanks. And what's their email address?" },
+            { time: 35, role: 'user', text: 'a-p-invoices at caloes.ca.gov.' },
+            { time: 40, role: 'agent', text: "Thanks for your help. We'll reach out to accounts payable." }
         ],
-        badge: { text: '\uD83D\uDCB0 $0 manual work', cls: 'green' }
+        badge: { text: '📞 Contact info collected from gatekeeper', cls: 'indigo' }
     }
 ];
 
