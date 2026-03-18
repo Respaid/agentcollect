@@ -176,7 +176,7 @@ a.review-src:hover{color:var(--blue)}
 .how-subtitle{font-size:17px;color:var(--muted);margin-bottom:48px;text-align:center}
 .trusted-bar{display:flex;align-items:center;justify-content:center;gap:36px;margin-top:48px;flex-wrap:wrap}
 .trusted-label{font-size:14px;color:var(--muted);font-weight:600}
-.trusted-logo{height:20px;width:auto;opacity:.45;filter:grayscale(1)}
+.trusted-logo{height:24px;width:auto;opacity:.55}
 
 /* Phase 1 block */
 .phase-block{background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:20px;padding:40px;margin-bottom:20px;text-align:left}
@@ -186,10 +186,12 @@ a.review-src:hover{color:var(--blue)}
 .phase-line-track{position:relative;height:3px;background:#e8eaf0;margin:0 12%;border-radius:3px;overflow:hidden;grid-column:1/-1;margin-top:0;margin-bottom:0}
 .phase-line-fill{position:absolute;left:0;top:0;height:100%;width:0;background:linear-gradient(90deg,var(--green) 0%,var(--blue) 60%,var(--blue) 100%);border-radius:3px;transition:width 1.6s cubic-bezier(.16,1,.3,1)}
 .phase-block.animated .phase-line-fill{width:100%}
-.phase-step{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease;text-align:center;padding:0 16px}
-.phase-block.animated .phase-step:nth-child(1){opacity:1;transform:none;transition-delay:.2s}
-.phase-block.animated .phase-step:nth-child(2){opacity:1;transform:none;transition-delay:.55s}
-.phase-block.animated .phase-step:nth-child(3){opacity:1;transform:none;transition-delay:.95s}
+.phase-step{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease;text-align:center;padding:0 16px}
+.phase-block.animated .phase-step:nth-child(1){opacity:1;transform:none;transition-delay:.1s}
+.phase-block.animated .phase-step:nth-child(2){opacity:1;transform:none;transition-delay:.3s}
+.phase-block.animated .phase-step:nth-child(3){opacity:1;transform:none;transition-delay:.5s}
+/* Fallback: show steps if animation never fires */
+@media(prefers-reduced-motion:reduce){.phase-step{opacity:1;transform:none}}
 .phase-day{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
 .phase-icon{width:56px;height:56px;border-radius:50%;background:rgba(79,70,229,.07);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;color:var(--blue)}
 .phase-icon.green{background:rgba(16,185,129,.09);color:var(--green-dark)}
@@ -573,7 +575,7 @@ var phaseObs=new IntersectionObserver(function(entries){
       phaseObs.unobserve(entry.target);
     }
   });
-},{threshold:.25});
+},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
 var phaseEl=document.getElementById('phaseBlock');
 if(phaseEl)phaseObs.observe(phaseEl);
 
