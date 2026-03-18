@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgentCollect — Hear a Real AI Collection Call</title>
+    <meta name="description" content="Listen to a real AI agent collect a payment during a live call. The debtor pays on the spot. Zero manual work.">
+    <meta property="og:title" content="AgentCollect — Hear a Real AI Collection Call">
+    <meta property="og:description" content="Listen to a real AI agent collect a payment during a live call.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.agentcollect.com/demo-audio">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#FAFBFF;--bg-card:#fff;--bg-dark:#0B1B3D;
+            --border:#E8ECF2;--border-hover:rgba(79,70,229,.18);
+            --text:#0B1B3D;--text-mid:#374151;--text-muted:#64748B;--text-dim:#94A3B8;
+            --indigo:#4F46E5;--indigo-dark:#4338CA;--indigo-light:rgba(79,70,229,.04);
+            --green:#10B981;--green-dark:#059669;
+            --mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
+            --radius:14px;--max-w:1120px;
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:var(--sans);font-size:17px;background:#fff;color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;line-height:1.7;position:relative}
+        body::before{content:'';position:fixed;inset:0;z-index:-1;background-image:
+            linear-gradient(rgba(79,70,229,.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(79,70,229,.03) 1px, transparent 1px);
+            background-size:64px 64px;pointer-events:none}
+        h1,h2,h3,h4,h5{font-family:var(--display);line-height:1.15;letter-spacing:-.04em}
+        ::selection{background:rgba(79,70,229,.08)}
+
+        /* NAV */
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+        .nav.scrolled{box-shadow:0 1px 3px rgba(0,0,0,.02)}
+        .nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:64px}
+        .logo{display:inline-flex;align-items:baseline;text-decoration:none;margin-right:auto;font-family:var(--display);font-size:18px;font-weight:900;letter-spacing:-.04em;color:var(--text)}
+        .dot-circle{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--indigo);margin-left:1px;vertical-align:super}
+        .logo-tagline{font-size:11px;color:var(--text-muted);font-weight:400;margin-left:14px;padding-left:14px;border-left:1px solid var(--border);white-space:nowrap;letter-spacing:-.01em;margin-right:20px}
+        .nav-links{display:flex;gap:20px;margin-right:20px}
+        .nav-links a{color:var(--text-muted);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s;letter-spacing:-.01em;white-space:nowrap}
+        .nav-links a:hover{color:var(--text)}
+        .nav-right{display:flex;align-items:center;gap:10px}
+        .nav-cta{padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;letter-spacing:-.01em}
+        .nav-cta:hover{background:var(--indigo-dark)}
+        .nav-cta-ghost{padding:14px 28px;background:transparent;color:var(--text-mid);border:1px solid var(--border);border-radius:12px;font-family:var(--sans);font-size:14px;font-weight:500;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center}
+        .nav-cta-ghost:hover{border-color:var(--text-mid);color:var(--text)}
+
+        /* HERO */
+        .hero{min-height:100vh;padding:112px 24px 64px;text-align:center;position:relative;background:#fff;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center}
+        .hero::after{content:'';position:absolute;inset:0;pointer-events:none;
+            background:
+                radial-gradient(ellipse 600px 600px at 75% 20%, rgba(79,70,229,.04), transparent),
+                radial-gradient(ellipse 500px 500px at 25% 80%, rgba(16,185,129,.03), transparent)}
+        .hero h1{font-size:clamp(40px,5.5vw,72px);font-weight:900;letter-spacing:-.05em;line-height:1.05;margin-bottom:12px;max-width:800px;color:var(--text);position:relative;z-index:1}
+        .hero-sub{font-size:clamp(18px,2.2vw,24px);color:var(--text-muted);font-weight:400;margin-bottom:40px;position:relative;z-index:1;letter-spacing:-.02em}
+
+        /* CALL PLAYER CARD */
+        .call-card{position:relative;z-index:1;width:100%;max-width:640px;background:var(--bg-dark);border-radius:18px;box-shadow:0 8px 32px rgba(0,0,0,.15);overflow:hidden;text-align:left}
+        .call-card-bar{height:3px;background:linear-gradient(90deg,var(--indigo),var(--green))}
+        .call-card-inner{padding:28px 32px 24px}
+
+        /* Header */
+        .call-header{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+        .call-live-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse-dot 2s infinite}
+        @keyframes pulse-dot{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(16,185,129,.4)}50%{opacity:.8;box-shadow:0 0 0 6px rgba(16,185,129,0)}}
+        .call-header-text{font-size:13px;color:rgba(255,255,255,.5);font-weight:500}
+        .call-header-text span{color:rgba(255,255,255,.85);font-weight:600}
+        .call-route{font-size:12px;color:rgba(255,255,255,.35);margin-top:2px}
+
+        /* Play button + controls */
+        .controls{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+        .play-btn{width:48px;height:48px;border-radius:50%;background:var(--indigo);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+        .play-btn:hover{background:var(--indigo-dark);transform:scale(1.05)}
+        .play-btn svg{width:20px;height:20px;fill:#fff;margin-left:2px}
+        .play-btn.playing svg{margin-left:0}
+        .controls-right{flex:1;display:flex;flex-direction:column;gap:6px}
+        .progress-wrap{width:100%;height:4px;background:rgba(255,255,255,.1);border-radius:4px;cursor:pointer;position:relative}
+        .progress-fill{height:100%;background:linear-gradient(90deg,var(--indigo),var(--green));border-radius:4px;width:0%;transition:width .1s linear}
+        .time-display{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.4);display:flex;justify-content:space-between}
+
+        /* Waveform */
+        .waveform{display:flex;align-items:center;justify-content:center;gap:2px;height:40px;margin-bottom:24px}
+        .waveform .bar{width:3px;border-radius:2px;background:linear-gradient(to top,var(--indigo),var(--green));transition:height .15s ease;opacity:.4}
+        .waveform.active .bar{opacity:1}
+
+        /* Transcript */
+        .transcript{display:flex;flex-direction:column;gap:12px;min-height:180px}
+        .t-line{opacity:0;transform:translateY(8px);transition:all .5s cubic-bezier(.16,1,.3,1);font-size:14px;line-height:1.55;padding-left:12px;border-left:2px solid transparent}
+        .t-line.visible{opacity:1;transform:translateY(0)}
+        .t-line.agent{color:rgba(255,255,255,.95);border-left-color:var(--indigo)}
+        .t-line.debtor{color:rgba(255,255,255,.55);font-style:italic;border-left-color:rgba(255,255,255,.15)}
+        .t-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px;display:block}
+        .t-line.agent .t-label{color:var(--indigo)}
+        .t-line.debtor .t-label{color:rgba(255,255,255,.3)}
+
+        /* Success badge */
+        .success-badge{margin-top:20px;padding:12px 20px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.2);border-radius:10px;color:var(--green);font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;opacity:0;transform:translateY(8px);transition:all .5s cubic-bezier(.16,1,.3,1)}
+        .success-badge.visible{opacity:1;transform:translateY(0)}
+
+        /* SEARCH BAR */
+        .search-section{position:relative;z-index:1;margin-top:36px;text-align:center}
+        .search-stat{font-size:14px;color:var(--text-muted);margin-bottom:12px;font-weight:500}
+        .search-stat strong{color:var(--indigo);font-weight:700}
+        .search-bar{display:flex;align-items:center;gap:0;max-width:480px;margin:0 auto;background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+        .search-bar input{flex:1;padding:16px 20px;border:none;outline:none;font-family:var(--mono);font-size:15px;color:var(--text);background:transparent}
+        .search-bar input::placeholder{color:var(--text-dim)}
+        .search-bar button{padding:14px 28px;background:var(--indigo);color:#fff;border:none;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:background .2s;white-space:nowrap;margin:4px;border-radius:10px}
+        .search-bar button:hover{background:var(--indigo-dark)}
+
+        /* TRUST LOGOS */
+        .trust-logos{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:28px;margin-top:28px;flex-wrap:wrap}
+        .trust-logos-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);white-space:nowrap;margin-right:4px}
+        .trust-logos img{height:20px;opacity:.55;filter:grayscale(100%);object-fit:contain;max-width:100px;transition:opacity .3s}
+        .trust-logos img:hover{opacity:.8;filter:grayscale(0%)}
+
+        /* FOOTER */
+        footer{padding:32px 24px;text-align:center;border-top:1px solid var(--border)}
+        .footer-text{font-size:13px;color:var(--text-dim)}
+        .footer-text a{color:var(--text-muted);text-decoration:none}
+
+        /* RESPONSIVE */
+        @media(max-width:680px){
+            .call-card-inner{padding:20px 18px 18px}
+            .call-card{max-width:100%}
+            .controls{gap:12px}
+            .play-btn{width:42px;height:42px}
+            .hero h1{font-size:clamp(32px,8vw,48px)}
+            .nav-links,.logo-tagline{display:none}
+            .search-bar{flex-direction:column;border-radius:14px}
+            .search-bar input{width:100%;text-align:center}
+            .search-bar button{width:100%;border-radius:10px;margin:0 4px 4px}
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+<div class="nav-inner">
+    <a href="/" class="logo">Agent<span>Collect</span><span class="dot-circle"></span></a>
+    <span class="logo-tagline">The end of manual collection.</span>
+    <div class="nav-links">
+        <a href="/#how">How it works</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#compliance">Compliance</a>
+    </div>
+    <div class="nav-right">
+        <a href="https://cal.com/johnb/30" class="nav-cta-ghost" target="_blank">Talk to us</a>
+        <a href="https://www.agentcollect.com" class="nav-cta">See your collection plan</a>
+    </div>
+</div>
+</nav>
+
+<section class="hero">
+    <h1>The end of manual collection.</h1>
+    <p class="hero-sub">They think they're talking to you.</p>
+
+    <!-- Call Player Card -->
+    <div class="call-card">
+        <div class="call-card-bar"></div>
+        <div class="call-card-inner">
+            <!-- Header -->
+            <div class="call-header">
+                <div class="call-live-dot"></div>
+                <div>
+                    <div class="call-header-text"><span>Live call</span> — Checkr collection</div>
+                    <div class="call-route">Agent &rarr; Rachel Mitchell</div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="controls">
+                <button class="play-btn" id="playBtn" aria-label="Play">
+                    <svg viewBox="0 0 24 24" id="playIcon"><polygon points="6,3 20,12 6,21"/></svg>
+                </button>
+                <div class="controls-right">
+                    <div class="progress-wrap" id="progressWrap">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="time-display">
+                        <span id="timeCurrent">0:00</span>
+                        <span id="timeTotal">0:00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Waveform -->
+            <div class="waveform" id="waveform"></div>
+
+            <!-- Transcript -->
+            <div class="transcript" id="transcript">
+                <div class="t-line agent" data-time="4">
+                    <span class="t-label">Agent</span>
+                    "Hey Rachel Mitchell?"
+                </div>
+                <div class="t-line debtor" data-time="7">
+                    <span class="t-label">Rachel</span>
+                    "Yes. What can I help you with?"
+                </div>
+                <div class="t-line agent" data-time="35">
+                    <span class="t-label">Agent</span>
+                    "We represent Checkr on an account matter."
+                </div>
+                <div class="t-line debtor" data-time="39">
+                    <span class="t-label">Rachel</span>
+                    "I'm paying it right now! I'm in front of my computer putting it in. It slipped through the cracks. I really do apologize."
+                </div>
+                <div class="t-line agent" data-time="111">
+                    <span class="t-label">Agent</span>
+                    "No worries at all, I can stay on the line while you complete the payment."
+                </div>
+                <div class="t-line debtor" data-time="159">
+                    <span class="t-label">Rachel</span>
+                    "Payment sent."
+                </div>
+                <div class="t-line agent" data-time="172">
+                    <span class="t-label">Agent</span>
+                    "Awesome! We'll close your file. Thanks!"
+                </div>
+            </div>
+
+            <!-- Success badge -->
+            <div class="success-badge" id="successBadge">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="8" fill="#10B981"/><path d="M5 8.5L7 10.5L11 6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Payment collected during call — $0 manual work
+            </div>
+        </div>
+    </div>
+
+    <!-- Search bar -->
+    <div class="search-section">
+        <div class="search-stat"><strong>50% recovered</strong> in 20 days — see your agent</div>
+        <div class="search-bar">
+            <input type="text" placeholder="uber.com" id="urlInput">
+            <button onclick="window.location.href='https://www.agentcollect.com'">Build my agent</button>
+        </div>
+    </div>
+
+    <!-- Trust logos -->
+    <div class="trust-logos">
+        <span class="trust-logos-label">Trusted by</span>
+        <img src="https://cdn.brandfetch.io/microsoft.com/w/512/h/80/logo" alt="Microsoft">
+        <img src="https://cdn.brandfetch.io/dell.com/w/512/h/80/logo" alt="Dell">
+        <img src="https://cdn.brandfetch.io/plaid.com/w/512/h/80/logo" alt="Plaid">
+    </div>
+</section>
+
+<footer>
+    <div class="footer-text">AgentCollect &copy; 2026</div>
+</footer>
+
+<script>
+(function(){
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10));
+
+    // Audio
+    const audio = new Audio('https://dxc03zgurdly9.cloudfront.net/10b4ec959b4a004a6bf47dcfa2da0a213c7ce231590e295d9c60faffde486685/recording.wav');
+    audio.preload = 'metadata';
+
+    const playBtn = document.getElementById('playBtn');
+    const playIcon = document.getElementById('playIcon');
+    const progressFill = document.getElementById('progressFill');
+    const progressWrap = document.getElementById('progressWrap');
+    const timeCurrent = document.getElementById('timeCurrent');
+    const timeTotal = document.getElementById('timeTotal');
+    const waveformEl = document.getElementById('waveform');
+    const transcriptEl = document.getElementById('transcript');
+    const successBadge = document.getElementById('successBadge');
+    const tLines = transcriptEl.querySelectorAll('.t-line');
+
+    // Build waveform bars
+    for (let i = 0; i < 40; i++) {
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+        bar.style.height = (Math.random() * 20 + 5) + 'px';
+        waveformEl.appendChild(bar);
+    }
+    const bars = waveformEl.querySelectorAll('.bar');
+
+    function formatTime(s) {
+        if (isNaN(s)) return '0:00';
+        const m = Math.floor(s / 60);
+        const sec = Math.floor(s % 60);
+        return m + ':' + (sec < 10 ? '0' : '') + sec;
+    }
+
+    // Duration ready
+    audio.addEventListener('loadedmetadata', () => {
+        timeTotal.textContent = formatTime(audio.duration);
+    });
+
+    // Play/Pause
+    playBtn.addEventListener('click', () => {
+        if (audio.paused) {
+            audio.play();
+            playIcon.innerHTML = '<rect x="5" y="3" width="4" height="18" rx="1"/><rect x="15" y="3" width="4" height="18" rx="1"/>';
+            playBtn.classList.add('playing');
+            waveformEl.classList.add('active');
+        } else {
+            audio.pause();
+            playIcon.innerHTML = '<polygon points="6,3 20,12 6,21"/>';
+            playBtn.classList.remove('playing');
+            waveformEl.classList.remove('active');
+        }
+    });
+
+    // Progress bar click to seek
+    progressWrap.addEventListener('click', (e) => {
+        const rect = progressWrap.getBoundingClientRect();
+        const pct = (e.clientX - rect.left) / rect.width;
+        audio.currentTime = pct * audio.duration;
+    });
+
+    // Track shown lines for reset on seek backward
+    let shownTimes = new Set();
+
+    // Time update
+    audio.addEventListener('timeupdate', () => {
+        if (!audio.duration) return;
+        const pct = (audio.currentTime / audio.duration) * 100;
+        progressFill.style.width = pct + '%';
+        timeCurrent.textContent = formatTime(audio.currentTime);
+
+        // Transcript lines
+        tLines.forEach(line => {
+            const t = parseFloat(line.dataset.time);
+            if (audio.currentTime >= t) {
+                line.classList.add('visible');
+                shownTimes.add(t);
+            } else {
+                line.classList.remove('visible');
+                shownTimes.delete(t);
+            }
+        });
+
+        // Success badge after line 6 (payment sent at 159s)
+        if (audio.currentTime >= 162) {
+            successBadge.classList.add('visible');
+        } else {
+            successBadge.classList.remove('visible');
+        }
+    });
+
+    // Waveform animation
+    let animFrame;
+    function animateWaveform() {
+        if (!audio.paused) {
+            bars.forEach(bar => {
+                bar.style.height = (Math.random() * 30 + 5) + 'px';
+            });
+        }
+        animFrame = requestAnimationFrame(animateWaveform);
+    }
+    animateWaveform();
+
+    // Audio ended
+    audio.addEventListener('ended', () => {
+        playIcon.innerHTML = '<polygon points="6,3 20,12 6,21"/>';
+        playBtn.classList.remove('playing');
+        waveformEl.classList.remove('active');
+    });
+})();
+</script>
+</body>
+</html>
