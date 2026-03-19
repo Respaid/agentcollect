@@ -228,6 +228,25 @@
         .call-ended-msg .back-link{color:var(--indigo);cursor:pointer;font-weight:600;margin-top:8px;display:inline-block}
         .call-ended-msg .back-link:hover{text-decoration:underline}
 
+        /* Call Summary Overlay */
+        .call-summary{display:none;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:40px;text-align:center;animation:fadeInUp .5s ease}
+        .call-summary.visible{display:flex}
+        .call-summary-title{font-family:var(--display);font-size:clamp(28px,4vw,40px);font-weight:900;color:var(--text);margin-bottom:32px;letter-spacing:-.04em}
+        .call-summary-items{display:flex;flex-direction:column;gap:12px;margin-bottom:40px;text-align:left}
+        .call-summary-item{display:flex;align-items:center;gap:12px;font-size:17px;color:var(--text-mid);font-weight:500}
+        .call-summary-item .cs-check{width:28px;height:28px;border-radius:50%;background:rgba(16,185,129,.1);color:var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .call-summary-cta-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:8px}
+        .call-summary-label{font-size:18px;font-weight:700;font-family:var(--display);color:var(--text);letter-spacing:-.02em}
+        .call-summary-cta{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:var(--indigo);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:16px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s}
+        .call-summary-cta:hover{background:var(--indigo-dark);transform:translateY(-1px)}
+        .call-summary-back{background:none;border:none;color:var(--text-muted);font-family:var(--sans);font-size:14px;font-weight:500;cursor:pointer;padding:8px 16px;transition:color .2s}
+        .call-summary-back:hover{color:var(--text)}
+
+        /* API update shimmer */
+        .api-updating{position:relative;overflow:hidden}
+        .api-updating::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(79,70,229,.04),transparent);animation:shimmer 1.5s ease infinite;pointer-events:none}
+        @keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
         /* ========== FULL-SCREEN CALL OVERLAY ========== */
         .call-overlay{position:fixed;inset:0;z-index:9999;background:#FAFBFF;display:none;flex-direction:column;opacity:0;transition:opacity .5s ease}
         .call-overlay.active{display:flex;opacity:1}
@@ -249,8 +268,8 @@
         .call-overlay-transcript-scroll{display:flex;flex-direction:column;gap:20px;overflow-y:auto;padding-bottom:16px;mask-image:linear-gradient(to bottom, transparent 0%, black 60px, black 100%);-webkit-mask-image:linear-gradient(to bottom, transparent 0%, black 60px, black 100%)}
 
         .call-msg{padding:24px 28px;border-radius:16px;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.04);border:1.5px solid var(--border);opacity:0;transform:translateY(20px);animation:callMsgIn .5s cubic-bezier(.16,1,.3,1) forwards;max-width:85%}
-        .call-msg.user{align-self:flex-start;border-color:rgba(100,116,139,.2)}
-        .call-msg.agent{align-self:flex-end;border-color:rgba(79,70,229,.2);background:linear-gradient(135deg,#FAFAFF,#F5F3FF)}
+        .call-msg.agent{align-self:flex-start;border-color:rgba(79,70,229,.2);background:linear-gradient(135deg,#FAFAFF,#F5F3FF)}
+        .call-msg.user{align-self:flex-end;border-color:rgba(100,116,139,.2)}
         .call-msg-text{font-size:clamp(18px,2.5vw,24px);font-weight:600;font-family:var(--display);color:var(--text);line-height:1.45;letter-spacing:-.02em}
         .call-msg-speaker{font-size:13px;font-weight:600;color:var(--text-dim);margin-top:10px;letter-spacing:-.01em}
         .call-msg.agent .call-msg-speaker{color:var(--indigo)}
@@ -779,7 +798,7 @@
 (function(){
     'use strict';
 
-    // ===== COMPANY DATA (simulated, V1) =====
+    // ===== COMPANY DATA (hardcoded for fast path) =====
     var COMPANY_DATA = {
         'uber.com': {
             name: 'Uber',
