@@ -411,6 +411,16 @@
         .uw-connecting .co-spinner{width:32px;height:32px;border:3px solid rgba(255,255,255,.1);border-top-color:var(--indigo);border-radius:50%;animation:spin .8s linear infinite}
         @keyframes spin{to{transform:rotate(360deg)}}
         .uw-connecting-text{color:rgba(255,255,255,.6);font-size:13px}
+        /* ========== POST-CALL CTA ========== */
+        .uw-post-call{display:flex;flex-direction:column;align-items:center;padding:24px 20px;gap:10px;animation:fadeInUp .4s ease}
+        .uw-post-check{margin-bottom:4px}
+        .uw-post-title{color:#fff;font-size:18px;font-weight:700;font-family:var(--sans)}
+        .uw-post-sub{color:rgba(255,255,255,.5);font-size:13px;text-align:center;line-height:1.5;max-width:300px}
+        .uw-post-cta{display:flex;align-items:center;gap:8px;padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;text-decoration:none;margin-top:6px;box-shadow:0 0 20px rgba(79,70,229,.3)}
+        .uw-post-cta:hover{background:#4338CA;transform:translateY(-1px);box-shadow:0 4px 24px rgba(79,70,229,.4)}
+        .uw-post-retry{background:none;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.5);padding:8px 16px;border-radius:8px;font-family:var(--sans);font-size:12px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;margin-top:2px}
+        .uw-post-retry:hover{border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.7)}
+
         /* ========== FLOATING VOICE FAB ========== */
         .voice-fab{position:fixed;bottom:28px;right:28px;z-index:9000;display:flex;align-items:center;gap:10px;background:#0f0f1a;border:1px solid rgba(79,70,229,.3);border-radius:50px;padding:12px 20px 12px 14px;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 8px 32px rgba(0,0,0,.4);opacity:0;pointer-events:none;transform:translateY(20px)}
         .voice-fab.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
@@ -584,6 +594,22 @@
                         <button class="uw-end-btn" id="uw-end-btn">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                             End call
+                        </button>
+                    </div>
+                    <!-- Post-call CTA -->
+                    <div class="uw-post-call" id="uw-post-call" style="display:none">
+                        <div class="uw-post-check">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                        <div class="uw-post-title">Impressed?</div>
+                        <div class="uw-post-sub">This agent was built in 30 seconds. Imagine what it does with your real data.</div>
+                        <a href="https://cal.com/johnb/30" target="_blank" class="uw-post-cta" id="uw-post-cta">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            Book a demo — see your real portfolio
+                        </a>
+                        <button class="uw-post-retry" id="uw-post-retry">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+                            Try another call
                         </button>
                     </div>
                     <div class="uw-powered">Powered by AgentCollect</div>
@@ -2212,14 +2238,31 @@
         var orb = document.getElementById('orb-main');
         if (orb) orb.classList.remove('speaking');
 
-        // Show ended state briefly, then reset
+        // Show ended state briefly, then show post-call CTA
         uwStatus.textContent = msg || 'Call ended';
+        var postCall = document.getElementById('uw-post-call');
         setTimeout(function() {
             uwVoiceActive.classList.remove('visible');
-            uwVoiceIdle.style.display = '';
+            uwVoiceIdle.style.display = 'none';
             uwTranscript.innerHTML = '';
-        }, 2000);
+            if (postCall) postCall.style.display = 'flex';
+        }, 1500);
     }
+
+    // Post-call: "Try another call" button
+    var postRetry = document.getElementById('uw-post-retry');
+    if (postRetry) postRetry.addEventListener('click', function() {
+        var postCall = document.getElementById('uw-post-call');
+        if (postCall) postCall.style.display = 'none';
+        uwVoiceIdle.style.display = '';
+    });
+
+    // Track post-call CTA click
+    var postCta = document.getElementById('uw-post-cta');
+    if (postCta) postCta.addEventListener('click', function() {
+        try { gtag('event', 'post_call_book_demo', { domain: currentDomain, company: currentCompany ? currentCompany.name : '' }); } catch(e) {}
+        trackEvent('post_call_book_demo');
+    });
 
     // Wire up mic button
     if (uwMicBtn) uwMicBtn.addEventListener('click', function(e) {
@@ -2357,23 +2400,53 @@
 
 })();
 </script>
-<!-- Floating voice FAB -->
-<div class="voice-fab" id="voice-fab" onclick="document.getElementById('unified-widget').scrollIntoView({behavior:'smooth',block:'center'});setTimeout(function(){var b=document.getElementById('uw-mic-btn');if(b)b.click()},600)">
+<!-- Floating voice FAB — appears on scroll, drives to hero input -->
+<div class="voice-fab" id="voice-fab">
     <div class="voice-fab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg></div>
-    <div><div class="voice-fab-text">Talk to your agent</div><div class="voice-fab-sub">Live AI demo</div></div>
+    <div><div class="voice-fab-text">Try your AI agent</div><div class="voice-fab-sub">Enter any company domain</div></div>
 </div>
 <script>
 (function(){
     var fab = document.getElementById('voice-fab');
+    var hero = document.querySelector('.hero');
+    var heroInput = document.getElementById('hero-domain');
     var widget = document.getElementById('unified-widget');
-    if (!fab || !widget) return;
-    var shown = false;
-    window.addEventListener('scroll', function() {
-        var r = widget.getBoundingClientRect();
-        var offscreen = r.bottom < 0 || r.top > window.innerHeight;
-        if (offscreen && !shown) { fab.classList.add('visible'); shown = true; }
-        else if (!offscreen && shown) { fab.classList.remove('visible'); shown = false; }
+    if (!fab) return;
+
+    var fabHidden = false; // permanently hidden after agent starts
+
+    fab.addEventListener('click', function() {
+        // If agent already built, scroll to widget and start call
+        if (widget && widget.offsetParent !== null) {
+            widget.scrollIntoView({behavior:'smooth', block:'center'});
+            setTimeout(function(){ var b = document.getElementById('uw-mic-btn'); if(b) b.click(); }, 600);
+        } else {
+            // Scroll to hero and focus input
+            if (hero) hero.scrollIntoView({behavior:'smooth', block:'start'});
+            setTimeout(function(){ if (heroInput) heroInput.focus(); }, 500);
+        }
     });
+
+    window.addEventListener('scroll', function() {
+        if (fabHidden) return;
+        var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        // Show after scrolling 400px down
+        if (scrollY > 400) {
+            fab.classList.add('visible');
+        } else {
+            fab.classList.remove('visible');
+        }
+    });
+
+    // Hide FAB once a call starts (voice is active)
+    var observer = new MutationObserver(function() {
+        var active = document.getElementById('uw-voice-active');
+        if (active && active.classList.contains('visible')) {
+            fab.classList.remove('visible');
+            fabHidden = true;
+        }
+    });
+    if (widget) observer.observe(widget, { subtree: true, attributes: true, attributeFilter: ['class'] });
 })();
 </script>
 </body>
