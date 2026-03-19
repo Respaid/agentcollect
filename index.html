@@ -2345,33 +2345,53 @@
         if (t) t.remove();
     }
 
+    var chatHistory = [];
+
     function handleChatSend() {
         var text = uwChatInput.value.trim();
         if (!text) return;
         uwChatInput.value = '';
         addChatMsg('user', text);
+        chatHistory.push({ role: 'user', content: text });
 
-        // Find a matching dispute response or use default
-        var data = currentCompany;
-        if (!data || !data.disputes || !data.disputes.length) return;
-
-        var dispute = data.disputes[chatDisputeIdx % data.disputes.length];
-        // Get the agent response (next agent line in transcript)
-        var agentLines = dispute.transcript.filter(function(l) { return l.speaker === 'agent'; });
-        var responseLine = agentLines[chatTranscriptIdx % agentLines.length];
-        chatTranscriptIdx++;
-        if (chatTranscriptIdx >= agentLines.length) {
-            chatTranscriptIdx = 0;
-            chatDisputeIdx++;
-        }
-
-        // Show typing, then response
         showTyping();
-        var delay = 800 + Math.min(responseLine.text.length * 15, 2500);
-        setTimeout(function() {
+
+        var companyName = currentCompany ? currentCompany.name : '';
+        fetch('https://backend.widr.app/api/v1/demo/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                message: text,
+                domain: currentDomain || '',
+                company_name: companyName,
+                history: chatHistory.slice(-10)
+            })
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
             removeTyping();
-            addChatMsg('agent', responseLine.text);
-        }, delay);
+            var reply = data.reply || "I'd be happy to help resolve this. Could you tell me more about your situation?";
+            addChatMsg('agent', reply);
+            chatHistory.push({ role: 'agent', content: reply });
+        })
+        .catch(function() {
+            removeTyping();
+            // Fallback to canned dispute responses if API fails
+            var d = currentCompany;
+            if (d && d.disputes && d.disputes.length) {
+                var dispute = d.disputes[chatDisputeIdx % d.disputes.length];
+                var agentLines = dispute.transcript.filter(function(l) { return l.speaker === 'agent'; });
+                var responseLine = agentLines[chatTranscriptIdx % agentLines.length];
+                chatTranscriptIdx++;
+                if (chatTranscriptIdx >= agentLines.length) { chatTranscriptIdx = 0; chatDisputeIdx++; }
+                addChatMsg('agent', responseLine.text);
+                chatHistory.push({ role: 'agent', content: responseLine.text });
+            } else {
+                var fallback = "I understand your concern. Let me look into this and find the best resolution for you.";
+                addChatMsg('agent', fallback);
+                chatHistory.push({ role: 'agent', content: fallback });
+            }
+        });
     }
 
     if (uwChatSend) uwChatSend.addEventListener('click', handleChatSend);
