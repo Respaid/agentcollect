@@ -1302,7 +1302,9 @@
                         })
                     });
                 });
-                if (newDisputes.length > 0) updated.disputes = newDisputes;
+                // Only replace disputes if domain has no hardcoded rich data (API disputes are simpler)
+                var hasHardcodedData = !!COMPANY_DATA[domain];
+                if (newDisputes.length > 0 && !hasHardcodedData) updated.disputes = newDisputes;
             }
 
             // Update the current company data
