@@ -1940,6 +1940,30 @@
         }, 200);
     }
 
+    // Brand colors: fetched from API or extracted from known brands
+    var knownBrandColors = {
+        'microsoft.com': ['#00a4ef','#7fba00','#f25022','#ffb900'],
+        'dell.com': ['#0073CF','#1E90FF','#0056A0','#00BFFF'],
+        'fedex.com': ['#4D148C','#FF6600','#4D148C','#FF6600'],
+        'uber.com': ['#000000','#276EF1','#06C167','#000000'],
+        'salesforce.com': ['#00A1E0','#1798C1','#032D60','#00A1E0'],
+        'google.com': ['#4285F4','#34A853','#FBBC05','#EA4335'],
+        'amazon.com': ['#FF9900','#232F3E','#FF9900','#146EB4'],
+        'apple.com': ['#555555','#A3AAAE','#333333','#86868B'],
+        'meta.com': ['#0668E1','#0866FF','#1877F2','#0084FF'],
+        'oracle.com': ['#C74634','#F80000','#C74634','#312D2A'],
+        'ibm.com': ['#054ADA','#0530AD','#4589FF','#002D9C'],
+        'adobe.com': ['#FF0000','#EB1000','#FF0000','#330000'],
+        'cisco.com': ['#049FD9','#00BCEB','#005073','#6ABF4B'],
+        'sap.com': ['#008FD3','#00B0F0','#0054A6','#E8A800'],
+        'netflix.com': ['#E50914','#B20710','#E50914','#141414'],
+        'spotify.com': ['#1DB954','#1ED760','#191414','#1DB954'],
+        'stripe.com': ['#635BFF','#7A73FF','#0A2540','#635BFF'],
+        'shopify.com': ['#96BF48','#5E8E3E','#222222','#96BF48'],
+        'zoom.us': ['#2D8CFF','#0B5CFF','#2D8CFF','#0E71EB'],
+        'slack.com': ['#4A154B','#36C5F0','#2EB67D','#ECB22E']
+    };
+
     function initOrb(data, domain) {
         var orbBrandName = document.getElementById('orb-brand-name');
         var orbBrandLogo = document.getElementById('orb-brand-logo');
@@ -1958,13 +1982,14 @@
             orbBrandLogo.style.display = '';
 
             // Set orb center icon
-            var iconUrl = 'https://unavatar.io/' + domain;
+            var iconUrl = 'https://cdn.brandfetch.io/' + domain + '/w/128/h/128';
             orbLogoImg.src = iconUrl;
         }
 
-        // Set brand colors if available from API
-        if (data && data._brandColors && data._brandColors.length >= 2) {
-            var c = data._brandColors;
+        // Set brand colors: API > known map > default indigo
+        var brandColors = (data && data._brandColors && data._brandColors.length >= 2) ? data._brandColors : (domain && knownBrandColors[domain]) ? knownBrandColors[domain] : null;
+        if (brandColors) {
+            var c = brandColors;
             var grad1 = 'conic-gradient(from 0deg,' + c.join(',') + ',' + c[0] + ')';
             var grad2 = 'conic-gradient(from 180deg,' + c.map(function(color) { return color + 'cc'; }).join(',') + ',' + c[0] + 'cc)';
             document.getElementById('orb-grad1').style.background = grad1;
