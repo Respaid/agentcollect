@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentCollect — The Proof Wall</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #050505;
+  color: #fff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Noise texture */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ============ TOP BAR ============ */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+}
+
+.logo {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900;
+  font-size: 18px;
+  color: #fff;
+  opacity: 0.2;
+  letter-spacing: -0.02em;
+  user-select: none;
+}
+
+.logo-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #4F46E5;
+  border-radius: 50%;
+  margin-left: 1px;
+  vertical-align: super;
+  position: relative;
+  top: -4px;
+}
+
+.demo-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.3);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+.demo-link:hover { color: rgba(255,255,255,0.6); }
+
+/* ============ HERO ============ */
+.hero {
+  text-align: center;
+  padding: 60px 24px 48px;
+}
+
+.hero h1 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900;
+  font-size: 48px;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.hero .subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.35);
+  line-height: 1.5;
+}
+
+/* ============ CARDS GRID ============ */
+.cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 0 24px 64px;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex: 1;
+}
+
+.proof-card {
+  flex: 1;
+  max-width: 380px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 28px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: transform 0.3s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.proof-card:hover {
+  transform: translateY(-4px);
+}
+
+.proof-card.playing {
+  border-color: rgba(79,70,229,0.5);
+  box-shadow: 0 0 40px rgba(79,70,229,0.08);
+  transform: translateY(-4px);
+}
+
+.proof-card.animating {
+  border-color: rgba(79,70,229,0.3);
+}
+
+/* Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  width: fit-content;
+  margin-bottom: 24px;
+}
+
+.badge.indigo {
+  background: rgba(79,70,229,0.12);
+  color: #818CF8;
+}
+
+.badge.green {
+  background: rgba(16,185,129,0.12);
+  color: #34D399;
+}
+
+/* Quote */
+.quote-section {
+  flex: 1;
+  margin-bottom: 20px;
+}
+
+.quote-mark {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 36px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.08);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.quote-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.quote-text .word {
+  display: inline;
+  padding: 2px 0;
+  transition: background-color 0.15s ease;
+  border-radius: 3px;
+}
+
+.quote-text .word.highlighted {
+  background-color: rgba(79,70,229,0.2);
+}
+
+.quote-attribution {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.25);
+  font-weight: 400;
+}
+
+/* AI Response box */
+.ai-response {
+  background: rgba(79,70,229,0.06);
+  border: 1px solid rgba(79,70,229,0.1);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 24px;
+}
+
+.ai-response-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(129,140,248,0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+
+.ai-response-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #818CF8;
+  line-height: 1.5;
+}
+
+/* Play button area */
+.play-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding-top: 4px;
+}
+
+.play-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #4F46E5;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, background 0.2s;
+  position: relative;
+}
+
+.play-btn:hover {
+  transform: scale(1.08);
+  background: #5B52F0;
+}
+
+.play-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: #fff;
+}
+
+/* Equalizer animation */
+.play-btn .equalizer {
+  display: none;
+  align-items: flex-end;
+  gap: 2px;
+  height: 16px;
+}
+
+.play-btn .equalizer span {
+  display: block;
+  width: 3px;
+  background: #fff;
+  border-radius: 2px;
+  animation: eq-bounce 0.8s ease-in-out infinite alternate;
+}
+
+.play-btn .equalizer span:nth-child(1) { height: 6px; animation-delay: 0s; }
+.play-btn .equalizer span:nth-child(2) { height: 12px; animation-delay: 0.15s; }
+.play-btn .equalizer span:nth-child(3) { height: 8px; animation-delay: 0.3s; }
+.play-btn .equalizer span:nth-child(4) { height: 14px; animation-delay: 0.1s; }
+
+@keyframes eq-bounce {
+  0% { transform: scaleY(0.4); }
+  100% { transform: scaleY(1); }
+}
+
+.proof-card.playing .play-btn .play-icon { display: none; }
+.proof-card.playing .play-btn .equalizer { display: flex; }
+
+.play-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.25);
+}
+
+.play-duration {
+  font-family: 'JetBrains Mono', 'Inter', monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.15);
+}
+
+/* ============ BOTTOM CTA ============ */
+.bottom-cta {
+  text-align: center;
+  padding: 0 24px 64px;
+}
+
+.bottom-cta p {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 28px;
+}
+
+.search-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 6px 6px 6px 20px;
+  max-width: 440px;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.search-bar input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  min-width: 0;
+}
+
+.search-bar input::placeholder {
+  color: rgba(255,255,255,0.2);
+}
+
+.search-btn {
+  background: #4F46E5;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.search-btn:hover { background: #5B52F0; }
+
+.trust-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  flex-wrap: wrap;
+}
+
+.trust-logos img {
+  height: 22px;
+  opacity: 0.15;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.3s;
+}
+
+.trust-logos img:hover {
+  opacity: 0.35;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .proof-card {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 48px 20px 36px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero .subtitle {
+    font-size: 15px;
+  }
+
+  .cards-container {
+    padding: 0 16px 48px;
+    gap: 16px;
+  }
+
+  .proof-card {
+    padding: 24px 20px 20px;
+  }
+
+  .quote-text {
+    font-size: 17px;
+  }
+
+  .trust-logos {
+    gap: 24px;
+  }
+
+  .trust-logos img {
+    height: 18px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="top-bar">
+  <div class="logo">AgentCollect<span class="logo-dot"></span></div>
+  <a href="#" class="demo-link">Book a demo</a>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <h1>3 real calls. 3 real outcomes.</h1>
+  <p class="subtitle">Every call below was handled entirely by AI. No humans involved.</p>
+</section>
+
+<!-- Cards -->
+<section class="cards-container">
+
+  <!-- Card 1: Objection Handled -->
+  <div class="proof-card" data-index="0" onclick="toggleCard(0)">
+    <div class="badge indigo">Objection Handled</div>
+    <div class="quote-section">
+      <div class="quote-mark">"</div>
+      <div class="quote-text" data-words>What are we getting charged for exactly?</div>
+      <div class="quote-attribution">-- Khalil, debtor</div>
+    </div>
+    <div class="ai-response">
+      <div class="ai-response-label">AI Agent responded:</div>
+      <div class="ai-response-text">$29.99. Background check from [Client].</div>
+    </div>
+    <div class="play-area">
+      <button class="play-btn">
+        <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <div class="equalizer"><span></span><span></span><span></span><span></span></div>
+      </button>
+      <span class="play-label">Listen to the real call</span>
+      <span class="play-duration">0:13</span>
+    </div>
+  </div>
+
+  <!-- Card 2: Contact Collected -->
+  <div class="proof-card" data-index="1" onclick="toggleCard(1)">
+    <div class="badge indigo">Contact Collected</div>
+    <div class="quote-section">
+      <div class="quote-mark">"</div>
+      <div class="quote-text" data-words>I don't deal with that. You'd wanna call accounts payable.</div>
+      <div class="quote-attribution">-- Jonathan, gatekeeper</div>
+    </div>
+    <div class="ai-response">
+      <div class="ai-response-label">AI Agent responded:</div>
+      <div class="ai-response-text">Could you provide the name or contact info for AP?</div>
+    </div>
+    <div class="play-area">
+      <button class="play-btn">
+        <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <div class="equalizer"><span></span><span></span><span></span><span></span></div>
+      </button>
+      <span class="play-label">Listen to the real call</span>
+      <span class="play-duration">0:13</span>
+    </div>
+  </div>
+
+  <!-- Card 3: Paid on Call -->
+  <div class="proof-card" data-index="2" onclick="toggleCard(2)">
+    <div class="badge green">Paid on Call</div>
+    <div class="quote-section">
+      <div class="quote-mark">"</div>
+      <div class="quote-text" data-words>I'm paying it today. I have it coming in.</div>
+      <div class="quote-attribution">-- Rachel, debtor</div>
+    </div>
+    <div class="ai-response">
+      <div class="ai-response-label">AI Agent responded:</div>
+      <div class="ai-response-text">No worries at all. I can stay on the line.</div>
+    </div>
+    <div class="play-area">
+      <button class="play-btn">
+        <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <div class="equalizer"><span></span><span></span><span></span><span></span></div>
+      </button>
+      <span class="play-label">Listen to the real call</span>
+      <span class="play-duration">0:13</span>
+    </div>
+  </div>
+
+</section>
+
+<!-- Bottom CTA -->
+<section class="bottom-cta">
+  <p>These calls ran on autopilot. Build your own agent.</p>
+  <div class="search-bar">
+    <input type="text" placeholder="yourcompany.com">
+    <button class="search-btn">Build my agent</button>
+  </div>
+  <div class="trust-logos">
+    <img src="https://cdn.brandfetch.io/microsoft.com/w/512/h/80/logo" alt="Microsoft">
+    <img src="https://cdn.brandfetch.io/dell.com/w/512/h/80/logo" alt="Dell">
+    <img src="https://cdn.brandfetch.io/plaid.com/w/512/h/80/logo" alt="Plaid">
+    <img src="https://cdn.brandfetch.io/checkr.com/w/512/h/80/logo" alt="Checkr">
+    <img src="https://cdn.brandfetch.io/doordash.com/w/512/h/80/logo" alt="DoorDash">
+  </div>
+</section>
+
+<!-- Audio elements -->
+<audio id="audio0" preload="none" src="https://dxc03zgurdly9.cloudfront.net/075961824e83d68a634b91afb75f59fba97b1b2951c58dc43ec9a5e3bc58b806/recording.wav"></audio>
+<audio id="audio1" preload="none" src="https://dxc03zgurdly9.cloudfront.net/00d79b2208aee99e88fb7a0033974bba3140f3b905b388429b22133e4694c670/recording.wav"></audio>
+<audio id="audio2" preload="none" src="https://dxc03zgurdly9.cloudfront.net/10b4ec959b4a004a6bf47dcfa2da0a213c7ce231590e295d9c60faffde486685/recording.wav"></audio>
+
+<script>
+const scenes = [
+  { audioStart: 30, duration: 13 },
+  { audioStart: 56, duration: 13 },
+  { audioStart: 50, duration: 13 }
+];
+
+let currentPlaying = -1;
+let highlightInterval = null;
+let autoAnimInterval = null;
+
+// Wrap quote text in word spans
+document.querySelectorAll('.quote-text[data-words]').forEach(el => {
+  const text = el.textContent.trim();
+  const words = text.split(/\s+/);
+  el.innerHTML = words.map(w => `<span class="word">${w}</span> `).join('');
+});
+
+function stopAll() {
+  for (let i = 0; i < 3; i++) {
+    const audio = document.getElementById('audio' + i);
+    audio.pause();
+    document.querySelectorAll('.proof-card')[i].classList.remove('playing');
+  }
+  clearHighlights();
+  if (highlightInterval) { clearInterval(highlightInterval); highlightInterval = null; }
+  currentPlaying = -1;
+}
+
+function clearHighlights() {
+  document.querySelectorAll('.word.highlighted').forEach(w => w.classList.remove('highlighted'));
+}
+
+function runHighlightAnimation(cardIndex, loop) {
+  const card = document.querySelectorAll('.proof-card')[cardIndex];
+  const words = card.querySelectorAll('.quote-text .word');
+  if (!words.length) return;
+
+  let wordIdx = 0;
+  clearHighlights();
+
+  if (highlightInterval) clearInterval(highlightInterval);
+
+  const totalDuration = (loop ? 3000 : scenes[cardIndex].duration * 1000);
+  const perWord = totalDuration / words.length;
+
+  highlightInterval = setInterval(() => {
+    if (wordIdx > 0) {
+      // Keep previous highlighted for a sweep effect
+    }
+    if (wordIdx < words.length) {
+      words[wordIdx].classList.add('highlighted');
+      wordIdx++;
+    } else {
+      clearInterval(highlightInterval);
+      highlightInterval = null;
+      if (loop) {
+        // Clear and restart
+        setTimeout(() => {
+          clearHighlights();
+          runHighlightAnimation(cardIndex, true);
+        }, 1000);
+      } else {
+        // Clear highlights after a beat
+        setTimeout(clearHighlights, 500);
+      }
+    }
+  }, perWord);
+}
+
+function toggleCard(index) {
+  // Stop auto-animation if running
+  if (autoAnimInterval) { clearInterval(autoAnimInterval); autoAnimInterval = null; }
+  if (highlightInterval) { clearInterval(highlightInterval); highlightInterval = null; }
+  clearHighlights();
+
+  if (currentPlaying === index) {
+    // Stop
+    stopAll();
+    return;
+  }
+
+  stopAll();
+
+  const audio = document.getElementById('audio' + index);
+  const card = document.querySelectorAll('.proof-card')[index];
+
+  audio.currentTime = scenes[index].audioStart;
+  audio.play().catch(() => {});
+  card.classList.add('playing');
+  currentPlaying = index;
+
+  // Run highlight animation synced to audio duration
+  runHighlightAnimation(index, false);
+
+  // Stop after duration
+  const stopTimer = setTimeout(() => {
+    if (currentPlaying === index) {
+      stopAll();
+    }
+  }, scenes[index].duration * 1000);
+
+  // Also stop on audio end
+  audio.onended = () => {
+    if (currentPlaying === index) stopAll();
+  };
+}
+
+// Auto-animate card 0 after 2s (no audio, just highlight)
+setTimeout(() => {
+  if (currentPlaying === -1) {
+    const card = document.querySelectorAll('.proof-card')[0];
+    card.classList.add('animating');
+    runHighlightAnimation(0, true);
+  }
+}, 2000);
+
+// Stop auto-animation on any card click (handled in toggleCard)
+</script>
+
+</body>
+</html>

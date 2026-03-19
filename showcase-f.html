@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentCollect — The Scoreboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: #050505;
+  color: #fff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Noise texture */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ============ LAYOUT ============ */
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+}
+
+/* ============ LOGO ============ */
+.logo-bar {
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  z-index: 100;
+}
+
+.logo {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+  color: #fff;
+  opacity: 0.15;
+  letter-spacing: -0.02em;
+  user-select: none;
+}
+
+.logo-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background: #4F46E5;
+  border-radius: 50%;
+  margin-left: 1px;
+  vertical-align: super;
+  position: relative;
+  top: -3px;
+}
+
+/* ============ CONTEXT BAR ============ */
+.context-bar {
+  flex-shrink: 0;
+  height: 50px;
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+}
+
+.context-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.scenario-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(79,70,229,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+.scenario-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.context-center {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.context-center .amount {
+  color: #818cf8;
+}
+
+.context-right {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.04em;
+}
+
+/* ============ MATCHUP HEADER ============ */
+.matchup {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  padding: 28px 24px 20px;
+  position: relative;
+}
+
+/* Soft glow behind matchup */
+.matchup::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 300px;
+  background: radial-gradient(ellipse, rgba(79,70,229,0.06) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.matchup-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 2;
+}
+
+.matchup-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.matchup-avatar.ai {
+  background: rgba(79,70,229,0.15);
+  border: 2px solid rgba(79,70,229,0.3);
+}
+
+.matchup-avatar.human {
+  background: rgba(255,255,255,0.06);
+  border: 2px solid rgba(255,255,255,0.1);
+}
+
+.matchup-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+}
+
+.matchup-name.ai { color: #818cf8; }
+.matchup-name.human { color: rgba(255,255,255,0.7); }
+
+.matchup-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  z-index: 2;
+}
+
+.matchup-vs {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900;
+  font-size: 13px;
+  color: rgba(255,255,255,0.12);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Progress bar below matchup */
+.progress-wrap {
+  flex-shrink: 0;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.progress-track {
+  flex: 1;
+  height: 3px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #4F46E5, #818cf8);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.progress-play {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1.5px solid rgba(99,102,241,0.5);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.progress-play:hover {
+  background: rgba(99,102,241,0.1);
+  border-color: #818cf8;
+}
+
+.progress-play svg {
+  fill: #818cf8;
+  width: 12px;
+  height: 12px;
+}
+
+.progress-play .play-icon { display: block; }
+.progress-play .pause-icon { display: none; }
+.progress-play.playing .play-icon { display: none; }
+.progress-play.playing .pause-icon { display: block; }
+
+.progress-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  flex-shrink: 0;
+  min-width: 32px;
+}
+
+/* ============ CONVERSATION AREA ============ */
+.conversation {
+  flex: 1;
+  display: flex;
+  gap: 0;
+  overflow: hidden;
+  padding: 20px 28px;
+  min-height: 0;
+}
+
+.conv-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.conv-column + .conv-column {
+  border-left: 1px solid rgba(255,255,255,0.04);
+}
+
+.conv-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0 20px 12px;
+  flex-shrink: 0;
+}
+
+.conv-label.ai { color: rgba(129,140,248,0.5); }
+.conv-label.human { color: rgba(255,255,255,0.2); }
+
+.conv-messages {
+  flex: 1;
+  overflow: hidden;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.conv-msg {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: msgIn 0.5s ease forwards;
+}
+
+@keyframes msgIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.conv-msg-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+.conv-msg-text.ai { color: #818cf8; }
+.conv-msg-text.human { color: #fff; }
+
+.conv-msg-text .word {
+  display: inline;
+  opacity: 0;
+}
+
+.conv-msg-text .word.visible {
+  animation: wordFade 0.12s ease forwards;
+}
+
+@keyframes wordFade {
+  to { opacity: 1; }
+}
+
+/* Listening indicator */
+.listening {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.listening.active { opacity: 1; }
+
+.listening-dot {
+  width: 4px;
+  height: 4px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  animation: listenPulse 1.4s ease-in-out infinite;
+}
+
+.listening-dot:nth-child(2) { animation-delay: 0.2s; }
+.listening-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes listenPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Column dimming */
+.conv-column.dim .conv-messages { opacity: 0.3; transition: opacity 0.3s; }
+.conv-column:not(.dim) .conv-messages { opacity: 1; transition: opacity 0.3s; }
+
+/* Fade old messages */
+.conv-msg.fading {
+  animation: msgFade 0.4s ease forwards;
+}
+
+@keyframes msgFade {
+  to { opacity: 0.15; transform: translateY(-10px); }
+}
+
+/* ============ RESULT BANNER ============ */
+.result-banner {
+  position: fixed;
+  bottom: 80px;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.result-banner.visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.result-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px 32px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.result-inner.green {
+  background: rgba(52,211,153,0.08);
+  border: 1px solid rgba(52,211,153,0.15);
+}
+
+.result-inner.indigo {
+  background: rgba(79,70,229,0.08);
+  border: 1px solid rgba(79,70,229,0.15);
+}
+
+.result-check {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 20px;
+}
+
+.result-inner.green .result-check {
+  background: rgba(52,211,153,0.12);
+}
+
+.result-inner.indigo .result-check {
+  background: rgba(79,70,229,0.12);
+}
+
+.result-content {
+  flex: 1;
+}
+
+.result-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+.result-inner.green .result-title { color: #34d399; }
+.result-inner.indigo .result-title { color: #818cf8; }
+
+.result-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.4);
+  margin-top: 2px;
+}
+
+.result-cta {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: #4F46E5;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.result-cta:hover { background: #4338ca; }
+
+/* ============ SCENE SELECTOR ============ */
+.scene-selector {
+  flex-shrink: 0;
+  display: flex;
+  gap: 8px;
+  padding: 16px 28px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.015);
+}
+
+.scene-card {
+  flex: 1;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 12px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.25s;
+}
+
+.scene-card:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+.scene-card.active {
+  border-color: rgba(99,102,241,0.4);
+  background: rgba(99,102,241,0.06);
+}
+
+.scene-card-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.scene-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.scene-card-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+}
+
+.scene-card.active .scene-card-label {
+  color: rgba(255,255,255,0.8);
+}
+
+.scene-card-amount {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 700px) {
+  .context-bar {
+    padding: 0 16px;
+    height: 44px;
+  }
+
+  .context-right { display: none; }
+
+  .matchup {
+    gap: 28px;
+    padding: 20px 16px 14px;
+  }
+
+  .matchup-avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .matchup-name { font-size: 12px; }
+
+  .conversation {
+    flex-direction: column;
+    padding: 12px 16px;
+  }
+
+  .conv-column + .conv-column {
+    border-left: none;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    padding-top: 12px;
+  }
+
+  .conv-msg-text {
+    font-size: 18px;
+  }
+
+  .conv-label {
+    padding: 0 12px 8px;
+  }
+
+  .conv-messages {
+    padding: 0 12px;
+  }
+
+  .scene-selector {
+    padding: 12px 16px;
+    gap: 6px;
+  }
+
+  .scene-card {
+    padding: 10px 12px;
+  }
+
+  .scene-card-amount { display: none; }
+
+  .progress-wrap {
+    padding: 0 16px;
+  }
+
+  .result-inner {
+    margin: 0 16px;
+    padding: 18px 20px;
+    flex-wrap: wrap;
+  }
+
+  .result-cta {
+    width: 100%;
+    text-align: center;
+    margin-top: 4px;
+  }
+
+  .logo-bar {
+    top: 12px;
+    left: 16px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <!-- Logo -->
+  <div class="logo-bar">
+    <div class="logo">AgentCollect<span class="logo-dot"></span></div>
+  </div>
+
+  <!-- Context Bar -->
+  <div class="context-bar" id="contextBar">
+    <div class="context-left">
+      <div class="scenario-icon" id="scenarioIcon">&#x26A1;</div>
+      <span class="scenario-label" id="scenarioLabel">Objection</span>
+    </div>
+    <div class="context-center" id="contextCenter">
+      <span class="amount" id="stakeAmount">$29.99</span> owed to <span id="stakeClient">Client</span>
+    </div>
+    <div class="context-right">Real call &middot; March 2026</div>
+  </div>
+
+  <!-- Matchup Header -->
+  <div class="matchup" id="matchup">
+    <div class="matchup-side">
+      <div class="matchup-avatar ai">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <rect x="4" y="4" width="16" height="16" rx="4" stroke="#818cf8" stroke-width="1.5"/>
+          <circle cx="9" cy="11" r="1.5" fill="#818cf8"/>
+          <circle cx="15" cy="11" r="1.5" fill="#818cf8"/>
+          <path d="M9 15c0 0 1.5 1.5 3 1.5s3-1.5 3-1.5" stroke="#818cf8" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="matchup-name ai">AI Agent</span>
+    </div>
+    <div class="matchup-connector">
+      <span class="matchup-vs">calls</span>
+    </div>
+    <div class="matchup-side">
+      <div class="matchup-avatar human">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="8" r="4" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="matchup-name human" id="matchupHuman">Khalil</span>
+    </div>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="progress-wrap">
+    <button class="progress-play" id="playBtn" aria-label="Play/Pause">
+      <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
+    </button>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div class="progress-time" id="callTimer">0:00</div>
+  </div>
+
+  <!-- Conversation Area -->
+  <div class="conversation" id="conversation">
+    <div class="conv-column" id="colAI">
+      <div class="conv-label ai">AI AGENT</div>
+      <div class="conv-messages" id="msgsAI"></div>
+    </div>
+    <div class="conv-column" id="colHuman">
+      <div class="conv-label human" id="humanLabel">DEBTOR</div>
+      <div class="conv-messages" id="msgsHuman"></div>
+    </div>
+  </div>
+
+  <!-- Result Banner -->
+  <div class="result-banner" id="resultBanner">
+    <div class="result-inner green" id="resultInner">
+      <div class="result-check" id="resultCheck">&#x2713;</div>
+      <div class="result-content">
+        <div class="result-title" id="resultTitle">COLLECTED</div>
+        <div class="result-sub" id="resultSub">Zero human involvement. AI handled everything.</div>
+      </div>
+      <a href="#" class="result-cta">Book a demo &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Scene Selector -->
+  <div class="scene-selector" id="sceneSelector">
+    <div class="scene-card active" data-scene="0">
+      <span class="scene-card-icon">&#x26A1;</span>
+      <div class="scene-card-info">
+        <span class="scene-card-label">Objection</span>
+        <span class="scene-card-amount">$29.99</span>
+      </div>
+    </div>
+    <div class="scene-card" data-scene="1">
+      <span class="scene-card-icon">&#x1F4DE;</span>
+      <div class="scene-card-info">
+        <span class="scene-card-label">Gatekeeper</span>
+        <span class="scene-card-amount">$9,969</span>
+      </div>
+    </div>
+    <div class="scene-card" data-scene="2">
+      <span class="scene-card-icon">&#x2705;</span>
+      <div class="scene-card-info">
+        <span class="scene-card-label">Payment</span>
+        <span class="scene-card-amount">Paid on call</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Audio -->
+<audio id="audio0" preload="none" src="https://dxc03zgurdly9.cloudfront.net/075961824e83d68a634b91afb75f59fba97b1b2951c58dc43ec9a5e3bc58b806/recording.wav"></audio>
+<audio id="audio1" preload="none" src="https://dxc03zgurdly9.cloudfront.net/00d79b2208aee99e88fb7a0033974bba3140f3b905b388429b22133e4694c670/recording.wav"></audio>
+<audio id="audio2" preload="none" src="https://dxc03zgurdly9.cloudfront.net/10b4ec959b4a004a6bf47dcfa2da0a213c7ce231590e295d9c60faffde486685/recording.wav"></audio>
+
+<script>
+(function() {
+  'use strict';
+
+  // ============ SCENE DATA ============
+  const scenes = [
+    {
+      audioId: 'audio0',
+      audioStart: 30,
+      name: 'Khalil',
+      scenarioIcon: '\u26A1',
+      scenarioLabel: 'Objection',
+      stake: '$29.99 owed to Client',
+      stakeAmount: '$29.99',
+      stakeClient: 'Client',
+      resultType: 'indigo',
+      resultTitle: 'OBJECTION HANDLED',
+      resultSub: 'Zero human involvement. AI handled everything.',
+      beats: [
+        { delay: 500,   side: 'human', text: 'I guess I do have questions about it.' },
+        { delay: 2700,  side: 'human', text: 'What are we getting charged for exactly?' },
+        { delay: 5800,  side: 'ai',    text: 'Twenty-nine ninety-nine. Background check from Client.' },
+        { delay: 10000, side: 'ai',    text: 'I can walk you through the details and send you the link to resolve it.' },
+        { delay: 13500, side: 'outcome' }
+      ],
+      totalDuration: 16000
+    },
+    {
+      audioId: 'audio1',
+      audioStart: 56,
+      name: 'Jonathan',
+      scenarioIcon: '\uD83D\uDCDE',
+      scenarioLabel: 'Gatekeeper',
+      stake: '$9,969.75 owed to Client',
+      stakeAmount: '$9,969.75',
+      stakeClient: 'Client',
+      resultType: 'indigo',
+      resultTitle: 'CONTACT FOUND',
+      resultSub: 'AP contact collected. Phone + email captured.',
+      beats: [
+        { delay: 200,   side: 'human', text: "I don\u2019t deal with that. You\u2019d wanna call accounts payable." },
+        { delay: 6000,  side: 'ai',    text: 'Could you provide the name or contact info for AP?' },
+        { delay: 10000, side: 'human', text: "Sure, let me get you that number." },
+        { delay: 13000, side: 'outcome' }
+      ],
+      totalDuration: 15500
+    },
+    {
+      audioId: 'audio2',
+      audioStart: 50,
+      name: 'Rachel',
+      scenarioIcon: '\u2705',
+      scenarioLabel: 'Payment',
+      stake: 'Balance owed to Client',
+      stakeAmount: 'Balance',
+      stakeClient: 'Client',
+      resultType: 'green',
+      resultTitle: 'COLLECTED',
+      resultSub: '$0 manual work. Paid during the call.',
+      beats: [
+        { delay: 1800,  side: 'human', text: "I\u2019m paying it today. I have it coming in." },
+        { delay: 5700,  side: 'human', text: 'I, again, am so sorry.' },
+        { delay: 9000,  side: 'human', text: "It is being paid, honestly. I\u2019m in front of my computer putting it in right now." },
+        { delay: 13000, side: 'outcome' }
+      ],
+      totalDuration: 15500
+    }
+  ];
+
+  // ============ DOM REFS ============
+  const scenarioIcon = document.getElementById('scenarioIcon');
+  const scenarioLabel = document.getElementById('scenarioLabel');
+  const stakeAmount = document.getElementById('stakeAmount');
+  const stakeClient = document.getElementById('stakeClient');
+  const matchupHuman = document.getElementById('matchupHuman');
+  const humanLabel = document.getElementById('humanLabel');
+  const playBtn = document.getElementById('playBtn');
+  const progressFill = document.getElementById('progressFill');
+  const callTimer = document.getElementById('callTimer');
+  const msgsAI = document.getElementById('msgsAI');
+  const msgsHuman = document.getElementById('msgsHuman');
+  const colAI = document.getElementById('colAI');
+  const colHuman = document.getElementById('colHuman');
+  const resultBanner = document.getElementById('resultBanner');
+  const resultInner = document.getElementById('resultInner');
+  const resultCheck = document.getElementById('resultCheck');
+  const resultTitle = document.getElementById('resultTitle');
+  const resultSub = document.getElementById('resultSub');
+  const sceneSelector = document.getElementById('sceneSelector');
+  const sceneCards = sceneSelector.querySelectorAll('.scene-card');
+
+  // ============ STATE ============
+  let currentScene = 0;
+  let isPlaying = false;
+  let beatTimeouts = [];
+  let timerInterval = null;
+  let timerSeconds = 0;
+  let wordIntervals = [];
+  let autoAdvanceTimeout = null;
+  let progressInterval = null;
+  let sceneStartTime = 0;
+
+  // ============ TIMER ============
+  function startTimer() {
+    timerSeconds = 0;
+    callTimer.textContent = '0:00';
+    timerInterval = setInterval(() => {
+      timerSeconds++;
+      const m = Math.floor(timerSeconds / 60);
+      const s = timerSeconds % 60;
+      callTimer.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+    }, 1000);
+  }
+
+  function stopTimer() {
+    if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+  }
+
+  // ============ PROGRESS ============
+  function startProgress(duration) {
+    sceneStartTime = Date.now();
+    progressFill.style.transition = 'none';
+    progressFill.style.width = '0%';
+
+    progressInterval = setInterval(() => {
+      const elapsed = Date.now() - sceneStartTime;
+      const pct = Math.min((elapsed / duration) * 100, 100);
+      progressFill.style.transition = 'none';
+      progressFill.style.width = pct + '%';
+      if (pct >= 100) clearInterval(progressInterval);
+    }, 50);
+  }
+
+  function stopProgress() {
+    if (progressInterval) { clearInterval(progressInterval); progressInterval = null; }
+  }
+
+  // ============ WORD-BY-WORD REVEAL ============
+  function revealWords(container) {
+    const words = container.querySelectorAll('.word');
+    let idx = 0;
+    const iv = setInterval(() => {
+      if (idx >= words.length) { clearInterval(iv); return; }
+      words[idx].classList.add('visible');
+      idx++;
+    }, 55);
+    wordIntervals.push(iv);
+  }
+
+  // ============ ADD MESSAGE ============
+  function addMessage(side, text) {
+    const target = side === 'ai' ? msgsAI : msgsHuman;
+    const otherTarget = side === 'ai' ? msgsHuman : msgsAI;
+    const otherCol = side === 'ai' ? colHuman : colAI;
+    const thisCol = side === 'ai' ? colAI : colHuman;
+
+    // Dim the other side
+    otherCol.classList.add('dim');
+    thisCol.classList.remove('dim');
+
+    // Fade older messages (keep only last 2)
+    const existing = target.querySelectorAll('.conv-msg:not(.fading)');
+    if (existing.length >= 3) {
+      existing[0].classList.add('fading');
+    }
+
+    // Create message
+    const msg = document.createElement('div');
+    msg.className = 'conv-msg';
+
+    const textWords = text.split(' ').map(w => `<span class="word">${w} </span>`).join('');
+    msg.innerHTML = `<div class="conv-msg-text ${side}">${textWords}</div>`;
+
+    target.appendChild(msg);
+    revealWords(msg.querySelector('.conv-msg-text'));
+  }
+
+  // ============ SHOW RESULT ============
+  function showResult(scene) {
+    // Un-dim both columns
+    colAI.classList.remove('dim');
+    colHuman.classList.remove('dim');
+
+    // Set result style
+    resultInner.className = 'result-inner ' + scene.resultType;
+    resultTitle.textContent = scene.resultTitle;
+    resultSub.textContent = scene.resultSub;
+    resultCheck.textContent = scene.resultType === 'green' ? '\u2713' : '\u2713';
+
+    resultBanner.classList.add('visible');
+  }
+
+  function hideResult() {
+    resultBanner.classList.remove('visible');
+  }
+
+  // ============ UPDATE SCENE UI ============
+  function updateSceneUI(idx) {
+    const scene = scenes[idx];
+
+    scenarioIcon.textContent = scene.scenarioIcon;
+    scenarioLabel.textContent = scene.scenarioLabel;
+    stakeAmount.textContent = scene.stakeAmount;
+    stakeClient.textContent = scene.stakeClient;
+    matchupHuman.textContent = scene.name;
+
+    // Scene cards
+    sceneCards.forEach(c => c.classList.remove('active'));
+    sceneCards[idx].classList.add('active');
+  }
+
+  // ============ PLAY SCENE ============
+  function playScene(idx) {
+    cleanup();
+    currentScene = idx;
+    const scene = scenes[idx];
+    const audioEl = document.getElementById(scene.audioId);
+
+    updateSceneUI(idx);
+    hideResult();
+
+    // Clear messages
+    msgsAI.innerHTML = '';
+    msgsHuman.innerHTML = '';
+    colAI.classList.remove('dim');
+    colHuman.classList.remove('dim');
+
+    // Set audio
+    audioEl.currentTime = scene.audioStart;
+
+    const startPlayback = () => {
+      isPlaying = true;
+      playBtn.classList.add('playing');
+      startTimer();
+      startProgress(scene.totalDuration);
+      scheduleBeats(scene);
+    };
+
+    const playPromise = audioEl.play();
+    if (playPromise) {
+      playPromise.then(startPlayback).catch(startPlayback);
+    } else {
+      startPlayback();
+    }
+  }
+
+  function scheduleBeats(scene) {
+    const audioEl = document.getElementById(scene.audioId);
+
+    scene.beats.forEach(beat => {
+      const t = setTimeout(() => {
+        if (!isPlaying) return;
+
+        if (beat.side === 'outcome') {
+          showResult(scene);
+
+          // Auto-advance after 3.5s
+          autoAdvanceTimeout = setTimeout(() => {
+            if (isPlaying) {
+              const next = (currentScene + 1) % scenes.length;
+              playScene(next);
+            }
+          }, 3500);
+          return;
+        }
+
+        addMessage(beat.side, beat.text);
+      }, beat.delay);
+      beatTimeouts.push(t);
+    });
+
+    // Stop audio after last non-outcome beat + buffer
+    const lastTextBeat = scene.beats.filter(b => b.side !== 'outcome').pop();
+    if (lastTextBeat) {
+      const stopT = setTimeout(() => { audioEl.pause(); }, lastTextBeat.delay + 3000);
+      beatTimeouts.push(stopT);
+    }
+  }
+
+  // ============ CLEANUP ============
+  function cleanup() {
+    beatTimeouts.forEach(t => clearTimeout(t));
+    beatTimeouts = [];
+    wordIntervals.forEach(iv => clearInterval(iv));
+    wordIntervals = [];
+    if (autoAdvanceTimeout) { clearTimeout(autoAdvanceTimeout); autoAdvanceTimeout = null; }
+    stopTimer();
+    stopProgress();
+
+    scenes.forEach(s => {
+      document.getElementById(s.audioId).pause();
+    });
+
+    isPlaying = false;
+    playBtn.classList.remove('playing');
+  }
+
+  function togglePlay() {
+    if (isPlaying) {
+      cleanup();
+      updateSceneUI(currentScene);
+    } else {
+      playScene(currentScene);
+    }
+  }
+
+  // ============ INIT ============
+  function initDisplay() {
+    updateSceneUI(0);
+    callTimer.textContent = '0:00';
+    progressFill.style.width = '0%';
+  }
+
+  // ============ EVENTS ============
+  playBtn.addEventListener('click', togglePlay);
+
+  sceneCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const idx = parseInt(card.dataset.scene, 10);
+      cleanup();
+      currentScene = idx;
+      hideResult();
+      playScene(idx);
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT') return;
+
+    if (e.code === 'Space') {
+      e.preventDefault();
+      togglePlay();
+    } else if (e.code === 'ArrowLeft') {
+      e.preventDefault();
+      const prev = (currentScene - 1 + scenes.length) % scenes.length;
+      playScene(prev);
+    } else if (e.code === 'ArrowRight') {
+      e.preventDefault();
+      const next = (currentScene + 1) % scenes.length;
+      playScene(next);
+    }
+  });
+
+  initDisplay();
+})();
+</script>
+</body>
+</html>
