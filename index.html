@@ -228,20 +228,36 @@
         .respectful-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:flex-start;max-width:900px;margin:0 auto}
         .respectful-text{font-size:20px;color:var(--text);line-height:1.7;font-weight:400;letter-spacing:-.01em}
 
-        /* AUDIO SHOWCASE — Ultra Premium */
-        .audio-showcase{max-width:620px;margin:0 auto}
-        .audio-tabs{display:flex;gap:8px;margin-bottom:20px;justify-content:center;flex-wrap:wrap}
-        .audio-tab{padding:8px 18px;border-radius:24px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid rgba(79,70,229,.18);background:rgba(79,70,229,.04);color:var(--text-mid);transition:all .25s;white-space:nowrap}
-        .audio-tab:hover{border-color:var(--indigo);color:var(--indigo);background:rgba(79,70,229,.08)}
-        .audio-tab.active{background:var(--indigo);color:#fff;border-color:var(--indigo);box-shadow:0 4px 16px rgba(79,70,229,.25)}
-        .audio-player{background:linear-gradient(135deg,#0B1B3D 0%,#1a1a3e 50%,#0d2847 100%);border-radius:20px;padding:28px 28px 24px;color:#fff;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 20px 60px rgba(11,27,61,.4)}
-        .audio-player::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--indigo),var(--green));opacity:.6}
-        .audio-live-dot{width:8px;height:8px;border-radius:50%;background:#10B981;animation:pulse-ring 2s infinite;flex-shrink:0}
-        .audio-label{font-size:12px;color:rgba(255,255,255,.4);font-weight:500;letter-spacing:.02em}
-        .audio-time{font-size:12px;color:rgba(255,255,255,.3);font-family:var(--mono);letter-spacing:.04em}
-        .audio-waveform{display:flex;align-items:center;justify-content:center;gap:3px;height:80px;margin-bottom:4px}
-        .audio-bar{width:4px;border-radius:3px;transition:height .12s ease;opacity:.35}
-        .audio-bar.playing{opacity:.85}
+        /* PROOF WALL — 3 call cards */
+        .proof-wall{background:#050505;padding:80px 32px;position:relative}
+        .proof-wall::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(79,70,229,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(79,70,229,.03) 1px,transparent 1px);background-size:64px 64px;pointer-events:none}
+        .proof-wall-inner{max-width:var(--max-w);margin:0 auto;position:relative;z-index:1}
+        .proof-wall h2{font-family:var(--display);font-size:clamp(28px,4vw,40px);font-weight:900;color:#fff;text-align:center;letter-spacing:-.04em;margin-bottom:8px}
+        .proof-wall-sub{text-align:center;color:rgba(255,255,255,.4);font-size:16px;margin-bottom:48px}
+        .proof-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+        .proof-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px 24px;transition:all .3s;position:relative}
+        .proof-card:hover{transform:translateY(-4px);border-color:rgba(79,70,229,.2);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+        .proof-card.playing{border-color:rgba(79,70,229,.4)}
+        .proof-badge{display:inline-block;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px}
+        .proof-badge.indigo{background:rgba(79,70,229,.12);color:#818cf8;border:1px solid rgba(79,70,229,.2)}
+        .proof-badge.green{background:rgba(16,185,129,.12);color:#34d399;border:1px solid rgba(16,185,129,.2)}
+        .proof-quote{color:#fff;font-size:18px;font-family:var(--display);font-weight:600;line-height:1.4;margin-bottom:8px}
+        .proof-attr{color:rgba(255,255,255,.3);font-size:12px;margin-bottom:20px}
+        .proof-ai{background:rgba(79,70,229,.06);border:1px solid rgba(79,70,229,.1);border-radius:10px;padding:14px 16px;margin-bottom:24px}
+        .proof-ai-label{font-size:10px;font-weight:700;color:#818cf8;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+        .proof-ai-text{color:#818cf8;font-size:14px;line-height:1.5}
+        .proof-play{width:44px;height:44px;border-radius:50%;background:var(--indigo);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;margin:0 auto 6px;transition:all .2s}
+        .proof-play:hover{transform:scale(1.08);box-shadow:0 4px 16px rgba(79,70,229,.35)}
+        .proof-play svg{width:18px;height:18px;fill:#fff;margin-left:2px}
+        .proof-play-label{text-align:center;font-size:11px;color:rgba(255,255,255,.3)}
+        .proof-play .eq{display:flex;align-items:flex-end;gap:2px;height:16px}
+        .proof-play .eq b{width:3px;background:#fff;border-radius:2px;animation:eqAnim 1s ease-in-out infinite}
+        .proof-play .eq b:nth-child(1){height:5px;animation-delay:0s}
+        .proof-play .eq b:nth-child(2){height:10px;animation-delay:.15s}
+        .proof-play .eq b:nth-child(3){height:4px;animation-delay:.3s}
+        .proof-play .eq b:nth-child(4){height:8px;animation-delay:.1s}
+        @keyframes eqAnim{0%,100%{height:4px}50%{height:16px}}
+        @media(max-width:768px){.proof-cards{grid-template-columns:1fr}}
         .audio-controls-row{display:flex;align-items:center;gap:16px;margin:12px 0}
         .audio-play-btn{width:56px;height:56px;border-radius:50%;background:var(--indigo);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;box-shadow:0 0 24px rgba(79,70,229,.3)}
         .audio-play-btn:hover{transform:scale(1.06);box-shadow:0 0 36px rgba(79,70,229,.5)}
@@ -593,58 +609,62 @@
 
 <div class="gradient-divider"></div>
 
-<!-- 3. AUDIO SHOWCASE -->
-<section class="respectful reveal" id="how">
-    <div class="respectful-inner" style="text-align:center">
-        <div class="section-label" style="text-align:center;margin-bottom:24px">Hear your AI agent in action</div>
+<!-- 3. PROOF WALL — 3 real calls -->
+<section class="proof-wall reveal" id="how">
+    <div class="proof-wall-inner">
+        <h2>Hear your AI agent in action</h2>
+        <div class="proof-wall-sub">3 real collection calls. Handled entirely by AI.</div>
 
-        <div class="audio-showcase">
-            <div class="audio-tabs" id="audio-tabs">
-                <div class="audio-tab active" data-tab="0">&#128293; Pays on the spot</div>
-                <div class="audio-tab" data-tab="1">&#10067; Questions about charge</div>
-                <div class="audio-tab" data-tab="2">&#129335; Wrong person → gets referral</div>
+        <div class="proof-cards">
+            <!-- Card 1: Objection -->
+            <div class="proof-card" data-audio="https://dxc03zgurdly9.cloudfront.net/075961824e83d68a634b91afb75f59fba97b1b2951c58dc43ec9a5e3bc58b806/recording.wav" data-start="30">
+                <div class="proof-badge indigo">Objection Handled</div>
+                <div class="proof-quote">"What are we getting charged for exactly?"</div>
+                <div class="proof-attr">— Khalil, debtor</div>
+                <div class="proof-ai">
+                    <div class="proof-ai-label">AI Agent:</div>
+                    <div class="proof-ai-text">$29.99. Background check from [Client].</div>
+                </div>
+                <button class="proof-play" onclick="playProof(this)"><svg viewBox="0 0 24 24"><polygon points="7,3 21,12 7,21"/></svg></button>
+                <div class="proof-play-label">Listen to the real call</div>
             </div>
 
-            <div class="audio-player" id="audio-player">
-                <!-- Header -->
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
-                    <div style="display:flex;align-items:center;gap:8px">
-                        <div class="audio-live-dot"></div>
-                        <span class="audio-label" id="audio-scenario-label">Live call &middot; Checkr collection</span>
-                    </div>
-                    <div class="audio-time" id="audio-time">0:00</div>
+            <!-- Card 2: Gatekeeper -->
+            <div class="proof-card" data-audio="https://dxc03zgurdly9.cloudfront.net/00d79b2208aee99e88fb7a0033974bba3140f3b905b388429b22133e4694c670/recording.wav" data-start="56">
+                <div class="proof-badge indigo">Contact Collected</div>
+                <div class="proof-quote">"I don't deal with that. You'd wanna call accounts payable."</div>
+                <div class="proof-attr">— Jonathan, employee</div>
+                <div class="proof-ai">
+                    <div class="proof-ai-label">AI Agent:</div>
+                    <div class="proof-ai-text">Could you provide the name or contact info for AP?</div>
                 </div>
+                <button class="proof-play" onclick="playProof(this)"><svg viewBox="0 0 24 24"><polygon points="7,3 21,12 7,21"/></svg></button>
+                <div class="proof-play-label">Listen to the real call</div>
+            </div>
 
-                <!-- Waveform -->
-                <div class="audio-waveform" id="audio-waveform"></div>
-
-                <!-- Controls -->
-                <div class="audio-controls-row">
-                    <button class="audio-play-btn" id="audio-play-btn" onclick="toggleAudio()">
-                        <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21" fill="white"/></svg>
-                    </button>
-                    <div class="audio-progress" id="audio-progress" onclick="seekAudio(event)">
-                        <div class="audio-progress-fill" id="audio-progress-fill"></div>
-                    </div>
+            <!-- Card 3: Payment -->
+            <div class="proof-card" data-audio="https://dxc03zgurdly9.cloudfront.net/10b4ec959b4a004a6bf47dcfa2da0a213c7ce231590e295d9c60faffde486685/recording.wav" data-start="50">
+                <div class="proof-badge green">Paid on Call</div>
+                <div class="proof-quote">"I'm paying it today. I have it coming in."</div>
+                <div class="proof-attr">— Rachel, debtor</div>
+                <div class="proof-ai">
+                    <div class="proof-ai-label">AI Agent:</div>
+                    <div class="proof-ai-text">No worries at all. I can stay on the line.</div>
                 </div>
-
-                <!-- Quote -->
-                <div class="audio-quote" id="audio-quote"></div>
-
-                <!-- Badge -->
-                <div id="audio-badge" style="margin-top:16px;text-align:center"></div>
+                <button class="proof-play" onclick="playProof(this)"><svg viewBox="0 0 24 24"><polygon points="7,3 21,12 7,21"/></svg></button>
+                <div class="proof-play-label">Listen to the real call</div>
             </div>
         </div>
 
         <!-- Neil Doyle quote -->
-        <div style="max-width:520px;margin:32px auto 0">
-            <div class="quote-card" style="text-align:left">
-                <blockquote>Every debtor was treated with respect. Not one complaint. That's unheard of.</blockquote>
-                <div class="quote-author">
-                    <div class="quote-avatar"><img src="https://respaid.com/images/neil-doyle.png" alt="Neil Doyle" onerror="this.parentElement.innerHTML='ND'"></div>
-                    <div class="quote-meta">
-                        <div class="quote-name">Neil Doyle</div>
-                        <div class="quote-title">OTC Transformation Lead, Microsoft</div>
+        <div style="max-width:520px;margin:48px auto 0">
+            <div class="quote-card" style="text-align:left;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:24px">
+                <blockquote style="color:rgba(255,255,255,.8);font-size:17px;line-height:1.6;margin-bottom:16px;font-style:italic">Every debtor was treated with respect. Not one complaint. That's unheard of.</blockquote>
+                <div class="quote-author" style="display:flex;align-items:center;gap:12px">
+                    <div class="quote-avatar" style="width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0"><img src="https://respaid.com/images/neil-doyle.png" alt="Neil Doyle" style="width:100%;height:100%;object-fit:cover" onerror="this.parentElement.innerHTML='<div style=background:rgba(255,255,255,.1);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:13px;font-weight:700>ND</div>'"></div>
+                    <div>
+                        <div style="color:#fff;font-weight:600;font-size:14px">Neil Doyle</div>
+                        <div style="color:rgba(255,255,255,.4);font-size:12px">OTC Transformation Lead, Microsoft</div>
                     </div>
                 </div>
             </div>
@@ -1479,169 +1499,34 @@ document.getElementById('url-input').addEventListener('keydown', e => {if(e.key=
 // ═══ START AUTO-CYCLING ON PAGE LOAD ═══
 startCycling();
 
-// ═══ AUDIO SHOWCASE ═══
-const audioScenarios = [
-    {
-        label: '🔥 Pays on the spot',
-        url: 'https://dxc03zgurdly9.cloudfront.net/10b4ec959b4a004a6bf47dcfa2da0a213c7ce231590e295d9c60faffde486685/recording.wav',
-        startTime: 35,
-        lines: [
-            { time: 0, role: 'agent', text: 'We represent Checkr on an account matter.' },
-            { time: 4, role: 'user', text: "I'm paying it right now! It slipped through the cracks with our accounting team. I really do apologize." },
-            { time: 15, role: 'agent', text: 'No worries at all. I can stay on the line while you complete the payment.' },
-            { time: 25, role: 'user', text: "I'm putting in my ZIP code right now." },
-            { time: 30, role: 'agent', text: 'Perfect! Take your time.' },
-            { time: 35, role: 'user', text: 'Payment sent.' },
-            { time: 38, role: 'agent', text: "Awesome! We'll verify and close your file. Thanks!" }
-        ],
-        badge: { text: '✅ Paid during the call', cls: 'green' },
-        quote: "I\u2019m paying it right now! It slipped through the cracks.",
-        headerLabel: 'Live call \u00b7 Checkr collection'
-    },
-    {
-        label: '❓ Questions about charge',
-        url: 'https://dxc03zgurdly9.cloudfront.net/075961824e83d68a634b91afb75f59fba97b1b2951c58dc43ec9a5e3bc58b806/recording.wav',
-        startTime: 8,
-        lines: [
-            { time: 0, role: 'user', text: "My name is Khalil. I just got a call asking for a callback." },
-            { time: 5, role: 'agent', text: 'We tried to reach you regarding your outstanding balance with Checkr. Can I help with the payment?' },
-            { time: 12, role: 'user', text: 'What are we getting charged for exactly?' },
-            { time: 15, role: 'agent', text: 'The amount due is $29.99 for a Background Check from Checkr.' },
-            { time: 22, role: 'user', text: 'Can I pay this from the Checkr website?' },
-            { time: 25, role: 'agent', text: "Use the portal link in the email — that way your balance gets closed out properly." },
-            { time: 32, role: 'user', text: "I got it from here. Bye bye." }
-        ],
-        badge: { text: '📋 Questions answered, directed to portal', cls: 'indigo' },
-        quote: "What are we getting charged for exactly?",
-        headerLabel: 'Inbound callback \u00b7 Checkr'
-    },
-    {
-        label: '🤷 Wrong person → gets referral',
-        url: 'https://dxc03zgurdly9.cloudfront.net/00d79b2208aee99e88fb7a0033974bba3140f3b905b388429b22133e4694c670/recording.wav',
-        startTime: 56,
-        lines: [
-            { time: 0, role: 'user', text: "I don't deal with that. You'd wanna call accounts payable." },
-            { time: 5, role: 'agent', text: 'Could you provide the name or contact info for someone in accounts payable?' },
-            { time: 10, role: 'user', text: "One second... That's what I'm trying to look up for you." },
-            { time: 15, role: 'agent', text: 'No problem — take your time.' },
-            { time: 25, role: 'user', text: '916-845-8340.' },
-            { time: 28, role: 'agent', text: "Thanks. And what's their email address?" },
-            { time: 35, role: 'user', text: 'a-p-invoices at caloes.ca.gov.' },
-            { time: 40, role: 'agent', text: "Thanks for your help. We'll reach out to accounts payable." }
-        ],
-        badge: { text: '📞 Contact info collected from gatekeeper', cls: 'indigo' },
-        quote: "I don\u2019t deal with that \u2014 let me get you the AP contact.",
-        headerLabel: 'Outbound call \u00b7 CalOES'
-    }
-];
-
-let currentAudio = null;
-let currentScenario = 0;
-let waveformBars = [];
-
-function initWaveform() {
-    const wf = document.getElementById('audio-waveform');
-    if (!wf) return;
-    wf.innerHTML = '';
-    waveformBars = [];
-    for (let i = 0; i < 60; i++) {
-        const bar = document.createElement('div');
-        bar.className = 'audio-bar';
-        // Create a natural waveform shape — taller in center
-        const center = 30;
-        const dist = Math.abs(i - center) / center;
-        const base = (1 - dist * 0.6) * 60;
-        const variation = Math.random() * 20 - 10;
-        bar.style.height = Math.max(6, base + variation) + 'px';
-        // Gradient from indigo to green across bars
-        const t = i / 59;
-        const r = Math.round(79 + (16 - 79) * t);
-        const g = Math.round(70 + (185 - 70) * t);
-        const b2 = Math.round(229 + (129 - 229) * t);
-        bar.style.background = 'rgb(' + r + ',' + g + ',' + b2 + ')';
-        wf.appendChild(bar);
-        waveformBars.push(bar);
-    }
-}
-
-function switchScenario(idx) {
-    if (currentAudio) { currentAudio.pause(); currentAudio = null; }
-    currentScenario = idx;
-    document.querySelectorAll('.audio-tab').forEach(function(t, i) {
-        t.classList.toggle('active', i === idx);
+// ═══ PROOF WALL — Audio playback ═══
+var proofAudio = null;
+function playProof(btn) {
+    var card = btn.closest('.proof-card');
+    var url = card.dataset.audio;
+    var start = parseFloat(card.dataset.start);
+    // Stop any playing card
+    document.querySelectorAll('.proof-card').forEach(function(c) { c.classList.remove('playing'); });
+    document.querySelectorAll('.proof-play').forEach(function(b) {
+        b.innerHTML = '<svg viewBox="0 0 24 24"><polygon points="7,3 21,12 7,21" fill="white"/></svg>';
     });
-    document.getElementById('audio-progress-fill').style.width = '0%';
-    document.getElementById('audio-time').textContent = '0:00';
-    document.getElementById('audio-play-btn').innerHTML = '<svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21" fill="white"/></svg>';
-    // Reset waveform with natural shape
-    waveformBars.forEach(function(b, i) {
-        b.classList.remove('playing');
-        var center = 30;
-        var dist = Math.abs(i - center) / center;
-        var base = (1 - dist * 0.6) * 60;
-        var variation = Math.random() * 20 - 10;
-        b.style.height = Math.max(6, base + variation) + 'px';
-    });
-
-    var scenario = audioScenarios[idx];
-    document.getElementById('audio-scenario-label').textContent = scenario.headerLabel;
-    document.getElementById('audio-quote').innerHTML = '\u201C' + scenario.quote + '\u201D';
-    document.getElementById('audio-badge').innerHTML = '<div class="audio-badge ' + scenario.badge.cls + '">' + scenario.badge.text + '</div>';
-}
-
-function toggleAudio() {
-    var scenario = audioScenarios[currentScenario];
-    if (currentAudio && !currentAudio.paused) {
-        currentAudio.pause();
-        document.getElementById('audio-play-btn').innerHTML = '<svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21" fill="white"/></svg>';
-        waveformBars.forEach(function(b) { b.classList.remove('playing'); });
-        return;
+    if (proofAudio) {
+        var wasPlaying = !proofAudio.paused && proofAudio._card === card;
+        proofAudio.pause(); proofAudio = null;
+        if (wasPlaying) return;
     }
-    if (!currentAudio || currentAudio._scenarioIdx !== currentScenario) {
-        currentAudio = new Audio(scenario.url);
-        currentAudio._scenarioIdx = currentScenario;
-        currentAudio.currentTime = scenario.startTime;
-        currentAudio.ontimeupdate = function() {
-            var elapsed = currentAudio.currentTime - scenario.startTime;
-            if (elapsed < 0) elapsed = 0;
-            var dur = currentAudio.duration - scenario.startTime;
-            if (dur > 0) document.getElementById('audio-progress-fill').style.width = (elapsed / dur * 100) + '%';
-            var m = Math.floor(elapsed / 60);
-            var s = Math.floor(elapsed % 60);
-            document.getElementById('audio-time').textContent = m + ':' + String(s).padStart(2, '0');
-        };
-    }
-    currentAudio.play();
-    document.getElementById('audio-play-btn').innerHTML = '<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" fill="white"/><rect x="14" y="4" width="4" height="16" fill="white"/></svg>';
-    function animateWave() {
-        if (currentAudio && !currentAudio.paused) {
-            waveformBars.forEach(function(b, i) {
-                b.classList.add('playing');
-                var center = 30;
-                var dist = Math.abs(i - center) / center;
-                var base = (1 - dist * 0.5) * 65;
-                b.style.height = (Math.random() * 20 + base * 0.4 + 8) + 'px';
-            });
-            requestAnimationFrame(animateWave);
-        }
-    }
-    animateWave();
+    proofAudio = new Audio(url);
+    proofAudio._card = card;
+    proofAudio.currentTime = start;
+    proofAudio.play().catch(function(){});
+    card.classList.add('playing');
+    btn.innerHTML = '<span class="eq"><b></b><b></b><b></b><b></b></span>';
+    proofAudio.onended = function() {
+        card.classList.remove('playing');
+        btn.innerHTML = '<svg viewBox="0 0 24 24"><polygon points="7,3 21,12 7,21" fill="white"/></svg>';
+        proofAudio = null;
+    };
 }
-
-function seekAudio(e) {
-    if (!currentAudio) return;
-    var rect = e.currentTarget.getBoundingClientRect();
-    var pct = (e.clientX - rect.left) / rect.width;
-    var scenario = audioScenarios[currentScenario];
-    currentAudio.currentTime = scenario.startTime + pct * (currentAudio.duration - scenario.startTime);
-}
-
-document.querySelectorAll('.audio-tab').forEach(function(tab) {
-    tab.onclick = function() { switchScenario(parseInt(tab.dataset.tab)); };
-});
-
-initWaveform();
-switchScenario(0);
 </script>
 </body>
 </html>
