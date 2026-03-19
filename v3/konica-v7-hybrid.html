@@ -151,6 +151,7 @@ a.review-src:hover{color:var(--blue)}
 .contact-card.protected::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 12px,rgba(0,0,0,.01) 12px,rgba(0,0,0,.01) 24px);pointer-events:none;border-radius:18px}
 .contact-card.protected{position:relative;overflow:hidden}
 .contact-photo{width:68px;height:68px;border-radius:50%;object-fit:cover;margin:0 auto 14px;display:block;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.contact-avatar{width:68px;height:68px;border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff;letter-spacing:-.5px}
 .contact-card.protected .contact-photo{filter:grayscale(.3)}
 .contact-name{font-weight:700;font-size:15px;color:var(--text);word-break:break-word}
 .contact-role{font-size:14px;color:var(--muted);margin-top:3px}
@@ -343,9 +344,9 @@ a.review-src:hover{color:var(--blue)}
 <section class="hero">
   <div class="rv">
     <div class="hero-label">KONA AI AGENT — LIVE DEMO</div>
-    <img src="./konica-minolta-logo.svg" alt="Konica Minolta" class="hero-km">
-    <h1>DLL Finance is collecting under your brand.<br><span class="green">We built your KONA&nbsp;AI&nbsp;Agent.</span></h1>
-    <p class="hero-sub">Book 30 minutes. We'll have it ready before you arrive — and recover cash live in the room.</p>
+    <img src="./konica-minolta-logo.svg" alt="Konica Minolta" class="hero-km" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" crossorigin="anonymous">
+    <h1>DLL Finance is collecting under your brand.<br><span class="green">We built a demo for you.</span></h1>
+    <p class="hero-sub">Your KONA AI Agent is ready. Try not to pay — it'll collect.</p>
     <a href="https://cal.com/johnb/30" target="_blank" class="hero-cta" onclick="gtag('event','hero_cta',{})">Book a live demo →</a>
   </div>
 
@@ -386,7 +387,7 @@ a.review-src:hover{color:var(--blue)}
     </div>
     <div class="chain-grid rv rv-d1">
       <div class="contact-card">
-        <img class="contact-photo" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face" alt="Donna Montalbano">
+        <div class="contact-avatar" style="background:linear-gradient(135deg,#4F46E5,#7C3AED)">DM</div>
         <div class="contact-name">Donna Montalbano</div>
         <div class="contact-role">Accounts Payable</div>
         <div class="contact-info">
@@ -397,7 +398,7 @@ a.review-src:hover{color:var(--blue)}
         <p class="contact-reason">First point of contact for invoices</p>
       </div>
       <div class="contact-card">
-        <img class="contact-photo" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face" alt="Randi Morgenstern">
+        <div class="contact-avatar" style="background:linear-gradient(135deg,#059669,#10B981)">RM</div>
         <div class="contact-name">Randi Morgenstern</div>
         <div class="contact-role">Accounting Mgr</div>
         <div class="contact-info">
@@ -408,7 +409,7 @@ a.review-src:hover{color:var(--blue)}
         <p class="contact-reason">Escalated after no AP response</p>
       </div>
       <div class="contact-card">
-        <img class="contact-photo" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt="John Fargnoli">
+        <div class="contact-avatar" style="background:linear-gradient(135deg,#D97706,#F59E0B)">JF</div>
         <div class="contact-name">John Fargnoli</div>
         <div class="contact-role">CFO</div>
         <div class="contact-info">
@@ -419,7 +420,7 @@ a.review-src:hover{color:var(--blue)}
         <p class="contact-reason">Financial authority · receives attorney letter</p>
       </div>
       <div class="contact-card protected">
-        <img class="contact-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="Steven Mendelsohn">
+        <div class="contact-avatar" style="background:linear-gradient(135deg,#6B7280,#9CA3AF)">SM</div>
         <div class="contact-name">Steven Mendelsohn, MD</div>
         <div class="contact-role">CEO</div>
         <div class="contact-info">
@@ -552,8 +553,6 @@ a.review-src:hover{color:var(--blue)}
       <span class="trusted-label">Trusted by</span>
       <img src="./logos/microsoft-real.png" alt="Microsoft" class="trusted-logo" style="height:18px;filter:brightness(10) opacity(.5)">
       <svg class="trusted-logo" viewBox="0 0 75 28" height="18" aria-label="Dell Technologies"><text x="0" y="22" font-family="Arial,sans-serif" font-size="24" font-weight="900" fill="#fff" opacity=".45" letter-spacing="-1">Dell</text></svg>
-      <svg class="trusted-logo" viewBox="0 0 75 28" height="18" aria-label="Plaid"><text x="0" y="22" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#fff" opacity=".45">Plaid</text></svg>
-      <svg class="trusted-logo" viewBox="0 0 95 28" height="18" aria-label="Checkr"><text x="0" y="22" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#fff" opacity=".45">Checkr</text></svg>
     </div>
   </div>
 </section>
@@ -588,8 +587,8 @@ a.review-src:hover{color:var(--blue)}
 <!-- SECTION 5: CTA -->
 <section class="cta-section">
   <div class="cta-inner rv">
-    <h2>Book the meeting. The KONA AI Agent will be ready.</h2>
-    <p class="cta-detail">If we don't recover anything during the demo, you pay nothing. Ever.</p>
+    <h2>Book the meeting. Your demo is ready.</h2>
+    <p class="cta-detail">If we don't recover anything, you pay nothing. Ever.</p>
     <a href="https://cal.com/johnb/30" target="_blank" class="cta-btn" onclick="gtag('event','book_cta',{})">Book a live demo</a>
     <p class="cta-forward">Holly DeSantis (EVP &amp; CFO) is the right person for this conversation.</p>
   </div>
