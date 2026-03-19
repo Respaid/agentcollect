@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>What is DSO (Days Sales Outstanding)? — AgentCollect Glossary</title>
+<meta name="description" content="DSO (Days Sales Outstanding) measures how long it takes to collect payment after a sale. Formula, benchmarks, and how AI collection reduces DSO dramatically.">
+<meta property="og:title" content="What is DSO (Days Sales Outstanding)? — AgentCollect Glossary">
+<meta property="og:description" content="DSO formula, benchmarks, and how to reduce Days Sales Outstanding with AI-powered collection.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.agentcollect.com/glossary/dso">
+<link rel="canonical" href="https://www.agentcollect.com/glossary/dso">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTerm",
+  "name": "DSO (Days Sales Outstanding)",
+  "description": "DSO is the average number of days it takes a company to collect payment after a sale. It is a key accounts receivable metric.",
+  "inDefinedTermSet": {"@type": "DefinedTermSet", "name": "B2B Debt Collection Glossary", "url": "https://www.agentcollect.com/glossary"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What is a good DSO?", "acceptedAnswer": {"@type": "Answer", "text": "Under 30 days is excellent. 30-45 days is average. Over 60 days signals collection problems that need immediate attention."}},
+    {"@type": "Question", "name": "How do you calculate DSO?", "acceptedAnswer": {"@type": "Answer", "text": "DSO = (Accounts Receivable / Total Credit Sales) x Number of Days. For example: $500K AR / $2M quarterly sales x 90 days = 22.5 days DSO."}},
+    {"@type": "Question", "name": "How does AI collection reduce DSO?", "acceptedAnswer": {"@type": "Answer", "text": "AI agents contact debtors automatically the moment an invoice becomes overdue. Faster first contact, persistent follow-up, and 24/7 operation typically reduce DSO by 30-50%."}}
+  ]
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+    --bg:#FAFBFF;--bg-card:#fff;--bg-dark:#0B1B3D;--bg-warm:#F8F7F5;
+    --border:#E8ECF2;
+    --text:#0B1B3D;--text-mid:#374151;--text-muted:#64748B;--text-dim:#94A3B8;
+    --indigo:#4F46E5;--indigo-dark:#4338CA;--indigo-light:rgba(79,70,229,.04);--indigo-glow:rgba(79,70,229,.08);
+    --green:#10B981;--green-dark:#059669;--green-light:rgba(16,185,129,.04);
+    --mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.03);
+    --shadow-md:0 2px 8px rgba(0,0,0,.04);
+    --shadow-lg:0 8px 24px rgba(0,0,0,.06);
+    --radius:14px;
+    --max-w:1120px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-size:17px;background:#fff;color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.7;position:relative}
+body::before{content:'';position:fixed;inset:0;z-index:-1;background-image:
+    linear-gradient(rgba(79,70,229,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79,70,229,.03) 1px, transparent 1px);
+    background-size:64px 64px;pointer-events:none}
+h1,h2,h3,h4,h5{font-family:var(--display);line-height:1.15;letter-spacing:-.04em}
+::selection{background:rgba(79,70,229,.08)}
+
+.gradient-divider{height:1px;background:linear-gradient(90deg,transparent,var(--indigo),var(--green),transparent);opacity:.3;max-width:var(--max-w);margin:0 auto}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.s1{transition-delay:.1s}.s2{transition-delay:.2s}.s3{transition-delay:.3s}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 1px 3px rgba(0,0,0,.02)}
+.nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:64px}
+.logo{display:inline-flex;align-items:baseline;text-decoration:none;margin-right:auto;font-family:var(--display);font-size:18px;font-weight:900;letter-spacing:-.04em;color:var(--text)}
+.dot-circle{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--indigo);margin-left:1px;vertical-align:super}
+.logo-tagline{font-size:11px;color:var(--text-muted);font-weight:400;margin-left:14px;padding-left:14px;border-left:1px solid var(--border);white-space:nowrap;letter-spacing:-.01em;margin-right:28px}
+.nav-links{display:flex;gap:32px;margin-right:28px}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;letter-spacing:-.01em}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:var(--indigo)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cta{padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;letter-spacing:-.01em}
+.nav-cta:hover{background:var(--indigo-dark)}
+.nav-cta-ghost{padding:14px 28px;background:transparent;color:var(--text-mid);border:1px solid var(--border);border-radius:12px;font-family:var(--sans);font-size:14px;font-weight:500;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center}
+.nav-cta-ghost:hover{border-color:var(--text-mid);color:var(--text)}
+.nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px}
+
+/* SECTION HELPERS */
+.section-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--indigo);margin-bottom:12px}
+
+/* HERO */
+.glossary-hero{padding:120px 32px 56px;max-width:860px;margin:0 auto}
+.breadcrumb{font-size:13px;color:var(--text-dim);margin-bottom:24px}
+.breadcrumb a{color:var(--indigo);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;background:var(--indigo-light);border:1px solid rgba(79,70,229,.15);border-radius:100px;font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--indigo);margin-bottom:20px}
+.glossary-hero h1{font-size:clamp(32px,4.5vw,52px);font-weight:900;color:var(--text);margin-bottom:20px;letter-spacing:-.05em;line-height:1.05}
+.glossary-hero h1 span{color:var(--indigo)}
+.hero-definition{font-size:19px;line-height:1.7;color:var(--text-mid);max-width:640px;margin-bottom:32px;letter-spacing:-.01em}
+.hero-definition strong{color:var(--text);font-weight:600}
+
+/* CONTENT SECTIONS */
+.content-wrap{max-width:860px;margin:0 auto;padding:0 32px 80px}
+.content-section{margin-bottom:64px}
+.content-section h2{font-size:28px;font-weight:800;margin-bottom:16px;letter-spacing:-.03em}
+.content-section p{font-size:16px;line-height:1.8;color:var(--text-mid);margin-bottom:16px}
+.content-section p strong{color:var(--text);font-weight:600}
+
+/* FORMULA CARD */
+.formula-card{background:var(--bg-dark);border-radius:var(--radius);padding:40px;margin:32px 0;position:relative;overflow:hidden}
+.formula-card::before{content:'';position:absolute;top:-40%;right:-20%;width:60%;height:180%;background:radial-gradient(ellipse,rgba(79,70,229,.15),transparent 60%);pointer-events:none}
+.formula-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.5);margin-bottom:16px}
+.formula{font-family:var(--mono);font-size:clamp(16px,2.5vw,22px);color:#fff;line-height:1.6;position:relative}
+.formula .highlight{color:var(--green);font-weight:500}
+
+/* EXAMPLE CARD */
+.example-card{background:var(--bg-warm);border:1px solid var(--border);border-radius:var(--radius);padding:32px;margin:32px 0}
+.example-card h3{font-size:18px;font-weight:800;margin-bottom:16px;letter-spacing:-.03em}
+.example-rows{display:flex;flex-direction:column;gap:10px}
+.example-row{display:flex;justify-content:space-between;align-items:center;font-size:15px;padding:8px 0;border-bottom:1px solid var(--border)}
+.example-row:last-child{border-bottom:none}
+.example-row-label{color:var(--text-mid)}
+.example-row-val{font-family:var(--mono);font-weight:500;color:var(--text)}
+.example-row-val.result{color:var(--indigo);font-size:20px;font-weight:700}
+
+/* BENCHMARK CARDS */
+.benchmark-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px 0}
+.benchmark-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;transition:all .25s}
+.benchmark-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.benchmark-range{font-family:var(--mono);font-size:24px;font-weight:500;margin-bottom:4px}
+.benchmark-range.excellent{color:var(--green)}
+.benchmark-range.average{color:#F59E0B}
+.benchmark-range.warning{color:#EF4444}
+.benchmark-label{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}
+.benchmark-desc{font-size:12px;color:var(--text-muted)}
+
+/* WHY DSO MATTERS */
+.matters-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0}
+.matters-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:24px;transition:all .25s}
+.matters-card:hover{box-shadow:var(--shadow-md)}
+.matters-icon{width:40px;height:40px;border-radius:10px;background:var(--indigo-light);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.matters-card h4{font-size:16px;font-weight:700;margin-bottom:6px;letter-spacing:-.02em}
+.matters-card p{font-size:14px;color:var(--text-muted);line-height:1.6;margin:0}
+
+/* AI REDUCTION */
+.ai-section{padding:64px 32px;background:var(--bg-warm);border-radius:var(--radius);margin:48px 0}
+.ai-inner{max-width:720px;margin:0 auto;text-align:center}
+.ai-section h2{font-size:28px;font-weight:800;margin-bottom:12px;letter-spacing:-.03em}
+.ai-section p{font-size:16px;color:var(--text-mid);line-height:1.7;margin-bottom:24px}
+.ai-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0}
+.ai-stat{background:#fff;border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center}
+.ai-stat-val{font-family:var(--display);font-size:32px;font-weight:900;color:var(--green);letter-spacing:-.03em}
+.ai-stat-label{font-size:13px;color:var(--text-muted);margin-top:4px}
+
+/* RELATED TERMS */
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:24px 0}
+.related-link{display:flex;align-items:center;gap:8px;padding:14px 18px;background:#fff;border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--text-mid);font-size:14px;font-weight:500;transition:all .15s}
+.related-link:hover{border-color:var(--indigo);color:var(--indigo);background:var(--indigo-light)}
+.related-link svg{flex-shrink:0}
+
+/* CTA */
+.cta-box{background:var(--bg-dark);border-radius:20px;padding:64px 40px;text-align:center;margin:64px 0;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:-40%;left:-40%;width:180%;height:180%;background:radial-gradient(ellipse at 50% 80%,rgba(79,70,229,.12) 0%,transparent 50%);pointer-events:none}
+.cta-box h2{font-size:32px;font-weight:900;color:#fff;margin-bottom:12px;position:relative}
+.cta-box p{font-size:16px;color:var(--text-muted);margin-bottom:28px;position:relative}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:10px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s;position:relative}
+.cta-btn:hover{background:var(--indigo-dark)}
+.cta-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:14px;color:rgba(255,255,255,.6);text-decoration:none;position:relative;transition:color .2s}
+.cta-link:hover{color:#fff}
+
+/* FOOTER */
+footer{background:#fff;border-top:1px solid var(--border);padding:56px 32px 32px}
+.footer-inner{max-width:var(--max-w);margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}
+.footer-brand-name{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:10px}
+.footer-tagline{font-size:14px;color:var(--text-dim);line-height:1.65;max-width:210px}
+.footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);margin-bottom:14px}
+.footer-col a{display:block;font-size:13px;color:var(--text-muted);text-decoration:none;margin-bottom:9px;transition:color .2s;letter-spacing:-.01em}
+.footer-col a:hover{color:var(--text)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:12px;color:var(--text-dim)}
+.footer-badges{display:flex;gap:8px}
+.footer-badge{padding:4px 10px;border:1px solid var(--border);border-radius:4px;font-size:10px;color:var(--text-dim);font-weight:600;letter-spacing:.02em}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .nav-links,.logo-tagline{display:none}
+    .nav-mobile{display:block}
+    .nav-inner{padding:0 20px}
+    .nav-right .nav-cta-ghost{display:none}
+    .glossary-hero{padding:96px 20px 48px}
+    .content-wrap{padding:0 20px 60px}
+    .formula-card{padding:28px 20px}
+    .benchmark-grid{grid-template-columns:1fr}
+    .matters-grid{grid-template-columns:1fr}
+    .ai-stats{grid-template-columns:1fr}
+    .ai-section{padding:48px 20px}
+    .cta-box{padding:48px 20px}
+    .related-grid{grid-template-columns:1fr 1fr}
+    .footer-top{grid-template-columns:1fr 1fr;gap:24px}
+    .footer-bottom{flex-direction:column;text-align:center}
+}
+</style>
+<script>
+(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "vtpmvp6kvr");
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+<div class="nav-inner">
+    <a href="/" class="logo">Agent<span>Collect</span><span class="dot-circle"></span></a>
+    <span class="logo-tagline">The end of manual collection.</span>
+    <div class="nav-links">
+        <a href="/ai-collection">AI Collection</a>
+        <a href="/attorney-collection">Attorney Collection</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/security">Security</a>
+    </div>
+    <div class="nav-right">
+        <a href="https://cal.com/johnb/30" class="nav-cta-ghost" target="_blank">Talk to us</a>
+        <a href="https://cal.com/johnb/30" class="nav-cta" target="_blank">Book a demo</a>
+    </div>
+    <button class="nav-mobile" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="1.5"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="glossary-hero">
+    <div class="breadcrumb">
+        <a href="/">Home</a> / <a href="/glossary">Glossary</a> / DSO
+    </div>
+    <div class="hero-tag">Glossary</div>
+    <h1>What is <span>DSO</span>?<br>Days Sales Outstanding</h1>
+    <p class="hero-definition"><strong>Days Sales Outstanding (DSO)</strong> is the average number of days it takes a company to collect payment after a sale is made. It measures how efficiently your accounts receivable team converts credit sales into cash.</p>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+
+    <!-- FORMULA -->
+    <div class="content-section reveal">
+        <div class="section-label">Formula</div>
+        <h2>How to Calculate DSO</h2>
+        <p>The DSO formula divides your total accounts receivable by total credit sales, then multiplies by the number of days in the measurement period.</p>
+
+        <div class="formula-card">
+            <div class="formula-label">DSO Formula</div>
+            <div class="formula">
+                DSO = (<span class="highlight">Accounts Receivable</span> / <span class="highlight">Total Credit Sales</span>) &times; <span class="highlight">Number of Days</span>
+            </div>
+        </div>
+
+        <div class="example-card">
+            <h3>Example Calculation</h3>
+            <p style="font-size:14px;color:var(--text-muted);margin-bottom:16px">A company wants to calculate its DSO for Q1 (90 days):</p>
+            <div class="example-rows">
+                <div class="example-row">
+                    <span class="example-row-label">Accounts Receivable</span>
+                    <span class="example-row-val">$500,000</span>
+                </div>
+                <div class="example-row">
+                    <span class="example-row-label">Total Credit Sales (Q1)</span>
+                    <span class="example-row-val">$2,000,000</span>
+                </div>
+                <div class="example-row">
+                    <span class="example-row-label">Number of Days</span>
+                    <span class="example-row-val">90</span>
+                </div>
+                <div class="example-row">
+                    <span class="example-row-label">Calculation</span>
+                    <span class="example-row-val">($500K / $2M) &times; 90</span>
+                </div>
+                <div class="example-row" style="border-bottom:none;padding-top:12px">
+                    <span class="example-row-label" style="font-weight:600;color:var(--text)">DSO Result</span>
+                    <span class="example-row-val result">22.5 days</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BENCHMARKS -->
+    <div class="content-section reveal">
+        <div class="section-label">Benchmarks</div>
+        <h2>What Is a Good DSO?</h2>
+        <p>DSO benchmarks vary by industry, but these ranges apply to most B2B companies:</p>
+
+        <div class="benchmark-grid">
+            <div class="benchmark-card s1">
+                <div class="benchmark-range excellent">&lt; 30 days</div>
+                <div class="benchmark-label">Excellent</div>
+                <div class="benchmark-desc">Strong cash flow. Highly effective collections process.</div>
+            </div>
+            <div class="benchmark-card s2">
+                <div class="benchmark-range average">30&ndash;45 days</div>
+                <div class="benchmark-label">Average</div>
+                <div class="benchmark-desc">Industry standard. Room for improvement.</div>
+            </div>
+            <div class="benchmark-card s3">
+                <div class="benchmark-range warning">&gt; 60 days</div>
+                <div class="benchmark-label">Action needed</div>
+                <div class="benchmark-desc">Cash flow at risk. Collection process needs attention.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WHY IT MATTERS -->
+    <div class="content-section reveal">
+        <div class="section-label">Impact</div>
+        <h2>Why DSO Matters for Your Business</h2>
+        <p>DSO directly impacts your cash flow, borrowing costs, and ability to invest in growth. A high DSO means your money is tied up in unpaid invoices instead of working for you.</p>
+
+        <div class="matters-grid">
+            <div class="matters-card s1">
+                <div class="matters-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="1.5"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <h4>Cash Flow</h4>
+                <p>Every day of DSO ties up working capital. A 10-day reduction on $5M AR frees up ~$167K in cash.</p>
+            </div>
+            <div class="matters-card s2">
+                <div class="matters-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </div>
+                <h4>Forecasting</h4>
+                <p>Consistent DSO makes revenue predictable. Volatile DSO creates cash flow surprises that disrupt operations.</p>
+            </div>
+            <div class="matters-card s1">
+                <div class="matters-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="1.5"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+                </div>
+                <h4>Bad Debt Risk</h4>
+                <p>Invoices past 90 days are 6x more likely to become uncollectible. Lower DSO means fewer write-offs.</p>
+            </div>
+            <div class="matters-card s2">
+                <div class="matters-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h4>Investor Signal</h4>
+                <p>Investors and lenders evaluate DSO to assess financial health. Lower DSO signals operational excellence.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- HOW AI REDUCES DSO -->
+    <div class="ai-section reveal">
+        <div class="ai-inner">
+            <div class="section-label">How AI Helps</div>
+            <h2>How AI Collection Reduces DSO</h2>
+            <p>Traditional AR teams follow up manually, if at all. AI agents start the moment an invoice is overdue and never stop until it is resolved.</p>
+
+            <div class="ai-stats">
+                <div class="ai-stat s1">
+                    <div class="ai-stat-val">30&ndash;50%</div>
+                    <div class="ai-stat-label">Average DSO reduction</div>
+                </div>
+                <div class="ai-stat s2">
+                    <div class="ai-stat-val">Day 1</div>
+                    <div class="ai-stat-label">First contact on overdue invoices</div>
+                </div>
+            </div>
+
+            <p style="font-size:14px;color:var(--text-muted);margin-top:24px">AgentCollect AI agents call, email, and text debtors automatically. No manual follow-up. No forgotten invoices. No excuses.</p>
+        </div>
+    </div>
+
+    <!-- DSO CALCULATOR LINK -->
+    <div class="content-section reveal">
+        <div class="section-label">Tool</div>
+        <h2>Calculate Your DSO</h2>
+        <p>Use our free DSO calculator to see where your AR stands and how much cash you could free up by reducing your collection time.</p>
+        <a href="/dso-calculator" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--indigo);color:#fff;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;transition:background .2s;margin-top:8px">
+            Open DSO Calculator
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+
+    <!-- RELATED TERMS -->
+    <div class="content-section reveal">
+        <div class="section-label">Related Terms</div>
+        <h2>Related Glossary Terms</h2>
+        <div class="related-grid">
+            <a href="/glossary/accounts-receivable" class="related-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                Accounts Receivable
+            </a>
+            <a href="/glossary/aging-report" class="related-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                Aging Report
+            </a>
+            <a href="/glossary/bad-debt" class="related-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                Bad Debt
+            </a>
+            <a href="/glossary/write-off" class="related-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                Write-Off
+            </a>
+            <a href="/glossary/ar-turnover-ratio" class="related-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                AR Turnover Ratio
+            </a>
+            <a href="/glossary/collection-rate" class="related-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                Collection Rate
+            </a>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+        <h2>Reduce your DSO</h2>
+        <p>AgentCollect cuts DSO by 30&ndash;50% with AI agents that never miss a follow-up. Success-only fees.</p>
+        <a href="https://cal.com/johnb/30" target="_blank" class="cta-btn">Book a 30-min demo &rarr;</a>
+        <br>
+        <a href="/dso-calculator" class="cta-link">
+            Or try the DSO calculator first
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div>
+                <div class="footer-brand-name">Agent<span>Collect</span><span class="dot-circle" style="width:5px;height:5px"></span></div>
+                <div class="footer-tagline">The end of manual collection.</div>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <a href="/ai-collection">AI Collection</a>
+                <a href="/attorney-collection">Attorney Collection</a>
+                <a href="/pricing">Pricing</a>
+                <a href="/integrations">API &amp; Integrations</a>
+            </div>
+            <div class="footer-col">
+                <h4>Trust</h4>
+                <a href="/security">Security &amp; Trust</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/compliance">State Compliance</a>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <a href="/integrations">Integrations</a>
+                <a href="/compare">Compare</a>
+                <a href="/glossary">Glossary</a>
+                <a href="/dso-calculator">DSO Calculator</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="/about">About</a>
+                <a href="https://cal.com/johnb/30" target="_blank">Contact</a>
+                <a href="/careers">Careers</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-copy">&copy; 2026 AgentCollect, Inc. San Francisco, CA</div>
+            <div class="footer-badges">
+                <span class="footer-badge">SOC 2</span>
+                <span class="footer-badge">CCPA</span>
+                <span class="footer-badge">Reg F</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', function(){
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 8);
+}, { passive: true });
+
+var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('visible'); }
+    });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
+</script>
+</body>
+</html>

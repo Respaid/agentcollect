@@ -247,6 +247,10 @@
         .api-updating::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(79,70,229,.04),transparent);animation:shimmer 1.5s ease infinite;pointer-events:none}
         @keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 
+        /* Enhanced with live data indicator */
+        .live-data-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;background:rgba(79,70,229,.06);border:1px solid rgba(79,70,229,.12);border-radius:20px;font-size:12px;font-weight:600;color:var(--indigo);margin-left:12px;opacity:0;transform:translateY(4px);transition:opacity .4s ease,transform .4s ease}
+        .live-data-badge.visible{opacity:1;transform:translateY(0)}
+
         /* ========== FULL-SCREEN CALL OVERLAY ========== */
         .call-overlay{position:fixed;inset:0;z-index:9999;background:#FAFBFF;display:none;flex-direction:column;opacity:0;transition:opacity .5s ease}
         .call-overlay.active{display:flex;opacity:1}
@@ -270,7 +274,7 @@
         .call-msg{padding:24px 28px;border-radius:16px;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.04);border:1.5px solid var(--border);opacity:0;transform:translateY(20px);animation:callMsgIn .5s cubic-bezier(.16,1,.3,1) forwards;max-width:85%}
         .call-msg.agent{align-self:flex-start;border-color:rgba(79,70,229,.2);background:linear-gradient(135deg,#FAFAFF,#F5F3FF)}
         .call-msg.user{align-self:flex-end;border-color:rgba(100,116,139,.2)}
-        .call-msg-text{font-size:clamp(18px,2.5vw,24px);font-weight:600;font-family:var(--display);color:var(--text);line-height:1.45;letter-spacing:-.02em}
+        .call-msg-text{font-size:clamp(22px,3vw,32px);font-weight:600;font-family:var(--display);color:var(--text);line-height:1.45;letter-spacing:-.02em}
         .call-msg-speaker{font-size:13px;font-weight:600;color:var(--text-dim);margin-top:10px;letter-spacing:-.01em}
         .call-msg.agent .call-msg-speaker{color:var(--indigo)}
         @keyframes callMsgIn{to{opacity:1;transform:translateY(0)}}
@@ -288,27 +292,32 @@
         .call-overlay-reasoning .co-pill.amber::before{background:#F59E0B}
         @keyframes coPillIn{to{opacity:1;transform:scale(1)}}
 
-        .call-overlay-waveform{display:flex;align-items:center;justify-content:center;gap:3px;height:48px;margin-bottom:8px}
-        .call-overlay-waveform span{display:block;width:4px;border-radius:4px;transition:background .3s}
-        .call-overlay-waveform.agent-speaking span{background:var(--green);animation:coWave 1s ease-in-out infinite}
+        .call-overlay-waveform{display:flex;align-items:center;justify-content:center;gap:3px;height:72px;margin-bottom:8px}
+        .call-overlay-waveform span{display:block;width:5px;border-radius:4px;transition:background .3s,filter .3s}
+        .call-overlay-waveform.agent-speaking span{background:var(--green);animation:coWave 1s ease-in-out infinite;filter:drop-shadow(0 0 6px rgba(16,185,129,.5))}
         .call-overlay-waveform.user-speaking span{background:var(--indigo);animation:coWave .8s ease-in-out infinite}
         .call-overlay-waveform.idle span{background:var(--border);animation:coWaveIdle 2s ease-in-out infinite}
-        .call-overlay-waveform span:nth-child(1){height:14px;animation-delay:0s}
-        .call-overlay-waveform span:nth-child(2){height:24px;animation-delay:.08s}
-        .call-overlay-waveform span:nth-child(3){height:18px;animation-delay:.16s}
-        .call-overlay-waveform span:nth-child(4){height:32px;animation-delay:.24s}
-        .call-overlay-waveform span:nth-child(5){height:20px;animation-delay:.32s}
-        .call-overlay-waveform span:nth-child(6){height:36px;animation-delay:.4s}
-        .call-overlay-waveform span:nth-child(7){height:16px;animation-delay:.48s}
-        .call-overlay-waveform span:nth-child(8){height:28px;animation-delay:.56s}
-        .call-overlay-waveform span:nth-child(9){height:12px;animation-delay:.64s}
-        .call-overlay-waveform span:nth-child(10){height:22px;animation-delay:.72s}
-        .call-overlay-waveform span:nth-child(11){height:30px;animation-delay:.8s}
-        .call-overlay-waveform span:nth-child(12){height:16px;animation-delay:.88s}
+        .call-overlay-waveform span:nth-child(1){height:21px;animation-delay:0s}
+        .call-overlay-waveform span:nth-child(2){height:36px;animation-delay:.08s}
+        .call-overlay-waveform span:nth-child(3){height:27px;animation-delay:.16s}
+        .call-overlay-waveform span:nth-child(4){height:48px;animation-delay:.24s}
+        .call-overlay-waveform span:nth-child(5){height:30px;animation-delay:.32s}
+        .call-overlay-waveform span:nth-child(6){height:54px;animation-delay:.4s}
+        .call-overlay-waveform span:nth-child(7){height:24px;animation-delay:.48s}
+        .call-overlay-waveform span:nth-child(8){height:42px;animation-delay:.56s}
+        .call-overlay-waveform span:nth-child(9){height:18px;animation-delay:.64s}
+        .call-overlay-waveform span:nth-child(10){height:33px;animation-delay:.72s}
+        .call-overlay-waveform span:nth-child(11){height:45px;animation-delay:.8s}
+        .call-overlay-waveform span:nth-child(12){height:24px;animation-delay:.88s}
+
+        /* Watermark logo in transcript area */
+        .co-watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:200px;height:200px;opacity:0.08;pointer-events:none;object-fit:contain;transition:opacity .5s ease}
+        .co-watermark.hidden{opacity:0}
         @keyframes coWave{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.3)}}
         @keyframes coWaveIdle{0%,100%{transform:scaleY(.5);opacity:.4}50%{transform:scaleY(.2);opacity:.2}}
 
-        .call-overlay-status{text-align:center;font-size:14px;font-weight:600;color:var(--text-muted);letter-spacing:-.01em}
+        .call-overlay-status{text-align:center;font-size:15px;font-weight:700;color:var(--text-mid);letter-spacing:-.01em;font-family:var(--display);transition:color .3s}
+        .call-overlay-waveform.agent-speaking ~ .call-overlay-status{color:var(--green-dark)}
 
         .call-overlay-connecting{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:20px;padding:40px}
         .call-overlay-connecting .co-spinner{width:48px;height:48px;border:3px solid rgba(79,70,229,.12);border-top-color:var(--indigo);border-radius:50%;animation:spin 1s linear infinite}
@@ -441,7 +450,7 @@
             .call-overlay-body{padding:0 16px}
             .call-overlay-bottom{padding:12px 16px 20px}
             .call-msg{padding:18px 20px;max-width:95%}
-            .call-msg-text{font-size:clamp(16px,4vw,20px)}
+            .call-msg-text{font-size:clamp(18px,4vw,24px)}
             .call-overlay-reasoning{gap:6px}
             .call-overlay-reasoning .co-pill{padding:5px 10px;font-size:11px}
         }
@@ -734,7 +743,8 @@
             <div class="co-connect-sub" id="co-connect-sub">Setting up WebRTC connection</div>
         </div>
         <!-- Transcript (hidden until connected) -->
-        <div class="call-overlay-transcript" id="co-transcript" style="display:none">
+        <div class="call-overlay-transcript" id="co-transcript" style="display:none;position:relative">
+            <img class="co-watermark" id="co-watermark" src="" alt="">
             <div class="call-overlay-transcript-scroll" id="co-transcript-scroll"></div>
         </div>
     </div>
@@ -1240,10 +1250,23 @@
                 updateDemoWithAPIData(updated);
             }
 
-            // Update build title
+            // Update build title (especially if API name differs from guessed name)
             buildTitle.textContent = updated.name + ' collection agent';
             var readyText = document.querySelector('.build-ready-text');
             if (readyText) readyText.textContent = 'Your ' + updated.name + ' collection agent is ready.';
+
+            // Add "Enhanced with live data" badge near analysis banner
+            if (!document.getElementById('live-data-badge')) {
+                var bannerTitle = document.querySelector('.analysis-banner-title');
+                if (bannerTitle) {
+                    var badge = document.createElement('span');
+                    badge.id = 'live-data-badge';
+                    badge.className = 'live-data-badge';
+                    badge.innerHTML = '\u2728 Enhanced with live data';
+                    bannerTitle.appendChild(badge);
+                    setTimeout(function() { badge.classList.add('visible'); }, 100);
+                }
+            }
         })
         .catch(function(err) {
             apiPending = false;
@@ -1316,10 +1339,10 @@
             buildTitle.textContent = 'Building your ' + data.name + ' collection agent...';
             buildPhases.innerHTML = '';
 
-            // Phase 1: instant
+            // Phase 1: instant — analyzing spinner stays visible longer
             addBuildPhase('<span class="build-spinner"></span> Analyzing ' + data.name + '...', 0);
 
-            // Phase 2: 2s
+            // Phase 2: 3.5s (longer analysis feel)
             setTimeout(function() {
                 addBuildCheck(data.name + ' \u2014 ' + data.industry, 'green');
                 setTimeout(function() {
@@ -1328,9 +1351,9 @@
                 setTimeout(function() {
                     addBuildCheck('Why they don\'t pay: ' + data.whyDontPay, 'green');
                 }, 1200);
-            }, 2000);
+            }, 3500);
 
-            // Phase 3: 5s — agent ready + morph into demo
+            // Phase 3: 6.5s — agent ready + morph into demo
             setTimeout(function() {
                 buildTitle.textContent = data.name + ' collection agent';
 
@@ -1358,7 +1381,7 @@
                         document.getElementById('build-ready-phase').classList.add('visible');
                     }, 50);
                 }, 500);
-            }, 5000);
+            }, 6500);
         }, 500);
     }
 
@@ -1539,6 +1562,15 @@
             coLogo.style.display = 'block';
         }
 
+        // Set watermark logo
+        var coWatermark = document.getElementById('co-watermark');
+        if (currentDomain) {
+            coWatermark.src = 'https://logo.clearbit.com/' + currentDomain;
+            coWatermark.onerror = function() { this.style.display = 'none'; };
+            coWatermark.classList.remove('hidden');
+            coWatermark.style.display = '';
+        }
+
         // Show connecting state
         coConnecting.style.display = 'flex';
         coTranscript.style.display = 'none';
@@ -1608,6 +1640,10 @@
     function renderOverlayTranscript(transcript) {
         if (!transcript || transcript.length === 0) return;
 
+        // Hide watermark once messages start flowing
+        var coWatermark = document.getElementById('co-watermark');
+        if (coWatermark) coWatermark.classList.add('hidden');
+
         var agentLabel = currentCompany ? (currentCompany.name + ' Agent') : 'Agent';
 
         // Merge consecutive same-speaker entries into single messages
@@ -1627,8 +1663,8 @@
             }
         }
 
-        // Only show last 4 merged messages
-        var visible = merged.slice(-4);
+        // Only show last 2 merged messages (focused conversation)
+        var visible = merged.slice(-2);
 
         // Rebuild transcript (simple approach — avoids complex diffing)
         var existingDivs = coTranscriptScroll.querySelectorAll('.call-msg');

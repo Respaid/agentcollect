@@ -3,370 +3,463 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="index, follow">
-<title>AgentCollect + QuickBooks: Automate B2B Debt Collection | AgentCollect</title>
-<meta name="description" content="Connect QuickBooks to AgentCollect and automatically collect overdue invoices with AI agents. Success-only fees. Live in 20 minutes.">
-<meta property="og:title" content="AgentCollect + QuickBooks: Automate B2B Debt Collection | AgentCollect">
-<meta property="og:description" content="Connect QuickBooks Online to AgentCollect and automatically collect overdue invoices with AI agents. No CSV exports. Success-only fees.">
+<meta name="robots" content="noindex, nofollow">
+<title>QuickBooks + AgentCollect Integration</title>
+<meta name="description" content="Connect QuickBooks to AgentCollect. Sync overdue invoices automatically, collect with AI agents, and reconcile payments back to QuickBooks in real time.">
+<meta property="og:title" content="QuickBooks + AgentCollect Integration">
+<meta property="og:description" content="Automate B2B debt collection directly from QuickBooks. AI agents handle calls, emails, and payments. Success-only fees.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://www.agentcollect.com/integrations/quickbooks">
 <link rel="canonical" href="https://www.agentcollect.com/integrations/quickbooks">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"AgentCollect","applicationCategory":"BusinessApplication","description":"Connect QuickBooks Online to AgentCollect and automatically collect overdue invoices with AI agents. Success-only fees.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD","description":"Success-only fees"}}
-</script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does AgentCollect modify data in QuickBooks?","acceptedAnswer":{"@type":"Answer","text":"AgentCollect is read-only for invoice data. The only writes back to QuickBooks are payment records when a debtor pays through AgentCollect, and invoice status updates. We never modify the original invoice amount or terms."}},{"@type":"Question","name":"Which QuickBooks versions does the integration support?","acceptedAnswer":{"@type":"Answer","text":"AgentCollect integrates with QuickBooks Online (all plans: Simple Start, Essentials, Plus, Advanced). QuickBooks Desktop and QuickBooks Enterprise are not currently supported."}},{"@type":"Question","name":"Can I exclude certain customers from collection?","acceptedAnswer":{"@type":"Answer","text":"Yes. You can exclude customers by tag, customer type, invoice amount threshold, or days overdue. For example, you can set the integration to only send invoices over $500 that are more than 45 days past due."}},{"@type":"Question","name":"How long does it take to set up the QuickBooks integration?","acceptedAnswer":{"@type":"Answer","text":"The OAuth connection takes about 2 minutes. Configuring your overdue threshold, exclusion rules, and collection workflow takes another 15–18 minutes. Most customers are live within 20 minutes of signing up."}}]}
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "AgentCollect for QuickBooks",
+  "applicationCategory": "BusinessApplication",
+  "description": "Connect QuickBooks to AgentCollect and automatically collect overdue invoices with AI agents.",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Success-only fees"}
+}
 </script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#FAFBFF;--bg-card:#fff;--bg-dark:#0B1B3D;
-  --border:#E8ECF2;
-  --text:#0B1B3D;--text-mid:#475569;--text-muted:#94A3B8;
-  --indigo:#4F46E5;--indigo-dark:#4338CA;--indigo-light:rgba(79,70,229,.06);--indigo-glow:rgba(79,70,229,.15);
-  --green:#10B981;--green-light:rgba(16,185,129,.06);
-  --mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
-  --shadow-sm:0 1px 2px rgba(0,0,0,.05);
-  --shadow-md:0 4px 12px rgba(0,0,0,.06);
-  --max-w:1140px;
+    --bg:#FAFBFF;--bg-card:#fff;--bg-dark:#0B1B3D;--bg-warm:#F8F7F5;
+    --border:#E8ECF2;--border-hover:rgba(79,70,229,.18);
+    --text:#0B1B3D;--text-mid:#374151;--text-muted:#64748B;--text-dim:#94A3B8;
+    --indigo:#4F46E5;--indigo-dark:#4338CA;--indigo-light:rgba(79,70,229,.04);--indigo-glow:rgba(79,70,229,.08);
+    --green:#10B981;--green-dark:#059669;--green-light:rgba(16,185,129,.04);
+    --qb-green:#2CA01C;
+    --mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.03);
+    --shadow-md:0 2px 8px rgba(0,0,0,.04);
+    --shadow-lg:0 8px 24px rgba(0,0,0,.06);
+    --radius:14px;
+    --max-w:1120px;
 }
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-h1,h2,h3,h4{font-family:var(--display);letter-spacing:-.03em;line-height:1.15}
-::selection{background:rgba(79,70,229,.12)}
+body{font-family:var(--sans);font-size:17px;background:#fff;color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.7;position:relative}
+body::before{content:'';position:fixed;inset:0;z-index:-1;background-image:
+    linear-gradient(rgba(79,70,229,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79,70,229,.03) 1px, transparent 1px);
+    background-size:64px 64px;pointer-events:none}
+h1,h2,h3,h4,h5{font-family:var(--display);line-height:1.15;letter-spacing:-.04em}
+::selection{background:rgba(79,70,229,.08)}
+
+.gradient-divider{height:1px;background:linear-gradient(90deg,transparent,var(--indigo),var(--green),transparent);opacity:.3;max-width:var(--max-w);margin:0 auto}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.s1{transition-delay:.1s}.s2{transition-delay:.2s}.s3{transition-delay:.3s}
 
 /* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);height:60px}
-.nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:100%}
-.logo{display:flex;align-items:center;gap:8px;text-decoration:none;margin-right:40px;font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:-.04em;color:var(--text)}
-.logo-dot{color:var(--indigo)}
-.nav-links{display:flex;gap:28px;flex:1}
-.nav-links a{color:var(--text-mid);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s;white-space:nowrap}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+.nav.scrolled{box-shadow:0 1px 3px rgba(0,0,0,.02)}
+.nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:64px}
+.logo{display:inline-flex;align-items:baseline;text-decoration:none;margin-right:auto;font-family:var(--display);font-size:18px;font-weight:900;letter-spacing:-.04em;color:var(--text)}
+.dot-circle{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--indigo);margin-left:1px;vertical-align:super}
+.logo-tagline{font-size:11px;color:var(--text-muted);font-weight:400;margin-left:14px;padding-left:14px;border-left:1px solid var(--border);white-space:nowrap;letter-spacing:-.01em;margin-right:28px}
+.nav-links{display:flex;gap:32px;margin-right:28px}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;letter-spacing:-.01em}
 .nav-links a:hover{color:var(--text)}
-.nav-links a.active{color:var(--indigo);font-weight:600}
-.nav-cta{padding:9px 20px;background:var(--indigo);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s;display:inline-flex;align-items:center}
+.nav-links a.active{color:var(--indigo)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-cta{padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;letter-spacing:-.01em}
 .nav-cta:hover{background:var(--indigo-dark)}
+.nav-cta-ghost{padding:14px 28px;background:transparent;color:var(--text-mid);border:1px solid var(--border);border-radius:12px;font-family:var(--sans);font-size:14px;font-weight:500;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center}
+.nav-cta-ghost:hover{border-color:var(--text-mid);color:var(--text)}
+.nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px}
+
+/* SECTION HELPERS */
+.section-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--indigo);margin-bottom:12px}
 
 /* HERO */
-.hero{padding:120px 32px 64px;max-width:var(--max-w);margin:0 auto}
-.breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:32px}
+.int-hero{padding:120px 32px 64px;text-align:center;background:#fff;position:relative;overflow:hidden}
+.int-hero::after{content:'';position:absolute;inset:0;pointer-events:none;
+    background:
+        radial-gradient(ellipse 600px 400px at 50% 0%, rgba(44,160,28,.06), transparent),
+        radial-gradient(ellipse 400px 400px at 80% 100%, rgba(79,70,229,.04), transparent)}
+.breadcrumb{font-size:13px;color:var(--text-dim);margin-bottom:24px;position:relative;z-index:1}
 .breadcrumb a{color:var(--indigo);text-decoration:none}
 .breadcrumb a:hover{text-decoration:underline}
-.hero-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;background:var(--indigo-light);border:1px solid rgba(79,70,229,.15);border-radius:100px;font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--indigo);margin-bottom:20px}
-.hero h1{font-size:clamp(32px,4.5vw,48px);font-weight:900;color:var(--text);margin-bottom:20px;max-width:720px}
-.hero h1 em{font-style:normal;color:var(--indigo)}
-.hero-sub{font-size:17px;line-height:1.7;color:var(--text-mid);max-width:640px;margin-bottom:32px}
+.int-logos{display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:28px;position:relative;z-index:1}
+.int-logo-box{width:64px;height:64px;border-radius:16px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);background:#fff;box-shadow:var(--shadow-md)}
+.int-logo-box.qb{background:var(--qb-green)}
+.int-logo-box.ac{background:#433196}
+.int-plus{font-family:var(--display);font-size:24px;font-weight:300;color:var(--text-dim)}
+.int-hero h1{font-size:clamp(36px,5vw,56px);font-weight:900;letter-spacing:-.05em;line-height:1.05;margin-bottom:16px;color:var(--text);position:relative;z-index:1}
+.int-hero h1 span.qb{color:var(--qb-green)}
+.int-hero h1 span.ac{color:var(--indigo)}
+.int-hero .sub{font-size:18px;color:var(--text-muted);margin-bottom:36px;letter-spacing:-.01em;position:relative;z-index:1;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.65}
 
-/* FLOW DIAGRAM */
-.flow-section{max-width:var(--max-w);margin:0 auto;padding:0 32px 64px}
-.flow-diagram{display:flex;align-items:center;justify-content:center;gap:0;margin:40px 0;flex-wrap:wrap}
-.flow-node{background:var(--bg-card);border:2px solid var(--border);border-radius:16px;padding:24px 32px;text-align:center;min-width:160px}
-.flow-node.highlight{border-color:var(--indigo);background:var(--indigo-light)}
-.flow-node-icon{font-size:28px;margin-bottom:8px}
-.flow-node-label{font-family:var(--display);font-weight:700;font-size:15px;color:var(--text)}
-.flow-node-sub{font-size:12px;color:var(--text-muted);margin-top:4px}
-.flow-arrow{display:flex;flex-direction:column;align-items:center;padding:0 16px;gap:4px}
-.flow-arrow-line{width:48px;height:2px;background:var(--indigo);opacity:.3;position:relative}
-.flow-arrow-line::after{content:'▶';position:absolute;right:-8px;top:-8px;color:var(--indigo);opacity:.5;font-size:12px}
-.flow-arrow-label{font-family:var(--mono);font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em}
+/* HOW IT WORKS */
+.how-section{padding:80px 32px;background:var(--bg-warm)}
+.how-inner{max-width:var(--max-w);margin:0 auto}
+.how-header{text-align:center;margin-bottom:56px}
+.how-header h2{font-size:clamp(26px,3vw,40px);font-weight:900;margin-bottom:8px}
+.how-header p{font-size:16px;color:var(--text-muted);max-width:480px;margin:0 auto}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative}
+.how-grid::before{content:'';position:absolute;top:40px;left:calc(33.33% - 12px);right:calc(33.33% - 12px);height:2px;background:linear-gradient(90deg,var(--qb-green),var(--indigo));opacity:.2;z-index:0}
+.how-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:32px;position:relative;z-index:1;transition:all .25s}
+.how-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.how-step{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--indigo);color:#fff;font-family:var(--display);font-size:14px;font-weight:800;margin-bottom:18px}
+.how-card h3{font-size:18px;font-weight:800;margin-bottom:8px;letter-spacing:-.03em}
+.how-card p{font-size:14px;color:var(--text-muted);line-height:1.65}
 
-/* CONTENT */
-.content{max-width:var(--max-w);margin:0 auto;padding:0 32px 80px}
-.section{margin-bottom:64px}
-.section-tag{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--indigo);margin-bottom:12px;font-weight:500}
-.section h2{font-size:28px;font-weight:800;margin-bottom:24px}
-.section p{font-size:16px;line-height:1.8;color:var(--text-mid);margin-bottom:16px;max-width:720px}
-.section p strong{color:var(--text);font-weight:600}
-
-/* STEPS */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:8px}
-.step-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px}
-.step-num{font-family:var(--display);font-size:13px;font-weight:800;color:var(--indigo);background:var(--indigo-light);border:1px solid rgba(79,70,229,.15);border-radius:8px;padding:4px 10px;display:inline-block;margin-bottom:16px;letter-spacing:.04em}
-.step-card h3{font-size:18px;font-weight:800;margin-bottom:10px}
-.step-card p{font-size:14px;color:var(--text-mid);line-height:1.7}
-
-/* SYNC TABLE */
-.compare{width:100%;border-collapse:collapse;margin:8px 0;font-size:14px}
-.compare th{text-align:left;padding:14px 20px;font-family:var(--display);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);border-bottom:2px solid var(--border)}
-.compare td{padding:14px 20px;border-bottom:1px solid var(--border);color:var(--text)}
-.compare tr:last-child td{border-bottom:none}
-.compare .hl{background:var(--indigo-light)}
-.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:600;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em}
-.badge-out{background:rgba(79,70,229,.08);color:var(--indigo)}
-.badge-in{background:var(--green-light);color:var(--green)}
+/* MOCK UI */
+.mock-section{padding:80px 32px;background:#fff}
+.mock-inner{max-width:880px;margin:0 auto}
+.mock-header{text-align:center;margin-bottom:48px}
+.mock-header h2{font-size:clamp(24px,3vw,36px);font-weight:900;margin-bottom:8px}
+.mock-header p{font-size:16px;color:var(--text-muted)}
+.mock-ui{background:var(--bg-warm);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg)}
+.mock-titlebar{display:flex;align-items:center;gap:8px;padding:14px 20px;background:#fff;border-bottom:1px solid var(--border)}
+.mock-dot{width:10px;height:10px;border-radius:50%}
+.mock-dot.red{background:#FF5F57}
+.mock-dot.yellow{background:#FEBC2E}
+.mock-dot.green{background:#28C840}
+.mock-url{flex:1;text-align:center;font-family:var(--mono);font-size:11px;color:var(--text-dim)}
+.mock-body{padding:32px}
+.mock-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--border);font-size:13px;align-items:center}
+.mock-row:first-child{font-weight:600;color:var(--text-muted);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+.mock-row:last-child{border-bottom:none}
+.mock-customer{font-weight:600;color:var(--text)}
+.mock-amount{font-family:var(--mono);font-weight:500}
+.mock-status{display:inline-flex;padding:4px 10px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.02em}
+.mock-status.collecting{background:rgba(79,70,229,.08);color:var(--indigo)}
+.mock-status.paid{background:rgba(16,185,129,.08);color:var(--green-dark)}
+.mock-status.scheduled{background:rgba(245,158,11,.08);color:#B45309}
+.mock-days{font-family:var(--mono);color:var(--text-muted);font-size:12px}
 
 /* BENEFITS */
-.benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:8px}
-.benefit-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px}
-.benefit-icon{font-size:24px;margin-bottom:14px}
-.benefit-card h3{font-size:16px;font-weight:800;margin-bottom:8px}
-.benefit-card p{font-size:14px;color:var(--text-mid);line-height:1.65}
+.benefits-section{padding:80px 32px;background:var(--bg-warm)}
+.benefits-inner{max-width:var(--max-w);margin:0 auto}
+.benefits-header{text-align:center;margin-bottom:48px}
+.benefits-header h2{font-size:clamp(24px,3vw,36px);font-weight:900;margin-bottom:8px}
+.benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.benefit-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:28px;display:flex;gap:16px;transition:all .25s}
+.benefit-card:hover{box-shadow:var(--shadow-md)}
+.benefit-icon{width:44px;height:44px;border-radius:12px;background:var(--indigo-light);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.benefit-card h4{font-size:16px;font-weight:700;margin-bottom:4px;letter-spacing:-.02em}
+.benefit-card p{font-size:14px;color:var(--text-muted);line-height:1.6}
 
-/* FAQ */
-.faq-item{border-bottom:1px solid var(--border);padding:24px 0}
-.faq-q{font-family:var(--display);font-size:17px;font-weight:700;color:var(--text);margin-bottom:10px}
-.faq-a{font-size:15px;color:var(--text-mid);line-height:1.7;max-width:720px}
-
-/* CTA */
-.cta-box{background:var(--bg-dark);border-radius:20px;padding:64px 40px;text-align:center;margin:64px 0;position:relative;overflow:hidden}
-.cta-box::before{content:'';position:absolute;top:-40%;left:-40%;width:180%;height:180%;background:radial-gradient(ellipse at 50% 80%,rgba(79,70,229,.12) 0%,transparent 50%);pointer-events:none}
-.cta-box h2{font-size:32px;font-weight:900;color:#fff;margin-bottom:12px;position:relative}
-.cta-box p{font-size:16px;color:var(--text-muted);margin-bottom:28px;position:relative}
-.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:10px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s;position:relative}
-.cta-btn:hover{background:var(--indigo-dark)}
-
-/* INTEGRATIONS GRID */
-.integrations-section{margin:64px 0}
-.integrations-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin-top:20px}
-.int-link{display:block;padding:10px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;text-decoration:none;color:var(--text-mid);font-size:13px;font-weight:500;transition:all .15s}
-.int-link:hover{border-color:var(--indigo);color:var(--indigo);background:var(--indigo-light)}
-.int-link.current{border-color:var(--indigo);color:var(--indigo);background:var(--indigo-light);font-weight:600}
+/* FINAL CTA */
+.final-cta{padding:100px 32px;text-align:center;background:var(--bg-dark);color:#fff;position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;inset:0;background-image:
+    linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+    background-size:64px 64px;pointer-events:none}
+.final-cta h2{font-size:clamp(28px,4vw,52px);font-weight:900;letter-spacing:-.04em;margin-bottom:12px;line-height:1.1;position:relative}
+.final-cta p{font-size:16px;opacity:.6;max-width:440px;margin:0 auto 44px;line-height:1.65;letter-spacing:-.01em;position:relative}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;border:none;border-radius:12px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;letter-spacing:-.01em}
+.cta-btn:hover{transform:translateY(-1px)}
+.cta-btn-primary{background:#fff;color:var(--bg-dark)}
+.cta-btn-primary:hover{box-shadow:0 8px 24px rgba(255,255,255,.1)}
+.cta-btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.15)}
+.cta-btn-ghost:hover{border-color:rgba(255,255,255,.35)}
 
 /* FOOTER */
-.footer{border-top:1px solid var(--border);padding:40px 32px;text-align:center}
+footer{background:#fff;border-top:1px solid var(--border);padding:56px 32px 32px}
 .footer-inner{max-width:var(--max-w);margin:0 auto}
-.footer-logo{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:8px}
-.footer-logo span{color:var(--indigo)}
-.footer-links{display:flex;gap:24px;justify-content:center;margin-bottom:12px}
-.footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none}
-.footer-links a:hover{color:var(--text)}
-.footer-copy{font-size:12px;color:var(--text-muted)}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}
+.footer-brand-name{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:10px}
+.footer-tagline{font-size:14px;color:var(--text-dim);line-height:1.65;max-width:210px}
+.footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);margin-bottom:14px}
+.footer-col a{display:block;font-size:13px;color:var(--text-muted);text-decoration:none;margin-bottom:9px;transition:color .2s;letter-spacing:-.01em}
+.footer-col a:hover{color:var(--text)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:12px;color:var(--text-dim)}
+.footer-badges{display:flex;gap:8px}
+.footer-badge{padding:4px 10px;border:1px solid var(--border);border-radius:4px;font-size:10px;color:var(--text-dim);font-weight:600;letter-spacing:.02em}
 
+/* RESPONSIVE */
 @media(max-width:768px){
-  .hero{padding:100px 20px 48px}
-  .flow-section,.content{padding:0 20px 60px}
-  .nav-links{display:none}
-  .cta-box{padding:48px 24px}
-  .flow-diagram{gap:8px}
-  .flow-arrow-line{width:24px}
-  .integrations-grid{grid-template-columns:1fr 1fr}
-  .compare{font-size:13px}
-  .compare td,.compare th{padding:10px 12px}
+    .nav-links,.logo-tagline{display:none}
+    .nav-mobile{display:block}
+    .nav-inner{padding:0 20px}
+    .nav-right .nav-cta-ghost{display:none}
+    .int-hero{padding:96px 20px 48px}
+    .how-section{padding:60px 20px}
+    .how-grid{grid-template-columns:1fr}
+    .how-grid::before{display:none}
+    .mock-section{padding:60px 20px}
+    .mock-row{grid-template-columns:1fr 1fr;gap:8px}
+    .mock-body{padding:20px}
+    .benefits-section{padding:60px 20px}
+    .benefits-grid{grid-template-columns:1fr}
+    .final-cta{padding:72px 20px}
+    .cta-btns{flex-direction:column;align-items:center}
+    .footer-top{grid-template-columns:1fr 1fr;gap:24px}
+    .footer-bottom{flex-direction:column;text-align:center}
 }
 </style>
+<script>
+(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "vtpmvp6kvr");
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 </head>
 <body>
 
 <!-- NAV -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="/" class="logo">AgentCollect<span class="logo-dot">.</span></a>
+<nav class="nav" id="nav">
+<div class="nav-inner">
+    <a href="/" class="logo">Agent<span>Collect</span><span class="dot-circle"></span></a>
+    <span class="logo-tagline">The end of manual collection.</span>
     <div class="nav-links">
-      <a href="/ai-collection">AI Collection</a>
-      <a href="/attorney-collection">Attorney Collection</a>
-      <a href="/pricing">Pricing</a>
-      <a href="/security">Security</a>
+        <a href="/ai-collection">AI Collection</a>
+        <a href="/attorney-collection">Attorney Collection</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/security">Security</a>
     </div>
-    <a href="https://cal.com/johnb/30" target="_blank" class="nav-cta-ghost">Talk to us</a>
-    <a href="/#hero-input" class="nav-cta">See your collection plan</a>
-  </div>
+    <div class="nav-right">
+        <a href="https://cal.com/johnb/30" class="nav-cta-ghost" target="_blank">Talk to us</a>
+        <a href="https://cal.com/johnb/30" class="nav-cta" target="_blank">Book a demo</a>
+    </div>
+    <button class="nav-mobile" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="1.5"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+</div>
 </nav>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="breadcrumb">
-    <a href="/">Home</a> / <a href="/integrations">Integrations</a> / QuickBooks
-  </div>
-  <div class="hero-tag">Integration Guide</div>
-  <h1>AgentCollect + <em>QuickBooks</em></h1>
-  <p class="hero-sub">Connect QuickBooks Online to automatically send overdue invoices to AI collection agents. Payments sync back in real-time — no CSV exports, no manual follow-up, no collections team required.</p>
-</div>
+<section class="int-hero">
+    <div class="breadcrumb">
+        <a href="/">Home</a> / <a href="/integrations">Integrations</a> / QuickBooks
+    </div>
+    <div class="int-logos">
+        <div class="int-logo-box qb">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm4-3h-2v-3h-2V9h2v2h2v3z"/></svg>
+        </div>
+        <div class="int-plus">+</div>
+        <div class="int-logo-box ac">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><text x="8" y="18" fill="white" font-family="system-ui" font-weight="900" font-size="18">A</text><circle cx="20" cy="6" r="3" fill="white" opacity=".85"/></svg>
+        </div>
+    </div>
+    <div class="section-label">Integration</div>
+    <h1><span class="qb">QuickBooks</span> + <span class="ac">AgentCollect</span></h1>
+    <p class="sub">Connect QuickBooks Online and let AI agents collect your overdue invoices automatically. No CSV exports. No manual follow-ups. Payments reconcile back to QuickBooks in real time.</p>
+</section>
 
-<!-- FLOW DIAGRAM -->
-<div class="flow-section">
-  <div class="flow-diagram">
-    <div class="flow-node">
-      <div class="flow-node-icon">📒</div>
-      <div class="flow-node-label">QuickBooks Online</div>
-      <div class="flow-node-sub">Your AR source of truth</div>
-    </div>
-    <div class="flow-arrow">
-      <div class="flow-arrow-line"></div>
-      <div class="flow-arrow-label">Overdue invoices</div>
-    </div>
-    <div class="flow-node highlight">
-      <div class="flow-node-icon">🤖</div>
-      <div class="flow-node-label">AgentCollect</div>
-      <div class="flow-node-sub">AI agents collect</div>
-    </div>
-    <div class="flow-arrow">
-      <div class="flow-arrow-line"></div>
-      <div class="flow-arrow-label">Payment received</div>
-    </div>
-    <div class="flow-node">
-      <div class="flow-node-icon">💳</div>
-      <div class="flow-node-label">Payment</div>
-      <div class="flow-node-sub">Synced back to QB</div>
-    </div>
-  </div>
-</div>
+<div class="gradient-divider"></div>
 
-<!-- CONTENT -->
-<div class="content">
-
-  <!-- HOW IT WORKS -->
-  <div class="section">
-    <div class="section-tag">How It Works</div>
-    <h2>Three steps from connection to collected</h2>
-    <div class="steps">
-      <div class="step-card">
-        <div class="step-num">Step 01 — Connect</div>
-        <h3>OAuth in 2 minutes</h3>
-        <p>Authorize AgentCollect via QuickBooks' official OAuth 2.0 flow. No passwords shared, no manual API keys. Works on all QuickBooks Online plans from Simple Start to Advanced.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">Step 02 — Configure</div>
-        <h3>Set your overdue threshold</h3>
-        <p>Choose when invoices enter the collection workflow — 30, 45, 60, or 90 days past due. Exclude customers by tag, minimum amount, or customer type. Takes about 15 minutes to configure.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">Step 03 — Collect</div>
-        <h3>AI agents take it from here</h3>
-        <p>AgentCollect's AI agents call, email, and text your debtors on your behalf. When payment is confirmed, the invoice status in QuickBooks updates automatically.</p>
-      </div>
+<!-- HOW IT WORKS -->
+<section class="how-section reveal">
+    <div class="how-inner">
+        <div class="how-header">
+            <div class="section-label">Setup</div>
+            <h2>Live in 20 minutes</h2>
+            <p>Three steps. No engineering required. No CSV files to manage.</p>
+        </div>
+        <div class="how-grid">
+            <div class="how-card s1">
+                <div class="how-step">1</div>
+                <h3>Connect</h3>
+                <p>Authorize AgentCollect to read your QuickBooks invoices with one click. OAuth 2.0 &mdash; we never see your QuickBooks password.</p>
+            </div>
+            <div class="how-card s2">
+                <div class="how-step">2</div>
+                <h3>Configure rules</h3>
+                <p>Set your overdue threshold (e.g., 30+ days), minimum amount, and customer exclusions. Choose AI Collection or Attorney Collection mode.</p>
+            </div>
+            <div class="how-card s3">
+                <div class="how-step">3</div>
+                <h3>Go live</h3>
+                <p>AgentCollect syncs overdue invoices daily and starts contacting debtors. Payments are automatically recorded back in QuickBooks.</p>
+            </div>
+        </div>
     </div>
-  </div>
+</section>
 
-  <!-- WHAT SYNCS -->
-  <div class="section">
-    <div class="section-tag">Data Sync</div>
-    <h2>What syncs between QuickBooks and AgentCollect</h2>
-    <table class="compare">
-      <thead>
-        <tr>
-          <th>Direction</th>
-          <th>Data</th>
-          <th>Frequency</th>
-          <th>Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="hl">
-          <td><span class="badge badge-out">QB → AC</span></td>
-          <td><strong>Overdue invoices</strong></td>
-          <td>Every 4 hours</td>
-          <td>Filtered by your configured threshold</td>
-        </tr>
-        <tr>
-          <td><span class="badge badge-in">AC → QB</span></td>
-          <td><strong>Payment received</strong></td>
-          <td>Real-time</td>
-          <td>Creates payment record against invoice</td>
-        </tr>
-        <tr class="hl">
-          <td><span class="badge badge-in">AC → QB</span></td>
-          <td><strong>Payment plan created</strong></td>
-          <td>Real-time</td>
-          <td>Adds memo to invoice noting installment schedule</td>
-        </tr>
-        <tr>
-          <td><span class="badge badge-in">AC → QB</span></td>
-          <td><strong>Invoice status update</strong></td>
-          <td>Real-time</td>
-          <td>Marks invoice as "In Collections" via custom field</td>
-        </tr>
-        <tr class="hl">
-          <td><span class="badge badge-out">QB → AC</span></td>
-          <td><strong>Customer contact info</strong></td>
-          <td>On sync</td>
-          <td>Name, email, phone, billing address</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div class="gradient-divider"></div>
 
-  <!-- KEY BENEFITS -->
-  <div class="section">
-    <div class="section-tag">Key Benefits</div>
-    <h2>Built for QuickBooks users</h2>
-    <div class="benefits">
-      <div class="benefit-card">
-        <div class="benefit-icon">🔄</div>
-        <h3>Zero manual exports</h3>
-        <p>No more downloading AR aging reports as CSVs and emailing them to a collection agency. QuickBooks syncs automatically on your schedule.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">🎯</div>
-        <h3>Smart invoice filtering</h3>
-        <p>Exclude VIP customers, invoices under a dollar threshold, or customers already on a payment plan. Full control over what gets escalated.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-icon">💰</div>
-        <h3>Success-only fees</h3>
-        <p>AgentCollect charges only when money is recovered. No monthly SaaS fees, no setup costs. Your QuickBooks AR works harder without risk.</p>
-      </div>
+<!-- MOCK UI -->
+<section class="mock-section reveal">
+    <div class="mock-inner">
+        <div class="mock-header">
+            <div class="section-label">Real-time sync</div>
+            <h2>See everything in your dashboard</h2>
+            <p>Every invoice synced from QuickBooks shows real-time collection status.</p>
+        </div>
+        <div class="mock-ui">
+            <div class="mock-titlebar">
+                <div class="mock-dot red"></div>
+                <div class="mock-dot yellow"></div>
+                <div class="mock-dot green"></div>
+                <div class="mock-url">app.agentcollect.com/integrations/quickbooks</div>
+            </div>
+            <div class="mock-body">
+                <div class="mock-row">
+                    <span>Customer / Invoice</span>
+                    <span>Amount</span>
+                    <span>Status</span>
+                    <span>Days Overdue</span>
+                </div>
+                <div class="mock-row">
+                    <span class="mock-customer">Acme Corp &mdash; INV-4521</span>
+                    <span class="mock-amount">$12,400</span>
+                    <span><span class="mock-status collecting">AI Collecting</span></span>
+                    <span class="mock-days">34 days</span>
+                </div>
+                <div class="mock-row">
+                    <span class="mock-customer">TechVenture LLC &mdash; INV-4498</span>
+                    <span class="mock-amount">$8,750</span>
+                    <span><span class="mock-status paid">Paid</span></span>
+                    <span class="mock-days">Resolved day 12</span>
+                </div>
+                <div class="mock-row">
+                    <span class="mock-customer">GlobalMfg Inc &mdash; INV-4533</span>
+                    <span class="mock-amount">$23,100</span>
+                    <span><span class="mock-status collecting">AI Collecting</span></span>
+                    <span class="mock-days">21 days</span>
+                </div>
+                <div class="mock-row">
+                    <span class="mock-customer">Summit Services &mdash; INV-4487</span>
+                    <span class="mock-amount">$5,200</span>
+                    <span><span class="mock-status scheduled">Payment plan</span></span>
+                    <span class="mock-days">3 of 4 paid</span>
+                </div>
+                <div class="mock-row">
+                    <span class="mock-customer">Meridian Group &mdash; INV-4512</span>
+                    <span class="mock-amount">$16,800</span>
+                    <span><span class="mock-status paid">Paid</span></span>
+                    <span class="mock-days">Resolved day 8</span>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+</section>
 
-  <!-- FAQ -->
-  <div class="section">
-    <div class="section-tag">FAQ</div>
-    <h2>QuickBooks integration FAQ</h2>
-    <div class="faq-item">
-      <div class="faq-q">Does AgentCollect modify data in QuickBooks?</div>
-      <div class="faq-a">AgentCollect is read-only for invoice data. The only writes back to QuickBooks are payment records when a debtor pays through AgentCollect, and invoice status updates. We never modify the original invoice amount or terms.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Which QuickBooks versions does the integration support?</div>
-      <div class="faq-a">AgentCollect integrates with QuickBooks Online (all plans: Simple Start, Essentials, Plus, Advanced). QuickBooks Desktop and QuickBooks Enterprise are not currently supported.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Can I exclude certain customers from collection?</div>
-      <div class="faq-a">Yes. You can exclude customers by tag, customer type, invoice amount threshold, or days overdue. For example, you can set the integration to only send invoices over $500 that are more than 45 days past due.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">How long does it take to set up the QuickBooks integration?</div>
-      <div class="faq-a">The OAuth connection takes about 2 minutes. Configuring your overdue threshold, exclusion rules, and collection workflow takes another 15–18 minutes. Most customers are live within 20 minutes of signing up.</div>
-    </div>
-  </div>
+<div class="gradient-divider"></div>
 
-  <!-- CTA -->
-  <div class="cta-box">
-    <h2>Ready to automate your QuickBooks collections?</h2>
-    <p>Connect in 20 minutes. AI agents handle the rest. Success-only fees.</p>
-    <a href="/contact" class="cta-btn">Start a free pilot &rarr;</a>
-  </div>
-
-  <!-- OTHER INTEGRATIONS -->
-  <div class="integrations-section">
-    <div class="section-tag">All Integrations</div>
-    <h2>Connect your accounting stack</h2>
-    <div class="integrations-grid">
-      <a href="/integrations/quickbooks" class="int-link current">QuickBooks</a>
-      <a href="/integrations/netsuite" class="int-link">NetSuite</a>
-      <a href="/integrations/sage" class="int-link">Sage</a>
-      <a href="/integrations/xero" class="int-link">Xero</a>
-      <a href="/integrations/microsoft-dynamics" class="int-link">Microsoft Dynamics</a>
-      <a href="/integrations/sap" class="int-link">SAP</a>
-      <a href="/integrations/freshbooks" class="int-link">FreshBooks</a>
-      <a href="/integrations/bill-com" class="int-link">Bill.com</a>
-      <a href="/integrations/salesforce" class="int-link">Salesforce</a>
-      <a href="/integrations/hubspot" class="int-link">HubSpot</a>
-      <a href="/integrations/stripe-billing" class="int-link">Stripe Billing</a>
-      <a href="/integrations/chargebee" class="int-link">Chargebee</a>
-      <a href="/integrations/highradius" class="int-link">HighRadius</a>
-      <a href="/integrations/billtrust" class="int-link">Billtrust</a>
+<!-- BENEFITS -->
+<section class="benefits-section reveal">
+    <div class="benefits-inner">
+        <div class="benefits-header">
+            <div class="section-label">Benefits</div>
+            <h2>Why connect QuickBooks to AgentCollect</h2>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card s1">
+                <div class="benefit-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+                </div>
+                <div>
+                    <h4>No manual exports</h4>
+                    <p>Invoices sync automatically. No more downloading CSVs, reformatting spreadsheets, or emailing files to agencies.</p>
+                </div>
+            </div>
+            <div class="benefit-card s2">
+                <div class="benefit-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div>
+                    <h4>Automated reconciliation</h4>
+                    <p>When a debtor pays, the payment is automatically recorded in QuickBooks. Your books stay clean without any manual entry.</p>
+                </div>
+            </div>
+            <div class="benefit-card s1">
+                <div class="benefit-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                </div>
+                <div>
+                    <h4>Real-time status</h4>
+                    <p>See collection status for every invoice directly in your AgentCollect dashboard. Know exactly what is happening with every overdue account.</p>
+                </div>
+            </div>
+            <div class="benefit-card s2">
+                <div class="benefit-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <div>
+                    <h4>Instant activation</h4>
+                    <p>New overdue invoices are picked up automatically on the daily sync. No lag between "past due" and "collection started."</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+</section>
 
-</div>
+<!-- FINAL CTA -->
+<section class="final-cta">
+    <h2>Connect QuickBooks</h2>
+    <p>20 minutes from signup to live AI collection. No engineering required.</p>
+    <div class="cta-btns">
+        <a href="https://cal.com/johnb/30" target="_blank" class="cta-btn cta-btn-primary">
+            Book a demo
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/pricing" class="cta-btn cta-btn-ghost">See pricing</a>
+    </div>
+</section>
 
 <!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-logo">AgentCollect<span>.</span></div>
-    <div class="footer-links">
-      <a href="/about">About</a>
-      <a href="/contact">Contact</a>
-      <a href="/privacy">Privacy</a>
-      <a href="/terms">Terms</a>
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div>
+                <div class="footer-brand-name">Agent<span>Collect</span><span class="dot-circle" style="width:5px;height:5px"></span></div>
+                <div class="footer-tagline">The end of manual collection.</div>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <a href="/ai-collection">AI Collection</a>
+                <a href="/attorney-collection">Attorney Collection</a>
+                <a href="/pricing">Pricing</a>
+                <a href="/integrations">API &amp; Integrations</a>
+            </div>
+            <div class="footer-col">
+                <h4>Trust</h4>
+                <a href="/security">Security &amp; Trust</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/compliance">State Compliance</a>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <a href="/integrations">Integrations</a>
+                <a href="/compare">Compare</a>
+                <a href="/glossary">Glossary</a>
+                <a href="/dso-calculator">DSO Calculator</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="/about">About</a>
+                <a href="https://cal.com/johnb/30" target="_blank">Contact</a>
+                <a href="/careers">Careers</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-copy">&copy; 2026 AgentCollect, Inc. San Francisco, CA</div>
+            <div class="footer-badges">
+                <span class="footer-badge">SOC 2</span>
+                <span class="footer-badge">CCPA</span>
+                <span class="footer-badge">Reg F</span>
+            </div>
+        </div>
     </div>
-    <div class="footer-copy">&copy; 2026 AgentCollect (YC S23). All rights reserved.</div>
-  </div>
 </footer>
 
+<script>
+window.addEventListener('scroll', function(){
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 8);
+}, { passive: true });
+
+var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('visible'); }
+    });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
+</script>
 </body>
 </html>
