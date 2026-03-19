@@ -114,18 +114,70 @@
         .build-header{display:flex;align-items:center;gap:16px;margin-bottom:32px}
         .build-logo{width:48px;height:48px;border-radius:12px;object-fit:contain;background:var(--bg);border:1px solid var(--border)}
         .build-title{font-family:var(--display);font-size:20px;font-weight:700;color:var(--text)}
-        .build-phase{margin-bottom:16px;opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
-        .build-phase.visible{opacity:1;transform:translateY(0)}
-        .build-check{display:flex;align-items:flex-start;gap:10px;padding:10px 0;font-size:15px;color:var(--text-mid);line-height:1.5}
-        .build-check .check-icon{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:1px}
-        .build-check .check-icon.green{background:rgba(16,185,129,.1);color:var(--green)}
-        .build-check .check-icon.indigo{background:rgba(79,70,229,.1);color:var(--indigo)}
-        .build-ready{display:flex;align-items:center;gap:12px;padding:16px 20px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:12px;margin-top:8px}
-        .build-ready-dot{width:10px;height:10px;border-radius:50%;background:var(--green);animation:pulse-dot 2s ease-in-out infinite}
-        @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-        .build-ready-text{font-family:var(--display);font-size:16px;font-weight:700;color:var(--green-dark)}
         .build-spinner{display:inline-block;width:18px;height:18px;border:2px solid rgba(79,70,229,.15);border-top-color:var(--indigo);border-radius:50%;animation:spin .7s linear infinite;margin-right:8px;vertical-align:middle}
         @keyframes spin{to{transform:rotate(360deg)}}
+        @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+
+        /* ========== BUILD PROGRESS BAR ========== */
+        .build-progress-wrap{margin-bottom:28px;opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease}
+        .build-progress-wrap.visible{opacity:1;transform:translateY(0)}
+        .build-progress-label-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+        .build-progress-label-text{font-size:14px;font-weight:600;color:var(--text-mid);letter-spacing:-.01em}
+        .build-progress-pct{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--indigo)}
+        .build-progress-track{height:4px;background:rgba(79,70,229,.1);border-radius:4px;overflow:hidden}
+        .build-progress-fill{height:100%;background:linear-gradient(90deg,var(--indigo),var(--green));border-radius:4px;width:0%;transition:width .6s cubic-bezier(.16,1,.3,1)}
+
+        /* ========== BUILD VISUAL CARDS ========== */
+        .build-card-list{display:flex;flex-direction:column;gap:12px}
+        .bci{opacity:0;transform:translateY(20px);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1)}
+        .bci.visible{opacity:1;transform:translateY(0)}
+        .bci-inner{border:1.5px solid var(--border);border-radius:16px;padding:24px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.03)}
+        .bci-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+        .bci-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .bci-icon.indigo{background:rgba(79,70,229,.08);color:var(--indigo)}
+        .bci-icon.green{background:rgba(16,185,129,.08);color:var(--green)}
+        .bci-icon.amber{background:rgba(245,158,11,.08);color:#B45309}
+        .bci-title{font-family:var(--display);font-size:16px;font-weight:700;color:var(--text);letter-spacing:-.02em}
+        .bci-badge{margin-left:auto;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:6px;white-space:nowrap}
+        .bci-badge.live{background:rgba(16,185,129,.1);color:var(--green-dark)}
+        .bci-badge.verified{background:rgba(79,70,229,.08);color:var(--indigo)}
+
+        /* Company card */
+        .bci-company-row{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+        .bci-company-logo{width:44px;height:44px;border-radius:10px;object-fit:contain;border:1px solid var(--border);background:var(--bg);flex-shrink:0}
+        .bci-company-name{font-family:var(--display);font-size:20px;font-weight:900;color:var(--text);letter-spacing:-.04em}
+        .bci-company-industry{font-size:13px;color:var(--text-muted);margin-top:2px}
+        .bci-company-stat{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.15);border-radius:8px;font-size:13px;font-weight:600;color:var(--green-dark)}
+
+        /* Intelligence card */
+        .bci-intel-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;font-size:14px;color:var(--text-mid);line-height:1.55;border-bottom:1px solid rgba(0,0,0,.04)}
+        .bci-intel-item:last-child{border-bottom:none;padding-bottom:0}
+        .bci-intel-dot{width:8px;height:8px;border-radius:50%;background:var(--amber);flex-shrink:0;margin-top:5px}
+        .bci-intel-dot.green{background:var(--green)}
+        .bci-intel-dot.red{background:var(--red)}
+        .bci-intel-section-label{font-size:12px;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+
+        /* Contacts card */
+        .bci-contact-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(0,0,0,.04)}
+        .bci-contact-row:last-child{border-bottom:none;padding-bottom:0}
+        .bci-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:12px;font-weight:800;flex-shrink:0;color:#fff}
+        .bci-contact-info{flex:1;min-width:0}
+        .bci-contact-name{font-size:14px;font-weight:600;color:var(--text);letter-spacing:-.01em}
+        .bci-contact-title{font-size:12px;color:var(--text-muted)}
+        .bci-contact-badge{font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px;background:rgba(16,185,129,.08);color:var(--green-dark);white-space:nowrap;flex-shrink:0}
+
+        /* Email gate card */
+        .bci-gate{border:1.5px dashed rgba(79,70,229,.3);border-radius:16px;padding:36px 32px;background:linear-gradient(135deg,rgba(79,70,229,.02),rgba(79,70,229,.04));text-align:center}
+        .bci-gate-lock{width:52px;height:52px;border-radius:14px;background:rgba(79,70,229,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+        .bci-gate-title{font-family:var(--display);font-size:22px;font-weight:900;color:var(--text);margin-bottom:8px;letter-spacing:-.04em}
+        .bci-gate-sub{font-size:15px;color:var(--text-mid);margin-bottom:24px;line-height:1.6;max-width:380px;margin-left:auto;margin-right:auto}
+        .bci-gate-input-wrap{display:flex;gap:8px;max-width:420px;margin:0 auto 12px}
+        .bci-gate-input{flex:1;min-width:0;padding:14px 18px;border:1.5px solid var(--border);border-radius:12px;font-family:var(--sans);font-size:15px;color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s;background:#fff}
+        .bci-gate-input:focus{border-color:var(--indigo);box-shadow:0 0 0 3px rgba(79,70,229,.08)}
+        .bci-gate-btn{padding:14px 22px;background:var(--indigo);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:6px;flex-shrink:0}
+        .bci-gate-btn:hover{background:var(--indigo-dark);transform:translateY(-1px)}
+        .bci-gate-privacy{font-size:12px;color:var(--text-dim)}
+        @media(max-width:480px){.bci-gate-input-wrap{flex-direction:column}.bci-gate-btn{justify-content:center}}
 
         /* ========== DEMO AREA (inside build card after animation) ========== */
         .demo-area{display:none;margin-top:24px}
@@ -512,7 +564,18 @@
             <img class="build-logo" id="build-logo" src="" alt="">
             <div class="build-title" id="build-title">Building your agent...</div>
         </div>
-        <div id="build-phases"></div>
+        <!-- Progress bar -->
+        <div class="build-progress-wrap" id="build-progress-wrap">
+            <div class="build-progress-label-row">
+                <span class="build-progress-label-text" id="build-progress-label">Analyzing...</span>
+                <span class="build-progress-pct" id="build-progress-pct">0%</span>
+            </div>
+            <div class="build-progress-track">
+                <div class="build-progress-fill" id="build-progress-fill"></div>
+            </div>
+        </div>
+        <!-- Visual slide-in cards -->
+        <div class="build-card-list" id="build-card-list"></div>
 
         <!-- Demo area (appears after build animation completes) -->
         <div class="demo-area" id="demo-area">
@@ -1304,29 +1367,86 @@
         }, 300);
     }
 
-    // ===== BUILD ANIMATION =====
+    // ===== BUILD ANIMATION (visual slide-in cards) =====
+    var buildProgressFill, buildProgressPct, buildProgressLabelEl, buildCardListEl, buildProgressWrapEl;
+    var buildProgressValue = 0;
+    var buildEmailGatePassed = false;
+
+    function initBuildRefs() {
+        buildProgressWrapEl = document.getElementById('build-progress-wrap');
+        buildProgressFill = document.getElementById('build-progress-fill');
+        buildProgressPct = document.getElementById('build-progress-pct');
+        buildProgressLabelEl = document.getElementById('build-progress-label');
+        buildCardListEl = document.getElementById('build-card-list');
+    }
+
+    function setProgress(pct, label) {
+        buildProgressValue = pct;
+        buildProgressFill.style.width = pct + '%';
+        buildProgressPct.textContent = Math.round(pct) + '%';
+        if (label) buildProgressLabelEl.textContent = label;
+    }
+
+    function animateProgressTo(target, duration, label, callback) {
+        var start = buildProgressValue;
+        var startTime = null;
+        function step(ts) {
+            if (!startTime) startTime = ts;
+            var elapsed = ts - startTime;
+            var progress = Math.min(elapsed / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var current = start + (target - start) * eased;
+            setProgress(current, label);
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                setProgress(target, label);
+                if (callback) callback();
+            }
+        }
+        requestAnimationFrame(step);
+    }
+
+    function addBuildCard(id, html) {
+        var div = document.createElement('div');
+        div.className = 'bci';
+        div.id = id;
+        div.innerHTML = html;
+        buildCardListEl.appendChild(div);
+        setTimeout(function() { div.classList.add('visible'); }, 50);
+        return div;
+    }
+
     function startBuild(domain) {
         var data = getCompanyData(domain);
         currentCompany = data;
         currentDomain = domain;
         currentDisputeIndex = 0;
+        buildEmailGatePassed = false;
 
-        // Fire API call in parallel (will update data when it returns)
+        if (!buildProgressFill) initBuildRefs();
+
+        // Fire API call in parallel
         fetchCompanyFromAPI(domain);
 
-        // Hide hero content and fully collapse hero section
+        // Collapse hero
         heroContent.style.opacity = '0';
         heroContent.style.transform = 'translateY(-20px)';
-
         setTimeout(function() {
             heroContent.style.display = 'none';
             heroSection.style.padding = '72px 0 8px';
             heroSection.style.minHeight = '0';
         }, 400);
 
-        // Show build section
         setTimeout(function() {
             buildSection.classList.add('active');
+            buildCardListEl.innerHTML = '';
+            buildProgressWrapEl.classList.remove('visible');
+            setProgress(0, 'Analyzing...');
+            buildProgressFill.style.transition = 'none';
+            buildProgressFill.style.width = '0%';
+
+            // Logo + title
             buildLogo.alt = data.name;
             buildLogo.onerror = function() {
                 if (this.src.indexOf('clearbit') > -1) {
@@ -1336,73 +1456,224 @@
                 }
             };
             buildLogo.src = 'https://logo.clearbit.com/' + domain;
-            buildTitle.textContent = 'Building your ' + data.name + ' collection agent...';
-            buildPhases.innerHTML = '';
+            buildTitle.textContent = 'Building your ' + data.name + ' agent...';
 
-            // Phase 1: instant — analyzing spinner stays visible longer
-            addBuildPhase('<span class="build-spinner"></span> Analyzing ' + data.name + '...', 0);
-
-            // Phase 2: 3.5s (longer analysis feel)
+            // Show progress bar
             setTimeout(function() {
-                addBuildCheck(data.name + ' \u2014 ' + data.industry, 'green');
+                buildProgressFill.style.transition = '';
+                buildProgressWrapEl.classList.add('visible');
+            }, 100);
+
+            // Step 1: 0 → 22% — Company card
+            animateProgressTo(22, 1800, 'Analyzing ' + data.name + '...', function() {
+                addCompanyCard(data, domain);
+
+                // Step 2: 22 → 48% — Intelligence card
                 setTimeout(function() {
-                    addBuildCheck('Your clients: ' + data.clients, 'green');
-                }, 600);
-                setTimeout(function() {
-                    addBuildCheck('Why they don\'t pay: ' + data.whyDontPay, 'green');
-                }, 1200);
-            }, 3500);
+                    animateProgressTo(48, 2000, 'Finding payment patterns...', function() {
+                        addIntelligenceCard(data);
 
-            // Phase 3: 6.5s — agent ready + morph into demo
-            setTimeout(function() {
-                buildTitle.textContent = data.name + ' collection agent';
+                        // Step 3: 48 → 73% — Contacts card
+                        setTimeout(function() {
+                            animateProgressTo(73, 1800, 'Identifying decision makers...', function() {
+                                addContactsCard(data, domain);
 
-                // Pre-render analysis banner so it appears while build phases fade
-                showDemo(data);
-
-                // Fade out build phases
-                var phases = buildPhases.querySelectorAll('.build-phase');
-                phases.forEach(function(p) {
-                    p.style.transition = 'opacity .4s ease, transform .4s ease';
-                    p.style.opacity = '0';
-                    p.style.transform = 'translateY(-8px)';
-                });
-
-                setTimeout(function() {
-                    // Clear build phases and add ready indicator
-                    buildPhases.innerHTML = '';
-                    var readyHtml = '<div class="build-phase" id="build-ready-phase">' +
-                        '<div class="build-ready">' +
-                        '<div class="build-ready-dot"></div>' +
-                        '<div class="build-ready-text">Your ' + data.name + ' collection agent is ready.</div>' +
-                        '</div></div>';
-                    buildPhases.insertAdjacentHTML('beforeend', readyHtml);
-                    setTimeout(function() {
-                        document.getElementById('build-ready-phase').classList.add('visible');
-                    }, 50);
+                                // Gate at 75%
+                                setTimeout(function() {
+                                    animateProgressTo(75, 500, 'Agent 75% ready...', function() {
+                                        addEmailGateCard(data);
+                                    });
+                                }, 700);
+                            });
+                        }, 600);
+                    });
                 }, 500);
-            }, 6500);
+            });
         }, 500);
     }
 
-    function addBuildPhase(html, delay) {
-        var div = document.createElement('div');
-        div.className = 'build-phase';
-        div.innerHTML = '<div class="build-check">' + html + '</div>';
-        buildPhases.appendChild(div);
-        setTimeout(function() { div.classList.add('visible'); }, 50 + delay);
+    function addCompanyCard(data, domain) {
+        var logoSrc = 'https://logo.clearbit.com/' + domain;
+        var fallback = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(data.name) + '&background=4F46E5&color=fff&size=128&bold=true';
+        addBuildCard('bci-company',
+            '<div class="bci-inner">' +
+            '<div class="bci-header">' +
+            '<div class="bci-icon indigo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>' +
+            '<div class="bci-title">Company Profile</div>' +
+            '<span class="bci-badge verified">Verified</span>' +
+            '</div>' +
+            '<div class="bci-company-row">' +
+            '<img class="bci-company-logo" src="' + logoSrc + '" alt="' + data.name + '" onerror="this.src=\'' + fallback + '\'">' +
+            '<div><div class="bci-company-name">' + data.name + '</div><div class="bci-company-industry">' + data.industry + '</div></div>' +
+            '</div>' +
+            '<span class="bci-company-stat">' +
+            '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>' +
+            data.clients + '</span>' +
+            '</div>'
+        );
     }
 
-    function addBuildCheck(text, color) {
-        var div = document.createElement('div');
-        div.className = 'build-phase';
-        div.innerHTML = '<div class="build-check">' +
-            '<span class="check-icon ' + color + '">' +
-            '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>' +
-            '</span>' +
-            '<span>' + text + '</span></div>';
-        buildPhases.appendChild(div);
-        setTimeout(function() { div.classList.add('visible'); }, 50);
+    function addIntelligenceCard(data) {
+        var dotColors = ['amber', 'red', 'green'];
+        var itemsHtml = (data.analysis || []).map(function(item, i) {
+            return '<div class="bci-intel-item"><span class="bci-intel-dot ' + dotColors[i % 3] + '"></span><span>' + item + '</span></div>';
+        }).join('');
+        addBuildCard('bci-intel',
+            '<div class="bci-inner">' +
+            '<div class="bci-header">' +
+            '<div class="bci-icon amber"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>' +
+            '<div class="bci-title">AI Intelligence</div>' +
+            '<span class="bci-badge live">Live</span>' +
+            '</div>' +
+            '<div class="bci-intel-section-label">Why your clients delay payment</div>' +
+            itemsHtml +
+            '</div>'
+        );
+    }
+
+    function addContactsCard(data, domain) {
+        var contacts = getContactsForDomain(data, domain);
+        var avatarColors = ['#4F46E5', '#10B981', '#F59E0B'];
+        var rowsHtml = contacts.map(function(c, i) {
+            var initials = c.name.split(' ').map(function(w) { return w[0]; }).join('').toUpperCase().slice(0, 2);
+            return '<div class="bci-contact-row">' +
+                '<div class="bci-avatar" style="background:' + avatarColors[i % 3] + '">' + initials + '</div>' +
+                '<div class="bci-contact-info"><div class="bci-contact-name">' + c.name + '</div><div class="bci-contact-title">' + c.title + '</div></div>' +
+                '<span class="bci-contact-badge">Ready</span>' +
+                '</div>';
+        }).join('');
+        addBuildCard('bci-contacts',
+            '<div class="bci-inner">' +
+            '<div class="bci-header">' +
+            '<div class="bci-icon green"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>' +
+            '<div class="bci-title">Decision Makers Found</div>' +
+            '<span class="bci-badge live">' + contacts.length + ' contacts</span>' +
+            '</div>' +
+            rowsHtml +
+            '</div>'
+        );
+    }
+
+    function getContactsForDomain(data, domain) {
+        var known = {
+            'microsoft.com': [
+                { name: 'Neil Doyle', title: 'VP Finance — Microsoft' },
+                { name: 'Shane Hood', title: 'Head of AR Operations' },
+                { name: 'David Chen', title: 'Controller, Enterprise' }
+            ],
+            'dell.com': [
+                { name: 'M. Rodriguez', title: 'AP Director — Dell' },
+                { name: 'Ryan Patterson', title: 'Head of Collections' },
+                { name: 'Sarah Williams', title: 'Finance Manager' }
+            ],
+            'uber.com': [
+                { name: 'David Majors', title: 'Head of Order to Cash' },
+                { name: 'Shane Hood', title: 'Head of AR Operations' },
+                { name: 'Kim Torres', title: 'Senior AR Analyst' }
+            ],
+            'fedex.com': [
+                { name: 'Kevin Johnson', title: 'VP Revenue Operations' },
+                { name: 'Ryan Patterson', title: 'Head of Collections' },
+                { name: 'Lisa Chen', title: 'AR Manager' }
+            ]
+        };
+        if (known[domain]) return known[domain];
+        return [
+            { name: 'John Mitchell', title: 'VP Finance — ' + data.name },
+            { name: 'Sarah Thompson', title: 'Head of Accounts Receivable' },
+            { name: 'Michael Chen', title: 'Controller' }
+        ];
+    }
+
+    function addEmailGateCard(data) {
+        var amount = data.amount || '$8,400';
+        var card = document.createElement('div');
+        card.className = 'bci';
+        card.id = 'bci-gate-wrap';
+        card.innerHTML =
+            '<div class="bci-gate" id="bci-gate">' +
+            '<div class="bci-gate-lock"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>' +
+            '<div class="bci-gate-title">Your agent is 75% ready.</div>' +
+            '<div class="bci-gate-sub">Enter your work email to see the full build — collection strategy, payment scripts, and ' + amount + ' in AR coverage.</div>' +
+            '<div class="bci-gate-input-wrap">' +
+            '<input type="email" class="bci-gate-input" id="bci-email-input" placeholder="you@company.com" autocomplete="email">' +
+            '<button class="bci-gate-btn" id="bci-email-btn">See my agent <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>' +
+            '</div>' +
+            '<div class="bci-gate-privacy">No spam. Your data stays private.</div>' +
+            '</div>';
+        buildCardListEl.appendChild(card);
+        setTimeout(function() { card.classList.add('visible'); }, 50);
+
+        setTimeout(function() {
+            var emailInput = document.getElementById('bci-email-input');
+            var emailBtn = document.getElementById('bci-email-btn');
+
+            function submitEmail() {
+                var email = emailInput ? emailInput.value.trim() : '';
+                var isValid = email && email.indexOf('@') > 0 && email.indexOf('.') > email.indexOf('@');
+                if (!isValid) {
+                    if (emailInput) {
+                        emailInput.style.borderColor = 'var(--red)';
+                        emailInput.style.boxShadow = '0 0 0 3px rgba(239,68,68,.1)';
+                        setTimeout(function() { emailInput.style.borderColor = ''; emailInput.style.boxShadow = ''; }, 1800);
+                    }
+                    return;
+                }
+                // Persist
+                try { localStorage.setItem('ac_lead_email', email); localStorage.setItem('ac_lead_domain', currentDomain); } catch(e) {}
+                // Fire and forget to backend
+                try {
+                    fetch('https://backend.widr.app/api/v1/demo/capture-lead', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email: email, domain: currentDomain, company: currentCompany ? currentCompany.name : '' })
+                    }).catch(function() {});
+                } catch(e) {}
+
+                buildEmailGatePassed = true;
+                resumeAfterEmailGate(data);
+            }
+
+            if (emailBtn) emailBtn.addEventListener('click', submitEmail);
+            if (emailInput) emailInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') submitEmail(); });
+            setTimeout(function() { if (emailInput) emailInput.focus(); }, 300);
+            setTimeout(function() { card.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 200);
+        }, 150);
+    }
+
+    function resumeAfterEmailGate(data) {
+        // Success state in gate card
+        var gate = document.getElementById('bci-gate');
+        if (gate) {
+            gate.style.transition = 'all .4s ease';
+            gate.style.borderStyle = 'solid';
+            gate.style.borderColor = 'rgba(16,185,129,.3)';
+            gate.style.background = 'rgba(16,185,129,.02)';
+            gate.innerHTML =
+                '<div style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:4px 0">' +
+                '<div style="width:48px;height:48px;border-radius:50%;background:rgba(16,185,129,.12);display:flex;align-items:center;justify-content:center">' +
+                '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>' +
+                '<div style="font-family:var(--display);font-size:18px;font-weight:800;color:var(--text);letter-spacing:-.03em">Unlocked. Building your full agent...</div>' +
+                '<div style="font-size:14px;color:var(--text-muted)">Check your inbox — we\'ll send a preview link.</div>' +
+                '</div>';
+        }
+
+        // Resume 75% → 100%
+        setTimeout(function() {
+            animateProgressTo(100, 2000, 'Agent ready!', function() {
+                buildTitle.textContent = data.name + ' collection agent';
+
+                addBuildCard('bci-ready',
+                    '<div class="bci-inner" style="background:rgba(16,185,129,.02);border-color:rgba(16,185,129,.25)">' +
+                    '<div class="bci-header" style="margin-bottom:0">' +
+                    '<div class="bci-icon green"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>' +
+                    '<div class="bci-title" style="color:var(--green-dark)">Your ' + data.name + ' agent is ready.</div>' +
+                    '</div></div>'
+                );
+
+                setTimeout(function() { showDemo(data); }, 600);
+            });
+        }, 400);
     }
 
     // ===== DEMO (inside build card) =====
