@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentCollect × Konica Minolta</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="AgentCollect × Konica Minolta">
+<meta property="og:description" content="Your collection agency is destroying your brand. Here's proof.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.agentcollect.com/og.png?v=3">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GRZZT9K05B"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GRZZT9K05B');</script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","vr6uvxdalw");</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --blue:#4F46E5;--text:#0B1B3D;--muted:#6b7280;--border:#e5e7eb;--bg:#FAFBFF;
+  --green:#10B981;--green-dark:#059669;--red:#dc2626;--amber:#F59E0B;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+  --shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);
+  --shadow-lg:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.6}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.rv.v{opacity:1;transform:none}
+.rv-d1{transition-delay:.15s}
+.rv-d2{transition-delay:.3s}
+
+/* ===== NAV ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(250,251,255,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,0,0,.04)}
+.nav-inner{max-width:1080px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{text-decoration:none;font-weight:900;font-size:17px;color:var(--text);letter-spacing:-.4px}
+.nav-logo .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--blue);margin-left:1px;vertical-align:baseline}
+.nav-expiry{font-size:14px;color:var(--muted)}
+
+/* ===== HERO ===== */
+.hero{padding:130px 32px 72px;text-align:center;max-width:1080px;margin:0 auto}
+.hero-km{height:36px;margin-bottom:28px;background:transparent}
+.hero-label{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--blue);margin-bottom:16px}
+.hero h1{font-size:clamp(30px,4vw,52px);font-weight:900;letter-spacing:-.03em;line-height:1.08;max-width:720px;margin:0 auto}
+.hero h1 .red{color:var(--red)}
+
+.proof-strip{display:flex;justify-content:center;gap:24px;margin-top:40px;flex-wrap:wrap;align-items:stretch}
+.proof-card{background:#fff;border-radius:16px;padding:24px 32px;box-shadow:var(--shadow-lg);border:1px solid rgba(0,0,0,.04);text-decoration:none;color:inherit;text-align:center;transition:transform .2s;min-width:180px;max-width:260px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.proof-card:hover{transform:translateY(-2px)}
+.proof-agency{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--red);margin-bottom:6px}
+.proof-num{font-size:44px;font-weight:900;color:var(--red);line-height:1;letter-spacing:-1px}
+.proof-num-sm{font-size:32px}
+.proof-label{font-size:13px;color:var(--muted);margin-top:4px;font-weight:500}
+
+/* ===== GRADIENT TRANSITIONS ===== */
+.gradient-to-dark{height:120px;background:linear-gradient(180deg,var(--bg) 0%,#f0f0f8 40%,#e8e8f4 70%,#d8d8ea 100%);margin-top:-1px}
+.gradient-dark-start{height:80px;background:linear-gradient(180deg,#d8d8ea 0%,#1e1b3a 100%)}
+.gradient-dark-to-light{height:80px;background:linear-gradient(180deg,#1e1b3a 0%,var(--bg) 100%)}
+
+/* ===== SECTION 2: YOUR AGENT ===== */
+.agent-section{padding:80px 32px 0;max-width:1080px;margin:0 auto;text-align:center}
+.agent-section .section-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--blue);margin-bottom:10px}
+.agent-section h2{font-size:clamp(26px,3.2vw,42px);font-weight:900;letter-spacing:-.03em;line-height:1.1;max-width:500px;margin:0 auto 32px}
+
+/* ===== BUILD CARD ===== */
+.build-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:28px 32px;box-shadow:var(--shadow-lg);max-width:920px;margin:0 auto}
+.build-header{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.build-logo{width:48px;height:48px;border-radius:12px;object-fit:contain;background:var(--bg);border:1px solid var(--border)}
+.build-title{font-size:20px;font-weight:700;color:var(--text)}
+.build-progress-wrap{margin-bottom:16px}
+.build-progress-label-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.build-progress-label-text{font-size:14px;font-weight:600;color:#374151;letter-spacing:-.01em}
+.build-progress-pct{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:500;color:var(--blue)}
+.build-progress-track{height:4px;background:rgba(79,70,229,.1);border-radius:4px;overflow:hidden}
+.build-progress-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--green));border-radius:4px;width:0%;transition:width .6s cubic-bezier(.16,1,.3,1)}
+
+/* ===== BUILD VISUAL CARDS ===== */
+.build-card-list{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.bci{opacity:0;transform:translateY(12px);transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .45s cubic-bezier(.16,1,.3,1)}
+.bci.visible{opacity:1;transform:translateY(0)}
+.bci-inner{border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.02)}
+.bci-header{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.bci-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bci-icon svg{width:14px;height:14px}
+.bci-icon.indigo{background:rgba(79,70,229,.08);color:var(--blue)}
+.bci-icon.green{background:rgba(16,185,129,.08);color:var(--green)}
+.bci-icon.amber{background:rgba(245,158,11,.08);color:#B45309}
+.bci-title{font-size:13px;font-weight:700;color:var(--text);letter-spacing:-.02em}
+.bci-badge{margin-left:auto;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:2px 6px;border-radius:5px;white-space:nowrap}
+.bci-badge.live{background:rgba(16,185,129,.1);color:var(--green-dark)}
+.bci-badge.verified{background:rgba(79,70,229,.08);color:var(--blue)}
+.bci-company-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.bci-company-logo{width:32px;height:32px;border-radius:8px;object-fit:contain;border:1px solid var(--border);background:var(--bg);flex-shrink:0}
+.bci-company-name{font-size:14px;font-weight:900;color:var(--text);letter-spacing:-.03em}
+.bci-company-industry{font-size:11px;color:var(--muted);margin-top:1px}
+.bci-company-stat{display:inline-flex;align-items:center;gap:4px;padding:4px 8px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.15);border-radius:6px;font-size:11px;font-weight:600;color:var(--green-dark)}
+.bci-company-stat svg{width:12px;height:12px}
+.bci-intel-item{display:flex;align-items:flex-start;gap:6px;padding:4px 0;font-size:12px;color:#374151;line-height:1.45;border-bottom:1px solid rgba(0,0,0,.03)}
+.bci-intel-item:last-child{border-bottom:none;padding-bottom:0}
+.bci-intel-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.bci-intel-dot.red{background:var(--red)}
+.bci-intel-dot.amber{background:var(--amber)}
+.bci-contact-row{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(0,0,0,.03)}
+.bci-contact-row:last-child{border-bottom:none;padding-bottom:0}
+.bci-avatar{width:30px;height:30px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff}
+.bci-contact-info{flex:1;min-width:0}
+.bci-contact-name{font-size:12px;font-weight:600;color:var(--text);letter-spacing:-.01em}
+.bci-contact-title{font-size:10px;color:var(--muted)}
+.bci-contact-badge{font-size:9px;font-weight:600;padding:2px 6px;border-radius:5px;white-space:nowrap;flex-shrink:0}
+
+/* ===== ORB ZONE ===== */
+.orb-zone{background:linear-gradient(180deg,#1e1b3a 0%,#12102a 15%,#0a0a1a 40%,#0a0a1a 60%,#12102a 85%,#1e1b3a 100%);padding:56px 20px 48px;margin-top:24px;text-align:center;overflow:hidden;opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.orb-zone.visible{opacity:1;transform:translateY(0)}
+.orb-title{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:4px}
+.orb-title img{height:28px;width:28px;object-fit:contain;border-radius:6px;background:rgba(255,255,255,.95);padding:2px}
+.orb-title span{font-weight:900;font-size:20px;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+.orb-sub{font-size:14px;color:rgba(255,255,255,.55);margin-bottom:36px;text-shadow:0 1px 8px rgba(0,0,0,.3)}
+.orb-wrap{position:relative;width:180px;height:180px;margin:0 auto 32px;cursor:pointer}
+.orb-glow{position:absolute;inset:-30px;border-radius:50%;animation:orbGlowPulse 4s ease-in-out infinite}
+.orb-main{position:relative;width:180px;height:180px;border-radius:50%;overflow:hidden;animation:orbDrift 6s ease-in-out infinite;transition:transform .3s,box-shadow .3s}
+.orb-wrap:hover .orb-main{transform:scale(1.06)}
+.orb-wrap:active .orb-main{transform:scale(.95)}
+.orb-main.speaking{animation:orbDrift 6s ease-in-out infinite,orbPulseSpeak .8s ease-in-out infinite}
+.orb-layer{position:absolute;inset:0;border-radius:50%}
+.orb-layer-1{animation:orbSpin 8s linear infinite}
+.orb-layer-2{animation:orbSpin 12s linear infinite reverse;mix-blend-mode:soft-light}
+.orb-layer-3{background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.25) 0%,transparent 50%)}
+.orb-layer-4{background:radial-gradient(circle at 50% 110%,rgba(0,0,0,.4) 0%,transparent 60%)}
+.orb-logo-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:10}
+.orb-logo-center img{width:48px;height:48px;object-fit:contain;border-radius:50%;background:rgba(255,255,255,.95);padding:8px;box-shadow:0 4px 20px rgba(0,0,0,.3),0 0 0 2px rgba(255,255,255,.15);transition:transform .3s}
+.orb-wrap:hover .orb-logo-center img{transform:scale(1.08)}
+.orb-particle{position:absolute;width:4px;height:4px;border-radius:50%;animation:orbParticle 4s ease-in-out infinite}
+.orb-particle:nth-child(1){top:-16px;left:30%;animation-delay:0s}
+.orb-particle:nth-child(2){top:20%;right:-12px;animation-delay:1s}
+.orb-particle:nth-child(3){bottom:-12px;left:40%;animation-delay:2s}
+.orb-particle:nth-child(4){top:40%;left:-16px;animation-delay:.5s}
+.orb-bubble{position:absolute;top:16px;right:-40px;background:rgba(255,255,255,.1);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:7px 13px;font-size:12px;color:rgba(255,255,255,.75);white-space:nowrap;animation:orbBubble 3s ease-in-out infinite}
+
+@keyframes orbSpin{0%{transform:rotate(0deg) scale(1.15)}100%{transform:rotate(360deg) scale(1.15)}}
+@keyframes orbDrift{0%,100%{transform:translateY(0) scale(1)}33%{transform:translateY(-4px) scale(1.01)}66%{transform:translateY(-2px) scale(.995)}}
+@keyframes orbPulseSpeak{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+@keyframes orbGlowPulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.8;transform:scale(1.08)}}
+@keyframes orbBubble{0%,100%{opacity:.7;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+@keyframes orbParticle{0%,100%{opacity:0;transform:translateY(0) scale(1)}25%{opacity:1}50%{opacity:.8;transform:translateY(-18px) scale(1.4)}75%{opacity:.3}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ===== UNIFIED WIDGET ===== */
+.uw{background:#0f0f1a;border-radius:20px;overflow:hidden;margin:20px auto 0;max-width:420px;width:100%;transition:all .4s cubic-bezier(.4,0,.2,1)}
+.uw-voice-idle{display:flex;flex-direction:column;align-items:center;padding:28px 20px 24px;gap:14px}
+.uw-mic-btn{width:64px;height:64px;border-radius:50%;background:var(--blue);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;box-shadow:0 0 24px rgba(79,70,229,.4)}
+.uw-mic-btn:hover{transform:scale(1.08);box-shadow:0 0 40px rgba(79,70,229,.6)}
+.uw-mic-btn svg{width:28px;height:28px;color:#fff;stroke:currentColor}
+.uw-mic-label{color:rgba(255,255,255,.6);font-size:14px;font-weight:500;max-width:320px;line-height:1.4;text-align:center}
+.uw-voice-active{display:none;flex-direction:column;align-items:center;padding:20px;gap:12px}
+.uw-voice-active.visible{display:flex}
+.uw-status-text{color:rgba(255,255,255,.5);font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.uw-waveform{display:flex;align-items:center;justify-content:center;gap:3px;height:48px;padding:4px 0}
+.uw-waveform span{width:3.5px;border-radius:3px;background:var(--blue);min-height:4px;will-change:height;transition:height .08s linear}
+.uw-mini-transcript{width:100%;max-height:100px;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}
+.uw-mini-transcript::-webkit-scrollbar{display:none}
+.uw-mini-msg{padding:8px 12px;border-radius:12px;font-size:13px;line-height:1.5;margin-bottom:6px;animation:fadeInUp .3s ease}
+.uw-mini-msg.agent{background:rgba(79,70,229,.15);color:rgba(255,255,255,.9)}
+.uw-mini-msg.user{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);text-align:right}
+.uw-end-btn{padding:10px 24px;background:rgba(239,68,68,.12);color:#ef4444;border:1px solid rgba(239,68,68,.25);border-radius:12px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+.uw-end-btn:hover{background:rgba(239,68,68,.22)}
+.uw-connecting{display:flex;flex-direction:column;align-items:center;padding:28px 20px;gap:12px}
+.uw-connecting .co-spinner{width:32px;height:32px;border:3px solid rgba(255,255,255,.1);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite}
+.uw-connecting-text{color:rgba(255,255,255,.6);font-size:13px}
+.uw-post-call{display:flex;flex-direction:column;align-items:center;padding:24px 20px;gap:10px;animation:fadeInUp .4s ease}
+.uw-post-check{margin-bottom:4px}
+.uw-post-title{color:#fff;font-size:18px;font-weight:700}
+.uw-post-sub{color:rgba(255,255,255,.5);font-size:13px;text-align:center;line-height:1.5;max-width:300px}
+.uw-post-cta{display:flex;align-items:center;gap:8px;padding:14px 28px;background:var(--blue);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;text-decoration:none;margin-top:6px;box-shadow:0 0 20px rgba(79,70,229,.3);font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+.uw-post-cta:hover{background:#4338CA;transform:translateY(-1px);box-shadow:0 4px 24px rgba(79,70,229,.4)}
+.uw-post-retry{background:none;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.5);padding:8px 16px;border-radius:8px;font-size:12px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;margin-top:2px;font-family:'Plus Jakarta Sans',system-ui,sans-serif}
+.uw-post-retry:hover{border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.7)}
+.uw-powered{text-align:center;padding:8px 12px 12px;font-size:11px;color:rgba(255,255,255,.2)}
+
+/* ===== CLOSE SECTION ===== */
+.close-section{padding:80px 32px;text-align:center;background:var(--bg)}
+.close-section h3{font-size:clamp(24px,3vw,36px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px}
+.close-detail{font-size:16px;color:var(--muted);margin-bottom:36px;line-height:1.5}
+.close-cta{display:inline-block;background:var(--blue);color:#fff;padding:16px 40px;border-radius:12px;font-weight:700;font-size:17px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.close-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(79,70,229,.35)}
+.close-guarantee{font-size:14px;color:var(--muted);margin-top:20px;font-style:italic}
+.close-footer{font-size:13px;color:var(--muted);margin-top:48px;opacity:.6;line-height:1.5}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+  .nav-inner{padding:14px 20px}
+  .nav-expiry{display:none}
+  .hero{padding:110px 24px 56px}
+  .proof-strip{gap:14px}
+  .proof-card{min-width:140px;padding:20px 20px}
+  .agent-section{padding:60px 16px 0}
+  .build-card{padding:20px 16px}
+  .build-card-list{grid-template-columns:1fr;gap:8px}
+  .orb-zone{padding:36px 16px 32px}
+  .orb-title{flex-direction:column;gap:4px}
+  .orb-title img{height:20px}
+  .orb-title span{font-size:18px;line-height:1.2}
+  .uw{max-width:100%;border-radius:16px}
+  .close-section{padding:60px 24px}
+  .gradient-to-dark{height:80px}
+  .gradient-dark-start{height:60px}
+  .gradient-dark-to-light{height:60px}
+}
+@media(max-width:480px){
+  .proof-strip{flex-direction:column;align-items:center}
+  .proof-card{width:100%;max-width:240px}
+  .orb-bubble{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://agentcollect.com" class="nav-logo">AgentCollect<span class="dot"></span></a>
+    <span class="nav-expiry">Konica Minolta, <strong id="days-left"></strong></span>
+  </div>
+</nav>
+
+<!-- BLOC 1: THE SHOCK -->
+<section class="hero">
+  <div class="rv">
+    <div class="hero-label">KONA AI AGENT — LIVE</div>
+    <img src="https://cdn.brandfetch.io/konicaminolta.com/w/512/h/80/logo" alt="Konica Minolta" class="hero-km" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=konicaminolta.com&sz=128';this.style.height='48px'" crossorigin="anonymous">
+    <h1>DLL Finance is collecting under the <span class="red">Konica Minolta</span> name — here's their record.</h1>
+  </div>
+
+  <div class="proof-strip rv rv-d1">
+    <a href="https://www.bbb.org/us/ia/johnston/profile/financing/dll-finance-llc-0664-32006959/customer-reviews" target="_blank" rel="noopener" class="proof-card">
+      <div class="proof-agency">DLL Finance — BBB</div>
+      <div class="proof-num">1.1</div>
+      <div class="proof-label">/ 5 stars on BBB</div>
+    </a>
+    <a href="https://lemberglaw.com/dll-finance-collections-complaints/" target="_blank" rel="noopener" class="proof-card">
+      <div class="proof-agency">DLL Finance — Legal</div>
+      <div class="proof-num proof-num-sm">FDCPA</div>
+      <div class="proof-label">Violations on record</div>
+    </a>
+  </div>
+</section>
+
+<!-- BLOC 2: YOUR AGENT -->
+<section class="agent-section">
+  <div class="rv">
+    <div class="section-label">YOUR AGENT IS READY</div>
+    <h2>We built a Konica Minolta agent. Try it.</h2>
+  </div>
+
+  <div class="rv rv-d1">
+    <div class="build-card" id="build-card">
+      <div class="build-header">
+        <img class="build-logo" src="https://cdn.brandfetch.io/konicaminolta.com/w/128/h/128/logo" alt="Konica Minolta" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=konicaminolta.com&sz=128'">
+        <div class="build-title">Konica Minolta collection agent</div>
+      </div>
+      <div class="build-progress-wrap" id="build-progress-wrap">
+        <div class="build-progress-label-row">
+          <span class="build-progress-label-text" id="build-progress-label">Building agent...</span>
+          <span class="build-progress-pct" id="build-progress-pct">0%</span>
+        </div>
+        <div class="build-progress-track">
+          <div class="build-progress-fill" id="build-progress-fill"></div>
+        </div>
+      </div>
+      <div class="build-card-list" id="build-card-list">
+        <!-- Card 1: Company Profile -->
+        <div class="bci" id="bci-1">
+          <div class="bci-inner">
+            <div class="bci-header">
+              <div class="bci-icon indigo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <div class="bci-title">Konica Minolta</div>
+              <span class="bci-badge verified">Verified</span>
+            </div>
+            <div class="bci-company-row">
+              <img class="bci-company-logo" src="https://www.google.com/s2/favicons?domain=konicaminolta.com&sz=128" alt="KM" onerror="this.style.display='none'">
+              <div>
+                <div class="bci-company-name">Konica Minolta</div>
+                <div class="bci-company-industry">Office equipment &amp; imaging</div>
+              </div>
+            </div>
+            <div class="bci-company-stat">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Verified
+            </div>
+          </div>
+        </div>
+        <!-- Card 2: Intelligence -->
+        <div class="bci" id="bci-2">
+          <div class="bci-inner">
+            <div class="bci-header">
+              <div class="bci-icon amber">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              </div>
+              <div class="bci-title">Payment risks</div>
+              <span class="bci-badge live">Live</span>
+            </div>
+            <div class="bci-intel-item">
+              <div class="bci-intel-dot red"></div>
+              DLL Finance BBB rating: 1.1/5 stars
+            </div>
+            <div class="bci-intel-item">
+              <div class="bci-intel-dot amber"></div>
+              Equipment lease disputes on bizhub contracts
+            </div>
+            <div class="bci-intel-item">
+              <div class="bci-intel-dot red"></div>
+              FDCPA enforcement actions under your brand
+            </div>
+          </div>
+        </div>
+        <!-- Card 3: Contacts -->
+        <div class="bci" id="bci-3">
+          <div class="bci-inner">
+            <div class="bci-header">
+              <div class="bci-icon green">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <div class="bci-title">Decision makers</div>
+              <span class="bci-badge live">Live</span>
+            </div>
+            <div class="bci-contact-row">
+              <div class="bci-avatar" style="background:linear-gradient(135deg,#4F46E5,#7C3AED)">HD</div>
+              <div class="bci-contact-info">
+                <div class="bci-contact-name">Holly DeSantis</div>
+                <div class="bci-contact-title">EVP &amp; CFO</div>
+              </div>
+              <span class="bci-contact-badge" style="background:rgba(79,70,229,.08);color:var(--blue)">Target</span>
+            </div>
+            <div class="bci-contact-row">
+              <div class="bci-avatar" style="background:linear-gradient(135deg,#059669,#10B981)">DC</div>
+              <div class="bci-contact-info">
+                <div class="bci-contact-name">David Chen</div>
+                <div class="bci-contact-title">VP Finance</div>
+              </div>
+              <span class="bci-contact-badge" style="background:rgba(16,185,129,.08);color:var(--green-dark)">In queue</span>
+            </div>
+            <div class="bci-contact-row">
+              <div class="bci-avatar" style="background:linear-gradient(135deg,#D97706,#F59E0B)">MS</div>
+              <div class="bci-contact-info">
+                <div class="bci-contact-name">Maria Santos</div>
+                <div class="bci-contact-title">Director of Credit</div>
+              </div>
+              <span class="bci-contact-badge" style="background:rgba(16,185,129,.08);color:var(--green-dark)">In queue</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ORB ZONE -->
+    <div class="orb-zone" id="orb-zone">
+      <div class="orb-title">
+        <img src="https://www.google.com/s2/favicons?domain=konicaminolta.com&sz=128" alt="KM" onerror="this.style.display='none'">
+        <span>KONA AI Agent</span>
+      </div>
+      <div class="orb-sub">Sarah is ready to collect your receivables.</div>
+      <div class="orb-wrap" id="orb-wrap">
+        <div class="orb-glow" style="background:radial-gradient(circle,rgba(79,70,229,.2) 0%,transparent 70%)"></div>
+        <div class="orb-particle" style="background:rgba(79,70,229,.5)"></div>
+        <div class="orb-particle" style="background:rgba(16,185,129,.5)"></div>
+        <div class="orb-particle" style="background:rgba(79,70,229,.3)"></div>
+        <div class="orb-particle" style="background:rgba(16,185,129,.3)"></div>
+        <div class="orb-main" id="orb-main" style="box-shadow:0 0 60px rgba(79,70,229,.3),0 0 120px rgba(79,70,229,.1),inset 0 0 50px rgba(0,0,0,.3)">
+          <div class="orb-layer orb-layer-1" style="background:conic-gradient(from 0deg,#4F46E5,#7C3AED,#3730A3,#818CF8,#4F46E5)"></div>
+          <div class="orb-layer orb-layer-2" style="background:conic-gradient(from 180deg,rgba(79,70,229,.8),rgba(124,58,237,.5),rgba(55,48,163,.6),rgba(129,140,248,.4),rgba(79,70,229,.8))"></div>
+          <div class="orb-layer orb-layer-3"></div>
+          <div class="orb-layer orb-layer-4"></div>
+          <div class="orb-logo-center">
+            <img src="https://www.google.com/s2/favicons?domain=konicaminolta.com&sz=128" alt="KM" onerror="this.style.display='none'">
+          </div>
+        </div>
+        <div class="orb-bubble">Hi, I'm Sarah...</div>
+      </div>
+      <!-- Unified voice widget -->
+      <div class="uw" id="unified-widget">
+        <div class="uw-voice-idle" id="uw-voice-idle">
+          <button class="uw-mic-btn" id="uw-mic-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+          </button>
+          <div class="uw-mic-label">Talk to Sarah — she thinks you owe $1,461 for a bizhub C360i</div>
+        </div>
+        <div class="uw-connecting" id="uw-connecting" style="display:none">
+          <div class="co-spinner"></div>
+          <div class="uw-connecting-text" id="uw-connecting-text">Connecting to Konica Minolta agent...</div>
+        </div>
+        <div class="uw-voice-active" id="uw-voice-active">
+          <div class="uw-status-text" id="uw-status">Listening...</div>
+          <div class="uw-waveform" id="uw-waveform">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="uw-mini-transcript" id="uw-transcript"></div>
+          <button class="uw-end-btn" id="uw-end-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            End call
+          </button>
+        </div>
+        <div class="uw-post-call" id="uw-post-call" style="display:none">
+          <div class="uw-post-check">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="uw-post-title">That was 30 seconds.</div>
+          <div class="uw-post-sub">Now imagine 10,000 accounts with your real data.</div>
+          <a href="https://cal.com/johnb/30" target="_blank" class="uw-post-cta" id="uw-post-cta">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Run this on your portfolio
+          </a>
+          <button class="uw-post-retry" id="uw-post-retry">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+            Try another call
+          </button>
+        </div>
+        <div class="uw-powered">Powered by AgentCollect</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOC 3: THE CLOSE -->
+<div class="gradient-dark-to-light"></div>
+<section class="close-section">
+  <div class="rv">
+    <h3 id="close-title">Holly DeSantis owns this.</h3>
+    <p class="close-detail">EVP &amp; CFO — she manages the DLL Finance relationship.</p>
+    <a href="https://cal.com/johnb/30" target="_blank" class="close-cta" onclick="gtag('event','book_cta',{page:'konica-v9-killer'})">Book a live demo</a>
+    <p class="close-guarantee">If we don't collect, you pay nothing.</p>
+    <p class="close-footer">Zwanger-Pesiri Radiology used as example. All contacts from public sources. Powered by AgentCollect.</p>
+  </div>
+</section>
+
+<script>
+// ===== Expiry =====
+(function(){
+  var d = new Date('2026-04-18');
+  var diff = Math.ceil((d - new Date()) / 864e5);
+  var el = document.getElementById('days-left');
+  if(el) el.textContent = diff > 0 ? 'expires in ' + diff + ' day' + (diff !== 1 ? 's' : '') : 'expired';
+})();
+
+// ===== Scroll Reveal =====
+var ro = new IntersectionObserver(function(e){
+  e.forEach(function(x){ if(x.isIntersecting) x.target.classList.add('v'); });
+}, {threshold: .12});
+document.querySelectorAll('.rv').forEach(function(el){ ro.observe(el); });
+
+// ===== Personalization — ?to=Name =====
+(function(){
+  var name = (new URLSearchParams(window.location.search)).get('to');
+  if(name){
+    var el = document.getElementById('close-title');
+    if(el) el.textContent = 'Forward this to ' + name + '.';
+  }
+})();
+
+// ===== Build Card Animation =====
+(function(){
+  var buildCard = document.getElementById('build-card');
+  var progressFill = document.getElementById('build-progress-fill');
+  var progressPct = document.getElementById('build-progress-pct');
+  var progressLabel = document.getElementById('build-progress-label');
+  var bci1 = document.getElementById('bci-1');
+  var bci2 = document.getElementById('bci-2');
+  var bci3 = document.getElementById('bci-3');
+  var orbZone = document.getElementById('orb-zone');
+  var animated = false;
+
+  var buildObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting && !animated){
+        animated = true;
+        buildObserver.unobserve(entry.target);
+        runBuildAnimation();
+      }
+    });
+  }, {threshold: .15});
+
+  buildObserver.observe(buildCard);
+
+  function runBuildAnimation(){
+    var steps = [
+      {pct:15, label:'Scanning company data...', delay:300},
+      {pct:35, label:'Analyzing payment risks...', delay:800},
+      {pct:55, label:'Finding decision makers...', delay:600},
+      {pct:75, label:'Building contact chain...', delay:500},
+      {pct:100, label:'Agent ready', delay:400}
+    ];
+
+    var i = 0;
+    function nextStep(){
+      if(i >= steps.length) return;
+      var s = steps[i];
+      progressFill.style.width = s.pct + '%';
+      progressPct.textContent = s.pct + '%';
+      progressLabel.textContent = s.label;
+
+      if(s.pct >= 35 && bci1 && !bci1.classList.contains('visible')) bci1.classList.add('visible');
+      if(s.pct >= 55 && bci2 && !bci2.classList.contains('visible')) bci2.classList.add('visible');
+      if(s.pct >= 75 && bci3 && !bci3.classList.contains('visible')) bci3.classList.add('visible');
+
+      i++;
+      if(i < steps.length){
+        setTimeout(nextStep, steps[i].delay);
+      } else {
+        setTimeout(function(){
+          if(orbZone) orbZone.classList.add('visible');
+        }, 600);
+      }
+    }
+
+    setTimeout(nextStep, 400);
+  }
+})();
+
+// ===== WebRTC Voice Call =====
+(function(){
+  var uwVoiceIdle = document.getElementById('uw-voice-idle');
+  var uwConnecting = document.getElementById('uw-connecting');
+  var uwVoiceActive = document.getElementById('uw-voice-active');
+  var uwMicBtn = document.getElementById('uw-mic-btn');
+  var uwEndBtn = document.getElementById('uw-end-btn');
+  var uwStatus = document.getElementById('uw-status');
+  var uwTranscript = document.getElementById('uw-transcript');
+  var uwWaveformEl = document.getElementById('uw-waveform');
+  var uwWaveformBars = uwWaveformEl ? uwWaveformEl.querySelectorAll('span') : [];
+  var waveformAnimId = null;
+  var waveformMode = 'idle';
+  var callActive = false;
+  var retellClient = null;
+
+  function animateWaveform(){
+    var now = Date.now();
+    for(var i = 0; i < uwWaveformBars.length; i++){
+      var bar = uwWaveformBars[i];
+      var h;
+      if(waveformMode === 'agent') h = 10 + Math.random() * 34;
+      else if(waveformMode === 'user') h = 6 + Math.random() * 18;
+      else h = 4 + Math.sin(now / 500 + i * 0.6) * 3;
+      bar.style.height = h + 'px';
+    }
+    waveformAnimId = requestAnimationFrame(animateWaveform);
+  }
+
+  function startWaveformAnim(mode){
+    waveformMode = mode || 'idle';
+    if(!waveformAnimId) animateWaveform();
+  }
+
+  function stopWaveformAnim(){
+    waveformMode = 'idle';
+    if(waveformAnimId){ cancelAnimationFrame(waveformAnimId); waveformAnimId = null; }
+    for(var i = 0; i < uwWaveformBars.length; i++) uwWaveformBars[i].style.height = '4px';
+  }
+
+  function startVoiceCall(){
+    if(callActive) return;
+    callActive = true;
+
+    uwVoiceIdle.style.display = 'none';
+    uwConnecting.style.display = 'flex';
+    uwVoiceActive.classList.remove('visible');
+    document.getElementById('uw-connecting-text').textContent = 'Connecting to Konica Minolta agent...';
+
+    var orb = document.getElementById('orb-main');
+    if(orb) orb.classList.add('speaking');
+
+    (async function(){
+      try {
+        var response = await fetch('https://backend.widr.app/api/v1/demo/web-call', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            company_name: 'Konica Minolta',
+            product: 'Konica Minolta bizhub C360i copier lease',
+            amount: '$1,461'
+          })
+        });
+
+        if(!response.ok) throw new Error('API returned ' + response.status);
+        var result = await response.json();
+        if(!result.success || !result.access_token) throw new Error('No access token');
+
+        var module = await import('https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.7/+esm');
+        var RetellWebClient = module.RetellWebClient;
+        retellClient = new RetellWebClient();
+
+        retellClient.on('call_started', function(){
+          uwConnecting.style.display = 'none';
+          uwVoiceActive.classList.add('visible');
+          uwStatus.textContent = 'Your turn — speak now';
+          startWaveformAnim('idle');
+          try { gtag('event', 'call_started', { company: 'Konica Minolta', page: 'konica-v9-killer' }); } catch(e){}
+        });
+
+        retellClient.on('call_ended', function(){
+          try { gtag('event', 'call_completed', { company: 'Konica Minolta', page: 'konica-v9-killer' }); } catch(e){}
+          endCall('Call ended');
+        });
+
+        retellClient.on('agent_start_talking', function(){
+          startWaveformAnim('agent');
+          uwStatus.textContent = 'Konica Minolta Agent speaking...';
+        });
+
+        retellClient.on('agent_stop_talking', function(){
+          startWaveformAnim('user');
+          uwStatus.textContent = 'Your turn — speak now';
+        });
+
+        retellClient.on('update', function(update){
+          if(update && update.transcript) renderTranscript(update.transcript);
+        });
+
+        retellClient.on('error', function(err){
+          console.error('RetellAI error:', err);
+          endCall('Connection error');
+        });
+
+        await retellClient.startCall({ accessToken: result.access_token });
+
+      } catch(err){
+        console.error('Voice call error:', err);
+        callActive = false;
+        uwConnecting.style.display = 'none';
+        uwVoiceIdle.style.display = '';
+        uwVoiceActive.classList.remove('visible');
+        if(orb) orb.classList.remove('speaking');
+        var label = document.querySelector('.uw-mic-label');
+        if(label){ label.textContent = 'Connection failed — try again'; label.style.color = '#ef4444'; }
+        setTimeout(function(){ if(label){ label.textContent = 'Talk to Sarah — she thinks you owe $1,461 for a bizhub C360i'; label.style.color = ''; } }, 3000);
+      }
+    })();
+  }
+
+  function renderTranscript(transcript){
+    if(!transcript || !transcript.length) return;
+    var last = null;
+    for(var i = transcript.length - 1; i >= 0; i--){
+      if((transcript[i].content || '').trim()){ last = transcript[i]; break; }
+    }
+    if(!last) return;
+    var role = last.role === 'agent' ? 'agent' : 'user';
+    uwTranscript.innerHTML = '<div class="uw-mini-msg ' + role + '">' + last.content + '</div>';
+    uwTranscript.scrollTop = uwTranscript.scrollHeight;
+  }
+
+  function endCall(msg){
+    callActive = false;
+    if(retellClient){ try { retellClient.stopCall(); } catch(e){} retellClient = null; }
+    stopWaveformAnim();
+    var orb = document.getElementById('orb-main');
+    if(orb) orb.classList.remove('speaking');
+
+    uwStatus.textContent = msg || 'Call ended';
+    var postCall = document.getElementById('uw-post-call');
+    setTimeout(function(){
+      uwVoiceActive.classList.remove('visible');
+      uwVoiceIdle.style.display = 'none';
+      uwTranscript.innerHTML = '';
+      if(postCall) postCall.style.display = 'flex';
+    }, 1500);
+  }
+
+  var postRetry = document.getElementById('uw-post-retry');
+  if(postRetry) postRetry.addEventListener('click', function(){
+    var postCall = document.getElementById('uw-post-call');
+    if(postCall) postCall.style.display = 'none';
+    uwVoiceIdle.style.display = '';
+  });
+
+  var postCta = document.getElementById('uw-post-cta');
+  if(postCta) postCta.addEventListener('click', function(){
+    try { gtag('event', 'post_call_book_demo', { company: 'Konica Minolta', page: 'konica-v9-killer' }); } catch(e){}
+  });
+
+  if(uwMicBtn) uwMicBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    startVoiceCall();
+  });
+
+  if(uwEndBtn) uwEndBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    endCall('Call ended');
+  });
+
+  var orbWrap = document.getElementById('orb-wrap');
+  if(orbWrap) orbWrap.addEventListener('click', function(){
+    if(callActive) return;
+    startVoiceCall();
+  });
+})();
+</script>
+</body>
+</html>

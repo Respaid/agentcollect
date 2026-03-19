@@ -20,6 +20,7 @@
 { "source": "/konica-v7-intel", "destination": "/v3/konica-v7-intel.html" },
 { "source": "/konica-v7-hybrid", "destination": "/v3/konica-v7-hybrid.html" },
 { "source": "/konica-v8", "destination": "/v3/konica-v8-agent.html" },
+{ "source": "/konica-v9", "destination": "/v3/konica-v9-killer.html" },
 { "source": "/konica-minolta-v3", "destination": "/v3/konica-minolta.html" },
 { "source": "/konica-minolta-v4", "destination": "/v3/konica-minolta-v4.html" },
 { "source": "/konica2", "destination": "/konica2.html" },
