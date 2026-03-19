@@ -249,21 +249,14 @@
         .demo-panel-left{background:linear-gradient(160deg,#FFFBF5,#FFF8EE);border-color:rgba(245,158,11,.2)}
         .demo-panel-left:hover{border-color:rgba(245,158,11,.4);box-shadow:0 8px 28px rgba(245,158,11,.12)}
 
-        /* Right panel - voice/tech vibe */
-        .demo-panel-right{background:linear-gradient(160deg,#F5F3FF,#EEF0FF);border-color:rgba(79,70,229,.2)}
-        .demo-panel-right:hover{border-color:rgba(79,70,229,.4);box-shadow:0 8px 28px rgba(79,70,229,.12)}
-
         .demo-panel-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
         .demo-panel-left .demo-panel-icon{background:rgba(245,158,11,.1);color:#B45309}
-        .demo-panel-right .demo-panel-icon{background:rgba(79,70,229,.1);color:var(--indigo)}
         .demo-panel-heading{font-family:var(--display);font-size:20px;font-weight:800;color:var(--text);margin-bottom:8px;letter-spacing:-.03em}
         .demo-panel-desc{font-size:15px;color:var(--text-mid);line-height:1.6;margin-bottom:16px;flex:1}
         .demo-panel-teaser{font-size:14px;color:var(--text-muted);font-style:italic;line-height:1.55;padding:12px 16px;background:rgba(0,0,0,.03);border-radius:10px;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
         .demo-panel-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px 20px;border-radius:12px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;border:none;letter-spacing:-.01em}
         .demo-panel-left .demo-panel-cta{background:#B45309;color:#fff}
         .demo-panel-left .demo-panel-cta:hover{background:#92400E;transform:translateY(-1px);box-shadow:0 4px 12px rgba(180,83,9,.25)}
-        .demo-panel-right .demo-panel-cta{background:var(--indigo);color:#fff}
-        .demo-panel-right .demo-panel-cta:hover{background:var(--indigo-dark);transform:translateY(-1px);box-shadow:0 4px 12px rgba(79,70,229,.25)}
         .demo-panel-sub{font-size:12px;color:var(--text-dim);text-align:center;margin-top:8px}
 
         /* Dispute inline view (replaces teaser in left panel) */
@@ -297,35 +290,6 @@
         .dispute-try-another{display:none;font-size:13px;font-weight:600;color:#B45309;cursor:pointer;background:none;border:none;font-family:var(--sans);padding:0;transition:gap .2s}
         .dispute-try-another.visible{display:inline-flex;align-items:center;gap:4px}
         .dispute-try-another:hover{gap:8px}
-
-        /* Call UI (inside right panel) */
-        .call-ui{display:none;text-align:center;position:relative;overflow:hidden}
-        .call-ui.visible{display:block;animation:fadeInUp .4s ease}
-        .call-status{font-family:var(--display);font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px}
-        .call-sub{font-size:13px;color:var(--text-muted);margin-bottom:16px}
-        .call-waveform{display:flex;align-items:center;justify-content:center;gap:4px;height:48px;margin-bottom:16px}
-        .call-waveform span{display:block;width:4px;border-radius:3px;background:var(--green);animation:call-wave 1s ease-in-out infinite}
-        .call-waveform span:nth-child(1){height:16px;animation-delay:0s}
-        .call-waveform span:nth-child(2){height:28px;animation-delay:.1s}
-        .call-waveform span:nth-child(3){height:20px;animation-delay:.2s}
-        .call-waveform span:nth-child(4){height:36px;animation-delay:.3s}
-        .call-waveform span:nth-child(5){height:24px;animation-delay:.4s}
-        .call-waveform span:nth-child(6){height:32px;animation-delay:.5s}
-        .call-waveform span:nth-child(7){height:18px;animation-delay:.6s}
-        .call-waveform span:nth-child(8){height:28px;animation-delay:.7s}
-        .call-waveform span:nth-child(9){height:14px;animation-delay:.8s}
-        @keyframes call-wave{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.3)}}
-        .call-end-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 32px;background:var(--red);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s}
-        .call-end-btn:hover{background:#DC2626;transform:translateY(-1px)}
-        .call-transcript{margin-top:16px;text-align:left;max-height:160px;overflow-y:auto;padding:12px;background:#fff;border-radius:10px;border:1px solid var(--border);font-size:13px;color:var(--text-mid);line-height:1.5;display:none}
-        .call-transcript.has-content{display:block}
-        .call-transcript .ct-line{margin-bottom:6px}
-        .call-transcript .ct-speaker{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1px}
-        .call-transcript .ct-speaker.agent{color:var(--indigo)}
-        .call-transcript .ct-speaker.user{color:var(--green-dark)}
-        .call-ended-msg{text-align:center;padding:20px;color:var(--text-muted);font-size:15px}
-        .call-ended-msg .back-link{color:var(--indigo);cursor:pointer;font-weight:600;margin-top:8px;display:inline-block}
-        .call-ended-msg .back-link:hover{text-decoration:underline}
 
 
         /* API update shimmer */
@@ -1292,7 +1256,6 @@
     var buildCard = document.getElementById('build-card');
     var buildLogo = document.getElementById('build-logo');
     var buildTitle = document.getElementById('build-title');
-    var buildPhases = document.getElementById('build-phases');
     var demoArea = document.getElementById('demo-area');
     var analysisBanner = document.getElementById('analysis-banner');
     var analysisItems = document.getElementById('analysis-items');
@@ -1507,9 +1470,6 @@
                 panelLeftDesc.textContent = 'See how your ' + data.name + ' agent handles a real dispute with evidence and reasoning.';
                 currentDisputeIndex = 0;
             }
-
-            // Update right panel
-            panelRightDesc.textContent = 'Speak to your ' + data.name + ' collection agent live. Real-time conversation using your microphone.';
 
             // Remove shimmer
             analysisBanner.classList.remove('api-updating');
@@ -1924,9 +1884,6 @@
         panelLeftTeaserText.textContent = '"' + firstDispute.teaser + '"';
         panelLeftDesc.textContent = 'See how your agent handles this.';
 
-        // Set right panel text
-        panelRightDesc.textContent = 'Talk to your agent live.';
-
         // Reset to teaser view
         panelLeftTeaser.style.display = '';
         disputeInline.classList.remove('visible');
@@ -2141,8 +2098,6 @@
         panelLeftTeaserText.textContent = '"' + dispute.teaser + '"';
         panelLeftTeaser.style.display = '';
     });
-
-    // Right panel: start voice call
 
     // ===== UNIFIED WIDGET =====
     var uwTabVoice = document.getElementById('uw-tab-voice');
