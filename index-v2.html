@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>AgentCollect — Your Collection Agent. Pre-trained on 1 Billion Conversations.</title>
+    <meta name="description" content="Build your AI collection agent in 30 seconds. Pre-trained on 1 billion conversations. Calls, emails, dispute resolution — under your brand. $0 if we don't collect.">
+    <meta property="og:title" content="AgentCollect — Your Collection Agent">
+    <meta property="og:description" content="Pre-trained on 1 billion conversations. $0 if we don't collect.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.agentcollect.com">
+    <meta property="og:image" content="https://www.agentcollect.com/og.png?v=5">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Clarity -->
+    <script>
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vtpmvp6kvr");
+    </script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GRZZT9K05B"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GRZZT9K05B');</script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#FAFBFF;--bg-card:#fff;--bg-dark:#0B1B3D;--bg-warm:#F8F7F5;
+            --border:#E8ECF2;--border-hover:rgba(79,70,229,.18);
+            --text:#0B1B3D;--text-mid:#374151;--text-muted:#64748B;--text-dim:#94A3B8;
+            --indigo:#4F46E5;--indigo-dark:#4338CA;--indigo-light:rgba(79,70,229,.04);--indigo-glow:rgba(79,70,229,.08);
+            --green:#10B981;--green-dark:#059669;--green-light:rgba(16,185,129,.04);
+            --amber:#F59E0B;--red:#EF4444;
+            --mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
+            --shadow-sm:0 1px 2px rgba(0,0,0,.03);
+            --shadow-md:0 2px 8px rgba(0,0,0,.04);
+            --shadow-lg:0 8px 24px rgba(0,0,0,.06);
+            --radius:14px;
+            --max-w:1120px;
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:var(--sans);font-size:17px;background:#fff;color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;line-height:1.7;position:relative}
+        body::before{content:'';position:fixed;inset:0;z-index:-1;background-image:
+            linear-gradient(rgba(79,70,229,.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(79,70,229,.03) 1px, transparent 1px);
+            background-size:64px 64px;pointer-events:none}
+        h1,h2,h3,h4,h5{font-family:var(--display);line-height:1.15;letter-spacing:-.04em}
+        ::selection{background:rgba(79,70,229,.08)}
+        .gradient-divider{height:1px;background:linear-gradient(90deg,transparent,var(--indigo),var(--green),transparent);opacity:.3;max-width:var(--max-w);margin:0 auto}
+
+        /* REVEAL */
+        .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+        .s1{transition-delay:.1s}.s2{transition-delay:.2s}.s3{transition-delay:.3s}.s4{transition-delay:.4s}
+
+        /* NAV */
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+        .nav.scrolled{box-shadow:0 1px 3px rgba(0,0,0,.02)}
+        .nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:64px}
+        .logo{display:inline-flex;align-items:baseline;text-decoration:none;margin-right:auto;font-family:var(--display);font-size:18px;font-weight:900;letter-spacing:-.04em;color:var(--text)}
+        .dot-circle{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--indigo);margin-left:1px;vertical-align:super}
+        .logo-tagline{font-size:11px;color:var(--text-muted);font-weight:400;margin-left:14px;padding-left:14px;border-left:1px solid var(--border);white-space:nowrap;letter-spacing:-.01em;margin-right:28px}
+        .nav-links{display:flex;gap:32px;margin-right:28px}
+        .nav-links a{color:var(--text-muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;letter-spacing:-.01em}
+        .nav-links a:hover{color:var(--text)}
+        .nav-links a.active{color:var(--indigo)}
+        .nav-right{display:flex;align-items:center;gap:10px}
+        .nav-cta{padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;letter-spacing:-.01em}
+        .nav-cta:hover{background:var(--indigo-dark)}
+        .nav-cta-ghost{padding:14px 28px;background:transparent;color:var(--text-mid);border:1px solid var(--border);border-radius:12px;font-family:var(--sans);font-size:14px;font-weight:500;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center}
+        .nav-cta-ghost:hover{border-color:var(--text-mid);color:var(--text)}
+        .nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px}
+
+        /* SECTION HELPERS */
+        .section-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--indigo);margin-bottom:12px}
+        .section-title{font-size:clamp(28px,3.5vw,42px);font-weight:900;color:var(--text);margin-bottom:12px}
+        .section-sub{font-size:17px;color:var(--text-mid);max-width:480px;line-height:1.65;letter-spacing:-.01em}
+
+        /* ========== HERO ========== */
+        .hero{padding:140px 32px 80px;text-align:center;background:#fff;position:relative;overflow:hidden}
+        .hero::after{content:'';position:absolute;inset:0;pointer-events:none;
+            background:
+                radial-gradient(ellipse 700px 400px at 50% 0%, rgba(79,70,229,.05), transparent),
+                radial-gradient(ellipse 400px 400px at 80% 100%, rgba(16,185,129,.03), transparent)}
+        .hero-content{position:relative;z-index:1;max-width:720px;margin:0 auto}
+        .hero h1{font-size:clamp(44px,6.5vw,80px);font-weight:900;letter-spacing:-.05em;line-height:1.0;margin-bottom:16px;color:var(--text)}
+        .hero .sub{font-size:19px;color:var(--text-muted);margin-bottom:40px;letter-spacing:-.01em}
+
+        /* INPUT */
+        .hero-input-wrap{display:flex;align-items:center;max-width:520px;margin:0 auto 48px;background:#fff;border:2px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .3s,box-shadow .3s}
+        .hero-input-wrap:focus-within{border-color:var(--indigo);box-shadow:0 0 0 4px rgba(79,70,229,.08)}
+        .hero-input{flex:1;border:none;outline:none;padding:18px 24px;font-family:var(--sans);font-size:16px;color:var(--text);background:transparent}
+        .hero-input::placeholder{color:var(--text-dim)}
+        .hero-btn{display:flex;align-items:center;justify-content:center;width:52px;height:52px;margin:4px;border-radius:12px;background:var(--indigo);border:none;cursor:pointer;transition:background .2s,transform .1s;flex-shrink:0}
+        .hero-btn:hover{background:var(--indigo-dark)}
+        .hero-btn:active{transform:scale(.95)}
+        .hero-btn svg{color:#fff}
+
+        /* LOGOS */
+        .hero-logos{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;opacity:.45;transition:opacity .3s}
+        .hero-logos:hover{opacity:.6}
+        .hero-logos img{height:22px;filter:grayscale(100%);object-fit:contain;transition:all .3s}
+        .hero-logos img:hover{filter:grayscale(0%);opacity:1}
+
+        /* ========== BUILD ANIMATION ========== */
+        .build-section{display:none;padding:0 32px 60px;max-width:760px;margin:0 auto}
+        .build-section.active{display:block}
+        .build-card{background:#fff;border:1px solid var(--border);border-radius:20px;padding:48px;box-shadow:var(--shadow-lg)}
+        .build-header{display:flex;align-items:center;gap:16px;margin-bottom:32px}
+        .build-logo{width:48px;height:48px;border-radius:12px;object-fit:contain;background:var(--bg);border:1px solid var(--border)}
+        .build-title{font-family:var(--display);font-size:20px;font-weight:700;color:var(--text)}
+        .build-phase{margin-bottom:16px;opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+        .build-phase.visible{opacity:1;transform:translateY(0)}
+        .build-check{display:flex;align-items:flex-start;gap:10px;padding:10px 0;font-size:15px;color:var(--text-mid);line-height:1.5}
+        .build-check .check-icon{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:1px}
+        .build-check .check-icon.green{background:rgba(16,185,129,.1);color:var(--green)}
+        .build-check .check-icon.indigo{background:rgba(79,70,229,.1);color:var(--indigo)}
+        .build-ready{display:flex;align-items:center;gap:12px;padding:16px 20px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:12px;margin-top:8px}
+        .build-ready-dot{width:10px;height:10px;border-radius:50%;background:var(--green);animation:pulse-dot 2s ease-in-out infinite}
+        @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+        .build-ready-text{font-family:var(--display);font-size:16px;font-weight:700;color:var(--green-dark)}
+        /* Spinner */
+        .build-spinner{display:inline-block;width:18px;height:18px;border:2px solid rgba(79,70,229,.15);border-top-color:var(--indigo);border-radius:50%;animation:spin .7s linear infinite;margin-right:8px;vertical-align:middle}
+        @keyframes spin{to{transform:rotate(360deg)}}
+
+        /* ========== LIGHT PLAYER ========== */
+        .player-section{display:none;padding:0 32px 80px}
+        .player-section.active{display:block}
+        .player-wrap{max-width:920px;margin:0 auto}
+        .player{background:#fff;border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:var(--shadow-lg);transition:box-shadow .3s}
+        .player:hover{box-shadow:0 12px 40px rgba(0,0,0,.08)}
+
+        /* TEASER */
+        .player-teaser{padding:48px;cursor:pointer;display:flex;align-items:center;gap:40px;min-height:200px}
+        .player-teaser.hidden{display:none}
+        .teaser-left{flex:1}
+        .teaser-dispute{font-size:17px;color:var(--text-mid);line-height:1.7;font-style:italic;position:relative}
+        .teaser-dispute::before{content:'"';font-family:var(--display);font-size:48px;color:rgba(79,70,229,.15);position:absolute;top:-20px;left:-8px;line-height:1}
+        .teaser-label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);margin-bottom:12px}
+        .teaser-right{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:16px}
+        .teaser-play{width:72px;height:72px;border-radius:50%;background:var(--indigo);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s}
+        .teaser-play:hover{transform:scale(1.06);box-shadow:0 0 0 12px rgba(79,70,229,.1)}
+        .teaser-play-label{font-size:13px;color:var(--text-muted);font-weight:500;text-align:center;max-width:140px}
+        /* Waveform */
+        .teaser-wave{display:flex;align-items:center;gap:3px;height:32px;margin-top:8px}
+        .teaser-wave span{display:block;width:3px;border-radius:2px;background:var(--indigo);opacity:.3;animation:wave-bar 1.2s ease-in-out infinite}
+        .teaser-wave span:nth-child(1){height:12px;animation-delay:0s}
+        .teaser-wave span:nth-child(2){height:20px;animation-delay:.1s}
+        .teaser-wave span:nth-child(3){height:16px;animation-delay:.2s}
+        .teaser-wave span:nth-child(4){height:24px;animation-delay:.3s}
+        .teaser-wave span:nth-child(5){height:14px;animation-delay:.4s}
+        .teaser-wave span:nth-child(6){height:20px;animation-delay:.5s}
+        .teaser-wave span:nth-child(7){height:10px;animation-delay:.6s}
+        @keyframes wave-bar{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.4)}}
+
+        /* PLAY STATE */
+        .player-active{display:none;min-height:320px}
+        .player-active.visible{display:grid;grid-template-columns:3fr 2fr}
+        .player-transcript{padding:28px 32px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:400px;position:relative}
+        .player-transcript::before{content:'';position:absolute;top:0;left:0;right:0;height:24px;background:linear-gradient(to bottom,#fff,transparent);z-index:2;pointer-events:none}
+        .transcript-line{opacity:0;transform:translateY(8px);transition:opacity .4s ease,transform .4s ease}
+        .transcript-line.shown{opacity:1;transform:none}
+        .transcript-speaker{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+        .transcript-speaker.debtor{color:var(--text-dim)}
+        .transcript-speaker.agent{color:var(--indigo)}
+        .transcript-text{font-size:15px;line-height:1.6;color:var(--text-mid)}
+        .transcript-text.debtor{color:var(--text-dim)}
+        @keyframes blink-cursor{0%,100%{opacity:1}50%{opacity:0}}
+        .typing-cursor{display:inline-block;width:2px;height:1em;background:var(--indigo);vertical-align:text-bottom;margin-left:2px;animation:blink-cursor .7s step-end infinite}
+
+        /* Reasoning panel */
+        .player-reasoning{padding:28px 24px;border-left:1px solid var(--border);display:flex;flex-direction:column;gap:10px;justify-content:center;background:var(--bg)}
+        .reasoning-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);margin-bottom:4px}
+        .reason-pill{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:10px;font-size:13px;font-weight:600;opacity:0;transform:translateX(16px);transition:opacity .4s ease,transform .4s ease;width:fit-content}
+        .reason-pill.shown{opacity:1;transform:none}
+        .reason-pill.green{background:rgba(16,185,129,.08);color:var(--green-dark)}
+        .reason-pill.indigo{background:rgba(79,70,229,.08);color:var(--indigo)}
+        .reason-pill.amber{background:rgba(245,158,11,.08);color:#B45309}
+
+        /* CONTROLS */
+        .player-controls{padding:16px 32px;border-top:1px solid var(--border);display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+        .player-controls.hidden{display:none}
+        .dispute-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid var(--border);border-radius:12px;background:#fff;font-family:var(--sans);font-size:13px;font-weight:500;color:var(--text-mid);cursor:pointer;transition:all .2s;white-space:nowrap}
+        .dispute-btn:hover{border-color:var(--indigo);color:var(--indigo);background:rgba(79,70,229,.02)}
+        .dispute-btn.active{border-color:var(--indigo);color:var(--indigo);background:rgba(79,70,229,.04)}
+        .talk-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border:none;border-radius:12px;background:var(--indigo);font-family:var(--sans);font-size:13px;font-weight:600;color:#fff;cursor:pointer;transition:all .2s;margin-left:auto}
+        .talk-btn:hover{background:var(--indigo-dark)}
+
+        /* ========== TRUST SECTION ========== */
+        .trust-section{padding:100px 32px;background:#fff;text-align:center}
+        .trust-inner{max-width:var(--max-w);margin:0 auto}
+        .trust-section h2{font-size:clamp(32px,4.5vw,56px);font-weight:900;letter-spacing:-.05em;margin-bottom:8px}
+        .trust-section .trust-sub{font-size:18px;color:var(--text-muted);margin-bottom:56px}
+        .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:900px;margin:0 auto}
+        .stat-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:32px 20px;transition:all .25s}
+        .stat-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+        .stat-num{font-family:var(--mono);font-size:36px;font-weight:500;color:var(--indigo);margin-bottom:4px;letter-spacing:-.02em}
+        .stat-label{font-size:14px;color:var(--text-muted);font-weight:500}
+
+        /* ========== HOW IT WORKS ========== */
+        .how-section{padding:100px 32px;background:var(--bg)}
+        .how-inner{max-width:var(--max-w);margin:0 auto;text-align:center}
+        .how-section h2{font-size:clamp(28px,3.5vw,42px);font-weight:900;margin-bottom:56px}
+        .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto}
+        .step-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:36px 28px;text-align:left;transition:all .25s}
+        .step-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+        .step-num{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--indigo);margin-bottom:16px;padding:6px 12px;background:rgba(79,70,229,.06);border-radius:8px;display:inline-block}
+        .step-title{font-family:var(--display);font-size:20px;font-weight:800;margin-bottom:10px;letter-spacing:-.03em}
+        .step-desc{font-size:15px;color:var(--text-muted);line-height:1.65}
+        .step-logos{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+        .step-logo-pill{font-size:11px;font-weight:600;color:var(--text-dim);padding:4px 10px;border:1px solid var(--border);border-radius:6px;background:#fff}
+
+        /* ========== OBJECTION KILLERS ========== */
+        .objections-section{padding:100px 32px;background:#fff}
+        .objections-inner{max-width:var(--max-w);margin:0 auto;text-align:center}
+        .objections-section h2{font-size:clamp(28px,3.5vw,42px);font-weight:900;margin-bottom:56px}
+        .objections-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:900px;margin:0 auto}
+        .objection-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:32px;text-align:left;transition:all .25s}
+        .objection-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+        .objection-q{font-family:var(--display);font-size:17px;font-weight:700;color:var(--text);margin-bottom:12px;letter-spacing:-.02em}
+        .objection-a{font-size:15px;color:var(--text-muted);line-height:1.65}
+
+        /* ========== SOCIAL PROOF ========== */
+        .proof-section{padding:80px 32px;background:var(--bg)}
+        .proof-inner{max-width:640px;margin:0 auto;text-align:center}
+        .proof-quote{background:#fff;border:1px solid var(--border);border-radius:20px;padding:48px;box-shadow:var(--shadow-md)}
+        .proof-text{font-size:22px;font-weight:600;font-family:var(--display);color:var(--text);line-height:1.5;letter-spacing:-.02em;margin-bottom:24px}
+        .proof-text::before{content:'"';font-size:56px;color:rgba(79,70,229,.15);line-height:0;vertical-align:bottom;margin-right:4px}
+        .proof-author{display:flex;align-items:center;gap:14px;justify-content:center}
+        .proof-avatar{width:44px;height:44px;border-radius:50%;object-fit:contain;background:var(--bg);border:1px solid var(--border)}
+        .proof-name{font-size:15px;font-weight:600;color:var(--text)}
+        .proof-role{font-size:13px;color:var(--text-muted)}
+
+        /* ========== PRICING ONE-LINER ========== */
+        .pricing-strip{padding:80px 32px;background:#fff;text-align:center}
+        .pricing-strip h2{font-size:clamp(36px,5vw,64px);font-weight:900;letter-spacing:-.05em;margin-bottom:12px}
+        .pricing-strip .pricing-sub{font-size:17px;color:var(--text-muted);margin-bottom:36px}
+        .pricing-cta{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:var(--indigo);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:16px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s}
+        .pricing-cta:hover{background:var(--indigo-dark);transform:translateY(-1px)}
+
+        /* ========== FINAL CTA ========== */
+        .final-cta{padding:120px 32px;text-align:center;background:var(--bg-dark);color:#fff;position:relative;overflow:hidden}
+        .final-cta::before{content:'';position:absolute;inset:0;background-image:
+            linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+            background-size:64px 64px;pointer-events:none}
+        .final-cta h2{font-size:clamp(28px,4vw,52px);font-weight:900;letter-spacing:-.04em;margin-bottom:12px;line-height:1.1;position:relative}
+        .final-cta p{font-size:16px;opacity:.6;max-width:480px;margin:0 auto 44px;line-height:1.65;letter-spacing:-.01em;position:relative}
+        .cta-btn{display:inline-flex;align-items:center;gap:8px;padding:18px 40px;border:none;border-radius:12px;font-family:var(--sans);font-size:16px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;letter-spacing:-.01em;position:relative}
+        .cta-btn:hover{transform:translateY(-1px)}
+        .cta-btn-primary{background:#fff;color:var(--bg-dark)}
+        .cta-btn-primary:hover{box-shadow:0 8px 24px rgba(255,255,255,.1)}
+
+        /* ========== FOOTER ========== */
+        footer{background:#fff;border-top:1px solid var(--border);padding:56px 32px 32px}
+        .footer-inner{max-width:var(--max-w);margin:0 auto}
+        .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}
+        .footer-brand-name{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:10px}
+        .footer-tagline{font-size:14px;color:var(--text-dim);line-height:1.65;max-width:210px}
+        .footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);margin-bottom:14px}
+        .footer-col a{display:block;font-size:13px;color:var(--text-muted);text-decoration:none;margin-bottom:9px;transition:color .2s;letter-spacing:-.01em}
+        .footer-col a:hover{color:var(--text)}
+        .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;gap:12px}
+        .footer-copy{font-size:12px;color:var(--text-dim)}
+        .footer-badges{display:flex;gap:8px}
+        .footer-badge{padding:4px 10px;border:1px solid var(--border);border-radius:4px;font-size:10px;color:var(--text-dim);font-weight:600;letter-spacing:.02em}
+
+        /* ========== MODAL ========== */
+        .modal-overlay{display:none;position:fixed;inset:0;background:rgba(11,27,61,.5);backdrop-filter:blur(8px);z-index:2000;align-items:center;justify-content:center}
+        .modal-overlay.active{display:flex}
+        .modal{background:#fff;border-radius:20px;padding:48px;max-width:440px;width:90%;text-align:center;box-shadow:0 25px 50px rgba(0,0,0,.15)}
+        .modal h3{font-family:var(--display);font-size:24px;font-weight:800;margin-bottom:12px}
+        .modal p{font-size:15px;color:var(--text-muted);margin-bottom:28px;line-height:1.6}
+        .modal-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--indigo);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s}
+        .modal-cta:hover{background:var(--indigo-dark)}
+        .modal-close{position:absolute;top:16px;right:16px;background:none;border:none;cursor:pointer;color:var(--text-dim);font-size:20px;padding:8px}
+
+        /* ========== RESPONSIVE ========== */
+        @media(max-width:1024px){
+            .stats-grid{grid-template-columns:repeat(2,1fr)}
+            .footer-top{grid-template-columns:1fr 1fr 1fr}
+        }
+        @media(max-width:768px){
+            .nav-links{display:none}
+            .nav-mobile{display:block}
+            .nav-inner{padding:0 20px}
+            .logo-tagline{display:none}
+            .nav-right .nav-cta-ghost{display:none}
+            .hero{padding:110px 20px 60px}
+            .hero h1{font-size:clamp(36px,10vw,56px)}
+            .hero-input-wrap{flex-direction:row}
+            .hero-logos{gap:24px}
+            .hero-logos img{height:18px}
+            .build-section{padding:0 20px 48px}
+            .build-card{padding:32px 24px}
+            .player-section{padding:0 20px 60px}
+            .player-teaser{flex-direction:column;padding:32px 24px;gap:24px;text-align:center}
+            .teaser-dispute::before{left:50%;transform:translateX(-50%)}
+            .player-active.visible{grid-template-columns:1fr;max-height:none}
+            .player-reasoning{border-left:none;border-top:1px solid var(--border)}
+            .player-controls{justify-content:center}
+            .talk-btn{margin-left:0}
+            .trust-section{padding:72px 20px}
+            .stats-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+            .how-section{padding:72px 20px}
+            .steps-grid{grid-template-columns:1fr;max-width:480px}
+            .objections-section{padding:72px 20px}
+            .objections-grid{grid-template-columns:1fr}
+            .proof-section{padding:60px 20px}
+            .proof-quote{padding:32px 24px}
+            .pricing-strip{padding:60px 20px}
+            .final-cta{padding:80px 20px}
+            .footer-top{grid-template-columns:1fr 1fr;gap:24px}
+            .footer-bottom{flex-direction:column;text-align:center}
+            .footer-badges{justify-content:center}
+        }
+        @media(max-width:480px){
+            .stats-grid{grid-template-columns:1fr 1fr}
+            .hero-logos{gap:16px}
+            .hero-logos img{height:16px}
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+<div class="nav-inner">
+    <a href="/" class="logo">Agent<span>Collect</span><span class="dot-circle"></span></a>
+    <span class="logo-tagline">The end of manual collection.</span>
+    <div class="nav-links">
+        <a href="/ai-collection">AI Collection</a>
+        <a href="/attorney-collection">Attorney Collection</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/security">Security</a>
+    </div>
+    <div class="nav-right">
+        <a href="https://cal.com/johnb/30" class="nav-cta-ghost" target="_blank">Talk to us</a>
+        <a href="https://cal.com/johnb/30" class="nav-cta" target="_blank">Book a demo</a>
+    </div>
+    <button class="nav-mobile" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="1.5"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+</div>
+</nav>
+
+<!-- 1. HERO -->
+<section class="hero" id="hero-section">
+    <div class="hero-content">
+        <h1>Your collection agent.</h1>
+        <p class="sub">Pre-trained on 1 billion conversations.</p>
+        <div class="hero-input-wrap" id="hero-input-wrap">
+            <input type="text" class="hero-input" id="domain-input" placeholder="Enter your company website..." autocomplete="off" spellcheck="false">
+            <button class="hero-btn" id="hero-btn" aria-label="Build agent">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+        <div class="hero-logos">
+            <img src="https://cdn.brandfetch.io/microsoft.com/w/512/h/80/logo" alt="Microsoft" loading="lazy">
+            <img src="https://cdn.brandfetch.io/dell.com/w/512/h/80/logo" alt="Dell" loading="lazy">
+            <img src="https://cdn.brandfetch.io/fedex.com/w/512/h/80/logo" alt="FedEx" loading="lazy">
+            <img src="https://cdn.brandfetch.io/uber.com/w/512/h/80/logo" alt="Uber" loading="lazy">
+            <img src="https://cdn.brandfetch.io/cgm.com/w/512/h/80/logo" alt="CGM" loading="lazy">
+        </div>
+    </div>
+</section>
+
+<!-- 2. BUILD ANIMATION -->
+<section class="build-section" id="build-section">
+    <div class="build-card">
+        <div class="build-header">
+            <img class="build-logo" id="build-logo" src="" alt="">
+            <div class="build-title" id="build-title">Building your agent...</div>
+        </div>
+        <div id="build-phases"></div>
+    </div>
+</section>
+
+<!-- 3. LIGHT PLAYER -->
+<section class="player-section" id="player-section">
+    <div class="player-wrap">
+        <div class="player">
+            <!-- TEASER STATE -->
+            <div class="player-teaser" id="player-teaser">
+                <div class="teaser-left">
+                    <div class="teaser-label">Incoming dispute</div>
+                    <div class="teaser-dispute" id="teaser-dispute-text"></div>
+                    <div class="teaser-wave">
+                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+                <div class="teaser-right">
+                    <button class="teaser-play" id="teaser-play-btn" aria-label="Play">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><polygon points="8,5 20,12 8,19"/></svg>
+                    </button>
+                    <div class="teaser-play-label">See how your agent responds</div>
+                </div>
+            </div>
+
+            <!-- PLAY STATE -->
+            <div class="player-active" id="player-active">
+                <div class="player-transcript" id="player-transcript"></div>
+                <div class="player-reasoning" id="player-reasoning">
+                    <div class="reasoning-label">Agent reasoning</div>
+                </div>
+            </div>
+
+            <!-- CONTROLS -->
+            <div class="player-controls hidden" id="player-controls">
+                <button class="dispute-btn active" data-dispute="0">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+                    <span id="dispute-btn-0-text"></span>
+                </button>
+                <button class="dispute-btn" data-dispute="1">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+                    <span id="dispute-btn-1-text"></span>
+                </button>
+                <button class="talk-btn" id="talk-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                    Talk to your agent
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 4. PRE-TRAINED TRUST -->
+<section class="trust-section reveal" id="trust">
+    <div class="trust-inner">
+        <div class="section-label">Intelligence</div>
+        <h2>Pre-trained on 1 billion conversations.</h2>
+        <p class="trust-sub">Every dispute. Every excuse. Every edge case.</p>
+        <div class="stats-grid">
+            <div class="stat-card reveal s1">
+                <div class="stat-num">1B+</div>
+                <div class="stat-label">conversations analyzed</div>
+            </div>
+            <div class="stat-card reveal s2">
+                <div class="stat-num">50%</div>
+                <div class="stat-label">collection rate</div>
+            </div>
+            <div class="stat-card reveal s3">
+                <div class="stat-num">20d</div>
+                <div class="stat-label">average time to collect</div>
+            </div>
+            <div class="stat-card reveal s4">
+                <div class="stat-num">90%</div>
+                <div class="stat-label">disputes resolved instantly</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- 5. HOW IT WORKS -->
+<section class="how-section reveal" id="how">
+    <div class="how-inner">
+        <div class="section-label">How it works</div>
+        <h2>Live in 24 hours. Three steps.</h2>
+        <div class="steps-grid">
+            <div class="step-card reveal s1">
+                <div class="step-num">01</div>
+                <div class="step-title">Upload your invoices</div>
+                <div class="step-desc">Drag and drop an Excel file &mdash; or connect your accounting software.</div>
+                <div class="step-logos">
+                    <span class="step-logo-pill">QuickBooks</span>
+                    <span class="step-logo-pill">NetSuite</span>
+                    <span class="step-logo-pill">Xero</span>
+                    <span class="step-logo-pill">Oracle</span>
+                    <span class="step-logo-pill">SAP</span>
+                    <span class="step-logo-pill">SFTP</span>
+                </div>
+            </div>
+            <div class="step-card reveal s2">
+                <div class="step-num">02</div>
+                <div class="step-title">Your agent collects</div>
+                <div class="step-desc">Calls, emails, and dispute resolution. Every message is personalized based on who your debtor is and why they haven't paid.</div>
+            </div>
+            <div class="step-card reveal s3">
+                <div class="step-num">03</div>
+                <div class="step-title">You get paid</div>
+                <div class="step-desc">Direct to your bank account. Same day. Full reconciliation report included.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- 6. OBJECTION KILLERS -->
+<section class="objections-section reveal" id="objections">
+    <div class="objections-inner">
+        <div class="section-label">Common concerns</div>
+        <h2>We've heard them all.</h2>
+        <div class="objections-grid">
+            <div class="objection-card reveal s1">
+                <div class="objection-q">"Won't it hurt relationships?"</div>
+                <div class="objection-a">Ultra-respectful by design. Disputes are resolved instantly. Your commercial relationships stay intact.</div>
+            </div>
+            <div class="objection-card reveal s2">
+                <div class="objection-q">"What if the AI says something wrong?"</div>
+                <div class="objection-a">Pre-trained on 1 billion conversations. Test it yourself &mdash; enter your domain above.</div>
+            </div>
+            <div class="objection-card reveal s3">
+                <div class="objection-q">"Is it complicated to set up?"</div>
+                <div class="objection-a">24 hours. Upload an Excel or connect your software. No engineering required.</div>
+            </div>
+            <div class="objection-card reveal s4">
+                <div class="objection-q">"Where does the money go?"</div>
+                <div class="objection-a">Direct to your account. Same day. No fund handling, no monthly wire. You see every payment in real-time.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 7. SOCIAL PROOF -->
+<section class="proof-section reveal">
+    <div class="proof-inner">
+        <div class="proof-quote">
+            <div class="proof-text">Tripled our collection rates by batch 3.</div>
+            <div class="proof-author">
+                <img class="proof-avatar" src="https://cdn.brandfetch.io/microsoft.com/w/128/h/128/logo" alt="Microsoft">
+                <div>
+                    <div class="proof-name">Neil Doyle</div>
+                    <div class="proof-role">Microsoft</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- 8. PRICING ONE-LINER -->
+<section class="pricing-strip reveal">
+    <h2>$0 if we don't collect.</h2>
+    <p class="pricing-sub">No setup fees. No monthly subscription. No minimums. Cancel anytime.</p>
+    <a href="https://cal.com/johnb/30" target="_blank" class="pricing-cta">
+        Book a demo
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+</section>
+
+<!-- 9. FINAL CTA -->
+<section class="final-cta reveal">
+    <h2>Your agent is ready.<br>One 30-min call to go live.</h2>
+    <p>What happens: we finalize your brand voice, connect your domain, and launch.</p>
+    <a href="https://cal.com/johnb/30" target="_blank" class="cta-btn cta-btn-primary">
+        Book a call with our CEO
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+</section>
+
+<!-- 10. FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div>
+                <div class="footer-brand-name">Agent<span>Collect</span><span class="dot-circle" style="width:5px;height:5px"></span></div>
+                <div class="footer-tagline">The end of manual collection.</div>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <a href="/ai-collection">AI Collection</a>
+                <a href="/attorney-collection">Attorney Collection</a>
+                <a href="/pricing">Pricing</a>
+                <a href="/integrations">API &amp; Integrations</a>
+            </div>
+            <div class="footer-col">
+                <h4>Trust</h4>
+                <a href="/security">Security &amp; Trust</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/compliance">State Compliance</a>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <a href="/integrations">Integrations</a>
+                <a href="/compare">Compare</a>
+                <a href="/glossary">Glossary</a>
+                <a href="/dso-calculator">DSO Calculator</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="/about">About</a>
+                <a href="https://cal.com/johnb/30" target="_blank">Contact</a>
+                <a href="/careers">Careers</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-copy">&copy; 2026 AgentCollect, Inc. San Francisco, CA</div>
+            <div class="footer-badges">
+                <span class="footer-badge">SOC 2</span>
+                <span class="footer-badge">CCPA</span>
+                <span class="footer-badge">Reg F</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="talk-modal">
+    <div class="modal" style="position:relative">
+        <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+        <h3>Talk to your agent</h3>
+        <p>Voice demo is coming soon. Book a 30-minute call and we'll set up a live agent for your company.</p>
+        <a href="https://cal.com/johnb/30" target="_blank" class="modal-cta">
+            Book a demo
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+</div>
+
+<script>
+(function(){
+    'use strict';
+
+    // ===== COMPANY DATA (simulated, V1) =====
+    var COMPANY_DATA = {
+        'uber.com': {
+            name: 'Uber',
+            industry: 'Transportation & delivery platform',
+            clients: 'Restaurant partners, delivery drivers, freight carriers',
+            whyDontPay: 'Service disputes, partnership cancellations, chargebacks on promotional credits',
+            disputes: [
+                {
+                    label: 'Partnership cancellation',
+                    teaser: 'I cancelled my Uber Eats partnership three months ago. I\'m not paying for the thermal bags and the tablet rental\u2014',
+                    transcript: [
+                        { speaker: 'debtor', text: 'I cancelled my Uber Eats partnership three months ago. I\'m not paying for the thermal bags and the tablet rental. We returned everything already.' },
+                        { speaker: 'agent', text: 'I understand you cancelled your partnership. Let me pull up your account. I can see the cancellation was processed on January 15th. However, our records show the tablet was returned but the thermal bag kit was not received at our warehouse.' },
+                        { speaker: 'debtor', text: 'That\'s impossible, we sent everything back in the same box.' },
+                        { speaker: 'agent', text: 'I appreciate you clarifying that. I\'m checking the return shipment now. The tracking shows a package weighing 4.2 lbs was received \u2014 the tablet alone weighs 3.8 lbs. The thermal kit weighs 2.1 lbs. It appears it may have been a separate shipment. Would you have a second tracking number?' },
+                        { speaker: 'debtor', text: '...Let me check. Actually, you might be right. Can I just pay for the bags and be done with it?' },
+                        { speaker: 'agent', text: 'Absolutely. The thermal bag kit balance is $127. I can set up a one-time payment right now, and we\'ll close this out completely. Would you prefer card or bank transfer?' }
+                    ],
+                    reasoning: [
+                        { text: 'Cancellation verified', color: 'green', time: 1500 },
+                        { text: 'Checking records', color: 'indigo', time: 3000 },
+                        { text: 'Frustration detected', color: 'amber', time: 5000 },
+                        { text: 'Proof ready', color: 'green', time: 6500 },
+                        { text: 'Weight discrepancy found', color: 'indigo', time: 8000 },
+                        { text: 'De-escalating', color: 'green', time: 10000 },
+                        { text: 'Offering resolution', color: 'indigo', time: 12000 },
+                        { text: 'Payment intent', color: 'green', time: 14000 }
+                    ]
+                },
+                {
+                    label: 'Freight carrier dispute',
+                    teaser: 'We completed every delivery on time. The fuel surcharge adjustment you applied retroactively is not in our contract\u2014',
+                    transcript: [
+                        { speaker: 'debtor', text: 'We completed every delivery on time. The fuel surcharge adjustment you applied retroactively is not in our contract and we\'re not paying it.' },
+                        { speaker: 'agent', text: 'Thank you for raising this. I\'m pulling up your carrier agreement now. You\'re right that the original contract from March didn\'t include the fuel surcharge clause. However, the amendment signed on August 12th by your dispatch manager does include it \u2014 Section 4.3, effective for all loads after September 1st.' },
+                        { speaker: 'debtor', text: 'Our dispatch manager signed that? I didn\'t authorize any amendment.' },
+                        { speaker: 'agent', text: 'I understand that\'s concerning. The signatory was David Chen, listed as authorized representative on your account. I can send you the signed document right now. The balance is $3,420 for loads completed in September and October. Would a 60-day payment plan work better for your cash flow?' },
+                        { speaker: 'debtor', text: 'Send me the document. If David signed it, I\'ll honor it. Can we do three payments?' },
+                        { speaker: 'agent', text: 'Absolutely. I\'ll send the amendment now and set up three monthly payments of $1,140 starting next month. I\'ll email the payment schedule for your records.' }
+                    ],
+                    reasoning: [
+                        { text: 'Contract dispute', color: 'amber', time: 1500 },
+                        { text: 'Checking amendment', color: 'indigo', time: 3000 },
+                        { text: 'Amendment found', color: 'green', time: 5000 },
+                        { text: 'Authority concern', color: 'amber', time: 7000 },
+                        { text: 'Proof ready', color: 'green', time: 8500 },
+                        { text: 'Offering plan', color: 'indigo', time: 10000 },
+                        { text: 'Installment accepted', color: 'green', time: 13000 }
+                    ]
+                }
+            ]
+        }
+    };
+
+    // Default/fallback data for unknown domains
+    var DEFAULT_DATA = {
+        name: '',
+        industry: 'Business services',
+        clients: 'Enterprise and mid-market companies',
+        whyDontPay: 'Invoice disputes, cash flow constraints, process delays, contact changes',
+        disputes: [
+            {
+                label: 'Invoice dispute',
+                teaser: 'We never received the final deliverable. The project was incomplete and I\'m not paying the remaining balance until\u2014',
+                transcript: [
+                    { speaker: 'debtor', text: 'We never received the final deliverable. The project was incomplete and I\'m not paying the remaining balance until everything is delivered.' },
+                    { speaker: 'agent', text: 'I understand your concern. Let me check the project records. According to our system, the final deliverable was sent on February 3rd to your project manager, Sarah Williams, at s.williams@company.com. I have the delivery confirmation and her acknowledgment email.' },
+                    { speaker: 'debtor', text: 'Sarah left the company in January. Nobody got that email.' },
+                    { speaker: 'agent', text: 'That explains it. I\'ll resend everything to you directly right now. The deliverable package is ready. Once you confirm receipt, the outstanding balance of $8,400 would be due. Would you like me to send it to this email address?' },
+                    { speaker: 'debtor', text: 'Yes, send it over. If everything checks out, we\'ll process the payment this week.' },
+                    { speaker: 'agent', text: 'Sent. You should have it in your inbox now. I\'ll follow up in 48 hours to confirm everything looks good and coordinate the payment. Thank you for working through this.' }
+                ],
+                reasoning: [
+                    { text: 'Dispute identified', color: 'amber', time: 1500 },
+                    { text: 'Checking delivery', color: 'indigo', time: 3000 },
+                    { text: 'Proof found', color: 'green', time: 5000 },
+                    { text: 'Contact changed', color: 'amber', time: 7000 },
+                    { text: 'Resending deliverable', color: 'indigo', time: 9000 },
+                    { text: 'Resolution path clear', color: 'green', time: 11000 },
+                    { text: 'Payment commitment', color: 'green', time: 13000 }
+                ]
+            },
+            {
+                label: 'Cash flow delay',
+                teaser: 'Look, we know we owe you. But our biggest client hasn\'t paid us yet and we can\'t release funds until\u2014',
+                transcript: [
+                    { speaker: 'debtor', text: 'Look, we know we owe you. But our biggest client hasn\'t paid us yet and we can\'t release funds until that comes through. It could be another month.' },
+                    { speaker: 'agent', text: 'I appreciate your transparency. Cash flow timing is a real challenge. The current balance is $12,600 and it\'s 47 days past due. Rather than waiting another month, could we set up a partial payment now and the remainder when your receivable clears?' },
+                    { speaker: 'debtor', text: 'How would that work exactly?' },
+                    { speaker: 'agent', text: 'A payment of $4,200 today shows good faith and stops the aging clock. Then $8,400 in 30 days. This keeps your account in good standing and avoids any escalation. I can set both up right now if you have a card or bank details handy.' },
+                    { speaker: 'debtor', text: 'That\'s fair. Let\'s do the split. I can do the first payment today by card.' },
+                    { speaker: 'agent', text: 'Perfect. I\'m generating a secure payment link now. You\'ll receive it by email in about 30 seconds. Once the first payment processes, I\'ll confirm the schedule for the second installment.' }
+                ],
+                reasoning: [
+                    { text: 'Cash flow issue', color: 'amber', time: 1500 },
+                    { text: 'Empathy applied', color: 'green', time: 3000 },
+                    { text: 'Offering plan', color: 'indigo', time: 5000 },
+                    { text: 'Calculating split', color: 'indigo', time: 7000 },
+                    { text: 'De-escalating', color: 'green', time: 8500 },
+                    { text: 'Payment accepted', color: 'green', time: 11000 },
+                    { text: 'Generating link', color: 'indigo', time: 13000 }
+                ]
+            }
+        ]
+    };
+
+    // ===== DOM REFS =====
+    var domainInput = document.getElementById('domain-input');
+    var heroBtn = document.getElementById('hero-btn');
+    var heroSection = document.getElementById('hero-section');
+    var buildSection = document.getElementById('build-section');
+    var buildLogo = document.getElementById('build-logo');
+    var buildTitle = document.getElementById('build-title');
+    var buildPhases = document.getElementById('build-phases');
+    var playerSection = document.getElementById('player-section');
+    var playerTeaser = document.getElementById('player-teaser');
+    var teaserDisputeText = document.getElementById('teaser-dispute-text');
+    var teaserPlayBtn = document.getElementById('teaser-play-btn');
+    var playerActive = document.getElementById('player-active');
+    var playerTranscript = document.getElementById('player-transcript');
+    var playerReasoning = document.getElementById('player-reasoning');
+    var playerControls = document.getElementById('player-controls');
+    var talkBtn = document.getElementById('talk-btn');
+    var talkModal = document.getElementById('talk-modal');
+    var modalClose = document.getElementById('modal-close');
+
+    var currentCompany = null;
+    var currentDisputeIndex = 0;
+    var isPlaying = false;
+    var playTimeouts = [];
+
+    // ===== HELPERS =====
+    function cleanDomain(input) {
+        var d = input.trim().toLowerCase();
+        d = d.replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/.*$/, '');
+        return d;
+    }
+
+    function capitalize(s) {
+        if (!s) return '';
+        return s.charAt(0).toUpperCase() + s.slice(1);
+    }
+
+    function getCompanyName(domain) {
+        var name = domain.split('.')[0];
+        // Common brand capitalizations
+        var brands = { uber:'Uber', dell:'Dell', microsoft:'Microsoft', fedex:'FedEx', amazon:'Amazon', google:'Google', apple:'Apple', meta:'Meta', stripe:'Stripe', plaid:'Plaid', checkr:'Checkr' };
+        return brands[name] || capitalize(name);
+    }
+
+    function getCompanyData(domain) {
+        if (COMPANY_DATA[domain]) return COMPANY_DATA[domain];
+        var data = JSON.parse(JSON.stringify(DEFAULT_DATA));
+        data.name = getCompanyName(domain);
+        return data;
+    }
+
+    function clearTimeouts() {
+        playTimeouts.forEach(function(t) { clearTimeout(t); });
+        playTimeouts = [];
+    }
+
+    // ===== BUILD ANIMATION =====
+    function startBuild(domain) {
+        var data = getCompanyData(domain);
+        currentCompany = data;
+        currentDisputeIndex = 0;
+
+        // Hide hero input area (keep hero heading visible briefly)
+        var heroContent = document.querySelector('.hero-content');
+        heroContent.style.transition = 'opacity .4s ease, transform .4s ease';
+        heroContent.style.opacity = '0';
+        heroContent.style.transform = 'translateY(-20px)';
+
+        setTimeout(function() {
+            heroSection.style.padding = '100px 32px 20px';
+            heroSection.style.transition = 'padding .5s ease';
+        }, 300);
+
+        // Show build section
+        setTimeout(function() {
+            buildSection.classList.add('active');
+            buildLogo.src = 'https://cdn.brandfetch.io/' + domain + '/w/256/h/256/logo';
+            buildLogo.alt = data.name;
+            buildTitle.textContent = 'Building your ' + data.name + ' collection agent...';
+            buildPhases.innerHTML = '';
+
+            // Phase 1: instant
+            addBuildPhase('<span class="build-spinner"></span> Analyzing ' + data.name + '...', 0);
+
+            // Phase 2: 2s
+            setTimeout(function() {
+                addBuildCheck(data.name + ' \u2014 ' + data.industry, 'green');
+                setTimeout(function() {
+                    addBuildCheck('Your clients: ' + data.clients, 'green');
+                }, 600);
+                setTimeout(function() {
+                    addBuildCheck('Why they don\'t pay: ' + data.whyDontPay, 'green');
+                }, 1200);
+            }, 2000);
+
+            // Phase 3: 5s — agent ready
+            setTimeout(function() {
+                buildTitle.textContent = data.name + ' collection agent';
+                var readyHtml = '<div class="build-phase" id="build-ready-phase">' +
+                    '<div class="build-ready">' +
+                    '<div class="build-ready-dot"></div>' +
+                    '<div class="build-ready-text">Your ' + data.name + ' collection agent is ready.</div>' +
+                    '</div></div>';
+                buildPhases.insertAdjacentHTML('beforeend', readyHtml);
+                setTimeout(function() {
+                    document.getElementById('build-ready-phase').classList.add('visible');
+                }, 50);
+
+                // Show player
+                setTimeout(function() {
+                    showPlayer(data, 0);
+                }, 800);
+            }, 5000);
+        }, 500);
+    }
+
+    function addBuildPhase(html, delay) {
+        var div = document.createElement('div');
+        div.className = 'build-phase';
+        div.innerHTML = '<div class="build-check">' + html + '</div>';
+        buildPhases.appendChild(div);
+        setTimeout(function() { div.classList.add('visible'); }, 50 + delay);
+    }
+
+    function addBuildCheck(text, color) {
+        var div = document.createElement('div');
+        div.className = 'build-phase';
+        div.innerHTML = '<div class="build-check">' +
+            '<span class="check-icon ' + color + '">' +
+            '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>' +
+            '</span>' +
+            '<span>' + text + '</span></div>';
+        buildPhases.appendChild(div);
+        setTimeout(function() { div.classList.add('visible'); }, 50);
+    }
+
+    // ===== PLAYER =====
+    function showPlayer(data, disputeIndex) {
+        playerSection.classList.add('active');
+        currentDisputeIndex = disputeIndex;
+        var dispute = data.disputes[disputeIndex];
+
+        // Set teaser text with typing effect
+        teaserDisputeText.textContent = '';
+        playerTeaser.classList.remove('hidden');
+        playerActive.classList.remove('visible');
+        playerControls.classList.remove('hidden');
+        playerControls.classList.add('hidden');
+        isPlaying = false;
+        clearTimeouts();
+
+        typeText(teaserDisputeText, dispute.teaser, 0, 20);
+
+        // Set dispute button labels
+        data.disputes.forEach(function(d, i) {
+            var btnText = document.getElementById('dispute-btn-' + i + '-text');
+            if (btnText) btnText.textContent = d.label;
+        });
+
+        // Scroll to player
+        setTimeout(function() {
+            playerSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 200);
+    }
+
+    function typeText(el, text, index, speed) {
+        if (index < text.length) {
+            el.textContent = text.substring(0, index + 1);
+            var t = setTimeout(function() { typeText(el, text, index + 1, speed); }, speed);
+            playTimeouts.push(t);
+        }
+    }
+
+    function playDispute(disputeIndex) {
+        if (isPlaying) return;
+        isPlaying = true;
+        clearTimeouts();
+
+        var data = currentCompany;
+        var dispute = data.disputes[disputeIndex];
+        currentDisputeIndex = disputeIndex;
+
+        // Switch to play state
+        playerTeaser.classList.add('hidden');
+        playerActive.classList.add('visible');
+        playerControls.classList.remove('hidden');
+        playerTranscript.innerHTML = '';
+        // Reset reasoning — keep label
+        playerReasoning.innerHTML = '<div class="reasoning-label">Agent reasoning</div>';
+
+        // Update active dispute button
+        document.querySelectorAll('.dispute-btn').forEach(function(btn, i) {
+            btn.classList.toggle('active', i === disputeIndex);
+        });
+
+        // Animate transcript lines
+        var lineDelay = 0;
+        dispute.transcript.forEach(function(line, i) {
+            var t = setTimeout(function() {
+                var div = document.createElement('div');
+                div.className = 'transcript-line';
+                div.innerHTML = '<div class="transcript-speaker ' + line.speaker + '">' +
+                    (line.speaker === 'agent' ? (data.name + ' Agent') : 'Debtor') + '</div>' +
+                    '<div class="transcript-text ' + (line.speaker === 'debtor' ? 'debtor' : '') + '">' + line.text + '</div>';
+                playerTranscript.appendChild(div);
+                setTimeout(function() { div.classList.add('shown'); }, 50);
+                playerTranscript.scrollTop = playerTranscript.scrollHeight;
+            }, lineDelay);
+            playTimeouts.push(t);
+            lineDelay += 2500;
+        });
+
+        // Animate reasoning pills
+        dispute.reasoning.forEach(function(r) {
+            var t = setTimeout(function() {
+                var pill = document.createElement('div');
+                pill.className = 'reason-pill ' + r.color;
+                pill.textContent = r.text;
+                playerReasoning.appendChild(pill);
+                setTimeout(function() { pill.classList.add('shown'); }, 50);
+
+                // Fade old pills if too many
+                var pills = playerReasoning.querySelectorAll('.reason-pill');
+                if (pills.length > 5) {
+                    pills[0].style.opacity = '0';
+                    pills[0].style.transform = 'translateX(-16px)';
+                    setTimeout(function() { if (pills[0].parentNode) pills[0].parentNode.removeChild(pills[0]); }, 400);
+                }
+            }, r.time);
+            playTimeouts.push(t);
+        });
+
+        // Mark done after all lines
+        var totalTime = dispute.transcript.length * 2500 + 1000;
+        var doneT = setTimeout(function() { isPlaying = false; }, totalTime);
+        playTimeouts.push(doneT);
+    }
+
+    // ===== EVENT HANDLERS =====
+    function handleSubmit() {
+        var domain = cleanDomain(domainInput.value);
+        if (!domain || domain.length < 3) return;
+        if (domain.indexOf('.') === -1) domain += '.com';
+        startBuild(domain);
+    }
+
+    heroBtn.addEventListener('click', handleSubmit);
+    domainInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') handleSubmit();
+    });
+
+    teaserPlayBtn.addEventListener('click', function() {
+        playDispute(currentDisputeIndex);
+    });
+    playerTeaser.addEventListener('click', function(e) {
+        if (e.target !== teaserPlayBtn && !teaserPlayBtn.contains(e.target)) {
+            playDispute(currentDisputeIndex);
+        }
+    });
+
+    document.querySelectorAll('.dispute-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var idx = parseInt(this.getAttribute('data-dispute'));
+            if (idx === currentDisputeIndex && isPlaying) return;
+            isPlaying = false;
+            clearTimeouts();
+            // Reset to teaser with new dispute
+            showPlayer(currentCompany, idx);
+            // Auto-play after brief teaser
+            setTimeout(function() { playDispute(idx); }, 1500);
+        });
+    });
+
+    talkBtn.addEventListener('click', function() {
+        talkModal.classList.add('active');
+    });
+    modalClose.addEventListener('click', function() {
+        talkModal.classList.remove('active');
+    });
+    talkModal.addEventListener('click', function(e) {
+        if (e.target === talkModal) talkModal.classList.remove('active');
+    });
+
+    // ===== NAV SCROLL =====
+    window.addEventListener('scroll', function() {
+        document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 8);
+    }, { passive: true });
+
+    // ===== SCROLL REVEAL =====
+    var revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+            if (e.isIntersecting) e.target.classList.add('visible');
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
+
+})();
+</script>
+</body>
+</html>
