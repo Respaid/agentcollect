@@ -72,14 +72,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 
 /* ===== ORB ===== */
 .orb-wrap{position:relative;width:260px;height:260px;margin:0 auto 32px;cursor:pointer}
-.orb-glow{position:absolute;inset:-60px;border-radius:50%;background:radial-gradient(circle,rgba(79,70,229,.18) 0%,rgba(124,58,237,.06) 40%,transparent 70%);animation:orbGlowPulse 4s ease-in-out infinite}
-.orb-main{position:relative;width:260px;height:260px;border-radius:50%;overflow:hidden;animation:orbDrift 6s ease-in-out infinite;transition:transform .3s,box-shadow .3s;box-shadow:0 0 80px rgba(79,70,229,.25),0 0 160px rgba(79,70,229,.08),inset 0 0 60px rgba(0,0,0,.3)}
+.orb-glow{position:absolute;inset:-60px;border-radius:50%;background:radial-gradient(circle,rgba(79,70,229,.18) 0%,rgba(59,130,246,.06) 40%,transparent 70%);animation:orbGlowPulse 4s ease-in-out infinite}
+.orb-main{position:relative;width:260px;height:260px;border-radius:50%;overflow:hidden;animation:orbDrift 6s ease-in-out infinite;transition:transform .3s,box-shadow .3s;box-shadow:0 0 80px rgba(79,70,229,.25),0 0 160px rgba(59,130,246,.08),inset 0 0 60px rgba(0,0,0,.3)}
 .orb-wrap:hover .orb-main{transform:scale(1.06)}
 .orb-wrap:active .orb-main{transform:scale(.95)}
 .orb-main.speaking{animation:orbDrift 6s ease-in-out infinite,orbPulseSpeak .8s ease-in-out infinite}
 .orb-layer{position:absolute;inset:0;border-radius:50%}
-.orb-layer-1{background:conic-gradient(from 0deg,#4F46E5,#7C3AED,#3730A3,#818CF8,#4F46E5);animation:orbSpin 8s linear infinite}
-.orb-layer-2{background:conic-gradient(from 180deg,rgba(79,70,229,.8),rgba(124,58,237,.5),rgba(55,48,163,.6),rgba(129,140,248,.4),rgba(79,70,229,.8));animation:orbSpin 12s linear infinite reverse;mix-blend-mode:soft-light}
+.orb-layer-1{background:conic-gradient(from 0deg,#4F46E5,#3B82F6,#1E40AF,#60A5FA,#4F46E5);animation:orbSpin 8s linear infinite}
+.orb-layer-2{background:conic-gradient(from 180deg,rgba(79,70,229,.8),rgba(59,130,246,.5),rgba(30,64,175,.6),rgba(96,165,250,.4),rgba(79,70,229,.8));animation:orbSpin 12s linear infinite reverse;mix-blend-mode:soft-light}
 .orb-layer-3{background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.25) 0%,transparent 50%)}
 .orb-layer-4{background:radial-gradient(circle at 50% 110%,rgba(0,0,0,.4) 0%,transparent 60%)}
 .orb-logo-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:10}
@@ -101,37 +101,38 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 @keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ===== UNIFIED WIDGET ===== */
-.uw{background:#0f0f1a;border-radius:20px;overflow:hidden;max-width:420px;width:100%;transition:all .4s cubic-bezier(.4,0,.2,1);position:relative;z-index:2}
-.uw-voice-idle{display:flex;flex-direction:column;align-items:center;padding:28px 20px 24px;gap:14px}
-.uw-mic-btn{width:64px;height:64px;border-radius:50%;background:var(--blue);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;box-shadow:0 0 24px rgba(79,70,229,.4)}
-.uw-mic-btn:hover{transform:scale(1.08);box-shadow:0 0 40px rgba(79,70,229,.6)}
-.uw-mic-btn svg{width:28px;height:28px;color:#fff;stroke:currentColor}
-.uw-mic-label{color:rgba(255,255,255,.6);font-size:14px;font-weight:500;max-width:320px;line-height:1.4;text-align:center}
-.uw-voice-active{display:none;flex-direction:column;align-items:center;padding:20px;gap:12px}
-.uw-voice-active.visible{display:flex}
-.uw-status-text{color:rgba(255,255,255,.5);font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
-.uw-waveform{display:flex;align-items:center;justify-content:center;gap:3px;height:48px;padding:4px 0}
-.uw-waveform span{width:3.5px;border-radius:3px;background:var(--blue);min-height:4px;will-change:height;transition:height .08s linear}
-.uw-mini-transcript{width:100%;max-height:100px;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}
-.uw-mini-transcript::-webkit-scrollbar{display:none}
-.uw-mini-msg{padding:8px 12px;border-radius:12px;font-size:13px;line-height:1.5;margin-bottom:6px;animation:fadeInUp .3s ease}
-.uw-mini-msg.agent{background:rgba(79,70,229,.15);color:rgba(255,255,255,.9)}
-.uw-mini-msg.user{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);text-align:right}
-.uw-end-btn{padding:10px 24px;background:rgba(239,68,68,.12);color:#ef4444;border:1px solid rgba(239,68,68,.25);border-radius:12px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;font-family:var(--sans)}
-.uw-end-btn:hover{background:rgba(239,68,68,.22)}
-.uw-connecting{display:flex;flex-direction:column;align-items:center;padding:28px 20px;gap:12px}
-.uw-connecting .co-spinner{width:32px;height:32px;border:3px solid rgba(255,255,255,.1);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite}
-.uw-connecting-text{color:rgba(255,255,255,.6);font-size:13px}
-.uw-post-call{display:flex;flex-direction:column;align-items:center;padding:24px 20px;gap:10px;animation:fadeInUp .4s ease}
-.uw-post-check{margin-bottom:4px}
-.uw-post-title{color:#fff;font-size:18px;font-weight:700}
-.uw-post-sub{color:rgba(255,255,255,.5);font-size:13px;text-align:center;line-height:1.5;max-width:300px}
-.uw-post-cta{display:flex;align-items:center;gap:8px;padding:14px 28px;background:var(--blue);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;text-decoration:none;margin-top:6px;box-shadow:0 0 20px rgba(79,70,229,.3);font-family:var(--sans)}
-.uw-post-cta:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 4px 24px rgba(79,70,229,.4)}
-.uw-post-retry{background:none;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.5);padding:8px 16px;border-radius:8px;font-size:12px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;margin-top:2px;font-family:var(--sans)}
-.uw-post-retry:hover{border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.7)}
-.uw-powered{text-align:center;padding:8px 12px 12px;font-size:11px;color:rgba(255,255,255,.2)}
+/* ===== ORB MIC OVERLAY ===== */
+.orb-mic-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:11;opacity:0;transition:opacity .3s}
+.orb-wrap:hover .orb-mic-overlay{opacity:1}
+.orb-mic-overlay svg{width:48px;height:48px;color:#fff;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4));stroke:currentColor}
+.orb-label{text-align:center;font-size:14px;font-weight:600;color:var(--muted);margin-top:0;margin-bottom:24px;letter-spacing:-.01em}
+.orb-label .orb-label-hint{display:block;font-size:12px;font-weight:400;color:var(--muted);opacity:.6;margin-top:4px}
+
+/* ===== CALL STATES (below orb) ===== */
+.call-state{display:flex;flex-direction:column;align-items:center;width:100%;max-width:360px;margin:0 auto}
+.cs-connecting{display:none;flex-direction:column;align-items:center;gap:12px;padding:8px 0;animation:fadeInUp .3s ease}
+.cs-connecting .co-spinner{width:28px;height:28px;border:3px solid rgba(79,70,229,.15);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite}
+.cs-connecting-text{color:var(--muted);font-size:13px;font-weight:500}
+.cs-active{display:none;flex-direction:column;align-items:center;gap:10px;padding:8px 0;width:100%}
+.cs-active.visible{display:flex}
+.cs-status{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--blue)}
+.cs-waveform{display:flex;align-items:center;justify-content:center;gap:3px;height:40px;padding:4px 0}
+.cs-waveform span{width:3.5px;border-radius:3px;background:var(--blue);min-height:4px;will-change:height;transition:height .08s linear}
+.cs-transcript{width:100%;max-height:80px;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}
+.cs-transcript::-webkit-scrollbar{display:none}
+.cs-msg{padding:8px 12px;border-radius:12px;font-size:13px;line-height:1.5;margin-bottom:6px;animation:fadeInUp .3s ease}
+.cs-msg.agent{background:rgba(79,70,229,.08);color:var(--text)}
+.cs-msg.user{background:rgba(0,0,0,.04);color:var(--muted);text-align:right}
+.cs-end-btn{padding:10px 24px;background:rgba(239,68,68,.06);color:#ef4444;border:1px solid rgba(239,68,68,.15);border-radius:12px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;font-family:var(--sans)}
+.cs-end-btn:hover{background:rgba(239,68,68,.12)}
+.cs-post-call{display:none;flex-direction:column;align-items:center;gap:10px;padding:8px 0;animation:fadeInUp .4s ease}
+.cs-post-check{margin-bottom:4px}
+.cs-post-title{font-size:18px;font-weight:800;color:var(--text)}
+.cs-post-sub{font-size:14px;color:var(--muted);text-align:center;line-height:1.5;max-width:300px}
+.cs-post-cta{display:flex;align-items:center;gap:8px;padding:14px 28px;background:var(--blue);color:#fff;border:none;border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;text-decoration:none;margin-top:6px;box-shadow:0 0 20px rgba(79,70,229,.3);font-family:var(--sans)}
+.cs-post-cta:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 4px 24px rgba(79,70,229,.4)}
+.cs-post-retry{background:none;border:1px solid var(--border);color:var(--muted);padding:8px 16px;border-radius:8px;font-size:12px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;margin-top:2px;font-family:var(--sans)}
+.cs-post-retry:hover{border-color:var(--blue);color:var(--blue)}
 
 /* ===== SECTION 2: THE PROOF ===== */
 .proof-section{padding:120px 48px 100px;max-width:920px;margin:0 auto;text-align:center;position:relative}
@@ -243,61 +244,58 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
     <div class="orb-wrap" id="orb-wrap">
       <div class="orb-glow"></div>
       <div class="orb-particle" style="background:rgba(79,70,229,.5)"></div>
-      <div class="orb-particle" style="background:rgba(16,185,129,.5)"></div>
+      <div class="orb-particle" style="background:rgba(59,130,246,.5)"></div>
       <div class="orb-particle" style="background:rgba(79,70,229,.3)"></div>
-      <div class="orb-particle" style="background:rgba(16,185,129,.3)"></div>
-      <div class="orb-particle" style="background:rgba(124,58,237,.4)"></div>
-      <div class="orb-particle" style="background:rgba(129,140,248,.3)"></div>
+      <div class="orb-particle" style="background:rgba(59,130,246,.3)"></div>
+      <div class="orb-particle" style="background:rgba(30,64,175,.4)"></div>
+      <div class="orb-particle" style="background:rgba(96,165,250,.3)"></div>
       <div class="orb-main" id="orb-main">
         <div class="orb-layer orb-layer-1"></div>
         <div class="orb-layer orb-layer-2"></div>
         <div class="orb-layer orb-layer-3"></div>
         <div class="orb-layer orb-layer-4"></div>
-        <div class="orb-logo-center">
+        <div class="orb-logo-center" id="orb-logo-center">
           <img src="https://www.google.com/s2/favicons?domain=konicaminolta.com&sz=128" alt="KM" onerror="this.style.display='none'">
+        </div>
+        <div class="orb-mic-overlay" id="orb-mic-overlay">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
         </div>
       </div>
     </div>
+    <div class="orb-label" id="orb-label">Click to call your agent<span class="orb-label-hint">Live AI voice — 30 seconds</span></div>
 
-    <!-- Unified Voice Widget -->
-    <div class="uw" id="unified-widget">
-      <div class="uw-voice-idle" id="uw-voice-idle">
-        <button class="uw-mic-btn" id="uw-mic-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
-        </button>
-        <div class="uw-mic-label">Call your Konica Minolta agent</div>
-      </div>
-      <div class="uw-connecting" id="uw-connecting" style="display:none">
+    <!-- Call States (below orb) -->
+    <div class="call-state" id="call-state">
+      <div class="cs-connecting" id="cs-connecting">
         <div class="co-spinner"></div>
-        <div class="uw-connecting-text" id="uw-connecting-text">Connecting to Konica Minolta agent...</div>
+        <div class="cs-connecting-text" id="cs-connecting-text">Connecting to Konica Minolta agent...</div>
       </div>
-      <div class="uw-voice-active" id="uw-voice-active">
-        <div class="uw-status-text" id="uw-status">Listening...</div>
-        <div class="uw-waveform" id="uw-waveform">
+      <div class="cs-active" id="cs-active">
+        <div class="cs-status" id="cs-status">Listening...</div>
+        <div class="cs-waveform" id="cs-waveform">
           <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
         </div>
-        <div class="uw-mini-transcript" id="uw-transcript"></div>
-        <button class="uw-end-btn" id="uw-end-btn">
+        <div class="cs-transcript" id="cs-transcript"></div>
+        <button class="cs-end-btn" id="cs-end-btn">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
           End call
         </button>
       </div>
-      <div class="uw-post-call" id="uw-post-call" style="display:none">
-        <div class="uw-post-check">
+      <div class="cs-post-call" id="cs-post-call">
+        <div class="cs-post-check">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         </div>
-        <div class="uw-post-title">That was 30 seconds.</div>
-        <div class="uw-post-sub">Now imagine 10,000 accounts with your real data.</div>
-        <a href="https://cal.com/johnb/30" target="_blank" class="uw-post-cta" id="uw-post-cta">
+        <div class="cs-post-title">That was 30 seconds.</div>
+        <div class="cs-post-sub">Now imagine 10,000 accounts with your real data.</div>
+        <a href="https://cal.com/johnb/30" target="_blank" class="cs-post-cta" id="cs-post-cta">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           Run this on your portfolio
         </a>
-        <button class="uw-post-retry" id="uw-post-retry">
+        <button class="cs-post-retry" id="cs-post-retry">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
           Try another call
         </button>
       </div>
-      <div class="uw-powered">Powered by AgentCollect</div>
     </div>
   </div>
 </section>
@@ -340,10 +338,10 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 <!-- SECTION 3: THE CLOSE -->
 <section class="close-section">
   <div class="rv">
-    <h2 id="close-title">Holly DeSantis owns this.</h2>
-    <p class="close-sub">EVP & CFO — she manages the DLL Finance relationship.</p>
-    <a href="https://cal.com/johnb/30" target="_blank" class="close-cta" onclick="try{gtag('event','book_cta',{page:'konica-v11b'})}catch(e){}">Book a live demo</a>
-    <p class="close-guarantee">If we don't collect, you pay nothing.</p>
+    <h2 id="close-title">Your Konica Minolta agent is 90% ready.</h2>
+    <p class="close-sub">One meeting to connect your data. Then it goes live and starts recovering cash.</p>
+    <a href="https://cal.com/johnb/30" target="_blank" class="close-cta" onclick="try{gtag('event','book_cta',{page:'konica-v11b'})}catch(e){}">Finish setup — book 15 min</a>
+    <p class="close-guarantee">No collection, no fee. Performance-based only.</p>
     <p class="close-footer">Konica Minolta used as example. All contacts from public sources. Powered by AgentCollect.</p>
   </div>
 </section>
@@ -376,7 +374,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   var name = (new URLSearchParams(window.location.search)).get('to');
   if(name){
     var el = document.getElementById('close-title');
-    if(el) el.textContent = name + ' owns this.';
+    if(el) el.textContent = name + ', your agent is 90% ready.';
   }
 })();
 
@@ -390,8 +388,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   fab.addEventListener('click', function(){
     hero.scrollIntoView({behavior:'smooth', block:'start'});
     setTimeout(function(){
-      var btn = document.getElementById('uw-mic-btn');
-      if(btn) btn.click();
+      var orb = document.getElementById('orb-wrap');
+      if(orb) orb.click();
     }, 600);
   });
 
@@ -406,30 +404,32 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   });
 
   // Hide FAB once call starts
-  var widget = document.getElementById('unified-widget');
-  if(widget){
+  var callState = document.getElementById('call-state');
+  if(callState){
     var observer = new MutationObserver(function(){
-      var active = document.getElementById('uw-voice-active');
+      var active = document.getElementById('cs-active');
       if(active && active.classList.contains('visible')){
         fab.classList.remove('visible');
         fabHidden = true;
       }
     });
-    observer.observe(widget, {subtree:true, attributes:true, attributeFilter:['class']});
+    observer.observe(callState, {subtree:true, attributes:true, attributeFilter:['class']});
   }
 })();
 
-// ===== WebRTC Voice Call =====
+// ===== WebRTC Voice Call (2-in-1 Orb) =====
 (function(){
-  var uwVoiceIdle = document.getElementById('uw-voice-idle');
-  var uwConnecting = document.getElementById('uw-connecting');
-  var uwVoiceActive = document.getElementById('uw-voice-active');
-  var uwMicBtn = document.getElementById('uw-mic-btn');
-  var uwEndBtn = document.getElementById('uw-end-btn');
-  var uwStatus = document.getElementById('uw-status');
-  var uwTranscript = document.getElementById('uw-transcript');
-  var uwWaveformEl = document.getElementById('uw-waveform');
-  var uwWaveformBars = uwWaveformEl ? uwWaveformEl.querySelectorAll('span') : [];
+  var orbWrap = document.getElementById('orb-wrap');
+  var orbLabel = document.getElementById('orb-label');
+  var orbLogo = document.getElementById('orb-logo-center');
+  var orbMicOverlay = document.getElementById('orb-mic-overlay');
+  var csConnecting = document.getElementById('cs-connecting');
+  var csActive = document.getElementById('cs-active');
+  var csEndBtn = document.getElementById('cs-end-btn');
+  var csStatus = document.getElementById('cs-status');
+  var csTranscript = document.getElementById('cs-transcript');
+  var csWaveformEl = document.getElementById('cs-waveform');
+  var csWaveformBars = csWaveformEl ? csWaveformEl.querySelectorAll('span') : [];
   var waveformAnimId = null;
   var waveformMode = 'idle';
   var callActive = false;
@@ -437,8 +437,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   var callStartTime = null;
 
   function animateWaveform(){
-    for(var i = 0; i < uwWaveformBars.length; i++){
-      var bar = uwWaveformBars[i];
+    for(var i = 0; i < csWaveformBars.length; i++){
+      var bar = csWaveformBars[i];
       var h;
       if(waveformMode === 'agent') h = 10 + Math.random() * 34;
       else if(waveformMode === 'user') h = 6 + Math.random() * 18;
@@ -456,7 +456,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   function stopWaveformAnim(){
     waveformMode = 'idle';
     if(waveformAnimId){ cancelAnimationFrame(waveformAnimId); waveformAnimId = null; }
-    for(var i = 0; i < uwWaveformBars.length; i++) uwWaveformBars[i].style.height = '4px';
+    for(var i = 0; i < csWaveformBars.length; i++) csWaveformBars[i].style.height = '4px';
   }
 
   function startVoiceCall(){
@@ -464,10 +464,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
     callActive = true;
     callStartTime = Date.now();
 
-    uwVoiceIdle.style.display = 'none';
-    uwConnecting.style.display = 'flex';
-    uwVoiceActive.classList.remove('visible');
-    document.getElementById('uw-connecting-text').textContent = 'Connecting to Konica Minolta agent...';
+    // Hide label, show connecting
+    if(orbLabel) orbLabel.style.display = 'none';
+    if(orbMicOverlay) orbMicOverlay.style.display = 'none';
+    csConnecting.style.display = 'flex';
+    csActive.classList.remove('visible');
 
     var orb = document.getElementById('orb-main');
     if(orb) orb.classList.add('speaking');
@@ -494,10 +495,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 
         retellClient.on('call_started', function(){
           callStartTime = Date.now();
-          uwConnecting.style.display = 'none';
-          uwVoiceActive.classList.add('visible');
-          uwStatus.textContent = 'Your turn — speak now';
+          csConnecting.style.display = 'none';
+          csActive.classList.add('visible');
+          csStatus.textContent = 'Your turn — speak now';
           startWaveformAnim('idle');
+          // Hide logo, show mic on orb during call
+          if(orbLogo) orbLogo.style.opacity = '0';
           try { gtag('event', 'call_started', { company: 'Konica Minolta', page: 'konica-v11b' }); } catch(e){}
         });
 
@@ -509,12 +512,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 
         retellClient.on('agent_start_talking', function(){
           startWaveformAnim('agent');
-          uwStatus.textContent = 'Konica Minolta Agent speaking...';
+          csStatus.textContent = 'Agent speaking...';
         });
 
         retellClient.on('agent_stop_talking', function(){
           startWaveformAnim('user');
-          uwStatus.textContent = 'Your turn — speak now';
+          csStatus.textContent = 'Your turn — speak now';
         });
 
         retellClient.on('update', function(update){
@@ -531,13 +534,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       } catch(err){
         console.error('Voice call error:', err);
         callActive = false;
-        uwConnecting.style.display = 'none';
-        uwVoiceIdle.style.display = '';
-        uwVoiceActive.classList.remove('visible');
+        csConnecting.style.display = 'none';
+        if(orbLabel){ orbLabel.style.display = ''; orbLabel.innerHTML = 'Connection failed — try again<span class="orb-label-hint">Click the orb</span>'; orbLabel.style.color = '#ef4444'; }
+        if(orbMicOverlay) orbMicOverlay.style.display = '';
         if(orb) orb.classList.remove('speaking');
-        var label = document.querySelector('.uw-mic-label');
-        if(label){ label.textContent = 'Connection failed — try again'; label.style.color = '#ef4444'; }
-        setTimeout(function(){ if(label){ label.textContent = 'Call your Konica Minolta agent'; label.style.color = ''; } }, 3000);
+        setTimeout(function(){ if(orbLabel){ orbLabel.innerHTML = 'Click to call your agent<span class="orb-label-hint">Live AI voice — 30 seconds</span>'; orbLabel.style.color = ''; } }, 3000);
       }
     })();
   }
@@ -550,8 +551,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
     }
     if(!last) return;
     var role = last.role === 'agent' ? 'agent' : 'user';
-    uwTranscript.innerHTML = '<div class="uw-mini-msg ' + role + '">' + last.content + '</div>';
-    uwTranscript.scrollTop = uwTranscript.scrollHeight;
+    csTranscript.innerHTML = '<div class="cs-msg ' + role + '">' + last.content + '</div>';
+    csTranscript.scrollTop = csTranscript.scrollHeight;
   }
 
   function endCall(duration){
@@ -560,44 +561,39 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
     stopWaveformAnim();
     var orb = document.getElementById('orb-main');
     if(orb) orb.classList.remove('speaking');
+    if(orbLogo) orbLogo.style.opacity = '1';
 
-    uwStatus.textContent = 'Call ended';
-    var postCall = document.getElementById('uw-post-call');
-    var postTitle = document.querySelector('.uw-post-title');
+    csStatus.textContent = 'Call ended';
+    var postCall = document.getElementById('cs-post-call');
+    var postTitle = document.querySelector('.cs-post-title');
     if(postTitle && duration > 0){
       postTitle.textContent = 'That was ' + duration + ' second' + (duration !== 1 ? 's' : '') + '.';
     }
     setTimeout(function(){
-      uwVoiceActive.classList.remove('visible');
-      uwVoiceIdle.style.display = 'none';
-      uwTranscript.innerHTML = '';
+      csActive.classList.remove('visible');
+      csTranscript.innerHTML = '';
       if(postCall) postCall.style.display = 'flex';
     }, 1500);
   }
 
-  var postRetry = document.getElementById('uw-post-retry');
+  var postRetry = document.getElementById('cs-post-retry');
   if(postRetry) postRetry.addEventListener('click', function(){
-    var postCall = document.getElementById('uw-post-call');
+    var postCall = document.getElementById('cs-post-call');
     if(postCall) postCall.style.display = 'none';
-    uwVoiceIdle.style.display = '';
+    if(orbLabel){ orbLabel.style.display = ''; }
+    if(orbMicOverlay) orbMicOverlay.style.display = '';
   });
 
-  var postCta = document.getElementById('uw-post-cta');
+  var postCta = document.getElementById('cs-post-cta');
   if(postCta) postCta.addEventListener('click', function(){
     try { gtag('event', 'post_call_book_demo', { company: 'Konica Minolta', page: 'konica-v11b' }); } catch(e){}
   });
 
-  if(uwMicBtn) uwMicBtn.addEventListener('click', function(e){
-    e.stopPropagation();
-    startVoiceCall();
-  });
-
-  if(uwEndBtn) uwEndBtn.addEventListener('click', function(e){
+  if(csEndBtn) csEndBtn.addEventListener('click', function(e){
     e.stopPropagation();
     endCall(callStartTime ? Math.round((Date.now() - callStartTime) / 1000) : 0);
   });
 
-  var orbWrap = document.getElementById('orb-wrap');
   if(orbWrap) orbWrap.addEventListener('click', function(){
     if(callActive) return;
     startVoiceCall();
