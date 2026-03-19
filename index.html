@@ -688,41 +688,6 @@
 
 <div class="gradient-divider"></div>
 
-<!-- 5. HOW IT WORKS -->
-<section class="how-section reveal" id="how">
-    <div class="how-inner">
-        <div class="section-label">How it works</div>
-        <h2>Live in 24 hours. Three steps.</h2>
-        <div class="steps-grid">
-            <div class="step-card reveal s1">
-                <div class="step-num">01</div>
-                <div class="step-title">Upload your invoices</div>
-                <div class="step-desc">Drag and drop an Excel file &mdash; or connect your accounting software.</div>
-                <div class="step-logos">
-                    <span class="step-logo-pill">QuickBooks</span>
-                    <span class="step-logo-pill">NetSuite</span>
-                    <span class="step-logo-pill">Xero</span>
-                    <span class="step-logo-pill">Oracle</span>
-                    <span class="step-logo-pill">SAP</span>
-                    <span class="step-logo-pill">SFTP</span>
-                </div>
-            </div>
-            <div class="step-card reveal s2">
-                <div class="step-num">02</div>
-                <div class="step-title">Your agent collects</div>
-                <div class="step-desc">Calls, emails, and dispute resolution. Every message is personalized based on who your debtor is and why they haven't paid.</div>
-            </div>
-            <div class="step-card reveal s3">
-                <div class="step-num">03</div>
-                <div class="step-title">You get paid</div>
-                <div class="step-desc">Direct to your bank account. Same day. Full reconciliation report included.</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div class="gradient-divider"></div>
-
 <!-- 6. OBJECTION KILLERS -->
 <section class="objections-section reveal" id="objections">
     <div class="objections-inner">
@@ -785,6 +750,19 @@
         Book a call with our CEO
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
+</section>
+
+<!-- SOFT EMAIL CTA (scrollers who don't call) -->
+<section style="padding:60px 32px;background:linear-gradient(135deg,rgba(79,70,229,.03),rgba(16,185,129,.03));border-top:1px solid var(--border);border-bottom:1px solid var(--border)" class="reveal">
+    <div style="max-width:520px;margin:0 auto;text-align:center">
+        <div style="font-family:var(--display);font-size:clamp(22px,3vw,28px);font-weight:900;letter-spacing:-.04em;color:var(--text);margin-bottom:8px">Want us to build yours?</div>
+        <p style="font-size:15px;color:var(--text-mid);margin-bottom:24px;line-height:1.6">Drop your email — we'll send a personalized agent preview for your company.</p>
+        <div style="display:flex;gap:8px;max-width:420px;margin:0 auto" id="scroll-email-wrap">
+            <input type="email" id="scroll-email-input" placeholder="you@company.com" autocomplete="email" style="flex:1;min-width:0;padding:14px 18px;border:1.5px solid var(--border);border-radius:12px;font-family:var(--sans);font-size:15px;color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s;background:#fff">
+            <button id="scroll-email-btn" style="padding:14px 22px;background:var(--indigo);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:6px;flex-shrink:0">Get started <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </div>
+        <div style="font-size:12px;color:var(--text-dim);margin-top:10px">No spam. No signup. Just your agent.</div>
+    </div>
 </section>
 
 <!-- FULL-SCREEN CALL OVERLAY -->
@@ -2405,6 +2383,43 @@
     if (exitPopup) exitPopup.addEventListener('click', function(e) {
         if (e.target === exitPopup) exitPopup.style.display = 'none';
     });
+
+    // Scroll email CTA (soft capture for scrollers)
+    var scrollEmailBtn = document.getElementById('scroll-email-btn');
+    var scrollEmailInput = document.getElementById('scroll-email-input');
+    if (scrollEmailBtn && scrollEmailInput) {
+        scrollEmailInput.addEventListener('focus', function() {
+            scrollEmailInput.style.borderColor = 'var(--indigo)';
+            scrollEmailInput.style.boxShadow = '0 0 0 3px rgba(79,70,229,.08)';
+        });
+        scrollEmailInput.addEventListener('blur', function() {
+            scrollEmailInput.style.borderColor = '';
+            scrollEmailInput.style.boxShadow = '';
+        });
+        function submitScrollEmail() {
+            var email = scrollEmailInput.value.trim();
+            if (!email || email.indexOf('@') < 1 || email.indexOf('.') <= email.indexOf('@')) {
+                scrollEmailInput.style.borderColor = 'var(--red)';
+                setTimeout(function() { scrollEmailInput.style.borderColor = ''; }, 1800);
+                return;
+            }
+            try { localStorage.setItem('ac_lead_email', email); } catch(e) {}
+            try {
+                fetch('https://backend.widr.app/api/v1/demo/capture-lead', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email, domain: currentDomain || '', company: currentCompany ? currentCompany.name : '', event: 'scroll_capture' })
+                }).catch(function() {});
+            } catch(e) {}
+            try { gtag('event', 'email_captured', { domain: currentDomain || '', method: 'scroll' }); } catch(e) {}
+            var wrap = document.getElementById('scroll-email-wrap');
+            if (wrap) {
+                wrap.innerHTML = '<div style="display:flex;align-items:center;gap:8px;justify-content:center;padding:14px 0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span style="color:var(--green-dark);font-weight:600;font-size:15px">We\'ll reach out shortly.</span></div>';
+            }
+        }
+        scrollEmailBtn.addEventListener('click', submitScrollEmail);
+        scrollEmailInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') submitScrollEmail(); });
+    }
 
     // Bottom input focus styling
     var bottomWrap = document.getElementById('bottom-input-wrap');
