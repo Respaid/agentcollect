@@ -167,6 +167,9 @@
         .bci-contact-name{font-size:12px;font-weight:600;color:var(--text);letter-spacing:-.01em}
         .bci-contact-title{font-size:10px;color:var(--text-muted)}
         .bci-contact-badge{font-size:9px;font-weight:600;padding:2px 6px;border-radius:5px;background:rgba(16,185,129,.08);color:var(--green-dark);white-space:nowrap;flex-shrink:0}
+        .bci-skeleton-bar{height:10px;border-radius:5px;background:linear-gradient(90deg,rgba(79,70,229,.08) 0%,rgba(79,70,229,.15) 50%,rgba(79,70,229,.08) 100%);background-size:200% 100%}
+        .bci-skeleton-avatar{display:flex;align-items:center;justify-content:center}
+        @keyframes skeletonPulse{0%,100%{opacity:.4}50%{opacity:1}}
 
         /* Email gate card */
         .bci-gate{border:1.5px dashed rgba(79,70,229,.3);border-radius:16px;padding:36px 32px;background:linear-gradient(135deg,rgba(79,70,229,.02),rgba(79,70,229,.04));text-align:center}
@@ -1754,6 +1757,17 @@
         var contacts = getContactsForDomain(data, domain);
         var avatarColors = ['#4F46E5', '#10B981', '#F59E0B'];
         var rowsHtml = contacts.map(function(c, i) {
+            // Skeleton mode — pulsing bars + rotating thinking text
+            if (c.name === '__skeleton__') {
+                return '<div class="bci-contact-row">' +
+                    '<div class="bci-avatar bci-skeleton-avatar" style="background:' + avatarColors[i % 3] + '22;animation:skeletonPulse 1.5s ease-in-out infinite ' + (i * 0.2) + 's"></div>' +
+                    '<div class="bci-contact-info">' +
+                    '<div class="bci-skeleton-bar" style="width:' + (60 + i * 15) + '%;animation:skeletonPulse 1.5s ease-in-out infinite ' + (i * 0.15) + 's"></div>' +
+                    '<div class="bci-thinking-text" style="font-size:10px;color:var(--indigo);opacity:1;transition:opacity .2s">' + c.title + '</div>' +
+                    '</div>' +
+                    '<span class="bci-contact-badge" style="opacity:.4">In queue</span>' +
+                    '</div>';
+            }
             var initials = c.name.split(' ').map(function(w) { return w[0]; }).join('').toUpperCase().slice(0, 2);
             var avatarHtml = c.photo
                 ? '<img class="bci-avatar" src="' + c.photo + '" alt="' + c.name + '" onerror="this.outerHTML=\'<div class=\\\'bci-avatar\\\' style=\\\'background:' + avatarColors[i % 3] + ';display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:10px;font-weight:800;color:#fff\\\'>' + initials + '</div>\'">'
@@ -1776,20 +1790,56 @@
         );
     }
 
+    // Dynamic "thinking" phrases for contact search — rotates like GPT/Grok thinking
+    var contactThinkingPhrases = [
+        'Scanning org chart...', 'Finding AP contacts...', 'Cross-referencing LinkedIn...',
+        'Checking finance team...', 'Verifying email addresses...', 'Analyzing payment history...',
+        'Mapping decision makers...', 'Identifying controllers...', 'Searching AR department...',
+        'Enriching contact data...', 'Validating phone numbers...', 'Matching titles to roles...'
+    ];
+    var contactThinkingInterval = null;
+
+    function startContactThinking() {
+        var thinkingEls = document.querySelectorAll('.bci-thinking-text');
+        if (!thinkingEls.length) return;
+        var idx = 0;
+        contactThinkingInterval = setInterval(function() {
+            idx = (idx + 1) % contactThinkingPhrases.length;
+            thinkingEls.forEach(function(el, i) {
+                var phrase = contactThinkingPhrases[(idx + i * 4) % contactThinkingPhrases.length];
+                el.style.opacity = '0';
+                setTimeout(function() {
+                    el.textContent = phrase;
+                    el.style.opacity = '1';
+                }, 200);
+            });
+        }, 1800);
+    }
+
+    function stopContactThinking() {
+        if (contactThinkingInterval) {
+            clearInterval(contactThinkingInterval);
+            contactThinkingInterval = null;
+        }
+    }
+
     function getContactsForDomain(data, domain) {
         // If API has already returned real contacts, use them
         if (data._apiContacts && data._apiContacts.length > 0) {
+            stopContactThinking();
             return data._apiContacts;
         }
-        // Generic placeholder contacts shown instantly while API loads
+        // Skeleton placeholders with dynamic "thinking" text
+        setTimeout(startContactThinking, 100);
         return [
-            { name: 'Loading...', title: 'Searching finance contacts', photo: null },
-            { name: 'Loading...', title: 'Searching AR contacts', photo: null },
-            { name: 'Loading...', title: 'Searching controllers', photo: null }
+            { name: '__skeleton__', title: contactThinkingPhrases[0], photo: null },
+            { name: '__skeleton__', title: contactThinkingPhrases[4], photo: null },
+            { name: '__skeleton__', title: contactThinkingPhrases[8], photo: null }
         ];
     }
 
     function updateContactsCardWithRealData(contacts, companyName) {
+        stopContactThinking();
         var contactsCard = document.getElementById('bci-contacts');
         if (!contactsCard) return;
         var avatarColors = ['#4F46E5', '#10B981', '#F59E0B'];
