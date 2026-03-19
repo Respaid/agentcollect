@@ -184,6 +184,48 @@
         /* ========== DEMO AREA (inside build card after animation) ========== */
         .demo-area{display:none;margin-top:14px}
         .demo-area.visible{display:block;animation:fadeInUp .5s ease}
+
+        /* ========== ORB ========== */
+        .orb-zone{background:linear-gradient(180deg,var(--bg) 0%,#e8e6f0 20%,#1a1a2e 45%,#0a0a1a 55%,#1a1a2e 80%,#e8e6f0 95%,var(--bg) 100%);border-radius:24px;padding:48px 20px 40px;margin-bottom:20px;text-align:center}
+        .orb-title{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:4px}
+        .orb-title img{height:24px;width:auto;max-width:100px;object-fit:contain;filter:brightness(0) invert(1)}
+        .orb-title span{font-family:var(--display);font-weight:900;font-size:20px;color:#fff}
+        .orb-sub{font-size:14px;color:rgba(255,255,255,.5);margin-bottom:36px}
+        .orb-wrap{position:relative;width:180px;height:180px;margin:0 auto 32px;cursor:pointer}
+        .orb-glow{position:absolute;inset:-30px;border-radius:50%;animation:orbGlowPulse 4s ease-in-out infinite}
+        .orb-main{position:relative;width:180px;height:180px;border-radius:50%;overflow:hidden;animation:orbDrift 6s ease-in-out infinite;transition:transform .3s,box-shadow .3s}
+        .orb-wrap:hover .orb-main{transform:scale(1.06)}
+        .orb-wrap:active .orb-main{transform:scale(.95)}
+        .orb-main.speaking{animation:orbDrift 6s ease-in-out infinite,orbPulseSpeak .8s ease-in-out infinite}
+        .orb-layer{position:absolute;inset:0;border-radius:50%}
+        .orb-layer-1{animation:orbSpin 8s linear infinite}
+        .orb-layer-2{animation:orbSpin 12s linear infinite reverse;mix-blend-mode:soft-light}
+        .orb-layer-3{background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.25) 0%,transparent 50%)}
+        .orb-layer-4{background:radial-gradient(circle at 50% 110%,rgba(0,0,0,.4) 0%,transparent 60%)}
+        .orb-logo-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:10}
+        .orb-logo-center img{width:52px;height:52px;object-fit:contain;border-radius:12px;background:rgba(255,255,255,.9);padding:7px;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:transform .3s}
+        .orb-wrap:hover .orb-logo-center img{transform:scale(1.05)}
+        .orb-particle{position:absolute;width:4px;height:4px;border-radius:50%;animation:orbParticle 4s ease-in-out infinite}
+        .orb-particle:nth-child(1){top:-16px;left:30%;animation-delay:0s}
+        .orb-particle:nth-child(2){top:20%;right:-12px;animation-delay:1s}
+        .orb-particle:nth-child(3){bottom:-12px;left:40%;animation-delay:2s}
+        .orb-particle:nth-child(4){top:40%;left:-16px;animation-delay:.5s}
+        .orb-bubble{position:absolute;top:16px;right:-40px;background:rgba(255,255,255,.1);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:7px 13px;font-size:12px;color:rgba(255,255,255,.75);white-space:nowrap;animation:orbBubble 3s ease-in-out infinite}
+        .orb-btns{display:flex;gap:12px;justify-content:center;margin-bottom:12px;flex-wrap:wrap}
+        .orb-btn-voice{display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-family:var(--display);font-weight:700;font-size:14px;cursor:pointer;border:none;background:#fff;color:var(--text);transition:all .2s;box-shadow:0 4px 20px rgba(255,255,255,.1)}
+        .orb-btn-voice:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,255,255,.15)}
+        .orb-btn-voice svg{width:18px;height:18px}
+        .orb-btn-chat{display:flex;align-items:center;gap:8px;padding:14px 20px;border-radius:12px;font-family:var(--display);font-weight:700;font-size:14px;cursor:pointer;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);color:rgba(255,255,255,.7);transition:all .2s}
+        .orb-btn-chat:hover{border-color:rgba(255,255,255,.3);color:#fff}
+        .orb-btn-chat svg{width:18px;height:18px}
+        .orb-powered{font-size:11px;color:rgba(255,255,255,.2)}
+        @keyframes orbSpin{0%{transform:rotate(0deg) scale(1.2)}100%{transform:rotate(360deg) scale(1.2)}}
+        @keyframes orbDrift{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+        @keyframes orbPulseSpeak{0%,100%{transform:scale(1) translateY(0)}25%{transform:scale(1.03) translateY(-6px)}75%{transform:scale(.98) translateY(-6px)}}
+        @keyframes orbGlowPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
+        @keyframes orbBubble{0%,100%{opacity:.7;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+        @keyframes orbParticle{0%,100%{opacity:0;transform:translateY(0) scale(1)}25%{opacity:1}50%{opacity:.8;transform:translateY(-18px) scale(1.4)}75%{opacity:.3}}
+        @media(max-width:480px){.orb-bubble{display:none}.orb-zone{padding:36px 16px 32px}}
         @keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 
         /* Analysis banner */
@@ -193,7 +235,7 @@
         .analysis-banner-item{font-size:14px;color:var(--text-mid);line-height:1.5;display:flex;align-items:flex-start;gap:8px}
         .analysis-banner-item::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:#F59E0B;margin-top:7px;flex-shrink:0}
 
-        /* Split screen demo */
+        /* Split screen demo (legacy, hidden — orb replaced it) */
         .demo-split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 
         /* Demo panel (left + right cards) */
@@ -583,6 +625,43 @@
 
         <!-- Demo area (appears after build animation completes) -->
         <div class="demo-area" id="demo-area">
+            <!-- ORB ZONE — gradient transition with animated orb -->
+            <div class="orb-zone" id="orb-zone">
+                <div class="orb-title">
+                    <img id="orb-brand-logo" src="" alt="" onerror="this.style.display='none'">
+                    <span id="orb-brand-name">Collection Agent</span>
+                </div>
+                <div class="orb-sub">Sarah is ready to engage your debtors.</div>
+                <div class="orb-wrap" id="orb-wrap">
+                    <div class="orb-glow" id="orb-glow" style="background:radial-gradient(circle,rgba(79,70,229,.2) 0%,transparent 70%)"></div>
+                    <div class="orb-particle" style="background:rgba(79,70,229,.5)"></div>
+                    <div class="orb-particle" style="background:rgba(16,185,129,.5)"></div>
+                    <div class="orb-particle" style="background:rgba(79,70,229,.3)"></div>
+                    <div class="orb-particle" style="background:rgba(16,185,129,.3)"></div>
+                    <div class="orb-main" id="orb-main" style="box-shadow:0 0 60px rgba(79,70,229,.3),0 0 120px rgba(79,70,229,.1),inset 0 0 50px rgba(0,0,0,.3)">
+                        <div class="orb-layer orb-layer-1" id="orb-grad1" style="background:conic-gradient(from 0deg,#4F46E5,#7C3AED,#3730A3,#818CF8,#4F46E5)"></div>
+                        <div class="orb-layer orb-layer-2" id="orb-grad2" style="background:conic-gradient(from 180deg,rgba(79,70,229,.8),rgba(124,58,237,.5),rgba(55,48,163,.6),rgba(129,140,248,.4),rgba(79,70,229,.8))"></div>
+                        <div class="orb-layer orb-layer-3"></div>
+                        <div class="orb-layer orb-layer-4"></div>
+                        <div class="orb-logo-center" id="orb-logo-center">
+                            <img id="orb-logo-img" src="" alt="" onerror="this.outerHTML='<svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;white&quot; stroke-width=&quot;1.5&quot; style=&quot;width:36px;height:36px;opacity:.8&quot;><path d=&quot;M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2&quot;/><circle cx=&quot;12&quot; cy=&quot;7&quot; r=&quot;4&quot;/></svg>'">
+                        </div>
+                    </div>
+                    <div class="orb-bubble" id="orb-bubble">Hi, I'm Sarah...</div>
+                </div>
+                <div class="orb-btns">
+                    <button class="orb-btn-voice" id="orb-voice-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+                        Talk to Sarah
+                    </button>
+                    <button class="orb-btn-chat" id="orb-chat-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                        Test a dispute
+                    </button>
+                </div>
+                <div class="orb-powered">Uses your microphone · Powered by AgentCollect</div>
+            </div>
+
             <!-- Analysis banner: why they don't pay -->
             <div class="analysis-banner" id="analysis-banner">
                 <div class="analysis-banner-title">
@@ -592,71 +671,58 @@
                 <div class="analysis-banner-items" id="analysis-items"></div>
             </div>
 
-            <!-- Split screen: two big cards -->
-            <div class="demo-split">
-                <!-- LEFT: Test a dispute (text/email) -->
-                <div class="demo-panel demo-panel-left" id="panel-left">
-                    <div class="demo-panel-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                    </div>
-                    <!-- Default teaser view -->
-                    <div id="panel-left-teaser">
-                        <div class="demo-panel-heading">Test a dispute</div>
-                        <div class="demo-panel-desc" id="panel-left-desc">See how your agent handles this.</div>
-                        <div class="demo-panel-teaser" id="panel-left-teaser-text"></div>
-                        <button class="demo-panel-cta" id="panel-left-cta">
-                            See how your agent handles this
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </button>
-                    </div>
-                    <!-- Inline dispute response view (replaces teaser) -->
-                    <div class="dispute-inline" id="dispute-inline">
-                        <button class="dispute-inline-back" id="dispute-back">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                            Back to disputes
-                        </button>
-                        <div class="response-area" id="response-area">
-                            <div class="response-transcript" id="response-transcript"></div>
-                            <div class="response-reasoning" id="response-reasoning">
-                                <div class="reasoning-label">Agent reasoning</div>
-                            </div>
-                        </div>
-                        <button class="dispute-try-another" id="dispute-try-another">
-                            Try another dispute
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </button>
-                    </div>
+            <!-- Dispute panel (shown when "Test a dispute" clicked) -->
+            <div class="demo-panel demo-panel-left" id="panel-left" style="display:none">
+                <div class="demo-panel-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                 </div>
+                <div id="panel-left-teaser">
+                    <div class="demo-panel-heading">Test a dispute</div>
+                    <div class="demo-panel-desc" id="panel-left-desc">See how your agent handles this.</div>
+                    <div class="demo-panel-teaser" id="panel-left-teaser-text"></div>
+                    <button class="demo-panel-cta" id="panel-left-cta">
+                        See how your agent handles this
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+                <div class="dispute-inline" id="dispute-inline">
+                    <button class="dispute-inline-back" id="dispute-back">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        Back to disputes
+                    </button>
+                    <div class="response-area" id="response-area">
+                        <div class="response-transcript" id="response-transcript"></div>
+                        <div class="response-reasoning" id="response-reasoning">
+                            <div class="reasoning-label">Agent reasoning</div>
+                        </div>
+                    </div>
+                    <button class="dispute-try-another" id="dispute-try-another">
+                        Try another dispute
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
 
-                <!-- RIGHT: Talk to your agent (voice/call) -->
-                <div class="demo-panel demo-panel-right" id="panel-right">
-                    <div class="demo-panel-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-                    </div>
-                    <!-- Default view -->
-                    <div id="panel-right-default">
-                        <div class="demo-panel-heading">Talk to your agent</div>
-                        <div class="demo-panel-desc" id="panel-right-desc">Talk to your agent live.</div>
-                        <button class="demo-panel-cta" id="panel-right-cta">
-                            Start conversation
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </button>
-                        <div class="demo-panel-sub">Uses your browser microphone</div>
-                    </div>
-                    <!-- Call UI (replaces default when calling) -->
-                    <div class="call-ui" id="call-ui">
-                        <div class="call-status" id="call-status">Connecting...</div>
-                        <div class="call-sub" id="call-sub">Setting up your call</div>
-                        <div class="call-waveform" id="call-waveform" style="display:none">
-                            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-                        </div>
-                        <button class="call-end-btn" id="call-end-btn" style="display:none">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                            End call
-                        </button>
-                        <div class="call-transcript" id="call-live-transcript"></div>
-                    </div>
+            <!-- Hidden voice call panel (kept for JS compatibility) -->
+            <div class="demo-panel demo-panel-right" id="panel-right" style="display:none">
+                <div id="panel-right-default">
+                    <div class="demo-panel-heading">Talk to your agent</div>
+                    <div class="demo-panel-desc" id="panel-right-desc">Talk to your agent live.</div>
+                    <button class="demo-panel-cta" id="panel-right-cta" style="display:none">Start conversation</button>
                 </div>
+                <div class="call-ui" id="call-ui">
+                    <div class="call-status" id="call-status">Connecting...</div>
+                    <div class="call-sub" id="call-sub">Setting up your call</div>
+                    <div class="call-waveform" id="call-waveform" style="display:none">
+                        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                    <button class="call-end-btn" id="call-end-btn" style="display:none">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                        End call
+                    </button>
+                    <div class="call-transcript" id="call-live-transcript"></div>
+                </div>
+            </div>
             </div>
         </div>
     </div>
@@ -1344,6 +1410,27 @@
     // ===== BACKEND API INTEGRATION =====
     var apiPending = false;
 
+    // Server-side funnel tracking (fire and forget)
+    function trackEvent(action, extra) {
+        var email = '';
+        try { email = localStorage.getItem('ac_lead_email') || ''; } catch(e) {}
+        if (!email && !currentDomain) return; // nothing to track yet
+        var payload = {
+            action: action,
+            domain: currentDomain || '',
+            company: (currentCompany && currentCompany.name) || ''
+        };
+        if (extra) Object.keys(extra).forEach(function(k) { payload[k] = extra[k]; });
+        if (email) payload.email = email;
+        try {
+            fetch('https://backend.widr.app/api/v1/demo/capture-lead', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ event: action, domain: payload.domain, company: payload.company, email: email || undefined })
+            }).catch(function() {});
+        } catch(e) {}
+    }
+
     function fetchCompanyFromAPI(domain) {
         apiPending = true;
         var controller = new AbortController();
@@ -1410,6 +1497,22 @@
                 // Only replace disputes if domain has no hardcoded rich data (API disputes are simpler)
                 var hasHardcodedData = !!COMPANY_DATA[domain];
                 if (newDisputes.length > 0 && !hasHardcodedData) updated.disputes = newDisputes;
+            }
+
+            // Update contacts from API (real enriched data replaces hardcoded)
+            if (apiData.contacts && apiData.contacts.length > 0) {
+                updated._apiContacts = apiData.contacts.map(function(c) {
+                    return {
+                        name: c.name,
+                        title: c.title || 'Finance',
+                        photo: c.photo_url || null
+                    };
+                });
+                // Update the contacts card if already visible
+                var contactsCard = document.getElementById('bci-contacts');
+                if (contactsCard) {
+                    updateContactsCardWithRealData(updated._apiContacts, updated.name);
+                }
             }
 
             // Update the current company data
@@ -1586,6 +1689,7 @@
                         setTimeout(function() {
                             animateProgressTo(73, 1800, 'Finding who to call...', function() {
                                 addContactsCard(data, domain);
+                                trackEvent('cards_shown');
 
                                 // Skip gate — go straight to 100% and demo
                                 setTimeout(function() {
@@ -1593,6 +1697,7 @@
                                         buildTitle.textContent = data.name + ' collection agent';
                                         // Track funnel event
                                         try { gtag('event', 'demo_ready', { domain: currentDomain, company: data.name }); } catch(e) {}
+                                        trackEvent('demo_ready');
                                         // Go straight to demo — no "ready" card needed
                                         setTimeout(function() { showDemo(data); }, 300);
                                     });
@@ -1662,7 +1767,7 @@
             '<div class="bci-inner">' +
             '<div class="bci-header">' +
             '<div class="bci-icon green"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>' +
-            '<div class="bci-title">Decision Makers Found</div>' +
+            '<div class="bci-title">Your ' + (currentCompany ? currentCompany.name : '') + ' team</div>' +
             '<span class="bci-badge live">' + contacts.length + ' contacts</span>' +
             '</div>' +
             rowsHtml +
@@ -1671,34 +1776,45 @@
     }
 
     function getContactsForDomain(data, domain) {
-        var known = {
-            'microsoft.com': [
-                { name: 'Neil Doyle', title: 'VP Finance — Microsoft', photo: 'https://randomuser.me/api/portraits/men/32.jpg' },
-                { name: 'Shane Hood', title: 'Head of AR Operations', photo: 'https://randomuser.me/api/portraits/men/45.jpg' },
-                { name: 'David Chen', title: 'Controller, Enterprise', photo: 'https://randomuser.me/api/portraits/men/67.jpg' }
-            ],
-            'dell.com': [
-                { name: 'M. Rodriguez', title: 'AP Director — Dell', photo: 'https://randomuser.me/api/portraits/men/22.jpg' },
-                { name: 'James Porter', title: 'Head of Collections', photo: 'https://randomuser.me/api/portraits/men/52.jpg' },
-                { name: 'Sarah Williams', title: 'Finance Manager', photo: 'https://randomuser.me/api/portraits/women/28.jpg' }
-            ],
-            'uber.com': [
-                { name: 'David Majors', title: 'Head of Order to Cash', photo: 'https://randomuser.me/api/portraits/men/55.jpg' },
-                { name: 'Rachel Kim', title: 'AR Operations Lead', photo: 'https://randomuser.me/api/portraits/women/37.jpg' },
-                { name: 'Kim Torres', title: 'Senior AR Analyst', photo: 'https://randomuser.me/api/portraits/women/63.jpg' }
-            ],
-            'fedex.com': [
-                { name: 'Kevin Johnson', title: 'VP Revenue Operations', photo: 'https://randomuser.me/api/portraits/men/41.jpg' },
-                { name: 'Marcus Webb', title: 'Head of Collections', photo: 'https://randomuser.me/api/portraits/men/71.jpg' },
-                { name: 'Lisa Chen', title: 'AR Manager', photo: 'https://randomuser.me/api/portraits/women/51.jpg' }
-            ]
-        };
-        if (known[domain]) return known[domain];
+        // If API has already returned real contacts, use them
+        if (data._apiContacts && data._apiContacts.length > 0) {
+            return data._apiContacts;
+        }
+        // Generic placeholder contacts shown instantly while API loads
         return [
-            { name: 'John Mitchell', title: 'VP Finance — ' + data.name, photo: 'https://randomuser.me/api/portraits/men/75.jpg' },
-            { name: 'Sarah Thompson', title: 'Head of Accounts Receivable', photo: 'https://randomuser.me/api/portraits/women/44.jpg' },
-            { name: 'Michael Chen', title: 'Controller', photo: 'https://randomuser.me/api/portraits/men/18.jpg' }
+            { name: 'Loading...', title: 'Searching finance contacts', photo: null },
+            { name: 'Loading...', title: 'Searching AR contacts', photo: null },
+            { name: 'Loading...', title: 'Searching controllers', photo: null }
         ];
+    }
+
+    function updateContactsCardWithRealData(contacts, companyName) {
+        var contactsCard = document.getElementById('bci-contacts');
+        if (!contactsCard) return;
+        var avatarColors = ['#4F46E5', '#10B981', '#F59E0B'];
+        var rowsHtml = contacts.slice(0, 3).map(function(c, i) {
+            var initials = c.name.split(' ').map(function(w) { return w[0]; }).join('').toUpperCase().slice(0, 2);
+            var avatarHtml = c.photo
+                ? '<img class="bci-avatar" src="' + c.photo + '" alt="' + c.name + '" onerror="this.outerHTML=\'<div class=\\\'bci-avatar\\\' style=\\\'background:' + avatarColors[i % 3] + ';display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:10px;font-weight:800;color:#fff\\\'>' + initials + '</div>\'">'
+                : '<div class="bci-avatar" style="background:' + avatarColors[i % 3] + ';display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:10px;font-weight:800;color:#fff">' + initials + '</div>';
+            return '<div class="bci-contact-row">' +
+                avatarHtml +
+                '<div class="bci-contact-info"><div class="bci-contact-name">' + c.name + '</div><div class="bci-contact-title">' + c.title + '</div></div>' +
+                '<span class="bci-contact-badge">In queue</span>' +
+                '</div>';
+        }).join('');
+
+        // Smooth update with shimmer
+        var inner = contactsCard.querySelector('.bci-inner');
+        if (inner) {
+            inner.innerHTML =
+                '<div class="bci-header">' +
+                '<div class="bci-icon green"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>' +
+                '<div class="bci-title">Your ' + (currentCompany ? currentCompany.name : '') + ' team</div>' +
+                '<span class="bci-badge live">' + contacts.length + ' contacts</span>' +
+                '</div>' +
+                rowsHtml;
+        }
     }
 
     function addEmailGateCard(data) {
@@ -1815,10 +1931,55 @@
         // Show demo area with animation
         demoArea.classList.add('visible');
 
+        // Initialize orb with company branding
+        initOrb(currentCompany, currentDomain);
+
         // Scroll build card into good view
         setTimeout(function() {
             buildSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 200);
+    }
+
+    function initOrb(data, domain) {
+        var orbBrandName = document.getElementById('orb-brand-name');
+        var orbBrandLogo = document.getElementById('orb-brand-logo');
+        var orbLogoImg = document.getElementById('orb-logo-img');
+        var orbBubble = document.getElementById('orb-bubble');
+
+        if (data && data.name) {
+            orbBrandName.textContent = data.name + ' Collection Agent';
+            orbBubble.textContent = "Hi, I'm Sarah from " + data.name + "...";
+        }
+
+        // Set brand logo
+        if (domain) {
+            var logoUrl = 'https://cdn.brandfetch.io/' + domain + '/w/512/h/80/logo';
+            orbBrandLogo.src = logoUrl;
+            orbBrandLogo.style.display = '';
+
+            // Set orb center icon
+            var iconUrl = 'https://unavatar.io/' + domain;
+            orbLogoImg.src = iconUrl;
+        }
+
+        // Set brand colors if available from API
+        if (data && data._brandColors && data._brandColors.length >= 2) {
+            var c = data._brandColors;
+            var grad1 = 'conic-gradient(from 0deg,' + c.join(',') + ',' + c[0] + ')';
+            var grad2 = 'conic-gradient(from 180deg,' + c.map(function(color) { return color + 'cc'; }).join(',') + ',' + c[0] + 'cc)';
+            document.getElementById('orb-grad1').style.background = grad1;
+            document.getElementById('orb-grad2').style.background = grad2;
+
+            // Update glow and particles
+            document.getElementById('orb-glow').style.background = 'radial-gradient(circle,' + c[0] + '33 0%,transparent 70%)';
+            var particles = document.querySelectorAll('.orb-particle');
+            particles.forEach(function(p, i) {
+                p.style.background = (c[i % c.length] || c[0]) + '80';
+            });
+
+            // Update orb shadow
+            document.getElementById('orb-main').style.boxShadow = '0 0 60px ' + c[0] + '4d,0 0 120px ' + c[0] + '1a,inset 0 0 50px rgba(0,0,0,.3)';
+        }
     }
 
     function playDispute(disputeIndex) {
@@ -2126,6 +2287,7 @@
             });
 
             retellClient.on('call_ended', function() {
+                trackEvent('call_completed');
                 endCallUI('Call ended');
             });
 
@@ -2308,6 +2470,36 @@
     panelRightCta.addEventListener('click', function(e) {
         e.stopPropagation();
         if (callActive) return;
+        startVoiceCall();
+    });
+
+    // Orb voice button
+    document.getElementById('orb-voice-btn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (callActive) return;
+        // Pulse the orb
+        var orb = document.getElementById('orb-main');
+        orb.classList.add('speaking');
+        startVoiceCall();
+    });
+
+    // Orb chat/dispute button
+    document.getElementById('orb-chat-btn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        var panelL = document.getElementById('panel-left');
+        if (panelL.style.display === 'none') {
+            panelL.style.display = '';
+            panelL.style.animation = 'fadeInUp .4s ease';
+            // Scroll to dispute panel
+            setTimeout(function() { panelL.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 100);
+        }
+    });
+
+    // Orb click = voice call
+    document.getElementById('orb-wrap').addEventListener('click', function() {
+        if (callActive) return;
+        var orb = document.getElementById('orb-main');
+        orb.classList.add('speaking');
         startVoiceCall();
     });
 
