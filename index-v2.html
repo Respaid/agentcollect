@@ -2047,6 +2047,7 @@
     }
 
     function endCallUI(message) {
+        if (document.getElementById('call-summary')) return; // guard: don't double-fire
         callActive = false;
         if (retellClient) {
             try { retellClient.stopCall(); } catch(e) {}
