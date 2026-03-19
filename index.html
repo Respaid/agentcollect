@@ -2117,8 +2117,7 @@
     var uwWaveformBars = uwWaveformEl ? uwWaveformEl.querySelectorAll('span') : [];
     var waveformAnimId = null;
     var waveformMode = 'idle';
-    var chatDisputeIdx = 0;
-    var chatTranscriptIdx = 0;
+    // chatDisputeIdx/chatTranscriptIdx removed — chat now uses real API
 
     // Tab switching
     function uwSwitchMode(mode) {
@@ -2372,25 +2371,12 @@
             removeTyping();
             var reply = data.reply || "I'd be happy to help resolve this. Could you tell me more about your situation?";
             addChatMsg('agent', reply);
-            chatHistory.push({ role: 'agent', content: reply });
+            chatHistory.push({ role: 'assistant', content: reply });
         })
         .catch(function() {
             removeTyping();
-            // Fallback to canned dispute responses if API fails
-            var d = currentCompany;
-            if (d && d.disputes && d.disputes.length) {
-                var dispute = d.disputes[chatDisputeIdx % d.disputes.length];
-                var agentLines = dispute.transcript.filter(function(l) { return l.speaker === 'agent'; });
-                var responseLine = agentLines[chatTranscriptIdx % agentLines.length];
-                chatTranscriptIdx++;
-                if (chatTranscriptIdx >= agentLines.length) { chatTranscriptIdx = 0; chatDisputeIdx++; }
-                addChatMsg('agent', responseLine.text);
-                chatHistory.push({ role: 'agent', content: responseLine.text });
-            } else {
-                var fallback = "I understand your concern. Let me look into this and find the best resolution for you.";
-                addChatMsg('agent', fallback);
-                chatHistory.push({ role: 'agent', content: fallback });
-            }
+            var fallback = "I'm having trouble connecting right now. Please try again in a moment.";
+            addChatMsg('agent', fallback);
         });
     }
 
