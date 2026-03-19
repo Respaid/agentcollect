@@ -644,7 +644,8 @@
                         <div class="orb-layer orb-layer-3"></div>
                         <div class="orb-layer orb-layer-4"></div>
                         <div class="orb-logo-center" id="orb-logo-center">
-                            <img id="orb-logo-img" src="" alt="" onerror="this.outerHTML='<svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;white&quot; stroke-width=&quot;1.5&quot; style=&quot;width:36px;height:36px;opacity:.8&quot;><path d=&quot;M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2&quot;/><circle cx=&quot;12&quot; cy=&quot;7&quot; r=&quot;4&quot;/></svg>'">
+                            <img id="orb-logo-img" alt="" style="display:none">
+                            <svg id="orb-logo-fallback" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" style="width:36px;height:36px;opacity:.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                         </div>
                     </div>
                     <div class="orb-bubble" id="orb-bubble">Hi, I'm Sarah...</div>
@@ -1768,7 +1769,7 @@
             '<div class="bci-header">' +
             '<div class="bci-icon green"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>' +
             '<div class="bci-title">Your ' + (currentCompany ? currentCompany.name : '') + ' team</div>' +
-            '<span class="bci-badge live">' + contacts.length + ' contacts</span>' +
+            '<span class="bci-badge live">' + contacts.length + (contacts.length === 1 ? ' contact' : ' contacts') + '</span>' +
             '</div>' +
             rowsHtml +
             '</div>'
@@ -1811,7 +1812,7 @@
                 '<div class="bci-header">' +
                 '<div class="bci-icon green"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>' +
                 '<div class="bci-title">Your ' + (currentCompany ? currentCompany.name : '') + ' team</div>' +
-                '<span class="bci-badge live">' + contacts.length + ' contacts</span>' +
+                '<span class="bci-badge live">' + contacts.length + (contacts.length === 1 ? ' contact' : ' contacts') + '</span>' +
                 '</div>' +
                 rowsHtml;
         }
@@ -1968,6 +1969,7 @@
         var orbBrandName = document.getElementById('orb-brand-name');
         var orbBrandLogo = document.getElementById('orb-brand-logo');
         var orbLogoImg = document.getElementById('orb-logo-img');
+        var orbLogoFallback = document.getElementById('orb-logo-fallback');
         var orbBubble = document.getElementById('orb-bubble');
 
         if (data && data.name) {
@@ -1975,15 +1977,25 @@
             orbBubble.textContent = "Hi, I'm Sarah from " + data.name + "...";
         }
 
-        // Set brand logo
+        // Set brand logo (top title area)
         if (domain) {
             var logoUrl = 'https://cdn.brandfetch.io/' + domain + '/w/512/h/80/logo';
             orbBrandLogo.src = logoUrl;
             orbBrandLogo.style.display = '';
 
-            // Set orb center icon
-            var iconUrl = 'https://cdn.brandfetch.io/' + domain + '/w/128/h/128';
-            orbLogoImg.src = iconUrl;
+            // Set orb center icon — load into img, show on success, keep fallback SVG on failure
+            if (orbLogoImg) {
+                var iconUrl = 'https://cdn.brandfetch.io/' + domain + '/w/128/h/128';
+                orbLogoImg.onload = function() {
+                    orbLogoImg.style.display = '';
+                    if (orbLogoFallback) orbLogoFallback.style.display = 'none';
+                };
+                orbLogoImg.onerror = function() {
+                    orbLogoImg.style.display = 'none';
+                    if (orbLogoFallback) orbLogoFallback.style.display = '';
+                };
+                orbLogoImg.src = iconUrl;
+            }
         }
 
         // Set brand colors: API > known map > default indigo
