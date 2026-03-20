@@ -65,7 +65,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 /* ===== ORB ===== */
 .orb-wrap{position:relative;width:320px;height:320px;aspect-ratio:1;margin:0 auto 36px;cursor:pointer}
 .orb-glow{position:absolute;inset:-60px;border-radius:50%;background:radial-gradient(circle,rgba(79,70,229,.18) 0%,rgba(59,130,246,.06) 40%,transparent 70%);animation:orbGlowPulse 4s ease-in-out infinite}
-.orb-main{position:relative;width:320px;height:320px;aspect-ratio:1;border-radius:50%;overflow:hidden;animation:orbDrift 6s ease-in-out infinite;transition:transform .3s,box-shadow .3s;box-shadow:0 0 80px rgba(79,70,229,.25),0 0 160px rgba(59,130,246,.08),inset 0 0 60px rgba(0,0,0,.3)}
+.orb-main{position:relative;width:320px;height:320px;aspect-ratio:1;border-radius:50%;-webkit-border-radius:50%;overflow:hidden;-webkit-mask-image:-webkit-radial-gradient(white,black);mask-image:radial-gradient(white,black);animation:orbDrift 6s ease-in-out infinite;transition:transform .3s,box-shadow .3s;box-shadow:0 0 80px rgba(79,70,229,.25),0 0 160px rgba(59,130,246,.08),inset 0 0 60px rgba(0,0,0,.3)}
 .orb-wrap:hover .orb-main{transform:scale(1.06)}
 .orb-wrap:active .orb-main{transform:scale(.95)}
 .orb-main.speaking{animation:orbDrift 6s ease-in-out infinite,orbPulseSpeak .8s ease-in-out infinite}
@@ -237,7 +237,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 @media(max-width:768px){
   .nav-expiry{font-size:12px}
   .orb-wrap{width:240px;height:240px}
-  .orb-main{width:240px;height:240px}
+  .orb-main{width:240px;height:240px;border-radius:50%;-webkit-border-radius:50%;-webkit-mask-image:-webkit-radial-gradient(white,black)}
   .orb-phone-center svg{width:36px;height:36px}
   .orb-ring-1{inset:-20px}
   .orb-ring-2{inset:-44px}
@@ -256,7 +256,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   .nav-expiry{display:none}
   .orb-bubble{display:none}
   .orb-wrap{width:200px;height:200px;aspect-ratio:1;margin:0 auto 28px}
-  .orb-main{width:200px;height:200px;aspect-ratio:1}
+  .orb-main{width:200px;height:200px;aspect-ratio:1;border-radius:50%;-webkit-border-radius:50%;-webkit-mask-image:-webkit-radial-gradient(white,black)}
   .orb-phone-center svg{width:32px;height:32px}
   .orb-ring-1{inset:-16px}
   .orb-ring-2{inset:-36px}
