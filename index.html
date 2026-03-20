@@ -103,11 +103,15 @@
         .hero-btn:active{transform:scale(.95)}
         .hero-btn svg{color:#fff}
 
-        /* LOGOS */
-        .hero-logos{display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap;opacity:.55;transition:opacity .3s}
-        .hero-logos:hover{opacity:.75}
-        .hero-logos img{height:28px;filter:grayscale(100%) brightness(.4);object-fit:contain;transition:all .3s}
-        .hero-logos img:hover{filter:grayscale(0%);opacity:1}
+        /* LOGOS MARQUEE */
+        .logo-marquee{overflow:hidden;position:relative;padding:20px 0}
+        .logo-marquee::before,.logo-marquee::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2}
+        .logo-marquee::before{left:0;background:linear-gradient(90deg,#f6f3ef,transparent)}
+        .logo-marquee::after{right:0;background:linear-gradient(90deg,transparent,#f6f3ef)}
+        .logo-track{display:flex;gap:48px;align-items:center;animation:marquee 30s linear infinite;width:max-content}
+        .logo-track:hover{animation-play-state:paused}
+        .logo-track img{height:24px;object-fit:contain;filter:grayscale(100%) brightness(.4);opacity:.5;flex-shrink:0}
+        @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
         /* ========== BUILD / DEMO CARD (unified) ========== */
         .build-section{display:none;padding:0 32px 40px;max-width:960px;margin:0 auto;position:relative;z-index:1}
@@ -483,8 +487,8 @@
             .hero{padding:110px 20px 60px}
             .hero h1{font-size:clamp(36px,10vw,56px)}
             .hero-input-wrap{flex-direction:row}
-            .hero-logos{gap:24px}
-            .hero-logos img{height:22px}
+            .logo-marquee::before,.logo-marquee::after{width:40px}
+            .logo-track img{height:22px}
             .build-section{padding:0 20px 48px}
             .build-card{padding:20px 16px}
             .build-card-list{grid-template-columns:1fr;gap:8px}
@@ -510,8 +514,8 @@
         }
         @media(max-width:480px){
             .stats-grid{grid-template-columns:1fr 1fr}
-            .hero-logos{gap:16px}
-            .hero-logos img{height:18px}
+            .logo-marquee::before,.logo-marquee::after{width:30px}
+            .logo-track img{height:18px}
         }
     </style>
 </head>
@@ -549,13 +553,22 @@
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </button>
         </div>
-        <div class="hero-logos">
-            <img src="https://respaid.com/logos/microsoft.svg" alt="Microsoft" loading="lazy" onerror="this.style.display='none'">
-            <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/6917bec130210a5551350be0_DoorDash-Logo-700x394.png" alt="DoorDash" loading="lazy" onerror="this.style.display='none'">
-            <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/681486e9407f3fb4dbd3d3f0_Uber-Freight-Logo.png" alt="Uber Freight" loading="lazy" onerror="this.style.display='none'">
-            <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/67da8be5048d3251e3b1616b_checkr_logo_wordmark_aqua3.png" alt="Checkr" loading="lazy" onerror="this.style.display='none'">
-            <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/685ab786cf9dabb5db539afc_Plaid_logo.svg.png" alt="Plaid" loading="lazy" onerror="this.style.display='none'">
-            <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/6740498fdd3e5c836292e2e5_Redis_logo.svg.png" alt="Redis" loading="lazy" onerror="this.style.display='none'">
+        <div class="logo-marquee">
+            <div class="logo-track">
+                <img src="https://respaid.com/logos/microsoft.svg" alt="Microsoft" loading="lazy" onerror="this.style.display='none'">
+                <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/6917bec130210a5551350be0_DoorDash-Logo-700x394.png" alt="DoorDash" loading="lazy" onerror="this.style.display='none'">
+                <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/681486e9407f3fb4dbd3d3f0_Uber-Freight-Logo.png" alt="Uber Freight" loading="lazy" onerror="this.style.display='none'">
+                <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/67da8be5048d3251e3b1616b_checkr_logo_wordmark_aqua3.png" alt="Checkr" loading="lazy" onerror="this.style.display='none'">
+                <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/685ab786cf9dabb5db539afc_Plaid_logo.svg.png" alt="Plaid" loading="lazy" onerror="this.style.display='none'">
+                <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/6740498fdd3e5c836292e2e5_Redis_logo.svg.png" alt="Redis" loading="lazy" onerror="this.style.display='none'">
+                <!-- Duplicate set for seamless loop -->
+                <img src="https://respaid.com/logos/microsoft.svg" alt="Microsoft" loading="lazy" onerror="this.style.display='none'">
+                <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/6917bec130210a5551350be0_DoorDash-Logo-700x394.png" alt="DoorDash" loading="lazy" onerror="this.style.display='none'">
+                <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/681486e9407f3fb4dbd3d3f0_Uber-Freight-Logo.png" alt="Uber Freight" loading="lazy" onerror="this.style.display='none'">
+                <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/67da8be5048d3251e3b1616b_checkr_logo_wordmark_aqua3.png" alt="Checkr" loading="lazy" onerror="this.style.display='none'">
+                <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/685ab786cf9dabb5db539afc_Plaid_logo.svg.png" alt="Plaid" loading="lazy" onerror="this.style.display='none'">
+                <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/6740498fdd3e5c836292e2e5_Redis_logo.svg.png" alt="Redis" loading="lazy" onerror="this.style.display='none'">
+            </div>
         </div>
     </div>
 </section>

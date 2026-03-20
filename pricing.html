@@ -94,8 +94,8 @@
 
         /* ========== TWO MODES ========== */
         .two-modes{padding:28px 32px 64px;background:#f6f3ef}
-        .two-modes-inner{max-width:800px;margin:0 auto}
-        .modes-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+        .two-modes-inner{max-width:520px;margin:0 auto}
+        .modes-grid{display:flex;justify-content:center}
 
         .mode-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:32px;position:relative;transition:all .25s}
         .mode-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
@@ -248,7 +248,6 @@
             .nav-right .nav-cta-ghost{display:none}
             .pricing-hero{padding:96px 20px 48px}
             .two-modes{padding:20px 20px 52px}
-            .modes-grid{grid-template-columns:1fr}
             .logos-bar{padding:0 20px 52px}
             .fee-section{padding:60px 20px}
             .fee-cards{grid-template-columns:repeat(3,1fr);gap:8px}
@@ -325,11 +324,11 @@
     <div class="two-modes-inner">
         <div class="modes-grid">
 
-            <!-- AI Collection -->
-            <div class="mode-card featured">
+            <!-- AgentCollect — single product -->
+            <div class="mode-card featured" style="width:100%">
                 <div class="mode-badge">Most Popular</div>
-                <div class="mode-title">AI Collection</div>
-                <div class="mode-setup">20-minute setup</div>
+                <div class="mode-title">AgentCollect</div>
+                <div class="mode-setup">Live in 20 minutes</div>
                 <div class="mode-price">
                     <span class="amount">$0</span><span class="per">/month</span>
                     <div class="note">Pay only when we collect</div>
@@ -351,47 +350,23 @@
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
                         We find who to contact
                     </div>
+                    <div class="mode-feature">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                        24/7/365 &mdash; never sleeps
+                    </div>
+                    <div class="mode-feature">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                        Automated dispute resolution
+                    </div>
                 </div>
                 <a href="https://cal.com/johnb/30" target="_blank" class="mode-cta mode-cta-primary">
-                    Get started
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-            </div>
-
-            <!-- Attorney Collection -->
-            <div class="mode-card">
-                <div class="mode-badge green">Includes legal supervision</div>
-                <div class="mode-title">Attorney Collection</div>
-                <div class="mode-setup">Setup in 2 days</div>
-                <div class="mode-price">
-                    <span class="amount" style="color:var(--green)">Same</span><span class="per">fees</span>
-                    <div class="note">Attorney supervision included</div>
-                </div>
-                <div class="mode-features">
-                    <div class="mode-feature">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-                        Formal demand letters from licensed attorneys
-                    </div>
-                    <div class="mode-feature">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-                        Debtor pays directly to you
-                    </div>
-                    <div class="mode-feature">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-                        AI handles all follow-up
-                    </div>
-                    <div class="mode-feature">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-                        Best for aged or difficult accounts
-                    </div>
-                </div>
-                <a href="https://cal.com/johnb/30" target="_blank" class="mode-cta mode-cta-outline">
-                    Request a pilot
+                    Book a demo
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
             </div>
 
         </div>
+        <p style="text-align:center;font-size:13px;color:var(--text-muted);margin-top:16px">Need attorney-supervised collection? Available as an add-on at no extra fee.</p>
     </div>
 </section>
 
@@ -601,11 +576,11 @@
 
             <div class="faq-item">
                 <button class="faq-q" onclick="toggleFaq(2)">
-                    What's the difference between AI Collection and Attorney Collection?
+                    What is the attorney add-on?
                     <svg class="faq-chevron" id="faq-cv-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
                 <div class="faq-a" id="faq-body-2">
-                    Both are fully managed and success-based. AI Collection sends communications under your brand &mdash; debtors think they're hearing directly from you. Attorney Collection adds licensed legal supervision for harder cases, which significantly increases payment urgency.
+                    For aged or difficult accounts, we can add licensed attorney supervision at no extra fee. This includes formal demand letters and legal oversight, which significantly increases payment urgency &mdash; while our AI still handles all follow-up.
                 </div>
             </div>
 
@@ -615,7 +590,7 @@
                     <svg class="faq-chevron" id="faq-cv-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
                 <div class="faq-a" id="faq-body-3">
-                    AI Collection: 20 minutes from upload to live. Attorney Collection: setup in 2 days, including law firm onboarding.
+                    20 minutes from upload to live. If you add attorney supervision, law firm onboarding takes an additional 2 days.
                 </div>
             </div>
 

@@ -41,9 +41,14 @@
         h1,h2,h3,h4,h5{font-family:var(--display);line-height:1.15;letter-spacing:-.04em}
         ::selection{background:rgba(79,70,229,.08)}
         .gradient-divider{height:1px;background:linear-gradient(90deg,transparent,var(--indigo),var(--green),transparent);opacity:.3;max-width:var(--max-w);margin:0 auto}
-        .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+
+        /* SCROLL PROGRESS BAR */
+        .scroll-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--indigo),var(--green));width:0%;z-index:1001;transition:none;will-change:width}
+
+        /* REVEAL ANIMATIONS */
+        .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
         .reveal.visible{opacity:1;transform:translateY(0)}
-        .s1{transition-delay:.1s}.s2{transition-delay:.2s}.s3{transition-delay:.3s}.s4{transition-delay:.4s}
+        .s1{transition-delay:.1s}.s2{transition-delay:.2s}.s3{transition-delay:.3s}.s4{transition-delay:.4s}.s5{transition-delay:.5s}
 
         /* NAV */
         .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(246,243,239,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
@@ -66,8 +71,27 @@
 
         /* HERO */
         .page-hero{padding:140px 32px 60px;text-align:center}
-        .page-hero h1{font-size:clamp(40px,6vw,72px);font-weight:900;letter-spacing:-.05em;line-height:1.0;margin-bottom:20px;color:var(--text)}
-        .page-hero .sub{font-size:18px;color:var(--text-muted);max-width:520px;margin:0 auto;letter-spacing:-.01em}
+        .page-hero .section-label{opacity:0;transform:translateY(20px);animation:heroFadeUp .8s cubic-bezier(.16,1,.3,1) .2s forwards}
+        .page-hero h1{font-size:clamp(40px,6vw,72px);font-weight:900;letter-spacing:-.05em;line-height:1.0;margin-bottom:20px;color:var(--text);opacity:0;transform:translateY(20px);animation:heroFadeUp .8s cubic-bezier(.16,1,.3,1) .35s forwards}
+        .page-hero .sub{font-size:18px;color:var(--text-muted);max-width:520px;margin:0 auto;letter-spacing:-.01em;opacity:0;transform:translateY(20px);animation:heroFadeUp .8s cubic-bezier(.16,1,.3,1) .5s forwards}
+
+        @keyframes heroFadeUp{
+            to{opacity:1;transform:translateY(0)}
+        }
+
+        /* GRADIENT TEXT SHIMMER on h1 */
+        .page-hero h1{
+            background:linear-gradient(90deg,var(--text) 0%,var(--text) 40%,var(--indigo) 50%,var(--text) 60%,var(--text) 100%);
+            background-size:200% 100%;
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            background-clip:text;
+            animation:heroFadeUp .8s cubic-bezier(.16,1,.3,1) .35s forwards, shimmer 2s ease .9s 1 forwards;
+        }
+        @keyframes shimmer{
+            0%{background-position:100% 0}
+            100%{background-position:-100% 0}
+        }
 
         /* STEPS */
         .steps{padding:0 32px 100px}
@@ -85,8 +109,94 @@
         .step-features{display:flex;flex-direction:column;gap:12px}
         .step-feature{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--text-mid)}
         .step-feature svg{flex-shrink:0;margin-top:3px}
-        .step-visual{background:#fff;border:1px solid var(--border);border-radius:20px;padding:40px;display:flex;align-items:center;justify-content:center;min-height:300px}
-        .step-visual-icon{font-size:80px;opacity:.15}
+
+        /* CHECKMARK DRAW ANIMATION */
+        .step-feature svg.check-icon{opacity:0;transition:opacity .3s}
+        .step-feature svg.check-icon .check-circle{stroke-dasharray:62.83;stroke-dashoffset:62.83;transition:stroke-dashoffset .6s cubic-bezier(.16,1,.3,1)}
+        .step-feature svg.check-icon .check-mark{stroke-dasharray:20;stroke-dashoffset:20;transition:stroke-dashoffset .4s cubic-bezier(.16,1,.3,1) .3s}
+        .step-feature.drawn svg.check-icon{opacity:1}
+        .step-feature.drawn svg.check-icon .check-circle{stroke-dashoffset:0}
+        .step-feature.drawn svg.check-icon .check-mark{stroke-dashoffset:0}
+
+        /* STEP VISUAL PANELS */
+        .step-visual{background:#fff;border:1px solid var(--border);border-radius:20px;padding:40px;display:flex;align-items:center;justify-content:center;min-height:340px;overflow:hidden;position:relative;will-change:transform}
+
+        /* 3D TILT on hover (desktop only) */
+        @media(hover:hover){
+            .step-visual{transition:transform .15s ease,box-shadow .3s ease}
+            .step-visual:hover{box-shadow:var(--shadow-lg)}
+        }
+
+        /* === STEP 1: CSV UPLOAD ANIMATION === */
+        .csv-card{width:100%;max-width:280px}
+        .csv-file{background:linear-gradient(135deg,rgba(79,70,229,.06),rgba(79,70,229,.02));border:1px solid rgba(79,70,229,.12);border-radius:12px;padding:16px 20px;margin-bottom:16px;display:flex;align-items:center;gap:12px;opacity:0;transform:translateY(-20px) scale(.95);animation:csvDrop .6s cubic-bezier(.34,1.56,.64,1) .3s forwards}
+        .csv-file-icon{width:36px;height:36px;border-radius:8px;background:var(--indigo);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .csv-file-icon svg{width:18px;height:18px}
+        .csv-file-name{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--text)}
+        .csv-file-size{font-size:11px;color:var(--text-dim);margin-top:2px}
+        @keyframes csvDrop{to{opacity:1;transform:translateY(0) scale(1)}}
+
+        .csv-rows{display:flex;flex-direction:column;gap:6px}
+        .csv-row{display:grid;grid-template-columns:1.2fr 1fr .8fr;gap:8px;padding:8px 12px;border-radius:8px;background:rgba(79,70,229,.03);border:1px solid rgba(79,70,229,.06);font-family:var(--mono);font-size:11px;color:var(--text-mid);opacity:0;transform:translateX(-10px)}
+        .csv-row.header{font-weight:600;color:var(--text);background:rgba(79,70,229,.06)}
+        .csv-row span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+        .csv-row:nth-child(1){animation:csvRowIn .4s cubic-bezier(.16,1,.3,1) .7s forwards}
+        .csv-row:nth-child(2){animation:csvRowIn .4s cubic-bezier(.16,1,.3,1) .85s forwards}
+        .csv-row:nth-child(3){animation:csvRowIn .4s cubic-bezier(.16,1,.3,1) 1.0s forwards}
+        .csv-row:nth-child(4){animation:csvRowIn .4s cubic-bezier(.16,1,.3,1) 1.15s forwards}
+        .csv-row:nth-child(5){animation:csvRowIn .4s cubic-bezier(.16,1,.3,1) 1.3s forwards}
+        @keyframes csvRowIn{to{opacity:1;transform:translateX(0)}}
+
+        /* === STEP 2: AI AGENT CONVERSATION === */
+        .agent-panel{width:100%;max-width:300px}
+        .agent-waveform{display:flex;align-items:center;justify-content:center;gap:3px;height:40px;margin-bottom:20px;padding:8px 16px;background:rgba(16,185,129,.06);border-radius:10px;border:1px solid rgba(16,185,129,.1)}
+        .wave-bar{width:3px;border-radius:3px;background:var(--green);animation:waveAnim 1.2s ease-in-out infinite}
+        .wave-bar:nth-child(1){height:8px;animation-delay:0s}
+        .wave-bar:nth-child(2){height:16px;animation-delay:.1s}
+        .wave-bar:nth-child(3){height:24px;animation-delay:.2s}
+        .wave-bar:nth-child(4){height:20px;animation-delay:.3s}
+        .wave-bar:nth-child(5){height:12px;animation-delay:.4s}
+        .wave-bar:nth-child(6){height:22px;animation-delay:.15s}
+        .wave-bar:nth-child(7){height:14px;animation-delay:.35s}
+        .wave-bar:nth-child(8){height:18px;animation-delay:.25s}
+        .wave-bar:nth-child(9){height:10px;animation-delay:.05s}
+        @keyframes waveAnim{
+            0%,100%{transform:scaleY(.4);opacity:.5}
+            50%{transform:scaleY(1);opacity:1}
+        }
+        .wave-label{font-size:11px;font-weight:600;color:var(--green);margin-left:10px;letter-spacing:.04em;text-transform:uppercase}
+
+        .chat-bubbles{display:flex;flex-direction:column;gap:8px}
+        .chat-bubble{padding:10px 14px;border-radius:12px;font-size:13px;line-height:1.5;max-width:85%;opacity:0;transform:translateY(8px)}
+        .chat-agent{background:rgba(16,185,129,.08);color:var(--text-mid);border-bottom-left-radius:4px;align-self:flex-start}
+        .chat-debtor{background:rgba(79,70,229,.06);color:var(--text-mid);border-bottom-right-radius:4px;align-self:flex-end;margin-left:auto}
+        .chat-bubble:nth-child(1){animation:chatIn .5s cubic-bezier(.16,1,.3,1) .4s forwards}
+        .chat-bubble:nth-child(2){animation:chatIn .5s cubic-bezier(.16,1,.3,1) 1.2s forwards}
+        .chat-bubble:nth-child(3){animation:chatIn .5s cubic-bezier(.16,1,.3,1) 2.0s forwards}
+        .chat-bubble:nth-child(4){animation:chatIn .5s cubic-bezier(.16,1,.3,1) 2.8s forwards}
+        @keyframes chatIn{to{opacity:1;transform:translateY(0)}}
+
+        .chat-typing{display:flex;gap:4px;padding:10px 18px;align-self:flex-start;opacity:0}
+        .chat-typing span{width:5px;height:5px;border-radius:50%;background:var(--green);animation:typing 1.2s infinite}
+        .chat-typing span:nth-child(2){animation-delay:.2s}
+        .chat-typing span:nth-child(3){animation-delay:.4s}
+        @keyframes typing{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-4px)}}
+
+        /* === STEP 3: COUNTER + PROGRESS === */
+        .payment-panel{width:100%;max-width:280px;text-align:center}
+        .payment-amount{font-family:var(--display);font-size:48px;font-weight:900;letter-spacing:-.04em;color:var(--text);margin-bottom:6px;tabular-nums:true}
+        .payment-label{font-size:13px;color:var(--text-dim);margin-bottom:24px;font-weight:500}
+        .payment-progress{margin-bottom:24px}
+        .payment-progress-header{display:flex;justify-content:space-between;margin-bottom:8px}
+        .payment-progress-title{font-size:12px;font-weight:600;color:var(--text-mid)}
+        .payment-progress-pct{font-size:12px;font-weight:700;color:var(--green);font-family:var(--mono)}
+        .payment-bar-bg{height:6px;background:rgba(16,185,129,.1);border-radius:6px;overflow:hidden}
+        .payment-bar-fill{height:100%;background:linear-gradient(90deg,var(--green),#34d399);border-radius:6px;width:0%;transition:width 1.8s cubic-bezier(.16,1,.3,1)}
+        .payment-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+        .payment-stat{background:rgba(245,158,11,.04);border:1px solid rgba(245,158,11,.08);border-radius:10px;padding:12px;text-align:center}
+        .payment-stat-value{font-family:var(--display);font-size:20px;font-weight:800;color:var(--text);letter-spacing:-.02em}
+        .payment-stat-label{font-size:11px;color:var(--text-dim);margin-top:2px}
 
         /* COMPARISON */
         .compare{padding:80px 32px;background:var(--bg-dark);color:#fff}
@@ -94,10 +204,21 @@
         .compare h2{font-size:clamp(28px,3.5vw,42px);font-weight:900;text-align:center;margin-bottom:48px;letter-spacing:-.04em}
         .compare-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;font-size:14px}
         .compare-header{font-weight:700;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.1)}
-        .compare-row{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+        .compare-row{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.05);opacity:0}
         .compare-label{color:rgba(255,255,255,.5)}
         .compare-old{color:rgba(255,255,255,.4);text-align:center}
         .compare-new{color:var(--green);font-weight:600;text-align:center}
+
+        /* Compare row animations */
+        .compare-row.slide-left{transform:translateX(-30px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
+        .compare-row.slide-right{transform:translateX(30px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
+        .compare-row.slide-in{opacity:1;transform:translateX(0)}
+        .compare-row.slide-in.compare-new{animation:greenPulse .6s ease .3s 1}
+        @keyframes greenPulse{
+            0%{color:var(--green)}
+            50%{color:#6ee7b7;text-shadow:0 0 12px rgba(16,185,129,.4)}
+            100%{color:var(--green);text-shadow:none}
+        }
 
         /* CTA */
         .final-cta{padding:120px 32px;text-align:center;background:var(--bg-dark);color:#fff;position:relative;overflow:hidden}
@@ -135,7 +256,7 @@
             .steps{padding:0 20px 60px}
             .step{grid-template-columns:1fr;gap:32px}
             .step.reverse{direction:ltr}
-            .step-visual{min-height:200px;padding:32px}
+            .step-visual{min-height:240px;padding:32px}
             .compare{padding:60px 20px}
             .compare-grid{grid-template-columns:1fr;gap:0}
             .compare-header{display:none}
@@ -143,6 +264,8 @@
             .footer-top{grid-template-columns:1fr 1fr;gap:24px}
             .footer-bottom{flex-direction:column;text-align:center}
             .footer-badges{justify-content:center}
+            .csv-card,.agent-panel,.payment-panel{max-width:260px}
+            .payment-amount{font-size:36px}
         }
     </style>
     <script>
@@ -156,6 +279,9 @@
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GRZZT9K05B');</script>
 </head>
 <body>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <nav class="nav" id="nav">
 <div class="nav-inner">
@@ -176,7 +302,7 @@
 </nav>
 
 <!-- HERO -->
-<section class="page-hero reveal">
+<section class="page-hero">
     <div class="section-label">How it works</div>
     <h1>Three steps.<br>Zero manual work.</h1>
     <p class="sub">From spreadsheet to recovered cash — fully automated, fully branded, fully compliant.</p>
@@ -186,7 +312,7 @@
 <section class="steps">
     <div class="steps-inner">
 
-        <!-- Step 1 -->
+        <!-- Step 1: Upload -->
         <div class="step reveal">
             <div>
                 <div class="step-num indigo">1</div>
@@ -194,25 +320,42 @@
                 <p>Drop a CSV, connect via API, or integrate directly with your ERP. Your outstanding invoices are loaded in minutes — no formatting required.</p>
                 <div class="step-features">
                     <div class="step-feature">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                        <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><circle class="check-circle" cx="12" cy="12" r="10"/><path class="check-mark" d="M9 12l2 2 4-4"/></svg>
                         CSV, Excel, or API upload
                     </div>
                     <div class="step-feature">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                        <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><circle class="check-circle" cx="12" cy="12" r="10"/><path class="check-mark" d="M9 12l2 2 4-4"/></svg>
                         50+ ERP integrations (QuickBooks, Xero, NetSuite...)
                     </div>
                     <div class="step-feature">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                        <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><circle class="check-circle" cx="12" cy="12" r="10"/><path class="check-mark" d="M9 12l2 2 4-4"/></svg>
                         We find decision-maker contacts automatically
                     </div>
                 </div>
             </div>
-            <div class="step-visual">
-                <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="1" opacity=".2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <div class="step-visual" data-tilt>
+                <div class="csv-card">
+                    <div class="csv-file">
+                        <div class="csv-file-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        </div>
+                        <div>
+                            <div class="csv-file-name">invoices_q1.csv</div>
+                            <div class="csv-file-size">2,847 rows &middot; 340 KB</div>
+                        </div>
+                    </div>
+                    <div class="csv-rows">
+                        <div class="csv-row header"><span>Company</span><span>Amount</span><span>Days</span></div>
+                        <div class="csv-row"><span>Acme Corp</span><span>$12,400</span><span>45d</span></div>
+                        <div class="csv-row"><span>TechFlow Inc</span><span>$8,750</span><span>62d</span></div>
+                        <div class="csv-row"><span>DataSync Ltd</span><span>$23,100</span><span>38d</span></div>
+                        <div class="csv-row"><span>CloudBase AI</span><span>$3,250</span><span>91d</span></div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Step 2 -->
+        <!-- Step 2: AI Collects -->
         <div class="step reverse reveal">
             <div>
                 <div class="step-num green">2</div>
@@ -220,29 +363,48 @@
                 <p>Your branded agent calls, emails, and handles disputes — all autonomously. Debtors interact with your brand, never ours. Trained on 1 billion collection conversations.</p>
                 <div class="step-features">
                     <div class="step-feature">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                        <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle class="check-circle" cx="12" cy="12" r="10"/><path class="check-mark" d="M9 12l2 2 4-4"/></svg>
                         Voice calls + email + SMS outreach
                     </div>
                     <div class="step-feature">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                        <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle class="check-circle" cx="12" cy="12" r="10"/><path class="check-mark" d="M9 12l2 2 4-4"/></svg>
                         Automated dispute resolution
                     </div>
                     <div class="step-feature">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                        <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle class="check-circle" cx="12" cy="12" r="10"/><path class="check-mark" d="M9 12l2 2 4-4"/></svg>
                         White-label — your brand on every touchpoint
                     </div>
                     <div class="step-feature">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                        <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle class="check-circle" cx="12" cy="12" r="10"/><path class="check-mark" d="M9 12l2 2 4-4"/></svg>
                         24/7/365 — never sleeps, never forgets
                     </div>
                 </div>
             </div>
-            <div class="step-visual">
-                <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1" opacity=".2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div class="step-visual" data-tilt>
+                <div class="agent-panel">
+                    <div class="agent-waveform">
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <span class="wave-label">Live call</span>
+                    </div>
+                    <div class="chat-bubbles">
+                        <div class="chat-bubble chat-agent">Hi, this is Sarah from Acme Corp regarding invoice #4821.</div>
+                        <div class="chat-bubble chat-debtor">Oh yes, I meant to pay that. Can I set up a plan?</div>
+                        <div class="chat-bubble chat-agent">Absolutely. I can split $12,400 into 3 monthly payments. Would that work?</div>
+                        <div class="chat-bubble chat-debtor">That works. Let's do it.</div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Step 3 -->
+        <!-- Step 3: You Get Paid -->
         <div class="step reveal">
             <div>
                 <div class="step-num amber">3</div>
@@ -250,21 +412,43 @@
                 <p>Payments go directly to your account. Real-time dashboard shows every conversation, every dollar recovered. You pay nothing until we collect.</p>
                 <div class="step-features">
                     <div class="step-feature">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                        <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><circle class="check-circle" cx="12" cy="12" r="10"/><path class="check-mark" d="M9 12l2 2 4-4"/></svg>
                         Direct payments to your bank account
                     </div>
                     <div class="step-feature">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                        <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><circle class="check-circle" cx="12" cy="12" r="10"/><path class="check-mark" d="M9 12l2 2 4-4"/></svg>
                         Real-time dashboard with full transparency
                     </div>
                     <div class="step-feature">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+                        <svg class="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><circle class="check-circle" cx="12" cy="12" r="10"/><path class="check-mark" d="M9 12l2 2 4-4"/></svg>
                         Success-only fees — $0 if we don't collect
                     </div>
                 </div>
             </div>
-            <div class="step-visual">
-                <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1" opacity=".2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <div class="step-visual" data-tilt>
+                <div class="payment-panel">
+                    <div class="payment-amount" id="paymentCounter">$0</div>
+                    <div class="payment-label">Total recovered this month</div>
+                    <div class="payment-progress">
+                        <div class="payment-progress-header">
+                            <span class="payment-progress-title">Recovery rate</span>
+                            <span class="payment-progress-pct" id="progressPct">0%</span>
+                        </div>
+                        <div class="payment-bar-bg">
+                            <div class="payment-bar-fill" id="progressBar"></div>
+                        </div>
+                    </div>
+                    <div class="payment-stats">
+                        <div class="payment-stat">
+                            <div class="payment-stat-value" id="statAccounts">0</div>
+                            <div class="payment-stat-label">Accounts resolved</div>
+                        </div>
+                        <div class="payment-stat">
+                            <div class="payment-stat-value" id="statAvg">$0</div>
+                            <div class="payment-stat-label">Avg. recovery</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -274,36 +458,36 @@
 <div class="gradient-divider"></div>
 
 <!-- COMPARISON -->
-<section class="compare reveal">
+<section class="compare" id="compareSection">
     <div class="compare-inner">
-        <h2>AgentCollect vs. traditional agencies</h2>
+        <h2 class="reveal">AgentCollect vs. traditional agencies</h2>
         <div class="compare-grid">
             <div>
                 <div class="compare-header">&nbsp;</div>
-                <div class="compare-row compare-label">Cost</div>
-                <div class="compare-row compare-label">Speed to contact</div>
-                <div class="compare-row compare-label">Brand experience</div>
-                <div class="compare-row compare-label">Availability</div>
-                <div class="compare-row compare-label">Setup time</div>
-                <div class="compare-row compare-label">Transparency</div>
+                <div class="compare-row compare-label slide-left" data-row="1">Cost</div>
+                <div class="compare-row compare-label slide-left" data-row="2">Speed to contact</div>
+                <div class="compare-row compare-label slide-left" data-row="3">Brand experience</div>
+                <div class="compare-row compare-label slide-left" data-row="4">Availability</div>
+                <div class="compare-row compare-label slide-left" data-row="5">Setup time</div>
+                <div class="compare-row compare-label slide-left" data-row="6">Transparency</div>
             </div>
             <div>
                 <div class="compare-header compare-old">Collection Agency</div>
-                <div class="compare-row compare-old">25-50% of recovered</div>
-                <div class="compare-row compare-old">Days to weeks</div>
-                <div class="compare-row compare-old">Their name, their tone</div>
-                <div class="compare-row compare-old">Business hours</div>
-                <div class="compare-row compare-old">Weeks of paperwork</div>
-                <div class="compare-row compare-old">Monthly PDF reports</div>
+                <div class="compare-row compare-old slide-left" data-row="1">25-50% of recovered</div>
+                <div class="compare-row compare-old slide-left" data-row="2">Days to weeks</div>
+                <div class="compare-row compare-old slide-left" data-row="3">Their name, their tone</div>
+                <div class="compare-row compare-old slide-left" data-row="4">Business hours</div>
+                <div class="compare-row compare-old slide-left" data-row="5">Weeks of paperwork</div>
+                <div class="compare-row compare-old slide-left" data-row="6">Monthly PDF reports</div>
             </div>
             <div>
                 <div class="compare-header compare-new">AgentCollect</div>
-                <div class="compare-row compare-new">From 9.5%</div>
-                <div class="compare-row compare-new">Minutes</div>
-                <div class="compare-row compare-new">Your brand, your voice</div>
-                <div class="compare-row compare-new">24/7/365</div>
-                <div class="compare-row compare-new">20 minutes</div>
-                <div class="compare-row compare-new">Real-time dashboard</div>
+                <div class="compare-row compare-new slide-right" data-row="1">From 9.5%</div>
+                <div class="compare-row compare-new slide-right" data-row="2">Minutes</div>
+                <div class="compare-row compare-new slide-right" data-row="3">Your brand, your voice</div>
+                <div class="compare-row compare-new slide-right" data-row="4">24/7/365</div>
+                <div class="compare-row compare-new slide-right" data-row="5">20 minutes</div>
+                <div class="compare-row compare-new slide-right" data-row="6">Real-time dashboard</div>
             </div>
         </div>
     </div>
@@ -358,16 +542,188 @@
 
 <script>
 (function(){
-    // Nav scroll
-    var nav = document.getElementById('nav');
-    window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 10) });
+    // === SCROLL PROGRESS BAR ===
+    var progressBar = document.getElementById('scrollProgress');
+    function updateProgress(){
+        var scrollTop = window.scrollY;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', updateProgress, {passive: true});
 
-    // Reveal on scroll
+    // === NAV SCROLL ===
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 10) }, {passive: true});
+
+    // === REVEAL ON SCROLL ===
     var reveals = document.querySelectorAll('.reveal');
-    var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target) }});
+    var revealIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+            if(e.isIntersecting){
+                e.target.classList.add('visible');
+                revealIO.unobserve(e.target);
+            }
+        });
     }, {threshold: 0.1});
-    reveals.forEach(function(el){ io.observe(el) });
+    reveals.forEach(function(el){ revealIO.observe(el) });
+
+    // === CHECKMARK DRAW-IN ON SCROLL ===
+    var features = document.querySelectorAll('.step-feature');
+    var featureIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+            if(e.isIntersecting){
+                // Stagger based on sibling index
+                var parent = e.target.parentNode;
+                var idx = Array.prototype.indexOf.call(parent.children, e.target);
+                setTimeout(function(){
+                    e.target.classList.add('drawn');
+                }, idx * 150);
+                featureIO.unobserve(e.target);
+            }
+        });
+    }, {threshold: 0.2});
+    features.forEach(function(el){ featureIO.observe(el) });
+
+    // === COUNTER ANIMATION (Step 3) ===
+    var counterEl = document.getElementById('paymentCounter');
+    var progressBarEl = document.getElementById('progressBar');
+    var progressPctEl = document.getElementById('progressPct');
+    var statAccountsEl = document.getElementById('statAccounts');
+    var statAvgEl = document.getElementById('statAvg');
+    var counterTriggered = false;
+
+    function animateCounter(el, target, prefix, suffix, duration){
+        var start = 0;
+        var startTime = null;
+        function step(ts){
+            if(!startTime) startTime = ts;
+            var progress = Math.min((ts - startTime) / duration, 1);
+            // Ease out cubic
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var current = Math.round(start + (target - start) * eased);
+            el.textContent = prefix + current.toLocaleString('en-US') + suffix;
+            if(progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+
+    function animateIntCounter(el, target, duration){
+        var start = 0;
+        var startTime = null;
+        function step(ts){
+            if(!startTime) startTime = ts;
+            var progress = Math.min((ts - startTime) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.round(start + (target - start) * eased);
+            if(progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+
+    var counterIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+            if(e.isIntersecting && !counterTriggered){
+                counterTriggered = true;
+                animateCounter(counterEl, 47500, '$', '', 2000);
+                animateCounter(statAvgEl, 2380, '$', '', 1800);
+                animateIntCounter(statAccountsEl, 20, 1600);
+
+                // Progress bar
+                setTimeout(function(){
+                    progressBarEl.style.width = '50%';
+                }, 200);
+                // Progress percentage
+                var pctStart = null;
+                function animatePct(ts){
+                    if(!pctStart) pctStart = ts;
+                    var p = Math.min((ts - pctStart) / 1800, 1);
+                    var eased = 1 - Math.pow(1 - p, 3);
+                    progressPctEl.textContent = Math.round(50 * eased) + '%';
+                    if(p < 1) requestAnimationFrame(animatePct);
+                }
+                setTimeout(function(){ requestAnimationFrame(animatePct) }, 200);
+
+                counterIO.unobserve(e.target);
+            }
+        });
+    }, {threshold: 0.3});
+    counterIO.observe(counterEl);
+
+    // === COMPARISON TABLE ROW ANIMATION ===
+    var compareRows = document.querySelectorAll('.compare-row');
+    var compareIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+            if(e.isIntersecting){
+                var row = e.target.getAttribute('data-row');
+                // Animate all rows with same data-row at once
+                var sameRow = document.querySelectorAll('[data-row="' + row + '"]');
+                var delay = (parseInt(row) - 1) * 120;
+                setTimeout(function(){
+                    sameRow.forEach(function(r){ r.classList.add('slide-in') });
+                }, delay);
+                compareIO.unobserve(e.target);
+            }
+        });
+    }, {threshold: 0.1});
+    compareRows.forEach(function(el){ compareIO.observe(el) });
+
+    // === 3D TILT EFFECT (desktop only, no touch) ===
+    var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if(!isTouch){
+        var tiltEls = document.querySelectorAll('[data-tilt]');
+        tiltEls.forEach(function(el){
+            el.addEventListener('mousemove', function(e){
+                var rect = el.getBoundingClientRect();
+                var x = e.clientX - rect.left;
+                var y = e.clientY - rect.top;
+                var centerX = rect.width / 2;
+                var centerY = rect.height / 2;
+                var rotateX = ((y - centerY) / centerY) * -4;
+                var rotateY = ((x - centerX) / centerX) * 4;
+                el.style.transform = 'perspective(800px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale(1.01)';
+            });
+            el.addEventListener('mouseleave', function(){
+                el.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale(1)';
+            });
+        });
+    }
+
+    // === SUBTLE PARALLAX ON STEP VISUALS ===
+    var stepVisuals = document.querySelectorAll('.step-visual');
+    var lastScrollY = 0;
+    var ticking = false;
+    function onParallaxScroll(){
+        lastScrollY = window.scrollY;
+        if(!ticking){
+            requestAnimationFrame(function(){
+                stepVisuals.forEach(function(el){
+                    var rect = el.getBoundingClientRect();
+                    var viewH = window.innerHeight;
+                    if(rect.top < viewH && rect.bottom > 0){
+                        var center = rect.top + rect.height / 2;
+                        var offset = ((center - viewH / 2) / viewH) * -12;
+                        // Only apply parallax translateY, preserve any tilt transform
+                        if(!isTouch){
+                            // Tilt handles its own transform, parallax via a wrapper approach
+                            // Use a CSS custom property instead
+                            el.style.setProperty('--parallax-y', offset + 'px');
+                        }
+                    }
+                });
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }
+    // Apply parallax via margin-top trick to avoid conflicting with tilt transforms
+    // Actually, let's keep it simple: on non-touch, parallax is handled via translateY when not hovering
+    if(!isTouch){
+        var style = document.createElement('style');
+        style.textContent = '.step-visual:not(:hover){transform:translateY(var(--parallax-y, 0px)) !important;transition:transform .1s linear !important}';
+        document.head.appendChild(style);
+        window.addEventListener('scroll', onParallaxScroll, {passive: true});
+    }
 })();
 </script>
 
