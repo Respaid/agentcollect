@@ -325,71 +325,34 @@ body {
   display: none;
 }
 
-/* ═══ INSIGHT CARDS (BOTTOM-RIGHT, EPHEMERAL) ═══ */
-.insight-cards {
+/* ═══ INSIGHT LINE (SINGLE FIXED SUBTITLE) ═══ */
+.insight-line {
   position: fixed;
-  right: 32px;
   bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  align-items: flex-end;
+  text-align: center;
 }
-.insight-card {
-  padding: 8px 14px;
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
-  border-radius: 10px;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  display: flex;
+.insight-line .insight-text {
+  display: inline-flex;
   align-items: center;
   gap: 8px;
-  white-space: nowrap;
-}
-.insight-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.insight-card.fading-out {
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.insight-card .insight-icon {
-  font-size: 14px;
-}
-.insight-card .insight-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.5);
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-.insight-card .insight-detail {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--text);
-}
-.insight-card .insight-time {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  color: rgba(255, 255, 255, 0.25);
-  margin-top: 2px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
-.insight-card.green {
-  border-color: rgba(16, 185, 129, 0.2);
-  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.08);
+.insight-line .insight-text.visible {
+  opacity: 1;
 }
-.insight-card.green .insight-detail { color: var(--green); }
-.insight-card.neutral .insight-detail { color: rgba(255, 255, 255, 0.7); }
-
-/* ═══ WEATHER CARD — HIDDEN ═══ */
-.weather-card { display: none; }
+.insight-line .insight-text .insight-val {
+  color: var(--green);
+  font-weight: 600;
+}
 
 /* ═══ END CALL BUTTON ═══ */
 .end-call {
@@ -605,7 +568,7 @@ body {
 
 /* ═══ MOBILE ═══ */
 @media (max-width: 768px) {
-  .insight-cards { right: 16px; bottom: 90px; }
+  .insight-line { bottom: 80px; }
 
   .conversation {
     left: 16px;
@@ -665,8 +628,10 @@ body {
   </div>
 </div>
 
-<!-- Insight Cards -->
-<div class="insight-cards" id="insightCards"></div>
+<!-- Insight Line -->
+<div class="insight-line" id="insightLine">
+  <div class="insight-text" id="insightText"></div>
+</div>
 
 <!-- Timer -->
 <div class="timer-area">
@@ -800,41 +765,29 @@ function setStage(stageName) {
 }
 
 // ═══ INSIGHT MANAGEMENT ═══
-const insightCardsEl = document.getElementById('insightCards');
+const insightTextEl = document.getElementById('insightText');
 let insightCount = 0;
+let insightTimeout = null;
 
 function addInsight(data) {
   insightCount++;
-  const card = document.createElement('div');
-  const colorClass = data.color === 'green' ? 'green' : 'neutral';
-  card.className = 'insight-card ' + colorClass;
-  card.innerHTML = `
-    <div class="insight-label">${data.label}</div>
-    <div class="insight-detail">${data.detail}</div>
-  `;
-  insightCardsEl.appendChild(card);
-  requestAnimationFrame(() => {
-    card.classList.add('visible');
-  });
-  // Auto-fade after 4s
+  // Fade out current
+  insightTextEl.classList.remove('visible');
+  clearTimeout(insightTimeout);
+
   setTimeout(() => {
-    card.classList.add('fading-out');
-    setTimeout(() => { if (card.parentNode) card.parentNode.removeChild(card); }, 600);
-  }, 4000);
+    insightTextEl.innerHTML = `${data.label} &middot; <span class="insight-val">${data.detail}</span>`;
+    insightTextEl.classList.add('visible');
+
+    // Auto-fade after 5s
+    insightTimeout = setTimeout(() => {
+      insightTextEl.classList.remove('visible');
+    }, 5000);
+  }, 200);
 }
 
 function addWeatherCard() {
-  const card = document.createElement('div');
-  card.className = 'weather-card';
-  card.innerHTML = `
-    <div class="weather-tooltip">Research shows natural light correlates with positive financial decisions. Afternoon calls in good weather see 31% higher resolution rates.</div>
-    <div class="weather-main">&#9728;&#65039; 72&deg;F in San Francisco</div>
-    <div class="weather-sub">Afternoon light &rarr; 31% higher resolution rate</div>
-  `;
-  insightCardsEl.appendChild(card);
-  requestAnimationFrame(() => {
-    card.classList.add('visible');
-  });
+  // Weather info now shown via geo card only — no separate card
 }
 
 // ═══ CONVERSATION ENGINE ═══
@@ -842,7 +795,7 @@ const conversationEl = document.getElementById('conversation');
 let currentMessageEl = null;
 let prevMessageEl = null;
 
-const MAX_VISIBLE_WORDS = 5;
+const MAX_VISIBLE_WORDS = 8;
 
 function createMessageElement(speaker, text, annotations) {
   // Fade out previous
@@ -883,7 +836,7 @@ function createMessageElement(speaker, text, annotations) {
   if (speaker === 'agent') {
     // STREAMING MODE: show last N words only, like live subtitles
     let wordIdx = 0;
-    const wordDelay = 100;
+    const wordDelay = 200;
     const activeSpans = [];
 
     function showNextWord() {
@@ -972,7 +925,7 @@ function createMessageElement(speaker, text, annotations) {
     }
 
     const allWords = textEl.querySelectorAll('.word');
-    const wordDelay = 80;
+    const wordDelay = 140;
     allWords.forEach((w, idx) => {
       setTimeout(() => w.classList.add('visible'), idx * wordDelay);
     });
@@ -1052,7 +1005,8 @@ function runScript() {
   // Reset state
   playbackTimeouts.forEach(t => clearTimeout(t));
   playbackTimeouts = [];
-  insightCardsEl.innerHTML = '';
+  insightTextEl.innerHTML = '';
+  insightTextEl.classList.remove('visible');
   conversationEl.innerHTML = '';
   currentMessageEl = null;
   insightCount = 0;
