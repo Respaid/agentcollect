@@ -63,9 +63,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 @keyframes ringPulse{0%{opacity:.6;transform:scale(.95)}50%{opacity:.2;transform:scale(1)}100%{opacity:0;transform:scale(1.05)}}
 
 /* ===== ORB ===== */
-.orb-wrap{position:relative;width:320px;height:320px;margin:0 auto 36px;cursor:pointer}
+.orb-wrap{position:relative;width:320px;height:320px;aspect-ratio:1;margin:0 auto 36px;cursor:pointer}
 .orb-glow{position:absolute;inset:-60px;border-radius:50%;background:radial-gradient(circle,rgba(79,70,229,.18) 0%,rgba(59,130,246,.06) 40%,transparent 70%);animation:orbGlowPulse 4s ease-in-out infinite}
-.orb-main{position:relative;width:320px;height:320px;border-radius:50%;overflow:hidden;animation:orbDrift 6s ease-in-out infinite;transition:transform .3s,box-shadow .3s;box-shadow:0 0 80px rgba(79,70,229,.25),0 0 160px rgba(59,130,246,.08),inset 0 0 60px rgba(0,0,0,.3)}
+.orb-main{position:relative;width:320px;height:320px;aspect-ratio:1;border-radius:50%;overflow:hidden;animation:orbDrift 6s ease-in-out infinite;transition:transform .3s,box-shadow .3s;box-shadow:0 0 80px rgba(79,70,229,.25),0 0 160px rgba(59,130,246,.08),inset 0 0 60px rgba(0,0,0,.3)}
 .orb-wrap:hover .orb-main{transform:scale(1.06)}
 .orb-wrap:active .orb-main{transform:scale(.95)}
 .orb-main.speaking{animation:orbDrift 6s ease-in-out infinite,orbPulseSpeak .8s ease-in-out infinite}
@@ -249,8 +249,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 }
 @media(max-width:480px){
   .nav-expiry{display:none}
-  .orb-wrap{width:200px;height:200px}
-  .orb-main{width:200px;height:200px}
+  .orb-wrap{width:200px;height:200px;aspect-ratio:1;margin:0 auto 28px}
+  .orb-main{width:200px;height:200px;aspect-ratio:1}
   .orb-phone-center svg{width:32px;height:32px}
   .orb-ring-1{inset:-16px}
   .orb-ring-2{inset:-36px}
@@ -348,54 +348,54 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 <!-- SECTION 2: THE PROBLEM -->
 <section class="proof-section">
   <div class="rv">
-    <h2 class="proof-sec-title">Your CRM tracks every deal.<br><span style="color:var(--red)">But who tracks the ones that went dark?</span></h2>
-    <p class="proof-sec-sub">Salesforce closes $34.9B in revenue. But when enterprise subscriptions go unpaid, the collection process is anything but world-class.</p>
+    <h2 class="proof-sec-title">Your CRM is world-class.<br><span style="color:var(--red)">Your billing support isn't.</span></h2>
+    <p class="proof-sec-sub">When customers have billing questions, disputes, or need invoice help — they wait. And wait. Here's what they're saying.</p>
   </div>
 
-  <div class="proof-context rv" style="text-align:center;font-size:16px;font-weight:700;color:var(--red);letter-spacing:-.2px">Real complaints. Real customers. All under the Salesforce name.</div>
+  <div class="proof-context rv" style="text-align:center;font-size:16px;font-weight:700;color:var(--red);letter-spacing:-.2px">Real billing support experiences from Salesforce customers.</div>
 
   <div class="pain-wall rv">
     <div class="pain-row pain-row-1">
-      <span class="pain-pill"><span class="hl">Auto-renewed</span> without notice <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
-      <span class="pain-pill"><span class="hl">Impossible to cancel</span> subscription <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
-      <span class="pain-pill">Charged <span class="hl">$50K after cancellation</span> <img src="https://cdn.brandfetch.io/reddit.com/w/64/h/64/logo" alt="Reddit" class="src-logo" onerror="this.replaceWith(document.createTextNode('Reddit'))"></span>
-      <span class="pain-pill">Sent to <span class="hl">collections without warning</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
-      <span class="pain-pill"><span class="hl">License true-up</span> surprise charges <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill">Emailed billing <span class="hl">5 times — zero response</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill"><span class="hl">3 support tickets</span> about invoice — all ignored <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill">Called support, <span class="hl">transferred 4 times</span>, then disconnected <img src="https://cdn.brandfetch.io/reddit.com/w/64/h/64/logo" alt="Reddit" class="src-logo" onerror="this.replaceWith(document.createTextNode('Reddit'))"></span>
+      <span class="pain-pill">Billing dispute open <span class="hl">3 months — no resolution</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill"><span class="hl">No human</span> available to resolve billing issue <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
       <!-- dup -->
-      <span class="pain-pill"><span class="hl">Auto-renewed</span> without notice <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
-      <span class="pain-pill"><span class="hl">Impossible to cancel</span> subscription <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
-      <span class="pain-pill">Charged <span class="hl">$50K after cancellation</span> <img src="https://cdn.brandfetch.io/reddit.com/w/64/h/64/logo" alt="Reddit" class="src-logo" onerror="this.replaceWith(document.createTextNode('Reddit'))"></span>
-      <span class="pain-pill">Sent to <span class="hl">collections without warning</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
-      <span class="pain-pill"><span class="hl">License true-up</span> surprise charges <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill">Emailed billing <span class="hl">5 times — zero response</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill"><span class="hl">3 support tickets</span> about invoice — all ignored <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill">Called support, <span class="hl">transferred 4 times</span>, then disconnected <img src="https://cdn.brandfetch.io/reddit.com/w/64/h/64/logo" alt="Reddit" class="src-logo" onerror="this.replaceWith(document.createTextNode('Reddit'))"></span>
+      <span class="pain-pill">Billing dispute open <span class="hl">3 months — no resolution</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill"><span class="hl">No human</span> available to resolve billing issue <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
     </div>
     <div class="pain-row pain-row-2">
-      <span class="pain-pill"><span class="hl">Hidden fees</span> in enterprise agreement <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
-      <span class="pain-pill">Billing continued <span class="hl">18 months after cancellation</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
-      <span class="pain-pill"><span class="hl">No refund</span> for unused licenses <img src="https://cdn.brandfetch.io/reddit.com/w/64/h/64/logo" alt="Reddit" class="src-logo" onerror="this.replaceWith(document.createTextNode('Reddit'))"></span>
-      <span class="pain-pill"><span class="hl">Aggressive collections</span> for disputed amount <img src="https://cdn.brandfetch.io/consumerfinance.gov/w/64/h/64/logo" alt="CFPB" class="src-logo" onerror="this.replaceWith(document.createTextNode('CFPB'))"></span>
-      <span class="pain-pill">Forced <span class="hl">3-year lock-in</span> with no exit <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill">Refund request <span class="hl">open for months</span> — nobody acknowledges <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill"><span class="hl">Account exec CC'd billing</span> — still no reply <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill">Support ticket <span class="hl">closed without explanation</span> <img src="https://cdn.brandfetch.io/reddit.com/w/64/h/64/logo" alt="Reddit" class="src-logo" onerror="this.replaceWith(document.createTextNode('Reddit'))"></span>
+      <span class="pain-pill"><span class="hl">Duplicate invoice</span> — staff won't correct it <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill">Billing email goes to <span class="hl">a black hole</span> <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
       <!-- dup -->
-      <span class="pain-pill"><span class="hl">Hidden fees</span> in enterprise agreement <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
-      <span class="pain-pill">Billing continued <span class="hl">18 months after cancellation</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
-      <span class="pain-pill"><span class="hl">No refund</span> for unused licenses <img src="https://cdn.brandfetch.io/reddit.com/w/64/h/64/logo" alt="Reddit" class="src-logo" onerror="this.replaceWith(document.createTextNode('Reddit'))"></span>
-      <span class="pain-pill"><span class="hl">Aggressive collections</span> for disputed amount <img src="https://cdn.brandfetch.io/consumerfinance.gov/w/64/h/64/logo" alt="CFPB" class="src-logo" onerror="this.replaceWith(document.createTextNode('CFPB'))"></span>
-      <span class="pain-pill">Forced <span class="hl">3-year lock-in</span> with no exit <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill">Refund request <span class="hl">open for months</span> — nobody acknowledges <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill"><span class="hl">Account exec CC'd billing</span> — still no reply <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill">Support ticket <span class="hl">closed without explanation</span> <img src="https://cdn.brandfetch.io/reddit.com/w/64/h/64/logo" alt="Reddit" class="src-logo" onerror="this.replaceWith(document.createTextNode('Reddit'))"></span>
+      <span class="pain-pill"><span class="hl">Duplicate invoice</span> — staff won't correct it <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill">Billing email goes to <span class="hl">a black hole</span> <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
     </div>
     <div class="pain-row pain-row-3">
-      <span class="pain-pill"><span class="hl">Einstein AI add-on</span> billed without consent <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
-      <span class="pain-pill"><span class="hl">Sandbox overage</span> fees nobody disclosed <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
-      <span class="pain-pill">Threatened <span class="hl">legal action</span> over billing dispute <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
-      <span class="pain-pill"><span class="hl">No human</span> to resolve billing issues <img src="https://cdn.brandfetch.io/reddit.com/w/64/h/64/logo" alt="Reddit" class="src-logo" onerror="this.replaceWith(document.createTextNode('Reddit'))"></span>
-      <span class="pain-pill">Charged for <span class="hl">users who never logged in</span> <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill">Customer service <span class="hl">described as "nonexistent"</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill"><span class="hl">Overcharged $924</span> — can't reach anyone to fix <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill">Neither AE nor billing <span class="hl">able to help — total dead end</span> <img src="https://cdn.brandfetch.io/reddit.com/w/64/h/64/logo" alt="Reddit" class="src-logo" onerror="this.replaceWith(document.createTextNode('Reddit'))"></span>
+      <span class="pain-pill">Asked to provide <span class="hl">bank proof for their billing error</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill"><span class="hl">Payment failed</span> — service cut with no warning <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
       <!-- dup -->
-      <span class="pain-pill"><span class="hl">Einstein AI add-on</span> billed without consent <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
-      <span class="pain-pill"><span class="hl">Sandbox overage</span> fees nobody disclosed <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
-      <span class="pain-pill">Threatened <span class="hl">legal action</span> over billing dispute <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
-      <span class="pain-pill"><span class="hl">No human</span> to resolve billing issues <img src="https://cdn.brandfetch.io/reddit.com/w/64/h/64/logo" alt="Reddit" class="src-logo" onerror="this.replaceWith(document.createTextNode('Reddit'))"></span>
-      <span class="pain-pill">Charged for <span class="hl">users who never logged in</span> <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill">Customer service <span class="hl">described as "nonexistent"</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill"><span class="hl">Overcharged $924</span> — can't reach anyone to fix <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill">Neither AE nor billing <span class="hl">able to help — total dead end</span> <img src="https://cdn.brandfetch.io/reddit.com/w/64/h/64/logo" alt="Reddit" class="src-logo" onerror="this.replaceWith(document.createTextNode('Reddit'))"></span>
+      <span class="pain-pill">Asked to provide <span class="hl">bank proof for their billing error</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill"><span class="hl">Payment failed</span> — service cut with no warning <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
     </div>
   </div>
-  <div class="pain-count rv">200+ <span>complaints about Salesforce billing &amp; cancellation &mdash; </span><a href="https://www.bbb.org/us/ca/san-francisco/profile/computer-software/salesforcecom-inc-1116-64675/complaints" target="_blank">BBB &#8599;</a> <span>|</span> <a href="https://www.trustpilot.com/review/salesforce.com" target="_blank">Trustpilot &#8599;</a> <span>|</span> <a href="https://www.reddit.com/r/salesforce/search/?q=billing+cancel" target="_blank">Reddit &#8599;</a></div>
+  <div class="pain-count rv">200+ <span>billing support complaints from Salesforce customers &mdash; </span><a href="https://www.bbb.org/us/ca/san-francisco/profile/computer-software/salesforcecom-inc-1116-64675/complaints" target="_blank">BBB &#8599;</a> <span>|</span> <a href="https://www.trustpilot.com/review/salesforce.com" target="_blank">Trustpilot &#8599;</a> <span>|</span> <a href="https://www.reddit.com/r/salesforce/search/?q=billing+support" target="_blank">Reddit &#8599;</a></div>
 
   </div>
 </section>
