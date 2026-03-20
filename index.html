@@ -129,82 +129,100 @@
         .build-progress-track{height:4px;background:rgba(79,70,229,.1);border-radius:4px;overflow:hidden}
         .build-progress-fill{height:100%;background:linear-gradient(90deg,var(--indigo),var(--green));border-radius:4px;width:0%;transition:width .6s cubic-bezier(.16,1,.3,1)}
 
-        /* ========== BUILD VISUAL CARDS ========== */
-        .build-card-list{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+        /* ========== BUILD VISUAL CARDS (legacy — kept for compatibility) ========== */
+        .build-card-list{display:none}
         .bci{opacity:0;transform:translateY(12px);transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .45s cubic-bezier(.16,1,.3,1)}
         .bci.visible{opacity:1;transform:translateY(0)}
         .bci-inner{border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.02)}
-        .bci-header{display:flex;align-items:center;gap:8px;margin-bottom:10px}
-        .bci-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-        .bci-icon svg{width:14px;height:14px}
-        .bci-icon.indigo{background:rgba(79,70,229,.08);color:var(--indigo)}
-        .bci-icon.green{background:rgba(16,185,129,.08);color:var(--green)}
-        .bci-icon.amber{background:rgba(245,158,11,.08);color:#B45309}
-        .bci-title{font-family:var(--display);font-size:13px;font-weight:700;color:var(--text);letter-spacing:-.02em}
         .bci-badge{margin-left:auto;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:2px 6px;border-radius:5px;white-space:nowrap}
         .bci-badge.live{background:rgba(16,185,129,.1);color:var(--green-dark)}
         .bci-badge.verified{background:rgba(79,70,229,.08);color:var(--indigo)}
-
-        /* Company card */
-        .bci-company-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-        .bci-company-logo{width:32px;height:32px;border-radius:8px;object-fit:contain;border:1px solid var(--border);background:var(--bg);flex-shrink:0}
-        .bci-company-name{font-family:var(--display);font-size:14px;font-weight:900;color:var(--text);letter-spacing:-.03em}
-        .bci-company-industry{font-size:11px;color:var(--text-muted);margin-top:1px}
-        .bci-company-stat{display:inline-flex;align-items:center;gap:4px;padding:4px 8px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.15);border-radius:6px;font-size:11px;font-weight:600;color:var(--green-dark)}
-        .bci-company-stat svg{width:12px;height:12px}
-
-        /* Intelligence card */
-        .bci-intel-item{display:flex;align-items:flex-start;gap:6px;padding:4px 0;font-size:12px;color:var(--text-mid);line-height:1.45;border-bottom:1px solid rgba(0,0,0,.03)}
-        .bci-intel-item:last-child{border-bottom:none;padding-bottom:0}
-        .bci-intel-dot{width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0;margin-top:4px}
-        .bci-intel-dot.green{background:var(--green)}
-        .bci-intel-dot.red{background:var(--red)}
-        .bci-intel-section-label{font-size:10px;font-weight:700;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
-
-        /* Contacts card */
-        .bci-contact-row{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(0,0,0,.03)}
-        .bci-contact-row:last-child{border-bottom:none;padding-bottom:0}
-        .bci-avatar{width:30px;height:30px;border-radius:50%;flex-shrink:0;object-fit:cover}
-        .bci-contact-info{flex:1;min-width:0}
-        .bci-contact-name{font-size:12px;font-weight:600;color:var(--text);letter-spacing:-.01em}
-        .bci-contact-title{font-size:10px;color:var(--text-muted)}
-        .bci-contact-badge{font-size:9px;font-weight:600;padding:2px 6px;border-radius:5px;background:rgba(16,185,129,.08);color:var(--green-dark);white-space:nowrap;flex-shrink:0}
-        .bci-skeleton-bar{height:10px;border-radius:5px;background:linear-gradient(90deg,rgba(79,70,229,.08) 0%,rgba(79,70,229,.15) 50%,rgba(79,70,229,.08) 100%);background-size:200% 100%}
-        .bci-skeleton-avatar{display:flex;align-items:center;justify-content:center}
         @keyframes skeletonPulse{0%,100%{opacity:.4}50%{opacity:1}}
 
-        /* Email gate card */
-        .bci-gate{border:1.5px dashed rgba(79,70,229,.3);border-radius:16px;padding:36px 32px;background:linear-gradient(135deg,rgba(79,70,229,.02),rgba(79,70,229,.04));text-align:center}
-        .bci-gate-lock{width:52px;height:52px;border-radius:14px;background:rgba(79,70,229,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
-        .bci-gate-title{font-family:var(--display);font-size:22px;font-weight:900;color:var(--text);margin-bottom:8px;letter-spacing:-.04em}
-        .bci-gate-sub{font-size:15px;color:var(--text-mid);margin-bottom:24px;line-height:1.6;max-width:380px;margin-left:auto;margin-right:auto}
-        .bci-gate-input-wrap{display:flex;gap:8px;max-width:420px;margin:0 auto 12px}
-        .bci-gate-input{flex:1;min-width:0;padding:14px 18px;border:1.5px solid var(--border);border-radius:12px;font-family:var(--sans);font-size:15px;color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s;background:#fff}
-        .bci-gate-input:focus{border-color:var(--indigo);box-shadow:0 0 0 3px rgba(79,70,229,.08)}
-        .bci-gate-btn{padding:14px 22px;background:var(--indigo);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:6px;flex-shrink:0}
-        .bci-gate-btn:hover{background:var(--indigo-dark);transform:translateY(-1px)}
-        .bci-gate-privacy{font-size:12px;color:var(--text-dim)}
-        @media(max-width:480px){.bci-gate-input-wrap{flex-direction:column}.bci-gate-btn{justify-content:center}}
+        /* ========== DOSSIER (2-in-1: loading IS the content) ========== */
+        .dossier{padding:0;max-width:680px;margin:0 auto}
+        .dossier-brand{display:flex;align-items:center;gap:16px;margin-bottom:28px;opacity:0;transform:translateY(12px);transition:all .6s cubic-bezier(.16,1,.3,1)}
+        .dossier-brand.visible{opacity:1;transform:translateY(0)}
+        .dossier-brand-logo{width:56px;height:56px;border-radius:14px;object-fit:contain;background:#fff;border:1.5px solid var(--border);flex-shrink:0}
+        .dossier-brand-info{flex:1}
+        .dossier-brand-name{font-family:var(--display);font-size:28px;font-weight:900;color:var(--text);letter-spacing:-.04em;line-height:1.15}
+        .dossier-brand-industry{font-size:15px;color:var(--text-muted);margin-top:2px}
 
-        /* ========== READINESS CHECKLIST ========== */
-        .bci-readiness{grid-column:1/-1}
-        .bci-readiness .bci-inner{border-color:rgba(16,185,129,.2);background:linear-gradient(135deg,rgba(16,185,129,.03) 0%,rgba(79,70,229,.02) 100%);padding:20px 24px}
-        .bci-readiness-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
-        .bci-readiness-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--green),#059669);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-        .bci-readiness-title{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em}
-        .bci-readiness-pct{font-family:var(--display);font-size:13px;font-weight:800;color:var(--green);margin-left:auto}
-        .bci-checklist{list-style:none;padding:0;margin:0 0 16px;display:grid;grid-template-columns:1fr 1fr;gap:4px 24px}
-        @media(max-width:600px){.bci-checklist{grid-template-columns:1fr}}
-        .bci-checklist li{display:flex;align-items:center;gap:6px;padding:4px 0;font-size:12px;color:var(--text-mid);line-height:1.4}
-        .bci-check-done{color:var(--green);font-size:13px;flex-shrink:0;width:16px;text-align:center}
-        .bci-check-pending{color:var(--text-dim);font-size:12px;flex-shrink:0;width:16px;text-align:center;opacity:.5}
-        .bci-checklist li.pending{opacity:.55}
-        .bci-readiness-footer{display:flex;align-items:center;gap:16px;padding-top:14px;border-top:1px solid rgba(0,0,0,.04);flex-wrap:wrap}
-        .bci-readiness-sub{font-size:11px;color:var(--text-muted);line-height:1.5}
-        .bci-readiness-cta{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;background:var(--indigo);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:12px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;box-shadow:0 2px 8px rgba(79,70,229,.2)}
-        .bci-readiness-cta:hover{background:var(--indigo-dark);transform:translateY(-1px);box-shadow:0 4px 12px rgba(79,70,229,.3)}
+        .dossier-section{margin-bottom:20px;opacity:0;transform:translateY(10px);transition:all .5s cubic-bezier(.16,1,.3,1)}
+        .dossier-section.visible{opacity:1;transform:translateY(0)}
+        .dossier-section-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--text-dim);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+        .dossier-section-label .ds-dot{width:6px;height:6px;border-radius:50%;animation:pulse-dot 1.5s ease-in-out infinite}
+        .dossier-section-label .ds-dot.green{background:var(--green)}
+        .dossier-section-label .ds-dot.amber{background:var(--amber)}
+        .dossier-section-label .ds-dot.indigo{background:var(--indigo)}
+
+        .dossier-line{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.04);font-size:16px;color:var(--text-mid);line-height:1.55;opacity:0;transform:translateX(-8px);transition:all .4s cubic-bezier(.16,1,.3,1)}
+        .dossier-line.visible{opacity:1;transform:translateX(0)}
+        .dossier-line:last-child{border-bottom:none}
+        .dossier-line-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:8px}
+        .dossier-line-dot.amber{background:var(--amber)}
+        .dossier-line-dot.red{background:var(--red)}
+        .dossier-line-dot.green{background:var(--green)}
+        .dossier-line-key{font-size:13px;font-weight:700;color:var(--text);min-width:100px;flex-shrink:0;font-family:var(--display);letter-spacing:-.02em}
+        .dossier-line-val{flex:1}
+
+        .dossier-tag{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;opacity:0;transform:translateY(6px);transition:all .4s cubic-bezier(.16,1,.3,1)}
+        .dossier-tag.visible{opacity:1;transform:translateY(0)}
+        .dossier-tag.green{background:rgba(16,185,129,.08);color:var(--green-dark);border:1px solid rgba(16,185,129,.15)}
+        .dossier-tag.green:hover{background:rgba(16,185,129,.14);border-color:rgba(16,185,129,.3)}
+        .dossier-tag.indigo{background:rgba(79,70,229,.06);color:var(--indigo);border:1px solid rgba(79,70,229,.12)}
+        .dossier-tag.indigo:hover{background:rgba(79,70,229,.1);border-color:rgba(79,70,229,.2)}
+        .dossier-tag svg{width:14px;height:14px}
+
+        .dossier-tags-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+
+        /* Dossier compact state (after loading, before player appears) */
+        .dossier.compacted{max-width:680px}
+        .dossier.compacted .dossier-brand{margin-bottom:16px}
+        .dossier.compacted .dossier-brand-name{font-size:20px}
+        .dossier.compacted .dossier-brand-logo{width:40px;height:40px;border-radius:10px}
+        .dossier.compacted .dossier-brand-industry{font-size:13px}
+        .dossier.compacted .dossier-section{margin-bottom:12px}
+        .dossier.compacted .dossier-line{font-size:14px;padding:5px 0}
+        .dossier.compacted .dossier-line-dot{width:5px;height:5px;margin-top:7px}
+
+        /* ========== INTELLIGENCE DRAWER (sidebar) ========== */
+        .intel-drawer-overlay{position:fixed;inset:0;z-index:9500;background:rgba(0,0,0,.4);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s}
+        .intel-drawer-overlay.open{opacity:1;pointer-events:auto}
+        .intel-drawer{position:fixed;top:0;right:0;bottom:0;width:440px;max-width:90vw;z-index:9501;background:#fff;box-shadow:-8px 0 32px rgba(0,0,0,.1);transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);overflow-y:auto;padding:32px 28px}
+        .intel-drawer.open{transform:translateX(0)}
+        .intel-drawer-close{position:absolute;top:16px;right:16px;background:none;border:none;cursor:pointer;padding:8px;color:var(--text-muted);transition:color .2s}
+        .intel-drawer-close:hover{color:var(--text)}
+        .intel-drawer-title{font-family:var(--display);font-size:22px;font-weight:900;color:var(--text);letter-spacing:-.04em;margin-bottom:24px}
+        .intel-drawer-section{margin-bottom:24px}
+        .intel-drawer-section-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text-dim);margin-bottom:10px}
+        .intel-drawer-item{display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.04);font-size:14px;color:var(--text-mid);line-height:1.55}
+        .intel-drawer-item:last-child{border-bottom:none}
+        .intel-drawer-contact{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(0,0,0,.04)}
+        .intel-drawer-contact:last-child{border-bottom:none}
+        .intel-drawer-avatar{width:36px;height:36px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:12px;font-weight:800;color:#fff}
+        .intel-drawer-contact-name{font-size:14px;font-weight:600;color:var(--text)}
+        .intel-drawer-contact-title{font-size:12px;color:var(--text-muted)}
+
+        /* Email gate (inline in dossier) */
+        .dossier-gate{border:1.5px dashed rgba(79,70,229,.3);border-radius:16px;padding:28px 24px;background:linear-gradient(135deg,rgba(79,70,229,.02),rgba(79,70,229,.04));text-align:center;margin-top:20px;opacity:0;transform:translateY(10px);transition:all .5s cubic-bezier(.16,1,.3,1)}
+        .dossier-gate.visible{opacity:1;transform:translateY(0)}
+        .dossier-gate-title{font-family:var(--display);font-size:20px;font-weight:900;color:var(--text);margin-bottom:6px;letter-spacing:-.04em}
+        .dossier-gate-sub{font-size:14px;color:var(--text-mid);margin-bottom:18px;line-height:1.6}
+        .dossier-gate-input-wrap{display:flex;gap:8px;max-width:400px;margin:0 auto 10px}
+        .dossier-gate-input{flex:1;min-width:0;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-family:var(--sans);font-size:14px;color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s;background:#fff}
+        .dossier-gate-input:focus{border-color:var(--indigo);box-shadow:0 0 0 3px rgba(79,70,229,.08)}
+        .dossier-gate-btn{padding:12px 20px;background:var(--indigo);color:#fff;border:none;border-radius:10px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:6px;flex-shrink:0}
+        .dossier-gate-btn:hover{background:var(--indigo-dark)}
+        .dossier-gate-privacy{font-size:11px;color:var(--text-dim)}
+        @media(max-width:480px){.dossier-gate-input-wrap{flex-direction:column}.dossier-gate-btn{justify-content:center}}
+
+        /* Finalize CTA bar */
         .finalize-cta-bar{display:flex;align-items:center;justify-content:center;gap:16px;padding:16px 0;margin-top:8px;animation:fadeInUp .5s ease;flex-wrap:wrap}
         @media(max-width:480px){.finalize-cta-bar{flex-direction:column;gap:8px}}
+        .bci-readiness-cta{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;background:var(--indigo);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:12px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;box-shadow:0 2px 8px rgba(79,70,229,.2)}
+        .bci-readiness-cta:hover{background:var(--indigo-dark);transform:translateY(-1px);box-shadow:0 4px 12px rgba(79,70,229,.3)}
+        .bci-readiness-sub{font-size:11px;color:var(--text-muted);line-height:1.5}
 
         /* ========== DEMO AREA (inside build card after animation) ========== */
         .demo-area{display:none;margin-top:14px}
@@ -559,10 +577,48 @@
                 <div class="build-progress-fill" id="build-progress-fill"></div>
             </div>
         </div>
-        <!-- Visual slide-in cards -->
+        <!-- Legacy cards container (hidden, kept for JS compat) -->
         <div class="build-card-list" id="build-card-list"></div>
 
-        <!-- Demo area (appears after build animation completes) -->
+        <!-- DOSSIER: intelligence report that fills line by line -->
+        <div class="dossier" id="dossier">
+            <!-- Brand header (logo + name + industry) -->
+            <div class="dossier-brand" id="dossier-brand">
+                <img class="dossier-brand-logo" id="dossier-logo" src="" alt="">
+                <div class="dossier-brand-info">
+                    <div class="dossier-brand-name" id="dossier-name"></div>
+                    <div class="dossier-brand-industry" id="dossier-industry"></div>
+                </div>
+            </div>
+
+            <!-- Products/Services section -->
+            <div class="dossier-section" id="dossier-products-section">
+                <div class="dossier-section-label"><span class="ds-dot green"></span> Products &amp; Services</div>
+                <div id="dossier-products"></div>
+            </div>
+
+            <!-- Why they delay section -->
+            <div class="dossier-section" id="dossier-risks-section">
+                <div class="dossier-section-label"><span class="ds-dot amber"></span> Payment Risk Analysis</div>
+                <div id="dossier-risks"></div>
+            </div>
+
+            <!-- Tags row (decision makers + see intelligence) -->
+            <div class="dossier-tags-row" id="dossier-tags-row"></div>
+
+            <!-- Email gate (inline) -->
+            <div class="dossier-gate" id="dossier-gate">
+                <div class="dossier-gate-title" id="dossier-gate-title">One step from your agent.</div>
+                <div class="dossier-gate-sub">Enter your work email to unlock the voice demo.</div>
+                <div class="dossier-gate-input-wrap">
+                    <input type="email" class="dossier-gate-input" id="dossier-email-input" placeholder="you@company.com" autocomplete="email">
+                    <button class="dossier-gate-btn" id="dossier-email-btn">Unlock <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+                </div>
+                <div class="dossier-gate-privacy">No spam. Unsubscribe anytime.</div>
+            </div>
+        </div>
+
+        <!-- Demo area (appears after dossier completes) -->
         <div class="demo-area" id="demo-area">
             <!-- ORB ZONE — gradient transition with animated orb -->
             <div class="orb-zone" id="orb-zone">
@@ -1505,19 +1561,19 @@
             }
             if (apiContacts.length > 0) {
                 updated._apiContacts = apiContacts.slice(0, 3);
-                var contactsCard = document.getElementById('bci-contacts');
-                if (contactsCard) {
-                    updateContactsCardWithRealData(updated._apiContacts, updated.name);
-                }
             }
+
+            // Store enrichment data from backend (terms, voice context, dispute playbook)
+            if (apiData._companyTerms) updated._companyTerms = apiData._companyTerms;
+            if (apiData._voiceAgentContext) updated._voiceAgentContext = apiData._voiceAgentContext;
+            if (apiData._disputePlaybook) updated._disputePlaybook = apiData._disputePlaybook;
+            if (apiData._brandColors) updated._brandColors = apiData._brandColors;
 
             // Update the current company data
             currentCompany = updated;
 
-            // Smoothly update visible elements if demo is already showing
-            if (demoArea.classList.contains('visible')) {
-                updateDemoWithAPIData(updated);
-            }
+            // Update dossier + demo with API data
+            updateDemoWithAPIData(updated);
 
             // Update build title (especially if API name differs from guessed name)
             buildTitle.textContent = updated.name + ' collection agent';
@@ -1544,11 +1600,53 @@
     }
 
     function updateDemoWithAPIData(data) {
-        // Add shimmer effect during update
-        analysisBanner.classList.add('api-updating');
+        // Update dossier risks if visible
+        var risksEl = document.getElementById('dossier-risks');
+        if (risksEl && data.analysis && data.analysis.length > 0) {
+            risksEl.innerHTML = '';
+            var dotColors = ['amber', 'red', 'green'];
+            data.analysis.forEach(function(item, i) {
+                addDossierLine(risksEl, item, dotColors[i % 3]);
+            });
+        }
 
-        setTimeout(function() {
-            // Update analysis banner
+        // Update dossier products if visible
+        var productsEl = document.getElementById('dossier-products');
+        if (productsEl && data.product) {
+            productsEl.innerHTML = '';
+            var productLines = data.product.split(/,\s*/);
+            productLines.slice(0, 3).forEach(function(p) {
+                addDossierLine(productsEl, p.trim(), 'green');
+            });
+            if (data.clients) {
+                addDossierKVLine(productsEl, 'Clients', data.clients.length > 80 ? data.clients.substring(0, 77) + '...' : data.clients);
+            }
+        }
+
+        // Update dossier name and industry
+        if (data.name) dossierName.textContent = data.name;
+        if (data.industry) dossierIndustry.textContent = data.industry;
+
+        // Update decision makers tag
+        var dmTag = document.getElementById('dossier-dm-tag');
+        if (dmTag && data._apiContacts && data._apiContacts.length > 0) {
+            var count = data._apiContacts.length;
+            dmTag.className = 'dossier-tag green visible';
+            dmTag.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> ' + count + ' decision maker' + (count > 1 ? 's' : '') + ' identified';
+            dmTag.style.cursor = 'pointer';
+            dmTag.onclick = function() { openIntelDrawer(); };
+        }
+
+        // Update left panel teaser if not currently playing a dispute
+        if (!isPlaying && panelLeftTeaser.style.display !== 'none') {
+            var firstDispute = data.disputes[0];
+            panelLeftTeaserText.textContent = '"' + firstDispute.teaser + '"';
+            panelLeftDesc.textContent = 'See how your ' + data.name + ' agent handles a real dispute with evidence and reasoning.';
+            currentDisputeIndex = 0;
+        }
+
+        // Update analysis banner (legacy, kept for compat)
+        if (analysisItems) {
             analysisItems.innerHTML = '';
             (data.analysis || []).forEach(function(item) {
                 var div = document.createElement('div');
@@ -1556,19 +1654,106 @@
                 div.textContent = item;
                 analysisItems.appendChild(div);
             });
-
-            // Update left panel teaser if not currently playing a dispute
-            if (!isPlaying && panelLeftTeaser.style.display !== 'none') {
-                var firstDispute = data.disputes[0];
-                panelLeftTeaserText.textContent = '"' + firstDispute.teaser + '"';
-                panelLeftDesc.textContent = 'See how your ' + data.name + ' agent handles a real dispute with evidence and reasoning.';
-                currentDisputeIndex = 0;
-            }
-
-            // Remove shimmer
-            analysisBanner.classList.remove('api-updating');
-        }, 300);
+        }
     }
+
+    // ===== INTELLIGENCE DRAWER =====
+    function openIntelDrawer() {
+        var overlay = document.getElementById('intel-drawer-overlay');
+        var drawer = document.getElementById('intel-drawer');
+        var content = document.getElementById('intel-drawer-content');
+        var title = document.getElementById('intel-drawer-title');
+        if (!drawer || !content) return;
+
+        var data = currentCompany;
+        title.textContent = (data ? data.name : '') + ' Intelligence Report';
+        content.innerHTML = '';
+
+        // Section: Company Profile
+        var profileHtml = '<div class="intel-drawer-section">' +
+            '<div class="intel-drawer-section-title">Company Profile</div>';
+        if (data) {
+            if (data.industry) profileHtml += '<div class="intel-drawer-item"><strong style="min-width:80px;flex-shrink:0">Industry</strong><span>' + data.industry + '</span></div>';
+            if (data.product) profileHtml += '<div class="intel-drawer-item"><strong style="min-width:80px;flex-shrink:0">Products</strong><span>' + data.product + '</span></div>';
+            if (data.clients) profileHtml += '<div class="intel-drawer-item"><strong style="min-width:80px;flex-shrink:0">Clients</strong><span>' + data.clients + '</span></div>';
+        }
+        profileHtml += '</div>';
+        content.innerHTML += profileHtml;
+
+        // Section: Decision Makers
+        if (data && data._apiContacts && data._apiContacts.length > 0) {
+            var contactsHtml = '<div class="intel-drawer-section">' +
+                '<div class="intel-drawer-section-title">Decision Makers (' + data._apiContacts.length + ')</div>';
+            var avatarColors = ['#4F46E5', '#10B981', '#F59E0B'];
+            data._apiContacts.forEach(function(c, i) {
+                var initials = c.name.split(' ').map(function(w) { return w[0]; }).join('').toUpperCase().slice(0, 2);
+                contactsHtml += '<div class="intel-drawer-contact">' +
+                    '<div class="intel-drawer-avatar" style="background:' + avatarColors[i % 3] + '">' + initials + '</div>' +
+                    '<div><div class="intel-drawer-contact-name">' + c.name + '</div><div class="intel-drawer-contact-title">' + (c.title || 'Finance') + '</div></div>' +
+                    '</div>';
+            });
+            contactsHtml += '</div>';
+            content.innerHTML += contactsHtml;
+        }
+
+        // Section: Payment Risks
+        if (data && data.analysis && data.analysis.length > 0) {
+            var risksHtml = '<div class="intel-drawer-section">' +
+                '<div class="intel-drawer-section-title">Payment Risk Analysis</div>';
+            var dotColors = ['#F59E0B', '#EF4444', '#10B981'];
+            data.analysis.forEach(function(item, i) {
+                risksHtml += '<div class="intel-drawer-item"><span style="width:7px;height:7px;border-radius:50%;background:' + dotColors[i % 3] + ';flex-shrink:0;margin-top:6px"></span><span>' + item + '</span></div>';
+            });
+            risksHtml += '</div>';
+            content.innerHTML += risksHtml;
+        }
+
+        // Section: Disputes
+        if (data && data.disputes && data.disputes.length > 0) {
+            var disputesHtml = '<div class="intel-drawer-section">' +
+                '<div class="intel-drawer-section-title">Common Disputes (' + data.disputes.length + ')</div>';
+            data.disputes.forEach(function(d) {
+                var label = d.label || 'Dispute';
+                var teaser = d.teaser || '';
+                disputesHtml += '<div class="intel-drawer-item" style="flex-direction:column;gap:4px"><strong>' + label + '</strong><span style="font-size:13px;color:var(--text-dim)">"' + teaser + '"</span></div>';
+            });
+            disputesHtml += '</div>';
+            content.innerHTML += disputesHtml;
+        }
+
+        // Section: Company Terms (if available from API)
+        if (data && data._companyTerms) {
+            var terms = data._companyTerms;
+            var termsHtml = '<div class="intel-drawer-section">' +
+                '<div class="intel-drawer-section-title">Contract Terms (from CGV)</div>';
+            if (terms.payment_terms) termsHtml += '<div class="intel-drawer-item"><strong style="min-width:100px;flex-shrink:0">Payment</strong><span>' + terms.payment_terms + '</span></div>';
+            if (terms.late_penalty) termsHtml += '<div class="intel-drawer-item"><strong style="min-width:100px;flex-shrink:0">Late penalty</strong><span>' + terms.late_penalty + '</span></div>';
+            if (terms.cancellation_policy) termsHtml += '<div class="intel-drawer-item"><strong style="min-width:100px;flex-shrink:0">Cancellation</strong><span>' + terms.cancellation_policy + '</span></div>';
+            if (terms.dispute_process) termsHtml += '<div class="intel-drawer-item"><strong style="min-width:100px;flex-shrink:0">Disputes</strong><span>' + terms.dispute_process + '</span></div>';
+            termsHtml += '</div>';
+            content.innerHTML += termsHtml;
+        }
+
+        overlay.classList.add('open');
+        drawer.classList.add('open');
+        try { gtag('event', 'intel_drawer_opened', { domain: currentDomain, company: data ? data.name : '' }); } catch(e) {}
+    }
+
+    function closeIntelDrawer() {
+        var overlay = document.getElementById('intel-drawer-overlay');
+        var drawer = document.getElementById('intel-drawer');
+        if (overlay) overlay.classList.remove('open');
+        if (drawer) drawer.classList.remove('open');
+    }
+
+    // Drawer close handlers
+    (function() {
+        var closeBtn = document.getElementById('intel-drawer-close');
+        var overlay = document.getElementById('intel-drawer-overlay');
+        if (closeBtn) closeBtn.addEventListener('click', closeIntelDrawer);
+        if (overlay) overlay.addEventListener('click', closeIntelDrawer);
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeIntelDrawer(); });
+    })();
 
     // ===== BUILD ANIMATION (visual slide-in cards) =====
     var buildProgressFill, buildProgressPct, buildProgressLabelEl, buildCardListEl, buildProgressWrapEl;
@@ -1592,22 +1777,21 @@
 
     function animateProgressTo(target, duration, label, callback) {
         var start = buildProgressValue;
-        var startTime = null;
-        function step(ts) {
-            if (!startTime) startTime = ts;
-            var elapsed = ts - startTime;
+        var startMs = Date.now();
+        function step() {
+            var elapsed = Date.now() - startMs;
             var progress = Math.min(elapsed / duration, 1);
             var eased = 1 - Math.pow(1 - progress, 3);
             var current = start + (target - start) * eased;
             setProgress(current, label);
             if (progress < 1) {
-                requestAnimationFrame(step);
+                setTimeout(step, 32);
             } else {
                 setProgress(target, label);
                 if (callback) callback();
             }
         }
-        requestAnimationFrame(step);
+        setTimeout(step, 32);
     }
 
     function addBuildCard(id, html) {
@@ -1620,16 +1804,64 @@
         return div;
     }
 
+    // ===== DOSSIER REFS =====
+    var dossierEl = document.getElementById('dossier');
+    var dossierBrand = document.getElementById('dossier-brand');
+    var dossierLogo = document.getElementById('dossier-logo');
+    var dossierName = document.getElementById('dossier-name');
+    var dossierIndustry = document.getElementById('dossier-industry');
+    var dossierProductsSection = document.getElementById('dossier-products-section');
+    var dossierProducts = document.getElementById('dossier-products');
+    var dossierRisksSection = document.getElementById('dossier-risks-section');
+    var dossierRisks = document.getElementById('dossier-risks');
+    var dossierTagsRow = document.getElementById('dossier-tags-row');
+    var dossierGate = document.getElementById('dossier-gate');
+
+    function resetDossier() {
+        dossierEl.classList.remove('compacted');
+        dossierBrand.classList.remove('visible');
+        dossierProductsSection.classList.remove('visible');
+        dossierRisksSection.classList.remove('visible');
+        dossierProducts.innerHTML = '';
+        dossierRisks.innerHTML = '';
+        dossierTagsRow.innerHTML = '';
+        dossierTagsRow.style.display = 'none';
+        dossierGate.classList.remove('visible');
+        dossierGate.style.display = 'none';
+    }
+
+    function addDossierLine(container, text, dotColor) {
+        var line = document.createElement('div');
+        line.className = 'dossier-line';
+        line.innerHTML = '<span class="dossier-line-dot ' + (dotColor || 'amber') + '"></span><span>' + text + '</span>';
+        container.appendChild(line);
+        setTimeout(function() { line.classList.add('visible'); }, 50);
+        return line;
+    }
+
+    function addDossierKVLine(container, key, val) {
+        var line = document.createElement('div');
+        line.className = 'dossier-line';
+        line.innerHTML = '<span class="dossier-line-key">' + key + '</span><span class="dossier-line-val">' + val + '</span>';
+        container.appendChild(line);
+        setTimeout(function() { line.classList.add('visible'); }, 50);
+        return line;
+    }
+
+    function compactDossier() {
+        dossierEl.classList.add('compacted');
+    }
+
     function startBuild(domain) {
         var data = getCompanyData(domain);
         currentCompany = data;
         currentDomain = domain;
         currentDisputeIndex = 0;
         buildEmailGatePassed = false;
-        // Funnel event: domain entered
         try { gtag('event', 'domain_entered', { domain: domain, company: data.name }); } catch(e) {}
 
         if (!buildProgressFill) initBuildRefs();
+        resetDossier();
 
         // Fire API call in parallel
         fetchCompanyFromAPI(domain);
@@ -1663,45 +1895,115 @@
             buildLogo.src = 'https://cdn.brandfetch.io/' + domain;
             buildTitle.textContent = 'Building your ' + data.name + ' agent...';
 
+            // Dossier logo — use Google favicon (most reliable)
+            dossierLogo.onerror = function() {
+                this.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(data.name) + '&background=4F46E5&color=fff&size=128&bold=true';
+            };
+            dossierLogo.src = 'https://www.google.com/s2/favicons?domain=' + domain + '&sz=128';
+
             // Show progress bar
             setTimeout(function() {
                 buildProgressFill.style.transition = '';
                 buildProgressWrapEl.classList.add('visible');
             }, 100);
 
-            // Step 1: 0 → 22% — Company card
-            animateProgressTo(22, 1800, 'Analyzing ' + data.name + '...', function() {
-                addCompanyCard(data, domain);
+            // === DOSSIER LINE-BY-LINE FILL ===
 
-                // Step 2: 22 → 48% — Intelligence card
+            // Step 1: 0→25% — Brand reveal (logo + name + industry)
+            animateProgressTo(25, 2000, 'Analyzing ' + data.name + '...', function() {
+                dossierName.textContent = data.name;
+                dossierIndustry.textContent = data.industry || 'Business services';
+                dossierBrand.classList.add('visible');
+
+                // Step 2: 25→50% — Products/services lines appear
                 setTimeout(function() {
-                    animateProgressTo(48, 2000, 'Finding why clients don\'t pay...', function() {
-                        addIntelligenceCard(data);
-
-                        // Step 3: 48 → 73% — Contacts card
+                    animateProgressTo(50, 2200, 'Understanding their business...', function() {
+                        dossierProductsSection.classList.add('visible');
+                        var products = data.product || 'Professional services';
+                        // Split by comma or show as single line
+                        var productLines = products.split(/,\s*/);
+                        var lineDelay = 0;
+                        productLines.slice(0, 3).forEach(function(p) {
+                            setTimeout(function() {
+                                addDossierLine(dossierProducts, p.trim(), 'green');
+                            }, lineDelay);
+                            lineDelay += 400;
+                        });
+                        // Also add clients line
                         setTimeout(function() {
-                            animateProgressTo(73, 1800, 'Finding who to call...', function() {
-                                addContactsCard(data, domain);
+                            if (data.clients) {
+                                addDossierKVLine(dossierProducts, 'Clients', data.clients.length > 80 ? data.clients.substring(0, 77) + '...' : data.clients);
+                            }
+                        }, lineDelay);
+
+                        // Step 3: 50→75% — Risk analysis lines
+                        setTimeout(function() {
+                            animateProgressTo(75, 2000, 'Analyzing payment risks...', function() {
+                                dossierRisksSection.classList.add('visible');
+                                var dotColors = ['amber', 'red', 'green'];
+                                var riskDelay = 0;
+                                (data.analysis || []).forEach(function(item, i) {
+                                    setTimeout(function() {
+                                        addDossierLine(dossierRisks, item, dotColors[i % 3]);
+                                    }, riskDelay);
+                                    riskDelay += 500;
+                                });
+
                                 trackEvent('cards_shown');
 
-                                // Skip gate — go straight to 100% with readiness checklist
+                                // Step 4: 75→100% — Tags + email gate OR straight to demo
                                 setTimeout(function() {
-                                    animateProgressTo(100, 1200, data.name + ' agent ready.', function() {
+                                    animateProgressTo(100, 1500, data.name + ' agent ready.', function() {
                                         buildTitle.textContent = data.name + ' collection agent';
-                                        // Track funnel event
                                         try { gtag('event', 'demo_ready', { domain: currentDomain, company: data.name }); } catch(e) {}
                                         trackEvent('demo_ready');
-                                        // Show readiness checklist, then demo
-                                        addReadinessCard(data);
-                                        setTimeout(function() { showDemo(data); }, 2500);
+
+                                        // Show tags (decision makers + full intelligence)
+                                        showDossierTags(data);
+
+                                        // Show demo after short pause
+                                        setTimeout(function() {
+                                            compactDossier();
+                                            setTimeout(function() { showDemo(data); }, 600);
+                                        }, 1500);
                                     });
-                                }, 500);
+                                }, riskDelay + 400);
                             });
-                        }, 600);
+                        }, lineDelay + 600);
                     });
                 }, 500);
             });
         }, 500);
+    }
+
+    function showDossierTags(data) {
+        dossierTagsRow.style.display = 'flex';
+        // Decision makers tag
+        var contactCount = (data._apiContacts && data._apiContacts.length) || 0;
+        if (contactCount > 0) {
+            var dmTag = document.createElement('span');
+            dmTag.className = 'dossier-tag green';
+            dmTag.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> ' + contactCount + ' decision maker' + (contactCount > 1 ? 's' : '') + ' identified';
+            dmTag.addEventListener('click', function() { openIntelDrawer(); });
+            dossierTagsRow.appendChild(dmTag);
+            setTimeout(function() { dmTag.classList.add('visible'); }, 100);
+        } else {
+            // Show "searching" tag that updates when API returns
+            var searchTag = document.createElement('span');
+            searchTag.className = 'dossier-tag indigo';
+            searchTag.id = 'dossier-dm-tag';
+            searchTag.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Searching decision makers...';
+            dossierTagsRow.appendChild(searchTag);
+            setTimeout(function() { searchTag.classList.add('visible'); }, 100);
+        }
+
+        // Full intelligence tag
+        var intelTag = document.createElement('span');
+        intelTag.className = 'dossier-tag indigo';
+        intelTag.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Full intelligence report';
+        intelTag.addEventListener('click', function() { openIntelDrawer(); });
+        dossierTagsRow.appendChild(intelTag);
+        setTimeout(function() { intelTag.classList.add('visible'); }, 250);
     }
 
     function addCompanyCard(data, domain) {
@@ -1997,18 +2299,18 @@
         }, 100);
     }
 
-    // ===== DEMO (inside build card) =====
+    // ===== DEMO (inside build card, below compacted dossier) =====
     function showDemo(data) {
-        // Funnel event: demo section visible
         try { gtag('event', 'demo_seen', { domain: currentDomain, company: data.name }); } catch(e) {}
-        // Hide analysis banner — info already in the intelligence card
-        var analysisBanner = document.getElementById('analysis-banner');
-        if (analysisBanner) analysisBanner.style.display = 'none';
+
+        // Hide analysis banner — info already in dossier
+        var analysisBannerEl = document.getElementById('analysis-banner');
+        if (analysisBannerEl) analysisBannerEl.style.display = 'none';
+
         // Show finalize CTA bar below the demo player
         var finalizeCta = document.getElementById('finalize-cta-bar');
         if (finalizeCta) {
             finalizeCta.style.display = 'flex';
-            // Track click on this CTA too
             var btn = document.getElementById('finalize-cta-btn');
             if (btn) btn.addEventListener('click', function() {
                 try { gtag('event', 'finalize_cta_click', { domain: currentDomain, company: data.name, location: 'below_player' }); } catch(e) {}
@@ -2033,10 +2335,13 @@
         // Initialize orb with company branding
         initOrb(currentCompany, currentDomain);
 
-        // Scroll build card into good view
+        // Scroll to orb zone smoothly
         setTimeout(function() {
-            buildSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 200);
+            var orbZone = document.getElementById('orb-zone');
+            if (orbZone) {
+                orbZone.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }, 300);
     }
 
     // Brand colors: fetched from API or extracted from known brands
@@ -2554,6 +2859,16 @@
 
 })();
 </script>
+<!-- INTELLIGENCE DRAWER (right sidebar) -->
+<div class="intel-drawer-overlay" id="intel-drawer-overlay"></div>
+<div class="intel-drawer" id="intel-drawer">
+    <button class="intel-drawer-close" id="intel-drawer-close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="intel-drawer-title" id="intel-drawer-title">Intelligence Report</div>
+    <div id="intel-drawer-content"></div>
+</div>
+
 <!-- Floating voice FAB — appears on scroll, drives to hero input -->
 <div class="voice-fab" id="voice-fab">
     <div class="voice-fab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg></div>
