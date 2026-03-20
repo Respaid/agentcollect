@@ -183,7 +183,8 @@
     { "source": "/contact", "destination": "/contact.html" },
     { "source": "/pricing", "destination": "/pricing.html" },
     { "source": "/privacy", "destination": "/privacy.html" },
-    { "source": "/terms", "destination": "/terms.html" }
+    { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/how-it-works", "destination": "/how-it-works.html" }
   ],
   "headers": [
     {
