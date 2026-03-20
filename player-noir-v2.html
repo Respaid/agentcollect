@@ -89,14 +89,12 @@ body {
   z-index: 10;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 18px;
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
+  gap: 8px;
+  padding: 6px 14px;
+  background: transparent;
+  border: none;
   border-radius: 12px;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.7);
   letter-spacing: 0.2px;
@@ -176,8 +174,8 @@ body {
 .conversation {
   position: fixed;
   top: 230px;
-  left: 260px;
-  right: 270px;
+  left: 60px;
+  right: 60px;
   bottom: 120px;
   z-index: 5;
   display: flex;
@@ -322,94 +320,45 @@ body {
 .annotation.amber { color: var(--amber); text-shadow: 0 0 24px rgba(245, 158, 11, 0.4); }
 .annotation.red { color: #F87171; text-shadow: 0 0 24px rgba(248, 113, 113, 0.4); }
 
-/* ═══ STAGE CARDS (LEFT) ═══ */
+/* ═══ STAGE CARDS — HIDDEN (replaced by orb label) ═══ */
 .stage-cards {
-  position: fixed;
-  left: 32px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.stage-card {
-  width: 190px;
-  padding: 14px 16px;
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
-  border-left: 3px solid transparent;
-  border-radius: 10px;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  font-size: 12px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.2);
-  transition: all 0.5s ease;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  letter-spacing: 0.2px;
-}
-.stage-card .stage-dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  flex-shrink: 0;
-  transition: all 0.5s ease;
-}
-.stage-card.active {
-  color: rgba(255, 255, 255, 0.95);
-  border-left-color: var(--indigo);
-  background: rgba(79, 70, 229, 0.08);
-  border-color: rgba(79, 70, 229, 0.25);
-  border-left-color: var(--indigo);
-}
-.stage-card.active .stage-dot {
-  background: var(--indigo);
-  box-shadow: 0 0 10px var(--indigo-glow);
-}
-.stage-card.completed {
-  color: rgba(16, 185, 129, 0.6);
-}
-.stage-card.completed .stage-dot {
-  background: var(--green);
-  box-shadow: 0 0 8px var(--green-glow);
+  display: none;
 }
 
-/* ═══ INSIGHT CARDS (RIGHT) ═══ */
+/* ═══ INSIGHT CARDS (BOTTOM-RIGHT, EPHEMERAL) ═══ */
 .insight-cards {
   position: fixed;
   right: 32px;
-  top: 76px;
+  bottom: 100px;
   z-index: 10;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  max-height: calc(100vh - 180px);
-  overflow-y: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  align-items: flex-end;
 }
-.insight-cards::-webkit-scrollbar { display: none; }
 .insight-card {
-  width: 210px;
-  padding: 10px 14px;
+  padding: 8px 14px;
   background: var(--glass);
   border: 1px solid var(--glass-border);
   border-radius: 10px;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   opacity: 0;
-  transform: translateX(20px);
+  transform: translateY(10px);
   transition: opacity 0.5s ease, transform 0.5s ease;
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
 }
 .insight-card.visible {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
+}
+.insight-card.fading-out {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 .insight-card .insight-icon {
   font-size: 14px;
@@ -439,58 +388,8 @@ body {
 .insight-card.green .insight-detail { color: var(--green); }
 .insight-card.neutral .insight-detail { color: rgba(255, 255, 255, 0.7); }
 
-/* ═══ WEATHER CARD ═══ */
-.weather-card {
-  width: 210px;
-  padding: 14px 16px;
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
-  border-radius: 10px;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  opacity: 0;
-  transform: translateX(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  cursor: default;
-  position: relative;
-}
-.weather-card.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-.weather-main {
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.8);
-}
-.weather-sub {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.35);
-  margin-top: 4px;
-  line-height: 1.4;
-}
-.weather-tooltip {
-  position: absolute;
-  bottom: calc(100% + 8px);
-  left: 0;
-  width: 240px;
-  padding: 12px 14px;
-  background: rgba(15, 15, 25, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 10px;
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.6);
-  line-height: 1.5;
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity 0.3s, transform 0.3s;
-  pointer-events: none;
-  z-index: 100;
-}
-.weather-card:hover .weather-tooltip {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* ═══ WEATHER CARD — HIDDEN ═══ */
+.weather-card { display: none; }
 
 /* ═══ END CALL BUTTON ═══ */
 .end-call {
@@ -700,61 +599,27 @@ body {
 @media (max-width: 1100px) {
   .message-text.agent-text { font-size: 48px; }
   .message-text.human-text { font-size: 40px; }
-  .conversation { left: 220px; right: 230px; }
-  .stage-card { width: 160px; padding: 11px 14px; font-size: 11px; }
-  .insight-card { width: 190px; }
-  .weather-card { width: 190px; }
+  .conversation { left: 40px; right: 40px; }
   .annotation { font-size: 14px; }
 }
 
 /* ═══ MOBILE ═══ */
 @media (max-width: 768px) {
-  .stage-cards {
-    position: fixed;
-    top: 60px; left: 0; right: 0;
-    transform: none;
-    flex-direction: row;
-    overflow-x: auto;
-    padding: 0 16px;
-    gap: 8px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .stage-cards::-webkit-scrollbar { display: none; }
-  .stage-card { width: auto; min-width: 140px; flex-shrink: 0; padding: 10px 14px; font-size: 11px; }
-
-  .insight-cards {
-    position: fixed;
-    top: auto;
-    bottom: 108px;
-    right: 16px;
-    left: 16px;
-    flex-direction: row;
-    overflow-x: auto;
-    max-height: 70px;
-    gap: 8px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .insight-cards::-webkit-scrollbar { display: none; }
-  .insight-card { width: auto; min-width: 140px; flex-shrink: 0; padding: 8px 12px; }
-  .insight-card .insight-detail { font-size: 13px; }
-  .weather-card { min-width: 160px; flex-shrink: 0; padding: 8px 12px; }
-  .timer-area { bottom: 82px; }
+  .insight-cards { right: 16px; bottom: 90px; }
 
   .conversation {
     left: 16px;
     right: 16px;
-    top: 210px;
-    bottom: 160px;
+    top: 180px;
+    bottom: 120px;
   }
   .message-text.agent-text { font-size: 36px; max-width: 100%; }
   .message-text.human-text { font-size: 28px; max-width: 100%; }
-  .orb-container { top: 110px; }
+  .orb-container { top: 80px; }
   .orb { width: 80px; height: 80px; }
   .geo-card { font-size: 11px; padding: 8px 12px; top: 16px; right: 16px; }
   .logo { top: 20px; left: 16px; font-size: 15px; }
-  .timer-area { left: 16px; bottom: 110px; }
+  .timer-area { left: 16px; bottom: 90px; }
   .annotation { font-size: 11px; }
 }
 </style>
@@ -904,44 +769,34 @@ function stopTimer() {
 const orb = document.getElementById('orb');
 const orbLabel = document.getElementById('orbLabel');
 
+let currentStage = '';
+
 function setOrbState(speaker) {
   orb.className = 'orb';
   if (speaker === 'agent') {
     orb.classList.add('speaking-agent');
-    orbLabel.textContent = 'SARAH';
+    orbLabel.textContent = currentStage || 'SARAH';
     orbLabel.style.color = 'rgba(79, 70, 229, 0.5)';
   } else if (speaker === 'human') {
     orb.classList.add('speaking-human');
-    orbLabel.textContent = 'LISTENING';
+    orbLabel.textContent = currentStage || 'LISTENING';
     orbLabel.style.color = 'rgba(16, 185, 129, 0.5)';
   } else {
-    orbLabel.textContent = 'PROCESSING';
+    orbLabel.textContent = currentStage || '';
     orbLabel.style.color = 'rgba(255, 255, 255, 0.25)';
   }
 }
 
 // ═══ STAGE MANAGEMENT ═══
-const stageCards = document.querySelectorAll('.stage-card');
-let activeStages = [];
-
 function setStage(stageName) {
-  stageCards.forEach(card => {
-    const name = card.dataset.stage;
-    if (name === stageName) {
-      // Mark all before as completed
-      let found = false;
-      stageCards.forEach(c => {
-        if (c.dataset.stage === stageName) {
-          found = true;
-          c.className = 'stage-card active';
-        } else if (!found) {
-          c.className = 'stage-card completed';
-        } else {
-          c.className = 'stage-card';
-        }
-      });
-    }
-  });
+  currentStage = stageName.toUpperCase();
+  orbLabel.textContent = currentStage;
+  orbLabel.style.transition = 'opacity 0.3s';
+  orbLabel.style.opacity = '0';
+  setTimeout(() => {
+    orbLabel.textContent = currentStage;
+    orbLabel.style.opacity = '1';
+  }, 150);
 }
 
 // ═══ INSIGHT MANAGEMENT ═══
@@ -953,18 +808,19 @@ function addInsight(data) {
   const card = document.createElement('div');
   const colorClass = data.color === 'green' ? 'green' : 'neutral';
   card.className = 'insight-card ' + colorClass;
-  const elapsed = Math.floor((Date.now() - startTime) / 1000);
-  const m = String(Math.floor(elapsed / 60)).padStart(2, '0');
-  const s = String(elapsed % 60).padStart(2, '0');
   card.innerHTML = `
     <div class="insight-label">${data.label}</div>
     <div class="insight-detail">${data.detail}</div>
-    <div class="insight-time">${m}:${s}</div>
   `;
   insightCardsEl.appendChild(card);
   requestAnimationFrame(() => {
     card.classList.add('visible');
   });
+  // Auto-fade after 4s
+  setTimeout(() => {
+    card.classList.add('fading-out');
+    setTimeout(() => { if (card.parentNode) card.parentNode.removeChild(card); }, 600);
+  }, 4000);
 }
 
 function addWeatherCard() {
@@ -1200,10 +1056,10 @@ function runScript() {
   conversationEl.innerHTML = '';
   currentMessageEl = null;
   insightCount = 0;
+  currentStage = '';
   document.getElementById('summaryOverlay').classList.remove('visible');
   setOrbState(null);
   setWaveform(false, null);
-  stageCards.forEach(c => c.className = 'stage-card');
 
   startTimer();
 
