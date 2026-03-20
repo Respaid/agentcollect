@@ -98,7 +98,7 @@
         .hero-input-wrap:focus-within{border-color:var(--indigo);box-shadow:0 0 0 4px rgba(79,70,229,.08)}
         .hero-input{flex:1;border:none;outline:none;padding:18px 24px;font-family:var(--sans);font-size:16px;color:var(--text);background:transparent}
         .hero-input::placeholder{color:var(--text-dim)}
-        .hero-btn{display:flex;align-items:center;justify-content:center;width:52px;height:52px;margin:4px;border-radius:12px;background:var(--indigo);border:none;cursor:pointer;transition:background .2s,transform .1s;flex-shrink:0}
+        .hero-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;margin:4px;border-radius:12px;background:var(--indigo);color:#fff;border:none;cursor:pointer;transition:background .2s,transform .1s;flex-shrink:0;font-family:var(--sans);font-size:14px;font-weight:600;white-space:nowrap}
         .hero-btn:hover{background:var(--indigo-dark)}
         .hero-btn:active{transform:scale(.95)}
         .hero-btn svg{color:#fff}
@@ -541,10 +541,12 @@
     <div class="hero-content" id="hero-content">
         <h1>The end of manual collection.</h1>
         <p class="sub">Upload a spreadsheet. AI does the rest. First results in hours.</p>
+        <p style="font-size:14px;color:var(--indigo);font-weight:600;margin-bottom:12px;letter-spacing:-.01em">See your AI collection agent in 30 seconds</p>
         <div class="hero-input-wrap" id="hero-input-wrap">
-            <input type="text" class="hero-input" id="domain-input" placeholder="Enter your company website..." autocomplete="off" spellcheck="false">
-            <button class="hero-btn" id="hero-btn" aria-label="Build agent">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <input type="text" class="hero-input" id="domain-input" placeholder="yourcompany.com" autocomplete="off" spellcheck="false">
+            <button class="hero-btn" id="hero-btn" aria-label="Build agent" style="gap:8px;padding:12px 20px;border-radius:12px;font-family:var(--sans);font-size:14px;font-weight:600;width:auto;min-width:auto">
+                Build my agent
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </button>
         </div>
         <div class="hero-logos">
