@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentCollect NOIR — Voice Intelligence Player</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --indigo: #4F46E5;
+  --green: #10B981;
+  --bg-deep: #06060C;
+  --bg-mid: #0C0A18;
+  --text: #FAFBFF;
+  --glass: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-active: rgba(79, 70, 229, 0.4);
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: var(--bg-deep);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(79, 70, 229, 0.06) 0%, transparent 70%),
+              radial-gradient(ellipse 60% 40% at 80% 70%, rgba(16, 185, 129, 0.03) 0%, transparent 60%),
+              linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-mid) 100%);
+}
+
+/* ═══ PARTICLE CANVAS ═══ */
+#particles {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ═══ PROTOTYPE WATERMARK ═══ */
+.watermark {
+  position: fixed;
+  bottom: 20px; left: 50%;
+  transform: translateX(-50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.06);
+  z-index: 1;
+  user-select: none;
+}
+
+/* ═══ LOGO ═══ */
+.logo {
+  position: fixed;
+  top: 32px; left: 36px;
+  z-index: 10;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: -0.3px;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.4s;
+}
+.logo:hover { color: rgba(255, 255, 255, 0.8); }
+.logo .dot {
+  display: inline-block;
+  width: 7px; height: 7px;
+  background: var(--indigo);
+  border-radius: 50%;
+  margin-left: 1px;
+  vertical-align: super;
+  position: relative;
+  top: -2px;
+}
+
+/* ═══ FLOATING ORB ═══ */
+.orb-container {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.orb {
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, rgba(79, 70, 229, 0.3), rgba(79, 70, 229, 0.05) 70%);
+  border: 1px solid rgba(79, 70, 229, 0.15);
+  box-shadow: 0 0 60px rgba(79, 70, 229, 0.1), inset 0 0 30px rgba(79, 70, 229, 0.05);
+  animation: orbBreathe 4s ease-in-out infinite;
+  transition: box-shadow 0.6s, border-color 0.6s, transform 0.6s;
+}
+.orb.agent-speaking {
+  box-shadow: 0 0 80px rgba(79, 70, 229, 0.35), 0 0 160px rgba(79, 70, 229, 0.1), inset 0 0 40px rgba(79, 70, 229, 0.15);
+  border-color: rgba(79, 70, 229, 0.4);
+  animation: orbPulseAgent 1.2s ease-in-out infinite;
+}
+.orb.user-speaking {
+  box-shadow: 0 0 60px rgba(255, 255, 255, 0.15), 0 0 120px rgba(255, 255, 255, 0.05), inset 0 0 30px rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  animation: orbPulseUser 1.5s ease-in-out infinite;
+}
+
+@keyframes orbBreathe {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.06); opacity: 1; }
+}
+@keyframes orbPulseAgent {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+@keyframes orbPulseUser {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.orb-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* ═══ CENTER STAGE — THE WORDS ═══ */
+.center-stage {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 1000px;
+  z-index: 5;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.agent-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(36px, 5.5vw, 80px);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.95);
+  opacity: 0;
+  transform: scale(1.02);
+  filter: blur(3px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 1em;
+}
+.agent-text.visible {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+.agent-text.fading {
+  opacity: 0;
+  transform: scale(0.98);
+  filter: blur(2px);
+}
+
+.user-text {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(22px, 3vw, 48px);
+  font-weight: 300;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.35);
+  opacity: 0;
+  transform: scale(1.02) translateY(-20px);
+  filter: blur(2px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  position: absolute;
+  top: -60px;
+  width: 100%;
+}
+.user-text.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  filter: blur(0);
+}
+
+/* Indigo rhythm line */
+.rhythm-line {
+  width: 120px;
+  height: 2px;
+  background: var(--indigo);
+  border-radius: 1px;
+  opacity: 0;
+  transition: opacity 0.6s, width 0.3s;
+  box-shadow: 0 0 20px rgba(79, 70, 229, 0.4);
+}
+.rhythm-line.active {
+  opacity: 1;
+  animation: rhythmPulse 0.8s ease-in-out infinite alternate;
+}
+@keyframes rhythmPulse {
+  0% { width: 80px; opacity: 0.5; }
+  100% { width: 160px; opacity: 1; }
+}
+
+/* ═══ FLOATING GLASS CARDS ═══ */
+.glass-card {
+  position: fixed;
+  padding: 14px 20px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.6s;
+  z-index: 8;
+  pointer-events: none;
+  max-width: 280px;
+}
+.glass-card.visible {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+.glass-card.settled {
+  opacity: 0.35;
+}
+.glass-card.from-left {
+  transform: translateX(-30px);
+}
+.glass-card.from-left.visible {
+  transform: translateX(0);
+}
+.glass-card.glow-green {
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.08);
+}
+.glass-card.glow-green .card-icon { color: var(--green); }
+.glass-card.glow-indigo {
+  border-color: var(--glass-border-active);
+  box-shadow: 0 0 30px rgba(79, 70, 229, 0.08);
+}
+.glass-card.glow-gold {
+  border-color: rgba(251, 191, 36, 0.4);
+  box-shadow: 0 0 30px rgba(251, 191, 36, 0.08);
+}
+.glass-card.glow-gold .card-icon { color: #FBBF24; }
+
+.card-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.25);
+  margin-bottom: 6px;
+}
+.card-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.card-text {
+  line-height: 1.4;
+}
+.card-check { color: var(--green); }
+.card-active { color: var(--indigo); }
+
+/* Weather tooltip */
+.weather-card {
+  cursor: help;
+  pointer-events: auto !important;
+}
+.weather-card .tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 15, 25, 0.95);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.weather-card:hover .tooltip { opacity: 1; }
+
+/* ═══ GEO CARD ═══ */
+#geoCard {
+  top: 32px; right: 36px;
+}
+
+/* ═══ STAGE CARDS (left) ═══ */
+.stage-cards {
+  position: fixed;
+  left: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 8;
+}
+.stage-card {
+  padding: 12px 18px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.stage-card.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+.stage-card.active {
+  border-color: var(--glass-border-active);
+  color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 25px rgba(79, 70, 229, 0.08);
+}
+.stage-card.completed {
+  opacity: 0.3;
+  color: rgba(255, 255, 255, 0.35);
+}
+.stage-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+  transition: all 0.6s;
+}
+.stage-card.active .stage-dot {
+  background: var(--indigo);
+  box-shadow: 0 0 12px rgba(79, 70, 229, 0.5);
+  animation: stageDotPulse 2s ease-in-out infinite;
+}
+.stage-card.completed .stage-dot {
+  background: var(--green);
+  box-shadow: none;
+  animation: none;
+}
+@keyframes stageDotPulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(79, 70, 229, 0.3); }
+  50% { box-shadow: 0 0 18px rgba(79, 70, 229, 0.6); }
+}
+
+/* ═══ INSIGHT CARDS (right) ═══ */
+.insight-cards {
+  position: fixed;
+  right: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 8;
+  align-items: flex-end;
+}
+
+/* ═══ BOTTOM CONTROLS ═══ */
+.controls {
+  position: fixed;
+  bottom: 40px;
+  left: 0; right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  z-index: 10;
+  padding: 0 36px;
+}
+
+.timer {
+  position: fixed;
+  bottom: 52px;
+  left: 36px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: 2px;
+  transition: color 0.3s;
+  z-index: 10;
+}
+.timer:hover { color: rgba(255, 255, 255, 0.5); }
+
+.end-call {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid rgba(239, 68, 68, 0.4);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.3;
+  transition: all 0.3s;
+  z-index: 10;
+}
+.end-call:hover {
+  opacity: 1;
+  border-color: #EF4444;
+  box-shadow: 0 0 30px rgba(239, 68, 68, 0.15);
+}
+.end-call svg {
+  width: 22px; height: 22px;
+  fill: none;
+  stroke: #EF4444;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+/* Waveform */
+.waveform {
+  position: fixed;
+  bottom: 52px;
+  right: 36px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 24px;
+  opacity: 0.2;
+  transition: opacity 0.3s;
+  z-index: 10;
+}
+.waveform:hover { opacity: 0.5; }
+.wave-bar {
+  width: 3px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
+  height: 6px;
+  transition: height 0.15s ease;
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 768px) {
+  .stage-cards {
+    position: fixed;
+    left: 0; right: 0;
+    top: auto;
+    bottom: 110px;
+    transform: none;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 0 16px;
+    gap: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .stage-cards::-webkit-scrollbar { display: none; }
+  .stage-card {
+    flex-shrink: 0;
+    font-size: 11px;
+    padding: 8px 14px;
+  }
+  .insight-cards {
+    position: fixed;
+    right: 0; left: 0;
+    top: auto;
+    bottom: 160px;
+    transform: none;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 0 16px;
+    gap: 8px;
+    align-items: center;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .insight-cards::-webkit-scrollbar { display: none; }
+  .glass-card {
+    flex-shrink: 0;
+    font-size: 11px;
+    max-width: 220px;
+  }
+  #geoCard {
+    top: 28px; right: 16px;
+    font-size: 11px;
+    padding: 10px 14px;
+  }
+  .logo { top: 28px; left: 16px; font-size: 16px; }
+  .orb-container { top: 60px; }
+  .orb { width: 70px; height: 70px; }
+  .center-stage { width: 90%; }
+  .agent-text { font-size: clamp(24px, 7vw, 42px); }
+  .user-text { font-size: clamp(16px, 4.5vw, 28px); top: -40px; }
+  .timer { bottom: 45px; left: 16px; font-size: 12px; }
+  .waveform { bottom: 45px; right: 16px; }
+  .end-call { width: 48px; height: 48px; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<div class="watermark">PROTOTYPE</div>
+
+<!-- Logo -->
+<div class="logo">AgentCollect<span class="dot"></span></div>
+
+<!-- Orb -->
+<div class="orb-container">
+  <div class="orb" id="orb"></div>
+  <div class="orb-label">Sarah</div>
+</div>
+
+<!-- Center Stage -->
+<div class="center-stage">
+  <div class="user-text" id="userText"></div>
+  <div class="agent-text" id="agentText"></div>
+  <div class="rhythm-line" id="rhythmLine"></div>
+</div>
+
+<!-- Geo Card -->
+<div class="glass-card" id="geoCard">
+  <div class="card-label">Location</div>
+  <div class="card-content">
+    <span class="card-text">San Francisco &bull; 2:47 PM &bull; 72&deg;F</span>
+  </div>
+</div>
+
+<!-- Stage Cards -->
+<div class="stage-cards" id="stageCards"></div>
+
+<!-- Insight Cards -->
+<div class="insight-cards" id="insightCards"></div>
+
+<!-- Controls -->
+<div class="timer" id="timer">00:00</div>
+<div class="controls">
+  <button class="end-call" id="endCall" title="End Call">
+    <svg viewBox="0 0 24 24"><path d="M3 11c0-1 .8-2 2.2-2.8C6.8 7.4 9.3 7 12 7s5.2.4 6.8 1.2C20.2 9 21 10 21 11v1c0 .6-.4 1-1 1h-3c-.6 0-1-.4-1-1v-1.5c-1-.3-2.2-.5-4-.5s-3 .2-4 .5V12c0 .6-.4 1-1 1H4c-.6 0-1-.4-1-1v-1z"/></svg>
+  </button>
+</div>
+<div class="waveform" id="waveform"></div>
+
+<script>
+// ═══════════════════════════════════
+// PARTICLE CONSTELLATION CANVAS
+// ═══════════════════════════════════
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let cardPositions = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+class Particle {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.vx = (Math.random() - 0.5) * 0.15;
+    this.vy = (Math.random() - 0.5) * 0.15;
+    this.radius = Math.random() * 1.2 + 0.3;
+    this.opacity = Math.random() * 0.08 + 0.02;
+  }
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(79, 70, 229, ${this.opacity})`;
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < 60; i++) particles.push(new Particle());
+
+function drawConnections() {
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+
+  // Draw dim lines from particles near cards to center
+  for (let i = 0; i < particles.length; i++) {
+    const p = particles[i];
+    const distToCenter = Math.sqrt((p.x - centerX) ** 2 + (p.y - centerY) ** 2);
+    if (distToCenter < 400) {
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y);
+      ctx.lineTo(centerX + (Math.random() - 0.5) * 40, centerY + (Math.random() - 0.5) * 20);
+      ctx.strokeStyle = `rgba(79, 70, 229, ${0.015 * (1 - distToCenter / 400)})`;
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    }
+    // Connect nearby particles
+    for (let j = i + 1; j < particles.length; j++) {
+      const p2 = particles[j];
+      const dist = Math.sqrt((p.x - p2.x) ** 2 + (p.y - p2.y) ** 2);
+      if (dist < 150) {
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(p2.x, p2.y);
+        ctx.strokeStyle = `rgba(79, 70, 229, ${0.03 * (1 - dist / 150)})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => { p.update(); p.draw(); });
+  drawConnections();
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// ═══════════════════════════════════
+// WAVEFORM BARS
+// ═══════════════════════════════════
+const waveformEl = document.getElementById('waveform');
+const barCount = 8;
+const bars = [];
+for (let i = 0; i < barCount; i++) {
+  const bar = document.createElement('div');
+  bar.className = 'wave-bar';
+  waveformEl.appendChild(bar);
+  bars.push(bar);
+}
+
+let waveActive = false;
+function animateWaveform() {
+  bars.forEach((bar, i) => {
+    if (waveActive) {
+      const h = 4 + Math.sin(Date.now() / 200 + i * 0.8) * 8 + Math.random() * 4;
+      bar.style.height = h + 'px';
+    } else {
+      const h = 3 + Math.sin(Date.now() / 600 + i * 0.5) * 2;
+      bar.style.height = h + 'px';
+    }
+  });
+  requestAnimationFrame(animateWaveform);
+}
+animateWaveform();
+
+// ═══════════════════════════════════
+// TIMER
+// ═══════════════════════════════════
+const timerEl = document.getElementById('timer');
+let startTime = null;
+function updateTimer() {
+  if (!startTime) return;
+  const elapsed = Math.floor((Date.now() - startTime) / 1000);
+  const m = String(Math.floor(elapsed / 60)).padStart(2, '0');
+  const s = String(elapsed % 60).padStart(2, '0');
+  timerEl.textContent = `${m}:${s}`;
+  requestAnimationFrame(updateTimer);
+}
+
+// ═══════════════════════════════════
+// ORB CONTROL
+// ═══════════════════════════════════
+const orb = document.getElementById('orb');
+function setOrbState(state) {
+  orb.classList.remove('agent-speaking', 'user-speaking');
+  if (state === 'agent') orb.classList.add('agent-speaking');
+  else if (state === 'user') orb.classList.add('user-speaking');
+}
+
+// ═══════════════════════════════════
+// TEXT DISPLAY
+// ═══════════════════════════════════
+const agentText = document.getElementById('agentText');
+const userText = document.getElementById('userText');
+const rhythmLine = document.getElementById('rhythmLine');
+
+function showAgentText(text) {
+  // Fade out
+  agentText.classList.remove('visible');
+  agentText.classList.add('fading');
+  userText.classList.remove('visible');
+  rhythmLine.classList.add('active');
+  waveActive = true;
+  setOrbState('agent');
+
+  setTimeout(() => {
+    agentText.textContent = text;
+    agentText.classList.remove('fading');
+    // Force reflow
+    void agentText.offsetWidth;
+    agentText.classList.add('visible');
+  }, 400);
+}
+
+function showUserText(text) {
+  agentText.classList.remove('visible');
+  agentText.classList.add('fading');
+  rhythmLine.classList.remove('active');
+  waveActive = true;
+  setOrbState('user');
+
+  setTimeout(() => {
+    userText.textContent = text;
+    userText.classList.add('visible');
+    agentText.classList.remove('fading');
+  }, 300);
+}
+
+function clearText() {
+  agentText.classList.remove('visible');
+  agentText.classList.add('fading');
+  userText.classList.remove('visible');
+  rhythmLine.classList.remove('active');
+  waveActive = false;
+  setOrbState(null);
+  setTimeout(() => { agentText.classList.remove('fading'); }, 500);
+}
+
+// ═══════════════════════════════════
+// STAGE CARDS
+// ═══════════════════════════════════
+const stageCardsEl = document.getElementById('stageCards');
+const stages = [];
+
+function addStage(name, active = true) {
+  // Set all previous to completed
+  stages.forEach(s => {
+    s.el.classList.remove('active');
+    s.el.classList.add('completed');
+  });
+
+  const el = document.createElement('div');
+  el.className = 'stage-card from-left' + (active ? ' active' : '');
+  el.innerHTML = `<div class="stage-dot"></div><span>${name}</span>`;
+  stageCardsEl.appendChild(el);
+
+  setTimeout(() => el.classList.add('visible'), 50);
+  stages.push({ name, el });
+}
+
+function completeStage(name) {
+  const stage = stages.find(s => s.name === name);
+  if (stage) {
+    stage.el.classList.remove('active');
+    stage.el.classList.add('completed');
+  }
+}
+
+// ═══════════════════════════════════
+// INSIGHT CARDS
+// ═══════════════════════════════════
+const insightCardsEl = document.getElementById('insightCards');
+
+function addInsight(text, glow = 'green', extra = '') {
+  const el = document.createElement('div');
+  let classes = 'glass-card glow-' + glow;
+  if (extra) classes += ' ' + extra;
+  el.className = classes;
+
+  const icon = glow === 'green' ? '&#10003;' : glow === 'gold' ? '&#9733;' : '&#9679;';
+  el.innerHTML = `<div class="card-content"><span class="card-icon">${icon}</span><span class="card-text">${text}</span></div>`;
+  insightCardsEl.appendChild(el);
+
+  setTimeout(() => el.classList.add('visible'), 50);
+
+  // Settle after glow
+  setTimeout(() => el.classList.add('settled'), 4000);
+  return el;
+}
+
+function addWeatherInsight() {
+  const el = document.createElement('div');
+  el.className = 'glass-card glow-indigo weather-card';
+  el.innerHTML = `
+    <div class="card-content">
+      <span class="card-icon" style="font-size:16px">&#9788;</span>
+      <span class="card-text">Clear skies in SF &mdash; 31% higher resolution rate</span>
+    </div>
+    <div class="tooltip">Behavioral studies show sunny afternoons correlate with higher agreement rates in financial negotiations.</div>
+  `;
+  insightCardsEl.appendChild(el);
+  setTimeout(() => el.classList.add('visible'), 50);
+  setTimeout(() => el.classList.add('settled'), 6000);
+}
+
+// ═══════════════════════════════════
+// GEO CARD
+// ═══════════════════════════════════
+function showGeo() {
+  document.getElementById('geoCard').classList.add('visible');
+}
+
+// ═══════════════════════════════════
+// TRANSCRIPT TIMELINE
+// ═══════════════════════════════════
+const timeline = [
+  { time: 0, action: () => { startTime = Date.now(); updateTimer(); } },
+  { time: 500, action: () => setOrbState(null) },
+  { time: 1000, action: () => showAgentText("Good afternoon, this is Sarah calling on behalf of Schweber Law regarding an outstanding balance.") },
+  { time: 4000, action: () => showGeo() },
+  { time: 5000, action: () => addStage('Introduction') },
+  { time: 6000, action: () => clearText() },
+  { time: 7000, action: () => showUserText("Yeah, who is this?") },
+  { time: 9000, action: () => clearText() },
+  { time: 10000, action: () => showAgentText("I'm reaching out about invoice number four seven two one for three thousand two hundred dollars from Acme Corp.") },
+  { time: 13000, action: () => addInsight('Balance Disclosed &mdash; $3,200', 'indigo') },
+  { time: 15000, action: () => showUserText("Oh right, yeah I know about that.") },
+  { time: 17000, action: () => addInsight('Awareness Confirmed', 'green') },
+  { time: 18000, action: () => { completeStage('Introduction'); addStage('Identity Verification'); } },
+  { time: 19000, action: () => clearText() },
+  { time: 20000, action: () => showAgentText("Perfect. Just to confirm, am I speaking with Michael Thompson?") },
+  { time: 23000, action: () => showUserText("That's me.") },
+  { time: 24000, action: () => addInsight('Identity Verified', 'green') },
+  { time: 25000, action: () => { completeStage('Identity Verification'); addStage('Balance Discussion'); } },
+  { time: 26000, action: () => clearText() },
+  { time: 27000, action: () => showAgentText("Great. The current balance is three thousand two hundred dollars. We have several convenient options available for you today.") },
+  { time: 31000, action: () => showUserText("I mean, I can probably do something. What are the options?") },
+  { time: 33000, action: () => addInsight('Payment Intent Detected', 'green') },
+  { time: 34000, action: () => addWeatherInsight() },
+  { time: 35500, action: () => clearText() },
+  { time: 36000, action: () => showAgentText("We can set up a one-time payment, or I can offer a three-month installment plan. Which works better for your situation?") },
+  { time: 40000, action: () => showUserText("The installment thing sounds more doable.") },
+  { time: 42000, action: () => addInsight('Installment Selected', 'green') },
+  { time: 43000, action: () => { completeStage('Balance Discussion'); addStage('Payment Resolution'); } },
+  { time: 44000, action: () => clearText() },
+  { time: 45000, action: () => showAgentText("Perfect choice. I'll send a secure payment link to your email right now. You'll receive it within the next minute.") },
+  { time: 48000, action: () => addInsight('Resolution &mdash; Link Sent', 'gold') },
+  { time: 49000, action: () => { completeStage('Payment Resolution'); addStage('Confirmation'); } },
+  { time: 51000, action: () => clearText() },
+];
+
+// Start playback
+let playbackStart = Date.now();
+timeline.forEach(event => {
+  setTimeout(() => event.action(), event.time);
+});
+
+// Restart on end call or after completion
+document.getElementById('endCall').addEventListener('click', () => location.reload());
+setTimeout(() => {
+  clearText();
+  setOrbState(null);
+  waveActive = false;
+}, 54000);
+
+</script>
+</body>
+</html>

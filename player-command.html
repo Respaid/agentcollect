@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentCollect Command Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --indigo: #4F46E5;
+  --indigo-dim: rgba(79,70,229,0.15);
+  --indigo-glow: rgba(79,70,229,0.4);
+  --green: #10B981;
+  --green-dim: rgba(16,185,129,0.15);
+  --green-glow: rgba(16,185,129,0.4);
+  --amber: #F59E0B;
+  --amber-dim: rgba(245,158,11,0.15);
+  --red: #EF4444;
+  --red-dim: rgba(239,68,68,0.15);
+  --bg: #0A0A12;
+  --bg-panel: rgba(15,15,25,0.85);
+  --border: rgba(255,255,255,0.06);
+  --border-light: rgba(255,255,255,0.1);
+  --text: #E8ECF2;
+  --text-dim: #94A3B8;
+  --text-muted: #475569;
+  --glass: rgba(20,20,35,0.7);
+}
+
+html, body {
+  width: 100%; height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+/* Dot grid background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(79,70,229,0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle gradient overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(79,70,229,0.06) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 100%, rgba(16,185,129,0.04) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Watermark */
+.watermark {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.03);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+  user-select: none;
+}
+
+.layout {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 300px 1fr 280px;
+  grid-template-rows: 1fr 52px;
+  height: 100vh;
+  gap: 1px;
+}
+
+/* ─── GLASS PANEL BASE ─── */
+.panel {
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+/* ─── LEFT PANEL: INTELLIGENCE FEED ─── */
+.panel-left {
+  grid-row: 1;
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border-light);
+}
+
+.panel-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel-header .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+}
+
+.panel-header .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 4px var(--green); }
+  50% { opacity: 0.5; box-shadow: 0 0 8px var(--green); }
+}
+
+/* Prospect Card */
+.prospect-card {
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.prospect-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.prospect-company {
+  font-size: 13px;
+  color: var(--indigo);
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.prospect-location {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* Geo/Weather */
+.geo-card {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.geo-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.geo-row .icon { font-size: 16px; }
+
+.geo-row .value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text);
+}
+
+.geo-row .sublabel {
+  font-size: 11px;
+  color: var(--green);
+  font-weight: 500;
+}
+
+/* Tags */
+.tags-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tags-container::-webkit-scrollbar { width: 3px; }
+.tags-container::-webkit-scrollbar-track { background: transparent; }
+.tags-container::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tag.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.tag.green {
+  background: var(--green-dim);
+  border: 1px solid rgba(16,185,129,0.2);
+  color: var(--green);
+}
+.tag.green.glow {
+  box-shadow: 0 0 20px rgba(16,185,129,0.2), inset 0 0 20px rgba(16,185,129,0.05);
+}
+
+.tag.amber {
+  background: var(--amber-dim);
+  border: 1px solid rgba(245,158,11,0.2);
+  color: var(--amber);
+}
+
+.tag.red {
+  background: var(--red-dim);
+  border: 1px solid rgba(239,68,68,0.2);
+  color: var(--red);
+}
+
+.tag.neutral {
+  background: var(--indigo-dim);
+  border: 1px solid rgba(79,70,229,0.2);
+  color: rgba(165,160,255,0.9);
+}
+
+.tag-icon {
+  font-size: 14px;
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+}
+
+.tag-text { flex: 1; line-height: 1.3; }
+
+.tag-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+/* ─── CENTER PANEL: CONVERSATION ─── */
+.panel-center {
+  grid-row: 1;
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Orb */
+.orb-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 0 12px;
+  gap: 8px;
+}
+
+.orb {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, var(--indigo), #2d2695);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orb::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--indigo);
+  opacity: 0;
+  animation: orb-ring 2s ease-in-out infinite;
+}
+
+.orb::after {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  border: 1px solid var(--indigo);
+  opacity: 0;
+  animation: orb-ring 2s ease-in-out infinite 0.4s;
+}
+
+@keyframes orb-ring {
+  0% { opacity: 0; transform: scale(0.9); }
+  50% { opacity: 0.4; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.1); }
+}
+
+.orb-letter {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900;
+  font-size: 28px;
+  color: #fff;
+}
+
+.orb-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+}
+
+.orb-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.orb-status .blink {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+/* Waveforms */
+.waveforms {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 40px;
+  margin-bottom: 8px;
+}
+
+.waveform-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 24px;
+}
+
+.waveform-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 50px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.waveform-label.agent { color: var(--indigo); }
+.waveform-label.user { color: var(--text-dim); }
+
+.waveform-bars {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 100%;
+}
+
+.waveform-bars .bar {
+  width: 3px;
+  border-radius: 2px;
+  transition: height 0.15s ease;
+}
+
+.waveform-bars.agent .bar { background: var(--indigo); }
+.waveform-bars.user .bar { background: rgba(255,255,255,0.3); }
+
+/* Transcript area */
+.transcript-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 40px;
+  overflow: hidden;
+  position: relative;
+}
+
+.transcript-history {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 16px;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 100%);
+}
+
+.transcript-history::-webkit-scrollbar { width: 3px; }
+.transcript-history::-webkit-scrollbar-track { background: transparent; }
+.transcript-history::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
+
+.history-msg {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-dim);
+  padding: 8px 0;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.history-msg.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.history-msg .speaker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.history-msg .speaker.agent-speaker { color: var(--indigo); }
+.history-msg .speaker.user-speaker { color: rgba(255,255,255,0.4); }
+
+/* Active big text */
+.active-text-container {
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px 0;
+  position: relative;
+}
+
+.active-speaker-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.active-speaker-label.agent { color: var(--indigo); }
+.active-speaker-label.user { color: rgba(255,255,255,0.5); }
+
+.active-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.2;
+  color: #fff;
+  min-height: 88px;
+}
+
+.active-text .cursor {
+  display: inline-block;
+  width: 3px;
+  height: 36px;
+  background: var(--indigo);
+  vertical-align: text-bottom;
+  animation: blink-cursor 0.8s step-end infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Sentiment bar */
+.sentiment-bar-container {
+  padding: 12px 40px 16px;
+}
+
+.sentiment-label-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.sentiment-label-row span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+.sentiment-bar {
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.sentiment-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 1.5s ease, background 1.5s ease;
+  width: 50%;
+  background: var(--amber);
+}
+
+/* ─── RIGHT PANEL: CALL PROGRESS ─── */
+.panel-right {
+  grid-row: 1;
+  grid-column: 3;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--border-light);
+}
+
+/* Timeline */
+.timeline-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.timeline-container::-webkit-scrollbar { width: 3px; }
+.timeline-container::-webkit-scrollbar-track { background: transparent; }
+.timeline-container::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
+
+.timeline-stage {
+  position: relative;
+  padding: 12px 12px 12px 32px;
+  margin-bottom: 4px;
+  border-radius: 8px;
+  transition: background 0.4s ease;
+}
+
+.timeline-stage::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline-stage:last-child::before {
+  bottom: 50%;
+}
+
+.timeline-stage .node {
+  position: absolute;
+  left: 7px;
+  top: 14px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--border-light);
+  background: var(--bg);
+  z-index: 1;
+  transition: all 0.4s ease;
+}
+
+.timeline-stage.done .node {
+  background: var(--green);
+  border-color: var(--green);
+  box-shadow: 0 0 8px var(--green-glow);
+}
+
+.timeline-stage.active .node {
+  background: var(--indigo);
+  border-color: var(--indigo);
+  box-shadow: 0 0 8px var(--indigo-glow);
+  animation: pulse-node 2s ease-in-out infinite;
+}
+
+@keyframes pulse-node {
+  0%, 100% { box-shadow: 0 0 8px var(--indigo-glow); }
+  50% { box-shadow: 0 0 16px var(--indigo-glow); }
+}
+
+.timeline-stage.active {
+  background: var(--indigo-dim);
+}
+
+.stage-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.timeline-stage.upcoming .stage-name { color: var(--text-muted); }
+
+.stage-duration {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.stage-summary {
+  font-size: 11px;
+  color: var(--green);
+  margin-top: 4px;
+}
+
+/* Stats dashboard */
+.stats-dashboard {
+  padding: 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+.stat-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  transition: color 0.5s ease;
+}
+
+.stat-value.green { color: var(--green); }
+.stat-value.amber { color: var(--amber); }
+
+/* ─── BOTTOM BAR ─── */
+.bottom-bar {
+  grid-row: 2;
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background: rgba(10,10,18,0.95);
+  border-top: 1px solid var(--border-light);
+}
+
+.bottom-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bottom-logo {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900;
+  font-size: 14px;
+  color: #fff;
+}
+
+.bottom-logo .dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--indigo);
+  margin-left: 1px;
+  vertical-align: super;
+  font-size: 0;
+}
+
+.bottom-divider {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.bottom-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+}
+
+.bottom-center {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.end-call-btn {
+  background: var(--red);
+  border: none;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 8px 24px;
+  border-radius: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.end-call-btn:hover {
+  background: #dc2626;
+  box-shadow: 0 0 20px rgba(239,68,68,0.3);
+}
+
+.bottom-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.timer {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.recording-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--red);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.recording-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--red);
+  animation: pulse-dot 1s ease-in-out infinite;
+}
+
+/* ─── RESPONSIVE: Mobile ─── */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto 52px;
+  }
+
+  .panel-left {
+    grid-row: 1;
+    grid-column: 1;
+    max-height: 160px;
+    flex-direction: row;
+    overflow-x: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .prospect-card { min-width: 180px; padding: 12px 16px; }
+  .geo-card { min-width: 200px; padding: 12px 16px; border-bottom: none; border-right: 1px solid var(--border); }
+  .tags-container { flex-direction: row; min-width: 300px; padding: 8px 12px; overflow-x: auto; overflow-y: hidden; }
+  .tag { white-space: nowrap; }
+
+  .panel-center {
+    grid-row: 2;
+    grid-column: 1;
+  }
+
+  .panel-right {
+    grid-row: 3;
+    grid-column: 1;
+    max-height: 200px;
+    border-left: none;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .timeline-container { flex-direction: row; display: flex; overflow-x: auto; gap: 8px; }
+  .timeline-stage { min-width: 140px; }
+  .timeline-stage::before { display: none; }
+
+  .bottom-bar { grid-row: 4; }
+
+  .active-text { font-size: 24px; }
+  .active-text .cursor { height: 24px; }
+  .transcript-area { padding: 0 20px; }
+  .sentiment-bar-container { padding: 12px 20px 16px; }
+  .waveforms { padding: 0 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="watermark">PROTOTYPE &mdash; SIMULATED CALL &mdash; PROTOTYPE &mdash; SIMULATED CALL &mdash; PROTOTYPE</div>
+
+<div class="layout">
+  <!-- LEFT PANEL -->
+  <div class="panel panel-left">
+    <div class="panel-header">
+      <div class="dot"></div>
+      <span class="label">Intelligence Feed</span>
+    </div>
+
+    <div class="prospect-card">
+      <div class="prospect-name">Michael Thompson</div>
+      <div class="prospect-company">Thompson LLC</div>
+      <div class="prospect-location">San Francisco, CA</div>
+    </div>
+
+    <div class="geo-card">
+      <div class="geo-row">
+        <span class="icon">&#9925;</span>
+        <span class="value">72&deg;F</span>
+        <span class="value" style="margin-left:auto;">2:47 PM PST</span>
+      </div>
+      <div class="geo-row">
+        <span class="sublabel">Afternoon &mdash; optimal contact window</span>
+      </div>
+    </div>
+
+    <div class="tags-container" id="tagsContainer">
+      <!-- Tags injected by JS -->
+    </div>
+  </div>
+
+  <!-- CENTER PANEL -->
+  <div class="panel panel-center">
+    <div class="orb-area">
+      <div class="orb">
+        <span class="orb-letter">S</span>
+      </div>
+      <div class="orb-name">Sarah</div>
+      <div class="orb-status" id="orbStatus">
+        <div class="blink"></div>
+        <span>Connecting...</span>
+      </div>
+    </div>
+
+    <div class="waveforms">
+      <div class="waveform-row">
+        <span class="waveform-label agent">Agent</span>
+        <div class="waveform-bars agent" id="agentWaveform"></div>
+      </div>
+      <div class="waveform-row">
+        <span class="waveform-label user">User</span>
+        <div class="waveform-bars user" id="userWaveform"></div>
+      </div>
+    </div>
+
+    <div class="transcript-area">
+      <div class="transcript-history" id="transcriptHistory"></div>
+
+      <div class="active-text-container">
+        <div class="active-speaker-label agent" id="activeSpeakerLabel">AGENT</div>
+        <div class="active-text" id="activeText"><span class="cursor"></span></div>
+      </div>
+    </div>
+
+    <div class="sentiment-bar-container">
+      <div class="sentiment-label-row">
+        <span>Sentiment</span>
+        <span id="sentimentPct">50%</span>
+      </div>
+      <div class="sentiment-bar">
+        <div class="sentiment-fill" id="sentimentFill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="panel panel-right">
+    <div class="panel-header">
+      <div class="dot"></div>
+      <span class="label">Call Progress</span>
+    </div>
+
+    <div class="timeline-container" id="timelineContainer">
+      <div class="timeline-stage upcoming" data-stage="intro">
+        <div class="node"></div>
+        <div class="stage-name">Introduction</div>
+        <div class="stage-duration">~10s</div>
+        <div class="stage-summary" style="display:none;"></div>
+      </div>
+      <div class="timeline-stage upcoming" data-stage="identity">
+        <div class="node"></div>
+        <div class="stage-name">Identity Verification</div>
+        <div class="stage-duration">~8s</div>
+        <div class="stage-summary" style="display:none;"></div>
+      </div>
+      <div class="timeline-stage upcoming" data-stage="balance">
+        <div class="node"></div>
+        <div class="stage-name">Balance Discussion</div>
+        <div class="stage-duration">~12s</div>
+        <div class="stage-summary" style="display:none;"></div>
+      </div>
+      <div class="timeline-stage upcoming" data-stage="resolution">
+        <div class="node"></div>
+        <div class="stage-name">Payment Resolution</div>
+        <div class="stage-duration">~8s</div>
+        <div class="stage-summary" style="display:none;"></div>
+      </div>
+      <div class="timeline-stage upcoming" data-stage="confirm">
+        <div class="node"></div>
+        <div class="stage-name">Confirmation</div>
+        <div class="stage-duration">~5s</div>
+        <div class="stage-summary" style="display:none;"></div>
+      </div>
+    </div>
+
+    <div class="stats-dashboard">
+      <div class="stat-row">
+        <span class="stat-label">Duration</span>
+        <span class="stat-value" id="statDuration">00:00</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Sentiment</span>
+        <span class="stat-value amber" id="statSentiment">50%</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Resolution</span>
+        <span class="stat-value" id="statResolution">42%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div class="bottom-bar">
+    <div class="bottom-left">
+      <span class="bottom-logo">AgentCollect<span class="dot"></span></span>
+      <span class="bottom-divider">&bull;</span>
+      <span class="bottom-label">Live Call</span>
+    </div>
+    <div class="bottom-center">
+      <button class="end-call-btn" onclick="location.reload()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 2 2 0 0 1 1.72 2v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 2.59 3.4z"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+        End Call
+      </button>
+    </div>
+    <div class="bottom-right">
+      <div class="recording-indicator">
+        <div class="recording-dot"></div>
+        <span>Rec</span>
+      </div>
+      <div class="timer" id="timerDisplay">00:00</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── WAVEFORM SETUP ───
+function createWaveform(container, count) {
+  for (let i = 0; i < count; i++) {
+    const bar = document.createElement('div');
+    bar.className = 'bar';
+    bar.style.height = '2px';
+    container.appendChild(bar);
+  }
+}
+
+const agentWF = document.getElementById('agentWaveform');
+const userWF = document.getElementById('userWaveform');
+createWaveform(agentWF, 80);
+createWaveform(userWF, 80);
+
+function animateWaveform(container, active) {
+  const bars = container.querySelectorAll('.bar');
+  bars.forEach((bar, i) => {
+    if (active) {
+      const h = Math.random() * 18 + 2;
+      bar.style.height = h + 'px';
+    } else {
+      bar.style.height = '2px';
+    }
+  });
+}
+
+let waveformInterval;
+function startWaveform(speaker) {
+  if (waveformInterval) clearInterval(waveformInterval);
+  waveformInterval = setInterval(() => {
+    animateWaveform(agentWF, speaker === 'agent');
+    animateWaveform(userWF, speaker === 'user');
+  }, 120);
+}
+
+function stopWaveform() {
+  if (waveformInterval) clearInterval(waveformInterval);
+  animateWaveform(agentWF, false);
+  animateWaveform(userWF, false);
+}
+
+// ─── ANIMATED COUNTER ───
+function animateValue(el, start, end, duration, suffix) {
+  suffix = suffix || '';
+  const startTime = performance.now();
+  function update(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.round(start + (end - start) * eased);
+    el.textContent = current + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+// ─── TIMER ───
+let startTime = null;
+function updateTimer() {
+  if (!startTime) return;
+  const elapsed = Math.floor((Date.now() - startTime) / 1000);
+  const m = String(Math.floor(elapsed / 60)).padStart(2, '0');
+  const s = String(elapsed % 60).padStart(2, '0');
+  const t = m + ':' + s;
+  document.getElementById('timerDisplay').textContent = t;
+  document.getElementById('statDuration').textContent = t;
+  requestAnimationFrame(updateTimer);
+}
+
+// ─── SENTIMENT ───
+let currentSentiment = 50;
+let currentResolution = 42;
+
+function setSentiment(val) {
+  const old = currentSentiment;
+  currentSentiment = val;
+  const fill = document.getElementById('sentimentFill');
+  fill.style.width = val + '%';
+  if (val >= 70) {
+    fill.style.background = 'var(--green)';
+  } else if (val >= 50) {
+    fill.style.background = 'var(--amber)';
+  } else {
+    fill.style.background = 'var(--red)';
+  }
+  document.getElementById('sentimentPct').textContent = val + '%';
+  const statEl = document.getElementById('statSentiment');
+  animateValue(statEl, old, val, 800, '%');
+  statEl.className = 'stat-value ' + (val >= 70 ? 'green' : 'amber');
+}
+
+function setResolution(val) {
+  const old = currentResolution;
+  currentResolution = val;
+  const statEl = document.getElementById('statResolution');
+  animateValue(statEl, old, val, 800, '%');
+  statEl.className = 'stat-value ' + (val >= 70 ? 'green' : 'amber');
+}
+
+// ─── TAGS ───
+function addTag(icon, text, time, color, glow) {
+  const container = document.getElementById('tagsContainer');
+  const tag = document.createElement('div');
+  tag.className = 'tag ' + color + (glow ? ' glow' : '');
+  tag.innerHTML = '<span class="tag-icon">' + icon + '</span><span class="tag-text">' + text + '</span><span class="tag-time">' + time + '</span>';
+  container.appendChild(tag);
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      tag.classList.add('visible');
+    });
+  });
+  container.scrollTop = container.scrollHeight;
+}
+
+// ─── STAGES ───
+function setStage(name, status, summary) {
+  const stages = document.querySelectorAll('.timeline-stage');
+  stages.forEach(s => {
+    const sn = s.dataset.stage;
+    if (sn === name) {
+      s.className = 'timeline-stage ' + status;
+      if (status === 'done' && summary) {
+        const sumEl = s.querySelector('.stage-summary');
+        sumEl.textContent = summary;
+        sumEl.style.display = 'block';
+      }
+    }
+  });
+}
+
+// ─── TYPING EFFECT ───
+const activeTextEl = document.getElementById('activeText');
+const activeLabelEl = document.getElementById('activeSpeakerLabel');
+const historyEl = document.getElementById('transcriptHistory');
+const orbStatusEl = document.getElementById('orbStatus');
+
+let typingTimeout = null;
+
+function typeWords(text, speaker, callback) {
+  // Move current active text to history
+  const currentContent = activeTextEl.textContent.replace(/\u200B/g, '').trim();
+  if (currentContent) {
+    moveToHistory(activeLabelEl.textContent, currentContent, activeLabelEl.classList.contains('agent'));
+  }
+
+  // Set speaker
+  const isAgent = speaker === 'agent';
+  activeLabelEl.textContent = isAgent ? 'AGENT' : 'DEBTOR';
+  activeLabelEl.className = 'active-speaker-label ' + (isAgent ? 'agent' : 'user');
+  orbStatusEl.querySelector('span').textContent = isAgent ? 'Speaking...' : 'Listening...';
+
+  startWaveform(speaker);
+
+  const words = text.split(' ');
+  let i = 0;
+  activeTextEl.innerHTML = '<span class="cursor"></span>';
+
+  function nextWord() {
+    if (i < words.length) {
+      const cursor = activeTextEl.querySelector('.cursor');
+      const wordNode = document.createTextNode((i > 0 ? ' ' : '') + words[i]);
+      activeTextEl.insertBefore(wordNode, cursor);
+      i++;
+      typingTimeout = setTimeout(nextWord, 60 + Math.random() * 40);
+    } else {
+      stopWaveform();
+      if (callback) setTimeout(callback, 200);
+    }
+  }
+  nextWord();
+}
+
+function moveToHistory(label, text, isAgent) {
+  const msg = document.createElement('div');
+  msg.className = 'history-msg';
+  msg.innerHTML = '<span class="speaker ' + (isAgent ? 'agent-speaker' : 'user-speaker') + '">' + label + '</span>' + text;
+  historyEl.appendChild(msg);
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      msg.classList.add('visible');
+    });
+  });
+  historyEl.scrollTop = historyEl.scrollHeight;
+}
+
+// ─── SCRIPT TIMELINE ───
+const script = [
+  // [delay_ms, type, ...args]
+  [500, 'stage', 'intro', 'active'],
+  [800, 'speak', 'agent', "Good afternoon, this is Sarah calling on behalf of Schweber Law regarding an outstanding balance."],
+  [3000, 'tag', '&#9737;', 'Introduction phase', '0:03', 'neutral', false],
+  [4000, 'speak', 'user', "Yeah, who is this?"],
+  [6000, 'speak', 'agent', "I'm reaching out about invoice number 4-7-2-1 for three thousand two hundred dollars from Acme Corp."],
+  [8000, 'tag', '&#36;', 'Balance disclosed \u2014 $3,200', '0:08', 'neutral', false],
+  [10000, 'speak', 'user', "Oh right, yeah I know about that."],
+  [11000, 'tag', '\u2713', 'Debtor confirmed awareness', '0:11', 'green', false],
+  [12000, 'stage', 'intro', 'done', 'Completed in 0:12'],
+  [12000, 'stage', 'identity', 'active'],
+  [13000, 'speak', 'agent', "Perfect. Just to confirm, am I speaking with Michael Thompson?"],
+  [15000, 'speak', 'user', "That's me."],
+  [16000, 'tag', '\u2713', 'Identity confirmed', '0:16', 'green', false],
+  [16000, 'sentiment', 72],
+  [17000, 'stage', 'identity', 'done', 'Verified in 0:16'],
+  [17000, 'stage', 'balance', 'active'],
+  [18000, 'speak', 'agent', "Great. The current balance is three thousand two hundred dollars. We have several convenient options available for you today."],
+  [22000, 'speak', 'user', "I mean, I can probably do something. What are the options?"],
+  [24000, 'tag', '\u2764', 'Receptive \u2014 payment intent detected', '0:24', 'green', false],
+  [24000, 'sentiment', 81],
+  [24000, 'resolution', 78],
+  [25000, 'speak', 'agent', "We can set up a one-time payment, or I can offer a three-month installment plan. Which works better for your situation?"],
+  [29000, 'speak', 'user', "The installment thing sounds more doable."],
+  [31000, 'tag', '\u2713', 'Installment plan selected', '0:31', 'green', false],
+  [31000, 'sentiment', 85],
+  [31000, 'resolution', 89],
+  [31000, 'stage', 'balance', 'done', 'Plan selected at 0:31'],
+  [31000, 'stage', 'resolution', 'active'],
+  [32000, 'speak', 'agent', "Perfect choice. I'll send a secure payment link to your email right now. You'll receive it within the next minute."],
+  [36000, 'tag', '\u2713', 'Resolution \u2014 payment link sent', '0:36', 'green', true],
+  [37000, 'stage', 'resolution', 'done', 'Link sent at 0:36'],
+  [37000, 'stage', 'confirm', 'active'],
+  [38000, 'sentiment', 92],
+  [38000, 'resolution', 95],
+];
+
+// ─── PLAYBACK ENGINE ───
+let speakQueue = [];
+let isSpeaking = false;
+
+function processSpeakQueue() {
+  if (isSpeaking || speakQueue.length === 0) return;
+  isSpeaking = true;
+  const [speaker, text] = speakQueue.shift();
+  typeWords(text, speaker, () => {
+    isSpeaking = false;
+    processSpeakQueue();
+  });
+}
+
+function runScript() {
+  startTime = Date.now();
+  requestAnimationFrame(updateTimer);
+
+  script.forEach(([delay, type, ...args]) => {
+    setTimeout(() => {
+      switch (type) {
+        case 'speak':
+          speakQueue.push([args[0], args[1]]);
+          processSpeakQueue();
+          break;
+        case 'tag':
+          addTag(args[0], args[1], args[2], args[3], args[4]);
+          break;
+        case 'stage':
+          setStage(args[0], args[1], args[2]);
+          break;
+        case 'sentiment':
+          setSentiment(args[0]);
+          break;
+        case 'resolution':
+          setResolution(args[0]);
+          break;
+      }
+    }, delay);
+  });
+}
+
+// Start after a brief pause
+setTimeout(runScript, 1500);
+</script>
+
+</body>
+</html>

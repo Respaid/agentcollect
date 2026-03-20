@@ -36,7 +36,7 @@
             --max-w:1120px;
         }
         html{scroll-behavior:smooth}
-        body{font-family:var(--sans);font-size:17px;background:#fff;color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;line-height:1.7;position:relative}
+        body{font-family:var(--sans);font-size:17px;background:#f6f3ef;color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;line-height:1.7;position:relative}
 
         /* SUBTLE GRID BACKGROUND */
         body::before{content:'';position:fixed;inset:0;z-index:-1;background-image:
@@ -60,7 +60,7 @@
         .s1{transition-delay:.1s}.s2{transition-delay:.2s}.s3{transition-delay:.3s}.s4{transition-delay:.4s}.s5{transition-delay:.5s}.s6{transition-delay:.6s}
 
         /* NAV */
-        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(246,243,239,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
         .nav.scrolled{box-shadow:0 1px 3px rgba(0,0,0,.02)}
         .nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:64px}
         .logo{display:inline-flex;align-items:baseline;text-decoration:none;margin-right:auto;font-family:var(--display);font-size:18px;font-weight:900;letter-spacing:-.04em;color:var(--text)}
@@ -187,9 +187,9 @@
         .cta-btn-ghost:hover{border-color:rgba(255,255,255,.35)}
 
         /* FOOTER */
-        footer{background:#fff;border-top:1px solid var(--border);padding:56px 32px 32px}
+        footer{background:#f6f3ef;border-top:1px solid var(--border);padding:56px 32px 32px}
         .footer-inner{max-width:var(--max-w);margin:0 auto}
-        .footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}
+        .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}
         .footer-brand{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:12px}
         .footer-tagline{font-size:14px;color:var(--text-dim);line-height:1.65;max-width:220px}
         .footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);margin-bottom:16px}
@@ -245,14 +245,12 @@
     <a href="/" class="logo">Agent<span>Collect</span><span class="dot-circle"></span></a>
     <span class="logo-tagline">The end of manual collection.</span>
     <div class="nav-links">
-        <a href="/ai-collection">AI Collection</a>
-        <a href="/attorney-collection">Attorney Collection</a>
         <a href="/pricing">Pricing</a>
+        <a href="/how-it-works">How It Works</a>
         <a href="/security" class="active">Security</a>
     </div>
     <div class="nav-right">
-        <a href="https://cal.com/johnb/30" class="nav-cta-ghost" target="_blank">Talk to us</a>
-        <a href="https://cal.com/johnb/30" class="nav-cta" target="_blank">Get started</a>
+        <a href="https://cal.com/johnb/30" class="nav-cta" target="_blank" rel="noopener">Book a demo</a>
     </div>
     <button class="nav-mobile" aria-label="Open menu" onclick="window.location.href='https://cal.com/johnb/30'">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="1.5"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
@@ -552,42 +550,30 @@
     <div class="footer-inner">
         <div class="footer-top">
             <div>
-                <div class="footer-brand">Agent<span>Collect</span><span class="dot-circle" style="width:5px;height:5px"></span></div>
+                <div class="footer-brand-name" style="font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:10px">Agent<span>Collect</span><span class="dot-circle" style="width:5px;height:5px;display:inline-block;border-radius:50%;background:var(--indigo);margin-left:1px;vertical-align:super"></span></div>
                 <div class="footer-tagline">The end of manual collection.</div>
             </div>
             <div class="footer-col">
                 <h4>Product</h4>
-                <a href="/ai-collection">AI Collection</a>
-                <a href="/attorney-collection">Attorney Collection</a>
                 <a href="/pricing">Pricing</a>
-                <a href="/integrations">API &amp; Integrations</a>
+                <a href="/how-it-works">How It Works</a>
+                <a href="/industries">Industries</a>
             </div>
             <div class="footer-col">
                 <h4>Trust</h4>
-                <a href="/security">Security &amp; Trust</a>
+                <a href="/security">Security</a>
                 <a href="/privacy">Privacy Policy</a>
                 <a href="/terms">Terms of Service</a>
-                <a href="/compliance">State Compliance</a>
-            </div>
-            <div class="footer-col">
-                <h4>Resources</h4>
-                <a href="/integrations">Integrations</a>
-                <a href="/compare">Compare</a>
-                <a href="/glossary">Glossary</a>
-                <a href="/dso-calculator">DSO Calculator</a>
             </div>
             <div class="footer-col">
                 <h4>Company</h4>
-                <a href="/about">About</a>
-                <a href="https://cal.com/johnb/30" target="_blank">Contact</a>
-                <a href="/careers">Careers</a>
+                <a href="https://cal.com/johnb/30" target="_blank" rel="noopener">Contact</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <div class="footer-copy">&copy; 2026 AgentCollect, Inc. San Francisco, CA</div>
+            <div class="footer-copy">&copy; 2026 AgentCollect, Inc. 490 Post St, San Francisco, CA</div>
             <div class="footer-badges">
                 <span class="footer-badge">SOC 2</span>
-                <span class="footer-badge">SSPA</span>
                 <span class="footer-badge">CCPA</span>
                 <span class="footer-badge">Reg F</span>
             </div>
