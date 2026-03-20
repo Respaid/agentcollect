@@ -198,6 +198,36 @@
         .payment-stat-value{font-family:var(--display);font-size:20px;font-weight:800;color:var(--text);letter-spacing:-.02em}
         .payment-stat-label{font-size:11px;color:var(--text-dim);margin-top:2px}
 
+        /* SOCIAL PROOF STRIP */
+        .proof-strip{padding:60px 32px;text-align:center}
+        .proof-strip-inner{max-width:var(--max-w);margin:0 auto}
+        .proof-strip-stat{font-family:var(--display);font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-.04em;color:var(--text);margin-bottom:4px}
+        .proof-strip-stat span{color:var(--green)}
+        .proof-strip-label{font-size:14px;color:var(--text-muted);margin-bottom:32px}
+        .proof-strip-logos{display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap;opacity:.5}
+        .proof-strip-logos img{height:24px;width:auto;filter:grayscale(1)}
+
+        /* MID CTA */
+        .mid-cta{padding:60px 32px;text-align:center}
+        .mid-cta-inner{max-width:600px;margin:0 auto;background:#fff;border:1px solid var(--border);border-radius:20px;padding:48px 40px;box-shadow:var(--shadow-md)}
+        .mid-cta-inner h3{font-size:24px;font-weight:800;letter-spacing:-.03em;margin-bottom:8px}
+        .mid-cta-inner p{font-size:15px;color:var(--text-muted);margin-bottom:24px}
+        .mid-cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--indigo);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;letter-spacing:-.01em}
+        .mid-cta-btn:hover{background:var(--indigo-dark);transform:translateY(-1px)}
+        .mid-cta-risk{font-size:12px;color:var(--text-dim);margin-top:12px}
+
+        /* WHAT HAPPENS NEXT */
+        .next-steps{padding:80px 32px 0;text-align:center}
+        .next-steps-inner{max-width:var(--max-w);margin:0 auto}
+        .next-steps h2{font-size:clamp(24px,3vw,32px);font-weight:900;letter-spacing:-.04em;margin-bottom:40px}
+        .next-steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:left}
+        .next-step-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:28px;transition:box-shadow .2s}
+        .next-step-card:hover{box-shadow:var(--shadow-md)}
+        .next-step-num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:rgba(79,70,229,.08);color:var(--indigo);font-family:var(--display);font-size:14px;font-weight:800;margin-bottom:12px}
+        .next-step-card h4{font-size:16px;font-weight:700;letter-spacing:-.02em;margin-bottom:6px}
+        .next-step-card p{font-size:14px;color:var(--text-muted);line-height:1.6}
+        .next-step-time{font-size:12px;font-weight:600;color:var(--green);margin-top:8px}
+
         /* COMPARISON */
         .compare{padding:80px 32px;background:var(--bg-dark);color:#fff}
         .compare-inner{max-width:900px;margin:0 auto}
@@ -266,6 +296,10 @@
             .footer-badges{justify-content:center}
             .csv-card,.agent-panel,.payment-panel{max-width:260px}
             .payment-amount{font-size:36px}
+            .mid-cta-inner{padding:36px 24px}
+            .next-steps-grid{grid-template-columns:1fr;gap:16px}
+            .proof-strip-logos{gap:20px}
+            .proof-strip-logos img{height:18px}
         }
     </style>
     <script>
@@ -455,6 +489,33 @@
     </div>
 </section>
 
+<!-- SOCIAL PROOF STRIP -->
+<section class="proof-strip reveal">
+    <div class="proof-strip-inner">
+        <div class="proof-strip-stat"><span>$2.4M+</span> recovered in the last 90 days</div>
+        <div class="proof-strip-label">Trusted by finance teams at companies like</div>
+        <div class="proof-strip-logos">
+            <img src="https://cdn.brandfetch.io/konica-minolta.com/w/512/h/80/logo" alt="Konica Minolta" loading="lazy">
+            <img src="https://cdn.brandfetch.io/dell.com/w/512/h/80/logo" alt="Dell" loading="lazy">
+            <img src="https://cdn.brandfetch.io/microsoft.com/w/512/h/80/logo" alt="Microsoft" loading="lazy">
+            <img src="https://cdn.brandfetch.io/checkr.com/w/512/h/80/logo" alt="Checkr" loading="lazy">
+        </div>
+    </div>
+</section>
+
+<!-- MID-PAGE CTA -->
+<section class="mid-cta reveal">
+    <div class="mid-cta-inner">
+        <h3>Ready to see it in action?</h3>
+        <p>We'll build your agent live on the call — bring your hardest accounts.</p>
+        <a href="https://cal.com/johnb/30" target="_blank" rel="noopener" class="mid-cta-btn">
+            Book a 30-min demo
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <div class="mid-cta-risk">$0 if we don't collect. No setup fees. Cancel anytime.</div>
+    </div>
+</section>
+
 <div class="gradient-divider"></div>
 
 <!-- COMPARISON -->
@@ -488,6 +549,39 @@
                 <div class="compare-row compare-new slide-right" data-row="4">24/7/365</div>
                 <div class="compare-row compare-new slide-right" data-row="5">20 minutes</div>
                 <div class="compare-row compare-new slide-right" data-row="6">Real-time dashboard</div>
+            </div>
+        </div>
+        <div style="text-align:center;margin-top:48px">
+            <a href="https://cal.com/johnb/30" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:#fff;color:var(--bg-dark);border:none;border-radius:12px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;letter-spacing:-.01em">
+                See the difference live
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT HAPPENS NEXT -->
+<section class="next-steps reveal">
+    <div class="next-steps-inner">
+        <h2>What happens on the demo</h2>
+        <div class="next-steps-grid">
+            <div class="next-step-card">
+                <div class="next-step-num">1</div>
+                <h4>We analyze your accounts</h4>
+                <p>Share a sample file. We'll show you which accounts are recoverable and the expected yield.</p>
+                <div class="next-step-time">5 minutes</div>
+            </div>
+            <div class="next-step-card">
+                <div class="next-step-num">2</div>
+                <h4>Live agent demo</h4>
+                <p>Watch your branded AI agent handle a real scenario — voice call, email, dispute resolution.</p>
+                <div class="next-step-time">15 minutes</div>
+            </div>
+            <div class="next-step-card">
+                <div class="next-step-num">3</div>
+                <h4>Go live same day</h4>
+                <p>If you're ready, we deploy your agent immediately. First outreach starts within hours.</p>
+                <div class="next-step-time">10 minutes</div>
             </div>
         </div>
     </div>
