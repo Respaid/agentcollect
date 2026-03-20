@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers — AgentCollect</title>
+    <meta name="description" content="How enterprise finance teams use AgentCollect's AI to recover overdue invoices without damaging customer relationships.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:title" content="Customer Stories — AgentCollect">
+    <meta property="og:description" content="Enterprise AI collections that recover revenue without risking relationships.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Clarity -->
+    <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","vtpmvp6kvr");</script>
+    <!-- GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GRZZT9K05B"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GRZZT9K05B');</script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#f6f3ef;--bg-subtle:#eeebe6;--bg-warm:#faf8f5;
+            --text:#0B1B3D;--text-mid:#374151;--text-muted:#64748B;--text-dim:#94A3B8;
+            --indigo:#4F46E5;--indigo-dark:#4338CA;--indigo-light:rgba(79,70,229,.06);
+            --green:#10B981;--border:#E8ECF2;
+            --sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
+            --max-w:1120px;
+        }
+        body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.7}
+
+        /* Nav */
+        .nav{position:sticky;top:0;z-index:100;background:rgba(246,243,239,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+        .nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px}
+        .nav-logo{font-family:var(--display);font-size:18px;font-weight:900;color:var(--text);text-decoration:none;letter-spacing:-.5px}
+        .nav-logo .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--indigo);margin-left:1px;vertical-align:super}
+        .nav-links{display:flex;align-items:center;gap:28px}
+        .nav-links a{font-size:14px;color:var(--text-muted);text-decoration:none;font-weight:500;transition:color .15s}
+        .nav-links a:hover{color:var(--text)}
+        .nav-links a.active{color:var(--indigo);font-weight:600}
+        .nav-cta{background:var(--indigo)!important;color:#fff!important;padding:8px 16px;border-radius:6px;font-weight:600!important;font-size:13px!important;transition:opacity .15s}
+        .nav-cta:hover{opacity:.9}
+
+        /* Hero */
+        .hero{padding:80px 24px 60px;text-align:center}
+        .hero-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;background:var(--indigo-light);border:1px solid rgba(79,70,229,.12);font-size:13px;font-weight:600;color:var(--indigo);margin-bottom:20px}
+        .hero h1{font-family:var(--display);font-size:clamp(32px,5vw,48px);font-weight:900;letter-spacing:-.04em;line-height:1.15;margin-bottom:16px;max-width:700px;margin-left:auto;margin-right:auto}
+        .hero p{font-size:17px;color:var(--text-mid);max-width:560px;margin:0 auto;line-height:1.7}
+
+        /* Logo bar */
+        .logo-bar{display:flex;align-items:center;justify-content:center;gap:40px;padding:40px 24px;flex-wrap:wrap;opacity:.5}
+        .logo-bar img{height:28px;object-fit:contain;filter:grayscale(100%);transition:filter .2s,opacity .2s;opacity:.6}
+        .logo-bar img:hover{filter:none;opacity:1}
+
+        /* Case studies grid */
+        .cases{max-width:var(--max-w);margin:0 auto;padding:0 24px 80px}
+        .cases-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px}
+        .case-card{background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .2s;cursor:pointer;text-decoration:none;color:inherit}
+        .case-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.06);border-color:rgba(79,70,229,.15)}
+        .case-card-img{height:200px;background:#000;position:relative;overflow:hidden}
+        .case-card-img img{width:100%;height:100%;object-fit:cover;opacity:.8}
+        .case-card-logo{position:absolute;top:16px;left:16px;background:rgba(255,255,255,.95);border-radius:8px;padding:6px 10px;display:flex;align-items:center;gap:8px}
+        .case-card-logo svg{flex-shrink:0}
+        .case-card-logo span{font-family:var(--display);font-size:13px;font-weight:700;color:var(--text)}
+        .case-card-body{padding:24px}
+        .case-card-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--indigo);margin-bottom:8px}
+        .case-card-title{font-family:var(--display);font-size:20px;font-weight:800;letter-spacing:-.03em;line-height:1.3;margin-bottom:12px}
+        .case-card-desc{font-size:14px;color:var(--text-mid);line-height:1.6;margin-bottom:16px}
+        .case-card-stats{display:flex;gap:20px;flex-wrap:wrap}
+        .case-card-stat{display:flex;flex-direction:column}
+        .case-card-stat-number{font-family:var(--display);font-size:20px;font-weight:800;color:var(--indigo);letter-spacing:-.03em}
+        .case-card-stat-label{font-size:11px;color:var(--text-muted);font-weight:500}
+        .case-card-arrow{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--indigo);margin-top:16px}
+
+        /* Testimonials */
+        .testimonials{max-width:var(--max-w);margin:0 auto;padding:0 24px 80px}
+        .testimonials h2{font-family:var(--display);font-size:28px;font-weight:900;letter-spacing:-.04em;text-align:center;margin-bottom:40px}
+        .test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+        .test-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px}
+        .test-quote{font-size:15px;color:var(--text-mid);line-height:1.65;margin-bottom:16px;font-style:italic}
+        .test-author{font-size:13px;font-weight:600;color:var(--text)}
+        .test-company{font-size:12px;color:var(--text-muted)}
+        .test-metric{display:inline-flex;padding:4px 10px;border-radius:20px;background:var(--indigo-light);color:var(--indigo);font-size:12px;font-weight:700;margin-top:8px}
+
+        /* CTA */
+        .cta-section{background:linear-gradient(135deg,#1e1b3a,#0a0a1a);border-radius:20px;max-width:var(--max-w);margin:0 auto 80px;padding:60px 40px;text-align:center;color:#fff}
+        .cta-section h2{font-family:var(--display);font-size:28px;font-weight:900;margin-bottom:8px}
+        .cta-section p{font-size:16px;color:rgba(255,255,255,.6);margin-bottom:24px}
+        .cta-btn{display:inline-flex;align-items:center;gap:6px;padding:14px 28px;background:#fff;color:var(--text);border-radius:10px;font-family:var(--display);font-weight:700;font-size:15px;text-decoration:none;transition:all .2s}
+        .cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,255,255,.15)}
+
+        /* Footer */
+        .footer{border-top:1px solid var(--border);padding:40px 24px;text-align:center}
+        .footer p{font-size:13px;color:var(--text-muted)}
+        .footer a{color:var(--indigo);text-decoration:none}
+
+        @media(max-width:600px){
+            .cases-grid{grid-template-columns:1fr}
+            .test-grid{grid-template-columns:1fr}
+            .logo-bar{gap:24px}
+            .logo-bar img{height:22px}
+            .nav-links a:not(.nav-cta):not(.active){display:none}
+            .cta-section{margin:0 16px 60px;padding:40px 24px}
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">AgentCollect<span class="dot"></span></a>
+        <div class="nav-links">
+            <a href="/customers" class="active">Customers</a>
+            <a href="/pricing">Pricing</a>
+            <a href="/how-it-works">How It Works</a>
+            <a href="https://cal.com/johnb/30" class="nav-cta">Book a demo</a>
+        </div>
+    </div>
+</nav>
+
+<div class="hero">
+    <div class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Customer Stories
+    </div>
+    <h1>Enterprise teams trust AgentCollect to recover revenue</h1>
+    <p>AI-powered collections that recover overdue invoices without damaging customer relationships. Here's how.</p>
+</div>
+
+<div class="logo-bar">
+    <img src="https://www.google.com/s2/favicons?domain=microsoft.com&sz=128" alt="Microsoft" style="height:32px">
+    <img src="https://www.google.com/s2/favicons?domain=doordash.com&sz=128" alt="DoorDash" style="height:32px">
+    <img src="https://www.google.com/s2/favicons?domain=checkr.com&sz=128" alt="Checkr" style="height:32px">
+    <img src="https://www.google.com/s2/favicons?domain=uber.com&sz=128" alt="Uber" style="height:32px">
+    <img src="https://www.google.com/s2/favicons?domain=dell.com&sz=128" alt="Dell" style="height:32px">
+</div>
+
+<div class="cases">
+    <div class="cases-grid">
+        <!-- Microsoft -->
+        <a href="/customers/microsoft" class="case-card">
+            <div class="case-card-img">
+                <img src="https://respaid.com/customers/microsoft/poster.jpg" alt="Microsoft case study">
+                <div class="case-card-logo">
+                    <svg width="18" height="18" viewBox="0 0 23 23" fill="none"><rect width="11" height="11" fill="#f25022"/><rect x="12" width="11" height="11" fill="#7fba00"/><rect y="12" width="11" height="11" fill="#00a4ef"/><rect x="12" y="12" width="11" height="11" fill="#ffb900"/></svg>
+                    <span>Microsoft</span>
+                </div>
+            </div>
+            <div class="case-card-body">
+                <div class="case-card-label">Enterprise Technology</div>
+                <div class="case-card-title">Microsoft recovers 3.2x more with AI-powered collections</div>
+                <div class="case-card-desc">How Microsoft's Global Treasury deployed AI across hundreds of enterprise accounts in 44 states — with a 99.7% positive CX score.</div>
+                <div class="case-card-stats">
+                    <div class="case-card-stat">
+                        <div class="case-card-stat-number">3.2x</div>
+                        <div class="case-card-stat-label">recovery rate</div>
+                    </div>
+                    <div class="case-card-stat">
+                        <div class="case-card-stat-number">99.7%</div>
+                        <div class="case-card-stat-label">positive CX</div>
+                    </div>
+                    <div class="case-card-stat">
+                        <div class="case-card-stat-number">+130%</div>
+                        <div class="case-card-stat-label">contact enrichment</div>
+                    </div>
+                </div>
+                <div class="case-card-arrow">Read case study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+            </div>
+        </a>
+
+        <!-- Coming soon placeholder -->
+        <div class="case-card" style="opacity:.5;cursor:default;border-style:dashed">
+            <div class="case-card-img" style="background:var(--bg-subtle);display:flex;align-items:center;justify-content:center">
+                <span style="font-family:var(--display);font-size:18px;font-weight:700;color:var(--text-dim)">Coming soon</span>
+            </div>
+            <div class="case-card-body">
+                <div class="case-card-label">More stories</div>
+                <div class="case-card-title">Additional case studies in progress</div>
+                <div class="case-card-desc">We're documenting more success stories from enterprise clients across SaaS, distribution, and professional services.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonials -->
+<div class="testimonials">
+    <h2>What finance teams say</h2>
+    <div class="test-grid">
+        <div class="test-card">
+            <div class="test-quote">"We hit ~50% collection in 20 days. More importantly, not a single customer complained."</div>
+            <div class="test-author">VP of Finance</div>
+            <div class="test-company">Enterprise SaaS Company</div>
+            <div class="test-metric">~50% in 20 days</div>
+        </div>
+        <div class="test-card">
+            <div class="test-quote">"Traditional agencies took 4 months and damaged relationships. AgentCollect recovered 48% in 3 weeks."</div>
+            <div class="test-author">CFO</div>
+            <div class="test-company">Manufacturing Company</div>
+            <div class="test-metric">48% in 3 weeks</div>
+        </div>
+        <div class="test-card">
+            <div class="test-quote">"The AI found decision-makers our data didn't even have. Game changer for old receivables."</div>
+            <div class="test-author">Controller</div>
+            <div class="test-company">Distribution Company</div>
+            <div class="test-metric">40% contact discovery</div>
+        </div>
+        <div class="test-card">
+            <div class="test-quote">"We were skeptical about AI collections. Now it's our default for anything over 30 days."</div>
+            <div class="test-author">Director of AR</div>
+            <div class="test-company">Professional Services Firm</div>
+            <div class="test-metric">7x faster than agency</div>
+        </div>
+        <div class="test-card">
+            <div class="test-quote">"Zero complaints. Zero. In 18 months, not a single escalation."</div>
+            <div class="test-author">CEO</div>
+            <div class="test-company">B2B Marketplace</div>
+            <div class="test-metric">0 complaints</div>
+        </div>
+        <div class="test-card">
+            <div class="test-quote">"The integration took 10 minutes. We were live same day with invoices flowing automatically."</div>
+            <div class="test-author">Head of Operations</div>
+            <div class="test-company">Logistics Company</div>
+            <div class="test-metric">10-minute setup</div>
+        </div>
+    </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section" style="margin-left:24px;margin-right:24px">
+    <h2>Ready to see what AI can do for your AR?</h2>
+    <p>Join Microsoft and other enterprise teams recovering revenue without risking relationships.</p>
+    <a href="https://cal.com/johnb/30" class="cta-btn">Book a 30-min demo <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+</div>
+
+<footer class="footer">
+    <p>&copy; 2026 AgentCollect, Inc. &middot; <a href="/">Home</a> &middot; <a href="/pricing">Pricing</a> &middot; <a href="/security">Security</a></p>
+</footer>
+
+</body>
+</html>
