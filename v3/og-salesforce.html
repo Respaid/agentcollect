@@ -5,38 +5,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{width:1200px;height:630px;overflow:hidden;font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:#0B1B3D;color:#fff;position:relative}
+body{width:1200px;height:630px;overflow:hidden;font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:#f6f3ef;color:#0B1B3D;position:relative}
 
-/* Warm glow */
-.glow-1{position:absolute;width:600px;height:600px;top:-200px;right:-100px;background:radial-gradient(circle,rgba(79,70,229,.35) 0%,rgba(79,70,229,.1) 40%,transparent 70%);border-radius:50%}
-.glow-2{position:absolute;width:500px;height:500px;bottom:-200px;left:-100px;background:radial-gradient(circle,rgba(220,38,38,.15) 0%,rgba(220,38,38,.05) 40%,transparent 70%);border-radius:50%}
+/* Warm indigo halo — like agentcollect.com hero */
+.glow-1{position:absolute;width:700px;height:700px;top:-250px;right:-150px;background:radial-gradient(circle,rgba(79,70,229,.10) 0%,rgba(79,70,229,.04) 40%,transparent 70%);border-radius:50%}
+.glow-2{position:absolute;width:500px;height:500px;bottom:-250px;left:-100px;background:radial-gradient(circle,rgba(16,185,129,.06) 0%,transparent 60%);border-radius:50%}
 
-.content{position:relative;z-index:1;padding:64px 72px;height:100%;display:flex;flex-direction:column;justify-content:space-between}
+.content{position:relative;z-index:1;padding:56px 72px;height:100%;display:flex;flex-direction:column;justify-content:space-between}
 
 /* Top bar */
 .top{display:flex;align-items:center;justify-content:space-between}
-.brand{font-size:20px;font-weight:900;letter-spacing:-.4px;color:rgba(255,255,255,.6)}
-.brand .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#4F46E5;margin-left:1px}
-.sf-logo{height:36px;opacity:.5}
+.brand{font-size:22px;font-weight:900;letter-spacing:-.4px;color:#0B1B3D}
+.brand .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#4F46E5;margin-left:1px}
+.sf-logo{height:40px;opacity:.7}
 
 /* Center — the punch */
 .center{text-align:left}
-.stat-num{font-size:140px;font-weight:900;letter-spacing:-.06em;line-height:1;color:#fff;margin-bottom:4px}
-.stat-num span{color:#dc2626}
-.stat-label{font-size:36px;font-weight:700;letter-spacing:-.02em;color:rgba(255,255,255,.7);margin-bottom:20px;line-height:1.2}
-.stat-label em{font-style:normal;color:#dc2626;font-weight:800}
+.stat-num{font-size:160px;font-weight:900;letter-spacing:-.06em;line-height:.9;color:#dc2626;margin-bottom:8px}
+.stat-label{font-size:34px;font-weight:800;letter-spacing:-.02em;color:#0B1B3D;margin-bottom:24px;line-height:1.25}
+.stat-label em{font-style:normal;color:#dc2626;font-weight:900}
+.stat-label .muted{color:#6b7280;font-weight:700}
 
 /* Review pills */
 .pills{display:flex;gap:12px;flex-wrap:wrap}
-.pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:8px 18px;font-size:14px;font-weight:600;color:rgba(255,255,255,.7)}
+.pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid rgba(220,38,38,.15);border-radius:100px;padding:10px 20px;font-size:15px;font-weight:600;color:#0B1B3D;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.06)}
 .pill .hl{color:#dc2626;font-weight:800}
-.pill img{height:14px;opacity:.4}
 
 /* Bottom */
 .bottom{display:flex;align-items:flex-end;justify-content:space-between}
-.bottom-left{font-size:15px;color:rgba(255,255,255,.35);font-weight:500}
-.bottom-right{display:flex;align-items:center;gap:10px;background:rgba(79,70,229,.2);border:1px solid rgba(79,70,229,.3);border-radius:12px;padding:10px 20px}
-.bottom-right .label{font-size:14px;font-weight:700;color:rgba(255,255,255,.8)}
+.bottom-left{font-size:14px;color:#6b7280;font-weight:500}
+.bottom-right{display:flex;align-items:center;gap:10px;background:#4F46E5;border-radius:12px;padding:12px 24px;box-shadow:0 4px 16px rgba(79,70,229,.25)}
+.bottom-right .label{font-size:15px;font-weight:700;color:#fff}
 </style>
 </head>
 <body>
@@ -51,8 +50,8 @@ body{width:1200px;height:630px;overflow:hidden;font-family:'Plus Jakarta Sans',s
   </div>
 
   <div class="center">
-    <div class="stat-num"><span>298</span></div>
-    <div class="stat-label">billing complaints from <em>your customers</em>.<br>Your agent can resolve them in <em>47 seconds</em>.</div>
+    <div class="stat-num">298</div>
+    <div class="stat-label">billing complaints from <em>your customers</em>.<br><span class="muted">Your agent resolves them in</span> <em>47 seconds</em>.</div>
     <div class="pills">
       <div class="pill">"<span class="hl">Collection notice</span> after 3 years of silence"</div>
       <div class="pill">"No billing dept <span class="hl">can help</span> you"</div>
@@ -63,7 +62,7 @@ body{width:1200px;height:630px;overflow:hidden;font-family:'Plus Jakarta Sans',s
   <div class="bottom">
     <div class="bottom-left">Sources: BBB · Trustpilot · G2</div>
     <div class="bottom-right">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
       <span class="label">Talk to Sarah →</span>
     </div>
   </div>
