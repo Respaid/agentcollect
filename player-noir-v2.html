@@ -170,155 +170,69 @@ body {
   50% { opacity: 0.4; }
 }
 
-/* ═══ CONVERSATION AREA ═══ */
+/* ═══ CONVERSATION AREA — TELEPROMPTER ═══ */
 .conversation {
   position: fixed;
-  top: 230px;
   left: 60px;
   right: 60px;
-  bottom: 120px;
+  bottom: 140px;
   z-index: 5;
+  pointer-events: none;
+}
+
+.teleprompter {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  overflow: visible;
-  pointer-events: none;
+  gap: 6px;
+  align-items: flex-start;
+}
+.teleprompter.human-speaking {
+  align-items: flex-end;
 }
 
-.message {
-  position: absolute;
-  left: 0; right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+.prompt-line {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(32px, 4.5vw, 56px);
+  font-weight: 800;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.95);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  max-width: 85%;
 }
-.message.active {
-  opacity: 1;
-  transform: translateY(-50%);
+.prompt-line.dim {
+  opacity: 0.15;
+  transform: translateY(-4px);
 }
-.message.fading {
-  opacity: 0.06;
-  transform: translateY(calc(-50% - 40px)) scale(0.9);
-  pointer-events: none;
-}
-.message.hidden {
-  opacity: 0;
-  transform: translateY(calc(-50% + 40px));
-  pointer-events: none;
+.prompt-line.human {
+  color: rgba(255, 255, 255, 0.8);
+  text-align: right;
 }
 
-.message-label {
+.speaker-tag {
   font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  margin-bottom: 14px;
+  margin-bottom: 8px;
   font-weight: 500;
 }
-.message-label.agent { color: var(--indigo); text-align: left; }
-.message-label.human { color: var(--green); text-align: right; }
+.speaker-tag.agent { color: var(--indigo); }
+.speaker-tag.human { color: var(--green); text-align: right; }
 
-.message-text {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  line-height: 1.2;
-  position: relative;
-}
-.message-text.agent-text {
-  font-size: clamp(36px, 5.5vw, 64px);
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.95);
-  text-align: left;
-  max-width: 90%;
-  line-height: 1.15;
-  white-space: nowrap;
-  overflow: hidden;
-}
-.message-text.human-text {
-  font-size: clamp(28px, 4.5vw, 52px);
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.8);
-  text-align: right;
-  margin-left: auto;
-  max-width: 90%;
-  line-height: 1.2;
-  padding-bottom: 40px;
-  overflow: visible;
-  white-space: normal;
-}
-
-/* Pulse line under agent text */
-.agent-pulse {
-  height: 2px;
-  margin-top: 16px;
-  background: linear-gradient(90deg, var(--indigo), transparent);
-  border-radius: 1px;
-  max-width: 200px;
-  animation: pulse-line 2s ease-in-out infinite;
-}
-@keyframes pulse-line {
-  0%, 100% { opacity: 0.4; width: 120px; }
-  50% { opacity: 1; width: 200px; }
-}
-
-/* ═══ WORD ANIMATION ═══ */
-.word {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  margin-right: 0.28em;
-}
-.word.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ═══ ANNOTATION SYSTEM ═══ */
-.annotated-phrase {
-  position: relative;
-  display: inline;
-  border-bottom: 2.5px solid var(--green);
-  background: rgba(16, 185, 129, 0.12);
-  padding: 3px 6px;
-  border-radius: 4px;
-  transition: background 0.3s ease, border-color 0.3s ease;
-  box-shadow: 0 2px 16px rgba(16, 185, 129, 0.12);
-}
-.annotated-phrase .word {
-  margin-right: 0;
-}
-.annotated-phrase .word + .word {
-  margin-left: 0.28em;
-}
-
-.annotation {
-  position: absolute;
-  left: 0;
-  top: calc(100% + 10px);
-  white-space: nowrap;
+/* ═══ ANNOTATION (inline under teleprompter) ═══ */
+.annotation-line {
   font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 600;
   color: var(--green);
   opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  pointer-events: none;
-  z-index: 20;
-  text-shadow: 0 0 24px rgba(16, 185, 129, 0.4);
-  letter-spacing: 0.3px;
+  margin-top: 12px;
+  transition: opacity 0.5s ease;
+  text-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
 }
-.human-text .annotation {
-  left: auto;
-  right: 0;
-}
-.annotation.visible {
+.annotation-line.visible {
   opacity: 1;
-  transform: translateY(0);
 }
-.annotation.green { color: var(--green); text-shadow: 0 0 24px rgba(16, 185, 129, 0.4); }
-.annotation.amber { color: var(--amber); text-shadow: 0 0 24px rgba(245, 158, 11, 0.4); }
-.annotation.red { color: #F87171; text-shadow: 0 0 24px rgba(248, 113, 113, 0.4); }
 
 /* ═══ STAGE CARDS — HIDDEN (replaced by orb label) ═══ */
 .stage-cards {
@@ -560,10 +474,8 @@ body {
 
 /* ═══ LAPTOP 1024px ═══ */
 @media (max-width: 1100px) {
-  .message-text.agent-text { font-size: 48px; }
-  .message-text.human-text { font-size: 40px; }
+  .prompt-line { font-size: clamp(28px, 4vw, 48px); }
   .conversation { left: 40px; right: 40px; }
-  .annotation { font-size: 14px; }
 }
 
 /* ═══ MOBILE ═══ */
@@ -573,17 +485,15 @@ body {
   .conversation {
     left: 16px;
     right: 16px;
-    top: 180px;
-    bottom: 120px;
+    bottom: 110px;
   }
-  .message-text.agent-text { font-size: 36px; max-width: 100%; }
-  .message-text.human-text { font-size: 28px; max-width: 100%; }
+  .prompt-line { font-size: 28px; max-width: 100%; }
   .orb-container { top: 80px; }
   .orb { width: 80px; height: 80px; }
   .geo-card { font-size: 11px; padding: 8px 12px; top: 16px; right: 16px; }
   .logo { top: 20px; left: 16px; font-size: 15px; }
   .timer-area { left: 16px; bottom: 90px; }
-  .annotation { font-size: 11px; }
+  .annotation-line { font-size: 11px; }
 }
 </style>
 </head>
@@ -790,162 +700,95 @@ function addWeatherCard() {
   // Weather info now shown via geo card only — no separate card
 }
 
-// ═══ CONVERSATION ENGINE ═══
+// ═══ CONVERSATION ENGINE — TELEPROMPTER ═══
 const conversationEl = document.getElementById('conversation');
-let currentMessageEl = null;
-let prevMessageEl = null;
 
-const MAX_VISIBLE_WORDS = 8;
-
-function createMessageElement(speaker, text, annotations) {
-  // Fade out previous
-  if (currentMessageEl) {
-    currentMessageEl.classList.remove('active');
-    currentMessageEl.classList.add('fading');
-    const old = currentMessageEl;
-    setTimeout(() => { if (old.parentNode) old.parentNode.removeChild(old); }, 800);
-  }
-
-  const wrapper = document.createElement('div');
-  wrapper.className = 'message hidden';
-
-  const label = document.createElement('div');
-  label.className = 'message-label ' + speaker;
-  label.textContent = speaker === 'agent' ? 'SARAH' : 'YOU';
-  wrapper.appendChild(label);
-
-  const textEl = document.createElement('div');
-  textEl.className = 'message-text ' + (speaker === 'agent' ? 'agent-text' : 'human-text');
-
+// Split text into chunks of ~6 words for teleprompter lines
+function splitIntoChunks(text, maxWords) {
+  maxWords = maxWords || 6;
   const words = text.split(/\s+/);
-  wrapper.appendChild(textEl);
-
-  if (speaker === 'agent') {
-    const pulse = document.createElement('div');
-    pulse.className = 'agent-pulse';
-    wrapper.appendChild(pulse);
+  const chunks = [];
+  for (let i = 0; i < words.length; i += maxWords) {
+    chunks.push(words.slice(i, i + maxWords).join(' '));
   }
+  return chunks;
+}
 
-  conversationEl.appendChild(wrapper);
-  requestAnimationFrame(() => {
-    wrapper.classList.remove('hidden');
-    wrapper.classList.add('active');
-  });
-  currentMessageEl = wrapper;
+let currentSpeaker = null;
+let chunkTimeouts = [];
 
-  if (speaker === 'agent') {
-    // STREAMING MODE: show last N words only, like live subtitles
-    let wordIdx = 0;
-    const wordDelay = 200;
-    const activeSpans = [];
+function showMessage(speaker, text, annotations) {
+  // Clear previous content
+  conversationEl.innerHTML = '';
+  chunkTimeouts.forEach(t => clearTimeout(t));
+  chunkTimeouts = [];
+  currentSpeaker = speaker;
 
-    function showNextWord() {
-      if (wordIdx >= words.length) return;
-      const span = document.createElement('span');
-      span.className = 'word';
-      span.textContent = words[wordIdx];
-      textEl.appendChild(span);
-      if (wordIdx < words.length - 1) textEl.appendChild(document.createTextNode(' '));
-      activeSpans.push(span);
-      requestAnimationFrame(() => span.classList.add('visible'));
+  const isHuman = speaker === 'human';
+  const chunks = splitIntoChunks(text, isHuman ? 8 : 6);
 
-      // Fade out old words to keep max N visible
-      if (activeSpans.length > MAX_VISIBLE_WORDS) {
-        const old = activeSpans.shift();
+  // Container
+  const container = document.createElement('div');
+  container.className = 'teleprompter' + (isHuman ? ' human-speaking' : '');
+
+  // Speaker tag
+  const tag = document.createElement('div');
+  tag.className = 'speaker-tag ' + speaker;
+  tag.textContent = isHuman ? 'YOU' : 'SARAH';
+  container.appendChild(tag);
+
+  conversationEl.appendChild(container);
+
+  const CHUNK_DELAY = isHuman ? 800 : 1200; // ms between chunks
+  let shownLines = [];
+
+  chunks.forEach((chunk, idx) => {
+    const t = setTimeout(() => {
+      // Dim all previous lines
+      shownLines.forEach(el => el.classList.add('dim'));
+
+      // Remove lines older than 1 (keep only the previous one dimmed)
+      while (shownLines.length > 1) {
+        const old = shownLines.shift();
         old.style.opacity = '0';
-        old.style.transition = 'opacity 0.3s';
-        // Remove after fade
-        const nextSibling = old.nextSibling;
+        old.style.transform = 'translateY(-10px)';
+        setTimeout(() => { if (old.parentNode) old.parentNode.removeChild(old); }, 400);
+      }
+
+      // Add new line
+      const line = document.createElement('div');
+      line.className = 'prompt-line' + (isHuman ? ' human' : '');
+      line.textContent = chunk;
+      line.style.opacity = '0';
+      line.style.transform = 'translateY(12px)';
+      container.appendChild(line);
+      shownLines.push(line);
+
+      requestAnimationFrame(() => {
+        line.style.opacity = '';
+        line.style.transform = '';
+      });
+
+      // Show annotation after last human chunk
+      if (isHuman && annotations && annotations.length > 0 && idx === chunks.length - 1) {
+        const bestAnnotation = annotations[0]; // Show first annotation
         setTimeout(() => {
-          if (old.parentNode) old.parentNode.removeChild(old);
-          // Remove trailing space
-          if (nextSibling && nextSibling.nodeType === 3 && nextSibling.parentNode) {
-            nextSibling.parentNode.removeChild(nextSibling);
-          }
-        }, 300);
+          const annLine = document.createElement('div');
+          annLine.className = 'annotation-line';
+          annLine.textContent = bestAnnotation.label;
+          container.appendChild(annLine);
+          requestAnimationFrame(() => annLine.classList.add('visible'));
+
+          // Fade annotation after 2s
+          setTimeout(() => { annLine.classList.remove('visible'); }, 2500);
+        }, 600);
       }
+    }, idx * CHUNK_DELAY);
+    chunkTimeouts.push(t);
+  });
 
-      wordIdx++;
-      if (wordIdx < words.length) setTimeout(showNextWord, wordDelay);
-    }
-    showNextWord();
-
-    const totalWordTime = words.length * wordDelay + 200;
-    return { wrapper, wordCount: words.length, totalWordTime };
-
-  } else {
-    // HUMAN MODE: show full text with annotations (human messages are short)
-    textEl.style.whiteSpace = 'normal';
-    const wordSpans = [];
-    let i = 0;
-    while (i < words.length) {
-      let matched = false;
-      if (annotations && annotations.length > 0) {
-        for (const ann of annotations) {
-          const phraseWords = ann.word.split(/\s+/);
-          if (i + phraseWords.length <= words.length) {
-            const candidate = words.slice(i, i + phraseWords.length).join(' ');
-            if (candidate.toLowerCase() === ann.word.toLowerCase() ||
-                candidate.toLowerCase().replace(/[^a-z\s]/g, '') === ann.word.toLowerCase().replace(/[^a-z\s]/g, '')) {
-              const phraseEl = document.createElement('span');
-              phraseEl.className = 'annotated-phrase';
-              phraseEl.style.borderBottomColor = 'transparent';
-              phraseEl.style.background = 'transparent';
-              for (let j = 0; j < phraseWords.length; j++) {
-                const span = document.createElement('span');
-                span.className = 'word';
-                span.textContent = words[i + j];
-                phraseEl.appendChild(span);
-                wordSpans.push({ el: span, index: i + j });
-              }
-              const annEl = document.createElement('span');
-              annEl.className = 'annotation green';
-              annEl.textContent = ann.label;
-              phraseEl.appendChild(annEl);
-              phraseEl._annotation = annEl;
-              phraseEl._delay = ann.delay || 500;
-              textEl.appendChild(phraseEl);
-              if (i + phraseWords.length < words.length) textEl.appendChild(document.createTextNode(' '));
-              i += phraseWords.length;
-              matched = true;
-              break;
-            }
-          }
-        }
-      }
-      if (!matched) {
-        const span = document.createElement('span');
-        span.className = 'word';
-        span.textContent = words[i];
-        textEl.appendChild(span);
-        wordSpans.push({ el: span, index: i });
-        if (i < words.length - 1) textEl.appendChild(document.createTextNode(' '));
-        i++;
-      }
-    }
-
-    const allWords = textEl.querySelectorAll('.word');
-    const wordDelay = 140;
-    allWords.forEach((w, idx) => {
-      setTimeout(() => w.classList.add('visible'), idx * wordDelay);
-    });
-
-    const totalWordTime = allWords.length * wordDelay + 200;
-    const annotatedPhrases = textEl.querySelectorAll('.annotated-phrase');
-    annotatedPhrases.forEach(phrase => {
-      const delay = phrase._delay || 500;
-      setTimeout(() => {
-        phrase.style.borderBottomColor = 'var(--green)';
-        phrase.style.background = 'rgba(16, 185, 129, 0.12)';
-        phrase.style.transition = 'border-bottom-color 0.3s, background 0.3s';
-      }, totalWordTime + delay - 200);
-      setTimeout(() => {
-        if (phrase._annotation) phrase._annotation.classList.add('visible');
-      }, totalWordTime + delay);
-    });
-
-    return { wrapper, wordCount: allWords.length, totalWordTime };
-  }
+  const totalTime = chunks.length * CHUNK_DELAY + 400;
+  return { totalTime };
 }
 
 // ═══ SCRIPT ═══
@@ -1020,12 +863,12 @@ function runScript() {
   script.forEach(event => {
     const t = setTimeout(() => {
       if (event.speaker) {
-        const info = createMessageElement(event.speaker, event.text, event.annotations || []);
+        const info = showMessage(event.speaker, event.text, event.annotations || []);
         setOrbState(event.speaker);
         setWaveform(true, event.speaker);
 
         // Stop waveform after text finishes
-        const duration = (info.totalWordTime || 2000) + 500;
+        const duration = (info.totalTime || 2000) + 500;
         setTimeout(() => {
           setWaveform(false, null);
           setOrbState(null);
