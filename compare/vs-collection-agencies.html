@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>AgentCollect vs Collection Agencies — Why AI Beats Traditional Agencies</title>
+    <meta name="description" content="Collection agencies charge 25-50% and damage your brand. AgentCollect uses AI agents under your brand at a fraction of the cost. Compare the two approaches.">
+    <meta property="og:title" content="AgentCollect vs Collection Agencies — AI-Powered Alternative">
+    <meta property="og:description" content="Why 400+ companies switched from traditional collection agencies to AI-powered recovery. Lower fees, faster results, zero brand damage.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.agentcollect.com/compare/vs-collection-agencies">
+    <meta property="og:image" content="https://www.agentcollect.com/og.png?v=5">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://www.agentcollect.com/compare/vs-collection-agencies">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#FAFBFF;--bg-card:#fff;--bg-dark:#0B1B3D;--bg-warm:#F8F7F5;
+            --border:#E8ECF2;--border-hover:rgba(79,70,229,.18);
+            --text:#0B1B3D;--text-mid:#374151;--text-muted:#64748B;--text-dim:#94A3B8;
+            --indigo:#4F46E5;--indigo-dark:#4338CA;--indigo-light:rgba(79,70,229,.04);--indigo-glow:rgba(79,70,229,.08);
+            --green:#10B981;--green-dark:#059669;--green-light:rgba(16,185,129,.04);
+            --amber:#F59E0B;--red:#EF4444;
+            --mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
+            --shadow-sm:0 1px 2px rgba(0,0,0,.03);
+            --shadow-md:0 2px 8px rgba(0,0,0,.04);
+            --shadow-lg:0 8px 24px rgba(0,0,0,.06);
+            --radius:14px;
+            --max-w:1120px;
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:var(--sans);font-size:17px;background:#f6f3ef;color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;line-height:1.7;position:relative}
+        body::before{content:'';position:fixed;inset:0;z-index:-1;background-image:
+            linear-gradient(rgba(79,70,229,.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(79,70,229,.03) 1px, transparent 1px);
+            background-size:64px 64px;pointer-events:none}
+        h1,h2,h3,h4,h5{font-family:var(--display);line-height:1.15;letter-spacing:-.04em}
+        ::selection{background:rgba(79,70,229,.08)}
+        .gradient-divider{height:1px;background:linear-gradient(90deg,transparent,var(--indigo),var(--green),transparent);opacity:.3;max-width:var(--max-w);margin:0 auto}
+
+        /* SCROLL PROGRESS BAR */
+        .scroll-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--indigo),var(--green));width:0%;z-index:1001;transition:none;will-change:width}
+
+        /* REVEAL ANIMATIONS */
+        .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+        .s1{transition-delay:.1s}.s2{transition-delay:.2s}.s3{transition-delay:.3s}.s4{transition-delay:.4s}
+
+        /* NAV */
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(246,243,239,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+        .nav.scrolled{box-shadow:0 1px 3px rgba(0,0,0,.02)}
+        .nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:64px}
+        .logo{display:inline-flex;align-items:baseline;text-decoration:none;margin-right:auto;font-family:var(--display);font-size:18px;font-weight:900;letter-spacing:-.04em;color:var(--text)}
+        .dot-circle{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--indigo);margin-left:1px;vertical-align:super}
+        .logo-tagline{font-size:11px;color:var(--text-muted);font-weight:400;margin-left:14px;padding-left:14px;border-left:1px solid var(--border);white-space:nowrap;letter-spacing:-.01em;margin-right:28px}
+        .nav-links{display:flex;gap:32px;margin-right:28px}
+        .nav-links a{color:var(--text-muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;letter-spacing:-.01em}
+        .nav-links a:hover{color:var(--text)}
+        .nav-links a.active{color:var(--indigo)}
+        .nav-right{display:flex;align-items:center;gap:10px}
+        .nav-cta{padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;letter-spacing:-.01em}
+        .nav-cta:hover{background:var(--indigo-dark)}
+        .nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px}
+
+        /* SECTION */
+        .section-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--indigo);margin-bottom:12px}
+
+        /* HERO */
+        .page-hero{padding:140px 32px 60px;text-align:center}
+        .page-hero .section-label{opacity:0;transform:translateY(20px);animation:heroFadeUp .8s cubic-bezier(.16,1,.3,1) .2s forwards}
+        .page-hero h1{font-size:clamp(36px,5vw,64px);font-weight:900;letter-spacing:-.05em;line-height:1.05;margin-bottom:20px;color:var(--text);opacity:0;transform:translateY(20px);animation:heroFadeUp .8s cubic-bezier(.16,1,.3,1) .35s forwards}
+        .page-hero .sub{font-size:18px;color:var(--text-muted);max-width:580px;margin:0 auto;letter-spacing:-.01em;opacity:0;transform:translateY(20px);animation:heroFadeUp .8s cubic-bezier(.16,1,.3,1) .5s forwards}
+        @keyframes heroFadeUp{to{opacity:1;transform:translateY(0)}}
+        .page-hero h1{
+            background:linear-gradient(90deg,var(--text) 0%,var(--text) 40%,var(--indigo) 50%,var(--text) 60%,var(--text) 100%);
+            background-size:200% 100%;
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+            animation:heroFadeUp .8s cubic-bezier(.16,1,.3,1) .35s forwards, shimmer 2s ease .9s 1 forwards;
+        }
+        @keyframes shimmer{0%{background-position:100% 0}100%{background-position:-100% 0}}
+
+        /* COMPARISON TABLE */
+        .compare-section{padding:80px 32px}
+        .compare-section-inner{max-width:var(--max-w);margin:0 auto}
+        .compare-section h2{font-size:clamp(24px,3vw,36px);font-weight:900;text-align:center;margin-bottom:48px;letter-spacing:-.04em}
+        .compare-table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-md);border:1px solid var(--border)}
+        .compare-table thead th{padding:20px 24px;font-family:var(--display);font-size:14px;font-weight:800;letter-spacing:-.02em;text-align:left;border-bottom:2px solid var(--border)}
+        .compare-table thead th:first-child{background:#fff;color:var(--text-muted);font-weight:600}
+        .compare-table thead th:nth-child(2){background:rgba(239,68,68,.04);color:var(--red)}
+        .compare-table thead th:nth-child(3){background:rgba(79,70,229,.04);color:var(--indigo)}
+        .compare-table tbody td{padding:16px 24px;font-size:15px;border-bottom:1px solid rgba(0,0,0,.04);vertical-align:top}
+        .compare-table tbody td:first-child{font-weight:600;color:var(--text);font-size:14px}
+        .compare-table tbody td:nth-child(2){color:var(--text-mid)}
+        .compare-table tbody td:nth-child(3){color:var(--text);font-weight:500}
+        .compare-table tbody tr:last-child td{border-bottom:none}
+        .compare-table .check{color:var(--green);font-weight:700}
+        .compare-table .cross{color:var(--red);opacity:.6}
+
+        /* DIFFERENTIATORS */
+        .diff-section{padding:80px 32px}
+        .diff-section-inner{max-width:var(--max-w);margin:0 auto}
+        .diff-section h2{font-size:clamp(24px,3vw,36px);font-weight:900;text-align:center;margin-bottom:16px;letter-spacing:-.04em}
+        .diff-section .sub{text-align:center;color:var(--text-muted);font-size:16px;max-width:520px;margin:0 auto 48px}
+        .diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+        .diff-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:border-color .3s,box-shadow .3s}
+        .diff-card:hover{border-color:var(--border-hover);box-shadow:var(--shadow-lg)}
+        .diff-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:22px}
+        .diff-icon.indigo{background:rgba(79,70,229,.08)}
+        .diff-icon.green{background:rgba(16,185,129,.08)}
+        .diff-icon.amber{background:rgba(245,158,11,.08)}
+        .diff-card h3{font-size:18px;font-weight:800;margin-bottom:8px;letter-spacing:-.03em}
+        .diff-card p{font-size:15px;color:var(--text-mid);line-height:1.65}
+
+        /* WHEN SECTIONS */
+        .when-section{padding:80px 32px}
+        .when-section-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px}
+        .when-card{border-radius:var(--radius);padding:40px;position:relative}
+        .when-card.them{background:#fff;border:1px solid var(--border)}
+        .when-card.us{background:var(--bg-dark);color:#fff}
+        .when-card h3{font-size:22px;font-weight:900;margin-bottom:20px;letter-spacing:-.03em}
+        .when-card ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+        .when-card ul li{font-size:15px;line-height:1.6;display:flex;align-items:flex-start;gap:10px}
+        .when-card.them ul li{color:var(--text-mid)}
+        .when-card.us ul li{color:rgba(255,255,255,.85)}
+        .when-icon{flex-shrink:0;margin-top:3px}
+
+        /* CTA */
+        .final-cta{padding:120px 32px;text-align:center;background:var(--bg-dark);color:#fff;position:relative;overflow:hidden}
+        .final-cta::before{content:'';position:absolute;inset:0;background-image:
+            linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+            background-size:64px 64px;pointer-events:none}
+        .final-cta h2{font-size:clamp(28px,4vw,52px);font-weight:900;letter-spacing:-.04em;margin-bottom:12px;line-height:1.1;position:relative}
+        .final-cta p{font-size:16px;opacity:.6;max-width:480px;margin:0 auto 44px;line-height:1.65;letter-spacing:-.01em;position:relative}
+        .cta-btn{display:inline-flex;align-items:center;gap:8px;padding:18px 40px;border:none;border-radius:12px;font-family:var(--sans);font-size:16px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;letter-spacing:-.01em;position:relative}
+        .cta-btn:hover{transform:translateY(-1px)}
+        .cta-btn-primary{background:#fff;color:var(--bg-dark)}
+        .cta-btn-primary:hover{box-shadow:0 8px 24px rgba(255,255,255,.1)}
+
+        /* FOOTER */
+        footer{background:#f6f3ef;border-top:1px solid var(--border);padding:56px 32px 32px}
+        .footer-inner{max-width:var(--max-w);margin:0 auto}
+        .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}
+        .footer-brand-name{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:10px}
+        .footer-tagline{font-size:14px;color:var(--text-dim);line-height:1.65;max-width:210px}
+        .footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);margin-bottom:14px}
+        .footer-col a{display:block;font-size:13px;color:var(--text-muted);text-decoration:none;margin-bottom:9px;transition:color .2s;letter-spacing:-.01em}
+        .footer-col a:hover{color:var(--text)}
+        .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;gap:12px}
+        .footer-copy{font-size:12px;color:var(--text-dim)}
+        .footer-badges{display:flex;gap:8px}
+        .footer-badge{padding:4px 10px;border:1px solid var(--border);border-radius:4px;font-size:10px;color:var(--text-dim);font-weight:600;letter-spacing:.02em}
+
+        @media(max-width:768px){
+            .nav-links{display:none}
+            .nav-mobile{display:block}
+            .nav-inner{padding:0 20px}
+            .logo-tagline{display:none}
+            .page-hero{padding:100px 20px 48px}
+            .compare-section,.diff-section,.when-section{padding:60px 20px}
+            .diff-grid{grid-template-columns:1fr}
+            .when-section-inner{grid-template-columns:1fr}
+            .compare-table{font-size:13px}
+            .compare-table thead th,.compare-table tbody td{padding:12px 14px}
+            .final-cta{padding:72px 20px}
+            .footer-top{grid-template-columns:1fr 1fr;gap:24px}
+            .footer-bottom{flex-direction:column;text-align:center}
+            .footer-badges{justify-content:center}
+        }
+    </style>
+    <script>
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vtpmvp6kvr");
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GRZZT9K05B"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GRZZT9K05B');</script>
+</head>
+<body>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav class="nav" id="nav">
+<div class="nav-inner">
+    <a href="/" class="logo">Agent<span>Collect</span><span class="dot-circle"></span></a>
+    <span class="logo-tagline">The end of manual collection.</span>
+    <div class="nav-links">
+        <a href="/pricing">Pricing</a>
+        <a href="/how-it-works">How It Works</a>
+        <a href="/security">Security</a>
+    </div>
+    <div class="nav-right">
+        <a href="https://cal.com/johnb/30" class="nav-cta" target="_blank" rel="noopener">Book a demo</a>
+    </div>
+    <button class="nav-mobile" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="1.5"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+    <div class="section-label">Compare</div>
+    <h1>Collection Agencies<br>vs AgentCollect</h1>
+    <p class="sub">They charge 25-50% and call from their number. We charge from 10.8% and call from yours. Same goal, completely different experience.</p>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- COMPARISON TABLE -->
+<section class="compare-section reveal">
+    <div class="compare-section-inner">
+        <h2>Side-by-side comparison</h2>
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Traditional Agency</th>
+                    <th>AgentCollect</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cost</td>
+                    <td>25-50% of recovered amount</td>
+                    <td class="check">From 10.8% success fee</td>
+                </tr>
+                <tr>
+                    <td>Speed to first contact</td>
+                    <td>3-14 days after placement</td>
+                    <td class="check">Minutes after upload</td>
+                </tr>
+                <tr>
+                    <td>Brand experience</td>
+                    <td>Agency's name, generic scripts</td>
+                    <td class="check">Your brand on every touchpoint</td>
+                </tr>
+                <tr>
+                    <td>Channels</td>
+                    <td>Phone calls + letters</td>
+                    <td class="check">Voice + email + SMS + payment links</td>
+                </tr>
+                <tr>
+                    <td>Availability</td>
+                    <td>M-F, 9-5 business hours</td>
+                    <td class="check">24/7/365 automated outreach</td>
+                </tr>
+                <tr>
+                    <td>Transparency</td>
+                    <td>Monthly PDF reports</td>
+                    <td class="check">Real-time dashboard, full transcripts</td>
+                </tr>
+                <tr>
+                    <td>Setup time</td>
+                    <td>2-4 weeks of paperwork</td>
+                    <td class="check">20 minutes, upload a CSV</td>
+                </tr>
+                <tr>
+                    <td>Debtor experience</td>
+                    <td>Aggressive, damages relationships</td>
+                    <td class="check">Professional, preserves relationships</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- 3 KEY DIFFERENTIATORS -->
+<section class="diff-section">
+    <div class="diff-section-inner">
+        <h2 class="reveal">Why companies switch from agencies</h2>
+        <p class="sub reveal s1">Three things traditional agencies can never fix, no matter how good they are.</p>
+        <div class="diff-grid">
+            <div class="diff-card reveal s1">
+                <div class="diff-icon indigo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3>Your brand, not theirs</h3>
+                <p>Collection agencies call from their name with their scripts. Your customer hears a stranger demanding money. With AgentCollect, every call, email, and SMS comes from your brand. The relationship stays intact.</p>
+            </div>
+            <div class="diff-card reveal s2">
+                <div class="diff-icon green">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <h3>Minutes, not weeks</h3>
+                <p>The average agency takes 7-14 days before making first contact. Every day of delay drops recovery rates by 1-2%. AgentCollect contacts debtors within minutes of upload, while the invoice is still top of mind.</p>
+            </div>
+            <div class="diff-card reveal s3">
+                <div class="diff-icon amber">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <h3>Keep more of what you recover</h3>
+                <p>Agencies take 25-50% of every dollar collected. On a $100K recovery, that is $25K-$50K gone. AgentCollect starts at 10.8% with volume discounts, meaning you keep $89K+ of that same recovery.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- WHEN EACH MAKES SENSE -->
+<section class="when-section">
+    <div class="when-section-inner">
+        <div class="when-card them reveal">
+            <h3>When a collection agency makes sense</h3>
+            <ul>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    Accounts are severely delinquent (180+ days) and need skip tracing or legal escalation
+                </li>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    You are in a heavily regulated consumer debt vertical that requires licensed collectors
+                </li>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    The debtor has already ignored all communication and litigation is the only remaining option
+                </li>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    You need boots on the ground for in-person visits or asset seizure
+                </li>
+            </ul>
+        </div>
+        <div class="when-card us reveal s1">
+            <h3>When AgentCollect is better</h3>
+            <ul>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    Accounts are 30-180 days past due and need professional, persistent outreach
+                </li>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    You want to preserve the customer relationship while recovering payment
+                </li>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    You need real-time visibility into every call, email, and payment status
+                </li>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    You have 50+ past-due accounts and need scale without hiring staff
+                </li>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    You want to keep 89%+ of recovered revenue instead of losing half to agency fees
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta reveal">
+    <h2>Stop paying half your<br>recoveries to agencies.</h2>
+    <p>Upload your hardest accounts. We will build your branded agent live on the call and show you the difference.</p>
+    <a href="https://cal.com/johnb/30" target="_blank" rel="noopener" class="cta-btn cta-btn-primary">
+        Book a 30-min demo
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <p style="margin-top:20px;font-size:14px;color:rgba(255,255,255,.5);letter-spacing:-.01em">$0 if we don't collect. No setup fees. Cancel anytime.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div>
+                <div class="footer-brand-name">Agent<span>Collect</span><span class="dot-circle" style="width:5px;height:5px"></span></div>
+                <div class="footer-tagline">The end of manual collection.</div>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <a href="/pricing">Pricing</a>
+                <a href="/how-it-works">How It Works</a>
+                <a href="/industries">Industries</a>
+            </div>
+            <div class="footer-col">
+                <h4>Trust</h4>
+                <a href="/security">Security</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="https://cal.com/johnb/30" target="_blank" rel="noopener">Contact</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-copy">&copy; 2026 AgentCollect, Inc. 490 Post St, San Francisco, CA</div>
+            <div class="footer-badges">
+                <span class="footer-badge">SOC 2</span>
+                <span class="footer-badge">CCPA</span>
+                <span class="footer-badge">Reg F</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+(function(){
+    var progressBar = document.getElementById('scrollProgress');
+    function updateProgress(){
+        var scrollTop = window.scrollY;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', updateProgress, {passive: true});
+
+    var nav = document.getElementById('nav');
+    window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 10) }, {passive: true});
+
+    var reveals = document.querySelectorAll('.reveal');
+    var revealIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+            if(e.isIntersecting){
+                e.target.classList.add('visible');
+                revealIO.unobserve(e.target);
+            }
+        });
+    }, {threshold: 0.1});
+    reveals.forEach(function(el){ revealIO.observe(el) });
+})();
+</script>
+
+</body>
+</html>

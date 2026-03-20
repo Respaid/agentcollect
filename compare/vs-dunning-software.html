@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>AgentCollect vs Dunning Software (Chargebee, Recurly) — Beyond Automated Emails</title>
+    <meta name="description" content="Dunning software sends emails. AgentCollect calls, emails, texts, and resolves disputes with AI agents. Recovery rates 3-8x higher on 90+ day accounts.">
+    <meta property="og:title" content="AgentCollect vs Dunning Software — When Emails Stop Working">
+    <meta property="og:description" content="Chargebee and Recurly recover failed payments. AgentCollect recovers the accounts they gave up on. Compare recovery rates on 90+ day past-due.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.agentcollect.com/compare/vs-dunning-software">
+    <meta property="og:image" content="https://www.agentcollect.com/og.png?v=5">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://www.agentcollect.com/compare/vs-dunning-software">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#FAFBFF;--bg-card:#fff;--bg-dark:#0B1B3D;--bg-warm:#F8F7F5;
+            --border:#E8ECF2;--border-hover:rgba(79,70,229,.18);
+            --text:#0B1B3D;--text-mid:#374151;--text-muted:#64748B;--text-dim:#94A3B8;
+            --indigo:#4F46E5;--indigo-dark:#4338CA;--indigo-light:rgba(79,70,229,.04);--indigo-glow:rgba(79,70,229,.08);
+            --green:#10B981;--green-dark:#059669;--green-light:rgba(16,185,129,.04);
+            --amber:#F59E0B;--red:#EF4444;
+            --mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
+            --shadow-sm:0 1px 2px rgba(0,0,0,.03);--shadow-md:0 2px 8px rgba(0,0,0,.04);--shadow-lg:0 8px 24px rgba(0,0,0,.06);
+            --radius:14px;--max-w:1120px;
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:var(--sans);font-size:17px;background:#f6f3ef;color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;line-height:1.7;position:relative}
+        body::before{content:'';position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(79,70,229,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(79,70,229,.03) 1px,transparent 1px);background-size:64px 64px;pointer-events:none}
+        h1,h2,h3,h4,h5{font-family:var(--display);line-height:1.15;letter-spacing:-.04em}
+        ::selection{background:rgba(79,70,229,.08)}
+        .gradient-divider{height:1px;background:linear-gradient(90deg,transparent,var(--indigo),var(--green),transparent);opacity:.3;max-width:var(--max-w);margin:0 auto}
+        .scroll-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--indigo),var(--green));width:0%;z-index:1001;transition:none;will-change:width}
+        .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+        .s1{transition-delay:.1s}.s2{transition-delay:.2s}.s3{transition-delay:.3s}.s4{transition-delay:.4s}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(246,243,239,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+        .nav.scrolled{box-shadow:0 1px 3px rgba(0,0,0,.02)}
+        .nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:64px}
+        .logo{display:inline-flex;align-items:baseline;text-decoration:none;margin-right:auto;font-family:var(--display);font-size:18px;font-weight:900;letter-spacing:-.04em;color:var(--text)}
+        .dot-circle{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--indigo);margin-left:1px;vertical-align:super}
+        .logo-tagline{font-size:11px;color:var(--text-muted);font-weight:400;margin-left:14px;padding-left:14px;border-left:1px solid var(--border);white-space:nowrap;letter-spacing:-.01em;margin-right:28px}
+        .nav-links{display:flex;gap:32px;margin-right:28px}
+        .nav-links a{color:var(--text-muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;letter-spacing:-.01em}
+        .nav-links a:hover{color:var(--text)}
+        .nav-links a.active{color:var(--indigo)}
+        .nav-right{display:flex;align-items:center;gap:10px}
+        .nav-cta{padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;letter-spacing:-.01em}
+        .nav-cta:hover{background:var(--indigo-dark)}
+        .nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px}
+        .section-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--indigo);margin-bottom:12px}
+        .page-hero{padding:140px 32px 60px;text-align:center}
+        .page-hero .section-label{opacity:0;transform:translateY(20px);animation:heroFadeUp .8s cubic-bezier(.16,1,.3,1) .2s forwards}
+        .page-hero h1{font-size:clamp(36px,5vw,64px);font-weight:900;letter-spacing:-.05em;line-height:1.05;margin-bottom:20px;color:var(--text);opacity:0;transform:translateY(20px);animation:heroFadeUp .8s cubic-bezier(.16,1,.3,1) .35s forwards;background:linear-gradient(90deg,var(--text) 0%,var(--text) 40%,var(--indigo) 50%,var(--text) 60%,var(--text) 100%);background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:heroFadeUp .8s cubic-bezier(.16,1,.3,1) .35s forwards,shimmer 2s ease .9s 1 forwards}
+        .page-hero .sub{font-size:18px;color:var(--text-muted);max-width:580px;margin:0 auto;letter-spacing:-.01em;opacity:0;transform:translateY(20px);animation:heroFadeUp .8s cubic-bezier(.16,1,.3,1) .5s forwards}
+        @keyframes heroFadeUp{to{opacity:1;transform:translateY(0)}}
+        @keyframes shimmer{0%{background-position:100% 0}100%{background-position:-100% 0}}
+
+        .compare-section{padding:80px 32px}
+        .compare-section-inner{max-width:var(--max-w);margin:0 auto}
+        .compare-section h2{font-size:clamp(24px,3vw,36px);font-weight:900;text-align:center;margin-bottom:48px;letter-spacing:-.04em}
+        .compare-table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-md);border:1px solid var(--border)}
+        .compare-table thead th{padding:20px 24px;font-family:var(--display);font-size:14px;font-weight:800;letter-spacing:-.02em;text-align:left;border-bottom:2px solid var(--border)}
+        .compare-table thead th:first-child{background:#fff;color:var(--text-muted);font-weight:600}
+        .compare-table thead th:nth-child(2){background:rgba(239,68,68,.04);color:var(--red)}
+        .compare-table thead th:nth-child(3){background:rgba(79,70,229,.04);color:var(--indigo)}
+        .compare-table tbody td{padding:16px 24px;font-size:15px;border-bottom:1px solid rgba(0,0,0,.04);vertical-align:top}
+        .compare-table tbody td:first-child{font-weight:600;color:var(--text);font-size:14px}
+        .compare-table tbody td:nth-child(2){color:var(--text-mid)}
+        .compare-table tbody td:nth-child(3){color:var(--text);font-weight:500}
+        .compare-table tbody tr:last-child td{border-bottom:none}
+        .compare-table .check{color:var(--green);font-weight:700}
+
+        .diff-section{padding:80px 32px}
+        .diff-section-inner{max-width:var(--max-w);margin:0 auto}
+        .diff-section h2{font-size:clamp(24px,3vw,36px);font-weight:900;text-align:center;margin-bottom:16px;letter-spacing:-.04em}
+        .diff-section .sub{text-align:center;color:var(--text-muted);font-size:16px;max-width:520px;margin:0 auto 48px}
+        .diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+        .diff-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:border-color .3s,box-shadow .3s}
+        .diff-card:hover{border-color:var(--border-hover);box-shadow:var(--shadow-lg)}
+        .diff-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:22px}
+        .diff-icon.indigo{background:rgba(79,70,229,.08)}
+        .diff-icon.green{background:rgba(16,185,129,.08)}
+        .diff-icon.amber{background:rgba(245,158,11,.08)}
+        .diff-card h3{font-size:18px;font-weight:800;margin-bottom:8px;letter-spacing:-.03em}
+        .diff-card p{font-size:15px;color:var(--text-mid);line-height:1.65}
+
+        .when-section{padding:80px 32px}
+        .when-section-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px}
+        .when-card{border-radius:var(--radius);padding:40px;position:relative}
+        .when-card.them{background:#fff;border:1px solid var(--border)}
+        .when-card.us{background:var(--bg-dark);color:#fff}
+        .when-card h3{font-size:22px;font-weight:900;margin-bottom:20px;letter-spacing:-.03em}
+        .when-card ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+        .when-card ul li{font-size:15px;line-height:1.6;display:flex;align-items:flex-start;gap:10px}
+        .when-card.them ul li{color:var(--text-mid)}
+        .when-card.us ul li{color:rgba(255,255,255,.85)}
+        .when-icon{flex-shrink:0;margin-top:3px}
+
+        .final-cta{padding:120px 32px;text-align:center;background:var(--bg-dark);color:#fff;position:relative;overflow:hidden}
+        .final-cta::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:64px 64px;pointer-events:none}
+        .final-cta h2{font-size:clamp(28px,4vw,52px);font-weight:900;letter-spacing:-.04em;margin-bottom:12px;line-height:1.1;position:relative}
+        .final-cta p{font-size:16px;opacity:.6;max-width:480px;margin:0 auto 44px;line-height:1.65;letter-spacing:-.01em;position:relative}
+        .cta-btn{display:inline-flex;align-items:center;gap:8px;padding:18px 40px;border:none;border-radius:12px;font-family:var(--sans);font-size:16px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;letter-spacing:-.01em;position:relative}
+        .cta-btn:hover{transform:translateY(-1px)}
+        .cta-btn-primary{background:#fff;color:var(--bg-dark)}
+        .cta-btn-primary:hover{box-shadow:0 8px 24px rgba(255,255,255,.1)}
+
+        footer{background:#f6f3ef;border-top:1px solid var(--border);padding:56px 32px 32px}
+        .footer-inner{max-width:var(--max-w);margin:0 auto}
+        .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}
+        .footer-brand-name{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:10px}
+        .footer-tagline{font-size:14px;color:var(--text-dim);line-height:1.65;max-width:210px}
+        .footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);margin-bottom:14px}
+        .footer-col a{display:block;font-size:13px;color:var(--text-muted);text-decoration:none;margin-bottom:9px;transition:color .2s;letter-spacing:-.01em}
+        .footer-col a:hover{color:var(--text)}
+        .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;gap:12px}
+        .footer-copy{font-size:12px;color:var(--text-dim)}
+        .footer-badges{display:flex;gap:8px}
+        .footer-badge{padding:4px 10px;border:1px solid var(--border);border-radius:4px;font-size:10px;color:var(--text-dim);font-weight:600;letter-spacing:.02em}
+
+        @media(max-width:768px){
+            .nav-links{display:none}.nav-mobile{display:block}.nav-inner{padding:0 20px}.logo-tagline{display:none}
+            .page-hero{padding:100px 20px 48px}
+            .compare-section,.diff-section,.when-section{padding:60px 20px}
+            .diff-grid{grid-template-columns:1fr}.when-section-inner{grid-template-columns:1fr}
+            .compare-table{font-size:13px}.compare-table thead th,.compare-table tbody td{padding:12px 14px}
+            .final-cta{padding:72px 20px}
+            .footer-top{grid-template-columns:1fr 1fr;gap:24px}.footer-bottom{flex-direction:column;text-align:center}.footer-badges{justify-content:center}
+        }
+    </style>
+    <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","vtpmvp6kvr");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GRZZT9K05B"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GRZZT9K05B');</script>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav class="nav" id="nav">
+<div class="nav-inner">
+    <a href="/" class="logo">Agent<span>Collect</span><span class="dot-circle"></span></a>
+    <span class="logo-tagline">The end of manual collection.</span>
+    <div class="nav-links">
+        <a href="/pricing">Pricing</a>
+        <a href="/how-it-works">How It Works</a>
+        <a href="/security">Security</a>
+    </div>
+    <div class="nav-right">
+        <a href="https://cal.com/johnb/30" class="nav-cta" target="_blank" rel="noopener">Book a demo</a>
+    </div>
+    <button class="nav-mobile" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="1.5"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+</div>
+</nav>
+
+<section class="page-hero">
+    <div class="section-label">Compare</div>
+    <h1>Dunning Software<br>vs AgentCollect</h1>
+    <p class="sub">Dunning tools recover failed payments with automated emails. AgentCollect recovers the accounts they write off, with AI agents that call, email, and negotiate.</p>
+</section>
+
+<div class="gradient-divider"></div>
+
+<section class="compare-section reveal">
+    <div class="compare-section-inner">
+        <h2>Side-by-side comparison</h2>
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Dunning Software</th>
+                    <th>AgentCollect</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Recovery on 90+ day accounts</td>
+                    <td>3-5% (emails only)</td>
+                    <td class="check">25-40% (voice + email + SMS)</td>
+                </tr>
+                <tr>
+                    <td>Communication channels</td>
+                    <td>Email and in-app notifications</td>
+                    <td class="check">AI voice calls + email + SMS + payment links</td>
+                </tr>
+                <tr>
+                    <td>Dispute handling</td>
+                    <td>None, requires manual intervention</td>
+                    <td class="check">AI resolves disputes autonomously</td>
+                </tr>
+                <tr>
+                    <td>Payment plans</td>
+                    <td>Retry card on file automatically</td>
+                    <td class="check">Negotiates custom installment plans</td>
+                </tr>
+                <tr>
+                    <td>Contact discovery</td>
+                    <td>Uses email on file only</td>
+                    <td class="check">Finds decision-makers automatically</td>
+                </tr>
+                <tr>
+                    <td>Best for</td>
+                    <td>Involuntary churn (expired cards)</td>
+                    <td class="check">Voluntary + involuntary, any amount or age</td>
+                </tr>
+                <tr>
+                    <td>Pricing model</td>
+                    <td>$299-999/mo flat fee</td>
+                    <td class="check">Success fee only, $0 if nothing collected</td>
+                </tr>
+                <tr>
+                    <td>Attorney escalation</td>
+                    <td>Not available</td>
+                    <td class="check">Built-in attorney demand letters</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<section class="diff-section">
+    <div class="diff-section-inner">
+        <h2 class="reveal">Where dunning stops, we start</h2>
+        <p class="sub reveal s1">Dunning is great for week 1. Here is what happens on week 12.</p>
+        <div class="diff-grid">
+            <div class="diff-card reveal s1">
+                <div class="diff-icon indigo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <h3>Voice changes everything</h3>
+                <p>After 90 days, email open rates drop below 5%. A phone call has a 65%+ connect rate. AgentCollect's AI agents call debtors, have real conversations, handle objections, and negotiate payment plans in real time.</p>
+            </div>
+            <div class="diff-card reveal s2">
+                <div class="diff-icon green">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                </div>
+                <h3>Handles the messy cases</h3>
+                <p>"This invoice is wrong." "We never received the product." "Talk to our AP department." Dunning software cannot handle any of these. AgentCollect's AI resolves disputes, finds the right contact, and follows up until it is resolved.</p>
+            </div>
+            <div class="diff-card reveal s3">
+                <div class="diff-icon amber">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <h3>You only pay when it works</h3>
+                <p>Dunning tools charge $299-999/month whether they recover anything or not. AgentCollect charges zero until money hits your account. If we do not collect, you pay nothing. Ever.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<section class="when-section">
+    <div class="when-section-inner">
+        <div class="when-card them reveal">
+            <h3>When dunning software makes sense</h3>
+            <ul>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    You are a SaaS company with high-volume, low-value failed card transactions
+                </li>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    Most of your churn is involuntary (expired cards, insufficient funds)
+                </li>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    Accounts are less than 30 days past due and a simple email reminder suffices
+                </li>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    You have a card-on-file model and just need smart card retries
+                </li>
+            </ul>
+        </div>
+        <div class="when-card us reveal s1">
+            <h3>When AgentCollect is better</h3>
+            <ul>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    Accounts are 60+ days past due and emails have stopped working
+                </li>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    Invoice amounts are $500+ and worth a phone call to recover
+                </li>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    Debtors have disputes, questions, or need payment plan negotiations
+                </li>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    You are writing off accounts that dunning already failed on
+                </li>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    You need B2B invoice collection, not just subscription payment recovery
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="final-cta reveal">
+    <h2>Recover the accounts<br>dunning gave up on.</h2>
+    <p>Send us the invoices your dunning tool could not collect. We will show you what AI agents can do when emails are not enough.</p>
+    <a href="https://cal.com/johnb/30" target="_blank" rel="noopener" class="cta-btn cta-btn-primary">
+        Book a 30-min demo
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <p style="margin-top:20px;font-size:14px;color:rgba(255,255,255,.5);letter-spacing:-.01em">$0 if we don't collect. No setup fees. Cancel anytime.</p>
+</section>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div>
+                <div class="footer-brand-name">Agent<span>Collect</span><span class="dot-circle" style="width:5px;height:5px"></span></div>
+                <div class="footer-tagline">The end of manual collection.</div>
+            </div>
+            <div class="footer-col"><h4>Product</h4><a href="/pricing">Pricing</a><a href="/how-it-works">How It Works</a><a href="/industries">Industries</a></div>
+            <div class="footer-col"><h4>Trust</h4><a href="/security">Security</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a></div>
+            <div class="footer-col"><h4>Company</h4><a href="https://cal.com/johnb/30" target="_blank" rel="noopener">Contact</a></div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-copy">&copy; 2026 AgentCollect, Inc. 490 Post St, San Francisco, CA</div>
+            <div class="footer-badges"><span class="footer-badge">SOC 2</span><span class="footer-badge">CCPA</span><span class="footer-badge">Reg F</span></div>
+        </div>
+    </div>
+</footer>
+
+<script>
+(function(){
+    var progressBar=document.getElementById('scrollProgress');
+    function updateProgress(){var s=window.scrollY;var d=document.documentElement.scrollHeight-window.innerHeight;progressBar.style.width=(d>0?(s/d)*100:0)+'%'}
+    window.addEventListener('scroll',updateProgress,{passive:true});
+    var nav=document.getElementById('nav');
+    window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10)},{passive:true});
+    var reveals=document.querySelectorAll('.reveal');
+    var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:0.1});
+    reveals.forEach(function(el){io.observe(el)});
+})();
+</script>
+</body>
+</html>

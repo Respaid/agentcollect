@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>AgentCollect vs Debt Buyers — Keep 89% Instead of Selling for Pennies</title>
+    <meta name="description" content="Debt buyers pay 4-10 cents on the dollar. AgentCollect recovers 25-50% of the face value and you keep 89%+. Stop selling your receivables for pennies.">
+    <meta property="og:title" content="AgentCollect vs Debt Buyers — Stop Selling Your AR for Pennies">
+    <meta property="og:description" content="Debt buyers offer 4-10 cents on the dollar. AgentCollect recovers 25-50% at a 10.8% fee. On $1M in bad debt, that is $200K+ vs $40K-100K.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.agentcollect.com/compare/vs-debt-buyers">
+    <meta property="og:image" content="https://www.agentcollect.com/og.png?v=5">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://www.agentcollect.com/compare/vs-debt-buyers">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#FAFBFF;--bg-card:#fff;--bg-dark:#0B1B3D;--bg-warm:#F8F7F5;
+            --border:#E8ECF2;--border-hover:rgba(79,70,229,.18);
+            --text:#0B1B3D;--text-mid:#374151;--text-muted:#64748B;--text-dim:#94A3B8;
+            --indigo:#4F46E5;--indigo-dark:#4338CA;--indigo-light:rgba(79,70,229,.04);--indigo-glow:rgba(79,70,229,.08);
+            --green:#10B981;--green-dark:#059669;--green-light:rgba(16,185,129,.04);
+            --amber:#F59E0B;--red:#EF4444;
+            --mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
+            --shadow-sm:0 1px 2px rgba(0,0,0,.03);--shadow-md:0 2px 8px rgba(0,0,0,.04);--shadow-lg:0 8px 24px rgba(0,0,0,.06);
+            --radius:14px;--max-w:1120px;
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:var(--sans);font-size:17px;background:#f6f3ef;color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;line-height:1.7;position:relative}
+        body::before{content:'';position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(79,70,229,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(79,70,229,.03) 1px,transparent 1px);background-size:64px 64px;pointer-events:none}
+        h1,h2,h3,h4,h5{font-family:var(--display);line-height:1.15;letter-spacing:-.04em}
+        ::selection{background:rgba(79,70,229,.08)}
+        .gradient-divider{height:1px;background:linear-gradient(90deg,transparent,var(--indigo),var(--green),transparent);opacity:.3;max-width:var(--max-w);margin:0 auto}
+        .scroll-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--indigo),var(--green));width:0%;z-index:1001;transition:none;will-change:width}
+        .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+        .s1{transition-delay:.1s}.s2{transition-delay:.2s}.s3{transition-delay:.3s}.s4{transition-delay:.4s}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(246,243,239,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+        .nav.scrolled{box-shadow:0 1px 3px rgba(0,0,0,.02)}
+        .nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:64px}
+        .logo{display:inline-flex;align-items:baseline;text-decoration:none;margin-right:auto;font-family:var(--display);font-size:18px;font-weight:900;letter-spacing:-.04em;color:var(--text)}
+        .dot-circle{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--indigo);margin-left:1px;vertical-align:super}
+        .logo-tagline{font-size:11px;color:var(--text-muted);font-weight:400;margin-left:14px;padding-left:14px;border-left:1px solid var(--border);white-space:nowrap;letter-spacing:-.01em;margin-right:28px}
+        .nav-links{display:flex;gap:32px;margin-right:28px}
+        .nav-links a{color:var(--text-muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s;letter-spacing:-.01em}
+        .nav-links a:hover{color:var(--text)}
+        .nav-links a.active{color:var(--indigo)}
+        .nav-right{display:flex;align-items:center;gap:10px}
+        .nav-cta{padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;letter-spacing:-.01em}
+        .nav-cta:hover{background:var(--indigo-dark)}
+        .nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px;min-width:44px;min-height:44px}
+        .section-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--indigo);margin-bottom:12px}
+        .page-hero{padding:140px 32px 60px;text-align:center}
+        .page-hero .section-label{opacity:0;transform:translateY(20px);animation:heroFadeUp .8s cubic-bezier(.16,1,.3,1) .2s forwards}
+        .page-hero h1{font-size:clamp(36px,5vw,64px);font-weight:900;letter-spacing:-.05em;line-height:1.05;margin-bottom:20px;color:var(--text);opacity:0;transform:translateY(20px);animation:heroFadeUp .8s cubic-bezier(.16,1,.3,1) .35s forwards;background:linear-gradient(90deg,var(--text) 0%,var(--text) 40%,var(--indigo) 50%,var(--text) 60%,var(--text) 100%);background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:heroFadeUp .8s cubic-bezier(.16,1,.3,1) .35s forwards,shimmer 2s ease .9s 1 forwards}
+        .page-hero .sub{font-size:18px;color:var(--text-muted);max-width:580px;margin:0 auto;letter-spacing:-.01em;opacity:0;transform:translateY(20px);animation:heroFadeUp .8s cubic-bezier(.16,1,.3,1) .5s forwards}
+        @keyframes heroFadeUp{to{opacity:1;transform:translateY(0)}}
+        @keyframes shimmer{0%{background-position:100% 0}100%{background-position:-100% 0}}
+
+        .compare-section{padding:80px 32px}
+        .compare-section-inner{max-width:var(--max-w);margin:0 auto}
+        .compare-section h2{font-size:clamp(24px,3vw,36px);font-weight:900;text-align:center;margin-bottom:48px;letter-spacing:-.04em}
+        .compare-table{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-md);border:1px solid var(--border)}
+        .compare-table thead th{padding:20px 24px;font-family:var(--display);font-size:14px;font-weight:800;letter-spacing:-.02em;text-align:left;border-bottom:2px solid var(--border)}
+        .compare-table thead th:first-child{background:#fff;color:var(--text-muted);font-weight:600}
+        .compare-table thead th:nth-child(2){background:rgba(239,68,68,.04);color:var(--red)}
+        .compare-table thead th:nth-child(3){background:rgba(79,70,229,.04);color:var(--indigo)}
+        .compare-table tbody td{padding:16px 24px;font-size:15px;border-bottom:1px solid rgba(0,0,0,.04);vertical-align:top}
+        .compare-table tbody td:first-child{font-weight:600;color:var(--text);font-size:14px}
+        .compare-table tbody td:nth-child(2){color:var(--text-mid)}
+        .compare-table tbody td:nth-child(3){color:var(--text);font-weight:500}
+        .compare-table tbody tr:last-child td{border-bottom:none}
+        .compare-table .check{color:var(--green);font-weight:700}
+
+        .diff-section{padding:80px 32px}
+        .diff-section-inner{max-width:var(--max-w);margin:0 auto}
+        .diff-section h2{font-size:clamp(24px,3vw,36px);font-weight:900;text-align:center;margin-bottom:16px;letter-spacing:-.04em}
+        .diff-section .sub{text-align:center;color:var(--text-muted);font-size:16px;max-width:520px;margin:0 auto 48px}
+        .diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+        .diff-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:border-color .3s,box-shadow .3s}
+        .diff-card:hover{border-color:var(--border-hover);box-shadow:var(--shadow-lg)}
+        .diff-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:22px}
+        .diff-icon.indigo{background:rgba(79,70,229,.08)}
+        .diff-icon.green{background:rgba(16,185,129,.08)}
+        .diff-icon.amber{background:rgba(245,158,11,.08)}
+        .diff-card h3{font-size:18px;font-weight:800;margin-bottom:8px;letter-spacing:-.03em}
+        .diff-card p{font-size:15px;color:var(--text-mid);line-height:1.65}
+
+        /* Math box */
+        .math-section{padding:80px 32px}
+        .math-inner{max-width:800px;margin:0 auto;background:var(--bg-dark);border-radius:20px;padding:48px;color:#fff}
+        .math-inner h2{font-size:clamp(24px,3vw,36px);font-weight:900;text-align:center;margin-bottom:32px;letter-spacing:-.04em}
+        .math-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+        .math-col{text-align:center}
+        .math-col h4{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px;opacity:.6}
+        .math-amount{font-family:var(--display);font-size:48px;font-weight:900;letter-spacing:-.04em;margin-bottom:8px}
+        .math-amount.red{color:var(--red)}
+        .math-amount.green{color:var(--green)}
+        .math-detail{font-size:14px;opacity:.5;line-height:1.6}
+        .math-vs{display:flex;align-items:center;justify-content:center;padding:20px 0;font-size:13px;opacity:.4;text-transform:uppercase;letter-spacing:.12em;font-weight:700}
+
+        .when-section{padding:80px 32px}
+        .when-section-inner{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px}
+        .when-card{border-radius:var(--radius);padding:40px;position:relative}
+        .when-card.them{background:#fff;border:1px solid var(--border)}
+        .when-card.us{background:var(--bg-dark);color:#fff}
+        .when-card h3{font-size:22px;font-weight:900;margin-bottom:20px;letter-spacing:-.03em}
+        .when-card ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+        .when-card ul li{font-size:15px;line-height:1.6;display:flex;align-items:flex-start;gap:10px}
+        .when-card.them ul li{color:var(--text-mid)}
+        .when-card.us ul li{color:rgba(255,255,255,.85)}
+        .when-icon{flex-shrink:0;margin-top:3px}
+
+        .final-cta{padding:120px 32px;text-align:center;background:var(--bg-dark);color:#fff;position:relative;overflow:hidden}
+        .final-cta::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:64px 64px;pointer-events:none}
+        .final-cta h2{font-size:clamp(28px,4vw,52px);font-weight:900;letter-spacing:-.04em;margin-bottom:12px;line-height:1.1;position:relative}
+        .final-cta p{font-size:16px;opacity:.6;max-width:480px;margin:0 auto 44px;line-height:1.65;letter-spacing:-.01em;position:relative}
+        .cta-btn{display:inline-flex;align-items:center;gap:8px;padding:18px 40px;border:none;border-radius:12px;font-family:var(--sans);font-size:16px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s;letter-spacing:-.01em;position:relative}
+        .cta-btn:hover{transform:translateY(-1px)}
+        .cta-btn-primary{background:#fff;color:var(--bg-dark)}
+        .cta-btn-primary:hover{box-shadow:0 8px 24px rgba(255,255,255,.1)}
+
+        footer{background:#f6f3ef;border-top:1px solid var(--border);padding:56px 32px 32px}
+        .footer-inner{max-width:var(--max-w);margin:0 auto}
+        .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}
+        .footer-brand-name{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:10px}
+        .footer-tagline{font-size:14px;color:var(--text-dim);line-height:1.65;max-width:210px}
+        .footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);margin-bottom:14px}
+        .footer-col a{display:block;font-size:13px;color:var(--text-muted);text-decoration:none;margin-bottom:9px;transition:color .2s;letter-spacing:-.01em}
+        .footer-col a:hover{color:var(--text)}
+        .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);flex-wrap:wrap;gap:12px}
+        .footer-copy{font-size:12px;color:var(--text-dim)}
+        .footer-badges{display:flex;gap:8px}
+        .footer-badge{padding:4px 10px;border:1px solid var(--border);border-radius:4px;font-size:10px;color:var(--text-dim);font-weight:600;letter-spacing:.02em}
+
+        @media(max-width:768px){
+            .nav-links{display:none}.nav-mobile{display:block}.nav-inner{padding:0 20px}.logo-tagline{display:none}
+            .page-hero{padding:100px 20px 48px}
+            .compare-section,.diff-section,.when-section,.math-section{padding:60px 20px}
+            .diff-grid{grid-template-columns:1fr}.when-section-inner{grid-template-columns:1fr}
+            .math-grid{grid-template-columns:1fr}.math-amount{font-size:36px}
+            .math-inner{padding:32px 24px}
+            .compare-table{font-size:13px}.compare-table thead th,.compare-table tbody td{padding:12px 14px}
+            .final-cta{padding:72px 20px}
+            .footer-top{grid-template-columns:1fr 1fr;gap:24px}.footer-bottom{flex-direction:column;text-align:center}.footer-badges{justify-content:center}
+        }
+    </style>
+    <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","vtpmvp6kvr");</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GRZZT9K05B"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GRZZT9K05B');</script>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<nav class="nav" id="nav">
+<div class="nav-inner">
+    <a href="/" class="logo">Agent<span>Collect</span><span class="dot-circle"></span></a>
+    <span class="logo-tagline">The end of manual collection.</span>
+    <div class="nav-links">
+        <a href="/pricing">Pricing</a>
+        <a href="/how-it-works">How It Works</a>
+        <a href="/security">Security</a>
+    </div>
+    <div class="nav-right">
+        <a href="https://cal.com/johnb/30" class="nav-cta" target="_blank" rel="noopener">Book a demo</a>
+    </div>
+    <button class="nav-mobile" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="1.5"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+</div>
+</nav>
+
+<section class="page-hero">
+    <div class="section-label">Compare</div>
+    <h1>Debt Buyers<br>vs AgentCollect</h1>
+    <p class="sub">Debt buyers pay 4-10 cents on the dollar for your receivables. AgentCollect recovers 25-50% and you keep 89%+ of it. The math is not close.</p>
+</section>
+
+<div class="gradient-divider"></div>
+
+<section class="compare-section reveal">
+    <div class="compare-section-inner">
+        <h2>Side-by-side comparison</h2>
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Debt Buyer</th>
+                    <th>AgentCollect</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Your recovery on $1M debt</td>
+                    <td>$40K-100K (4-10 cents/dollar)</td>
+                    <td class="check">$223K-445K (after 10.8% fee)</td>
+                </tr>
+                <tr>
+                    <td>Brand control</td>
+                    <td>None. Buyer uses aggressive tactics under their name</td>
+                    <td class="check">Full white-label, your brand on every touchpoint</td>
+                </tr>
+                <tr>
+                    <td>Customer relationship</td>
+                    <td>Permanently destroyed, they now deal with a stranger</td>
+                    <td class="check">Preserved, 40% of recovered accounts return</td>
+                </tr>
+                <tr>
+                    <td>Compliance risk</td>
+                    <td>High. Buyer's practices reflect on your brand</td>
+                    <td class="check">Full Reg F, TCPA, FDCPA compliance built-in</td>
+                </tr>
+                <tr>
+                    <td>Timing</td>
+                    <td>Lump sum now, lose all upside</td>
+                    <td class="check">Higher recovery over weeks, paid as collected</td>
+                </tr>
+                <tr>
+                    <td>Transparency</td>
+                    <td>Zero visibility after sale</td>
+                    <td class="check">Real-time dashboard, full call transcripts</td>
+                </tr>
+                <tr>
+                    <td>Minimum portfolio</td>
+                    <td>$500K-1M+ minimum to get buyer interest</td>
+                    <td class="check">No minimum, works with any volume</td>
+                </tr>
+                <tr>
+                    <td>Reversibility</td>
+                    <td>Irreversible, debt is sold permanently</td>
+                    <td class="check">Cancel anytime, accounts return to you</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<!-- MATH BREAKDOWN -->
+<section class="math-section reveal">
+    <div class="math-inner">
+        <h2>The math on $1M in bad debt</h2>
+        <div class="math-grid">
+            <div class="math-col">
+                <h4>Sell to a debt buyer</h4>
+                <div class="math-amount red">$70K</div>
+                <div class="math-detail">Average purchase price: 7 cents/dollar<br>One-time payment, you lose all upside<br>Buyer keeps everything they collect</div>
+            </div>
+            <div class="math-col">
+                <h4>Collect with AgentCollect</h4>
+                <div class="math-amount green">$312K</div>
+                <div class="math-detail">35% average recovery = $350K collected<br>Minus 10.8% fee = $312K in your pocket<br>4.5x more than selling to a buyer</div>
+            </div>
+        </div>
+        <div class="math-vs">That is $242K more in your pocket</div>
+    </div>
+</section>
+
+<section class="diff-section">
+    <div class="diff-section-inner">
+        <h2 class="reveal">Why selling debt is leaving money on the table</h2>
+        <p class="sub reveal s1">Debt buyers profit because most of those accounts are collectible. Here is why you should collect them yourself.</p>
+        <div class="diff-grid">
+            <div class="diff-card reveal s1">
+                <div class="diff-icon indigo">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </div>
+                <h3>You are subsidizing their profit</h3>
+                <p>Debt buyers purchase at 4-10 cents and recover 20-40 cents. That margin is yours. AgentCollect gives you the same recovery capability at a 10.8% fee instead of giving away 90-96% of the face value.</p>
+            </div>
+            <div class="diff-card reveal s2">
+                <div class="diff-icon green">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3>Protect your brand reputation</h3>
+                <p>When a debt buyer calls your former customer with aggressive tactics, that customer blames you. With AgentCollect, every interaction is professional, branded, and under your control. No CFPB complaints. No BBB reviews.</p>
+            </div>
+            <div class="diff-card reveal s3">
+                <div class="diff-icon amber">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                </div>
+                <h3>No portfolio minimum</h3>
+                <p>Debt buyers ignore small portfolios. They want $500K+ to justify due diligence. AgentCollect has no minimum. One invoice or ten thousand, same technology, same recovery rate, same success-only pricing.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="gradient-divider"></div>
+
+<section class="when-section">
+    <div class="when-section-inner">
+        <div class="when-card them reveal">
+            <h3>When selling to a debt buyer makes sense</h3>
+            <ul>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    You need cash immediately and cannot wait for collection efforts
+                </li>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    Accounts are extremely old (2+ years) with very low collectibility
+                </li>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    You want to clean the balance sheet and take the tax write-off now
+                </li>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    The debtors have filed bankruptcy or are judgment-proof
+                </li>
+            </ul>
+        </div>
+        <div class="when-card us reveal s1">
+            <h3>When AgentCollect is better</h3>
+            <ul>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    Accounts are less than 2 years old and debtors are still in business
+                </li>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    You care about brand reputation and how debtors are treated
+                </li>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    You want 4-5x more recovery than a debt buyer would pay
+                </li>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    Your portfolio is under $500K and buyers are not interested
+                </li>
+                <li>
+                    <svg class="when-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+                    You want to try recovery first, with the option to sell remaining accounts later
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="final-cta reveal">
+    <h2>Stop selling your<br>receivables for pennies.</h2>
+    <p>Before you sell to a debt buyer, let us show you how much more you could recover. Bring your write-off list to the demo.</p>
+    <a href="https://cal.com/johnb/30" target="_blank" rel="noopener" class="cta-btn cta-btn-primary">
+        Book a 30-min demo
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <p style="margin-top:20px;font-size:14px;color:rgba(255,255,255,.5);letter-spacing:-.01em">$0 if we don't collect. No setup fees. Cancel anytime.</p>
+</section>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div>
+                <div class="footer-brand-name">Agent<span>Collect</span><span class="dot-circle" style="width:5px;height:5px"></span></div>
+                <div class="footer-tagline">The end of manual collection.</div>
+            </div>
+            <div class="footer-col"><h4>Product</h4><a href="/pricing">Pricing</a><a href="/how-it-works">How It Works</a><a href="/industries">Industries</a></div>
+            <div class="footer-col"><h4>Trust</h4><a href="/security">Security</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a></div>
+            <div class="footer-col"><h4>Company</h4><a href="https://cal.com/johnb/30" target="_blank" rel="noopener">Contact</a></div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-copy">&copy; 2026 AgentCollect, Inc. 490 Post St, San Francisco, CA</div>
+            <div class="footer-badges"><span class="footer-badge">SOC 2</span><span class="footer-badge">CCPA</span><span class="footer-badge">Reg F</span></div>
+        </div>
+    </div>
+</footer>
+
+<script>
+(function(){
+    var progressBar=document.getElementById('scrollProgress');
+    function updateProgress(){var s=window.scrollY;var d=document.documentElement.scrollHeight-window.innerHeight;progressBar.style.width=(d>0?(s/d)*100:0)+'%'}
+    window.addEventListener('scroll',updateProgress,{passive:true});
+    var nav=document.getElementById('nav');
+    window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>10)},{passive:true});
+    var reveals=document.querySelectorAll('.reveal');
+    var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:0.1});
+    reveals.forEach(function(el){io.observe(el)});
+})();
+</script>
+</body>
+</html>
