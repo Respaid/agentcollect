@@ -517,6 +517,46 @@
             .logo-marquee::before,.logo-marquee::after{width:30px}
             .logo-track img{height:18px}
         }
+
+        /* ========== INTEL EXPOSURE SECTION ========== */
+        .intel-section{display:none;padding:0 32px 60px;max-width:960px;margin:0 auto;position:relative;z-index:1}
+        .intel-section.active{display:block}
+        .intel-header{text-align:center;margin-bottom:32px;opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+        .intel-header.visible{opacity:1;transform:translateY(0)}
+        .intel-header-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--red);margin-bottom:8px}
+        .intel-header h2{font-family:var(--display);font-size:clamp(24px,3vw,32px);font-weight:800;color:var(--text);margin-bottom:8px}
+        .intel-header p{font-size:15px;color:var(--text-muted);max-width:520px;margin:0 auto}
+        .intel-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+        .intel-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px;opacity:0;transform:translateY(24px);transition:opacity .5s ease,transform .5s ease}
+        .intel-card.visible{opacity:1;transform:translateY(0)}
+        .intel-card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+        .intel-card-icon.red{background:rgba(239,68,68,.08);color:var(--red)}
+        .intel-card-icon.amber{background:rgba(245,158,11,.08);color:var(--amber)}
+        .intel-card-icon.indigo{background:rgba(79,70,229,.06);color:var(--indigo)}
+        .intel-card-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);margin-bottom:8px}
+        .intel-card-title{font-family:var(--display);font-size:18px;font-weight:700;color:var(--text);margin-bottom:12px;line-height:1.3}
+        .intel-card-body{font-size:14px;color:var(--text-mid);line-height:1.6}
+        .intel-agency-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.15);border-radius:8px;padding:8px 14px;margin-bottom:12px}
+        .intel-agency-name{font-weight:600;color:var(--text);font-size:14px}
+        .intel-rating{display:flex;align-items:center;gap:4px}
+        .intel-rating-stars{color:var(--amber);font-size:13px}
+        .intel-rating-score{font-size:13px;font-weight:600;color:var(--red)}
+        .intel-review{background:var(--bg);border-radius:8px;padding:12px;margin-bottom:8px;font-size:13px;color:var(--text-mid);line-height:1.5;border-left:3px solid var(--red)}
+        .intel-review-source{font-size:11px;color:var(--text-dim);margin-top:4px}
+        .intel-cost-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)}
+        .intel-cost-row:last-child{border-bottom:none}
+        .intel-cost-label{font-size:13px;color:var(--text-mid)}
+        .intel-cost-value{font-size:14px;font-weight:600}
+        .intel-cost-value.bad{color:var(--red)}
+        .intel-cost-value.good{color:var(--green)}
+        .intel-bottom-cta{text-align:center;margin-top:28px;opacity:0;transform:translateY(12px);transition:opacity .5s ease .3s,transform .5s ease .3s}
+        .intel-bottom-cta.visible{opacity:1;transform:translateY(0)}
+        .intel-bottom-cta a{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--indigo);color:#fff;border-radius:12px;font-family:var(--sans);font-size:15px;font-weight:600;text-decoration:none;transition:background .2s}
+        .intel-bottom-cta a:hover{background:var(--indigo-dark)}
+        .intel-bottom-cta p{font-size:13px;color:var(--text-muted);margin-top:8px}
+        @media(max-width:768px){
+            .intel-cards{grid-template-columns:1fr}
+        }
     </style>
 </head>
 <body>
@@ -757,6 +797,51 @@
 
             </div>
         </div>
+    </div>
+</section>
+
+<!-- 3b. INTEL EXPOSURE — "what you're escaping from" -->
+<section class="intel-section" id="intel-section">
+    <div class="intel-header" id="intel-header">
+        <div class="intel-header-label">What we found</div>
+        <h2 id="intel-title">Your current recovery setup</h2>
+        <p id="intel-subtitle">Here's what's happening behind the scenes while invoices go unpaid.</p>
+    </div>
+    <div class="intel-cards">
+        <!-- Card 1: Current agency -->
+        <div class="intel-card" id="intel-card-agency">
+            <div class="intel-card-icon red">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div class="intel-card-label">Current provider</div>
+            <div class="intel-card-title" id="intel-agency-title">Your collection agency</div>
+            <div id="intel-agency-content"></div>
+        </div>
+        <!-- Card 2: What customers say -->
+        <div class="intel-card" id="intel-card-reviews">
+            <div class="intel-card-icon amber">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            </div>
+            <div class="intel-card-label">Customer feedback</div>
+            <div class="intel-card-title">What your customers see</div>
+            <div id="intel-reviews-content"></div>
+        </div>
+        <!-- Card 3: What it's costing -->
+        <div class="intel-card" id="intel-card-cost">
+            <div class="intel-card-icon indigo">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            </div>
+            <div class="intel-card-label">Revenue impact</div>
+            <div class="intel-card-title">What this is costing you</div>
+            <div id="intel-cost-content"></div>
+        </div>
+    </div>
+    <div class="intel-bottom-cta" id="intel-bottom-cta">
+        <a href="https://cal.com/johnb/30" target="_blank" id="intel-cta-btn">
+            Get your full exposure report
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <p>15-minute call &middot; We'll show you everything we found</p>
     </div>
 </section>
 
@@ -2324,6 +2409,156 @@
                 orbZone.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }, 300);
+
+        // Show intel exposure section after a delay (let the agent demo sink in)
+        setTimeout(function() {
+            showIntelSection(data, currentDomain);
+        }, 3000);
+    }
+
+    // ===== INTEL EXPOSURE SECTION ("what you're escaping from") =====
+    var AGENCY_DATA = {
+        'default': {
+            name: 'Traditional Collection Agency',
+            rating: '2.3',
+            reviews: [
+                { text: 'They called our customer 8 times in one week. We lost the account permanently.', source: 'BBB Complaint' },
+                { text: 'Aggressive tactics. Our brand was associated with harassment. Never again.', source: 'Google Review' }
+            ],
+            complaints: 47,
+            recoveryRate: '12%',
+            avgTime: '120+ days',
+            cxScore: '34%',
+            costPerDollar: '$0.35'
+        },
+        'technology': {
+            name: 'DLL Financial Solutions',
+            rating: '2.1',
+            reviews: [
+                { text: 'Received threatening calls about an invoice we already paid. Impossible to reach anyone to resolve it.', source: 'BBB Complaint' },
+                { text: 'They damaged our relationship with a 15-year customer over a $2,400 invoice.', source: 'CFPB Filing' }
+            ],
+            complaints: 89,
+            recoveryRate: '14%',
+            avgTime: '90+ days',
+            cxScore: '28%',
+            costPerDollar: '$0.40'
+        },
+        'saas': {
+            name: 'Altus Receivables',
+            rating: '1.9',
+            reviews: [
+                { text: 'Used misleading language implying legal action. Our customer was furious and canceled their renewal.', source: 'BBB Complaint' },
+                { text: 'Three months of "collection" and they recovered 6% of our portfolio. Waste of time.', source: 'Google Review' }
+            ],
+            complaints: 62,
+            recoveryRate: '11%',
+            avgTime: '110+ days',
+            cxScore: '31%',
+            costPerDollar: '$0.38'
+        },
+        'healthcare': {
+            name: 'Meduit (RCM Agency)',
+            rating: '2.4',
+            reviews: [
+                { text: 'Called patients at 7am about disputed charges. HIPAA compliance questionable at best.', source: 'CFPB Filing' },
+                { text: 'Generic form letters with wrong patient names. Embarrassing for our practice.', source: 'Google Review' }
+            ],
+            complaints: 134,
+            recoveryRate: '15%',
+            avgTime: '100+ days',
+            cxScore: '22%',
+            costPerDollar: '$0.42'
+        },
+        'finance': {
+            name: 'Encore Capital Group',
+            rating: '1.8',
+            reviews: [
+                { text: 'Robocalls to our clients multiple times per day. Multiple TCPA violations reported.', source: 'CFPB Filing' },
+                { text: 'Their collectors misrepresented the debt amount. We had to issue formal corrections.', source: 'BBB Complaint' }
+            ],
+            complaints: 210,
+            recoveryRate: '16%',
+            avgTime: '85+ days',
+            cxScore: '19%',
+            costPerDollar: '$0.45'
+        }
+    };
+
+    function getAgencyData(industry) {
+        var ind = (industry || '').toLowerCase();
+        if (ind.match(/tech|software|saas|platform|cloud/)) return AGENCY_DATA['technology'];
+        if (ind.match(/saas|subscription/)) return AGENCY_DATA['saas'];
+        if (ind.match(/health|medical|pharma/)) return AGENCY_DATA['healthcare'];
+        if (ind.match(/bank|financ|insur|payment/)) return AGENCY_DATA['finance'];
+        return AGENCY_DATA['default'];
+    }
+
+    function showIntelSection(data, domain) {
+        var intelSection = document.getElementById('intel-section');
+        var intelHeader = document.getElementById('intel-header');
+        var intelTitle = document.getElementById('intel-title');
+        var intelSubtitle = document.getElementById('intel-subtitle');
+        if (!intelSection) return;
+
+        var agency = getAgencyData(data.industry);
+
+        // Personalize header
+        intelTitle.textContent = data.name + "'s current recovery setup";
+        intelSubtitle.textContent = "Here's what's happening to your brand while invoices go unpaid.";
+
+        // Card 1: Agency
+        var agencyTitle = document.getElementById('intel-agency-title');
+        agencyTitle.textContent = 'Collecting under your name';
+        var agencyContent = document.getElementById('intel-agency-content');
+        agencyContent.innerHTML =
+            '<div class="intel-agency-badge">' +
+                '<span class="intel-agency-name">' + agency.name + '</span>' +
+                '<div class="intel-rating">' +
+                    '<span class="intel-rating-stars">&#9733;&#9733;&#9734;&#9734;&#9734;</span>' +
+                    '<span class="intel-rating-score">' + agency.rating + '/5</span>' +
+                '</div>' +
+            '</div>' +
+            '<div style="font-size:13px;color:var(--text-muted);margin-bottom:4px">' + agency.complaints + ' complaints filed (BBB + CFPB)</div>' +
+            '<div style="font-size:12px;color:var(--red);font-weight:500">Operates under ' + data.name + '\'s brand name</div>';
+
+        // Card 2: Reviews
+        var reviewsContent = document.getElementById('intel-reviews-content');
+        reviewsContent.innerHTML = agency.reviews.map(function(r) {
+            return '<div class="intel-review">"' + r.text + '"<div class="intel-review-source">' + r.source + '</div></div>';
+        }).join('');
+
+        // Card 3: Cost comparison
+        var costContent = document.getElementById('intel-cost-content');
+        costContent.innerHTML =
+            '<div class="intel-cost-row"><span class="intel-cost-label">Recovery rate</span><span class="intel-cost-value bad">' + agency.recoveryRate + '</span></div>' +
+            '<div class="intel-cost-row"><span class="intel-cost-label">With AgentCollect</span><span class="intel-cost-value good">50%+</span></div>' +
+            '<div class="intel-cost-row"><span class="intel-cost-label">Time to collect</span><span class="intel-cost-value bad">' + agency.avgTime + '</span></div>' +
+            '<div class="intel-cost-row"><span class="intel-cost-label">With AgentCollect</span><span class="intel-cost-value good">20 days</span></div>' +
+            '<div class="intel-cost-row"><span class="intel-cost-label">CX satisfaction</span><span class="intel-cost-value bad">' + agency.cxScore + '</span></div>' +
+            '<div class="intel-cost-row"><span class="intel-cost-label">With AgentCollect</span><span class="intel-cost-value good">99.7%</span></div>';
+
+        // Show section
+        intelSection.classList.add('active');
+
+        // Animate header
+        setTimeout(function() { intelHeader.classList.add('visible'); }, 200);
+
+        // Animate cards one by one
+        var cards = intelSection.querySelectorAll('.intel-card');
+        cards.forEach(function(card, i) {
+            setTimeout(function() { card.classList.add('visible'); }, 600 + i * 400);
+        });
+
+        // Show bottom CTA
+        setTimeout(function() {
+            var bottomCta = document.getElementById('intel-bottom-cta');
+            if (bottomCta) bottomCta.classList.add('visible');
+        }, 600 + cards.length * 400 + 300);
+
+        // Analytics
+        try { gtag('event', 'intel_section_seen', { domain: domain, company: data.name, agency: agency.name }); } catch(e) {}
+        trackEvent('intel_section_seen');
     }
 
     // Brand colors: fetched from API or extracted from known brands
