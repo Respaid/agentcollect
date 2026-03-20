@@ -158,7 +158,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .social-quote-name{font-size:14px;font-weight:700;color:var(--text)}
 .social-quote-role{font-size:12px;color:var(--muted)}
 
-/* ===== SECTION 3: FULL PLATFORM (dark, animated) ===== */
+/* ===== SECTION 3: FIND → ENGAGE → COLLECT (dark) ===== */
 .platform-section{background:linear-gradient(170deg,#0B1B3D 0%,#0f1f42 40%,#131a3a 100%);padding:120px 48px 80px;text-align:center;position:relative;overflow:hidden}
 .platform-section::before{content:'';position:absolute;inset:0;background-image:
   linear-gradient(rgba(79,70,229,.03) 1px, transparent 1px),
@@ -167,39 +167,31 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .platform-section::after{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(79,70,229,.08) 0%,transparent 60%);pointer-events:none}
 .platform-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:rgba(79,70,229,.6);margin-bottom:16px}
 .platform-section h2{font-size:clamp(28px,3.5vw,44px);font-weight:900;color:#fff;letter-spacing:-.03em;line-height:1.08;margin-bottom:8px;position:relative}
-.platform-sub{font-size:17px;color:rgba(255,255,255,.4);margin-bottom:64px;line-height:1.5}
-.platform-amicable{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:100px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.15);margin-bottom:64px}
-.platform-amicable-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:amicablePulse 2s ease-in-out infinite}
-.platform-amicable-text{font-size:12px;font-weight:600;color:rgba(16,185,129,.9);letter-spacing:.02em}
-@keyframes amicablePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+.platform-sub{font-size:17px;color:rgba(255,255,255,.45);margin-bottom:72px;line-height:1.6}
 
-/* Timeline — animated horizontal */
-.timeline{display:flex;align-items:flex-start;justify-content:center;gap:0;max-width:780px;margin:0 auto 64px;position:relative}
-.timeline::before{content:'';position:absolute;top:24px;left:calc(10% + 20px);right:calc(10% + 20px);height:2px;background:rgba(255,255,255,.06)}
-/* Animated progress line */
-.timeline-progress{position:absolute;top:24px;left:calc(10% + 20px);height:2px;width:0;background:linear-gradient(90deg,var(--blue),var(--green),var(--amber),var(--red));border-radius:2px;transition:width 2s cubic-bezier(.16,1,.3,1);z-index:1}
-.timeline.v .timeline-progress{width:calc(100% - 20% - 40px)}
-.tl-step{display:flex;flex-direction:column;align-items:center;flex:1;position:relative;padding:0 6px;opacity:0;transform:translateY(20px);transition:all .5s cubic-bezier(.16,1,.3,1)}
-.tl-step.v{opacity:1;transform:translateY(0)}
-.tl-dot{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:20px;position:relative;z-index:2;transition:transform .3s,box-shadow .3s}
-.tl-dot:hover{transform:scale(1.15)}
-.tl-dot.blue{background:rgba(79,70,229,.15);border:2px solid rgba(79,70,229,.35);box-shadow:0 0 20px rgba(79,70,229,.15)}
-.tl-dot.green{background:rgba(16,185,129,.15);border:2px solid rgba(16,185,129,.35);box-shadow:0 0 20px rgba(16,185,129,.15)}
-.tl-dot.amber{background:rgba(245,158,11,.15);border:2px solid rgba(245,158,11,.35);box-shadow:0 0 20px rgba(245,158,11,.15)}
-.tl-dot.red{background:rgba(220,38,38,.15);border:2px solid rgba(220,38,38,.35);box-shadow:0 0 20px rgba(220,38,38,.15)}
-.tl-dot.blue:hover{box-shadow:0 0 32px rgba(79,70,229,.3)}
-.tl-dot.green:hover{box-shadow:0 0 32px rgba(16,185,129,.3)}
-.tl-dot.amber:hover{box-shadow:0 0 32px rgba(245,158,11,.3)}
-.tl-dot.red:hover{box-shadow:0 0 32px rgba(220,38,38,.3)}
-.tl-day{font-size:11px;font-weight:700;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
-.tl-label{font-size:13px;font-weight:600;color:rgba(255,255,255,.75);letter-spacing:-.01em;line-height:1.3}
-.tl-desc{font-size:11px;color:rgba(255,255,255,.25);margin-top:4px;line-height:1.4}
-
-/* Channel pills below timeline */
-.channel-pills{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:56px}
-.ch-pill{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:100px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);font-size:12px;font-weight:600;color:rgba(255,255,255,.55);transition:all .3s}
-.ch-pill:hover{background:rgba(255,255,255,.08);color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.15)}
-.ch-pill svg{width:14px;height:14px;opacity:.5}
+/* 3-pillar cards */
+.pillar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:920px;margin:0 auto 72px;position:relative;z-index:2}
+.pillar-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:36px 28px 32px;text-align:left;opacity:0;transform:translateY(24px);transition:all .5s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden}
+.pillar-card.v{opacity:1;transform:translateY(0)}
+.pillar-card:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.12);transform:translateY(-4px)}
+.pillar-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;border-radius:2px 2px 0 0;opacity:.6}
+.pillar-card:nth-child(1)::before{background:linear-gradient(90deg,var(--blue),rgba(79,70,229,.2))}
+.pillar-card:nth-child(2)::before{background:linear-gradient(90deg,var(--green),rgba(16,185,129,.2))}
+.pillar-card:nth-child(3)::before{background:linear-gradient(90deg,var(--amber),rgba(245,158,11,.2))}
+.pillar-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.pillar-icon svg{width:22px;height:22px;color:#fff}
+.pillar-icon.blue{background:rgba(79,70,229,.15);border:1px solid rgba(79,70,229,.25)}
+.pillar-icon.green{background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.25)}
+.pillar-icon.amber{background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.25)}
+.pillar-step{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}
+.pillar-step.blue{color:rgba(79,70,229,.7)}
+.pillar-step.green{color:rgba(16,185,129,.7)}
+.pillar-step.amber{color:rgba(245,158,11,.7)}
+.pillar-title{font-size:20px;font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:10px;line-height:1.2}
+.pillar-desc{font-size:14px;color:rgba(255,255,255,.5);line-height:1.6}
+.pillar-detail{margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06)}
+.pillar-detail-item{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.4);margin-bottom:6px}
+.pillar-detail-item svg{width:14px;height:14px;color:rgba(255,255,255,.25);flex-shrink:0}
 
 .close-cta{display:inline-block;background:#fff;color:var(--text);padding:18px 44px;border-radius:14px;font-weight:700;font-size:17px;text-decoration:none;transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s;font-family:var(--sans);letter-spacing:-.01em;position:relative}
 .close-cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(255,255,255,.15)}
@@ -230,15 +222,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   .proof-section{padding:80px 24px 64px}
   .proof-cards{grid-template-columns:1fr;gap:12px}
   .platform-section{padding:80px 24px 56px}
-  .timeline{flex-direction:column;gap:28px;align-items:flex-start;padding-left:32px;max-width:400px}
-  .timeline::before{top:24px;bottom:24px;left:24px;right:auto;width:2px;height:auto}
-  .timeline-progress{top:24px;left:24px;width:2px!important;height:0;transition:height 2s cubic-bezier(.16,1,.3,1)}
-  .timeline.v .timeline-progress{height:calc(100% - 48px)}
-  .tl-step{flex-direction:row;gap:16px;text-align:left}
-  .tl-dot{flex-shrink:0;margin-bottom:0}
-  .tl-step-text{display:flex;flex-direction:column}
-  .channel-pills{gap:8px}
-  .ch-pill{padding:6px 12px;font-size:11px}
+  .pillar-grid{grid-template-columns:1fr;gap:16px;max-width:400px;margin:0 auto 56px}
   .voice-fab{bottom:16px;right:16px;padding:10px 16px 10px 10px}
   .voice-fab-text{font-size:12px}
 }
@@ -351,11 +335,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       <div class="problem-icon red">⚠️</div>
       <div class="problem-label">Brand risk</div>
       <div class="problem-desc">When DLL contacts your customers about unpaid balances, they see "Konica Minolta." Every negative interaction damages your brand — not DLL's.</div>
+      <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(0,0,0,.06);font-size:12px;color:var(--muted);line-height:1.5;font-style:italic">"DLL attempted to collect a debt that was already paid. Horrible experience." <span style="font-style:normal;opacity:.5">— CFPB complaint</span></div>
     </div>
     <div class="problem-card" id="pc2">
       <div class="problem-icon amber">📉</div>
       <div class="problem-label">Recovery gap</div>
       <div class="problem-desc">Leasing companies prioritize asset recovery (equipment), not cash recovery (invoices). Your unpaid services and supplies fall through the cracks.</div>
+      <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(0,0,0,.06);font-size:12px;color:var(--muted);line-height:1.5;font-style:italic">"They kept calling about equipment we returned months ago." <span style="font-style:normal;opacity:.5">— Google review</span></div>
     </div>
   </div>
 
@@ -363,11 +349,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
     <div class="social-label">Trusted by enterprise teams</div>
     <div class="social-logos">
       <img src="https://respaid.com/logos/microsoft.svg" alt="Microsoft" loading="lazy">
-      <img src="https://cdn.prod.website-files.com/66a35ae0e37de06e8523e28a/67c3cc5dd499e46278ed4a87_DoorDash-Logo-700x394.png" alt="DoorDash" loading="lazy">
-      <img src="https://cdn.prod.website-files.com/66a35ae0e37de06e8523e28a/67dbd3e1e8f8d41f3e25e4a2_Uber-Freight-Logo.png" alt="Uber Freight" loading="lazy">
-      <img src="https://cdn.prod.website-files.com/66a35ae0e37de06e8523e28a/67dbd3e0a45a75f9fa6e6d5c_checkr_logo_wordmark_aqua3.png" alt="Checkr" loading="lazy">
-      <img src="https://cdn.prod.website-files.com/66a35ae0e37de06e8523e28a/67dbd3e11621f7cf7feb4ec7_Plaid_logo.svg.png" alt="Plaid" loading="lazy">
-      <img src="https://cdn.prod.website-files.com/66a35ae0e37de06e8523e28a/67dbd3e0e8f8d41f3e25e45c_Redis_logo.svg.png" alt="Redis" loading="lazy">
+      <img src="https://cdn.brandfetch.io/doordash.com/w/512/h/80/logo" alt="DoorDash" loading="lazy" onerror="this.style.display='none'">
+      <img src="https://cdn.brandfetch.io/uberfreight.com/w/512/h/80/logo" alt="Uber Freight" loading="lazy" onerror="this.style.display='none'">
+      <img src="https://cdn.brandfetch.io/checkr.com/w/512/h/80/logo" alt="Checkr" loading="lazy" onerror="this.style.display='none'">
+      <img src="https://cdn.brandfetch.io/plaid.com/w/512/h/80/logo" alt="Plaid" loading="lazy" onerror="this.style.display='none'">
+      <img src="https://cdn.brandfetch.io/redis.io/w/512/h/80/logo" alt="Redis" loading="lazy" onerror="this.style.display='none'">
     </div>
     <div class="social-stats" id="social-stats">
       <div class="social-stat" id="ss1">
@@ -396,71 +382,56 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </section>
 
-<!-- SECTION 3: FULL RECOVERY PLATFORM -->
+<!-- SECTION 3: FIND → ENGAGE → COLLECT -->
 <section class="platform-section">
   <div class="rv">
     <div class="platform-label">How it works</div>
-    <h2>20 days. Five channels.<br>Zero manual work.</h2>
-    <p class="platform-sub">Every step is amicable. No litigation. No lawsuits.<br>Just persistent, professional recovery.</p>
+    <h2>Find. Engage. Collect.</h2>
+    <p class="platform-sub">We find the right contacts, reach them at the right time,<br>and they pay you directly. 100% amicable. Zero manual work.</p>
   </div>
 
-  <div class="rv" style="transition-delay:.15s">
-    <div class="platform-amicable">
-      <span class="platform-amicable-dot"></span>
-      <span class="platform-amicable-text">100% amicable recovery</span>
+  <div class="pillar-grid">
+    <div class="pillar-card" id="pillar1">
+      <div class="pillar-icon blue">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M11 8v6M8 11h6"/></svg>
+      </div>
+      <div class="pillar-step blue">Step 1</div>
+      <div class="pillar-title">Find the right contacts</div>
+      <div class="pillar-desc">20% of your database is stale — contacts left, emails bounce, numbers disconnected. We enrich and verify every record before outreach.</div>
+      <div class="pillar-detail">
+        <div class="pillar-detail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>LinkedIn + web intelligence</div>
+        <div class="pillar-detail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Email + phone verification</div>
+        <div class="pillar-detail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Decision-maker identification</div>
+      </div>
     </div>
-  </div>
 
-  <div class="timeline rv" id="timeline">
-    <div class="timeline-progress"></div>
-    <div class="tl-step" id="tl1">
-      <div class="tl-dot blue">✉️</div>
-      <div class="tl-step-text">
-        <div class="tl-day">Day 1</div>
-        <div class="tl-label">AI Email</div>
-        <div class="tl-desc">Personalized outreach</div>
+    <div class="pillar-card" id="pillar2">
+      <div class="pillar-icon green">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3"/><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4"/></svg>
+      </div>
+      <div class="pillar-step green">Step 2</div>
+      <div class="pillar-title">Engage at the right time</div>
+      <div class="pillar-desc">AI reaches out via email, voice call, and SMS — triggered by real activity. Email opened? Call within 2 hours. Not before 9am, not after 6pm.</div>
+      <div class="pillar-detail">
+        <div class="pillar-detail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Email + Voice + SMS</div>
+        <div class="pillar-detail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Behavior-triggered timing</div>
+        <div class="pillar-detail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Amicable tone, escalating urgency</div>
       </div>
     </div>
-    <div class="tl-step" id="tl2">
-      <div class="tl-dot blue">📞</div>
-      <div class="tl-step-text">
-        <div class="tl-day">Day 3</div>
-        <div class="tl-label">AI Voice Call</div>
-        <div class="tl-desc">Live conversation</div>
-      </div>
-    </div>
-    <div class="tl-step" id="tl3">
-      <div class="tl-dot green">💬</div>
-      <div class="tl-step-text">
-        <div class="tl-day">Day 7</div>
-        <div class="tl-label">SMS + Portal</div>
-        <div class="tl-desc">Payment link</div>
-      </div>
-    </div>
-    <div class="tl-step" id="tl4">
-      <div class="tl-dot amber">📋</div>
-      <div class="tl-step-text">
-        <div class="tl-day">Day 14</div>
-        <div class="tl-label">Formal Reminder</div>
-        <div class="tl-desc">Escalated tone</div>
-      </div>
-    </div>
-    <div class="tl-step" id="tl5">
-      <div class="tl-dot red">📄</div>
-      <div class="tl-step-text">
-        <div class="tl-day">Day 20</div>
-        <div class="tl-label">Final Demand</div>
-        <div class="tl-desc">Last notice</div>
-      </div>
-    </div>
-  </div>
 
-  <div class="channel-pills rv" style="transition-delay:.3s">
-    <span class="ch-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email</span>
-    <span class="ch-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72"/></svg>Voice</span>
-    <span class="ch-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>SMS</span>
-    <span class="ch-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Portal</span>
-    <span class="ch-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Legal</span>
+    <div class="pillar-card" id="pillar3">
+      <div class="pillar-icon amber">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+      </div>
+      <div class="pillar-step amber">Step 3</div>
+      <div class="pillar-title">They pay you directly</div>
+      <div class="pillar-desc">Branded payment page with your name — not ours. Card, wire, or payment plan. Funds go straight to your account. No middleman.</div>
+      <div class="pillar-detail">
+        <div class="pillar-detail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Your-branded payment portal</div>
+        <div class="pillar-detail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Card, wire, installment plans</div>
+        <div class="pillar-detail-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Direct deposit to your account</div>
+      </div>
+    </div>
   </div>
 
   <div class="rv" style="transition-delay:.4s">
@@ -551,22 +522,19 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   ro.observe(q);
 })();
 
-// ===== Timeline — staggered step animation =====
+// ===== Pillar Cards — staggered reveal =====
 (function(){
-  var timeline = document.getElementById('timeline');
-  if(!timeline) return;
-  var steps = timeline.querySelectorAll('.tl-step');
+  var cards = document.querySelectorAll('.pillar-card');
+  if(!cards.length) return;
   var ro = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting){
-        e.target.classList.add('v');
-        steps.forEach(function(s, idx){
-          setTimeout(function(){ s.classList.add('v'); }, idx * 250);
-        });
+        var idx = Array.prototype.indexOf.call(cards, e.target);
+        setTimeout(function(){ e.target.classList.add('v'); }, idx * 200);
       }
     });
-  }, {threshold:.2});
-  ro.observe(timeline);
+  }, {threshold:.15});
+  cards.forEach(function(c){ ro.observe(c); });
 })();
 
 // ===== Floating Voice FAB =====
