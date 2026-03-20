@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AgentCollect × Konica Minolta (v11c)</title>
+<title>AgentCollect × Konica Minolta</title>
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="AgentCollect × Konica Minolta">
 <meta property="og:description" content="Your AI collection agent is ready. Click and talk.">
@@ -22,131 +22,194 @@
   --blue:#4F46E5;--blue-dark:#4338CA;--text:#0B1B3D;--muted:#6b7280;--border:#e5e7eb;--bg:#FAFBFF;
   --green:#10B981;--green-dark:#059669;--red:#dc2626;--amber:#F59E0B;
   --mono:'JetBrains Mono',monospace;--sans:'Plus Jakarta Sans',system-ui,sans-serif;
+  --dark:#08080F;--dark-card:rgba(255,255,255,.03);
   --shadow-sm:0 1px 2px rgba(0,0,0,.05);
   --shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);
   --shadow-lg:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);
 }
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:16px;line-height:1.6;position:relative}
-::selection{background:rgba(79,70,229,.1)}
+body{background:var(--dark);color:#fff;font-family:var(--sans);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:16px;line-height:1.6;position:relative}
+::selection{background:rgba(79,70,229,.3)}
 
 /* Reveal */
-.rv{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
 .rv.v{opacity:1;transform:none}
-.rv-d1{transition-delay:.12s}
-.rv-d2{transition-delay:.24s}
+.rv-d1{transition-delay:.15s}
+.rv-d2{transition-delay:.3s}
 
 /* ===== NAV ===== */
-.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(250,251,255,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,0,0,.04)}
-.nav-inner{max-width:1280px;margin:0 auto;padding:16px 48px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{text-decoration:none;font-weight:900;font-size:17px;color:var(--text);letter-spacing:-.4px;display:inline-flex;align-items:baseline}
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(8,8,15,.6);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05)}
+.nav-inner{max-width:1080px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{text-decoration:none;font-weight:900;font-size:17px;color:#fff;letter-spacing:-.4px;display:inline-flex;align-items:baseline}
 .nav-logo .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--blue);margin-left:1px;vertical-align:baseline}
-.nav-expiry{font-size:14px;color:var(--muted);font-weight:500}
-.nav-expiry strong{color:var(--text);font-weight:700}
+.nav-expiry{font-size:14px;color:rgba(255,255,255,.35);font-weight:500}
+.nav-expiry strong{color:rgba(255,255,255,.6);font-weight:700}
 
-/* ===== HERO — APPLE KEYNOTE REVEAL ===== */
-.hero{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;background:linear-gradient(160deg,#FAFBFF 0%,#f3f1ff 40%,#eef0ff 60%,#FAFBFF 100%);padding:80px 24px 60px}
-.hero::before{content:'';position:absolute;inset:0;background-image:
-  linear-gradient(rgba(79,70,229,.018) 1px, transparent 1px),
-  linear-gradient(90deg, rgba(79,70,229,.018) 1px, transparent 1px);
-  background-size:72px 72px;pointer-events:none}
+/* ===== HERO ===== */
+.hero{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 32px 60px;text-align:center;position:relative;overflow:hidden;background:var(--dark)}
 
-/* ===== ORB ===== */
-.orb-wrap{position:relative;width:300px;height:300px;margin:0 auto 32px;cursor:pointer}
-.orb-glow{position:absolute;inset:-60px;border-radius:50%;background:radial-gradient(circle,rgba(79,70,229,.18) 0%,rgba(59,130,246,.06) 40%,transparent 70%);animation:orbGlowPulse 4s ease-in-out infinite}
-.orb-main{position:relative;width:300px;height:300px;border-radius:50%;overflow:hidden;animation:orbDrift 6s ease-in-out infinite;transition:transform .3s,box-shadow .3s;box-shadow:0 0 80px rgba(79,70,229,.25),0 0 160px rgba(59,130,246,.08),inset 0 0 60px rgba(0,0,0,.3)}
-.orb-wrap:hover .orb-main{transform:scale(1.06)}
-.orb-wrap:active .orb-main{transform:scale(.95)}
-.orb-main.speaking{animation:orbDrift 6s ease-in-out infinite,orbPulseSpeak .8s ease-in-out infinite}
+/* Dramatic ambient glows */
+.hero::before{content:'';position:absolute;width:1000px;height:1000px;top:36%;left:50%;transform:translate(-50%,-50%);background:
+  radial-gradient(circle,rgba(79,70,229,.14) 0%,rgba(79,70,229,.07) 25%,rgba(124,58,237,.03) 45%,transparent 65%);
+  border-radius:50%;pointer-events:none;animation:heroGlow 6s ease-in-out infinite}
+.hero::after{content:'';position:absolute;width:700px;height:700px;top:32%;left:50%;transform:translate(-50%,-50%);background:
+  radial-gradient(circle,rgba(16,185,129,.04) 0%,rgba(79,70,229,.06) 35%,transparent 60%);
+  border-radius:50%;pointer-events:none;animation:heroGlow 8s ease-in-out infinite reverse}
+@keyframes heroGlow{0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.12)}}
+
+.hero-km-logo{height:36px;margin-bottom:28px;filter:brightness(0) invert(1);opacity:.8}
+.hero-label{font-family:var(--mono);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:rgba(79,70,229,.8);margin-bottom:40px}
+
+/* ===== ORB — 300px with incoming call rings ===== */
+.orb-wrap{position:relative;width:300px;height:300px;margin:0 auto 40px;cursor:pointer}
+.orb-glow-outer{position:absolute;inset:-160px;border-radius:50%;background:radial-gradient(circle,rgba(79,70,229,.1) 0%,rgba(124,58,237,.04) 40%,transparent 65%);animation:orbGlowOuter 7s ease-in-out infinite}
+.orb-glow{position:absolute;inset:-80px;border-radius:50%;background:radial-gradient(circle,rgba(79,70,229,.22) 0%,rgba(79,70,229,.08) 40%,transparent 70%);animation:orbGlowPulse 4.5s ease-in-out infinite}
+
+/* Incoming call pulse rings */
+.orb-ring{position:absolute;border-radius:50%;border:1.5px solid rgba(79,70,229,.2);pointer-events:none}
+.orb-ring-1{inset:-30px;animation:ringPulse 3s ease-out infinite}
+.orb-ring-2{inset:-60px;animation:ringPulse 3s ease-out infinite .6s}
+.orb-ring-3{inset:-90px;animation:ringPulse 3s ease-out infinite 1.2s}
+@keyframes ringPulse{0%{opacity:.6;transform:scale(.95)}50%{opacity:.15;transform:scale(1)}100%{opacity:0;transform:scale(1.05)}}
+
+.orb-main{position:relative;width:300px;height:300px;border-radius:50%;overflow:hidden;animation:orbDrift 7s ease-in-out infinite;transition:transform .3s,box-shadow .3s;box-shadow:
+  0 0 80px rgba(79,70,229,.4),
+  0 0 160px rgba(79,70,229,.15),
+  0 0 280px rgba(79,70,229,.06),
+  inset 0 0 60px rgba(0,0,0,.5)}
+.orb-wrap:hover .orb-main{transform:scale(1.05)}
+.orb-wrap:active .orb-main{transform:scale(.96)}
+.orb-main.speaking{animation:orbDrift 7s ease-in-out infinite,orbPulseSpeak .8s ease-in-out infinite}
 .orb-layer{position:absolute;inset:0;border-radius:50%}
-.orb-layer-1{background:conic-gradient(from 0deg,#4F46E5,#3B82F6,#1E40AF,#60A5FA,#4F46E5);animation:orbSpin 8s linear infinite}
-.orb-layer-2{background:conic-gradient(from 180deg,rgba(79,70,229,.8),rgba(59,130,246,.5),rgba(30,64,175,.6),rgba(96,165,250,.4),rgba(79,70,229,.8));animation:orbSpin 12s linear infinite reverse;mix-blend-mode:soft-light}
-.orb-layer-3{background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.25) 0%,transparent 50%)}
-.orb-layer-4{background:radial-gradient(circle at 50% 110%,rgba(0,0,0,.4) 0%,transparent 60%)}
+.orb-layer-1{background:conic-gradient(from 0deg,#4F46E5,#7C3AED,#3730A3,#818CF8,#4F46E5);animation:orbSpin 8s linear infinite}
+.orb-layer-2{background:conic-gradient(from 180deg,rgba(79,70,229,.8),rgba(124,58,237,.5),rgba(55,48,163,.6),rgba(129,140,248,.4),rgba(79,70,229,.8));animation:orbSpin 12s linear infinite reverse;mix-blend-mode:soft-light}
+.orb-layer-3{background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.22) 0%,transparent 50%)}
+.orb-layer-4{background:radial-gradient(circle at 50% 115%,rgba(0,0,0,.55) 0%,transparent 60%)}
 .orb-logo-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:10}
-.orb-logo-center img{width:64px;height:64px;object-fit:contain;border-radius:50%;background:rgba(255,255,255,.95);padding:12px;box-shadow:0 4px 24px rgba(0,0,0,.25),0 0 0 2px rgba(255,255,255,.2);transition:transform .3s}
-.orb-wrap:hover .orb-logo-center img{transform:scale(1.08)}
-.orb-particle{position:absolute;width:4px;height:4px;border-radius:50%;animation:orbParticle 4s ease-in-out infinite}
-.orb-particle:nth-child(1){top:-16px;left:30%;animation-delay:0s}
-.orb-particle:nth-child(2){top:20%;right:-12px;animation-delay:1s}
-.orb-particle:nth-child(3){bottom:-12px;left:40%;animation-delay:2s}
-.orb-particle:nth-child(4){top:40%;left:-16px;animation-delay:.5s}
-.orb-particle:nth-child(5){top:-10px;right:25%;animation-delay:1.5s}
-.orb-particle:nth-child(6){bottom:-8px;right:30%;animation-delay:2.5s}
+.orb-logo-center img{width:72px;height:72px;object-fit:contain;border-radius:50%;background:rgba(255,255,255,.95);padding:14px;box-shadow:0 4px 28px rgba(0,0,0,.5),0 0 0 2px rgba(255,255,255,.1);transition:transform .3s}
+.orb-wrap:hover .orb-logo-center img{transform:scale(1.06)}
+
+/* Particles */
+.orb-particle{position:absolute;width:5px;height:5px;border-radius:50%;animation:orbParticle 4.5s ease-in-out infinite}
+.orb-particle:nth-child(1){top:-22px;left:30%;animation-delay:0s}
+.orb-particle:nth-child(2){top:18%;right:-18px;animation-delay:.7s}
+.orb-particle:nth-child(3){bottom:-18px;left:42%;animation-delay:1.4s}
+.orb-particle:nth-child(4){top:42%;left:-22px;animation-delay:.35s}
+.orb-particle:nth-child(5){top:-14px;right:22%;animation-delay:1.1s}
+.orb-particle:nth-child(6){bottom:-12px;right:28%;animation-delay:2.1s}
+.orb-particle:nth-child(7){top:65%;right:-14px;animation-delay:2.8s}
+.orb-particle:nth-child(8){bottom:25%;left:-14px;animation-delay:3.5s}
 
 @keyframes orbSpin{0%{transform:rotate(0deg) scale(1.15)}100%{transform:rotate(360deg) scale(1.15)}}
-@keyframes orbDrift{0%,100%{transform:translateY(0) scale(1)}33%{transform:translateY(-4px) scale(1.01)}66%{transform:translateY(-2px) scale(.995)}}
+@keyframes orbDrift{0%,100%{transform:translateY(0) scale(1)}33%{transform:translateY(-6px) scale(1.01)}66%{transform:translateY(-3px) scale(.995)}}
 @keyframes orbPulseSpeak{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
-@keyframes orbGlowPulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.8;transform:scale(1.08)}}
-@keyframes orbParticle{0%,100%{opacity:0;transform:translateY(0) scale(1)}25%{opacity:1}50%{opacity:.8;transform:translateY(-18px) scale(1.4)}75%{opacity:.3}}
+@keyframes orbGlowPulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.9;transform:scale(1.1)}}
+@keyframes orbGlowOuter{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.7;transform:scale(1.06)}}
+@keyframes orbParticle{0%,100%{opacity:0;transform:translateY(0) scale(1)}20%{opacity:1}50%{opacity:.8;transform:translateY(-24px) scale(1.5)}80%{opacity:.15}}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ===== ORB MIC OVERLAY ===== */
-.orb-mic-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:11;opacity:0;transition:opacity .3s}
-.orb-wrap:hover .orb-mic-overlay{opacity:1}
-.orb-mic-overlay svg{width:48px;height:48px;color:#fff;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4));stroke:currentColor}
-.orb-label{text-align:center;font-size:16px;font-weight:500;color:var(--muted);margin-top:0;margin-bottom:24px;letter-spacing:-.01em}
-.orb-label .orb-label-hint{display:block;font-size:12px;font-weight:400;color:var(--muted);opacity:.5;margin-top:6px}
+.hero-tagline{font-size:20px;color:rgba(255,255,255,.55);max-width:500px;margin:0 auto 44px;line-height:1.55;font-weight:400;letter-spacing:-.01em}
 
-/* ===== CALL STATES (below orb) ===== */
-.call-state{display:flex;flex-direction:column;align-items:center;width:100%;max-width:360px;margin:0 auto}
-.cs-connecting{display:none;flex-direction:column;align-items:center;gap:12px;padding:8px 0;animation:fadeInUp .3s ease}
-.cs-connecting .co-spinner{width:28px;height:28px;border:3px solid rgba(79,70,229,.15);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite}
-.cs-connecting-text{color:var(--muted);font-size:13px;font-weight:500}
-.cs-active{display:none;flex-direction:column;align-items:center;gap:10px;padding:8px 0;width:100%}
-.cs-active.visible{display:flex}
-.cs-status{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--blue)}
-.cs-waveform{display:flex;align-items:center;justify-content:center;gap:3px;height:40px;padding:4px 0}
-.cs-waveform span{width:3.5px;border-radius:3px;background:var(--blue);min-height:4px;will-change:height;transition:height .08s linear}
-.cs-transcript{width:100%;max-height:80px;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}
-.cs-transcript::-webkit-scrollbar{display:none}
-.cs-msg{padding:8px 12px;border-radius:12px;font-size:13px;line-height:1.5;margin-bottom:6px;animation:fadeInUp .3s ease}
-.cs-msg.agent{background:rgba(79,70,229,.08);color:var(--text)}
-.cs-msg.user{background:rgba(0,0,0,.04);color:var(--muted);text-align:right}
-.cs-end-btn{padding:10px 24px;background:rgba(239,68,68,.06);color:#ef4444;border:1px solid rgba(239,68,68,.15);border-radius:12px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;font-family:var(--sans)}
-.cs-end-btn:hover{background:rgba(239,68,68,.12)}
-.cs-post-call{display:none;flex-direction:column;align-items:center;gap:10px;padding:8px 0;animation:fadeInUp .4s ease}
-.cs-post-check{margin-bottom:4px}
-.cs-post-title{font-size:18px;font-weight:800;color:var(--text)}
-.cs-post-sub{font-size:14px;color:var(--muted);text-align:center;line-height:1.5;max-width:300px}
-.cs-post-cta{display:flex;align-items:center;gap:8px;padding:14px 28px;background:var(--blue);color:#fff;border:none;border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;text-decoration:none;margin-top:6px;box-shadow:0 0 20px rgba(79,70,229,.3);font-family:var(--sans)}
-.cs-post-cta:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 4px 24px rgba(79,70,229,.4)}
-.cs-post-retry{background:none;border:1px solid var(--border);color:var(--muted);padding:8px 16px;border-radius:8px;font-size:12px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;margin-top:2px;font-family:var(--sans)}
-.cs-post-retry:hover{border-color:var(--blue);color:var(--blue)}
+/* ===== UNIFIED WIDGET ===== */
+.uw{background:var(--dark-card);border:1px solid rgba(255,255,255,.07);border-radius:20px;overflow:hidden;max-width:420px;width:100%;transition:all .4s cubic-bezier(.4,0,.2,1)}
+.uw-voice-idle{display:flex;flex-direction:column;align-items:center;padding:32px 20px 28px;gap:20px}
 
-/* ===== SECTION 2: THE PROOF ===== */
-.proof-section{padding:120px 48px 100px;max-width:920px;margin:0 auto;text-align:center;position:relative}
-.proof-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--blue),transparent);opacity:.3}
-.proof-sec-title{font-size:clamp(26px,3.2vw,38px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:52px;color:var(--text)}
+/* Mic button with concentric pulse rings */
+.uw-mic-btn{position:relative;width:72px;height:72px;border-radius:50%;background:var(--blue);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;box-shadow:0 0 32px rgba(79,70,229,.5);z-index:1}
+.uw-mic-btn:hover{transform:scale(1.08);box-shadow:0 0 52px rgba(79,70,229,.7)}
+.uw-mic-btn svg{width:30px;height:30px;color:#fff;stroke:currentColor}
 
-.proof-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:52px}
-.proof-card{background:#fff;border-radius:18px;padding:36px 28px;box-shadow:var(--shadow-lg);border:1px solid rgba(0,0,0,.04);text-decoration:none;color:inherit;text-align:center;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.proof-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -8px rgba(0,0,0,.12)}
-.proof-agency{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--red);margin-bottom:10px}
-.proof-num{font-size:56px;font-weight:900;color:var(--red);line-height:1;letter-spacing:-1px}
-.proof-num-sm{font-size:40px}
-.proof-sub{font-size:14px;color:var(--muted);margin-top:8px;font-weight:500}
-.proof-context{font-size:13px;color:var(--text);margin-top:12px;line-height:1.5;max-width:240px;opacity:.65}
+/* Three concentric pulse rings */
+.mic-ring{position:absolute;border-radius:50%;border:1.5px solid rgba(79,70,229,.35);animation:micRingPulse 3s ease-out infinite;pointer-events:none}
+.mic-ring-1{inset:-10px;animation-delay:0s}
+.mic-ring-2{inset:-22px;animation-delay:.6s}
+.mic-ring-3{inset:-36px;animation-delay:1.2s}
+@keyframes micRingPulse{0%{transform:scale(.8);opacity:.8}100%{transform:scale(1.35);opacity:0}}
 
-.info-strip{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:520px;margin:0 auto}
-.info-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px 24px;text-align:left;transition:box-shadow .2s}
-.info-card:hover{box-shadow:var(--shadow)}
-.info-card-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:6px}
-.info-card-value{font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.02em}
-.info-card-sub{font-size:12px;color:var(--muted);margin-top:3px}
+.uw-mic-label{color:rgba(255,255,255,.45);font-size:15px;font-weight:500;max-width:320px;line-height:1.4;text-align:center}
+.uw-voice-active{display:none;flex-direction:column;align-items:center;padding:20px;gap:12px}
+.uw-voice-active.visible{display:flex}
+.uw-status-text{color:rgba(255,255,255,.5);font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.uw-waveform{display:flex;align-items:center;justify-content:center;gap:3px;height:48px;padding:4px 0}
+.uw-waveform span{width:3.5px;border-radius:3px;background:var(--blue);min-height:4px;will-change:height;transition:height .08s linear}
+.uw-mini-transcript{width:100%;max-height:100px;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}
+.uw-mini-transcript::-webkit-scrollbar{display:none}
+.uw-mini-msg{padding:8px 12px;border-radius:12px;font-size:13px;line-height:1.5;margin-bottom:6px;animation:fadeInUp .3s ease}
+.uw-mini-msg.agent{background:rgba(79,70,229,.15);color:rgba(255,255,255,.9)}
+.uw-mini-msg.user{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);text-align:right}
+.uw-end-btn{padding:10px 24px;background:rgba(239,68,68,.12);color:#ef4444;border:1px solid rgba(239,68,68,.25);border-radius:12px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;font-family:var(--sans)}
+.uw-end-btn:hover{background:rgba(239,68,68,.22)}
+.uw-connecting{display:flex;flex-direction:column;align-items:center;padding:28px 20px;gap:12px}
+.uw-connecting .co-spinner{width:32px;height:32px;border:3px solid rgba(255,255,255,.08);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite}
+.uw-connecting-text{color:rgba(255,255,255,.5);font-size:13px}
+.uw-post-call{display:flex;flex-direction:column;align-items:center;padding:24px 20px;gap:10px;animation:fadeInUp .4s ease}
+.uw-post-check{margin-bottom:4px}
+.uw-post-title{color:#fff;font-size:18px;font-weight:700}
+.uw-post-sub{color:rgba(255,255,255,.45);font-size:13px;text-align:center;line-height:1.5;max-width:300px}
+.uw-post-cta{display:flex;align-items:center;gap:8px;padding:14px 28px;background:var(--blue);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;text-decoration:none;margin-top:6px;box-shadow:0 0 20px rgba(79,70,229,.3);font-family:var(--sans)}
+.uw-post-cta:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 4px 24px rgba(79,70,229,.4)}
+.uw-post-retry{background:none;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);padding:8px 16px;border-radius:8px;font-size:12px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;margin-top:2px;font-family:var(--sans)}
+.uw-post-retry:hover{border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.6)}
+.uw-powered{text-align:center;padding:8px 12px 12px;font-size:11px;color:rgba(255,255,255,.12)}
 
-/* ===== SECTION 3: THE CLOSE ===== */
-.close-section{background:var(--text);padding:100px 48px 72px;text-align:center}
-.close-section h2{font-size:clamp(28px,3.5vw,44px);font-weight:900;color:#fff;letter-spacing:-.03em;line-height:1.08;margin-bottom:14px}
-.close-sub{font-size:17px;color:rgba(255,255,255,.45);margin-bottom:40px;line-height:1.5}
-.close-cta{display:inline-block;background:#fff;color:var(--text);padding:18px 44px;border-radius:14px;font-weight:700;font-size:17px;text-decoration:none;transition:transform .15s,box-shadow .15s;font-family:var(--sans);letter-spacing:-.01em}
-.close-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.hero-scroll-hint{margin-top:52px;color:rgba(255,255,255,.25);font-size:14px;font-weight:500;letter-spacing:.02em;animation:scrollBounce 2.5s ease-in-out infinite}
+.hero-scroll-hint svg{display:block;margin:8px auto 0;opacity:.5}
+@keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* ===== PROBLEM SECTION — real quotes (dark bg) ===== */
+.problem-section{background:#0c0c18;padding:120px 32px 100px;position:relative}
+.problem-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:240px;height:1px;background:linear-gradient(90deg,transparent,rgba(79,70,229,.3),transparent)}
+.problem-inner{max-width:760px;margin:0 auto;text-align:center}
+.problem-title{font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;color:#fff}
+.problem-sub{font-size:17px;color:rgba(255,255,255,.4);margin-bottom:56px;line-height:1.5}
+
+.problem-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.problem-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:20px;padding:32px 28px;text-align:left;text-decoration:none;display:block;cursor:pointer;opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1),box-shadow .25s}
+.problem-card.v{opacity:1;transform:translateY(0)}
+.problem-card:hover{transform:translateY(-4px);box-shadow:0 20px 48px -10px rgba(0,0,0,.3)}
+.complaint-quote{font-size:18px;font-weight:600;color:rgba(255,255,255,.9);line-height:1.45;letter-spacing:-.02em;margin-bottom:20px}
+.complaint-quote::before{content:'\201C';color:var(--red);font-size:32px;line-height:0;vertical-align:bottom;margin-right:2px}
+.complaint-source{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:rgba(255,255,255,.35);padding:4px 12px;border-radius:100px;border:1px solid rgba(255,255,255,.08);transition:all .2s}
+.problem-card:hover .complaint-source{border-color:rgba(79,70,229,.4);color:rgba(255,255,255,.5)}
+.complaint-source svg{width:12px;height:12px}
+
+/* ===== SOCIAL PROOF SECTION (dark bg) ===== */
+.social-section{background:var(--dark);padding:100px 32px 100px;text-align:center;position:relative}
+.social-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:1px;background:linear-gradient(90deg,transparent,rgba(79,70,229,.2),transparent)}
+.social-brand{display:flex;align-items:baseline;justify-content:center;margin-bottom:32px}
+.social-brand-logo{font-size:22px;font-weight:900;color:#fff;letter-spacing:-.4px}
+.social-brand-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--blue);margin-left:1px}
+.social-title{font-size:clamp(26px,3.2vw,38px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px;color:#fff}
+.social-sub{font-size:17px;color:rgba(255,255,255,.4);margin-bottom:48px;line-height:1.5}
+
+.social-logos{display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap;margin-bottom:40px}
+.social-logos img{height:22px;filter:brightness(0) invert(1);opacity:.35;object-fit:contain;transition:all .4s cubic-bezier(.16,1,.3,1)}
+.social-logos img:hover{opacity:.8;transform:scale(1.08)}
+.social-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:520px;margin:0 auto 40px}
+.social-stat{text-align:center;opacity:0;transform:translateY(12px);transition:all .5s cubic-bezier(.16,1,.3,1)}
+.social-stat.v{opacity:1;transform:translateY(0)}
+.social-stat-num{font-size:32px;font-weight:900;color:var(--blue);letter-spacing:-.03em;font-family:var(--sans)}
+.social-stat-label{font-size:12px;color:rgba(255,255,255,.35);font-weight:500;margin-top:4px}
+.social-quote{background:rgba(79,70,229,.06);border:1px solid rgba(79,70,229,.1);border-radius:20px;padding:32px 36px;max-width:520px;margin:0 auto;text-align:left}
+.social-quote-text{font-size:18px;font-weight:700;color:rgba(255,255,255,.9);line-height:1.45;letter-spacing:-.02em;margin-bottom:16px}
+.social-quote-text::before{content:'\201C';color:rgba(79,70,229,.4);font-size:36px;line-height:0;vertical-align:bottom;margin-right:2px}
+.social-quote-author{display:flex;align-items:center;gap:12px}
+.social-quote-avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
+.social-quote-name{font-size:14px;font-weight:700;color:#fff}
+.social-quote-role{font-size:13px;color:rgba(255,255,255,.35)}
+
+/* ===== CLOSE SECTION (dark) ===== */
+.close-section{background:var(--text);padding:100px 32px 72px;text-align:center}
+.close-section h2{font-size:clamp(28px,4vw,42px);font-weight:900;color:#fff;letter-spacing:-.03em;line-height:1.1;margin-bottom:14px}
+.close-sub{font-size:18px;color:rgba(255,255,255,.4);margin-bottom:48px;line-height:1.5}
+.close-cta{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--text);padding:18px 48px;border-radius:14px;font-weight:800;font-size:18px;text-decoration:none;transition:transform .2s,box-shadow .2s;font-family:var(--sans);letter-spacing:-.02em}
+.close-cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.3)}
 .close-guarantee{font-size:14px;color:rgba(255,255,255,.3);margin-top:24px;font-style:italic}
-.close-footer{font-size:12px;color:rgba(255,255,255,.18);margin-top:56px;line-height:1.5}
+.close-footer{font-size:12px;color:rgba(255,255,255,.15);margin-top:60px;padding-top:24px;border-top:1px solid rgba(255,255,255,.05);line-height:1.6}
 
 /* ===== FLOATING VOICE FAB ===== */
-.voice-fab{position:fixed;bottom:28px;right:28px;z-index:9000;display:flex;align-items:center;gap:10px;background:#0f0f1a;border:1px solid rgba(79,70,229,.3);border-radius:50px;padding:12px 20px 12px 14px;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 8px 32px rgba(0,0,0,.4);opacity:0;pointer-events:none;transform:translateY(20px)}
+.voice-fab{position:fixed;bottom:28px;right:28px;z-index:9000;display:flex;align-items:center;gap:10px;background:#0f0f1a;border:1px solid rgba(79,70,229,.3);border-radius:50px;padding:12px 20px 12px 14px;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 8px 32px rgba(0,0,0,.5);opacity:0;pointer-events:none;transform:translateY(20px)}
 .voice-fab.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
 .voice-fab:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(79,70,229,.3);border-color:rgba(79,70,229,.5)}
 .voice-fab-icon{width:40px;height:40px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 16px rgba(79,70,229,.4)}
@@ -155,25 +218,39 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 
 /* ===== MOBILE ===== */
 @media(max-width:768px){
+  .nav-inner{padding:14px 20px}
   .nav-expiry{font-size:12px}
-  .nav-inner{padding:14px 24px}
-  .hero{padding:100px 24px 48px}
-  .orb-wrap{width:240px;height:240px}
-  .orb-main{width:240px;height:240px}
-  .orb-logo-center img{width:52px;height:52px;padding:10px}
-  .proof-section{padding:80px 24px 64px}
-  .proof-cards{grid-template-columns:1fr;gap:12px}
-  .info-strip{grid-template-columns:1fr;gap:10px}
-  .close-section{padding:64px 24px 48px}
+  .hero{padding:90px 24px 48px}
+  .orb-wrap{width:220px;height:220px}
+  .orb-main{width:220px;height:220px}
+  .orb-logo-center img{width:56px;height:56px;padding:10px}
+  .orb-ring-1{inset:-20px}
+  .orb-ring-2{inset:-44px}
+  .orb-ring-3{inset:-68px}
+  .hero-tagline{font-size:17px}
+  .uw{max-width:100%;border-radius:16px}
+  .problem-section{padding:80px 24px 64px}
+  .problem-cards{grid-template-columns:1fr;gap:14px}
+  .social-section{padding:80px 24px 64px}
+  .social-logos{gap:20px}
+  .social-logos img{height:18px}
+  .social-stats{gap:12px}
+  .social-stat-num{font-size:24px}
+  .social-quote{padding:24px 20px}
+  .social-quote-text{font-size:16px}
+  .close-section{padding:72px 24px 56px}
   .voice-fab{bottom:16px;right:16px;padding:10px 16px 10px 10px}
   .voice-fab-text{font-size:12px}
 }
 @media(max-width:480px){
   .nav-expiry{display:none}
-  .hero{padding:92px 20px 40px}
   .orb-wrap{width:180px;height:180px}
   .orb-main{width:180px;height:180px}
-  .orb-logo-center img{width:44px;height:44px;padding:8px}
+  .orb-logo-center img{width:48px;height:48px;padding:8px}
+  .orb-ring-1{inset:-14px}
+  .orb-ring-2{inset:-32px}
+  .orb-ring-3{inset:-50px}
+  .hero-tagline{font-size:16px}
 }
 </style>
 </head>
@@ -187,114 +264,165 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </nav>
 
-<!-- SECTION 1: HERO — APPLE KEYNOTE REVEAL -->
+<!-- SECTION 1: HERO -->
 <section class="hero" id="hero">
-  <img src="https://cdn.brandfetch.io/konicaminolta.com/w/800/h/200/logo" alt="Konica Minolta" style="height:32px;margin-bottom:48px;opacity:.7" onerror="this.onerror=null;this.src='https://logo.clearbit.com/konicaminolta.com';this.style.height='36px'" crossorigin="anonymous">
+  <img src="https://cdn.brandfetch.io/konicaminolta.com/w/512/h/80/logo" alt="Konica Minolta" class="hero-km-logo" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?domain=konicaminolta.com&sz=128';this.style.height='48px';this.style.borderRadius='8px';this.style.filter='none'" crossorigin="anonymous">
+  <div class="hero-label">YOUR KONICA MINOLTA AGENT IS CALLING</div>
 
-  <!-- ORB -->
+  <!-- ORB with incoming call rings -->
   <div class="orb-wrap" id="orb-wrap">
+    <div class="orb-ring orb-ring-1"></div>
+    <div class="orb-ring orb-ring-2"></div>
+    <div class="orb-ring orb-ring-3"></div>
+    <div class="orb-glow-outer"></div>
     <div class="orb-glow"></div>
-    <div class="orb-particle" style="background:rgba(79,70,229,.5)"></div>
-    <div class="orb-particle" style="background:rgba(59,130,246,.5)"></div>
-    <div class="orb-particle" style="background:rgba(79,70,229,.3)"></div>
-    <div class="orb-particle" style="background:rgba(59,130,246,.3)"></div>
-    <div class="orb-particle" style="background:rgba(30,64,175,.4)"></div>
-    <div class="orb-particle" style="background:rgba(96,165,250,.3)"></div>
+    <div class="orb-particle" style="background:rgba(79,70,229,.6)"></div>
+    <div class="orb-particle" style="background:rgba(16,185,129,.5)"></div>
+    <div class="orb-particle" style="background:rgba(79,70,229,.4)"></div>
+    <div class="orb-particle" style="background:rgba(16,185,129,.35)"></div>
+    <div class="orb-particle" style="background:rgba(124,58,237,.5)"></div>
+    <div class="orb-particle" style="background:rgba(129,140,248,.45)"></div>
+    <div class="orb-particle" style="background:rgba(79,70,229,.35)"></div>
+    <div class="orb-particle" style="background:rgba(124,58,237,.3)"></div>
     <div class="orb-main" id="orb-main">
       <div class="orb-layer orb-layer-1"></div>
       <div class="orb-layer orb-layer-2"></div>
       <div class="orb-layer orb-layer-3"></div>
       <div class="orb-layer orb-layer-4"></div>
-      <div class="orb-logo-center" id="orb-logo-center">
+      <div class="orb-logo-center">
         <img src="https://www.google.com/s2/favicons?domain=konicaminolta.com&sz=128" alt="KM" onerror="this.style.display='none'">
-      </div>
-      <div class="orb-mic-overlay" id="orb-mic-overlay">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
       </div>
     </div>
   </div>
 
-  <div class="orb-label" id="orb-label">Talk to your AI collection agent<span class="orb-label-hint">30 seconds. Click the orb.</span></div>
+  <p class="hero-tagline">Sarah is ready. She thinks you owe $1,461 for a bizhub C360i.</p>
 
-  <!-- Call States (below orb) -->
-  <div class="call-state" id="call-state">
-    <div class="cs-connecting" id="cs-connecting">
-      <div class="co-spinner"></div>
-      <div class="cs-connecting-text" id="cs-connecting-text">Connecting to Konica Minolta agent...</div>
+  <!-- Unified Voice Widget -->
+  <div class="uw" id="unified-widget">
+    <div class="uw-voice-idle" id="uw-voice-idle">
+      <button class="uw-mic-btn" id="uw-mic-btn">
+        <span class="mic-ring mic-ring-1"></span>
+        <span class="mic-ring mic-ring-2"></span>
+        <span class="mic-ring mic-ring-3"></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+      </button>
+      <div class="uw-mic-label">Talk to Sarah</div>
     </div>
-    <div class="cs-active" id="cs-active">
-      <div class="cs-status" id="cs-status">Listening...</div>
-      <div class="cs-waveform" id="cs-waveform">
+    <div class="uw-connecting" id="uw-connecting" style="display:none">
+      <div class="co-spinner"></div>
+      <div class="uw-connecting-text" id="uw-connecting-text">Connecting to Konica Minolta agent...</div>
+    </div>
+    <div class="uw-voice-active" id="uw-voice-active">
+      <div class="uw-status-text" id="uw-status">Listening...</div>
+      <div class="uw-waveform" id="uw-waveform">
         <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
       </div>
-      <div class="cs-transcript" id="cs-transcript"></div>
-      <button class="cs-end-btn" id="cs-end-btn">
+      <div class="uw-mini-transcript" id="uw-transcript"></div>
+      <button class="uw-end-btn" id="uw-end-btn">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
         End call
       </button>
     </div>
-    <div class="cs-post-call" id="cs-post-call">
-      <div class="cs-post-check">
+    <div class="uw-post-call" id="uw-post-call" style="display:none">
+      <div class="uw-post-check">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
       </div>
-      <div class="cs-post-title">That was 30 seconds.</div>
-      <div class="cs-post-sub">Now imagine 10,000 accounts with your real data.</div>
-      <a href="https://cal.com/johnb/30" target="_blank" class="cs-post-cta" id="cs-post-cta">
+      <div class="uw-post-title">That was 30 seconds.</div>
+      <div class="uw-post-sub">Now imagine 10,000 accounts with your real data.</div>
+      <a href="https://cal.com/johnb/30" target="_blank" class="uw-post-cta" id="uw-post-cta">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         Run this on your portfolio
       </a>
-      <button class="cs-post-retry" id="cs-post-retry">
+      <button class="uw-post-retry" id="uw-post-retry">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
         Try another call
       </button>
     </div>
+    <div class="uw-powered">Powered by AgentCollect</div>
+  </div>
+
+  <div class="hero-scroll-hint">
+    See why this matters &#8595;
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
   </div>
 </section>
 
-<!-- SECTION 2: THE PROOF -->
-<section class="proof-section">
+<!-- SECTION 2: PROBLEM — real complaint quotes -->
+<section class="problem-section">
+  <div class="problem-inner">
+    <div class="rv">
+      <h2 class="problem-title">DLL Finance is collecting under your name.</h2>
+      <p class="problem-sub">Your receivables deserve a dedicated recovery system — not a leasing company's side project.</p>
+    </div>
+
+    <div class="problem-cards">
+      <a class="problem-card" id="pc1" href="https://www.bbb.org/us/pa/wayne/profile/leasing-services/dll-finance-llc-0241-236074953/customer-reviews" target="_blank" rel="noopener">
+        <div class="complaint-quote">This is a predatory lender... They literally refuse to give you a current balance. Their customer service is terrible.</div>
+        <span class="complaint-source"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>BBB — DLL Finance, 1&#9733;</span>
+      </a>
+      <a class="problem-card" id="pc2" href="https://www.bbb.org/us/pa/wayne/profile/leasing-services/dll-finance-llc-0241-236074953/customer-reviews" target="_blank" rel="noopener">
+        <div class="complaint-quote">I discovered the extra money was going towards the next payment, not the principal. This is a very deceptive practice.</div>
+        <span class="complaint-source"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>BBB complaint — Oct 2024</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: SOCIAL PROOF -->
+<section class="social-section">
   <div class="rv">
-    <h2 class="proof-sec-title">DLL Finance is collecting under your name.</h2>
-  </div>
-
-  <div class="proof-cards rv rv-d1">
-    <a href="https://www.bbb.org/us/pa/wayne/profile/leasing-services/dll-finance-llc-0241-236074953/customer-reviews" target="_blank" rel="noopener" class="proof-card">
-      <div class="proof-agency">DLL FINANCE — BBB</div>
-      <div class="proof-num">1.1</div>
-      <div class="proof-sub">/ 5 stars on BBB</div>
-      <div class="proof-context">Your customers see "Konica Minolta" when they complain.</div>
-    </a>
-    <a href="https://www.consumerfinance.gov/data-research/consumer-complaints/search/?company=DLL+FINANCE+LLC" target="_blank" rel="noopener" class="proof-card">
-      <div class="proof-agency">DLL FINANCE — CFPB</div>
-      <div class="proof-num proof-num-sm">FDCPA</div>
-      <div class="proof-sub">CFPB enforcement actions</div>
-      <div class="proof-context">Federal consumer protection law. Under your brand.</div>
-    </a>
-  </div>
-
-  <div class="info-strip rv rv-d2">
-    <div class="info-card">
-      <div class="info-card-label">Company</div>
-      <div class="info-card-value">Konica Minolta</div>
-      <div class="info-card-sub">Office equipment & imaging</div>
+    <div class="social-brand">
+      <span class="social-brand-logo">AgentCollect</span><span class="social-brand-dot"></span>
     </div>
-    <div class="info-card">
-      <div class="info-card-label">Decision Maker</div>
-      <div class="info-card-value">Holly DeSantis</div>
-      <div class="info-card-sub">EVP & CFO</div>
+    <h2 class="social-title">A different approach.</h2>
+    <p class="social-sub">Enterprise teams recover more — without the brand damage.</p>
+  </div>
+  <div class="social-logos rv rv-d1">
+    <img src="https://respaid.com/logos/microsoft.svg" alt="Microsoft" loading="lazy" onerror="this.style.display='none'">
+    <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/6917bec130210a5551350be0_DoorDash-Logo-700x394.png" alt="DoorDash" loading="lazy" onerror="this.style.display='none'">
+    <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/681486e9407f3fb4dbd3d3f0_Uber-Freight-Logo.png" alt="Uber Freight" loading="lazy" onerror="this.style.display='none'">
+    <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/67da8be5048d3251e3b1616b_checkr_logo_wordmark_aqua3.png" alt="Checkr" loading="lazy" onerror="this.style.display='none'">
+    <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/685ab786cf9dabb5db539afc_Plaid_logo.svg.png" alt="Plaid" loading="lazy" onerror="this.style.display='none'">
+    <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/6740498fdd3e5c836292e2e5_Redis_logo.svg.png" alt="Redis" loading="lazy" onerror="this.style.display='none'">
+  </div>
+  <div class="social-stats rv rv-d2" id="social-stats">
+    <div class="social-stat" id="ss1">
+      <div class="social-stat-num" data-target="50" data-suffix="%">0%</div>
+      <div class="social-stat-label">Collection rate</div>
+    </div>
+    <div class="social-stat" id="ss2">
+      <div class="social-stat-num" data-target="20" data-suffix="d">0d</div>
+      <div class="social-stat-label">Avg resolution</div>
+    </div>
+    <div class="social-stat" id="ss3">
+      <div class="social-stat-num" data-target="90" data-suffix="%">0%</div>
+      <div class="social-stat-label">Disputes resolved</div>
+    </div>
+  </div>
+  <div class="social-quote rv" id="social-quote">
+    <div class="social-quote-text">We had written off most of these invoices. AgentCollect recovered them without a single complaint.</div>
+    <div class="social-quote-author">
+      <img src="https://respaid.com/images/neil-doyle.png" alt="Neil Doyle" class="social-quote-avatar">
+      <div>
+        <div class="social-quote-name">Neil Doyle</div>
+        <div class="social-quote-role">Head of AR Operations, Microsoft</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION 3: THE CLOSE -->
+<!-- SECTION 4: CLOSE — personalized -->
 <section class="close-section">
   <div class="rv">
-    <h2 id="close-title">Your Konica Minolta agent is 90% ready.</h2>
-    <p class="close-sub">One meeting to connect your data. Then it goes live and starts recovering cash.</p>
-    <a href="https://cal.com/johnb/30" target="_blank" class="close-cta" onclick="try{gtag('event','book_cta',{page:'konica-v11c'})}catch(e){}">Finish setup — book 15 min</a>
+    <h2 id="close-title">Holly DeSantis owns this.</h2>
+    <p class="close-sub">EVP &amp; CFO — she manages the DLL Finance relationship.</p>
+    <a href="https://cal.com/johnb/30" target="_blank" class="close-cta" onclick="try{gtag('event','book_cta',{page:'konica-v11c'})}catch(e){}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      Run this on your portfolio
+    </a>
     <p class="close-guarantee">No collection, no fee. Performance-based only.</p>
-    <p class="close-footer">Konica Minolta used as example. All contacts from public sources. Powered by AgentCollect.</p>
   </div>
+  <p class="close-footer">Built for Konica Minolta. All contacts from public sources. Powered by AgentCollect.</p>
 </section>
 
 <!-- Floating Voice FAB -->
@@ -320,12 +448,70 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   document.querySelectorAll('.rv').forEach(function(el){ ro.observe(el); });
 })();
 
+// ===== Problem Cards — staggered reveal =====
+(function(){
+  var cards = document.querySelectorAll('.problem-card');
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var idx = Array.prototype.indexOf.call(cards, e.target);
+        setTimeout(function(){ e.target.classList.add('v'); }, idx * 150);
+      }
+    });
+  }, {threshold:.15});
+  cards.forEach(function(c){ ro.observe(c); });
+})();
+
+// ===== Animated Counters =====
+(function(){
+  var stats = document.querySelectorAll('.social-stat');
+  var animated = false;
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting && !animated){
+        animated = true;
+        stats.forEach(function(stat, idx){
+          setTimeout(function(){
+            stat.classList.add('v');
+            var numEl = stat.querySelector('.social-stat-num');
+            if(!numEl) return;
+            var target = parseInt(numEl.getAttribute('data-target'));
+            var suffix = numEl.getAttribute('data-suffix') || '';
+            var duration = 1200;
+            var start = Date.now();
+            function tick(){
+              var elapsed = Date.now() - start;
+              var progress = Math.min(elapsed / duration, 1);
+              var eased = 1 - Math.pow(1 - progress, 3);
+              var current = Math.round(target * eased);
+              numEl.textContent = current + suffix;
+              if(progress < 1) requestAnimationFrame(tick);
+            }
+            tick();
+          }, idx * 200);
+        });
+      }
+    });
+  }, {threshold:.3});
+  if(stats.length) ro.observe(stats[0]);
+})();
+
+// ===== Social Quote reveal =====
+(function(){
+  var q = document.getElementById('social-quote');
+  if(!q) return;
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('v'); });
+  }, {threshold:.2});
+  ro.observe(q);
+})();
+
 // ===== Personalization — ?to=Name =====
 (function(){
   var name = (new URLSearchParams(window.location.search)).get('to');
   if(name){
     var el = document.getElementById('close-title');
-    if(el) el.textContent = name + ', your agent is 90% ready.';
+    if(el) el.textContent = name + ' owns this.';
   }
 })();
 
@@ -339,8 +525,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   fab.addEventListener('click', function(){
     hero.scrollIntoView({behavior:'smooth', block:'start'});
     setTimeout(function(){
-      var orb = document.getElementById('orb-wrap');
-      if(orb) orb.click();
+      var btn = document.getElementById('uw-mic-btn');
+      if(btn) btn.click();
     }, 600);
   });
 
@@ -355,32 +541,30 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   });
 
   // Hide FAB once call starts
-  var callState = document.getElementById('call-state');
-  if(callState){
+  var widget = document.getElementById('unified-widget');
+  if(widget){
     var observer = new MutationObserver(function(){
-      var active = document.getElementById('cs-active');
+      var active = document.getElementById('uw-voice-active');
       if(active && active.classList.contains('visible')){
         fab.classList.remove('visible');
         fabHidden = true;
       }
     });
-    observer.observe(callState, {subtree:true, attributes:true, attributeFilter:['class']});
+    observer.observe(widget, {subtree:true, attributes:true, attributeFilter:['class']});
   }
 })();
 
-// ===== WebRTC Voice Call (2-in-1 Orb) =====
+// ===== WebRTC Voice Call =====
 (function(){
-  var orbWrap = document.getElementById('orb-wrap');
-  var orbLabel = document.getElementById('orb-label');
-  var orbLogo = document.getElementById('orb-logo-center');
-  var orbMicOverlay = document.getElementById('orb-mic-overlay');
-  var csConnecting = document.getElementById('cs-connecting');
-  var csActive = document.getElementById('cs-active');
-  var csEndBtn = document.getElementById('cs-end-btn');
-  var csStatus = document.getElementById('cs-status');
-  var csTranscript = document.getElementById('cs-transcript');
-  var csWaveformEl = document.getElementById('cs-waveform');
-  var csWaveformBars = csWaveformEl ? csWaveformEl.querySelectorAll('span') : [];
+  var uwVoiceIdle = document.getElementById('uw-voice-idle');
+  var uwConnecting = document.getElementById('uw-connecting');
+  var uwVoiceActive = document.getElementById('uw-voice-active');
+  var uwMicBtn = document.getElementById('uw-mic-btn');
+  var uwEndBtn = document.getElementById('uw-end-btn');
+  var uwStatus = document.getElementById('uw-status');
+  var uwTranscript = document.getElementById('uw-transcript');
+  var uwWaveformEl = document.getElementById('uw-waveform');
+  var uwWaveformBars = uwWaveformEl ? uwWaveformEl.querySelectorAll('span') : [];
   var waveformAnimId = null;
   var waveformMode = 'idle';
   var callActive = false;
@@ -388,8 +572,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   var callStartTime = null;
 
   function animateWaveform(){
-    for(var i = 0; i < csWaveformBars.length; i++){
-      var bar = csWaveformBars[i];
+    for(var i = 0; i < uwWaveformBars.length; i++){
+      var bar = uwWaveformBars[i];
       var h;
       if(waveformMode === 'agent') h = 10 + Math.random() * 34;
       else if(waveformMode === 'user') h = 6 + Math.random() * 18;
@@ -407,7 +591,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   function stopWaveformAnim(){
     waveformMode = 'idle';
     if(waveformAnimId){ cancelAnimationFrame(waveformAnimId); waveformAnimId = null; }
-    for(var i = 0; i < csWaveformBars.length; i++) csWaveformBars[i].style.height = '4px';
+    for(var i = 0; i < uwWaveformBars.length; i++) uwWaveformBars[i].style.height = '4px';
   }
 
   function startVoiceCall(){
@@ -415,11 +599,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
     callActive = true;
     callStartTime = Date.now();
 
-    // Hide label, show connecting
-    if(orbLabel) orbLabel.style.display = 'none';
-    if(orbMicOverlay) orbMicOverlay.style.display = 'none';
-    csConnecting.style.display = 'flex';
-    csActive.classList.remove('visible');
+    // Hide pulse rings during call
+    document.querySelectorAll('.orb-ring').forEach(function(r){ r.style.display = 'none'; });
+
+    uwVoiceIdle.style.display = 'none';
+    uwConnecting.style.display = 'flex';
+    uwVoiceActive.classList.remove('visible');
+    document.getElementById('uw-connecting-text').textContent = 'Connecting to Konica Minolta agent...';
 
     var orb = document.getElementById('orb-main');
     if(orb) orb.classList.add('speaking');
@@ -446,12 +632,10 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 
         retellClient.on('call_started', function(){
           callStartTime = Date.now();
-          csConnecting.style.display = 'none';
-          csActive.classList.add('visible');
-          csStatus.textContent = 'Your turn — speak now';
+          uwConnecting.style.display = 'none';
+          uwVoiceActive.classList.add('visible');
+          uwStatus.textContent = 'Your turn — speak now';
           startWaveformAnim('idle');
-          // Hide logo, show mic on orb during call
-          if(orbLogo) orbLogo.style.opacity = '0';
           try { gtag('event', 'call_started', { company: 'Konica Minolta', page: 'konica-v11c' }); } catch(e){}
         });
 
@@ -463,12 +647,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 
         retellClient.on('agent_start_talking', function(){
           startWaveformAnim('agent');
-          csStatus.textContent = 'Agent speaking...';
+          uwStatus.textContent = 'Konica Minolta Agent speaking...';
         });
 
         retellClient.on('agent_stop_talking', function(){
           startWaveformAnim('user');
-          csStatus.textContent = 'Your turn — speak now';
+          uwStatus.textContent = 'Your turn — speak now';
         });
 
         retellClient.on('update', function(update){
@@ -485,11 +669,15 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       } catch(err){
         console.error('Voice call error:', err);
         callActive = false;
-        csConnecting.style.display = 'none';
-        if(orbLabel){ orbLabel.style.display = ''; orbLabel.innerHTML = 'Connection failed — try again<span class="orb-label-hint">Click the orb</span>'; orbLabel.style.color = '#ef4444'; }
-        if(orbMicOverlay) orbMicOverlay.style.display = '';
+        uwConnecting.style.display = 'none';
+        uwVoiceIdle.style.display = '';
+        uwVoiceActive.classList.remove('visible');
         if(orb) orb.classList.remove('speaking');
-        setTimeout(function(){ if(orbLabel){ orbLabel.innerHTML = 'Talk to your AI collection agent<span class="orb-label-hint">30 seconds. Click the orb.</span>'; orbLabel.style.color = ''; } }, 3000);
+        // Restore pulse rings
+        document.querySelectorAll('.orb-ring').forEach(function(r){ r.style.display = ''; });
+        var label = document.querySelector('.uw-mic-label');
+        if(label){ label.textContent = 'Connection failed — try again'; label.style.color = '#ef4444'; }
+        setTimeout(function(){ if(label){ label.textContent = 'Talk to Sarah'; label.style.color = ''; } }, 3000);
       }
     })();
   }
@@ -502,8 +690,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
     }
     if(!last) return;
     var role = last.role === 'agent' ? 'agent' : 'user';
-    csTranscript.innerHTML = '<div class="cs-msg ' + role + '">' + last.content + '</div>';
-    csTranscript.scrollTop = csTranscript.scrollHeight;
+    uwTranscript.innerHTML = '<div class="uw-mini-msg ' + role + '">' + last.content + '</div>';
+    uwTranscript.scrollTop = uwTranscript.scrollHeight;
   }
 
   function endCall(duration){
@@ -512,39 +700,46 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
     stopWaveformAnim();
     var orb = document.getElementById('orb-main');
     if(orb) orb.classList.remove('speaking');
-    if(orbLogo) orbLogo.style.opacity = '1';
 
-    csStatus.textContent = 'Call ended';
-    var postCall = document.getElementById('cs-post-call');
-    var postTitle = document.querySelector('.cs-post-title');
+    uwStatus.textContent = 'Call ended';
+    var postCall = document.getElementById('uw-post-call');
+    var postTitle = document.querySelector('.uw-post-title');
     if(postTitle && duration > 0){
       postTitle.textContent = 'That was ' + duration + ' second' + (duration !== 1 ? 's' : '') + '.';
     }
     setTimeout(function(){
-      csActive.classList.remove('visible');
-      csTranscript.innerHTML = '';
+      uwVoiceActive.classList.remove('visible');
+      uwVoiceIdle.style.display = 'none';
+      uwTranscript.innerHTML = '';
       if(postCall) postCall.style.display = 'flex';
     }, 1500);
   }
 
-  var postRetry = document.getElementById('cs-post-retry');
+  var postRetry = document.getElementById('uw-post-retry');
   if(postRetry) postRetry.addEventListener('click', function(){
-    var postCall = document.getElementById('cs-post-call');
+    var postCall = document.getElementById('uw-post-call');
     if(postCall) postCall.style.display = 'none';
-    if(orbLabel){ orbLabel.style.display = ''; }
-    if(orbMicOverlay) orbMicOverlay.style.display = '';
+    uwVoiceIdle.style.display = '';
+    // Restore pulse rings
+    document.querySelectorAll('.orb-ring').forEach(function(r){ r.style.display = ''; });
   });
 
-  var postCta = document.getElementById('cs-post-cta');
+  var postCta = document.getElementById('uw-post-cta');
   if(postCta) postCta.addEventListener('click', function(){
     try { gtag('event', 'post_call_book_demo', { company: 'Konica Minolta', page: 'konica-v11c' }); } catch(e){}
   });
 
-  if(csEndBtn) csEndBtn.addEventListener('click', function(e){
+  if(uwMicBtn) uwMicBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    startVoiceCall();
+  });
+
+  if(uwEndBtn) uwEndBtn.addEventListener('click', function(e){
     e.stopPropagation();
     endCall(callStartTime ? Math.round((Date.now() - callStartTime) / 1000) : 0);
   });
 
+  var orbWrap = document.getElementById('orb-wrap');
   if(orbWrap) orbWrap.addEventListener('click', function(){
     if(callActive) return;
     startVoiceCall();
