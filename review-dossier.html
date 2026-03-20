@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Review: Dossier Options — AgentCollect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#f6f3ef;--text:#0B1B3D;--text-mid:#374151;--text-muted:#64748B;--text-dim:#94A3B8;
+            --indigo:#4F46E5;--indigo-dark:#4338CA;--border:#E8ECF2;
+            --green:#10B981;--green-dark:#059669;--amber:#F59E0B;--red:#EF4444;
+            --sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;--mono:'JetBrains Mono',monospace;
+        }
+        body{font-family:var(--sans);background:var(--bg);color:var(--text);padding:40px 20px}
+        .review-header{max-width:900px;margin:0 auto 48px;text-align:center}
+        .review-header h1{font-family:var(--display);font-size:28px;font-weight:900;margin-bottom:8px}
+        .review-header p{color:var(--text-muted);font-size:15px}
+        .option-card{max-width:900px;margin:0 auto 40px;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+        .option-label{background:var(--indigo);color:#fff;padding:14px 24px;font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:.05em;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between}
+        .option-label .tag{background:rgba(255,255,255,.2);padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600}
+        .option-render{padding:32px 24px;border-bottom:1px solid var(--border);max-width:680px;margin:0 auto}
+        .option-comment{padding:20px 24px;font-size:14px;color:var(--text-mid);line-height:1.6}
+        .option-comment strong{color:var(--text)}
+        .divider{max-width:900px;margin:48px auto;text-align:center;font-family:var(--display);font-weight:800;font-size:20px;color:var(--text);padding:24px 0;border-top:2px solid var(--border);border-bottom:2px solid var(--border)}
+        .steve-note{max-width:900px;margin:0 auto 32px;padding:16px 24px;background:#fff3cd;border-radius:12px;font-size:14px;color:#856404}
+
+        /* Dossier simulation styles */
+        .sim-brand{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+        .sim-brand-logo{width:56px;height:56px;border-radius:14px;object-fit:contain;background:#fff;border:1.5px solid var(--border);flex-shrink:0}
+        .sim-brand-name{font-family:var(--display);font-size:26px;font-weight:900;color:var(--text);letter-spacing:-.04em;line-height:1.15}
+        .sim-brand-industry{font-size:14px;color:var(--text-muted);margin-top:2px}
+        .sim-section{margin-bottom:18px}
+        .sim-section-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--text-dim);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+        .sim-dot{width:6px;height:6px;border-radius:50%}
+        .sim-dot.green{background:var(--green)}.sim-dot.amber{background:var(--amber)}.sim-dot.red{background:var(--red)}.sim-dot.indigo{background:var(--indigo)}
+        .sim-line{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:1px solid rgba(0,0,0,.04);font-size:15px;color:var(--text-mid);line-height:1.55}
+        .sim-line:last-child{border-bottom:none}
+        .sim-line-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:7px}
+        .sim-line-key{font-size:13px;font-weight:700;color:var(--text);min-width:90px;flex-shrink:0;font-family:var(--display);letter-spacing:-.02em}
+        .sim-tag{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600}
+        .sim-tag.green{background:rgba(16,185,129,.08);color:var(--green-dark);border:1px solid rgba(16,185,129,.15)}
+        .sim-tag.indigo{background:rgba(79,70,229,.06);color:var(--indigo);border:1px solid rgba(79,70,229,.12)}
+        .sim-tag.red{background:rgba(239,68,68,.06);color:var(--red);border:1px solid rgba(239,68,68,.12)}
+        .sim-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+
+        /* Agency card style */
+        .sim-agency{margin-top:16px;padding:14px 18px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.1);border-radius:12px;display:flex;align-items:center;gap:14px}
+        .sim-agency-icon{width:36px;height:36px;border-radius:10px;background:rgba(239,68,68,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .sim-agency-name{font-family:var(--display);font-weight:700;font-size:14px;color:var(--text)}
+        .sim-agency-rating{font-size:13px;color:var(--red)}
+        .sim-agency-label{font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+
+        /* Compact card */
+        .sim-compact{background:rgba(79,70,229,.02);border:1px solid rgba(79,70,229,.08);border-radius:14px;padding:20px 24px}
+        .sim-compact-header{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+        .sim-compact-logo{width:40px;height:40px;border-radius:10px;background:#fff;border:1px solid var(--border)}
+        .sim-compact-name{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.03em}
+        .sim-compact-ind{font-size:12px;color:var(--text-muted)}
+        .sim-compact-items{display:flex;flex-direction:column;gap:8px}
+        .sim-compact-item{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text-mid)}
+        .sim-compact-item svg{width:14px;height:14px;flex-shrink:0}
+    </style>
+</head>
+<body>
+
+<div class="review-header">
+    <h1>Dossier Redesign: Less Info, More Impact</h1>
+    <p>Company: HighRadius (the one from your screenshot). Pick your favorite layout.</p>
+</div>
+
+<div class="steve-note">
+    <strong>Steve 🧠:</strong> The dossier is not the product — it's the hook. Its job is to make the prospect think "they know my business" in 5 seconds, then move to the voice demo. More info = more friction. Cut to what creates the "oh shit" moment: disputes they'll recognize + their current agency's rating (if applicable).
+</div>
+
+<!-- ===== OPTION A: Current (reference) ===== -->
+<div class="option-card">
+    <div class="option-label">Option A: Current <span class="tag">AS-IS</span></div>
+    <div class="option-render">
+        <div class="sim-brand">
+            <img class="sim-brand-logo" src="https://www.google.com/s2/favicons?domain=highradius.com&sz=128" alt="HighRadius">
+            <div>
+                <div class="sim-brand-name">Highradius</div>
+                <div class="sim-brand-industry">Business services</div>
+            </div>
+        </div>
+        <div class="sim-section">
+            <div class="sim-section-label"><span class="sim-dot green"></span> Products & Services</div>
+            <div class="sim-line"><span class="sim-line-dot" style="background:var(--green)"></span> professional services</div>
+            <div class="sim-line" style="display:flex;gap:10px"><span class="sim-line-key">Clients</span> Enterprise and mid-market companies</div>
+        </div>
+        <div class="sim-section">
+            <div class="sim-section-label"><span class="sim-dot amber"></span> Payment Risk Analysis</div>
+            <div class="sim-line"><span class="sim-line-dot" style="background:var(--amber)"></span> 60-90 day payment cycles stretching to 120+</div>
+            <div class="sim-line"><span class="sim-line-dot" style="background:var(--red)"></span> Disputed invoices going unanswered for weeks</div>
+            <div class="sim-line"><span class="sim-line-dot" style="background:var(--green)"></span> Key AP contacts leaving without handoff</div>
+        </div>
+        <div class="sim-tags">
+            <span class="sim-tag green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Searching decision makers...</span>
+            <span class="sim-tag indigo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Full intelligence report</span>
+        </div>
+    </div>
+    <div class="option-comment">
+        <strong>Current.</strong> Products + Payment Risk + Tags. Too much generic text. "Payment Risk Analysis" sounds clinical. "Professional services" is vague. The prospect doesn't recognize themselves here — it could be any company.
+    </div>
+</div>
+
+<!-- ===== OPTION B: 2 disputes only + agency ===== -->
+<div class="option-card">
+    <div class="option-label">Option B: 2 Disputes + Agency Rating <span class="tag">RECOMMENDED</span></div>
+    <div class="option-render">
+        <div class="sim-brand">
+            <img class="sim-brand-logo" src="https://www.google.com/s2/favicons?domain=highradius.com&sz=128" alt="HighRadius">
+            <div>
+                <div class="sim-brand-name">HighRadius</div>
+                <div class="sim-brand-industry">AR Automation & Treasury Management</div>
+            </div>
+        </div>
+        <div class="sim-section">
+            <div class="sim-section-label"><span class="sim-dot amber"></span> Most Common Disputes</div>
+            <div class="sim-line"><span class="sim-line-dot" style="background:var(--amber)"></span> Implementation milestone disagreements blocking payment</div>
+            <div class="sim-line"><span class="sim-line-dot" style="background:var(--red)"></span> License compliance disputes during audits</div>
+        </div>
+        <div class="sim-agency">
+            <div class="sim-agency-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" width="18" height="18"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div>
+                <div class="sim-agency-label">Current recovery provider</div>
+                <div class="sim-agency-name">No external agency detected</div>
+                <div class="sim-agency-rating" style="color:var(--text-muted)">Handling collections internally — likely absorbing losses</div>
+            </div>
+        </div>
+        <div class="sim-tags">
+            <span class="sim-tag green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 3 decision makers found</span>
+            <span class="sim-tag indigo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Full intelligence report</span>
+        </div>
+    </div>
+    <div class="option-comment">
+        <strong>Focused.</strong> Only 2 dispute lines (industry-specific, feels real). Agency card shows either "DLL Finance — 2.1★ BBB" (Konica scenario) or "No external agency — absorbing losses" (most SaaS). This is the "how did they know that?" moment. Products section removed — the industry label already says enough.
+    </div>
+</div>
+
+<!-- ===== OPTION C: Ultra-compact card ===== -->
+<div class="option-card">
+    <div class="option-label">Option C: Ultra-compact single card</div>
+    <div class="option-render">
+        <div class="sim-compact">
+            <div class="sim-compact-header">
+                <img class="sim-compact-logo" src="https://www.google.com/s2/favicons?domain=highradius.com&sz=128" alt="HighRadius">
+                <div>
+                    <div class="sim-compact-name">HighRadius</div>
+                    <div class="sim-compact-ind">AR Automation & Treasury Management</div>
+                </div>
+            </div>
+            <div class="sim-compact-items">
+                <div class="sim-compact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+                    Implementation milestone disputes blocking payment
+                </div>
+                <div class="sim-compact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+                    License compliance disputes during audits
+                </div>
+                <div class="sim-compact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                    3 decision makers identified
+                </div>
+                <div class="sim-compact-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    No external collection agency detected
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="option-comment">
+        <strong>Everything in one card.</strong> Single bordered card with icon-led lines. No section labels, no dots — just 4 lines of intel. Fastest to scan, least visual weight. Good for mobile. But loses the "dossier" feel that builds credibility.
+    </div>
+</div>
+
+<!-- ===== OPTION D: Konica-style with real agency ===== -->
+<div class="option-card">
+    <div class="option-label">Option D: With real agency found (Konica example)</div>
+    <div class="option-render">
+        <div class="sim-brand">
+            <img class="sim-brand-logo" src="https://www.google.com/s2/favicons?domain=konicaminolta.com&sz=128" alt="Konica Minolta">
+            <div>
+                <div class="sim-brand-name">Konica Minolta</div>
+                <div class="sim-brand-industry">Office Equipment & Managed Print</div>
+            </div>
+        </div>
+        <div class="sim-section">
+            <div class="sim-section-label"><span class="sim-dot amber"></span> Most Common Disputes</div>
+            <div class="sim-line"><span class="sim-line-dot" style="background:var(--amber)"></span> Equipment lease disputes on end-of-term buyouts</div>
+            <div class="sim-line"><span class="sim-line-dot" style="background:var(--red)"></span> Maintenance contract auto-renewals contested by clients</div>
+        </div>
+        <div class="sim-agency" style="background:rgba(239,68,68,.06);border-color:rgba(239,68,68,.15)">
+            <div class="sim-agency-icon" style="background:rgba(239,68,68,.15)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" width="18" height="18"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div>
+                <div class="sim-agency-label">Current recovery provider</div>
+                <div class="sim-agency-name">DLL Finance — collecting under Konica Minolta's brand</div>
+                <div class="sim-agency-rating">★ 2.1 on BBB · 47 complaints in last 12 months</div>
+            </div>
+        </div>
+        <div class="sim-tags">
+            <span class="sim-tag green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> 5 decision makers found</span>
+            <span class="sim-tag indigo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Full intelligence report</span>
+        </div>
+    </div>
+    <div class="option-comment">
+        <strong>The "oh shit" version.</strong> Same as B but with a REAL agency found + their BBB rating. This is the killer: "DLL Finance — 2.1★ BBB, 47 complaints." The prospect sees their own dirty laundry. Only works when we can actually find the agency (via Google/CFPB search). When no agency found, falls back to the "no external agency" version (Option B).
+    </div>
+</div>
+
+<div style="max-width:900px;margin:48px auto;text-align:center;padding:32px;background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,.06)">
+    <div style="font-family:var(--display);font-weight:800;font-size:18px;margin-bottom:8px">Pick your dossier style: A / B / C / D</div>
+    <div style="color:var(--text-muted);font-size:14px">B = recommended default, D = when agency data is available</div>
+</div>
+
+</body>
+</html>
