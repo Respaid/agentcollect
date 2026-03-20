@@ -1,7 +1,7 @@
 {
   "rewrites": [
 { "source": "/showcase", "destination": "/showcase.html" },
-{ "source": "/salesforce", "destination": "/v3/salesforce-c.html" },
+{ "source": "/salesforce", "destination": "/v3/salesforce.html" },
 { "source": "/salesforce-a", "destination": "/v3/salesforce-a.html" },
 { "source": "/salesforce-b", "destination": "/v3/salesforce-b.html" },
 { "source": "/salesforce-c", "destination": "/v3/salesforce-c.html" },
