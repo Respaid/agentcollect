@@ -128,15 +128,25 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .proof-sec-title{font-size:clamp(26px,3.2vw,38px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;color:var(--text)}
 .proof-sec-sub{font-size:17px;color:var(--muted);margin-bottom:52px;line-height:1.5}
 
-.problem-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:56px}
-.problem-card{background:#fff;border-radius:18px;padding:32px 28px;box-shadow:var(--shadow-lg);border:1px solid rgba(0,0,0,.04);text-align:left;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s cubic-bezier(.16,1,.3,1);opacity:0;transform:translateY(24px);text-decoration:none;display:block;cursor:pointer}
-.problem-card.v{opacity:1;transform:translateY(0)}
-.problem-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -8px rgba(0,0,0,.12)}
-.complaint-quote{font-size:19px;font-weight:700;color:var(--text);line-height:1.4;letter-spacing:-.02em;margin-bottom:20px}
-.complaint-quote::before{content:'\201C';color:var(--red);font-size:32px;line-height:0;vertical-align:bottom;margin-right:2px}
-.complaint-source{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--muted);padding:4px 12px;border-radius:100px;border:1px solid var(--border);transition:all .2s}
-.problem-card:hover .complaint-source{border-color:var(--blue);color:var(--blue)}
-.complaint-source svg{width:12px;height:12px}
+/* Wall of Pain — Version D (light, 3 rows) */
+.pain-wall{overflow:hidden;margin-top:40px;margin-bottom:40px;position:relative;padding:8px 0}
+.pain-wall::before,.pain-wall::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none}
+.pain-wall::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
+.pain-wall::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
+.pain-row{display:flex;gap:14px;padding:6px 0;width:max-content}
+.pain-row-1{animation:painScroll1 32s linear infinite}
+.pain-row-2{animation:painScroll2 38s linear infinite}
+.pain-row-3{animation:painScroll3 42s linear infinite}
+@keyframes painScroll1{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes painScroll2{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+@keyframes painScroll3{0%{transform:translateX(-25%)}100%{transform:translateX(-75%)}}
+.pain-pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid rgba(220,38,38,.1);border-radius:100px;padding:10px 20px;font-size:14px;font-weight:600;color:var(--text);white-space:nowrap;box-shadow:0 1px 3px rgba(0,0,0,.04);flex-shrink:0}
+.pain-pill .hl{color:var(--red);font-weight:800}
+.pain-pill .src-logo{height:14px;width:auto;opacity:.45;margin-left:2px;vertical-align:middle;flex-shrink:0}
+.pain-count{text-align:center;margin-top:20px;font-size:15px;font-weight:700;color:var(--red)}
+.pain-count span{color:var(--muted);font-weight:500}
+.pain-count a{color:var(--red);text-decoration:none;font-weight:700}
+.pain-count a:hover{text-decoration:underline}
 
 /* ===== AGENTCOLLECT PROOF SECTION (separate from DLL) ===== */
 .ac-proof-section{padding:80px 48px 80px;max-width:920px;margin:0 auto;text-align:center}
@@ -311,16 +321,50 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
     <p class="proof-sec-sub">Your past-due accounts deserve a dedicated recovery system — not a side function of your leasing division.</p>
   </div>
 
-  <div class="problem-cards">
-    <a class="problem-card" id="pc1" href="https://www.bbb.org/us/ct/norwalk/profile/business-form-printer/xerox-corporation-0111-12000842/complaints" target="_blank" rel="noopener">
-      <div class="complaint-quote">Xerox Financial Services automatically renewed my lease without consent and charged me thousands in early termination fees.</div>
-      <span class="complaint-source"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>BBB — Xerox Financial Services</span>
-    </a>
-    <a class="problem-card" id="pc2" href="https://www.bbb.org/us/ct/norwalk/profile/business-form-printer/xerox-corporation-0111-12000842/complaints" target="_blank" rel="noopener">
-      <div class="complaint-quote">They sent me to collections for equipment I returned. The customer service was impossible to reach.</div>
-      <span class="complaint-source"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>BBB complaint — 2024</span>
-    </a>
+  <div class="proof-context rv" style="text-align:center;font-size:16px;font-weight:700;color:var(--red);letter-spacing:-.2px">Real complaints. Real customers. All under the Xerox name.</div>
+
+  <div class="pain-wall rv">
+    <div class="pain-row pain-row-1">
+      <span class="pain-pill">About <span class="hl">30 calls from Asia</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill"><span class="hl">Billed</span> for returned equipment <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill">They <span class="hl">prey on small businesses</span> <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill">CFPB fined <span class="hl">$1.1M</span> for bad data <img src="https://cdn.brandfetch.io/consumerfinance.gov/w/64/h/64/logo" alt="CFPB" class="src-logo" onerror="this.replaceWith(document.createTextNode('CFPB'))"></span>
+      <span class="pain-pill"><span class="hl">Non-cancellable lease</span> forced on us <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <!-- dup -->
+      <span class="pain-pill">About <span class="hl">30 calls from Asia</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill"><span class="hl">Billed</span> for returned equipment <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill">They <span class="hl">prey on small businesses</span> <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill">CFPB fined <span class="hl">$1.1M</span> for bad data <img src="https://cdn.brandfetch.io/consumerfinance.gov/w/64/h/64/logo" alt="CFPB" class="src-logo" onerror="this.replaceWith(document.createTextNode('CFPB'))"></span>
+      <span class="pain-pill"><span class="hl">Non-cancellable lease</span> forced on us <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+    </div>
+    <div class="pain-row pain-row-2">
+      <span class="pain-pill">If you default <span class="hl">they will destroy you</span> <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill"><span class="hl">No one answers</span> the phone <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill">Charging <span class="hl">after lease ended</span> <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill"><span class="hl">Harassing calls</span> after cancellation <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill">Feels like a <span class="hl">scam operation</span> <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <!-- dup -->
+      <span class="pain-pill">If you default <span class="hl">they will destroy you</span> <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill"><span class="hl">No one answers</span> the phone <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill">Charging <span class="hl">after lease ended</span> <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill"><span class="hl">Harassing calls</span> after cancellation <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill">Feels like a <span class="hl">scam operation</span> <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+    </div>
+    <div class="pain-row pain-row-3">
+      <span class="pain-pill">Charged for <span class="hl">826K oversized prints</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill"><span class="hl">Worst company</span> in 30 years <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill">Paid <span class="hl">four extra years</span> unknowingly <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill"><span class="hl">Passed around</span> dept to dept <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill">Continued billing <span class="hl">after documented cancellation</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <!-- dup -->
+      <span class="pain-pill">Charged for <span class="hl">826K oversized prints</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill"><span class="hl">Worst company</span> in 30 years <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill">Paid <span class="hl">four extra years</span> unknowingly <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill"><span class="hl">Passed around</span> dept to dept <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill">Continued billing <span class="hl">after documented cancellation</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+    </div>
   </div>
+  <div class="pain-count rv">154 <span>complaints across XFS, FITTLE & PEAC — </span><a href="https://www.bbb.org/us/ct/norwalk/profile/business-form-printer/xerox-corporation-0111-12000842/complaints" target="_blank">BBB ↗</a> <span>|</span> <a href="https://www.trustpilot.com/review/xerox.com" target="_blank">Trustpilot ↗</a></div>
 
   </div>
 </section>
