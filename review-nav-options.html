@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Review: Nav Options — AgentCollect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#f6f3ef;--text:#0B1B3D;--text-mid:#374151;--text-muted:#64748B;
+            --indigo:#4F46E5;--indigo-dark:#4338CA;--border:#E8ECF2;
+            --sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
+        }
+        body{font-family:var(--sans);background:var(--bg);color:var(--text);padding:40px 20px}
+        .review-header{max-width:900px;margin:0 auto 48px;text-align:center}
+        .review-header h1{font-family:var(--display);font-size:28px;font-weight:900;margin-bottom:8px}
+        .review-header p{color:var(--text-muted);font-size:15px}
+        .option-card{max-width:900px;margin:0 auto 40px;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+        .option-label{background:var(--indigo);color:#fff;padding:14px 24px;font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:.05em;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between}
+        .option-label .tag{background:rgba(255,255,255,.2);padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600}
+        .option-render{padding:0;border-bottom:1px solid var(--border)}
+        .option-comment{padding:20px 24px;font-size:14px;color:var(--text-mid);line-height:1.6}
+        .option-comment strong{color:var(--text)}
+
+        /* Simulated navs */
+        .sim-nav{background:rgba(246,243,239,.95);border-bottom:1px solid var(--border);display:flex;align-items:center;height:64px;padding:0 32px}
+        .sim-logo{display:inline-flex;align-items:baseline;font-family:var(--display);font-size:18px;font-weight:900;letter-spacing:-.04em;color:var(--text);text-decoration:none;margin-right:auto}
+        .sim-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--indigo);margin-left:1px;vertical-align:super}
+        .sim-tagline{font-size:11px;color:var(--text-muted);font-weight:400;margin-left:14px;padding-left:14px;border-left:1px solid var(--border);white-space:nowrap}
+        .sim-tagline-b{font-size:12px;color:var(--text-mid);font-weight:500;margin-left:14px;padding-left:14px;border-left:1px solid var(--border);white-space:nowrap;letter-spacing:-.02em}
+        .sim-links{display:flex;gap:32px;margin-right:28px}
+        .sim-links a{color:var(--text-muted);text-decoration:none;font-size:14px;font-weight:500}
+        .sim-cta{padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:14px;font-weight:600;text-decoration:none}
+
+        .divider{max-width:900px;margin:48px auto;text-align:center;font-family:var(--display);font-weight:800;font-size:20px;color:var(--text);padding:24px 0;border-top:2px solid var(--border);border-bottom:2px solid var(--border)}
+    </style>
+</head>
+<body>
+
+<div class="review-header">
+    <h1>Design Review: Header & Agent Section</h1>
+    <p>Pick your preferred option for each. Scroll through all options.</p>
+</div>
+
+<!-- ===== HEADER OPTIONS ===== -->
+<div class="divider">1. HEADER TAGLINE</div>
+
+<!-- Option A: Current (as-is) -->
+<div class="option-card">
+    <div class="option-label">Option A: Current <span class="tag">AS-IS</span></div>
+    <div class="option-render">
+        <div class="sim-nav">
+            <span class="sim-logo">Agent<span>Collect</span><span class="sim-dot"></span></span>
+            <span class="sim-tagline">The end of manual collection.</span>
+            <div class="sim-links">
+                <a>Pricing</a>
+                <a>How It Works</a>
+                <a>Security</a>
+            </div>
+            <a class="sim-cta">Book a demo</a>
+        </div>
+    </div>
+    <div class="option-comment">
+        <strong>Current state.</strong> 11px light gray text, hard to read. Competes with nav links. Same text as the h1 hero below — redundant.
+    </div>
+</div>
+
+<!-- Option B: Remove tagline entirely -->
+<div class="option-card">
+    <div class="option-label">Option B: Remove tagline <span class="tag">RECOMMENDED</span></div>
+    <div class="option-render">
+        <div class="sim-nav">
+            <span class="sim-logo">Agent<span>Collect</span><span class="sim-dot"></span></span>
+            <div class="sim-links" style="margin-left:auto">
+                <a>Pricing</a>
+                <a>How It Works</a>
+                <a>Security</a>
+            </div>
+            <a class="sim-cta">Book a demo</a>
+        </div>
+    </div>
+    <div class="option-comment">
+        <strong>Cleaner.</strong> The h1 hero already says "The end of manual collection." — no need to repeat in the nav. Logo + links + CTA is all a nav needs. More breathing room. Matches Stripe, Linear, Vercel patterns.
+    </div>
+</div>
+
+<!-- Option C: Bolder tagline -->
+<div class="option-card">
+    <div class="option-label">Option C: Bolder tagline</div>
+    <div class="option-render">
+        <div class="sim-nav">
+            <span class="sim-logo">Agent<span>Collect</span><span class="sim-dot"></span></span>
+            <span class="sim-tagline-b">The end of manual collection.</span>
+            <div class="sim-links">
+                <a>Pricing</a>
+                <a>How It Works</a>
+                <a>Security</a>
+            </div>
+            <a class="sim-cta">Book a demo</a>
+        </div>
+    </div>
+    <div class="option-comment">
+        <strong>Keep it, but make it readable.</strong> 12px, medium weight, darker color. Still fills the space between logo and links. Redundant with hero but adds brand reinforcement on scroll.
+    </div>
+</div>
+
+<!-- ===== AGENT CREATION OPTIONS ===== -->
+<div class="divider">2. AGENT CREATION SECTION (after build completes)</div>
+
+<!-- Option A: Current -->
+<div class="option-card">
+    <div class="option-label">Option A: Current <span class="tag">AS-IS</span></div>
+    <div class="option-render" style="padding:40px 24px;text-align:center;background:#1e1b3a;color:#fff">
+        <div style="font-family:var(--display);font-weight:800;font-size:16px;margin-bottom:4px;display:flex;align-items:center;justify-content:center;gap:8px">
+            <span style="width:24px;height:24px;background:#eee;border-radius:6px;display:inline-block"></span>
+            YouTube Collection Agent
+        </div>
+        <div style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:24px">Sarah is ready to engage your debtors.</div>
+        <div style="width:140px;height:140px;border-radius:50%;background:conic-gradient(from 0deg,#FF0000,#CC0000,#FF0000,#282828,#FF0000);margin:0 auto 16px;position:relative">
+            <div style="position:absolute;inset:4px;border-radius:50%;background:#1a1a2e"></div>
+        </div>
+        <div style="margin-bottom:20px;font-size:15px;font-weight:700;background:rgba(255,255,255,.2);display:inline-block;padding:8px 18px;border-radius:14px">Hi, I'm Sarah from YouTube...</div>
+        <div style="margin-top:20px;background:rgba(255,255,255,.08);border-radius:16px;padding:24px;max-width:360px;margin-left:auto;margin-right:auto">
+            <div style="width:48px;height:48px;background:var(--indigo);border-radius:50%;margin:0 auto 8px;display:flex;align-items:center;justify-content:center">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="20" height="20"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg>
+            </div>
+            <div style="font-size:14px;color:rgba(255,255,255,.5)">Talk to Sarah</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:12px">Powered by AgentCollect</div>
+        </div>
+        <div style="margin-top:20px;padding:16px;border-radius:12px;background:rgba(255,255,255,.05)">
+            <div style="font-size:12px;color:rgba(255,255,255,.4);margin-bottom:4px">[Dispute transcript area]</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.6)">+ Try another dispute button</div>
+        </div>
+    </div>
+    <div class="option-comment">
+        <strong>Current state.</strong> Full orb + widget + transcript + dispute area. A lot of content stacked vertically. JB says it's redundant and visually heavy.
+    </div>
+</div>
+
+<!-- Option B: Minimal — orb + voice only, dispute collapsed -->
+<div class="option-card">
+    <div class="option-label">Option B: Minimal orb + voice <span class="tag">RECOMMENDED</span></div>
+    <div class="option-render" style="padding:40px 24px;text-align:center;background:#1e1b3a;color:#fff">
+        <div style="font-family:var(--display);font-weight:800;font-size:16px;margin-bottom:4px;display:flex;align-items:center;justify-content:center;gap:8px">
+            <span style="width:24px;height:24px;background:#eee;border-radius:6px;display:inline-block"></span>
+            YouTube Collection Agent
+        </div>
+        <div style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:24px">Your agent is ready. Talk to her or read a sample dispute.</div>
+        <div style="width:120px;height:120px;border-radius:50%;background:conic-gradient(from 0deg,#FF0000,#CC0000,#FF0000,#282828,#FF0000);margin:0 auto 12px;position:relative">
+            <div style="position:absolute;inset:4px;border-radius:50%;background:#1a1a2e"></div>
+        </div>
+        <div style="margin-bottom:20px;font-size:15px;font-weight:700;background:rgba(255,255,255,.25);display:inline-block;padding:8px 18px;border-radius:14px">Hi, I'm Sarah from YouTube...</div>
+        <div style="display:flex;gap:12px;justify-content:center;margin-top:16px">
+            <button style="display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-family:var(--display);font-weight:700;font-size:14px;border:none;background:#fff;color:#0B1B3D;cursor:pointer">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg>
+                Talk to Sarah
+            </button>
+            <button style="display:flex;align-items:center;gap:8px;padding:14px 28px;border-radius:12px;font-family:var(--display);font-weight:700;font-size:14px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#fff;cursor:pointer">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                See a dispute
+            </button>
+        </div>
+        <div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:16px">Powered by AgentCollect</div>
+    </div>
+    <div class="option-comment">
+        <strong>Compact.</strong> Smaller orb (120px vs 140px). Two clear CTAs: voice call (primary) or read a dispute (secondary). Dispute transcript only opens if clicked — not shown by default. Much less visual noise. The voice call IS the wow moment.
+    </div>
+</div>
+
+<!-- Option C: Card-style — no orb, just action buttons -->
+<div class="option-card">
+    <div class="option-label">Option C: Card-style, no orb</div>
+    <div class="option-render" style="padding:40px 24px;text-align:center;background:#1e1b3a;color:#fff">
+        <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:8px">
+            <span style="width:36px;height:36px;background:#eee;border-radius:10px;display:inline-block"></span>
+            <div style="text-align:left">
+                <div style="font-family:var(--display);font-weight:800;font-size:18px">YouTube Agent Ready</div>
+                <div style="font-size:13px;color:rgba(255,255,255,.5)">Trained on your industry. Try her now.</div>
+            </div>
+        </div>
+        <div style="max-width:400px;margin:24px auto 0;display:flex;flex-direction:column;gap:12px">
+            <button style="display:flex;align-items:center;justify-content:center;gap:10px;padding:18px 28px;border-radius:14px;font-family:var(--display);font-weight:800;font-size:15px;border:none;background:#fff;color:#0B1B3D;cursor:pointer;width:100%">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg>
+                Talk to your agent live
+            </button>
+            <button style="display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 28px;border-radius:14px;font-family:var(--display);font-weight:600;font-size:14px;border:1px solid rgba(255,255,255,.15);background:transparent;color:rgba(255,255,255,.7);cursor:pointer;width:100%">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                Read a sample dispute
+            </button>
+            <a href="#" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:14px;font-family:var(--display);font-weight:700;font-size:14px;border:none;background:var(--indigo);color:#fff;text-decoration:none;width:100%">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                Finalize my agent
+            </a>
+        </div>
+        <div style="font-size:11px;color:rgba(255,255,255,.3);margin-top:16px">15-min call to go live · Zero commitment</div>
+    </div>
+    <div class="option-comment">
+        <strong>No orb at all.</strong> Pure action-oriented card. Three stacked buttons: voice call, dispute demo, finalize. Ultra-clean, zero decoration. Loses the visual "wow" of the orb but maximizes clarity.
+    </div>
+</div>
+
+<div style="max-width:900px;margin:48px auto;text-align:center;padding:32px;background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,.06)">
+    <div style="font-family:var(--display);font-weight:800;font-size:18px;margin-bottom:8px">Tell me which combo you want</div>
+    <div style="color:var(--text-muted);font-size:14px">Header: A / B / C &nbsp;&nbsp;|&nbsp;&nbsp; Agent section: A / B / C</div>
+</div>
+
+</body>
+</html>
