@@ -44,7 +44,7 @@
             --max-w:1120px;
         }
         html{scroll-behavior:smooth}
-        body{font-family:var(--sans);font-size:17px;background:#fff;color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;line-height:1.7;position:relative}
+        body{font-family:var(--sans);font-size:17px;background:#f6f3ef;color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;line-height:1.7;position:relative}
         body::before{content:'';position:fixed;inset:0;z-index:-1;background-image:
             linear-gradient(rgba(79,70,229,.03) 1px, transparent 1px),
             linear-gradient(90deg, rgba(79,70,229,.03) 1px, transparent 1px);
@@ -59,7 +59,7 @@
         .s1{transition-delay:.1s}.s2{transition-delay:.2s}.s3{transition-delay:.3s}.s4{transition-delay:.4s}
 
         /* NAV */
-        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(246,243,239,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
         .nav.scrolled{box-shadow:0 1px 3px rgba(0,0,0,.02)}
         .nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:64px}
         .logo{display:inline-flex;align-items:baseline;text-decoration:none;margin-right:auto;font-family:var(--display);font-size:18px;font-weight:900;letter-spacing:-.04em;color:var(--text)}
@@ -82,13 +82,13 @@
         .section-sub{font-size:17px;color:var(--text-mid);max-width:480px;line-height:1.65;letter-spacing:-.01em}
 
         /* ========== HERO ========== */
-        .hero{padding:140px 32px 80px;text-align:center;background:#fff;position:relative;overflow:hidden;transition:padding .5s ease,min-height .5s ease}
-        .hero::before{content:'';position:absolute;width:600px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(79,70,229,.08) 0%,rgba(79,70,229,.03) 40%,transparent 70%);border-radius:50%;pointer-events:none;animation:heroGlow 4s ease-in-out infinite}
+        .hero{padding:140px 32px 80px;text-align:center;background:#f6f3ef;position:relative;overflow:hidden;transition:padding .5s ease,min-height .5s ease}
+        .hero::before{content:'';position:absolute;width:800px;height:800px;top:40%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(79,70,229,.12) 0%,rgba(79,70,229,.05) 40%,transparent 70%);border-radius:50%;pointer-events:none;animation:heroGlow 6s ease-in-out infinite}
         .hero::after{content:'';position:absolute;inset:0;pointer-events:none;
             background:
-                radial-gradient(ellipse 700px 400px at 50% 0%, rgba(79,70,229,.06), transparent),
-                radial-gradient(ellipse 400px 400px at 80% 100%, rgba(16,185,129,.04), transparent)}
-        @keyframes heroGlow{0%,100%{opacity:.4;transform:translate(-50%,-50%) scale(1)}50%{opacity:.8;transform:translate(-50%,-50%) scale(1.08)}}
+                radial-gradient(ellipse 700px 400px at 30% 0%, rgba(79,70,229,.08), transparent),
+                radial-gradient(ellipse 500px 500px at 80% 80%, rgba(16,185,129,.06), transparent)}
+        @keyframes heroGlow{0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.12)}}
         .hero-content{position:relative;z-index:1;max-width:720px;margin:0 auto;transition:opacity .4s ease,transform .4s ease}
         .hero h1{font-size:clamp(44px,6.5vw,80px);font-weight:900;letter-spacing:-.05em;line-height:1.0;margin-bottom:16px;color:var(--text)}
         .hero .sub{font-size:19px;color:var(--text-muted);margin-bottom:40px;letter-spacing:-.01em}
@@ -347,7 +347,7 @@
         .response-area.visible .reasoning-label{font-size:11px;margin-bottom:6px}
 
         /* ========== TRUST SECTION ========== */
-        .trust-section{padding:100px 32px;background:#fff;text-align:center}
+        .trust-section{padding:100px 32px;background:#f6f3ef;text-align:center}
         .trust-inner{max-width:var(--max-w);margin:0 auto}
         .trust-section h2{font-size:clamp(32px,4.5vw,56px);font-weight:900;letter-spacing:-.05em;margin-bottom:8px}
         .trust-section .trust-sub{font-size:18px;color:var(--text-muted);margin-bottom:56px}
@@ -371,7 +371,7 @@
         .step-logo-pill{font-size:11px;font-weight:600;color:var(--text-dim);padding:4px 10px;border:1px solid var(--border);border-radius:6px;background:#fff}
 
         /* ========== OBJECTION KILLERS ========== */
-        .objections-section{padding:100px 32px;background:#fff}
+        .objections-section{padding:100px 32px;background:#f6f3ef}
         .objections-inner{max-width:var(--max-w);margin:0 auto;text-align:center}
         .objections-section h2{font-size:clamp(28px,3.5vw,42px);font-weight:900;margin-bottom:56px}
         .objections-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:900px;margin:0 auto}
@@ -392,7 +392,7 @@
         .proof-role{font-size:14px;color:var(--text-muted);font-weight:500}
 
         /* ========== PRICING ONE-LINER ========== */
-        .pricing-strip{padding:80px 32px;background:#fff;text-align:center}
+        .pricing-strip{padding:80px 32px;background:#f6f3ef;text-align:center}
         .pricing-strip h2{font-size:clamp(36px,5vw,64px);font-weight:900;letter-spacing:-.05em;margin-bottom:12px}
         .pricing-strip .pricing-sub{font-size:17px;color:var(--text-muted);margin-bottom:36px}
         .pricing-cta{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:var(--indigo);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:16px;font-weight:600;cursor:pointer;text-decoration:none;transition:all .2s}
@@ -412,9 +412,9 @@
         .cta-btn-primary:hover{box-shadow:0 8px 24px rgba(255,255,255,.1)}
 
         /* ========== FOOTER ========== */
-        footer{background:#fff;border-top:1px solid var(--border);padding:56px 32px 32px}
+        footer{background:#f6f3ef;border-top:1px solid var(--border);padding:56px 32px 32px}
         .footer-inner{max-width:var(--max-w);margin:0 auto}
-        .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}
+        .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:40px}
         .footer-brand-name{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:10px}
         .footer-tagline{font-size:14px;color:var(--text-dim);line-height:1.65;max-width:210px}
         .footer-col h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);margin-bottom:14px}
@@ -523,14 +523,12 @@
     <a href="/" class="logo">Agent<span>Collect</span><span class="dot-circle"></span></a>
     <span class="logo-tagline">The end of manual collection.</span>
     <div class="nav-links">
-        <a href="/ai-collection">AI Collection</a>
-        <a href="/attorney-collection">Attorney Collection</a>
         <a href="/pricing">Pricing</a>
+        <a href="/how-it-works">How It Works</a>
         <a href="/security">Security</a>
     </div>
     <div class="nav-right">
-        <a href="https://cal.com/johnb/30" class="nav-cta-ghost" target="_blank">Talk to us</a>
-        <a href="https://cal.com/johnb/30" class="nav-cta" target="_blank">Book a demo</a>
+        <a href="https://cal.com/johnb/30" class="nav-cta" target="_blank" rel="noopener">Book a demo</a>
     </div>
     <button class="nav-mobile" aria-label="Open menu">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="1.5"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
@@ -779,7 +777,7 @@
         <div class="proof-quote">
             <div class="proof-text">Every debtor was treated with respect. Not one complaint. That's unheard of.</div>
             <div class="proof-author">
-                <img class="proof-avatar" src="https://www.google.com/s2/favicons?domain=microsoft.com&sz=128" alt="Microsoft" onerror="this.style.display='none'">
+                <img class="proof-avatar" src="https://ui-avatars.com/api/?name=Neil+Doyle&background=4F46E5&color=fff&size=128&bold=true&rounded=true" alt="Neil Doyle">
                 <div>
                     <div class="proof-name">Neil Doyle</div>
                     <div class="proof-role">Microsoft</div>
@@ -821,7 +819,7 @@
 
 
 <!-- SECTION: HOW IT WORKS -->
-<section style="padding:80px 32px;background:#fff" class="reveal">
+<section style="padding:80px 32px;background:#f6f3ef" class="reveal">
     <div style="max-width:var(--max-w);margin:0 auto;text-align:center">
         <div class="section-label">How it works</div>
         <h2 class="section-title" style="margin-bottom:48px">Three steps. Zero manual work.</h2>
@@ -901,44 +899,7 @@
     </div>
 </section>
 
-<div class="gradient-divider"></div>
-
-<!-- SECTION: SOCIAL PROOF + REPEATED DOMAIN INPUT -->
-<section style="padding:80px 32px;background:#fff" class="reveal">
-    <div style="max-width:var(--max-w);margin:0 auto;text-align:center">
-        <div class="section-label">Trusted by enterprise</div>
-        <h2 class="section-title" style="margin-bottom:16px">See what your agent looks like.</h2>
-        <p class="section-sub" style="margin:0 auto 40px;text-align:center">Enter your domain — your agent is ready in 30 seconds.</p>
-        <!-- Repeated domain input -->
-        <div style="display:flex;align-items:center;max-width:520px;margin:0 auto 48px;background:#fff;border:2px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .3s,box-shadow .3s" id="bottom-input-wrap">
-            <input type="text" placeholder="yourcompany.com" style="flex:1;border:none;outline:none;padding:18px 24px;font-family:var(--sans);font-size:16px;color:var(--text);background:transparent" id="bottom-domain-input">
-            <button onclick="var d=document.getElementById('bottom-domain-input').value;if(d){document.getElementById('domain-input').value=d;document.getElementById('domain-input').dispatchEvent(new Event('input'));document.querySelector('.hero-btn').click();window.scrollTo({top:0,behavior:'smooth'})}" style="display:flex;align-items:center;justify-content:center;width:52px;height:52px;margin:4px;border-radius:12px;background:var(--indigo);border:none;cursor:pointer;flex-shrink:0">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </button>
-        </div>
-        <!-- Logo bar -->
-        <div style="display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap;opacity:.55">
-            <img src="https://respaid.com/logos/microsoft.svg" alt="Microsoft" style="height:28px;object-fit:contain;filter:grayscale(100%) brightness(.4)" onerror="this.style.display='none'">
-            <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/6917bec130210a5551350be0_DoorDash-Logo-700x394.png" alt="DoorDash" style="height:28px;object-fit:contain;filter:grayscale(100%) brightness(.4)" onerror="this.style.display='none'">
-            <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/681486e9407f3fb4dbd3d3f0_Uber-Freight-Logo.png" alt="Uber Freight" style="height:28px;object-fit:contain;filter:grayscale(100%) brightness(.4)" onerror="this.style.display='none'">
-            <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/67da8be5048d3251e3b1616b_checkr_logo_wordmark_aqua3.png" alt="Checkr" style="height:28px;object-fit:contain;filter:grayscale(100%) brightness(.4)" onerror="this.style.display='none'">
-            <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/685ab786cf9dabb5db539afc_Plaid_logo.svg.png" alt="Plaid" style="height:28px;object-fit:contain;filter:grayscale(100%) brightness(.4)" onerror="this.style.display='none'">
-            <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/6740498fdd3e5c836292e2e5_Redis_logo.svg.png" alt="Redis" style="height:28px;object-fit:contain;filter:grayscale(100%) brightness(.4)" onerror="this.style.display='none'">
-        </div>
-    </div>
-</section>
-
-<!-- 8. PRICING ONE-LINER -->
-<section class="pricing-strip reveal">
-    <h2>$0 if we don't collect.</h2>
-    <p class="pricing-sub">No setup fees. No monthly subscription. No minimums. Cancel anytime.</p>
-    <a href="https://cal.com/johnb/30" target="_blank" class="pricing-cta">
-        Book a demo
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-</section>
-
-<!-- 9. FINAL CTA -->
+<!-- 9. FINAL CTA (single closing screen — pricing info folded in) -->
 <section class="final-cta reveal">
     <h2>Your agent is ready.<br>One call to go live.</h2>
     <p>We'll build your agent live and try to recover real money during the call.</p>
@@ -946,19 +907,7 @@
         Book a 30-min demo
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
-</section>
-
-<!-- SOFT EMAIL CTA (scrollers who don't call) -->
-<section style="padding:60px 32px;background:linear-gradient(135deg,rgba(79,70,229,.03),rgba(16,185,129,.03));border-top:1px solid var(--border);border-bottom:1px solid var(--border)" class="reveal">
-    <div style="max-width:520px;margin:0 auto;text-align:center">
-        <div style="font-family:var(--display);font-size:clamp(22px,3vw,28px);font-weight:900;letter-spacing:-.04em;color:var(--text);margin-bottom:8px">Want us to build yours?</div>
-        <p style="font-size:15px;color:var(--text-mid);margin-bottom:24px;line-height:1.6">Drop your email — we'll send a personalized agent preview for your company.</p>
-        <div style="display:flex;gap:8px;max-width:420px;margin:0 auto" id="scroll-email-wrap">
-            <input type="email" id="scroll-email-input" placeholder="you@company.com" autocomplete="email" style="flex:1;min-width:0;padding:14px 18px;border:1.5px solid var(--border);border-radius:12px;font-family:var(--sans);font-size:15px;color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s;background:#fff">
-            <button id="scroll-email-btn" style="padding:14px 22px;background:var(--indigo);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:6px;flex-shrink:0">Get started <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-        </div>
-        <div style="font-size:12px;color:var(--text-dim);margin-top:10px">No spam. No signup. Just your agent.</div>
-    </div>
+    <p style="margin-top:20px;font-size:14px;color:rgba(255,255,255,.5);letter-spacing:-.01em">$0 if we don't collect. No setup fees. Cancel anytime.</p>
 </section>
 
 <!-- EXIT INTENT POPUP -->
@@ -986,30 +935,19 @@
             </div>
             <div class="footer-col">
                 <h4>Product</h4>
-                <a href="/ai-collection">AI Collection</a>
-                <a href="/attorney-collection">Attorney Collection</a>
                 <a href="/pricing">Pricing</a>
-                <a href="/integrations">API &amp; Integrations</a>
+                <a href="/how-it-works">How It Works</a>
+                <a href="/industries">Industries</a>
             </div>
             <div class="footer-col">
                 <h4>Trust</h4>
-                <a href="/security">Security &amp; Trust</a>
+                <a href="/security">Security</a>
                 <a href="/privacy">Privacy Policy</a>
                 <a href="/terms">Terms of Service</a>
-                <a href="/compliance">State Compliance</a>
-            </div>
-            <div class="footer-col">
-                <h4>Resources</h4>
-                <a href="/integrations">Integrations</a>
-                <a href="/compare">Compare</a>
-                <a href="/glossary">Glossary</a>
-                <a href="/dso-calculator">DSO Calculator</a>
             </div>
             <div class="footer-col">
                 <h4>Company</h4>
-                <a href="/about">About</a>
-                <a href="https://cal.com/johnb/30" target="_blank">Contact</a>
-                <a href="/careers">Careers</a>
+                <a href="https://cal.com/johnb/30" target="_blank" rel="noopener">Contact</a>
             </div>
         </div>
         <div class="footer-bottom">
