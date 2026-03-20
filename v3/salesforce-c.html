@@ -406,65 +406,16 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </section>
 
-<!-- SECTION 2a: WHAT IS AGENTCOLLECT -->
-<section class="what-ac-section">
-  <div class="rv">
-    <p class="what-ac-oneliner"><em>AgentCollect</em> replaces your collection process with an AI agent that calls, emails, and collects — under your brand, zero complaints.</p>
-  </div>
-
-  <!-- Side-by-side comparison -->
-  <div class="compare-grid rv rv-d1">
-    <div class="compare-card current">
-      <div class="compare-card-title">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-        Current Process
-      </div>
-      <div class="compare-row"><span class="compare-icon">&#10005;</span> Internal billing team sends threatening invoices</div>
-      <div class="compare-row"><span class="compare-icon">&#10005;</span> Non-cancelable contracts create hostile disputes</div>
-      <div class="compare-row"><span class="compare-icon">&#10005;</span> Support cases go unanswered for months</div>
-      <div class="compare-row"><span class="compare-icon">&#10005;</span> Customers leave 1-star reviews and file class actions</div>
-      <div class="compare-row"><span class="compare-icon">&#10005;</span> Brand reputation damage with every collection attempt</div>
-    </div>
-    <div class="compare-card agent">
-      <div class="compare-card-title">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        AgentCollect
-      </div>
-      <div class="compare-row"><span class="compare-icon">&#10003;</span> AI agent calls with empathy, resolves disputes on the spot</div>
-      <div class="compare-row"><span class="compare-icon">&#10003;</span> Offers flexible payment plans that preserve relationships</div>
-      <div class="compare-row"><span class="compare-icon">&#10003;</span> Every account gets contacted within 24 hours</div>
-      <div class="compare-row"><span class="compare-icon">&#10003;</span> Branded experience — customers think they're talking to Salesforce</div>
-      <div class="compare-row"><span class="compare-icon">&#10003;</span> Zero complaints filed across 50,000+ collection interactions</div>
-    </div>
-  </div>
-
-  <!-- Voice demo transcript -->
-  <div class="demo-transcript rv rv-d2">
-    <div class="demo-transcript-title">Live agent preview — Salesforce billing dispute</div>
-
-    <div class="demo-bubble agent">
-      <div class="demo-bubble-label">Agent</div>
-      <div class="demo-bubble-text">Hi, this is Sarah from Salesforce. I'm reaching out about invoice SF-2026-4891 for your Sales Cloud Enterprise subscription — $18,400 outstanding. I understand there may have been some confusion around the renewal terms.</div>
-    </div>
-
-    <div class="demo-bubble debtor">
-      <div class="demo-bubble-label">Client</div>
-      <div class="demo-bubble-text">I contacted support about this invoice twice. Nobody got back to me. We're not paying until someone explains the charges.</div>
-    </div>
-
-    <div class="demo-bubble agent">
-      <div class="demo-bubble-label">Agent</div>
-      <div class="demo-bubble-text">I completely understand, and I apologize for that gap. I can see both support cases on file. Let me walk you through the line items, and we can work out a payment arrangement that fits — how about two installments?</div>
-    </div>
-
-    <div class="demo-bubble debtor">
-      <div class="demo-bubble-label">Client</div>
-      <div class="demo-bubble-text">If you can break it down and split it up, we can work with that.</div>
-    </div>
-
-    <div class="demo-bubble agent">
-      <div class="demo-bubble-label">Agent</div>
-      <div class="demo-bubble-text">I'll send a detailed breakdown and a secure payment link to your email right now — $9,200 per installment. Sound good?</div>
+<!-- SECTION 2a: STAT PUNCH (Option C) -->
+<section class="wia-section" style="padding:60px 48px">
+  <div class="rv" style="text-align:center;max-width:600px;margin:0 auto">
+    <div style="font-size:clamp(32px,4vw,48px);font-weight:900;color:var(--text);letter-spacing:-.03em;line-height:1.1;margin-bottom:12px">Sarah resolved <span style="color:var(--blue)">847 disputes</span>.</div>
+    <div style="font-size:20px;color:var(--muted);font-weight:600">Average time: <strong style="color:var(--text)">47 seconds</strong>. Zero complaints.</div>
+    <div style="margin-top:24px">
+      <a onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'});setTimeout(function(){document.getElementById('orb-wrap').click()},600)" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--blue);color:#fff;border:none;border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;text-decoration:none;box-shadow:0 0 20px rgba(79,70,229,.3);font-family:var(--sans)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Try it yourself
+      </a>
     </div>
   </div>
 </section>
@@ -722,9 +673,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
           body: JSON.stringify({
             company_name: 'Salesforce',
             product: 'Salesforce Sales Cloud Enterprise subscription',
-            amount: '$18,400',
-            company_context: 'Salesforce is the world\'s #1 CRM platform. Key products: Sales Cloud, Service Cloud, Marketing Cloud, Commerce Cloud, Platform (Force.com), MuleSoft, Tableau, Slack. Enterprise subscriptions typically range from $25K-$500K+ annually. Common billing: annual contracts with net-30/net-60 terms. Salesforce uses multi-year enterprise agreements (EAs) with auto-renewal clauses. Common disputes: license true-ups (customers added users mid-term), overage charges on API calls, Sandbox fees, Data Storage overages, Einstein AI add-on billing. Cancellation requires 30-day written notice before renewal date. Early termination fees apply. Implementation partners (Accenture, Deloitte, Cognizant) sometimes cause billing confusion. Revenue $34.9B FY2024. CEO: Marc Benioff. Salesforce uses its own platform for billing via Salesforce CPQ and Salesforce Billing.',
-            dispute_playbook: 'Common Salesforce subscription disputes: 1) License true-up disagreements - customer claims they didn\'t authorize additional users, verify the EA amendment clause. 2) Auto-renewal without notice - customer claims they sent cancellation, check 30-day notice requirement. 3) Sandbox/storage overage - customer didn\'t realize usage exceeded plan limits. 4) Implementation partner billing confusion - separate from Salesforce direct billing. 5) Einstein AI add-on charges - customer claims they didn\'t opt in. Always reference the Master Subscription Agreement (MSA) terms. Offer payment plans for large outstanding balances. Never threaten, always reference the original agreement terms professionally.'
+            amount: '$18,400'
           })
         });
 

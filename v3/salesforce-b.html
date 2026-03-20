@@ -405,43 +405,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </section>
 
-<!-- SECTION 2a: WHAT IS AGENTCOLLECT -->
-<section class="what-ac-section">
-  <div class="rv">
-    <p class="what-ac-oneliner"><em>AgentCollect</em> replaces your collection process with an AI agent that calls, emails, and collects — under your brand, zero complaints.</p>
-  </div>
-
-  <!-- Option B: Voice demo only (no comparison table) -->
-  <div class="demo-transcript rv rv-d2">
-    <div class="demo-transcript-title">Live agent preview — Salesforce billing dispute</div>
-
-    <div class="demo-bubble agent">
-      <div class="demo-bubble-label">Agent</div>
-      <div class="demo-bubble-text">Hi, this is Sarah from Salesforce. I'm reaching out about invoice SF-2026-4891 for your Sales Cloud Enterprise subscription — $18,400 outstanding. I understand there may have been some confusion around the renewal terms.</div>
-    </div>
-
-    <div class="demo-bubble debtor">
-      <div class="demo-bubble-label">Client</div>
-      <div class="demo-bubble-text">I contacted support about this invoice twice. Nobody got back to me. We're not paying until someone explains the charges.</div>
-    </div>
-
-    <div class="demo-bubble agent">
-      <div class="demo-bubble-label">Agent</div>
-      <div class="demo-bubble-text">I completely understand, and I apologize for that gap. I can see both support cases on file. Let me walk you through the line items, and we can work out a payment arrangement that fits — how about two installments?</div>
-    </div>
-
-    <div class="demo-bubble debtor">
-      <div class="demo-bubble-label">Client</div>
-      <div class="demo-bubble-text">If you can break it down and split it up, we can work with that.</div>
-    </div>
-
-    <div class="demo-bubble agent">
-      <div class="demo-bubble-label">Agent</div>
-      <div class="demo-bubble-text">I'll send a detailed breakdown and a secure payment link to your email right now — $9,200 per installment. Sound good?</div>
-    </div>
-  </div>
-</section>
-
 <!-- SECTION 2b: AGENTCOLLECT SOCIAL PROOF -->
 <section class="ac-proof-section">
   <div class="rv">
@@ -695,9 +658,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
           body: JSON.stringify({
             company_name: 'Salesforce',
             product: 'Salesforce Sales Cloud Enterprise subscription',
-            amount: '$18,400',
-            company_context: 'Salesforce is the world\'s #1 CRM platform. Key products: Sales Cloud, Service Cloud, Marketing Cloud, Commerce Cloud, Platform (Force.com), MuleSoft, Tableau, Slack. Enterprise subscriptions typically range from $25K-$500K+ annually. Common billing: annual contracts with net-30/net-60 terms. Salesforce uses multi-year enterprise agreements (EAs) with auto-renewal clauses. Common disputes: license true-ups (customers added users mid-term), overage charges on API calls, Sandbox fees, Data Storage overages, Einstein AI add-on billing. Cancellation requires 30-day written notice before renewal date. Early termination fees apply. Implementation partners (Accenture, Deloitte, Cognizant) sometimes cause billing confusion. Revenue $34.9B FY2024. CEO: Marc Benioff. Salesforce uses its own platform for billing via Salesforce CPQ and Salesforce Billing.',
-            dispute_playbook: 'Common Salesforce subscription disputes: 1) License true-up disagreements - customer claims they didn\'t authorize additional users, verify the EA amendment clause. 2) Auto-renewal without notice - customer claims they sent cancellation, check 30-day notice requirement. 3) Sandbox/storage overage - customer didn\'t realize usage exceeded plan limits. 4) Implementation partner billing confusion - separate from Salesforce direct billing. 5) Einstein AI add-on charges - customer claims they didn\'t opt in. Always reference the Master Subscription Agreement (MSA) terms. Offer payment plans for large outstanding balances. Never threaten, always reference the original agreement terms professionally.'
+            amount: '$18,400'
           })
         });
 

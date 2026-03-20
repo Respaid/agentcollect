@@ -724,13 +724,15 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
           body: JSON.stringify({
             company_name: 'Salesforce',
             product: 'CRM platform subscriptions',
-            amount: '$45,000',
-            company_context: 'Salesforce is the world\'s #1 CRM platform. Key products: Sales Cloud, Service Cloud, Marketing Cloud, Commerce Cloud, Platform (Force.com), MuleSoft, Tableau, Slack. Enterprise subscriptions typically range from $25K-$500K+ annually. Common billing: annual contracts with net-30/net-60 terms. Salesforce uses multi-year enterprise agreements (EAs) with auto-renewal clauses. Common disputes: license true-ups (customers added users mid-term), overage charges on API calls, Sandbox fees, Data Storage overages, Einstein AI add-on billing. Cancellation requires 30-day written notice before renewal date. Early termination fees apply. Implementation partners (Accenture, Deloitte, Cognizant) sometimes cause billing confusion. Salesforce recently acquired Slack ($27.7B), Tableau ($15.7B), MuleSoft ($6.5B). Revenue $34.9B FY2024. CEO: Marc Benioff. HQ: San Francisco. Salesforce uses its own platform for billing via Salesforce CPQ and Salesforce Billing.',
-            dispute_playbook: 'Common Salesforce subscription disputes: 1) License true-up disagreements - customer claims they didn\'t authorize additional users, verify the EA amendment clause. 2) Auto-renewal without notice - customer claims they sent cancellation, check 30-day notice requirement. 3) Sandbox/storage overage - customer didn\'t realize usage exceeded plan limits. 4) Implementation partner billing confusion - separate from Salesforce direct billing. 5) Einstein AI add-on charges - customer claims they didn\'t opt in. Always reference the Master Subscription Agreement (MSA) terms. Offer payment plans for large outstanding balances. Never threaten, always reference the original agreement terms professionally.'
+            amount: '$45,000'
           })
         });
 
-        if(!response.ok) throw new Error('API returned ' + response.status);
+        if(!response.ok) {
+          var errBody = ''; try { errBody = await response.text(); } catch(e){}
+          console.error('web-call error:', response.status, errBody);
+          throw new Error('API returned ' + response.status);
+        }
         var result = await response.json();
         if(!result.success || !result.access_token) throw new Error('No access token');
 
