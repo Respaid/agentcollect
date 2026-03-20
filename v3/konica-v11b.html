@@ -312,7 +312,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   <div class="rv">
     <h2 id="close-title">Your Konica Minolta agent is 90% ready.</h2>
     <p class="close-sub">One meeting to connect your data. Then it goes live and starts recovering cash.</p>
-    <a href="https://cal.com/johnb/30" target="_blank" class="close-cta" onclick="try{gtag('event','book_cta',{page:'konica-v11b'})}catch(e){}">Finish setup — book 15 min</a>
+    <a href="https://cal.com/johnb/30" target="_blank" rel="noopener" class="close-cta" onclick="try{gtag('event','book_cta',{page:'konica-v11b'})}catch(e){}">Finish setup — book 15 min</a>
     <p class="close-guarantee">No collection, no fee. Performance-based only.</p>
     <p class="close-footer">Konica Minolta used as example. All contacts from public sources. Powered by AgentCollect.</p>
   </div>
@@ -558,7 +558,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
     var postCall = document.getElementById('cs-post-call');
     if(postCall) postCall.style.display = 'none';
     if(orbLabel){ orbLabel.style.display = ''; }
-    if(orbPhone) orbPhone.style.display = '';
+    if(orbPhone){ orbPhone.style.display = ''; orbPhone.style.opacity = '1'; }
+    // Restore hero title, hint, and pulse rings
+    var heroTitle = document.querySelector('.hero-title');
+    var heroHint = document.querySelector('.hero-hint');
+    if(heroTitle) heroTitle.style.display = '';
+    if(heroHint) heroHint.style.display = '';
+    document.querySelectorAll('.orb-ring').forEach(function(r){ r.style.display = ''; });
   });
 
   var postCta = document.getElementById('cs-post-cta');
