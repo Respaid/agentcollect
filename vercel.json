@@ -198,7 +198,13 @@
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/terms", "destination": "/terms.html" },
     { "source": "/how-it-works", "destination": "/how-it-works.html" },
-    { "source": "/industries", "destination": "/industries.html" }
+    { "source": "/industries", "destination": "/industries.html" },
+{ "source": "/industries/saas-collection", "destination": "/industries/saas-collection.html" },
+{ "source": "/industries/healthcare-collection", "destination": "/industries/healthcare-collection.html" },
+{ "source": "/industries/logistics-collection", "destination": "/industries/logistics-collection.html" },
+{ "source": "/industries/financial-services-collection", "destination": "/industries/financial-services-collection.html" },
+{ "source": "/industries/professional-services-collection", "destination": "/industries/professional-services-collection.html" },
+{ "source": "/industries/manufacturing-collection", "destination": "/industries/manufacturing-collection.html" }
   ],
   "headers": [
     {

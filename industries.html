@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
     <title>Industries — AgentCollect</title>
-    <meta name="description" content="AgentCollect serves every industry that invoices. SaaS, healthcare, logistics, financial services, professional services, and manufacturing — your AI collection agent is ready.">
+    <meta name="description" content="Collection agencies use the same playbook for everyone. AgentCollect builds an AI agent trained on your industry — SaaS, healthcare, logistics, financial services, manufacturing.">
     <meta property="og:title" content="Industries — AgentCollect">
-    <meta property="og:description" content="From SaaS to logistics, healthcare to financial services — if you send invoices, your agent is ready.">
+    <meta property="og:description" content="Collection agencies use the same playbook for everyone. We build an AI agent trained on your industry's language, compliance, and payment patterns.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.agentcollect.com/industries">
     <meta property="og:image" content="https://www.agentcollect.com/og.png?v=5">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Industries — AgentCollect">
-    <meta name="twitter:description" content="From SaaS to logistics, healthcare to financial services — if you send invoices, your agent is ready.">
+    <meta name="twitter:description" content="Collection agencies use the same playbook for everyone. We build an AI agent trained on your industry's language, compliance, and payment patterns.">
     <meta name="twitter:image" content="https://www.agentcollect.com/og.png?v=5">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -96,6 +96,8 @@
         .industry-card .industry-desc{font-size:15px;color:var(--text-mid);line-height:1.65;margin-bottom:20px}
         .industry-bullets{display:flex;flex-direction:column;gap:10px}
         .industry-bullet{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-mid);font-weight:500}
+        .industry-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:14px;font-weight:600;color:var(--indigo);text-decoration:none;transition:gap .2s}
+        .industry-link:hover{gap:10px}
         .industry-bullet svg{flex-shrink:0}
 
         /* CTA */
@@ -182,8 +184,8 @@
         <span class="hero-label-dot"></span>
         <span class="hero-label-text">Industries</span>
     </div>
-    <h1 class="reveal s1">Built for every industry<br>that invoices.</h1>
-    <p class="hero-sub reveal s2">From SaaS to logistics, healthcare to financial services — if you send invoices, your agent is ready.</p>
+    <h1 class="reveal s1">Your industry. Your rules.<br>Your collection agent.</h1>
+    <p class="hero-sub reveal s2">Collection agencies use the same playbook for everyone. We build an agent trained on your industry's language, compliance, and payment patterns.</p>
 </section>
 
 <div class="gradient-divider"></div>
@@ -194,12 +196,12 @@
         <div class="industries-grid">
 
             <!-- SaaS & Technology -->
-            <div class="industry-card reveal s1">
+            <a href="/industries/saas-collection" class="industry-card reveal s1" style="text-decoration:none;color:inherit;display:block">
                 <div class="industry-icon" style="background:rgba(79,70,229,.06)">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="1.75"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                 </div>
                 <h3>SaaS & Technology</h3>
-                <p class="industry-desc">Recover failed payments, churned subscriptions, and disputed charges — without losing the customer.</p>
+                <p class="industry-desc">Churned subscribers and failed payments pile up. Your team chases them manually or writes them off. Your agent recovers them automatically — without losing the customer.</p>
                 <div class="industry-bullets">
                     <div class="industry-bullet">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -214,15 +216,15 @@
                         Churn prevention
                     </div>
                 </div>
-            </div>
+            </a>
 
             <!-- Healthcare & Medical -->
-            <div class="industry-card reveal s2">
+            <a href="/industries/healthcare-collection" class="industry-card reveal s2" style="text-decoration:none;color:inherit;display:block">
                 <div class="industry-icon" style="background:rgba(16,185,129,.06)">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.75"><path d="M4.8 2.3A.3.3 0 005 2H19a.3.3 0 01.3.3v19.4a.3.3 0 01-.3.3H5a.3.3 0 01-.3-.3V2.3z"/><path d="M14 11h-4m2-2v4"/></svg>
                 </div>
                 <h3>Healthcare & Medical</h3>
-                <p class="industry-desc">Patient-friendly billing that respects HIPAA. Collect outstanding balances while maintaining trust.</p>
+                <p class="industry-desc">Patient balances sit for months because your team is afraid of compliance violations. Your agent collects them with HIPAA-compliant, patient-friendly outreach.</p>
                 <div class="industry-bullets">
                     <div class="industry-bullet">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -237,15 +239,15 @@
                         Insurance follow-up
                     </div>
                 </div>
-            </div>
+            </a>
 
             <!-- Logistics & Transportation -->
-            <div class="industry-card reveal s3">
+            <a href="/industries/logistics-collection" class="industry-card reveal s3" style="text-decoration:none;color:inherit;display:block">
                 <div class="industry-icon" style="background:rgba(245,158,11,.06)">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.75"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 4v5h-7V8z"/><path d="M5.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM18.5 21a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"/></svg>
                 </div>
                 <h3>Logistics & Transportation</h3>
-                <p class="industry-desc">Freight brokers, carriers, and 3PLs — collect from shippers and partners at scale.</p>
+                <p class="industry-desc">Shippers dispute, carriers delay, and 3PLs go quiet. Multi-party freight invoices are notoriously hard to collect. Your agent handles the complexity.</p>
                 <div class="industry-bullets">
                     <div class="industry-bullet">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -260,15 +262,15 @@
                         Multi-party disputes
                     </div>
                 </div>
-            </div>
+            </a>
 
             <!-- Financial Services -->
-            <div class="industry-card reveal s4">
+            <a href="/industries/financial-services-collection" class="industry-card reveal s4" style="text-decoration:none;color:inherit;display:block">
                 <div class="industry-icon" style="background:rgba(79,70,229,.06)">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--indigo)" stroke-width="1.75"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>
                 </div>
                 <h3>Financial Services</h3>
-                <p class="industry-desc">Banks, lenders, and fintechs — compliant collection under Reg F, TCPA, and state laws.</p>
+                <p class="industry-desc">One compliance slip costs more than the debt itself. Your agent enforces Reg F, TCPA, and state rules at the system level — zero human error.</p>
                 <div class="industry-bullets">
                     <div class="industry-bullet">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -283,15 +285,15 @@
                         State-by-state licensing
                     </div>
                 </div>
-            </div>
+            </a>
 
             <!-- Professional Services -->
-            <div class="industry-card reveal s5">
+            <a href="/industries/professional-services-collection" class="industry-card reveal s5" style="text-decoration:none;color:inherit;display:block">
                 <div class="industry-icon" style="background:rgba(16,185,129,.06)">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.75"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
                 </div>
                 <h3>Professional Services</h3>
-                <p class="industry-desc">Law firms, consultancies, agencies — collect outstanding fees without damaging client relationships.</p>
+                <p class="industry-desc">Asking clients for money feels awkward. So you don't — and receivables age. Your agent does the asking professionally, preserving the relationship.</p>
                 <div class="industry-bullets">
                     <div class="industry-bullet">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -306,15 +308,15 @@
                         Project milestone disputes
                     </div>
                 </div>
-            </div>
+            </a>
 
             <!-- Manufacturing & Distribution -->
-            <div class="industry-card reveal s6">
+            <a href="/industries/manufacturing-collection" class="industry-card reveal s6" style="text-decoration:none;color:inherit;display:block">
                 <div class="industry-icon" style="background:rgba(245,158,11,.06)">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1.75"><path d="M2 20h20M6 20V4l6 4V4l6 4v12"/></svg>
                 </div>
                 <h3>Manufacturing & Distribution</h3>
-                <p class="industry-desc">Collect on net-30/60/90 invoices from retailers, distributors, and wholesale buyers.</p>
+                <p class="industry-desc">Net-60 stretches to net-120. Retailers delay, distributors ghost. Your agent follows up relentlessly on every PO until you get paid.</p>
                 <div class="industry-bullets">
                     <div class="industry-bullet">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -329,7 +331,7 @@
                         High-volume processing
                     </div>
                 </div>
-            </div>
+            </a>
 
         </div>
     </div>
@@ -339,8 +341,8 @@
 
 <!-- CTA -->
 <section class="cta-section">
-    <h2 class="reveal">Your agent is ready.<br>One call to go live.</h2>
-    <p class="reveal s1">Upload your invoices. Your AI agent starts collecting in hours — calls, emails, disputes, payment plans. All under your brand.</p>
+    <h2 class="reveal">See it work on your invoices.</h2>
+    <p class="reveal s1">We'll build a working agent for your industry during the call. Bring your hardest accounts — we'll show you how it handles them.</p>
     <div class="cta-btns reveal s2">
         <a href="https://cal.com/johnb/30" class="cta-btn-primary" target="_blank" rel="noopener">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
