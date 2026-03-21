@@ -823,7 +823,7 @@
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
             </div>
             <div class="intel-card-label">Customer feedback</div>
-            <div class="intel-card-title">What your customers see</div>
+            <div class="intel-card-title" id="intel-reviews-title">What your customers see</div>
             <div id="intel-reviews-content"></div>
         </div>
         <!-- Card 3: What it's costing -->
@@ -1630,11 +1630,19 @@
             if (apiData._disputePlaybook) updated._disputePlaybook = apiData._disputePlaybook;
             if (apiData._brandColors) updated._brandColors = apiData._brandColors;
 
+            // Store CFPB real agency data for intel section
+            if (apiData.current_agency) updated._currentAgency = apiData.current_agency;
+
             // Update the current company data
             currentCompany = updated;
 
             // Update dossier + demo with API data
             updateDemoWithAPIData(updated);
+
+            // Re-render intel section with real CFPB data if it's already visible
+            if (apiData.current_agency && document.getElementById('intel-section') && document.getElementById('intel-section').classList.contains('active')) {
+                showIntelSection(updated, domain);
+            }
 
             // Update build title (especially if API name differs from guessed name)
             buildTitle.textContent = updated.name + ' collection agent';
@@ -2485,6 +2493,17 @@
         }
     };
 
+    function generateStars(rating) {
+        var full = Math.floor(rating);
+        var half = (rating - full) >= 0.5 ? 1 : 0;
+        var empty = 5 - full - half;
+        var html = '';
+        for (var i = 0; i < full; i++) html += '&#9733;';
+        for (var i = 0; i < half; i++) html += '&#9733;'; // half shown as full for simplicity
+        for (var i = 0; i < empty; i++) html += '&#9734;';
+        return html;
+    }
+
     function getAgencyData(industry) {
         var ind = (industry || '').toLowerCase();
         if (ind.match(/tech|software|saas|platform|cloud/)) return AGENCY_DATA['technology'];
@@ -2501,7 +2520,9 @@
         var intelSubtitle = document.getElementById('intel-subtitle');
         if (!intelSection) return;
 
-        var agency = getAgencyData(data.industry);
+        // Use REAL CFPB data from API when available, fall back to industry template
+        var agency = data._currentAgency || getAgencyData(data.industry);
+        var isRealData = !!data._currentAgency;
 
         // Personalize header
         intelTitle.textContent = data.name + "'s current recovery setup";
@@ -2511,22 +2532,36 @@
         var agencyTitle = document.getElementById('intel-agency-title');
         agencyTitle.textContent = 'Collecting under your name';
         var agencyContent = document.getElementById('intel-agency-content');
+        var starsHtml = generateStars(parseFloat(agency.rating));
+        var sourceLabel = isRealData ? '<div style="font-size:11px;color:#10B981;font-weight:600;margin-top:4px">&#9679; CFPB verified data</div>' : '';
         agencyContent.innerHTML =
             '<div class="intel-agency-badge">' +
                 '<span class="intel-agency-name">' + agency.name + '</span>' +
                 '<div class="intel-rating">' +
-                    '<span class="intel-rating-stars">&#9733;&#9733;&#9734;&#9734;&#9734;</span>' +
+                    '<span class="intel-rating-stars">' + starsHtml + '</span>' +
                     '<span class="intel-rating-score">' + agency.rating + '/5</span>' +
                 '</div>' +
             '</div>' +
-            '<div style="font-size:13px;color:var(--text-muted);margin-bottom:4px">' + agency.complaints + ' complaints filed (BBB + CFPB)</div>' +
-            '<div style="font-size:12px;color:var(--red);font-weight:500">Operates under ' + data.name + '\'s brand name</div>';
+            '<div style="font-size:13px;color:var(--text-muted);margin-bottom:4px">' + agency.complaints + ' complaints filed' + (isRealData ? ' (CFPB)' : ' (BBB + CFPB)') + '</div>' +
+            '<div style="font-size:12px;color:var(--red);font-weight:500">Operates under ' + data.name + '\'s brand name</div>' +
+            sourceLabel;
 
-        // Card 2: Reviews
+        // Card 2: Reviews (real CFPB complaints or industry templates)
+        var reviewsTitle = document.getElementById('intel-reviews-title');
+        if (reviewsTitle && isRealData) {
+            reviewsTitle.textContent = 'Real complaints filed';
+        }
         var reviewsContent = document.getElementById('intel-reviews-content');
-        reviewsContent.innerHTML = agency.reviews.map(function(r) {
-            return '<div class="intel-review">"' + r.text + '"<div class="intel-review-source">' + r.source + '</div></div>';
-        }).join('');
+        var reviewsHtml = '';
+        if (agency.reviews && agency.reviews.length > 0) {
+            reviewsHtml = agency.reviews.map(function(r) {
+                return '<div class="intel-review">"' + r.text + '"<div class="intel-review-source">' + r.source + '</div></div>';
+            }).join('');
+        } else if (isRealData) {
+            // CFPB found complaints but none had narratives (no consumer consent)
+            reviewsHtml = '<div class="intel-review" style="color:var(--text-muted);font-style:italic">' + agency.complaints + ' complaints on file. Narratives not publicly available for this company.</div>';
+        }
+        reviewsContent.innerHTML = reviewsHtml;
 
         // Card 3: Cost comparison
         var costContent = document.getElementById('intel-cost-content');
