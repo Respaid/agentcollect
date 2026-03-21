@@ -316,7 +316,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 <nav class="nav">
   <div class="nav-inner">
     <a href="https://agentcollect.com" class="nav-logo">AgentCollect<span class="dot"></span></a>
-    <span class="nav-expiry">Private briefing · <strong id="days-left"></strong></span>
+    <span class="nav-expiry">This page disappears in <strong id="days-left"></strong></span>
   </div>
 </nav>
 
@@ -519,7 +519,7 @@ window.__RetellWebClient = RetellWebClient;
   var expiry = new Date('2026-04-03');
   var diff = Math.ceil((expiry - new Date()) / 864e5);
   var el = document.getElementById('days-left');
-  if(el) el.textContent = diff > 0 ? diff + ' day' + (diff !== 1 ? 's' : '') + ' left' : 'expired';
+  if(el) el.textContent = diff > 0 ? diff + ' day' + (diff !== 1 ? 's' : '') : 'expired';
 })();
 
 // ===== Scroll Reveal =====
