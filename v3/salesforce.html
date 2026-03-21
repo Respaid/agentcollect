@@ -85,10 +85,10 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .hero-hint{font-size:14px;color:var(--green);opacity:.8;text-align:center;margin-bottom:0;font-weight:600;animation:fadeInUp .6s ease .4s both}
 
 /* Scroll chevron */
-.scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:4px;opacity:.4;animation:chevBounce 2s ease-in-out infinite 2s;transition:opacity .4s}
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;opacity:.7;animation:chevBounce 1.8s ease-in-out infinite 1.5s;transition:opacity .4s}
 .scroll-hint.hidden{opacity:0;pointer-events:none}
-.scroll-hint svg{width:24px;height:24px;color:var(--muted)}
-@keyframes chevBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+.scroll-hint svg{width:32px;height:32px;color:var(--blue)}
+@keyframes chevBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}
 
 /* Pulse rings — incoming call effect */
 .orb-ring{position:absolute;border-radius:50%;border:1.5px solid rgba(0,161,224,.12);pointer-events:none}
