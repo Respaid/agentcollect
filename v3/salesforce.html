@@ -151,6 +151,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .pain-pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid rgba(220,38,38,.15);border-radius:100px;padding:10px 20px;font-size:14px;font-weight:600;color:var(--text);white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.08);flex-shrink:0;text-decoration:none}
 .pain-pill .hl{color:var(--red);font-weight:800}
 .pain-pill .src-logo{height:16px;width:auto;opacity:.4;margin-left:4px;vertical-align:middle;flex-shrink:0;border-radius:3px}
+.pain-pill .src-tag{font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.02em;margin-left:6px;flex-shrink:0}
 .pain-count{text-align:center;margin-top:20px;font-size:15px;font-weight:700;color:var(--red)}
 .pain-count span{color:var(--muted);font-weight:500}
 .pain-count a{color:var(--red);text-decoration:none;font-weight:700}
@@ -289,7 +290,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 <nav class="nav">
   <div class="nav-inner">
     <a href="https://agentcollect.com" class="nav-logo">AgentCollect<span class="dot"></span></a>
-    <span class="nav-expiry">Salesforce, <strong id="days-left"></strong></span>
+    <span class="nav-expiry">Private briefing · <strong id="days-left"></strong></span>
   </div>
 </nav>
 
@@ -372,31 +373,31 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   <div class="pain-wall rv">
     <!-- Row 1: Recovery/Collection — money owed, disputes, sent to collections -->
     <div class="pain-row pain-row-1">
-      <a class="pain-pill" href="https://www.bbb.org/us/ca/san-francisco/profile/computer-software-developers/salesforcecom-inc-1116-44164/complaints" target="_blank">"3 years silence, then a <span class="hl">collection notice</span>" <img class="src-logo" src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/symbol" alt="BBB"></a>
-      <a class="pain-pill" href="https://www.trustpilot.com/review/salesforce.com?page=2" target="_blank">"Disputed a charge — <span class="hl">ZERO responses</span> for months" <img class="src-logo" src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/symbol" alt="Trustpilot"></a>
-      <a class="pain-pill" href="https://www.bbb.org/us/ca/san-francisco/profile/computer-software-developers/salesforcecom-inc-1116-44164/complaints" target="_blank">"Took money from my account — <span class="hl">won't respond</span>" <img class="src-logo" src="https://cdn.brandfetch.io/g2.com/w/64/h/64/symbol" alt="G2"></a>
-      <a class="pain-pill" href="https://www.trustpilot.com/review/salesforce.com?page=6" target="_blank">"Tickets <span class="hl">closed in 24h</span> — no explanation" <img class="src-logo" src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/symbol" alt="BBB"></a>
-      <a class="pain-pill" href="https://www.bbb.org/us/ca/san-francisco/profile/computer-software-developers/salesforcecom-inc-1116-44164/complaints" target="_blank">"Reached out <span class="hl">many times</span> about refund — nothing" <img class="src-logo" src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/symbol" alt="Trustpilot"></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/ca/san-francisco/profile/computer-software-developers/salesforcecom-inc-1116-44164/complaints" target="_blank">"3 years silence, then a <span class="hl">collection notice</span>" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
+      <a class="pain-pill" href="https://www.trustpilot.com/review/salesforce.com?page=2" target="_blank">"Disputed a charge — <span class="hl">ZERO responses</span> for months" <img class="src-logo" src="/v3/logos/trustpilot.png" alt="Trustpilot"></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/ca/san-francisco/profile/computer-software-developers/salesforcecom-inc-1116-44164/complaints" target="_blank">"Took money from my account — <span class="hl">won't respond</span>" <img class="src-logo" src="/v3/logos/g2.png" alt="G2"></a>
+      <a class="pain-pill" href="https://www.trustpilot.com/review/salesforce.com?page=6" target="_blank">"Tickets <span class="hl">closed in 24h</span> — no explanation" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/ca/san-francisco/profile/computer-software-developers/salesforcecom-inc-1116-44164/complaints" target="_blank">"Reached out <span class="hl">many times</span> about refund — nothing" <img class="src-logo" src="/v3/logos/trustpilot.png" alt="Trustpilot"></a>
       <!-- dup -->
-      <a class="pain-pill" href="https://www.bbb.org/us/ca/san-francisco/profile/computer-software-developers/salesforcecom-inc-1116-44164/complaints" target="_blank">"3 years silence, then a <span class="hl">collection notice</span>" <img class="src-logo" src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/symbol" alt="BBB"></a>
-      <a class="pain-pill" href="https://www.trustpilot.com/review/salesforce.com?page=2" target="_blank">"Disputed a charge — <span class="hl">ZERO responses</span> for months" <img class="src-logo" src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/symbol" alt="Trustpilot"></a>
-      <a class="pain-pill" href="https://www.bbb.org/us/ca/san-francisco/profile/computer-software-developers/salesforcecom-inc-1116-44164/complaints" target="_blank">"Took money from my account — <span class="hl">won't respond</span>" <img class="src-logo" src="https://cdn.brandfetch.io/g2.com/w/64/h/64/symbol" alt="G2"></a>
-      <a class="pain-pill" href="https://www.trustpilot.com/review/salesforce.com?page=6" target="_blank">"Tickets <span class="hl">closed in 24h</span> — no explanation" <img class="src-logo" src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/symbol" alt="BBB"></a>
-      <a class="pain-pill" href="https://www.bbb.org/us/ca/san-francisco/profile/computer-software-developers/salesforcecom-inc-1116-44164/complaints" target="_blank">"Reached out <span class="hl">many times</span> about refund — nothing" <img class="src-logo" src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/symbol" alt="Trustpilot"></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/ca/san-francisco/profile/computer-software-developers/salesforcecom-inc-1116-44164/complaints" target="_blank">"3 years silence, then a <span class="hl">collection notice</span>" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
+      <a class="pain-pill" href="https://www.trustpilot.com/review/salesforce.com?page=2" target="_blank">"Disputed a charge — <span class="hl">ZERO responses</span> for months" <img class="src-logo" src="/v3/logos/trustpilot.png" alt="Trustpilot"></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/ca/san-francisco/profile/computer-software-developers/salesforcecom-inc-1116-44164/complaints" target="_blank">"Took money from my account — <span class="hl">won't respond</span>" <img class="src-logo" src="/v3/logos/g2.png" alt="G2"></a>
+      <a class="pain-pill" href="https://www.trustpilot.com/review/salesforce.com?page=6" target="_blank">"Tickets <span class="hl">closed in 24h</span> — no explanation" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/ca/san-francisco/profile/computer-software-developers/salesforcecom-inc-1116-44164/complaints" target="_blank">"Reached out <span class="hl">many times</span> about refund — nothing" <img class="src-logo" src="/v3/logos/trustpilot.png" alt="Trustpilot"></a>
     </div>
     <!-- Row 2: Billing support failures -->
     <div class="pain-row pain-row-2">
-      <a class="pain-pill" href="https://www.trustpilot.com/review/salesforce.com?page=8" target="_blank">"No billing dept <span class="hl">can help</span> you" <img class="src-logo" src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/symbol" alt="Trustpilot"></a>
-      <a class="pain-pill" href="https://www.bbb.org/us/ca/san-francisco/profile/computer-software-developers/salesforcecom-inc-1116-44164/complaints" target="_blank">"No one responded to <span class="hl">billing email</span>" <img class="src-logo" src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/symbol" alt="BBB"></a>
-      <a class="pain-pill" href="https://www.g2.com/products/salesforce-service-cloud/reviews" target="_blank">"Charged after cancellation — <span class="hl">no refund</span>" <img class="src-logo" src="https://cdn.brandfetch.io/g2.com/w/64/h/64/symbol" alt="G2"></a>
-      <a class="pain-pill" href="https://www.trustpilot.com/review/salesforce.com?page=3" target="_blank">"Auto-renewed without <span class="hl">consent</span> — still paying" <img class="src-logo" src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/symbol" alt="Trustpilot"></a>
-      <a class="pain-pill" href="https://www.g2.com/products/salesforce-salesforce-sales-cloud/reviews" target="_blank">"Billing dept is <span class="hl">useless</span>" <img class="src-logo" src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/symbol" alt="BBB"></a>
+      <a class="pain-pill" href="https://www.trustpilot.com/review/salesforce.com?page=8" target="_blank">"No billing dept <span class="hl">can help</span> you" <img class="src-logo" src="/v3/logos/trustpilot.png" alt="Trustpilot"></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/ca/san-francisco/profile/computer-software-developers/salesforcecom-inc-1116-44164/complaints" target="_blank">"No one responded to <span class="hl">billing email</span>" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
+      <a class="pain-pill" href="https://www.g2.com/products/salesforce-service-cloud/reviews" target="_blank">"Charged after cancellation — <span class="hl">no refund</span>" <img class="src-logo" src="/v3/logos/g2.png" alt="G2"></a>
+      <a class="pain-pill" href="https://www.trustpilot.com/review/salesforce.com?page=3" target="_blank">"Auto-renewed without <span class="hl">consent</span> — still paying" <img class="src-logo" src="/v3/logos/trustpilot.png" alt="Trustpilot"></a>
+      <a class="pain-pill" href="https://www.g2.com/products/salesforce-salesforce-sales-cloud/reviews" target="_blank">"Billing dept is <span class="hl">useless</span>" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
       <!-- dup -->
-      <a class="pain-pill" href="https://www.trustpilot.com/review/salesforce.com?page=8" target="_blank">"No billing dept <span class="hl">can help</span> you" <img class="src-logo" src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/symbol" alt="Trustpilot"></a>
-      <a class="pain-pill" href="https://www.bbb.org/us/ca/san-francisco/profile/computer-software-developers/salesforcecom-inc-1116-44164/complaints" target="_blank">"No one responded to <span class="hl">billing email</span>" <img class="src-logo" src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/symbol" alt="BBB"></a>
-      <a class="pain-pill" href="https://www.g2.com/products/salesforce-service-cloud/reviews" target="_blank">"Charged after cancellation — <span class="hl">no refund</span>" <img class="src-logo" src="https://cdn.brandfetch.io/g2.com/w/64/h/64/symbol" alt="G2"></a>
-      <a class="pain-pill" href="https://www.trustpilot.com/review/salesforce.com?page=3" target="_blank">"Auto-renewed without <span class="hl">consent</span> — still paying" <img class="src-logo" src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/symbol" alt="Trustpilot"></a>
-      <a class="pain-pill" href="https://www.g2.com/products/salesforce-salesforce-sales-cloud/reviews" target="_blank">"Billing dept is <span class="hl">useless</span>" <img class="src-logo" src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/symbol" alt="BBB"></a>
+      <a class="pain-pill" href="https://www.trustpilot.com/review/salesforce.com?page=8" target="_blank">"No billing dept <span class="hl">can help</span> you" <img class="src-logo" src="/v3/logos/trustpilot.png" alt="Trustpilot"></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/ca/san-francisco/profile/computer-software-developers/salesforcecom-inc-1116-44164/complaints" target="_blank">"No one responded to <span class="hl">billing email</span>" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
+      <a class="pain-pill" href="https://www.g2.com/products/salesforce-service-cloud/reviews" target="_blank">"Charged after cancellation — <span class="hl">no refund</span>" <img class="src-logo" src="/v3/logos/g2.png" alt="G2"></a>
+      <a class="pain-pill" href="https://www.trustpilot.com/review/salesforce.com?page=3" target="_blank">"Auto-renewed without <span class="hl">consent</span> — still paying" <img class="src-logo" src="/v3/logos/trustpilot.png" alt="Trustpilot"></a>
+      <a class="pain-pill" href="https://www.g2.com/products/salesforce-salesforce-sales-cloud/reviews" target="_blank">"Billing dept is <span class="hl">useless</span>" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
     </div>
   </div>
   <div class="pain-count rv">200+ <span>billing support complaints from Salesforce customers &mdash; </span><a href="https://www.bbb.org/us/ca/san-francisco/profile/computer-software-developers/salesforcecom-inc-1116-44164/complaints" target="_blank">BBB &#8599;</a> <span>|</span> <a href="https://www.trustpilot.com/review/salesforce.com" target="_blank">Trustpilot &#8599;</a> <span>|</span> <a href="https://www.g2.com/products/salesforce-salesforce-sales-cloud/reviews" target="_blank">G2 &#8599;</a></div>
@@ -489,10 +490,10 @@ window.__RetellWebClient = RetellWebClient;
 <script>
 // ===== Expiry Countdown =====
 (function(){
-  var expiry = new Date('2026-04-18');
+  var expiry = new Date('2026-04-03');
   var diff = Math.ceil((expiry - new Date()) / 864e5);
   var el = document.getElementById('days-left');
-  if(el) el.textContent = diff > 0 ? 'expires in ' + diff + ' day' + (diff !== 1 ? 's' : '') : 'expired';
+  if(el) el.textContent = diff > 0 ? diff + ' day' + (diff !== 1 ? 's' : '') + ' left' : 'expired';
 })();
 
 // ===== Scroll Reveal =====
