@@ -696,6 +696,15 @@ window.__RetellWebClient = RetellWebClient;
 
     (async function(){
       try {
+        // Request mic permission FIRST — before API call
+        // This ensures the permission dialog is dismissed before Sarah starts talking
+        try {
+          var stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          stream.getTracks().forEach(function(t){ t.stop(); }); // release immediately, SDK will re-request
+        } catch(micErr) {
+          throw new Error('Microphone access required');
+        }
+
         var response = await fetch('https://backend.widr.app/api/v1/demo/web-call', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
