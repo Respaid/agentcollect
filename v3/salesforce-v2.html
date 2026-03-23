@@ -95,8 +95,39 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .orb-label{text-align:center;font-size:15px;font-weight:600;color:var(--muted);margin-top:0;margin-bottom:20px;letter-spacing:-.01em;display:none}
 .orb-label .orb-label-hint{display:block;font-size:12px;font-weight:400;color:var(--muted);opacity:.5;margin-top:4px}
 
-/* ===== CALL STATES ===== */
-.call-state{display:flex;flex-direction:column;align-items:center;width:100%;max-width:360px;margin:0 auto}
+/* ===== DEMO PLAYER ===== */
+.demo-player{background:#0f0f1a;border-radius:20px;overflow:hidden;margin:20px auto 0;max-width:460px;width:100%;padding:24px 20px 20px}
+.demo-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.demo-live{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#4F46E5}
+.demo-live-dot{width:6px;height:6px;border-radius:50%;background:#4F46E5;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.demo-timer{font-size:13px;font-weight:600;color:rgba(255,255,255,.4);font-variant-numeric:tabular-nums}
+.demo-waveform{display:flex;align-items:center;justify-content:center;gap:2.5px;height:44px;margin-bottom:16px}
+.demo-waveform span{width:3px;border-radius:3px;min-height:3px;will-change:height;transition:height .08s linear}
+.demo-transcript-live{max-height:160px;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}
+.demo-transcript-live::-webkit-scrollbar{display:none}
+.demo-line{display:flex;gap:8px;align-items:flex-start;padding:6px 8px;border-radius:8px;margin-bottom:4px;border-left:2px solid transparent;animation:fadeInUp .3s ease}
+.demo-line.active{background:rgba(79,70,229,.06);border-left-color:#4F46E5}
+.demo-avatar{width:20px;height:20px;border-radius:50%;font-size:8px;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.demo-avatar.ai{background:linear-gradient(135deg,#4F46E5,#3B82F6)}
+.demo-avatar.client{background:#64748b}
+.demo-text{font-size:13px;line-height:1.5;color:rgba(255,255,255,.85)}
+.demo-text .word{opacity:0;transition:opacity .12s ease}
+.demo-text .word.visible{opacity:1}
+.demo-summary{display:none;flex-direction:column;align-items:center;padding:16px 0 4px;gap:10px;animation:fadeInUp .4s ease}
+.demo-summary.visible{display:flex}
+.demo-summary-check svg{filter:drop-shadow(0 0 8px rgba(16,185,129,.4))}
+.demo-summary-title{color:#fff;font-size:17px;font-weight:700}
+.demo-summary-sub{color:rgba(255,255,255,.45);font-size:13px;text-align:center;line-height:1.5;max-width:320px}
+.demo-summary-cta{display:flex;align-items:center;gap:8px;padding:14px 28px;background:var(--blue);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;text-decoration:none;margin-top:6px;box-shadow:0 0 20px rgba(79,70,229,.3);font-family:var(--sans)}
+.demo-summary-cta:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 4px 24px rgba(79,70,229,.4)}
+.demo-replay{background:none;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.5);padding:8px 16px;border-radius:8px;font-size:12px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;margin-top:2px;font-family:var(--sans)}
+.demo-replay:hover{border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.7)}
+.demo-powered{text-align:center;padding:10px 12px 0;font-size:11px;color:rgba(255,255,255,.2)}
+
+/* ===== CALL STATES (legacy) ===== */
+.call-state{display:none}
+
 .cs-connecting{display:none;flex-direction:column;align-items:center;gap:12px;padding:8px 0;animation:fadeInUp .3s ease}
 .cs-connecting .co-spinner{width:28px;height:28px;border:3px solid rgba(79,70,229,.15);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite}
 .cs-connecting-text{color:var(--muted);font-size:13px;font-weight:500}
@@ -300,49 +331,39 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       <div class="orb-layer orb-layer-2"></div>
       <div class="orb-layer orb-layer-3"></div>
       <div class="orb-layer orb-layer-4"></div>
-      <div class="orb-phone-center" id="orb-phone-center">
+      <div class="orb-phone-center" id="orb-phone-center" style="opacity:0">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
       </div>
     </div>
   </div>
 
   <div class="hero-title">Your Salesforce agent is calling.</div>
-  <div class="hero-hint">Click to answer</div>
+  <div class="hero-hint" style="color:var(--blue);opacity:.6;font-weight:600;font-size:13px">Sales Cloud Enterprise — $18,400 outstanding</div>
 
-  <div class="orb-label" id="orb-label">Click to call your agent<span class="orb-label-hint">Live AI voice — 30 seconds</span></div>
-
-  <!-- Call States (below orb) -->
-  <div class="call-state" id="call-state">
-    <div class="cs-connecting" id="cs-connecting">
-      <div class="co-spinner"></div>
-      <div class="cs-connecting-text" id="cs-connecting-text">Connecting to Salesforce agent...</div>
+  <!-- Pre-scripted demo player -->
+  <div class="demo-player" id="demo-player">
+    <div class="demo-header">
+      <div class="demo-live"><span class="demo-live-dot"></span> Live</div>
+      <div class="demo-timer" id="demo-timer">0:00</div>
     </div>
-    <div class="cs-active" id="cs-active">
-      <div class="cs-status" id="cs-status">Listening...</div>
-      <div class="cs-waveform" id="cs-waveform">
-        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-      </div>
-      <div class="cs-transcript" id="cs-transcript"></div>
-      <button class="cs-end-btn" id="cs-end-btn">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        End call
-      </button>
-    </div>
-    <div class="cs-post-call" id="cs-post-call">
-      <div class="cs-post-check">
+    <div class="demo-waveform" id="demo-waveform"></div>
+    <div class="demo-transcript-live" id="demo-transcript"></div>
+    <div class="demo-summary" id="demo-summary">
+      <div class="demo-summary-check">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
       </div>
-      <div class="cs-post-title">That was 30 seconds.</div>
-      <div class="cs-post-sub">Now imagine 10,000 accounts with your real data.</div>
-      <a href="https://cal.com/johnb/30" target="_blank" class="cs-post-cta" id="cs-post-cta">
+      <div class="demo-summary-title">$18,400 resolved in 38 seconds.</div>
+      <div class="demo-summary-sub">Now imagine this across your full Salesforce portfolio.</div>
+      <a href="https://cal.com/johnb/30" target="_blank" class="demo-summary-cta" onclick="try{gtag('event','sf_demo_book',{page:'salesforce-v2'})}catch(e){}">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         Run this on your portfolio
       </a>
-      <button class="cs-post-retry" id="cs-post-retry">
+      <button class="demo-replay" id="demo-replay">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
-        Try another call
+        Watch again
       </button>
     </div>
+    <div class="demo-powered">Powered by AgentCollect</div>
   </div>
 </section>
 
@@ -433,35 +454,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
     </div>
   </div>
 
-  <!-- Voice demo transcript -->
-  <div class="demo-transcript rv rv-d2">
-    <div class="demo-transcript-title">Live agent preview — Salesforce billing dispute</div>
-
-    <div class="demo-bubble agent">
-      <div class="demo-bubble-label">Agent</div>
-      <div class="demo-bubble-text">Hi, this is Sarah from Salesforce. I'm reaching out about invoice SF-2026-4891 for your Sales Cloud Enterprise subscription — $18,400 outstanding. I understand there may have been some confusion around the renewal terms.</div>
-    </div>
-
-    <div class="demo-bubble debtor">
-      <div class="demo-bubble-label">Client</div>
-      <div class="demo-bubble-text">We tried to cancel three months ago. Nobody responded to our support cases. We're not paying for a service we asked to stop.</div>
-    </div>
-
-    <div class="demo-bubble agent">
-      <div class="demo-bubble-label">Agent</div>
-      <div class="demo-bubble-text">I completely understand your frustration, and I apologize for the communication gap. Let me pull up your account. I can see the cancellation requests. How about we settle the usage period at a reduced amount and set up a two-installment plan?</div>
-    </div>
-
-    <div class="demo-bubble debtor">
-      <div class="demo-bubble-label">Client</div>
-      <div class="demo-bubble-text">If you can get that number down and split it up, we can work with that.</div>
-    </div>
-
-    <div class="demo-bubble agent">
-      <div class="demo-bubble-label">Agent</div>
-      <div class="demo-bubble-text">I'll send a settlement offer to your email right now — $12,800 in two payments. You'll have a secure payment link. Does that work for you?</div>
-    </div>
-  </div>
 </section>
 
 <!-- SECTION 2b: AGENTCOLLECT SOCIAL PROOF -->
@@ -539,11 +531,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   <p class="how-footer">Built for Salesforce. All contacts from public sources. Powered by AgentCollect.</p>
 </section>
 
-<!-- Floating Voice FAB -->
-<div class="voice-fab" id="voice-fab">
-  <div class="voice-fab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg></div>
-  <div class="voice-fab-text">Call your agent</div>
-</div>
 
 <script>
 // ===== Expiry Countdown =====
@@ -606,233 +593,168 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   ro.observe(q);
 })();
 
-// ===== Floating Voice FAB =====
-(function(){
-  var fab = document.getElementById('voice-fab');
-  var hero = document.getElementById('hero');
-  var fabHidden = false;
-  if(!fab || !hero) return;
+// ===== PRE-SCRIPTED DEMO (Salesforce Sales Cloud) =====
+var DEMO_SCRIPT = [
+  {t:0,   speaker:'agent', text:'Hi, this is Sarah calling on behalf of Salesforce. I\'m reaching out about invoice SF-2026-4891 for your Sales Cloud Enterprise subscription \u2014 $18,400 outstanding. Is this a good time?'},
+  {t:8,   speaker:'client', text:'We tried to cancel three months ago. Nobody responded to our support cases. We\'re not paying for a service we asked to stop.'},
+  {t:16,  speaker:'agent', text:'I completely understand, and I apologize for the communication gap. Let me pull up your account \u2014 I can see two cancellation requests from January. How about we settle the actual usage period at a reduced rate?'},
+  {t:24,  speaker:'client', text:'If you can get the number down and split it up, we can work with that.'},
+  {t:30,  speaker:'agent', text:'Absolutely. I\'m sending a settlement offer now \u2014 $12,800 in two installments of $6,400. You\'ll have a secure payment link at your AP email within two minutes.'},
+  {t:38,  speaker:'client', text:'That works. Send it over.'},
+  {t:42,  speaker:'agent', text:'Done. Settlement sent to your accounts payable team. Two payments of $6,400 \u2014 first due in 14 days. Thank you for working through this with me.'},
+  {t:48,  action:'end'}
+];
 
-  fab.addEventListener('click', function(){
-    hero.scrollIntoView({behavior:'smooth', block:'start'});
-    setTimeout(function(){
-      var orb = document.getElementById('orb-wrap');
-      if(orb) orb.click();
-    }, 600);
+var demoWaveformEl = document.getElementById('demo-waveform');
+var demoTranscript = document.getElementById('demo-transcript');
+var demoTimer = document.getElementById('demo-timer');
+var demoSummary = document.getElementById('demo-summary');
+var demoReplay = document.getElementById('demo-replay');
+var demoBars = [];
+var demoAnimId = null;
+var demoSpeaker = null;
+var demoStartTime = null;
+var demoEnded = false;
+var demoStarted = false;
+
+// AgentCollect indigo palette for waveform bars
+var acColors = ['#4F46E5','#6366F1','#4338CA','#818CF8'];
+
+// Create waveform bars
+for (var bi = 0; bi < 24; bi++) {
+  var bar = document.createElement('span');
+  bar.style.background = acColors[bi % 4];
+  bar.style.height = '3px';
+  demoWaveformEl.appendChild(bar);
+  demoBars.push(bar);
+}
+
+function demoAnimateWaveform() {
+  if (demoEnded) return;
+  var now = Date.now() / 1000;
+  demoBars.forEach(function(bar, i) {
+    var h;
+    if (demoSpeaker === 'agent') h = 12 + Math.sin(now * 4 + i * 0.4) * 16 * Math.random();
+    else if (demoSpeaker === 'client') h = 8 + Math.sin(now * 3 + i * 0.5) * 10 * Math.random();
+    else h = 3 + Math.sin(now * 1.5 + i * 0.6) * 2;
+    bar.style.height = Math.max(3, h) + 'px';
   });
+  demoAnimId = requestAnimationFrame(demoAnimateWaveform);
+}
 
-  window.addEventListener('scroll', function(){
-    if(fabHidden) return;
-    var heroBottom = hero.getBoundingClientRect().bottom;
-    if(heroBottom < 0){
-      fab.classList.add('visible');
-    } else {
-      fab.classList.remove('visible');
-    }
+function demoUpdateTimer() {
+  if (demoEnded || !demoStartTime) return;
+  var elapsed = (Date.now() - demoStartTime) / 1000;
+  var m = Math.floor(elapsed / 60);
+  var s = Math.floor(elapsed % 60);
+  demoTimer.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+}
+
+function demoAddLine(speaker, text) {
+  var div = document.createElement('div');
+  div.className = 'demo-line active';
+  var avatar = document.createElement('div');
+  avatar.className = 'demo-avatar ' + (speaker === 'agent' ? 'ai' : 'client');
+  avatar.textContent = speaker === 'agent' ? 'AI' : 'C';
+  var textEl = document.createElement('div');
+  textEl.className = 'demo-text';
+  var words = text.split(' ');
+  words.forEach(function(word, i) {
+    var span = document.createElement('span');
+    span.className = 'word';
+    span.textContent = word + (i < words.length - 1 ? ' ' : '');
+    textEl.appendChild(span);
   });
+  div.appendChild(avatar);
+  div.appendChild(textEl);
+  demoTranscript.querySelectorAll('.demo-line.active').forEach(function(el) { el.classList.remove('active'); });
+  demoTranscript.appendChild(div);
+  var delay = speaker === 'agent' ? 55 : 45;
+  var wordSpans = textEl.querySelectorAll('.word');
+  wordSpans.forEach(function(ws, i) {
+    setTimeout(function() {
+      if (demoEnded) return;
+      ws.classList.add('visible');
+      demoTranscript.scrollTop = demoTranscript.scrollHeight;
+    }, i * delay);
+  });
+}
 
-  var callState = document.getElementById('call-state');
-  if(callState){
-    var observer = new MutationObserver(function(){
-      var active = document.getElementById('cs-active');
-      if(active && active.classList.contains('visible')){
-        fab.classList.remove('visible');
-        fabHidden = true;
+function demoEnd() {
+  if (demoEnded) return;
+  demoEnded = true;
+  demoSpeaker = null;
+  if (demoAnimId) { cancelAnimationFrame(demoAnimId); demoAnimId = null; }
+  demoBars.forEach(function(bar) { bar.style.height = '3px'; bar.style.opacity = '0.3'; });
+  var orb = document.getElementById('orb-main');
+  if (orb) orb.classList.remove('speaking');
+  setTimeout(function() {
+    demoTranscript.style.display = 'none';
+    document.querySelector('.demo-header').style.display = 'none';
+    demoWaveformEl.style.display = 'none';
+    demoSummary.classList.add('visible');
+  }, 800);
+}
+
+function startDemo() {
+  if (demoStarted && !demoEnded) return;
+  demoStarted = true;
+  demoEnded = false;
+  demoSpeaker = null;
+  demoStartTime = Date.now();
+  demoTranscript.innerHTML = '';
+  demoTranscript.style.display = '';
+  var header = document.querySelector('.demo-header');
+  if (header) header.style.display = '';
+  demoWaveformEl.style.display = '';
+  demoSummary.classList.remove('visible');
+  demoSummary.style.display = '';
+  demoBars.forEach(function(bar) { bar.style.opacity = '1'; bar.style.height = '3px'; });
+  var orb = document.getElementById('orb-main');
+  if (orb) orb.classList.add('speaking');
+  // Hide phone icon during demo
+  var orbPhone = document.getElementById('orb-phone-center');
+  if (orbPhone) orbPhone.style.opacity = '0';
+  demoAnimateWaveform();
+  setInterval(demoUpdateTimer, 250);
+  DEMO_SCRIPT.forEach(function(entry) {
+    setTimeout(function() {
+      if (demoEnded) return;
+      if (entry.action === 'end') { demoEnd(); return; }
+      demoSpeaker = entry.speaker;
+      demoAddLine(entry.speaker, entry.text);
+      var nextEntry = DEMO_SCRIPT.find(function(e) { return e.t > entry.t; });
+      if (nextEntry && !nextEntry.action) {
+        var gap = (nextEntry.t - entry.t) * 1000;
+        setTimeout(function() {
+          if (!demoEnded && demoSpeaker === entry.speaker) demoSpeaker = null;
+        }, Math.min(gap - 500, gap * 0.7));
+      }
+    }, entry.t * 1000);
+  });
+  try { gtag('event', 'sf_demo_started', { page: 'salesforce-v2' }); } catch(e) {}
+}
+
+// Auto-start when hero becomes visible
+var heroSection = document.getElementById('hero');
+if (heroSection) {
+  var demoObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting && !demoStarted) {
+        setTimeout(startDemo, 600);
+        demoObs.unobserve(heroSection);
       }
     });
-    observer.observe(callState, {subtree:true, attributes:true, attributeFilter:['class']});
-  }
-})();
+  }, { threshold: 0.5 });
+  demoObs.observe(heroSection);
+}
 
-// ===== WebRTC Voice Call (2-in-1 Orb) =====
-(function(){
-  var orbWrap = document.getElementById('orb-wrap');
-  var orbLabel = document.getElementById('orb-label');
-  var orbPhone = document.getElementById('orb-phone-center');
-  var csConnecting = document.getElementById('cs-connecting');
-  var csActive = document.getElementById('cs-active');
-  var csEndBtn = document.getElementById('cs-end-btn');
-  var csStatus = document.getElementById('cs-status');
-  var csTranscript = document.getElementById('cs-transcript');
-  var csWaveformEl = document.getElementById('cs-waveform');
-  var csWaveformBars = csWaveformEl ? csWaveformEl.querySelectorAll('span') : [];
-  var waveformAnimId = null;
-  var waveformMode = 'idle';
-  var callActive = false;
-  var retellClient = null;
-  var callStartTime = null;
-
-  function animateWaveform(){
-    for(var i = 0; i < csWaveformBars.length; i++){
-      var bar = csWaveformBars[i];
-      var h;
-      if(waveformMode === 'agent') h = 10 + Math.random() * 34;
-      else if(waveformMode === 'user') h = 6 + Math.random() * 18;
-      else h = 4 + Math.sin(Date.now() / 500 + i * 0.6) * 3;
-      bar.style.height = h + 'px';
-    }
-    waveformAnimId = requestAnimationFrame(animateWaveform);
-  }
-
-  function startWaveformAnim(mode){
-    waveformMode = mode || 'idle';
-    if(!waveformAnimId) animateWaveform();
-  }
-
-  function stopWaveformAnim(){
-    waveformMode = 'idle';
-    if(waveformAnimId){ cancelAnimationFrame(waveformAnimId); waveformAnimId = null; }
-    for(var i = 0; i < csWaveformBars.length; i++) csWaveformBars[i].style.height = '4px';
-  }
-
-  function startVoiceCall(){
-    if(callActive) return;
-    callActive = true;
-    callStartTime = Date.now();
-
-    if(orbLabel) orbLabel.style.display = 'none';
-    if(orbPhone) orbPhone.style.display = 'none';
-    var heroTitle = document.querySelector('.hero-title');
-    var heroHint = document.querySelector('.hero-hint');
-    if(heroTitle) heroTitle.style.display = 'none';
-    if(heroHint) heroHint.style.display = 'none';
-    document.querySelectorAll('.orb-ring').forEach(function(r){ r.style.display = 'none'; });
-    csConnecting.style.display = 'flex';
-    csActive.classList.remove('visible');
-
-    var orb = document.getElementById('orb-main');
-    if(orb) orb.classList.add('speaking');
-
-    (async function(){
-      try {
-        var response = await fetch('https://backend.widr.app/api/v1/demo/web-call', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            company_name: 'Salesforce',
-            product: 'Salesforce Sales Cloud Enterprise subscription',
-            amount: '$18,400'
-          })
-        });
-
-        if(!response.ok) throw new Error('API returned ' + response.status);
-        var result = await response.json();
-        if(!result.success || !result.access_token) throw new Error('No access token');
-
-        var module = await import('https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.7/+esm');
-        var RetellWebClient = module.RetellWebClient;
-        retellClient = new RetellWebClient();
-
-        retellClient.on('call_started', function(){
-          callStartTime = Date.now();
-          csConnecting.style.display = 'none';
-          csActive.classList.add('visible');
-          csStatus.textContent = 'Your turn — speak now';
-          startWaveformAnim('idle');
-          if(orbPhone) orbPhone.style.opacity = '0';
-          try { gtag('event', 'call_started', { company: 'Salesforce', page: 'salesforce-v2' }); } catch(e){}
-        });
-
-        retellClient.on('call_ended', function(){
-          try { gtag('event', 'call_completed', { company: 'Salesforce', page: 'salesforce-v2' }); } catch(e){}
-          var duration = callStartTime ? Math.round((Date.now() - callStartTime) / 1000) : 30;
-          endCall(duration);
-        });
-
-        retellClient.on('agent_start_talking', function(){
-          startWaveformAnim('agent');
-          csStatus.textContent = 'Agent speaking...';
-        });
-
-        retellClient.on('agent_stop_talking', function(){
-          startWaveformAnim('user');
-          csStatus.textContent = 'Your turn — speak now';
-        });
-
-        retellClient.on('update', function(update){
-          if(update && update.transcript) renderTranscript(update.transcript);
-        });
-
-        retellClient.on('error', function(err){
-          console.error('RetellAI error:', err);
-          endCall(0);
-        });
-
-        await retellClient.startCall({ accessToken: result.access_token });
-
-      } catch(err){
-        console.error('Voice call error:', err);
-        callActive = false;
-        csConnecting.style.display = 'none';
-        if(orbLabel){ orbLabel.style.display = ''; orbLabel.innerHTML = 'Connection failed — try again<span class="orb-label-hint">Click the orb</span>'; orbLabel.style.color = '#ef4444'; }
-        if(orbPhone) orbPhone.style.display = '';
-        if(orb) orb.classList.remove('speaking');
-        setTimeout(function(){ if(orbLabel){ orbLabel.innerHTML = 'Click to call your agent<span class="orb-label-hint">Live AI voice — 30 seconds</span>'; orbLabel.style.color = ''; } }, 3000);
-      }
-    })();
-  }
-
-  function renderTranscript(transcript){
-    if(!transcript || !transcript.length) return;
-    var last = null;
-    for(var i = transcript.length - 1; i >= 0; i--){
-      if((transcript[i].content || '').trim()){ last = transcript[i]; break; }
-    }
-    if(!last) return;
-    var role = last.role === 'agent' ? 'agent' : 'user';
-    csTranscript.innerHTML = '<div class="cs-msg ' + role + '">' + last.content + '</div>';
-    csTranscript.scrollTop = csTranscript.scrollHeight;
-  }
-
-  function endCall(duration){
-    callActive = false;
-    if(retellClient){ try { retellClient.stopCall(); } catch(e){} retellClient = null; }
-    stopWaveformAnim();
-    var orb = document.getElementById('orb-main');
-    if(orb) orb.classList.remove('speaking');
-    if(orbPhone) orbPhone.style.opacity = '1';
-
-    csStatus.textContent = 'Call ended';
-    var postCall = document.getElementById('cs-post-call');
-    var postTitle = document.querySelector('.cs-post-title');
-    if(postTitle && duration > 0){
-      postTitle.textContent = 'That was ' + duration + ' second' + (duration !== 1 ? 's' : '') + '.';
-    }
-    setTimeout(function(){
-      csActive.classList.remove('visible');
-      csTranscript.innerHTML = '';
-      if(postCall) postCall.style.display = 'flex';
-    }, 1500);
-  }
-
-  var postRetry = document.getElementById('cs-post-retry');
-  if(postRetry) postRetry.addEventListener('click', function(){
-    var postCall = document.getElementById('cs-post-call');
-    if(postCall) postCall.style.display = 'none';
-    if(orbLabel){ orbLabel.style.display = ''; }
-    if(orbPhone){ orbPhone.style.display = ''; orbPhone.style.opacity = '1'; }
-    var heroTitle = document.querySelector('.hero-title');
-    var heroHint = document.querySelector('.hero-hint');
-    if(heroTitle) heroTitle.style.display = '';
-    if(heroHint) heroHint.style.display = '';
-    document.querySelectorAll('.orb-ring').forEach(function(r){ r.style.display = ''; });
-  });
-
-  var postCta = document.getElementById('cs-post-cta');
-  if(postCta) postCta.addEventListener('click', function(){
-    try { gtag('event', 'post_call_book_demo', { company: 'Salesforce', page: 'salesforce-v2' }); } catch(e){}
-  });
-
-  if(csEndBtn) csEndBtn.addEventListener('click', function(e){
-    e.stopPropagation();
-    endCall(callStartTime ? Math.round((Date.now() - callStartTime) / 1000) : 0);
-  });
-
-  if(orbWrap) orbWrap.addEventListener('click', function(){
-    if(callActive) return;
-    startVoiceCall();
-  });
-})();
+// Replay button
+if (demoReplay) demoReplay.addEventListener('click', function() {
+  demoStarted = false;
+  demoEnded = false;
+  startDemo();
+});
 </script>
 </body>
 </html>
