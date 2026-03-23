@@ -2,6 +2,7 @@
   "rewrites": [
 { "source": "/review-build-experience", "destination": "/review-build-experience.html" },
 { "source": "/showcase", "destination": "/showcase.html" },
+{ "source": "/fiteco", "destination": "/v3/fiteco.html" },
 { "source": "/salesforce", "destination": "/v3/salesforce.html" },
 { "source": "/salesforce-a", "destination": "/v3/salesforce-a.html" },
 { "source": "/salesforce-b", "destination": "/v3/salesforce-b.html" },
