@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentCollect × Microsoft</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="AgentCollect × Microsoft">
+<meta property="og:description" content="Your AI collection agent is ready. Click and talk.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.agentcollect.com/og.png?v=3">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GRZZT9K05B"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GRZZT9K05B');</script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","vr6uvxdalw");</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --blue:#4F46E5;--blue-dark:#4338CA;--text:#0B1B3D;--muted:#6b7280;--border:#e5e7eb;--bg:#FAFBFF;
+  --green:#10B981;--green-dark:#059669;--red:#dc2626;--amber:#F59E0B;
+  --mono:'JetBrains Mono',monospace;--sans:'Plus Jakarta Sans',system-ui,sans-serif;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+  --shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);
+  --shadow-lg:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:16px;line-height:1.6;position:relative}
+::selection{background:rgba(79,70,229,.1)}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.rv.v{opacity:1;transform:none}
+.rv-d1{transition-delay:.12s}
+.rv-d2{transition-delay:.24s}
+
+/* ===== NAV ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(250,251,255,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,0,0,.04)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:16px 48px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{text-decoration:none;font-weight:900;font-size:17px;color:var(--text);letter-spacing:-.4px;display:inline-flex;align-items:baseline}
+.nav-logo .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--blue);margin-left:1px;vertical-align:baseline}
+.nav-expiry{font-size:14px;color:var(--muted);font-weight:500}
+.nav-expiry strong{color:var(--text);font-weight:700}
+
+/* ===== HERO — CENTERED INCOMING CALL ===== */
+.hero{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;background:linear-gradient(160deg,#FAFBFF 0%,#f0eeff 40%,#eef0ff 60%,#FAFBFF 100%);padding:80px 24px 60px}
+.hero::before{content:'';position:absolute;inset:0;background-image:
+  linear-gradient(rgba(79,70,229,.015) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(79,70,229,.015) 1px, transparent 1px);
+  background-size:80px 80px;pointer-events:none}
+.hero-km-logo{height:32px;margin-bottom:52px;opacity:.7}
+.hero-title{font-size:20px;font-weight:700;color:var(--text);letter-spacing:-.02em;margin-bottom:6px;text-align:center}
+.hero-hint{font-size:13px;color:var(--muted);opacity:.6;text-align:center;margin-bottom:0}
+
+/* Pulse rings */
+.orb-ring{position:absolute;border-radius:50%;border:1.5px solid rgba(79,70,229,.12);pointer-events:none}
+.orb-ring-1{inset:-30px;animation:ringPulse 3s ease-out infinite}
+.orb-ring-2{inset:-60px;animation:ringPulse 3s ease-out infinite .6s}
+.orb-ring-3{inset:-90px;animation:ringPulse 3s ease-out infinite 1.2s}
+@keyframes ringPulse{0%{opacity:.6;transform:scale(.95)}50%{opacity:.2;transform:scale(1)}100%{opacity:0;transform:scale(1.05)}}
+
+/* ===== ORB ===== */
+.orb-wrap{position:relative;width:320px;height:320px;margin:0 auto 36px;cursor:pointer}
+.orb-glow{position:absolute;inset:-60px;border-radius:50%;background:radial-gradient(circle,rgba(79,70,229,.18) 0%,rgba(59,130,246,.06) 40%,transparent 70%);animation:orbGlowPulse 4s ease-in-out infinite}
+.orb-main{position:relative;width:320px;height:320px;border-radius:50%;overflow:hidden;animation:orbDrift 6s ease-in-out infinite;transition:transform .3s,box-shadow .3s;box-shadow:0 0 80px rgba(79,70,229,.25),0 0 160px rgba(59,130,246,.08),inset 0 0 60px rgba(0,0,0,.3)}
+.orb-wrap:hover .orb-main{transform:scale(1.06)}
+.orb-wrap:active .orb-main{transform:scale(.95)}
+.orb-main.speaking{animation:orbDrift 6s ease-in-out infinite,orbPulseSpeak .8s ease-in-out infinite}
+.orb-layer{position:absolute;inset:0;border-radius:50%}
+.orb-layer-1{background:conic-gradient(from 0deg,#4F46E5,#3B82F6,#1E40AF,#60A5FA,#4F46E5);animation:orbSpin 8s linear infinite}
+.orb-layer-2{background:conic-gradient(from 180deg,rgba(79,70,229,.8),rgba(59,130,246,.5),rgba(30,64,175,.6),rgba(96,165,250,.4),rgba(79,70,229,.8));animation:orbSpin 12s linear infinite reverse;mix-blend-mode:soft-light}
+.orb-layer-3{background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.25) 0%,transparent 50%)}
+.orb-layer-4{background:radial-gradient(circle at 50% 110%,rgba(0,0,0,.4) 0%,transparent 60%)}
+.orb-phone-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:10;transition:opacity .3s,transform .3s}
+.orb-phone-center svg{width:44px;height:44px;color:#fff;stroke:currentColor;filter:drop-shadow(0 2px 12px rgba(0,0,0,.35));transition:transform .3s}
+.orb-wrap:hover .orb-phone-center svg{transform:scale(1.12)}
+.orb-particle{position:absolute;width:4px;height:4px;border-radius:50%;animation:orbParticle 4s ease-in-out infinite}
+.orb-particle:nth-child(1){top:-16px;left:30%;animation-delay:0s}
+.orb-particle:nth-child(2){top:20%;right:-12px;animation-delay:1s}
+.orb-particle:nth-child(3){bottom:-12px;left:40%;animation-delay:2s}
+.orb-particle:nth-child(4){top:40%;left:-16px;animation-delay:.5s}
+.orb-particle:nth-child(5){top:-10px;right:25%;animation-delay:1.5s}
+.orb-particle:nth-child(6){bottom:-8px;right:30%;animation-delay:2.5s}
+
+@keyframes orbSpin{0%{transform:rotate(0deg) scale(1.15)}100%{transform:rotate(360deg) scale(1.15)}}
+@keyframes orbDrift{0%,100%{transform:translateY(0) scale(1)}33%{transform:translateY(-4px) scale(1.01)}66%{transform:translateY(-2px) scale(.995)}}
+@keyframes orbPulseSpeak{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+@keyframes orbGlowPulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.8;transform:scale(1.08)}}
+@keyframes orbParticle{0%,100%{opacity:0;transform:translateY(0) scale(1)}25%{opacity:1}50%{opacity:.8;transform:translateY(-18px) scale(1.4)}75%{opacity:.3}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.orb-label{text-align:center;font-size:15px;font-weight:600;color:var(--muted);margin-top:0;margin-bottom:20px;letter-spacing:-.01em;display:none}
+.orb-label .orb-label-hint{display:block;font-size:12px;font-weight:400;color:var(--muted);opacity:.5;margin-top:4px}
+
+/* ===== DEMO PLAYER ===== */
+.demo-player{background:#0f0f1a;border-radius:20px;overflow:hidden;margin:20px auto 0;max-width:460px;width:100%;padding:24px 20px 20px}
+.demo-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.demo-live{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#4F46E5}
+.demo-live-dot{width:6px;height:6px;border-radius:50%;background:#4F46E5;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.demo-timer{font-size:13px;font-weight:600;color:rgba(255,255,255,.4);font-variant-numeric:tabular-nums}
+.demo-waveform{display:flex;align-items:center;justify-content:center;gap:2.5px;height:44px;margin-bottom:16px}
+.demo-waveform span{width:3px;border-radius:3px;min-height:3px;will-change:height;transition:height .08s linear}
+.demo-transcript-live{max-height:160px;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}
+.demo-transcript-live::-webkit-scrollbar{display:none}
+.demo-line{display:flex;gap:8px;align-items:flex-start;padding:6px 8px;border-radius:8px;margin-bottom:4px;border-left:2px solid transparent;animation:fadeInUp .3s ease}
+.demo-line.active{background:rgba(79,70,229,.06);border-left-color:#4F46E5}
+.demo-avatar{width:20px;height:20px;border-radius:50%;font-size:8px;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.demo-avatar.ai{background:linear-gradient(135deg,#4F46E5,#3B82F6)}
+.demo-avatar.client{background:#64748b}
+.demo-text{font-size:13px;line-height:1.5;color:rgba(255,255,255,.85)}
+.demo-text .word{opacity:0;transition:opacity .12s ease}
+.demo-text .word.visible{opacity:1}
+.demo-summary{display:none;flex-direction:column;align-items:center;padding:16px 0 4px;gap:10px;animation:fadeInUp .4s ease}
+.demo-summary.visible{display:flex}
+.demo-summary-check svg{filter:drop-shadow(0 0 8px rgba(16,185,129,.4))}
+.demo-summary-title{color:#fff;font-size:17px;font-weight:700}
+.demo-summary-sub{color:rgba(255,255,255,.45);font-size:13px;text-align:center;line-height:1.5;max-width:320px}
+.demo-summary-cta{display:flex;align-items:center;gap:8px;padding:14px 28px;background:var(--blue);color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;text-decoration:none;margin-top:6px;box-shadow:0 0 20px rgba(79,70,229,.3);font-family:var(--sans)}
+.demo-summary-cta:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 4px 24px rgba(79,70,229,.4)}
+.demo-replay{background:none;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.5);padding:8px 16px;border-radius:8px;font-size:12px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;margin-top:2px;font-family:var(--sans)}
+.demo-replay:hover{border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.7)}
+.demo-powered{text-align:center;padding:10px 12px 0;font-size:11px;color:rgba(255,255,255,.2)}
+
+/* ===== CALL STATES (legacy) ===== */
+.call-state{display:none}
+
+.cs-connecting{display:none;flex-direction:column;align-items:center;gap:12px;padding:8px 0;animation:fadeInUp .3s ease}
+.cs-connecting .co-spinner{width:28px;height:28px;border:3px solid rgba(79,70,229,.15);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite}
+.cs-connecting-text{color:var(--muted);font-size:13px;font-weight:500}
+.cs-active{display:none;flex-direction:column;align-items:center;gap:10px;padding:8px 0;width:100%}
+.cs-active.visible{display:flex}
+.cs-status{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--blue)}
+.cs-waveform{display:flex;align-items:center;justify-content:center;gap:3px;height:40px;padding:4px 0}
+.cs-waveform span{width:3.5px;border-radius:3px;background:var(--blue);min-height:4px;will-change:height;transition:height .08s linear}
+.cs-transcript{width:100%;max-height:80px;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}
+.cs-transcript::-webkit-scrollbar{display:none}
+.cs-msg{padding:8px 12px;border-radius:12px;font-size:13px;line-height:1.5;margin-bottom:6px;animation:fadeInUp .3s ease}
+.cs-msg.agent{background:rgba(79,70,229,.08);color:var(--text)}
+.cs-msg.user{background:rgba(0,0,0,.04);color:var(--muted);text-align:right}
+.cs-end-btn{padding:10px 24px;background:rgba(239,68,68,.06);color:#ef4444;border:1px solid rgba(239,68,68,.15);border-radius:12px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;font-family:var(--sans)}
+.cs-end-btn:hover{background:rgba(239,68,68,.12)}
+.cs-post-call{display:none;flex-direction:column;align-items:center;gap:10px;padding:8px 0;animation:fadeInUp .4s ease}
+.cs-post-check{margin-bottom:4px}
+.cs-post-title{font-size:18px;font-weight:800;color:var(--text)}
+.cs-post-sub{font-size:14px;color:var(--muted);text-align:center;line-height:1.5;max-width:300px}
+.cs-post-cta{display:flex;align-items:center;gap:8px;padding:14px 28px;background:var(--blue);color:#fff;border:none;border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;text-decoration:none;margin-top:6px;box-shadow:0 0 20px rgba(79,70,229,.3);font-family:var(--sans)}
+.cs-post-cta:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 4px 24px rgba(79,70,229,.4)}
+.cs-post-retry{background:none;border:1px solid var(--border);color:var(--muted);padding:8px 16px;border-radius:8px;font-size:12px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;margin-top:2px;font-family:var(--sans)}
+.cs-post-retry:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ===== SECTION 2: THE PROBLEM + SOCIAL PROOF ===== */
+.proof-section{padding:120px 48px 40px;max-width:920px;margin:0 auto;text-align:center;position:relative}
+.proof-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--blue),transparent);opacity:.3}
+.proof-sec-title{font-size:clamp(26px,3.2vw,38px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;color:var(--text)}
+.proof-sec-sub{font-size:17px;color:var(--muted);margin-bottom:52px;line-height:1.5}
+
+/* Wall of Pain — Version D (light, 3 rows) */
+.pain-wall{overflow:hidden;margin-top:40px;margin-bottom:40px;position:relative;padding:8px 0;width:100vw;margin-left:calc(-50vw + 50%)}
+.pain-wall::before,.pain-wall::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none}
+.pain-wall::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
+.pain-wall::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
+.pain-row{display:flex;gap:14px;padding:6px 0;width:max-content}
+.pain-row-1{animation:painScroll1 32s linear infinite}
+.pain-row-2{animation:painScroll2 38s linear infinite}
+.pain-row-3{animation:painScroll3 42s linear infinite}
+@keyframes painScroll1{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes painScroll2{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+@keyframes painScroll3{0%{transform:translateX(-25%)}100%{transform:translateX(-75%)}}
+.pain-pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid rgba(220,38,38,.15);border-radius:100px;padding:10px 20px;font-size:14px;font-weight:600;color:var(--text);white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.08);flex-shrink:0}
+.pain-pill .hl{color:var(--red);font-weight:800}
+.pain-pill .src-logo{height:14px;width:auto;opacity:.45;margin-left:2px;vertical-align:middle;flex-shrink:0}
+.pain-count{text-align:center;margin-top:20px;font-size:15px;font-weight:700;color:var(--red)}
+.pain-count span{color:var(--muted);font-weight:500}
+.pain-count a{color:var(--red);text-decoration:none;font-weight:700}
+.pain-count a:hover{text-decoration:underline}
+
+/* ===== WHAT IS AGENTCOLLECT SECTION ===== */
+.what-ac-section{padding:100px 48px 80px;max-width:960px;margin:0 auto;text-align:center}
+.what-ac-oneliner{font-size:clamp(18px,2.2vw,22px);font-weight:800;color:var(--text);letter-spacing:-.03em;line-height:1.35;margin-bottom:56px;max-width:720px;margin-left:auto;margin-right:auto}
+.what-ac-oneliner em{font-style:normal;color:var(--blue);font-weight:900}
+
+/* Comparison cards */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:64px}
+.compare-card{border-radius:20px;padding:36px 28px;text-align:left}
+.compare-card.current{background:rgba(220,38,38,.04);border:1px solid rgba(220,38,38,.12)}
+.compare-card.agent{background:rgba(79,70,229,.04);border:1px solid rgba(79,70,229,.12)}
+.compare-card-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:24px;display:flex;align-items:center;gap:8px}
+.compare-card.current .compare-card-title{color:var(--red)}
+.compare-card.agent .compare-card-title{color:var(--blue)}
+.compare-row{display:flex;align-items:flex-start;gap:10px;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.04);font-size:15px;line-height:1.5;color:var(--text)}
+.compare-row:last-child{border-bottom:none}
+.compare-icon{flex-shrink:0;margin-top:2px;font-size:16px}
+
+/* Voice demo transcript */
+.demo-transcript{max-width:520px;margin:0 auto;text-align:left}
+.demo-transcript-title{text-align:center;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:24px}
+.demo-bubble{display:flex;gap:12px;margin-bottom:16px;align-items:flex-start}
+.demo-bubble.agent{flex-direction:row}
+.demo-bubble.debtor{flex-direction:row-reverse}
+.demo-bubble-label{flex-shrink:0;width:56px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding-top:10px}
+.demo-bubble.agent .demo-bubble-label{color:var(--blue);text-align:left}
+.demo-bubble.debtor .demo-bubble-label{color:var(--muted);text-align:right}
+.demo-bubble-text{background:#fff;border:1px solid var(--border);border-radius:16px;padding:12px 16px;font-size:14px;line-height:1.55;color:var(--text);max-width:380px;box-shadow:var(--shadow-sm)}
+.demo-bubble.agent .demo-bubble-text{border-color:rgba(79,70,229,.15);background:rgba(79,70,229,.03)}
+.demo-bubble.debtor .demo-bubble-text{border-color:rgba(0,0,0,.06)}
+
+/* ===== AGENTCOLLECT PROOF SECTION ===== */
+.ac-proof-section{padding:80px 48px 80px;max-width:920px;margin:0 auto;text-align:center}
+.ac-proof-brand{display:flex;align-items:baseline;justify-content:center;margin-bottom:32px}
+.ac-proof-logo{font-size:22px;font-weight:900;color:var(--text);letter-spacing:-.4px}
+.ac-proof-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--blue);margin-left:1px}
+.ac-proof-title{font-size:clamp(26px,3.2vw,38px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px;color:var(--text)}
+.ac-proof-sub{font-size:17px;color:var(--muted);margin-bottom:48px;line-height:1.5}
+
+.social-logos{display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap;margin-bottom:40px}
+.social-logos img{height:22px;filter:grayscale(100%) brightness(.4);opacity:.5;object-fit:contain;transition:all .4s cubic-bezier(.16,1,.3,1)}
+.social-logos img:hover{filter:none;opacity:1;transform:scale(1.08)}
+.social-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:520px;margin:0 auto 40px}
+.social-stat{text-align:center;opacity:0;transform:translateY(12px);transition:all .5s cubic-bezier(.16,1,.3,1)}
+.social-stat.v{opacity:1;transform:translateY(0)}
+.social-stat-num{font-size:32px;font-weight:900;color:var(--blue);letter-spacing:-.03em;font-family:var(--sans)}
+.social-stat-label{font-size:12px;color:var(--muted);font-weight:500;margin-top:4px}
+.social-quote{background:linear-gradient(135deg,rgba(79,70,229,.03),rgba(79,70,229,.06));border:1px solid rgba(79,70,229,.08);border-radius:20px;padding:32px 36px;max-width:520px;margin:0 auto;text-align:left}
+.social-quote-text{font-size:18px;font-weight:700;color:var(--text);line-height:1.45;letter-spacing:-.02em;margin-bottom:16px}
+.social-quote-text::before{content:'\201C';color:rgba(79,70,229,.25);font-size:36px;line-height:0;vertical-align:bottom;margin-right:2px}
+.social-quote-author{display:flex;align-items:center;gap:12px}
+.social-quote-avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;background:var(--bg);border:1px solid var(--border)}
+.social-quote-name{font-size:14px;font-weight:700;color:var(--text)}
+.social-quote-role{font-size:13px;color:var(--muted)}
+
+/* ===== SECTION 3: HOW IT WORKS ===== */
+.how-section{padding:100px 48px 80px;background:#f6f3ef;text-align:center;position:relative}
+.how-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:16px}
+.how-title{font-size:clamp(28px,3.5vw,42px);font-weight:900;letter-spacing:-.03em;line-height:1.08;margin-bottom:56px;color:var(--text)}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:960px;margin:0 auto}
+.how-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:36px 28px;text-align:left;transition:all .25s}
+.how-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.how-num{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-family:var(--sans);font-size:20px;font-weight:900}
+.how-card-title{font-size:18px;font-weight:800;margin-bottom:8px;letter-spacing:-.03em;color:var(--text)}
+.how-card-desc{font-size:15px;color:var(--muted);line-height:1.65}
+
+.close-cta{display:inline-block;background:var(--blue);color:#fff;padding:18px 44px;border-radius:14px;font-weight:700;font-size:17px;text-decoration:none;transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s;font-family:var(--sans);letter-spacing:-.01em;position:relative}
+.close-cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(79,70,229,.3)}
+.how-guarantee{font-size:14px;color:var(--muted);margin-top:24px;font-style:italic}
+.how-footer{font-size:12px;color:var(--muted);opacity:.5;margin-top:56px;line-height:1.5;text-align:center}
+
+/* ===== FLOATING VOICE FAB ===== */
+.voice-fab{position:fixed;bottom:28px;right:28px;z-index:9000;display:flex;align-items:center;gap:10px;background:#0f0f1a;border:1px solid rgba(79,70,229,.3);border-radius:50px;padding:12px 20px 12px 14px;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 8px 32px rgba(0,0,0,.4);opacity:0;pointer-events:none;transform:translateY(20px)}
+.voice-fab.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
+.voice-fab:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(79,70,229,.3);border-color:rgba(79,70,229,.5)}
+.voice-fab-icon{width:40px;height:40px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 16px rgba(79,70,229,.4)}
+.voice-fab-icon svg{width:20px;height:20px;color:#fff}
+.voice-fab-text{color:rgba(255,255,255,.9);font-size:13px;font-weight:600;white-space:nowrap}
+
+/* ===== MOBILE ===== */
+@media(max-width:960px){
+  .nav-inner{padding:14px 24px}
+  .compare-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .nav-expiry{font-size:12px}
+  .orb-wrap{width:240px;height:240px}
+  .orb-main{width:240px;height:240px}
+  .orb-phone-center svg{width:36px;height:36px}
+  .orb-ring-1{inset:-20px}
+  .orb-ring-2{inset:-44px}
+  .orb-ring-3{inset:-68px}
+  .hero-title{font-size:18px}
+  .proof-section{padding:80px 24px 64px}
+  .how-section{padding:80px 24px 56px}
+  .how-grid{grid-template-columns:1fr;gap:16px;max-width:400px;margin:0 auto}
+  .ac-proof-section{padding:80px 24px 64px}
+  .what-ac-section{padding:80px 24px 64px}
+  .voice-fab{bottom:16px;right:16px;padding:10px 16px 10px 10px}
+  .voice-fab-text{font-size:12px}
+}
+@media(max-width:480px){
+  .nav-expiry{display:none}
+  .orb-wrap{width:200px;height:200px}
+  .orb-main{width:200px;height:200px}
+  .orb-phone-center svg{width:32px;height:32px}
+  .orb-ring-1{inset:-16px}
+  .orb-ring-2{inset:-36px}
+  .orb-ring-3{inset:-56px}
+  .hero{padding:72px 20px 48px}
+  .hero-km-logo{height:28px;margin-bottom:40px}
+  .hero-title{font-size:16px}
+  .social-logos{gap:20px}
+  .social-logos img{height:18px}
+  .social-stats{grid-template-columns:repeat(3,1fr);gap:12px}
+  .social-stat-num{font-size:24px}
+  .social-quote{padding:24px 20px}
+  .social-quote-text{font-size:16px}
+  .compare-grid{gap:16px}
+  .compare-card{padding:24px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://agentcollect.com" class="nav-logo">AgentCollect<span class="dot"></span></a>
+    <span class="nav-expiry">Microsoft, <strong id="days-left"></strong></span>
+  </div>
+</nav>
+
+<!-- SECTION 1: HERO — INCOMING CALL -->
+<section class="hero" id="hero">
+  <img src="https://respaid.com/logos/microsoft.svg" alt="Microsoft" class="hero-km-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" crossorigin="anonymous"><span style="display:none;font-size:28px;font-weight:900;color:var(--text);letter-spacing:-.03em;opacity:.7">Microsoft</span>
+
+  <!-- ORB with pulse rings -->
+  <div class="orb-wrap" id="orb-wrap">
+    <div class="orb-ring orb-ring-1"></div>
+    <div class="orb-ring orb-ring-2"></div>
+    <div class="orb-ring orb-ring-3"></div>
+    <div class="orb-glow"></div>
+    <div class="orb-particle" style="background:rgba(79,70,229,.5)"></div>
+    <div class="orb-particle" style="background:rgba(59,130,246,.5)"></div>
+    <div class="orb-particle" style="background:rgba(79,70,229,.3)"></div>
+    <div class="orb-particle" style="background:rgba(59,130,246,.3)"></div>
+    <div class="orb-particle" style="background:rgba(30,64,175,.4)"></div>
+    <div class="orb-particle" style="background:rgba(96,165,250,.3)"></div>
+    <div class="orb-main" id="orb-main">
+      <div class="orb-layer orb-layer-1"></div>
+      <div class="orb-layer orb-layer-2"></div>
+      <div class="orb-layer orb-layer-3"></div>
+      <div class="orb-layer orb-layer-4"></div>
+      <div class="orb-phone-center" id="orb-phone-center" style="opacity:0">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-title">Your Microsoft agent is calling.</div>
+  <div class="hero-hint" style="color:var(--blue);opacity:.6;font-weight:600;font-size:13px">Azure Enterprise Agreement — $87,500 outstanding</div>
+
+  <!-- Pre-scripted demo player -->
+  <div class="demo-player" id="demo-player">
+    <div class="demo-header">
+      <div class="demo-live"><span class="demo-live-dot"></span> Live</div>
+      <div class="demo-timer" id="demo-timer">0:00</div>
+    </div>
+    <div class="demo-waveform" id="demo-waveform"></div>
+    <div class="demo-transcript-live" id="demo-transcript"></div>
+    <div class="demo-summary" id="demo-summary">
+      <div class="demo-summary-check">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <div class="demo-summary-title">$87,500 resolved in 42 seconds.</div>
+      <div class="demo-summary-sub">Now imagine this across your full Microsoft portfolio.</div>
+      <a href="https://cal.com/johnb/30" target="_blank" class="demo-summary-cta" onclick="try{gtag('event','ms_demo_book',{page:'microsoft'})}catch(e){}">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Run this on your portfolio
+      </a>
+      <button class="demo-replay" id="demo-replay">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+        Watch again
+      </button>
+    </div>
+    <div class="demo-powered">Powered by AgentCollect</div>
+  </div>
+</section>
+
+<!-- SECTION 2: THE PROBLEM — WALL OF PAIN -->
+<section class="proof-section">
+  <div class="rv">
+    <h2 class="proof-sec-title">Microsoft licensing is a maze.<br><span style="color:var(--red)">Customers dispute constantly.</span></h2>
+    <p class="proof-sec-sub">Azure overcharges, EA auto-renewals, and opaque licensing. Your customers are vocal about it.</p>
+  </div>
+
+  <div class="proof-context rv" style="text-align:center;font-size:16px;font-weight:700;color:var(--red);letter-spacing:-.2px">Real complaints. Real customers. All under the Microsoft name.</div>
+
+  <div class="pain-wall rv">
+    <div class="pain-row pain-row-1">
+      <span class="pain-pill"><span class="hl">Azure charges</span> doubled without warning <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill"><span class="hl">Impossible to cancel</span> EA renewal <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill">Billed <span class="hl">$50K for unused licenses</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill"><span class="hl">Auto-renewed</span> without approval <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill"><span class="hl">No one to talk to</span> about billing <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <!-- dup -->
+      <span class="pain-pill"><span class="hl">Azure charges</span> doubled without warning <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill"><span class="hl">Impossible to cancel</span> EA renewal <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill">Billed <span class="hl">$50K for unused licenses</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill"><span class="hl">Auto-renewed</span> without approval <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill"><span class="hl">No one to talk to</span> about billing <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+    </div>
+    <div class="pain-row pain-row-2">
+      <span class="pain-pill">Charged <span class="hl">after scaling down</span> Azure resources <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill"><span class="hl">Locked into 3-year</span> agreement <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill"><span class="hl">$120K invoice</span> nobody can explain <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill">Five <span class="hl">support tickets unanswered</span> <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill"><span class="hl">License true-up</span> surprise billing <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <!-- dup -->
+      <span class="pain-pill">Charged <span class="hl">after scaling down</span> Azure resources <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill"><span class="hl">Locked into 3-year</span> agreement <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill"><span class="hl">$120K invoice</span> nobody can explain <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill">Five <span class="hl">support tickets unanswered</span> <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill"><span class="hl">License true-up</span> surprise billing <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+    </div>
+    <div class="pain-row pain-row-3">
+      <span class="pain-pill"><span class="hl">Worst billing</span> experience ever <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill"><span class="hl">Overage charges</span> appeared from nowhere <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill">Office 365 <span class="hl">billed after cancellation</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill">Overcharged <span class="hl">$30K no resolution</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill">Continued billing <span class="hl">after documented cancellation</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <!-- dup -->
+      <span class="pain-pill"><span class="hl">Worst billing</span> experience ever <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill"><span class="hl">Overage charges</span> appeared from nowhere <img src="https://cdn.brandfetch.io/trustpilot.com/w/64/h/64/logo" alt="Trustpilot" class="src-logo" onerror="this.replaceWith(document.createTextNode('Trustpilot'))"></span>
+      <span class="pain-pill">Office 365 <span class="hl">billed after cancellation</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill">Overcharged <span class="hl">$30K no resolution</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+      <span class="pain-pill">Continued billing <span class="hl">after documented cancellation</span> <img src="https://cdn.brandfetch.io/bbb.org/w/64/h/64/logo" alt="BBB" class="src-logo" onerror="this.replaceWith(document.createTextNode('BBB'))"></span>
+    </div>
+  </div>
+  <div class="pain-count rv">620+ <span>complaints on billing & licensing — </span><a href="https://www.bbb.org/us/wa/redmond/profile/computer-software/microsoft-corporation-1296-27007/complaints" target="_blank">BBB &#8599;</a> <span>|</span> <a href="https://www.trustpilot.com/review/microsoft.com" target="_blank">Trustpilot &#8599;</a></div>
+
+  </div>
+</section>
+
+<!-- SECTION 2a: WHAT IS AGENTCOLLECT -->
+<section class="what-ac-section">
+  <div class="rv">
+    <p class="what-ac-oneliner"><em>AgentCollect</em> replaces your collection process with an AI agent that calls, emails, and collects — under your brand, zero complaints.</p>
+  </div>
+
+  <!-- Side-by-side comparison -->
+  <div class="compare-grid rv rv-d1">
+    <div class="compare-card current">
+      <div class="compare-card-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        Current Process
+      </div>
+      <div class="compare-row"><span class="compare-icon">&#10005;</span> Internal billing sends opaque invoices nobody understands</div>
+      <div class="compare-row"><span class="compare-icon">&#10005;</span> Azure overage disputes escalate with no resolution</div>
+      <div class="compare-row"><span class="compare-icon">&#10005;</span> Support tickets go unanswered for weeks</div>
+      <div class="compare-row"><span class="compare-icon">&#10005;</span> Customers leave 1-star reviews and threaten legal action</div>
+      <div class="compare-row"><span class="compare-icon">&#10005;</span> Brand reputation damage with every collection attempt</div>
+    </div>
+    <div class="compare-card agent">
+      <div class="compare-card-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        AgentCollect
+      </div>
+      <div class="compare-row"><span class="compare-icon">&#10003;</span> AI agent calls with empathy, explains charges line by line</div>
+      <div class="compare-row"><span class="compare-icon">&#10003;</span> Offers flexible settlements that preserve relationships</div>
+      <div class="compare-row"><span class="compare-icon">&#10003;</span> Every account gets contacted within 24 hours</div>
+      <div class="compare-row"><span class="compare-icon">&#10003;</span> Branded experience — customers think they're talking to Microsoft</div>
+      <div class="compare-row"><span class="compare-icon">&#10003;</span> Zero complaints filed across 50,000+ collection interactions</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- SECTION 2b: AGENTCOLLECT SOCIAL PROOF -->
+<section class="ac-proof-section">
+  <div class="rv">
+    <div class="ac-proof-brand">
+      <span class="ac-proof-logo">AgentCollect</span><span class="ac-proof-dot"></span>
+    </div>
+    <h2 class="ac-proof-title">A different approach.</h2>
+    <p class="ac-proof-sub">Enterprise teams recover more — without the brand damage.</p>
+  </div>
+  <div class="social-logos rv rv-d1">
+    <img src="https://respaid.com/logos/microsoft.svg" alt="Microsoft" loading="lazy" onerror="this.style.display='none'">
+    <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/6917bec130210a5551350be0_DoorDash-Logo-700x394.png" alt="DoorDash" loading="lazy" onerror="this.style.display='none'">
+    <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/681486e9407f3fb4dbd3d3f0_Uber-Freight-Logo.png" alt="Uber Freight" loading="lazy" onerror="this.style.display='none'">
+    <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/67da8be5048d3251e3b1616b_checkr_logo_wordmark_aqua3.png" alt="Checkr" loading="lazy" onerror="this.style.display='none'">
+    <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/685ab786cf9dabb5db539afc_Plaid_logo.svg.png" alt="Plaid" loading="lazy" onerror="this.style.display='none'">
+    <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/6740498fdd3e5c836292e2e5_Redis_logo.svg.png" alt="Redis" loading="lazy" onerror="this.style.display='none'">
+  </div>
+  <div class="social-stats rv rv-d2" id="social-stats">
+    <div class="social-stat" id="ss1">
+      <div class="social-stat-num" data-target="50" data-suffix="%">0%</div>
+      <div class="social-stat-label">Collection rate</div>
+    </div>
+    <div class="social-stat" id="ss2">
+      <div class="social-stat-num" data-target="20" data-suffix="d">0d</div>
+      <div class="social-stat-label">Avg resolution</div>
+    </div>
+    <div class="social-stat" id="ss3">
+      <div class="social-stat-num" data-target="90" data-suffix="%">0%</div>
+      <div class="social-stat-label">Disputes resolved</div>
+    </div>
+  </div>
+  <div class="social-quote rv" id="social-quote">
+    <div class="social-quote-text">We had written off most of these invoices. AgentCollect recovered them without a single complaint.</div>
+    <div class="social-quote-author">
+      <img src="https://respaid.com/images/neil-doyle.png" alt="Neil Doyle" class="social-quote-avatar">
+      <div>
+        <div class="social-quote-name">Neil Doyle</div>
+        <div class="social-quote-role">Head of AR Operations, Microsoft</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: HOW IT WORKS -->
+<section class="how-section">
+  <div class="rv">
+    <div class="how-label">How it works</div>
+    <h2 class="how-title">Three steps. Zero manual work.</h2>
+  </div>
+
+  <div class="how-grid">
+    <div class="how-card rv" id="step1">
+      <div class="how-num" style="background:rgba(79,70,229,.08);color:var(--blue)">1</div>
+      <h3 class="how-card-title">Find the right contacts</h3>
+      <p class="how-card-desc">20% of contacts are stale. We enrich and verify every account before outreach begins.</p>
+    </div>
+    <div class="how-card rv rv-d1" id="step2">
+      <div class="how-num" style="background:rgba(16,185,129,.08);color:var(--green)">2</div>
+      <h3 class="how-card-title">AI agents engage</h3>
+      <p class="how-card-desc">Calls, emails, SMS — all under your brand. Debtors never know it's AI.</p>
+    </div>
+    <div class="how-card rv rv-d2" id="step3">
+      <div class="how-num" style="background:rgba(245,158,11,.08);color:var(--amber)">3</div>
+      <h3 class="how-card-title">You get paid</h3>
+      <p class="how-card-desc">Branded payment page. Card or wire. Funds go directly to your account.</p>
+    </div>
+  </div>
+
+  <div class="rv" style="transition-delay:.4s;text-align:center;margin-top:56px">
+    <a href="https://cal.com/johnb/30" target="_blank" rel="noopener" class="close-cta" id="close-cta" onclick="try{gtag('event','ms_book_cta',{page:'microsoft'})}catch(e){}">Run this on your portfolio</a>
+    <p class="how-guarantee">No collection, no fee. Performance-based only.</p>
+  </div>
+  <p class="how-footer">Built for Microsoft. All contacts from public sources. Powered by AgentCollect.</p>
+</section>
+
+
+<script>
+// ===== Expiry Countdown =====
+(function(){
+  var expiry = new Date('2026-04-18');
+  var diff = Math.ceil((expiry - new Date()) / 864e5);
+  var el = document.getElementById('days-left');
+  if(el) el.textContent = diff > 0 ? 'expires in ' + diff + ' day' + (diff !== 1 ? 's' : '') : 'expired';
+})();
+
+// ===== Scroll Reveal =====
+(function(){
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('v'); });
+  }, {threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){ ro.observe(el); });
+})();
+
+// ===== Animated Counters =====
+(function(){
+  var stats = document.querySelectorAll('.social-stat');
+  var animated = false;
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting && !animated){
+        animated = true;
+        stats.forEach(function(stat, idx){
+          setTimeout(function(){
+            stat.classList.add('v');
+            var numEl = stat.querySelector('.social-stat-num');
+            if(!numEl) return;
+            var target = parseInt(numEl.getAttribute('data-target'));
+            var suffix = numEl.getAttribute('data-suffix') || '';
+            var duration = 1200;
+            var start = Date.now();
+            function tick(){
+              var elapsed = Date.now() - start;
+              var progress = Math.min(elapsed / duration, 1);
+              var eased = 1 - Math.pow(1 - progress, 3);
+              var current = Math.round(target * eased);
+              numEl.textContent = current + suffix;
+              if(progress < 1) requestAnimationFrame(tick);
+            }
+            tick();
+          }, idx * 200);
+        });
+      }
+    });
+  }, {threshold:.3});
+  if(stats.length) ro.observe(stats[0]);
+})();
+
+// ===== Social Quote reveal =====
+(function(){
+  var q = document.getElementById('social-quote');
+  if(!q) return;
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('v'); });
+  }, {threshold:.2});
+  ro.observe(q);
+})();
+
+// ===== PRE-SCRIPTED DEMO (Microsoft Azure EA) =====
+var DEMO_SCRIPT = [
+  {t:0,   speaker:'agent', text:'Hi, this is Sarah calling on behalf of Microsoft Accounts Receivable. I\'m reaching out regarding invoice AZ-2026-4718 for your Azure Enterprise Agreement \u2014 $87,500 outstanding. Is this a good time?'},
+  {t:8,   speaker:'client', text:'Yeah. We\'ve been meaning to address that. Our CFO flagged it \u2014 we think there\'s a discrepancy on the compute charges.'},
+  {t:16,  speaker:'agent', text:'I completely understand. Let me pull up the breakdown. I can see $62,000 in Azure Reserved Instances and $25,500 in consumption overage. Which part looks off to you?'},
+  {t:24,  speaker:'client', text:'The overage. We scaled down in November but the charges kept going.'},
+  {t:30,  speaker:'agent', text:'Got it. I see the scale-down on November 12th. There\'s a 30-day billing cycle that overlaps. I can offer a $4,200 adjustment on the overage and set up two installments. Would that work?'},
+  {t:38,  speaker:'client', text:'That\'s fair. Send us the revised invoice and payment link.'},
+  {t:42,  speaker:'agent', text:'Done. I\'ve sent the settlement offer to your AP team at ap@contoso.com. Two payments of $41,650. Thank you for resolving this quickly.'},
+  {t:48,  action:'end'}
+];
+
+var demoWaveformEl = document.getElementById('demo-waveform');
+var demoTranscript = document.getElementById('demo-transcript');
+var demoTimer = document.getElementById('demo-timer');
+var demoSummary = document.getElementById('demo-summary');
+var demoReplay = document.getElementById('demo-replay');
+var demoBars = [];
+var demoAnimId = null;
+var demoSpeaker = null;
+var demoStartTime = null;
+var demoEnded = false;
+var demoStarted = false;
+
+// AgentCollect indigo palette for waveform bars
+var acColors = ['#4F46E5','#6366F1','#4338CA','#818CF8'];
+
+// Create waveform bars
+for (var bi = 0; bi < 24; bi++) {
+  var bar = document.createElement('span');
+  bar.style.background = acColors[bi % 4];
+  bar.style.height = '3px';
+  demoWaveformEl.appendChild(bar);
+  demoBars.push(bar);
+}
+
+function demoAnimateWaveform() {
+  if (demoEnded) return;
+  var now = Date.now() / 1000;
+  demoBars.forEach(function(bar, i) {
+    var h;
+    if (demoSpeaker === 'agent') h = 12 + Math.sin(now * 4 + i * 0.4) * 16 * Math.random();
+    else if (demoSpeaker === 'client') h = 8 + Math.sin(now * 3 + i * 0.5) * 10 * Math.random();
+    else h = 3 + Math.sin(now * 1.5 + i * 0.6) * 2;
+    bar.style.height = Math.max(3, h) + 'px';
+  });
+  demoAnimId = requestAnimationFrame(demoAnimateWaveform);
+}
+
+function demoUpdateTimer() {
+  if (demoEnded || !demoStartTime) return;
+  var elapsed = (Date.now() - demoStartTime) / 1000;
+  var m = Math.floor(elapsed / 60);
+  var s = Math.floor(elapsed % 60);
+  demoTimer.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+}
+
+function demoAddLine(speaker, text) {
+  var div = document.createElement('div');
+  div.className = 'demo-line active';
+  var avatar = document.createElement('div');
+  avatar.className = 'demo-avatar ' + (speaker === 'agent' ? 'ai' : 'client');
+  avatar.textContent = speaker === 'agent' ? 'AI' : 'C';
+  var textEl = document.createElement('div');
+  textEl.className = 'demo-text';
+  var words = text.split(' ');
+  words.forEach(function(word, i) {
+    var span = document.createElement('span');
+    span.className = 'word';
+    span.textContent = word + (i < words.length - 1 ? ' ' : '');
+    textEl.appendChild(span);
+  });
+  div.appendChild(avatar);
+  div.appendChild(textEl);
+  demoTranscript.querySelectorAll('.demo-line.active').forEach(function(el) { el.classList.remove('active'); });
+  demoTranscript.appendChild(div);
+  var delay = speaker === 'agent' ? 55 : 45;
+  var wordSpans = textEl.querySelectorAll('.word');
+  wordSpans.forEach(function(ws, i) {
+    setTimeout(function() {
+      if (demoEnded) return;
+      ws.classList.add('visible');
+      demoTranscript.scrollTop = demoTranscript.scrollHeight;
+    }, i * delay);
+  });
+}
+
+function demoEnd() {
+  if (demoEnded) return;
+  demoEnded = true;
+  demoSpeaker = null;
+  if (demoAnimId) { cancelAnimationFrame(demoAnimId); demoAnimId = null; }
+  demoBars.forEach(function(bar) { bar.style.height = '3px'; bar.style.opacity = '0.3'; });
+  var orb = document.getElementById('orb-main');
+  if (orb) orb.classList.remove('speaking');
+  setTimeout(function() {
+    demoTranscript.style.display = 'none';
+    document.querySelector('.demo-header').style.display = 'none';
+    demoWaveformEl.style.display = 'none';
+    demoSummary.classList.add('visible');
+  }, 800);
+}
+
+function startDemo() {
+  if (demoStarted && !demoEnded) return;
+  demoStarted = true;
+  demoEnded = false;
+  demoSpeaker = null;
+  demoStartTime = Date.now();
+  demoTranscript.innerHTML = '';
+  demoTranscript.style.display = '';
+  var header = document.querySelector('.demo-header');
+  if (header) header.style.display = '';
+  demoWaveformEl.style.display = '';
+  demoSummary.classList.remove('visible');
+  demoSummary.style.display = '';
+  demoBars.forEach(function(bar) { bar.style.opacity = '1'; bar.style.height = '3px'; });
+  var orb = document.getElementById('orb-main');
+  if (orb) orb.classList.add('speaking');
+  // Hide phone icon during demo
+  var orbPhone = document.getElementById('orb-phone-center');
+  if (orbPhone) orbPhone.style.opacity = '0';
+  demoAnimateWaveform();
+  setInterval(demoUpdateTimer, 250);
+  DEMO_SCRIPT.forEach(function(entry) {
+    setTimeout(function() {
+      if (demoEnded) return;
+      if (entry.action === 'end') { demoEnd(); return; }
+      demoSpeaker = entry.speaker;
+      demoAddLine(entry.speaker, entry.text);
+      var nextEntry = DEMO_SCRIPT.find(function(e) { return e.t > entry.t; });
+      if (nextEntry && !nextEntry.action) {
+        var gap = (nextEntry.t - entry.t) * 1000;
+        setTimeout(function() {
+          if (!demoEnded && demoSpeaker === entry.speaker) demoSpeaker = null;
+        }, Math.min(gap - 500, gap * 0.7));
+      }
+    }, entry.t * 1000);
+  });
+  try { gtag('event', 'ms_demo_started', { page: 'microsoft' }); } catch(e) {}
+}
+
+// Auto-start when hero becomes visible
+var heroSection = document.getElementById('hero');
+if (heroSection) {
+  var demoObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting && !demoStarted) {
+        setTimeout(startDemo, 600);
+        demoObs.unobserve(heroSection);
+      }
+    });
+  }, { threshold: 0.5 });
+  demoObs.observe(heroSection);
+}
+
+// Replay button
+if (demoReplay) demoReplay.addEventListener('click', function() {
+  demoStarted = false;
+  demoEnded = false;
+  startDemo();
+});
+</script>
+</body>
+</html>
