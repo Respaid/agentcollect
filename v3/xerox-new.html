@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xerox: invoices after cancellation. We found them all.</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Xerox: invoices after cancellation. We found them all.">
+<meta property="og:description" content="Your Xerox customers are disputing invoices after cancellation. We found every single one.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.agentcollect.com/v3/og-xerox.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.agentcollect.com/v3/og-xerox.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GRZZT9K05B"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GRZZT9K05B');</script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","vr6uvxdalw");</script>
+<script>
+// Notify backend of page visit with Clarity session replay
+(function(){
+  var sent=false;
+  function notify(sid){
+    if(sent)return;sent=true;
+    var body={page:'xerox-new',clarity_project_id:'vr6uvxdalw',referrer:document.referrer||'direct'};
+    if(sid)body.clarity_session_id=sid;
+    fetch('https://backend.widr.app/api/v1/demo/page-visit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).catch(function(){});
+  }
+  // Wait for Clarity to initialize and get session ID
+  var attempts=0;
+  var poll=setInterval(function(){
+    attempts++;
+    if(window.clarity){
+      try{
+        window.clarity('get','id',function(userId,sessionId){
+          clearInterval(poll);
+          notify(sessionId);
+        });
+      }catch(e){clearInterval(poll);notify(null);}
+    }
+    if(attempts>20){clearInterval(poll);notify(null);}
+  },500);
+})();
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --blue:#4F46E5;--blue-dark:#4338CA;--text:#0B1B3D;--muted:#6b7280;--border:#e5e7eb;--bg:#FAFBFF;
+  --green:#10B981;--green-dark:#059669;--red:#dc2626;--amber:#F59E0B;
+  --mono:'JetBrains Mono',monospace;--sans:'Plus Jakarta Sans',system-ui,sans-serif;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+  --shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);
+  --shadow-lg:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:16px;line-height:1.6;position:relative}
+::selection{background:rgba(79,70,229,.1)}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.rv.v{opacity:1;transform:none}
+.rv-d1{transition-delay:.12s}
+.rv-d2{transition-delay:.24s}
+
+/* ===== NAV ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(250,251,255,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,0,0,.04)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:16px 48px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{text-decoration:none;font-weight:900;font-size:17px;color:var(--text);letter-spacing:-.4px;display:inline-flex;align-items:baseline}
+.nav-logo .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--blue);margin-left:1px;vertical-align:baseline}
+.nav-expiry{font-size:14px;color:var(--muted);font-weight:500}
+.nav-expiry strong{color:var(--text);font-weight:700}
+
+/* ===== HERO — CENTERED INCOMING CALL ===== */
+.hero{min-height:88vh;min-height:88dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#f6f3ef;padding:80px 24px 40px}
+.hero::before{content:'';position:absolute;width:800px;height:800px;top:40%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(218,41,28,.12) 0%,rgba(218,41,28,.05) 40%,transparent 70%);border-radius:50%;pointer-events:none;animation:heroGlow 6s ease-in-out infinite}
+.hero::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 700px 400px at 30% 0%,rgba(218,41,28,.08),transparent),radial-gradient(ellipse 500px 500px at 80% 80%,rgba(16,185,129,.06),transparent)}
+@keyframes heroGlow{0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.12)}}
+.hero-km-logo{height:52px;margin-bottom:52px;opacity:.85}
+.hero-calling-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--blue);opacity:.7;margin-bottom:8px;text-align:center;animation:fadeInUp .6s ease .2s both}
+.hero-title{font-size:22px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:6px;text-align:center;animation:fadeInUp .6s ease .3s both}
+.hero-hint{font-size:14px;color:var(--green);opacity:.8;text-align:center;margin-bottom:0;font-weight:600;animation:fadeInUp .6s ease .4s both}
+
+/* Scroll chevron */
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;opacity:.7;animation:chevBounce 1.8s ease-in-out infinite 1.5s;transition:opacity .4s}
+.scroll-hint.hidden{opacity:0;pointer-events:none}
+.scroll-hint svg{width:32px;height:32px;color:var(--blue)}
+@keyframes chevBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}
+
+/* Pulse rings — incoming call effect */
+.orb-ring{position:absolute;border-radius:50%;border:1.5px solid rgba(218,41,28,.12);pointer-events:none}
+.orb-ring-1{inset:-30px;animation:ringPulse 3s ease-out infinite}
+.orb-ring-2{inset:-60px;animation:ringPulse 3s ease-out infinite .6s}
+.orb-ring-3{inset:-90px;animation:ringPulse 3s ease-out infinite 1.2s}
+@keyframes ringPulse{0%{opacity:.6;transform:scale(.95)}50%{opacity:.2;transform:scale(1)}100%{opacity:0;transform:scale(1.05)}}
+
+/* ===== ORB ===== */
+.orb-wrap{position:relative;width:320px;height:320px;aspect-ratio:1;margin:0 auto 36px;cursor:pointer}
+.orb-glow{position:absolute;inset:-60px;border-radius:50%;background:radial-gradient(circle,rgba(218,41,28,.18) 0%,rgba(218,41,28,.06) 40%,transparent 70%);animation:orbGlowPulse 4s ease-in-out infinite}
+.orb-main{position:relative;width:320px;height:320px;aspect-ratio:1;border-radius:50%;-webkit-border-radius:50%;overflow:hidden;-webkit-mask-image:-webkit-radial-gradient(white,black);mask-image:radial-gradient(white,black);animation:orbDrift 6s ease-in-out infinite;transition:transform .3s,box-shadow .3s;box-shadow:0 0 80px rgba(218,41,28,.25),0 0 160px rgba(218,41,28,.08),inset 0 0 60px rgba(0,0,0,.3)}
+.orb-wrap:hover .orb-main{transform:scale(1.06)}
+.orb-wrap:active .orb-main{transform:scale(.95)}
+.orb-main.speaking{animation:orbDrift 6s ease-in-out infinite,orbPulseSpeak .8s ease-in-out infinite}
+.orb-layer{position:absolute;inset:0;border-radius:50%}
+.orb-layer-1{background:conic-gradient(from 0deg,#DA291C,#B71C1C,#1a1a1a,#E53935,#DA291C);animation:orbSpin 8s linear infinite}
+.orb-layer-2{background:conic-gradient(from 180deg,rgba(218,41,28,.8),rgba(229,57,53,.5),rgba(26,26,26,.6),rgba(183,28,28,.4),rgba(218,41,28,.8));animation:orbSpin 12s linear infinite reverse;mix-blend-mode:soft-light}
+.orb-layer-3{background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.25) 0%,transparent 50%)}
+.orb-layer-4{background:radial-gradient(circle at 50% 110%,rgba(0,0,0,.4) 0%,transparent 60%)}
+.orb-phone-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:10;transition:opacity .3s,transform .3s}
+.orb-phone-center svg{width:44px;height:44px;color:#fff;stroke:currentColor;filter:drop-shadow(0 2px 12px rgba(0,0,0,.35));transition:transform .3s}
+.orb-wrap:hover .orb-phone-center svg{transform:scale(1.12)}
+.orb-particle{position:absolute;width:4px;height:4px;border-radius:50%;animation:orbParticle 4s ease-in-out infinite}
+.orb-particle:nth-child(1){top:-16px;left:30%;animation-delay:0s}
+.orb-particle:nth-child(2){top:20%;right:-12px;animation-delay:1s}
+.orb-particle:nth-child(3){bottom:-12px;left:40%;animation-delay:2s}
+.orb-particle:nth-child(4){top:40%;left:-16px;animation-delay:.5s}
+.orb-particle:nth-child(5){top:-10px;right:25%;animation-delay:1.5s}
+.orb-particle:nth-child(6){bottom:-8px;right:30%;animation-delay:2.5s}
+
+@keyframes orbSpin{0%{transform:rotate(0deg) scale(1.15)}100%{transform:rotate(360deg) scale(1.15)}}
+@keyframes orbDrift{0%,100%{transform:translateY(0) scale(1)}33%{transform:translateY(-4px) scale(1.01)}66%{transform:translateY(-2px) scale(.995)}}
+@keyframes orbPulseSpeak{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+@keyframes orbGlowPulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.8;transform:scale(1.08)}}
+@keyframes orbParticle{0%,100%{opacity:0;transform:translateY(0) scale(1)}25%{opacity:1}50%{opacity:.8;transform:translateY(-18px) scale(1.4)}75%{opacity:.3}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Orb bubble — floats on top of orb like landing page */
+.orb-bubble{position:absolute;top:16px;right:-40px;background:rgba(255,255,255,.3);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.35);border-radius:14px;padding:10px 18px;font-size:15px;font-weight:700;color:#fff;white-space:nowrap;animation:orbBubble 3s ease-in-out infinite;text-shadow:0 1px 4px rgba(0,0,0,.5);z-index:15}
+@keyframes orbBubble{0%,100%{opacity:.7;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+
+.orb-label{text-align:center;font-size:15px;font-weight:600;color:var(--muted);margin-top:0;margin-bottom:20px;letter-spacing:-.01em;display:none}
+.orb-label .orb-label-hint{display:block;font-size:12px;font-weight:400;color:var(--muted);opacity:.5;margin-top:4px}
+
+/* ===== CALL STATES (below orb) ===== */
+.call-state{display:flex;flex-direction:column;align-items:center;width:100%;max-width:360px;margin:0 auto}
+.cs-connecting{display:none;flex-direction:column;align-items:center;gap:12px;padding:8px 0;animation:fadeInUp .3s ease}
+.cs-connecting .co-spinner{width:28px;height:28px;border:3px solid rgba(79,70,229,.15);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite}
+.cs-connecting-text{color:var(--muted);font-size:13px;font-weight:500}
+.cs-active{display:none;flex-direction:column;align-items:center;gap:10px;padding:8px 0;width:100%}
+.cs-active.visible{display:flex}
+.cs-status{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--blue)}
+.cs-waveform{display:flex;align-items:center;justify-content:center;gap:3px;height:40px;padding:4px 0}
+.cs-waveform span{width:3.5px;border-radius:3px;background:var(--blue);min-height:4px;will-change:height;transition:height .08s linear}
+.cs-transcript{width:100%;max-height:80px;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}
+.cs-transcript::-webkit-scrollbar{display:none}
+.cs-msg{padding:8px 12px;border-radius:12px;font-size:13px;line-height:1.5;margin-bottom:6px;animation:fadeInUp .3s ease}
+.cs-msg.agent{background:rgba(79,70,229,.08);color:var(--text)}
+.cs-msg.user{background:rgba(0,0,0,.04);color:var(--muted);text-align:right}
+.cs-end-btn{padding:10px 24px;background:rgba(239,68,68,.06);color:#ef4444;border:1px solid rgba(239,68,68,.15);border-radius:12px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;font-family:var(--sans)}
+.cs-end-btn:hover{background:rgba(239,68,68,.12)}
+.cs-post-call{display:none;flex-direction:column;align-items:center;gap:10px;padding:8px 0;animation:fadeInUp .4s ease}
+.cs-post-check{margin-bottom:4px}
+.cs-post-title{font-size:18px;font-weight:800;color:var(--text)}
+.cs-post-sub{font-size:14px;color:var(--muted);text-align:center;line-height:1.5;max-width:300px}
+.cs-post-cta{display:flex;align-items:center;gap:8px;padding:14px 28px;background:var(--blue);color:#fff;border:none;border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;text-decoration:none;margin-top:6px;box-shadow:0 0 20px rgba(79,70,229,.3);font-family:var(--sans)}
+.cs-post-cta:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 4px 24px rgba(79,70,229,.4)}
+.cs-post-retry{background:none;border:1px solid var(--border);color:var(--muted);padding:8px 16px;border-radius:8px;font-size:12px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;margin-top:2px;font-family:var(--sans)}
+.cs-post-retry:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ===== SECTION 2: THE PROBLEM + SOCIAL PROOF ===== */
+.proof-section{padding:120px 48px 40px;max-width:920px;margin:0 auto;text-align:center;position:relative}
+.proof-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--blue),transparent);opacity:.3}
+.proof-sec-title{font-size:clamp(26px,3.2vw,38px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;color:var(--text)}
+.proof-sec-sub{font-size:17px;color:var(--muted);margin-bottom:52px;line-height:1.5}
+
+/* Wall of Pain */
+.pain-wall{overflow:hidden;margin-top:40px;margin-bottom:40px;position:relative;padding:8px 0;width:100vw;margin-left:calc(-50vw + 50%)}
+.pain-wall::before,.pain-wall::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none}
+.pain-wall::before{left:0;background:linear-gradient(to right,#FAFBFF,transparent)}
+.pain-wall::after{right:0;background:linear-gradient(to left,#FAFBFF,transparent)}
+.pain-row{display:flex;gap:14px;padding:6px 0;width:max-content}
+.pain-row-1{animation:painScroll1 32s linear infinite}
+.pain-row-2{animation:painScroll2 38s linear infinite}
+.pain-wall:hover .pain-row{animation-play-state:paused}
+@keyframes painScroll1{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes painScroll2{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+.pain-pill{cursor:pointer;transition:transform .15s,box-shadow .15s}
+.pain-pill:hover{transform:scale(1.04);box-shadow:0 4px 16px rgba(220,38,38,.15);z-index:2}
+.pain-pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid rgba(220,38,38,.15);border-radius:100px;padding:10px 20px;font-size:14px;font-weight:600;color:var(--text);white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.08);flex-shrink:0;text-decoration:none}
+.pain-pill .hl{color:var(--red);font-weight:800}
+.pain-pill .src-logo{height:16px;width:auto;opacity:.4;margin-left:4px;vertical-align:middle;flex-shrink:0;border-radius:3px}
+.pain-pill .src-tag{font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.02em;margin-left:6px;flex-shrink:0}
+.pain-count{text-align:center;margin-top:20px;font-size:15px;font-weight:700;color:var(--red)}
+.pain-count span{color:var(--muted);font-weight:500}
+.pain-count a{color:var(--red);text-decoration:none;font-weight:700}
+.pain-count a:hover{text-decoration:underline}
+
+/* ===== WHAT IS AGENTCOLLECT ===== */
+.wia-section{padding:80px 48px;max-width:920px;margin:0 auto;text-align:center}
+.wia-brand{display:flex;align-items:baseline;justify-content:center;margin-bottom:12px}
+.wia-logo{font-size:22px;font-weight:900;color:var(--text);letter-spacing:-.4px}
+.wia-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--blue);margin-left:1px}
+.wia-title{font-size:clamp(26px,3.2vw,38px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:12px;color:var(--text)}
+.wia-sub{font-size:17px;color:var(--muted);margin-bottom:48px;line-height:1.5;max-width:600px;margin-left:auto;margin-right:auto}
+.wia-comparison{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:720px;margin:0 auto 40px;text-align:left}
+.wia-col{padding:28px 24px;border-radius:16px;border:1px solid var(--border)}
+.wia-col.agency{background:rgba(220,38,38,.02);border-color:rgba(220,38,38,.12)}
+.wia-col.ac{background:rgba(79,70,229,.02);border-color:rgba(79,70,229,.12)}
+.wia-col-header{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.wia-col-header .icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900}
+.wia-col.agency .icon{background:rgba(220,38,38,.08);color:var(--red)}
+.wia-col.ac .icon{background:rgba(79,70,229,.08);color:var(--blue)}
+.wia-col-header h3{font-size:16px;font-weight:800;color:var(--text)}
+.wia-item{display:flex;gap:10px;margin-bottom:12px;font-size:14px;line-height:1.5;color:var(--muted)}
+.wia-item:last-child{margin-bottom:0}
+.wia-item .bullet{flex-shrink:0;font-weight:900;font-size:14px;line-height:1.5}
+.wia-col.agency .bullet{color:var(--red)}
+.wia-col.ac .bullet{color:var(--green)}
+.wia-item strong{color:var(--text);font-weight:700}
+.wia-voice-teaser{background:linear-gradient(135deg,rgba(79,70,229,.03),rgba(79,70,229,.06));border:1px solid rgba(79,70,229,.08);border-radius:16px;padding:24px 28px;max-width:480px;margin:0 auto;text-align:center}
+.wia-voice-teaser-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px}
+.wia-voice-teaser-sub{font-size:13px;color:var(--muted)}
+.wia-voice-teaser-sub a{color:var(--blue);text-decoration:none;font-weight:600;cursor:pointer}
+.wia-voice-teaser-sub a:hover{text-decoration:underline}
+
+/* ===== AGENTCOLLECT PROOF SECTION ===== */
+.ac-proof-section{padding:80px 48px 80px;max-width:920px;margin:0 auto;text-align:center}
+.ac-proof-brand{display:flex;align-items:baseline;justify-content:center;margin-bottom:32px}
+.ac-proof-logo{font-size:22px;font-weight:900;color:var(--text);letter-spacing:-.4px}
+.ac-proof-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--blue);margin-left:1px}
+.ac-proof-title{font-size:clamp(26px,3.2vw,38px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px;color:var(--text)}
+.ac-proof-sub{font-size:17px;color:var(--muted);margin-bottom:48px;line-height:1.5}
+
+.social-logos{display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap;margin-bottom:40px}
+.social-logos img{height:22px;filter:grayscale(100%) brightness(.4);opacity:.5;object-fit:contain;transition:all .4s cubic-bezier(.16,1,.3,1)}
+.social-logos img:hover{filter:none;opacity:1;transform:scale(1.08)}
+.social-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:520px;margin:0 auto 40px}
+.social-stat{text-align:center;opacity:0;transform:translateY(12px);transition:all .5s cubic-bezier(.16,1,.3,1)}
+.social-stat.v{opacity:1;transform:translateY(0)}
+.social-stat-num{font-size:32px;font-weight:900;color:var(--blue);letter-spacing:-.03em;font-family:var(--sans)}
+.social-stat-label{font-size:12px;color:var(--muted);font-weight:500;margin-top:4px}
+.social-quote{background:linear-gradient(135deg,rgba(79,70,229,.03),rgba(79,70,229,.06));border:1px solid rgba(79,70,229,.08);border-radius:20px;padding:32px 36px;max-width:520px;margin:0 auto;text-align:left}
+.social-quote-text{font-size:18px;font-weight:700;color:var(--text);line-height:1.45;letter-spacing:-.02em;margin-bottom:16px}
+.social-quote-text::before{content:'\201C';color:rgba(79,70,229,.25);font-size:36px;line-height:0;vertical-align:bottom;margin-right:2px}
+.social-quote-author{display:flex;align-items:center;gap:12px}
+.social-quote-avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;background:var(--bg);border:1px solid var(--border)}
+.social-quote-name{font-size:14px;font-weight:700;color:var(--text)}
+.social-quote-role{font-size:13px;color:var(--muted)}
+
+/* ===== SECTION 3: HOW IT WORKS ===== */
+.how-section{padding:100px 48px 80px;background:linear-gradient(180deg,#f6f3ef 0%,#F8F7F5 100%);text-align:center;position:relative}
+.how-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:16px}
+.how-title{font-size:clamp(28px,3.5vw,42px);font-weight:900;letter-spacing:-.03em;line-height:1.08;margin-bottom:56px;color:var(--text)}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:960px;margin:0 auto}
+.how-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:36px 28px;text-align:left;transition:all .25s}
+.how-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.how-num{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-family:var(--sans);font-size:20px;font-weight:900}
+.how-card-title{font-size:18px;font-weight:800;margin-bottom:8px;letter-spacing:-.03em;color:var(--text)}
+.how-card-desc{font-size:15px;color:var(--muted);line-height:1.65}
+
+.close-cta{display:inline-block;background:var(--blue);color:#fff;padding:18px 44px;border-radius:14px;font-weight:700;font-size:17px;text-decoration:none;transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s;font-family:var(--sans);letter-spacing:-.01em;position:relative}
+.close-cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(79,70,229,.3)}
+.how-guarantee{font-size:14px;color:var(--muted);margin-top:24px;font-style:italic}
+.how-footer{font-size:12px;color:var(--muted);opacity:.5;margin-top:56px;line-height:1.5;text-align:center}
+
+/* ===== FLOATING VOICE FAB ===== */
+.voice-fab{position:fixed;bottom:28px;right:28px;z-index:9000;display:flex;align-items:center;gap:10px;background:#0f0f1a;border:1px solid rgba(79,70,229,.3);border-radius:50px;padding:12px 20px 12px 14px;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 8px 32px rgba(0,0,0,.4);opacity:0;pointer-events:none;transform:translateY(20px)}
+.voice-fab.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
+.voice-fab:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(79,70,229,.3);border-color:rgba(79,70,229,.5)}
+.voice-fab-icon{width:40px;height:40px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 16px rgba(79,70,229,.4)}
+.voice-fab-icon svg{width:20px;height:20px;color:#fff}
+.voice-fab-text{color:rgba(255,255,255,.9);font-size:13px;font-weight:600;white-space:nowrap}
+
+/* FAB live call state */
+.voice-fab.live{border-color:rgba(239,68,68,.4);background:#1a0f0f;box-shadow:0 8px 32px rgba(239,68,68,.3)}
+.voice-fab.live:hover{border-color:rgba(239,68,68,.6);box-shadow:0 12px 40px rgba(239,68,68,.4)}
+.voice-fab.live .voice-fab-icon{background:#ef4444;box-shadow:0 0 16px rgba(239,68,68,.5);animation:fabPulse 1.5s ease-in-out infinite}
+.voice-fab.live .voice-fab-text{color:rgba(255,255,255,.9)}
+@keyframes fabPulse{0%,100%{box-shadow:0 0 16px rgba(239,68,68,.5)}50%{box-shadow:0 0 28px rgba(239,68,68,.7)}}
+
+/* ===== MOBILE ===== */
+@media(max-width:960px){
+  .nav-inner{padding:14px 24px}
+  .wia-comparison{grid-template-columns:1fr;gap:16px}
+}
+@media(max-width:768px){
+  .nav-expiry{font-size:12px}
+  .orb-wrap{width:240px;height:240px}
+  .orb-main{width:240px;height:240px;border-radius:50%;-webkit-border-radius:50%;-webkit-mask-image:-webkit-radial-gradient(white,black)}
+  .orb-phone-center svg{width:36px;height:36px}
+  .orb-ring-1{inset:-20px}
+  .orb-ring-2{inset:-44px}
+  .orb-ring-3{inset:-68px}
+  .hero-title{font-size:18px}
+  .proof-section{padding:80px 24px 64px}
+  .proof-cards{grid-template-columns:1fr;gap:12px}
+  .how-section{padding:80px 24px 56px}
+  .how-grid{grid-template-columns:1fr;gap:16px;max-width:400px;margin:0 auto}
+  .ac-proof-section{padding:80px 24px 64px}
+  .wia-section{padding:60px 24px}
+  .voice-fab{bottom:16px;right:16px;padding:10px 16px 10px 10px}
+  .voice-fab-text{font-size:12px}
+}
+@media(max-width:480px){
+  .nav-expiry{display:none}
+  .orb-bubble{display:none}
+  .orb-wrap{width:200px;height:200px;aspect-ratio:1;margin:0 auto 28px}
+  .orb-main{width:200px;height:200px;aspect-ratio:1;border-radius:50%;-webkit-border-radius:50%;-webkit-mask-image:-webkit-radial-gradient(white,black)}
+  .orb-phone-center svg{width:32px;height:32px}
+  .orb-ring-1{inset:-16px}
+  .orb-ring-2{inset:-36px}
+  .orb-ring-3{inset:-56px}
+  .hero{padding:72px 20px 32px;min-height:82vh;min-height:82dvh}
+  .hero-km-logo{height:44px;margin-bottom:40px}
+  .hero-title{font-size:16px}
+  .social-logos{gap:20px}
+  .social-logos img{height:18px}
+  .social-stats{grid-template-columns:repeat(3,1fr);gap:12px}
+  .social-stat-num{font-size:24px}
+  .social-quote{padding:24px 20px}
+  .social-quote-text{font-size:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://agentcollect.com" class="nav-logo">AgentCollect<span class="dot"></span></a>
+    <span class="nav-expiry">This page disappears in <strong id="days-left"></strong></span>
+  </div>
+</nav>
+
+<!-- SECTION 1: HERO — INCOMING CALL -->
+<section class="hero" id="hero">
+  <img src="https://cdn.brandfetch.io/xerox.com/w/512/h/80/logo" alt="Xerox" class="hero-km-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" crossorigin="anonymous"><span style="display:none;font-size:28px;font-weight:900;color:#DA291C;letter-spacing:-.03em;opacity:.7">Xerox</span>
+
+  <!-- ORB with pulse rings -->
+  <div class="orb-wrap" id="orb-wrap">
+    <div class="orb-ring orb-ring-1"></div>
+    <div class="orb-ring orb-ring-2"></div>
+    <div class="orb-ring orb-ring-3"></div>
+    <div class="orb-glow"></div>
+    <div class="orb-particle" style="background:rgba(218,41,28,.5)"></div>
+    <div class="orb-particle" style="background:rgba(218,41,28,.5)"></div>
+    <div class="orb-particle" style="background:rgba(218,41,28,.3)"></div>
+    <div class="orb-particle" style="background:rgba(183,28,28,.3)"></div>
+    <div class="orb-particle" style="background:rgba(26,26,26,.4)"></div>
+    <div class="orb-particle" style="background:rgba(229,57,53,.3)"></div>
+    <div class="orb-main" id="orb-main">
+      <div class="orb-layer orb-layer-1"></div>
+      <div class="orb-layer orb-layer-2"></div>
+      <div class="orb-layer orb-layer-3"></div>
+      <div class="orb-layer orb-layer-4"></div>
+      <div class="orb-phone-center" id="orb-phone-center">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      </div>
+    </div>
+    <div class="orb-bubble" id="orb-bubble">Hi, I'm Sarah from Xerox...</div>
+  </div>
+
+  <div class="hero-calling-label">Incoming call</div>
+  <div class="hero-title">Xerox Agent</div>
+  <div class="hero-hint">Tap to answer</div>
+
+  <div class="orb-label" id="orb-label">Click to call your agent<span class="orb-label-hint">Live AI voice — 30 seconds</span></div>
+
+  <!-- Call States (below orb) -->
+  <div class="call-state" id="call-state">
+    <div class="cs-connecting" id="cs-connecting">
+      <div class="co-spinner"></div>
+      <div class="cs-connecting-text" id="cs-connecting-text">Connecting to Xerox agent...</div>
+    </div>
+    <div class="cs-active" id="cs-active">
+      <div class="cs-status" id="cs-status">Listening...</div>
+      <div class="cs-waveform" id="cs-waveform">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="cs-transcript" id="cs-transcript"></div>
+      <button class="cs-end-btn" id="cs-end-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        End call
+      </button>
+    </div>
+    <div class="cs-post-call" id="cs-post-call">
+      <div class="cs-post-check">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <div class="cs-post-title">That was 30 seconds.</div>
+      <div class="cs-post-sub">Now imagine 10,000 accounts with your real data.</div>
+      <a href="https://cal.com/johnb/30" target="_blank" class="cs-post-cta" id="cs-post-cta">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Run this on your portfolio
+      </a>
+      <button class="cs-post-retry" id="cs-post-retry">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+        Try another call
+      </button>
+    </div>
+  </div>
+  <div class="scroll-hint" id="scroll-hint">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+</section>
+
+<!-- SECTION 2: THE PROBLEM -->
+<section class="proof-section">
+  <div class="rv">
+    <h2 class="proof-sec-title">Xerox billing complaints<br><span style="color:var(--red)">after cancellation.</span></h2>
+    <p class="proof-sec-sub">Real complaints from BBB &amp; CFPB.</p>
+  </div>
+
+  <div class="pain-wall rv">
+    <!-- Row 1 -->
+    <div class="pain-row pain-row-1">
+      <a class="pain-pill" href="https://www.bbb.org/us/ct/norwalk/profile/business-form-printer/xerox-corporation-0111-12000842/complaints" target="_blank">"3 years silence, then a <span class="hl">collection notice</span>" <span class="src-tag">[BBB]</span></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/ct/norwalk/profile/business-form-printer/xerox-corporation-0111-12000842/complaints" target="_blank">"Invoices still coming <span class="hl">months after contract ended</span>" <span class="src-tag">[BBB]</span></a>
+      <a class="pain-pill" href="https://www.consumerfinance.gov/about-us/newsroom/cfpb-fines-xerox-business-services-11-million-incorrect-consumer-information-sent-credit-reporting-agencies/" target="_blank">"CFPB fined Xerox <span class="hl">$1.1M</span> for incorrect consumer info" <span class="src-tag">[CFPB]</span></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/ct/norwalk/profile/business-form-printer/xerox-corporation-0111-12000842/complaints" target="_blank">"Returned copier in September — <span class="hl">account never closed</span>" <span class="src-tag">[BBB]</span></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/ct/norwalk/profile/business-form-printer/xerox-corporation-0111-12000842/complaints" target="_blank">"<span class="hl">Harassing calls</span> from collections after cancellation" <span class="src-tag">[BBB]</span></a>
+      <!-- dup for infinite scroll -->
+      <a class="pain-pill" href="https://www.bbb.org/us/ct/norwalk/profile/business-form-printer/xerox-corporation-0111-12000842/complaints" target="_blank">"3 years silence, then a <span class="hl">collection notice</span>" <span class="src-tag">[BBB]</span></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/ct/norwalk/profile/business-form-printer/xerox-corporation-0111-12000842/complaints" target="_blank">"Invoices still coming <span class="hl">months after contract ended</span>" <span class="src-tag">[BBB]</span></a>
+      <a class="pain-pill" href="https://www.consumerfinance.gov/about-us/newsroom/cfpb-fines-xerox-business-services-11-million-incorrect-consumer-information-sent-credit-reporting-agencies/" target="_blank">"CFPB fined Xerox <span class="hl">$1.1M</span> for incorrect consumer info" <span class="src-tag">[CFPB]</span></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/ct/norwalk/profile/business-form-printer/xerox-corporation-0111-12000842/complaints" target="_blank">"Returned copier in September — <span class="hl">account never closed</span>" <span class="src-tag">[BBB]</span></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/ct/norwalk/profile/business-form-printer/xerox-corporation-0111-12000842/complaints" target="_blank">"<span class="hl">Harassing calls</span> from collections after cancellation" <span class="src-tag">[BBB]</span></a>
+    </div>
+    <!-- Row 2 -->
+    <div class="pain-row pain-row-2">
+      <a class="pain-pill" href="https://www.bbb.org/us/ct/norwalk/profile/business-form-printer/xerox-corporation-0111-12000842/complaints" target="_blank">"Check mailed in July — <span class="hl">they say never received</span>" <span class="src-tag">[BBB]</span></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/ct/norwalk/profile/business-form-printer/xerox-corporation-0111-12000842/complaints" target="_blank">"Auto-renewed <span class="hl">without consent</span> — still billing" <span class="src-tag">[BBB]</span></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/ct/norwalk/profile/business-form-printer/xerox-corporation-0111-12000842/complaints" target="_blank">"No one in billing <span class="hl">can help</span> resolve disputes" <span class="src-tag">[BBB]</span></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/ct/norwalk/profile/business-form-printer/xerox-corporation-0111-12000842/complaints" target="_blank">"Sent to collections for <span class="hl">equipment already returned</span>" <span class="src-tag">[BBB]</span></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/ct/norwalk/profile/business-form-printer/xerox-corporation-0111-12000842/complaints" target="_blank">"Multiple calls to resolve — <span class="hl">no resolution</span>" <span class="src-tag">[BBB]</span></a>
+      <!-- dup for infinite scroll -->
+      <a class="pain-pill" href="https://www.bbb.org/us/ct/norwalk/profile/business-form-printer/xerox-corporation-0111-12000842/complaints" target="_blank">"Check mailed in July — <span class="hl">they say never received</span>" <span class="src-tag">[BBB]</span></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/ct/norwalk/profile/business-form-printer/xerox-corporation-0111-12000842/complaints" target="_blank">"Auto-renewed <span class="hl">without consent</span> — still billing" <span class="src-tag">[BBB]</span></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/ct/norwalk/profile/business-form-printer/xerox-corporation-0111-12000842/complaints" target="_blank">"No one in billing <span class="hl">can help</span> resolve disputes" <span class="src-tag">[BBB]</span></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/ct/norwalk/profile/business-form-printer/xerox-corporation-0111-12000842/complaints" target="_blank">"Sent to collections for <span class="hl">equipment already returned</span>" <span class="src-tag">[BBB]</span></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/ct/norwalk/profile/business-form-printer/xerox-corporation-0111-12000842/complaints" target="_blank">"Multiple calls to resolve — <span class="hl">no resolution</span>" <span class="src-tag">[BBB]</span></a>
+    </div>
+  </div>
+  <div class="pain-count rv"><span>Xerox billing complaints on BBB &mdash; </span><a href="https://www.bbb.org/us/ct/norwalk/profile/business-form-printer/xerox-corporation-0111-12000842/complaints" target="_blank">BBB &#8599;</a> <span>|</span> <a href="https://www.consumerfinance.gov/about-us/newsroom/cfpb-fines-xerox-business-services-11-million-incorrect-consumer-information-sent-credit-reporting-agencies/" target="_blank">CFPB &#8599;</a></div>
+
+  </div>
+</section>
+
+<!-- SECTION 3: PROOF — results speak -->
+<section class="ac-proof-section">
+  <div class="rv">
+    <h2 class="ac-proof-title">What happens when AI collects for you.</h2>
+  </div>
+  <div class="social-stats rv rv-d1" id="social-stats" style="margin-bottom:48px">
+    <div class="social-stat" id="ss1">
+      <div class="social-stat-num" data-target="50" data-suffix="%">0%</div>
+      <div class="social-stat-label">of AR recovered</div>
+    </div>
+    <div class="social-stat" id="ss2">
+      <div class="social-stat-num" data-target="20" data-suffix=" days">0 days</div>
+      <div class="social-stat-label">avg. time to recover</div>
+    </div>
+    <div class="social-stat" id="ss3">
+      <div class="social-stat-num" data-target="0" data-suffix="">0</div>
+      <div class="social-stat-label">Complaints</div>
+    </div>
+  </div>
+  <div class="social-quote rv rv-d2" id="social-quote">
+    <div class="social-quote-text">We had written off most of these invoices. AgentCollect recovered them without a single complaint.</div>
+    <div class="social-quote-author">
+      <img src="https://respaid.com/images/neil-doyle.png" alt="Neil Doyle" class="social-quote-avatar">
+      <div>
+        <div class="social-quote-name">Neil Doyle</div>
+        <div class="social-quote-role" style="display:flex;align-items:center;gap:6px"><img src="/v3/logos/microsoft.svg" alt="Microsoft" style="height:14px;opacity:.6"> Microsoft</div>
+      </div>
+    </div>
+  </div>
+  <div class="social-logos rv" style="margin-top:40px">
+    <img src="/v3/logos/microsoft.svg" alt="Microsoft" loading="lazy" onerror="this.style.display='none'">
+    <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/6917bec130210a5551350be0_DoorDash-Logo-700x394.png" alt="DoorDash" loading="lazy" onerror="this.style.display='none'">
+    <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/681486e9407f3fb4dbd3d3f0_Uber-Freight-Logo.png" alt="Uber Freight" loading="lazy" onerror="this.style.display='none'">
+    <img src="https://cdn.prod.website-files.com/6633d7e9bd4516c8fbe714ea/67da8be5048d3251e3b1616b_checkr_logo_wordmark_aqua3.png" alt="Checkr" loading="lazy" onerror="this.style.display='none'">
+  </div>
+</section>
+
+<!-- SECTION 4: HOW IT WORKS -->
+<section class="how-section">
+  <div class="rv">
+    <div class="how-label">How it works</div>
+    <h2 class="how-title">Three steps. Zero manual work.</h2>
+  </div>
+  <div class="how-grid">
+    <div class="how-card rv" id="step1">
+      <div class="how-num" style="background:rgba(79,70,229,.08);color:var(--blue)">1</div>
+      <h3 class="how-card-title">Find the right contacts</h3>
+      <p class="how-card-desc">We enrich and verify every account before outreach begins.</p>
+    </div>
+    <div class="how-card rv rv-d1" id="step2">
+      <div class="how-num" style="background:rgba(16,185,129,.08);color:var(--green)">2</div>
+      <h3 class="how-card-title">AI agents engage</h3>
+      <p class="how-card-desc">Calls, emails, SMS &mdash; all under your brand.</p>
+    </div>
+    <div class="how-card rv rv-d2" id="step3">
+      <div class="how-num" style="background:rgba(245,158,11,.08);color:var(--amber)">3</div>
+      <h3 class="how-card-title">You get paid</h3>
+      <p class="how-card-desc">Branded payment page. Funds go directly to your account.</p>
+    </div>
+  </div>
+
+  <div class="rv" style="transition-delay:.4s;text-align:center;margin-top:56px">
+    <a href="https://cal.com/johnb/30" target="_blank" rel="noopener" class="close-cta" id="close-cta" onclick="try{gtag('event','book_cta',{company:'Xerox',page:'xerox'})}catch(e){}">Run this on your portfolio</a>
+    <p class="how-guarantee">You pay nothing unless we collect.</p>
+  </div>
+  <p class="how-footer">Built for Xerox. All contacts from public sources. Powered by AgentCollect.</p>
+</section>
+
+<!-- Footer -->
+<footer style="text-align:center;padding:32px 24px;font-size:13px;color:var(--muted);border-top:1px solid var(--border)">
+  AgentCollect &middot; San Francisco, CA &middot; <a href="https://agentcollect.com" style="color:var(--blue);text-decoration:none">agentcollect.com</a> &middot; <a href="mailto:j@agentcollect.com" style="color:var(--blue);text-decoration:none">j@agentcollect.com</a>
+</footer>
+
+<!-- Floating Voice FAB -->
+<div class="voice-fab" id="voice-fab">
+  <div class="voice-fab-icon" id="voice-fab-icon">
+    <svg id="fab-mic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg>
+    <svg id="fab-hangup-icon" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </div>
+  <div class="voice-fab-text" id="voice-fab-text">Call your agent</div>
+</div>
+
+<script type="module">
+// ===== Preload RetellAI SDK =====
+import { RetellWebClient } from 'https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.7/+esm';
+window.__RetellWebClient = RetellWebClient;
+</script>
+<script>
+// ===== Expiry Countdown =====
+(function(){
+  var expiry = new Date('2026-04-23');
+  var diff = Math.ceil((expiry - new Date()) / 864e5);
+  var el = document.getElementById('days-left');
+  if(el) el.textContent = diff > 0 ? diff + ' day' + (diff !== 1 ? 's' : '') : 'expired';
+})();
+
+// ===== Scroll Reveal =====
+(function(){
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('v'); });
+  }, {threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){ ro.observe(el); });
+})();
+
+// ===== Hide scroll chevron on first scroll =====
+(function(){
+  var hint = document.getElementById('scroll-hint');
+  if(!hint) return;
+  var done = false;
+  window.addEventListener('scroll', function(){
+    if(!done && window.scrollY > 60){ done = true; hint.classList.add('hidden'); }
+  }, {passive:true});
+})();
+
+// ===== Problem Cards — staggered reveal =====
+(function(){
+  var cards = document.querySelectorAll('.problem-card');
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var idx = Array.prototype.indexOf.call(cards, e.target);
+        setTimeout(function(){ e.target.classList.add('v'); }, idx * 150);
+      }
+    });
+  }, {threshold:.15});
+  cards.forEach(function(c){ ro.observe(c); });
+})();
+
+// ===== Animated Counters =====
+(function(){
+  var stats = document.querySelectorAll('.social-stat');
+  var animated = false;
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting && !animated){
+        animated = true;
+        stats.forEach(function(stat, idx){
+          setTimeout(function(){
+            stat.classList.add('v');
+            var numEl = stat.querySelector('.social-stat-num');
+            if(!numEl) return;
+            var target = parseInt(numEl.getAttribute('data-target'));
+            var suffix = numEl.getAttribute('data-suffix') || '';
+            var duration = 1200;
+            var start = Date.now();
+            function tick(){
+              var elapsed = Date.now() - start;
+              var progress = Math.min(elapsed / duration, 1);
+              var eased = 1 - Math.pow(1 - progress, 3);
+              var current = Math.round(target * eased);
+              numEl.textContent = current + suffix;
+              if(progress < 1) requestAnimationFrame(tick);
+            }
+            tick();
+          }, idx * 200);
+        });
+      }
+    });
+  }, {threshold:.3});
+  if(stats.length) ro.observe(stats[0]);
+})();
+
+// ===== Social Quote reveal =====
+(function(){
+  var q = document.getElementById('social-quote');
+  if(!q) return;
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('v'); });
+  }, {threshold:.2});
+  ro.observe(q);
+})();
+
+// ===== Pillar Cards — staggered reveal =====
+(function(){
+  var cards = document.querySelectorAll('.pillar-card');
+  if(!cards.length) return;
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var idx = Array.prototype.indexOf.call(cards, e.target);
+        setTimeout(function(){ e.target.classList.add('v'); }, idx * 200);
+      }
+    });
+  }, {threshold:.15});
+  cards.forEach(function(c){ ro.observe(c); });
+})();
+
+// ===== Floating Voice FAB =====
+(function(){
+  var fab = document.getElementById('voice-fab');
+  var fabText = document.getElementById('voice-fab-text');
+  var fabMicIcon = document.getElementById('fab-mic-icon');
+  var fabHangupIcon = document.getElementById('fab-hangup-icon');
+  var hero = document.getElementById('hero');
+  var fabLive = false;
+  if(!fab || !hero) return;
+
+  // Expose FAB controls globally so call logic can use them
+  window.__fabSetLive = function(isLive){
+    fabLive = isLive;
+    if(isLive){
+      fab.classList.add('visible', 'live');
+      fabText.textContent = 'End call';
+      fabMicIcon.style.display = 'none';
+      fabHangupIcon.style.display = '';
+    } else {
+      fab.classList.remove('live');
+      fabText.textContent = 'Call your agent';
+      fabMicIcon.style.display = '';
+      fabHangupIcon.style.display = 'none';
+      // Re-evaluate visibility based on scroll
+      var heroBottom = hero.getBoundingClientRect().bottom;
+      if(heroBottom >= 0) fab.classList.remove('visible');
+    }
+  };
+
+  fab.addEventListener('click', function(){
+    if(fabLive){
+      // Hang up the call
+      var endBtn = document.getElementById('cs-end-btn');
+      if(endBtn) endBtn.click();
+      return;
+    }
+    hero.scrollIntoView({behavior:'smooth', block:'start'});
+    setTimeout(function(){
+      var orb = document.getElementById('orb-wrap');
+      if(orb) orb.click();
+    }, 600);
+  });
+
+  window.addEventListener('scroll', function(){
+    if(fabLive){ fab.classList.add('visible'); return; }
+    var heroBottom = hero.getBoundingClientRect().bottom;
+    if(heroBottom < 0){
+      fab.classList.add('visible');
+    } else {
+      fab.classList.remove('visible');
+    }
+  });
+})();
+
+// ===== WebRTC Voice Call (2-in-1 Orb) =====
+(function(){
+  var orbWrap = document.getElementById('orb-wrap');
+  var orbLabel = document.getElementById('orb-label');
+  var orbPhone = document.getElementById('orb-phone-center');
+  var csConnecting = document.getElementById('cs-connecting');
+  var csActive = document.getElementById('cs-active');
+  var csEndBtn = document.getElementById('cs-end-btn');
+  var csStatus = document.getElementById('cs-status');
+  var csTranscript = document.getElementById('cs-transcript');
+  var csWaveformEl = document.getElementById('cs-waveform');
+  var csWaveformBars = csWaveformEl ? csWaveformEl.querySelectorAll('span') : [];
+  var waveformAnimId = null;
+  var waveformMode = 'idle';
+  var callActive = false;
+  var retellClient = null;
+  var callStartTime = null;
+
+  function animateWaveform(){
+    for(var i = 0; i < csWaveformBars.length; i++){
+      var bar = csWaveformBars[i];
+      var h;
+      if(waveformMode === 'agent') h = 10 + Math.random() * 34;
+      else if(waveformMode === 'user') h = 6 + Math.random() * 18;
+      else h = 4 + Math.sin(Date.now() / 500 + i * 0.6) * 3;
+      bar.style.height = h + 'px';
+    }
+    waveformAnimId = requestAnimationFrame(animateWaveform);
+  }
+
+  function startWaveformAnim(mode){
+    waveformMode = mode || 'idle';
+    if(!waveformAnimId) animateWaveform();
+  }
+
+  function stopWaveformAnim(){
+    waveformMode = 'idle';
+    if(waveformAnimId){ cancelAnimationFrame(waveformAnimId); waveformAnimId = null; }
+    for(var i = 0; i < csWaveformBars.length; i++) csWaveformBars[i].style.height = '4px';
+  }
+
+  function startVoiceCall(){
+    if(callActive) return;
+    callActive = true;
+    callStartTime = Date.now();
+
+    // Hide label + title + bubble, show connecting
+    if(orbLabel) orbLabel.style.display = 'none';
+    if(orbPhone) orbPhone.style.display = 'none';
+    var heroTitle = document.querySelector('.hero-title');
+    var heroHint = document.querySelector('.hero-hint');
+    var heroCallingLabel = document.querySelector('.hero-calling-label');
+    var orbBubble = document.getElementById('orb-bubble');
+    if(heroTitle) heroTitle.style.display = 'none';
+    if(heroHint) heroHint.style.display = 'none';
+    if(heroCallingLabel) heroCallingLabel.style.display = 'none';
+    if(orbBubble) orbBubble.style.display = 'none';
+    // Hide pulse rings during call
+    document.querySelectorAll('.orb-ring').forEach(function(r){ r.style.display = 'none'; });
+    csConnecting.style.display = 'flex';
+    csActive.classList.remove('visible');
+
+    var orb = document.getElementById('orb-main');
+    if(orb) orb.classList.add('speaking');
+
+    (async function(){
+      try {
+        // Request mic permission FIRST — before API call
+        try {
+          var stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          stream.getTracks().forEach(function(t){ t.stop(); });
+        } catch(micErr) {
+          throw new Error('Microphone access required');
+        }
+
+        var response = await fetch('https://backend.widr.app/api/v1/demo/web-call', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            company_name: 'Xerox',
+            product: 'VersaLink C7100 fleet lease',
+            amount: '$12,000'
+          })
+        });
+
+        if(!response.ok) {
+          var errBody = ''; try { errBody = await response.text(); } catch(e){}
+          console.error('web-call error:', response.status, errBody);
+          throw new Error('API returned ' + response.status);
+        }
+        var result = await response.json();
+        if(!result.success || !result.access_token) throw new Error('No access token');
+
+        var RetellWebClient = window.__RetellWebClient;
+        if(!RetellWebClient){
+          try {
+            var module = await import('https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.7/+esm');
+            RetellWebClient = module.RetellWebClient;
+          } catch(importErr) {
+            var module2 = await import('https://unpkg.com/retell-client-js-sdk@2.0.7/dist/index.js');
+            RetellWebClient = module2.RetellWebClient;
+          }
+        }
+        retellClient = new RetellWebClient();
+
+        retellClient.on('call_started', function(){
+          callStartTime = Date.now();
+          csConnecting.style.display = 'none';
+          csActive.classList.add('visible');
+          csStatus.textContent = 'Your turn — speak now';
+          startWaveformAnim('idle');
+          if(orbPhone) orbPhone.style.opacity = '0';
+          if(window.__fabSetLive) window.__fabSetLive(true);
+          try { gtag('event', 'call_started', { company: 'Xerox', page: 'xerox' }); } catch(e){}
+        });
+
+        retellClient.on('call_ended', function(){
+          try { gtag('event', 'call_completed', { company: 'Xerox', page: 'xerox' }); } catch(e){}
+          var duration = callStartTime ? Math.round((Date.now() - callStartTime) / 1000) : 30;
+          endCall(duration);
+        });
+
+        retellClient.on('agent_start_talking', function(){
+          startWaveformAnim('agent');
+          csStatus.textContent = 'Agent speaking...';
+        });
+
+        retellClient.on('agent_stop_talking', function(){
+          startWaveformAnim('user');
+          csStatus.textContent = 'Your turn — speak now';
+        });
+
+        retellClient.on('update', function(update){
+          if(update && update.transcript) renderTranscript(update.transcript);
+        });
+
+        retellClient.on('error', function(err){
+          console.error('RetellAI error:', err);
+          endCall(0);
+        });
+
+        await retellClient.startCall({ accessToken: result.access_token });
+
+      } catch(err){
+        console.error('Voice call error:', err);
+        callActive = false;
+        csConnecting.style.display = 'none';
+        // Restore hero elements
+        var ht = document.querySelector('.hero-title');
+        var hh = document.querySelector('.hero-hint');
+        var hcl = document.querySelector('.hero-calling-label');
+        var ob = document.getElementById('orb-bubble');
+        if(ht) ht.style.display = '';
+        if(hh) hh.style.display = '';
+        if(hcl) hcl.style.display = '';
+        if(ob) ob.style.display = '';
+        document.querySelectorAll('.orb-ring').forEach(function(r){ r.style.display = ''; });
+        if(orbPhone) orbPhone.style.display = '';
+        if(orb) orb.classList.remove('speaking');
+        console.error('Call error details:', (err && err.message) || err);
+        if(hh){ hh.textContent = 'Connection failed — tap to retry'; hh.style.color = '#ef4444'; hh.style.fontSize = '13px'; }
+        setTimeout(function(){ if(hh){ hh.textContent = 'Tap to answer'; hh.style.color = ''; hh.style.fontSize = ''; } }, 6000);
+      }
+    })();
+  }
+
+  function renderTranscript(transcript){
+    if(!transcript || !transcript.length) return;
+    var last = null;
+    for(var i = transcript.length - 1; i >= 0; i--){
+      if((transcript[i].content || '').trim()){ last = transcript[i]; break; }
+    }
+    if(!last) return;
+    var role = last.role === 'agent' ? 'agent' : 'user';
+    csTranscript.innerHTML = '<div class="cs-msg ' + role + '">' + last.content + '</div>';
+    csTranscript.scrollTop = csTranscript.scrollHeight;
+  }
+
+  function endCall(duration){
+    callActive = false;
+    if(retellClient){ try { retellClient.stopCall(); } catch(e){} retellClient = null; }
+    stopWaveformAnim();
+    if(window.__fabSetLive) window.__fabSetLive(false);
+    var orb = document.getElementById('orb-main');
+    if(orb) orb.classList.remove('speaking');
+    if(orbPhone) orbPhone.style.opacity = '1';
+
+    csStatus.textContent = 'Call ended';
+    var postCall = document.getElementById('cs-post-call');
+    var postTitle = document.querySelector('.cs-post-title');
+    if(postTitle && duration > 0){
+      postTitle.textContent = 'That was ' + duration + ' second' + (duration !== 1 ? 's' : '') + '.';
+    }
+    setTimeout(function(){
+      csActive.classList.remove('visible');
+      csTranscript.innerHTML = '';
+      if(postCall) postCall.style.display = 'flex';
+    }, 1500);
+    // Auto-scroll to proof section after call ends
+    if(duration > 5){
+      setTimeout(function(){
+        var proof = document.querySelector('.proof-section');
+        if(proof) proof.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 4000);
+    }
+  }
+
+  var postRetry = document.getElementById('cs-post-retry');
+  if(postRetry) postRetry.addEventListener('click', function(){
+    var postCall = document.getElementById('cs-post-call');
+    if(postCall) postCall.style.display = 'none';
+    if(orbLabel){ orbLabel.style.display = ''; }
+    if(orbPhone){ orbPhone.style.display = ''; orbPhone.style.opacity = '1'; }
+    var heroTitle = document.querySelector('.hero-title');
+    var heroHint = document.querySelector('.hero-hint');
+    if(heroTitle) heroTitle.style.display = '';
+    if(heroHint) heroHint.style.display = '';
+    document.querySelectorAll('.orb-ring').forEach(function(r){ r.style.display = ''; });
+  });
+
+  var postCta = document.getElementById('cs-post-cta');
+  if(postCta) postCta.addEventListener('click', function(){
+    try { gtag('event', 'post_call_book_demo', { company: 'Xerox', page: 'xerox' }); } catch(e){}
+  });
+
+  if(csEndBtn) csEndBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    endCall(callStartTime ? Math.round((Date.now() - callStartTime) / 1000) : 0);
+  });
+
+  if(orbWrap) orbWrap.addEventListener('click', function(){
+    if(callActive) return;
+    startVoiceCall();
+  });
+})();
+</script>
+</body>
+</html>
