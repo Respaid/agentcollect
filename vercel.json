@@ -22,7 +22,7 @@
 { "source": "/salesforce-a", "destination": "/v3/salesforce-a.html" },
 { "source": "/salesforce-b", "destination": "/v3/salesforce-b.html" },
 { "source": "/salesforce-c", "destination": "/v3/salesforce-c.html" },
-{ "source": "/xerox", "destination": "/v3/xerox-new.html" },
+{ "source": "/xerox", "destination": "/v3/xerox.html" },
 { "source": "/brinks", "destination": "/v3/brinks-new.html" },
 { "source": "/iron-mountain", "destination": "/v3/iron-mountain-new.html" },
 { "source": "/cintas", "destination": "/v3/cintas-new.html" },
