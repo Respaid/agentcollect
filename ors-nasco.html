@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ORS Nasco: 4 acquisitions. One AR problem.</title>
+<title>ORS Nasco: 6 acquisitions. 6 billing systems.</title>
 <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.agentcollect.com/ors-nasco">
-<meta property="og:title" content="ORS Nasco: 4 acquisitions. One AR problem.">
+<meta property="og:title" content="ORS Nasco: 6 acquisitions. 6 billing systems.">
 <meta property="og:description" content="Every acquisition comes with its own AR aging report. Here's what an AI agent can do about it.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://www.agentcollect.com/v3/og-ors-nasco.png">
@@ -22,7 +22,6 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GRZZT9K05B');</script>
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","vr6uvxdalw");</script>
 <script>
-// Notify backend of page visit with Clarity session replay
 (function(){
   var sent=false;
   function notify(sid){
@@ -31,7 +30,6 @@
     if(sid)body.clarity_session_id=sid;
     fetch('https://backend.widr.app/api/v1/demo/page-visit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).catch(function(){});
   }
-  // Wait for Clarity to initialize and get session ID
   var attempts=0;
   var poll=setInterval(function(){
     attempts++;
@@ -60,45 +58,32 @@
 html{scroll-behavior:smooth;overflow-x:hidden}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:16px;line-height:1.6;position:relative}
 ::selection{background:rgba(79,70,229,.1)}
-
-/* Reveal */
 .rv{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
 .rv.v{opacity:1;transform:none}
 .rv-d1{transition-delay:.12s}
 .rv-d2{transition-delay:.24s}
-
-/* ===== NAV ===== */
 .nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(250,251,255,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,0,0,.04)}
 .nav-inner{max-width:1280px;margin:0 auto;padding:16px 48px;display:flex;align-items:center;justify-content:space-between}
 .nav-logo{text-decoration:none;font-weight:900;font-size:17px;color:var(--text);letter-spacing:-.4px;display:inline-flex;align-items:baseline}
 .nav-logo .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--blue);margin-left:1px;vertical-align:baseline}
 .nav-expiry{font-size:14px;color:var(--muted);font-weight:500}
 .nav-expiry strong{color:var(--text);font-weight:700}
-
-/* ===== HERO — CENTERED INCOMING CALL ===== */
 .hero{min-height:88vh;min-height:88dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#f6f3ef;padding:80px 24px 40px}
 .hero::before{content:'';position:absolute;width:800px;height:800px;top:40%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(79,70,229,.12) 0%,rgba(79,70,229,.05) 40%,transparent 70%);border-radius:50%;pointer-events:none;animation:heroGlow 6s ease-in-out infinite}
 .hero::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 700px 400px at 30% 0%,rgba(79,70,229,.08),transparent),radial-gradient(ellipse 500px 500px at 80% 80%,rgba(16,185,129,.06),transparent)}
 @keyframes heroGlow{0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.12)}}
-.hero-km-logo{height:52px;margin-bottom:52px;opacity:.85}
 .hero-calling-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--blue);opacity:.7;margin-bottom:8px;text-align:center;animation:fadeInUp .6s ease .2s both}
 .hero-title{font-size:22px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:6px;text-align:center;animation:fadeInUp .6s ease .3s both}
 .hero-hint{font-size:14px;color:var(--green);opacity:.8;text-align:center;margin-bottom:0;font-weight:600;animation:fadeInUp .6s ease .4s both}
-
-/* Scroll chevron */
 .scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;opacity:.7;animation:chevBounce 1.8s ease-in-out infinite 1.5s;transition:opacity .4s}
 .scroll-hint.hidden{opacity:0;pointer-events:none}
 .scroll-hint svg{width:32px;height:32px;color:var(--blue)}
 @keyframes chevBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}
-
-/* Pulse rings — incoming call effect */
 .orb-ring{position:absolute;border-radius:50%;border:1.5px solid rgba(79,70,229,.12);pointer-events:none}
 .orb-ring-1{inset:-30px;animation:ringPulse 3s ease-out infinite}
 .orb-ring-2{inset:-60px;animation:ringPulse 3s ease-out infinite .6s}
 .orb-ring-3{inset:-90px;animation:ringPulse 3s ease-out infinite 1.2s}
 @keyframes ringPulse{0%{opacity:.6;transform:scale(.95)}50%{opacity:.2;transform:scale(1)}100%{opacity:0;transform:scale(1.05)}}
-
-/* ===== ORB ===== */
 .orb-wrap{position:relative;width:320px;height:320px;aspect-ratio:1;margin:0 auto 36px;cursor:pointer}
 .orb-glow{position:absolute;inset:-60px;border-radius:50%;background:radial-gradient(circle,rgba(79,70,229,.18) 0%,rgba(79,70,229,.06) 40%,transparent 70%);animation:orbGlowPulse 4s ease-in-out infinite}
 .orb-main{position:relative;width:320px;height:320px;aspect-ratio:1;border-radius:50%;-webkit-border-radius:50%;overflow:hidden;-webkit-mask-image:-webkit-radial-gradient(white,black);mask-image:radial-gradient(white,black);animation:orbDrift 6s ease-in-out infinite;transition:transform .3s,box-shadow .3s;box-shadow:0 0 80px rgba(79,70,229,.25),0 0 160px rgba(79,70,229,.08),inset 0 0 60px rgba(0,0,0,.3)}
@@ -120,7 +105,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .orb-particle:nth-child(4){top:40%;left:-16px;animation-delay:.5s}
 .orb-particle:nth-child(5){top:-10px;right:25%;animation-delay:1.5s}
 .orb-particle:nth-child(6){bottom:-8px;right:30%;animation-delay:2.5s}
-
 @keyframes orbSpin{0%{transform:rotate(0deg) scale(1.15)}100%{transform:rotate(360deg) scale(1.15)}}
 @keyframes orbDrift{0%,100%{transform:translateY(0) scale(1)}33%{transform:translateY(-4px) scale(1.01)}66%{transform:translateY(-2px) scale(.995)}}
 @keyframes orbPulseSpeak{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
@@ -128,15 +112,10 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 @keyframes orbParticle{0%,100%{opacity:0;transform:translateY(0) scale(1)}25%{opacity:1}50%{opacity:.8;transform:translateY(-18px) scale(1.4)}75%{opacity:.3}}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes spin{to{transform:rotate(360deg)}}
-
-/* Orb bubble — floats on top of orb like landing page */
 .orb-bubble{position:absolute;top:16px;right:-40px;background:rgba(255,255,255,.3);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.35);border-radius:14px;padding:10px 18px;font-size:15px;font-weight:700;color:#fff;white-space:nowrap;animation:orbBubble 3s ease-in-out infinite;text-shadow:0 1px 4px rgba(0,0,0,.5);z-index:15}
 @keyframes orbBubble{0%,100%{opacity:.7;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
-
 .orb-label{text-align:center;font-size:15px;font-weight:600;color:var(--muted);margin-top:0;margin-bottom:20px;letter-spacing:-.01em;display:none}
 .orb-label .orb-label-hint{display:block;font-size:12px;font-weight:400;color:var(--muted);opacity:.5;margin-top:4px}
-
-/* ===== CALL STATES (below orb) ===== */
 .call-state{display:flex;flex-direction:column;align-items:center;width:100%;max-width:360px;margin:0 auto}
 .cs-connecting{display:none;flex-direction:column;align-items:center;gap:12px;padding:8px 0;animation:fadeInUp .3s ease}
 .cs-connecting .co-spinner{width:28px;height:28px;border:3px solid rgba(79,70,229,.15);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite}
@@ -161,81 +140,31 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .cs-post-cta:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 4px 24px rgba(79,70,229,.4)}
 .cs-post-retry{background:none;border:1px solid var(--border);color:var(--muted);padding:8px 16px;border-radius:8px;font-size:12px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;margin-top:2px;font-family:var(--sans)}
 .cs-post-retry:hover{border-color:var(--blue);color:var(--blue)}
-
-/* ===== DEMO CALL BOX (phone input) ===== */
-.demo-box{background:rgba(79,70,229,.04);border:1.5px solid rgba(79,70,229,.12);border-radius:16px;padding:24px 28px;max-width:480px;margin:24px auto 0;animation:fadeInUp .6s ease .5s both}
-.demo-label{font-size:14px;color:var(--muted);margin-bottom:12px;font-weight:500;text-align:center}
-.demo-input-row{display:flex;gap:10px;align-items:center}
-.demo-input{flex:1;border:1.5px solid var(--border);border-radius:10px;padding:14px 16px;font-family:var(--sans);font-size:16px;color:var(--text);background:#fff;outline:none;transition:border-color .2s}
-.demo-input:focus{border-color:var(--blue)}
-.demo-call-btn{padding:14px 24px;background:var(--blue);color:#fff;border:none;border-radius:10px;font-family:var(--sans);font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px;white-space:nowrap}
-.demo-call-btn:hover{background:var(--blue-dark);transform:translateY(-1px)}
-.demo-calling{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:600;color:var(--blue);justify-content:center}
-.demo-pulse{width:14px;height:14px;border-radius:50%;background:var(--blue);animation:demoPulse 1.2s ease-in-out infinite;flex-shrink:0}
-@keyframes demoPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.5}}
-.hidden{display:none!important}
-
-/* ===== SECTION 2: THE PROBLEM + SOCIAL PROOF ===== */
 .proof-section{padding:120px 48px 40px;max-width:920px;margin:0 auto;text-align:center;position:relative}
 .proof-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--blue),transparent);opacity:.3}
 .proof-sec-title{font-size:clamp(26px,3.2vw,38px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;color:var(--text)}
 .proof-sec-sub{font-size:17px;color:var(--muted);margin-bottom:52px;line-height:1.5}
-
-/* Wall of Pain — insight pills (no review logos) */
 .pain-wall{overflow:hidden;margin-top:40px;margin-bottom:40px;position:relative;padding:8px 0;width:100vw;margin-left:calc(-50vw + 50%)}
 .pain-wall::before,.pain-wall::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none}
 .pain-wall::before{left:0;background:linear-gradient(to right,#FAFBFF,transparent)}
 .pain-wall::after{right:0;background:linear-gradient(to left,#FAFBFF,transparent)}
 .pain-row{display:flex;gap:14px;padding:6px 0;width:max-content}
 .pain-row-1{animation:painScroll1 32s linear infinite}
-.pain-row-2{animation:painScroll2 38s linear infinite}
 .pain-wall:hover .pain-row{animation-play-state:paused}
 @keyframes painScroll1{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-@keyframes painScroll2{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
 .pain-pill{cursor:default;transition:transform .15s,box-shadow .15s}
-.pain-pill:hover{transform:scale(1.04);box-shadow:0 4px 16px rgba(79,70,229,.12);z-index:2}
-.pain-pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid rgba(79,70,229,.1);border-radius:100px;padding:10px 20px;font-size:14px;font-weight:600;color:var(--text);white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.06);flex-shrink:0;text-decoration:none}
-.pain-pill .hl{color:var(--blue);font-weight:800}
-.pain-pill .pill-icon{font-size:16px;flex-shrink:0}
-.pain-count{text-align:center;margin-top:20px;font-size:15px;font-weight:700;color:var(--blue)}
+.pain-pill:hover{transform:scale(1.04);z-index:2}
+.pain-pill{display:inline-flex;align-items:center;gap:8px;border-radius:100px;padding:10px 20px;font-size:14px;font-weight:600;color:var(--text);white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.08);flex-shrink:0;text-decoration:none}
+.pain-pill.amber{background:rgba(245,158,11,.03);border:1px solid rgba(245,158,11,.15)}
+.pain-pill.amber:hover{box-shadow:0 4px 16px rgba(245,158,11,.12)}
+.pain-pill.amber .hl{color:var(--amber);font-weight:800}
+.pain-pill.red{background:#fff;border:1px solid rgba(220,38,38,.15)}
+.pain-pill.red:hover{box-shadow:0 4px 16px rgba(220,38,38,.15)}
+.pain-pill.red .hl{color:var(--red);font-weight:800}
+.pain-count{text-align:center;margin-top:20px;font-size:15px;font-weight:700;color:var(--amber)}
 .pain-count span{color:var(--muted);font-weight:500}
-
-/* ===== WHAT IS AGENTCOLLECT ===== */
-.wia-section{padding:80px 48px;max-width:920px;margin:0 auto;text-align:center}
-.wia-brand{display:flex;align-items:baseline;justify-content:center;margin-bottom:12px}
-.wia-logo{font-size:22px;font-weight:900;color:var(--text);letter-spacing:-.4px}
-.wia-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--blue);margin-left:1px}
-.wia-title{font-size:clamp(26px,3.2vw,38px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:12px;color:var(--text)}
-.wia-sub{font-size:17px;color:var(--muted);margin-bottom:48px;line-height:1.5;max-width:600px;margin-left:auto;margin-right:auto}
-.wia-comparison{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:720px;margin:0 auto 40px;text-align:left}
-.wia-col{padding:28px 24px;border-radius:16px;border:1px solid var(--border)}
-.wia-col.agency{background:rgba(220,38,38,.02);border-color:rgba(220,38,38,.12)}
-.wia-col.ac{background:rgba(79,70,229,.02);border-color:rgba(79,70,229,.12)}
-.wia-col-header{display:flex;align-items:center;gap:10px;margin-bottom:20px}
-.wia-col-header .icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900}
-.wia-col.agency .icon{background:rgba(220,38,38,.08);color:var(--red)}
-.wia-col.ac .icon{background:rgba(79,70,229,.08);color:var(--blue)}
-.wia-col-header h3{font-size:16px;font-weight:800;color:var(--text)}
-.wia-item{display:flex;gap:10px;margin-bottom:12px;font-size:14px;line-height:1.5;color:var(--muted)}
-.wia-item:last-child{margin-bottom:0}
-.wia-item .bullet{flex-shrink:0;font-weight:900;font-size:14px;line-height:1.5}
-.wia-col.agency .bullet{color:var(--red)}
-.wia-col.ac .bullet{color:var(--green)}
-.wia-item strong{color:var(--text);font-weight:700}
-.wia-voice-teaser{background:linear-gradient(135deg,rgba(79,70,229,.03),rgba(79,70,229,.06));border:1px solid rgba(79,70,229,.08);border-radius:16px;padding:24px 28px;max-width:480px;margin:0 auto;text-align:center}
-.wia-voice-teaser-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px}
-.wia-voice-teaser-sub{font-size:13px;color:var(--muted)}
-.wia-voice-teaser-sub a{color:var(--blue);text-decoration:none;font-weight:600;cursor:pointer}
-.wia-voice-teaser-sub a:hover{text-decoration:underline}
-
-/* ===== AGENTCOLLECT PROOF SECTION ===== */
 .ac-proof-section{padding:80px 48px 80px;max-width:920px;margin:0 auto;text-align:center}
-.ac-proof-brand{display:flex;align-items:baseline;justify-content:center;margin-bottom:32px}
-.ac-proof-logo{font-size:22px;font-weight:900;color:var(--text);letter-spacing:-.4px}
-.ac-proof-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--blue);margin-left:1px}
 .ac-proof-title{font-size:clamp(26px,3.2vw,38px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px;color:var(--text)}
-.ac-proof-sub{font-size:17px;color:var(--muted);margin-bottom:48px;line-height:1.5}
-
 .social-logos{display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap;margin-bottom:40px}
 .social-logos img{height:22px;filter:grayscale(100%) brightness(.4);opacity:.5;object-fit:contain;transition:all .4s cubic-bezier(.16,1,.3,1)}
 .social-logos img:hover{filter:none;opacity:1;transform:scale(1.08)}
@@ -251,8 +180,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .social-quote-avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;background:var(--bg);border:1px solid var(--border)}
 .social-quote-name{font-size:14px;font-weight:700;color:var(--text)}
 .social-quote-role{font-size:13px;color:var(--muted)}
-
-/* ===== SECTION 3: HOW IT WORKS ===== */
 .how-section{padding:100px 48px 80px;background:linear-gradient(180deg,#f6f3ef 0%,#F8F7F5 100%);text-align:center;position:relative}
 .how-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:16px}
 .how-title{font-size:clamp(28px,3.5vw,42px);font-weight:900;letter-spacing:-.03em;line-height:1.08;margin-bottom:56px;color:var(--text)}
@@ -262,31 +189,24 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .how-num{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-family:var(--sans);font-size:20px;font-weight:900}
 .how-card-title{font-size:18px;font-weight:800;margin-bottom:8px;letter-spacing:-.03em;color:var(--text)}
 .how-card-desc{font-size:15px;color:var(--muted);line-height:1.65}
-
 .close-cta{display:inline-block;background:var(--blue);color:#fff;padding:18px 44px;border-radius:14px;font-weight:700;font-size:17px;text-decoration:none;transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s;font-family:var(--sans);letter-spacing:-.01em;position:relative}
 .close-cta:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(79,70,229,.3)}
 .how-guarantee{font-size:14px;color:var(--muted);margin-top:24px;font-style:italic}
 .how-footer{font-size:12px;color:var(--muted);opacity:.5;margin-top:56px;line-height:1.5;text-align:center}
-
-/* ===== FLOATING VOICE FAB ===== */
 .voice-fab{position:fixed;bottom:28px;right:28px;z-index:9000;display:flex;align-items:center;gap:10px;background:#0f0f1a;border:1px solid rgba(79,70,229,.3);border-radius:50px;padding:12px 20px 12px 14px;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 8px 32px rgba(0,0,0,.4);opacity:0;pointer-events:none;transform:translateY(20px)}
 .voice-fab.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
 .voice-fab:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(79,70,229,.3);border-color:rgba(79,70,229,.5)}
 .voice-fab-icon{width:40px;height:40px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 16px rgba(79,70,229,.4)}
 .voice-fab-icon svg{width:20px;height:20px;color:#fff}
 .voice-fab-text{color:rgba(255,255,255,.9);font-size:13px;font-weight:600;white-space:nowrap}
-
-/* FAB live call state */
 .voice-fab.live{border-color:rgba(239,68,68,.4);background:#1a0f0f;box-shadow:0 8px 32px rgba(239,68,68,.3)}
 .voice-fab.live:hover{border-color:rgba(239,68,68,.6);box-shadow:0 12px 40px rgba(239,68,68,.4)}
 .voice-fab.live .voice-fab-icon{background:#ef4444;box-shadow:0 0 16px rgba(239,68,68,.5);animation:fabPulse 1.5s ease-in-out infinite}
 .voice-fab.live .voice-fab-text{color:rgba(255,255,255,.9)}
 @keyframes fabPulse{0%,100%{box-shadow:0 0 16px rgba(239,68,68,.5)}50%{box-shadow:0 0 28px rgba(239,68,68,.7)}}
-
-/* ===== MOBILE ===== */
+.hidden{display:none !important}
 @media(max-width:960px){
   .nav-inner{padding:14px 24px}
-  .wia-comparison{grid-template-columns:1fr;gap:16px}
 }
 @media(max-width:768px){
   .nav-expiry{font-size:12px}
@@ -298,15 +218,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   .orb-ring-3{inset:-68px}
   .hero-title{font-size:18px}
   .proof-section{padding:80px 24px 64px}
-  .proof-cards{grid-template-columns:1fr;gap:12px}
   .how-section{padding:80px 24px 56px}
   .how-grid{grid-template-columns:1fr;gap:16px;max-width:400px;margin:0 auto}
   .ac-proof-section{padding:80px 24px 64px}
-  .wia-section{padding:60px 24px}
   .voice-fab{bottom:16px;right:16px;padding:10px 16px 10px 10px}
   .voice-fab-text{font-size:12px}
-  .demo-input-row{flex-direction:column}
-  .demo-call-btn{width:100%;justify-content:center}
 }
 @media(max-width:480px){
   .nav-expiry{display:none}
@@ -318,7 +234,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   .orb-ring-2{inset:-36px}
   .orb-ring-3{inset:-56px}
   .hero{padding:72px 20px 32px;min-height:82vh;min-height:82dvh}
-  .hero-km-logo{height:44px;margin-bottom:40px}
   .hero-title{font-size:16px}
   .social-logos{gap:20px}
   .social-logos img{height:18px}
@@ -333,7 +248,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
     <a href="https://agentcollect.com" class="nav-logo">AgentCollect<span class="dot"></span></a>
@@ -341,11 +255,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </nav>
 
-<!-- SECTION 1: HERO — INCOMING CALL -->
 <section class="hero" id="hero">
-  <img src="https://img.logo.dev/orsnasco.com?token=pk_SfCBTRLlQtGVnODdRoMuEg&size=120&format=png" alt="ORS Nasco" class="hero-km-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" crossorigin="anonymous"><span style="display:none;font-size:28px;font-weight:900;color:var(--text);letter-spacing:-.03em;opacity:.7">ORS Nasco</span>
+  <span style="font-size:28px;font-weight:900;color:var(--text);letter-spacing:-.03em;opacity:.7;margin-bottom:52px">ORS Nasco</span>
 
-  <!-- ORB with pulse rings -->
   <div class="orb-wrap" id="orb-wrap">
     <div class="orb-ring orb-ring-1"></div>
     <div class="orb-ring orb-ring-2"></div>
@@ -373,9 +285,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   <div class="hero-title">ORS Nasco Agent</div>
   <div class="hero-hint">Tap to answer</div>
 
-  <div class="orb-label" id="orb-label">Click to call your agent<span class="orb-label-hint">Live AI voice — 30 seconds</span></div>
+  <div class="orb-label" id="orb-label">Click to call your agent<span class="orb-label-hint">Live AI voice &mdash; 30 seconds</span></div>
 
-  <!-- Call States (below orb) -->
   <div class="call-state" id="call-state">
     <div class="cs-connecting" id="cs-connecting">
       <div class="co-spinner"></div>
@@ -408,66 +319,50 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       </button>
     </div>
   </div>
+
   <div class="scroll-hint" id="scroll-hint">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
   </div>
-
-  <!-- Phone demo removed — WebRTC ORB only -->
 </section>
 
-<!-- SECTION 2: THE PROBLEM -->
 <section class="proof-section">
   <div class="rv">
-    <h2 class="proof-sec-title">6 acquisitions. 6 billing systems.</h2>
-    <p class="proof-sec-sub">Every deal comes with its own AR aging report. Here's the reality behind the integration.</p>
+    <h2 class="proof-sec-title">ORS Nasco distributes to thousands of businesses. But who follows up on the ones who don't pay?</h2>
+    <p class="proof-sec-sub">No collection reviews found. But here's what the data says about your AR challenge.</p>
   </div>
 
   <div class="pain-wall rv">
-    <!-- Row 1: PE/acquisition pain points -->
     <div class="pain-row pain-row-1">
-      <span class="pain-pill"><span class="pill-icon">&#x1F4C8;</span> 4 acquisitions in 18 months. <span class="hl">2 more just closed</span> in March 2026</span>
-      <span class="pain-pill"><span class="pill-icon">&#x1F4CB;</span> each acquisition = <span class="hl">new billing system</span> + new AR aging report</span>
-      <span class="pain-pill"><span class="pill-icon">&#x1F3E2;</span> in-house AR team in Largo, FL. but <span class="hl">6 acquisitions</span> is a lot of legacy receivables</span>
-      <span class="pain-pill"><span class="pill-icon">&#x23F3;</span> that's the part of integration that <span class="hl">never makes the 100-day plan</span></span>
-      <!-- dup for infinite scroll -->
-      <span class="pain-pill"><span class="pill-icon">&#x1F4C8;</span> 4 acquisitions in 18 months. <span class="hl">2 more just closed</span> in March 2026</span>
-      <span class="pain-pill"><span class="pill-icon">&#x1F4CB;</span> each acquisition = <span class="hl">new billing system</span> + new AR aging report</span>
-      <span class="pain-pill"><span class="pill-icon">&#x1F3E2;</span> in-house AR team in Largo, FL. but <span class="hl">6 acquisitions</span> is a lot of legacy receivables</span>
-      <span class="pain-pill"><span class="pill-icon">&#x23F3;</span> that's the part of integration that <span class="hl">never makes the 100-day plan</span></span>
-    </div>
-    <!-- Row 2: PE mandate + B2B stretch -->
-    <div class="pain-row pain-row-2">
-      <span class="pain-pill"><span class="pill-icon">&#x1F4B0;</span> Wynnchurch Capital: <span class="hl">EBITDA obsession</span>. every write-off hurts the thesis</span>
-      <span class="pain-pill"><span class="pill-icon">&#x1F4E6;</span> industrial distribution. 1000s of B2B clients. <span class="hl">net-30 that stretches to net-90</span></span>
-      <!-- dup for infinite scroll -->
-      <span class="pain-pill"><span class="pill-icon">&#x1F4B0;</span> Wynnchurch Capital: <span class="hl">EBITDA obsession</span>. every write-off hurts the thesis</span>
-      <span class="pain-pill"><span class="pill-icon">&#x1F4E6;</span> industrial distribution. 1000s of B2B clients. <span class="hl">net-30 that stretches to net-90</span></span>
-      <span class="pain-pill"><span class="pill-icon">&#x1F4B0;</span> Wynnchurch Capital: <span class="hl">EBITDA obsession</span>. every write-off hurts the thesis</span>
-      <span class="pain-pill"><span class="pill-icon">&#x1F4E6;</span> industrial distribution. 1000s of B2B clients. <span class="hl">net-30 that stretches to net-90</span></span>
+      <span class="pain-pill amber">"6 acquisitions in 18 months. <span class="hl">6 billing systems.</span>"</span>
+      <span class="pain-pill amber">"that is the part of integration that <span class="hl">never makes the 100-day plan</span>"</span>
+      <span class="pain-pill amber">"hiring AR Collection Specialist in Largo, FL &mdash; <span class="hl">they are drowning</span>"</span>
+      <span class="pain-pill amber">"Wynnchurch Capital: <span class="hl">EBITDA obsession</span>"</span>
+      <!-- dup for scroll -->
+      <span class="pain-pill amber">"6 acquisitions in 18 months. <span class="hl">6 billing systems.</span>"</span>
+      <span class="pain-pill amber">"that is the part of integration that <span class="hl">never makes the 100-day plan</span>"</span>
+      <span class="pain-pill amber">"hiring AR Collection Specialist in Largo, FL &mdash; <span class="hl">they are drowning</span>"</span>
+      <span class="pain-pill amber">"Wynnchurch Capital: <span class="hl">EBITDA obsession</span>"</span>
     </div>
   </div>
-  <div class="pain-count rv">6 acquisitions. 6 billing systems. <span>One AR problem that compounds every quarter.</span></div>
-
-  </div>
+  <div class="pain-count rv"><span>6 acquisitions. 6 billing systems. One AR problem that compounds every quarter.</span></div>
 </section>
 
-<!-- SECTION 3: PROOF — results speak -->
 <section class="ac-proof-section">
   <div class="rv">
-    <h2 class="ac-proof-title">What happens when AI collects for you.</h2>
+    <h2 class="ac-proof-title">Your team can't follow up on every account. An AI agent can.</h2>
   </div>
   <div class="social-stats rv rv-d1" id="social-stats" style="margin-bottom:48px">
     <div class="social-stat" id="ss1">
-      <div class="social-stat-num" data-target="50" data-suffix="%">0%</div>
-      <div class="social-stat-label">of AR recovered</div>
+      <div class="social-stat-num" data-static="true" style="font-size:28px;letter-spacing:-.02em">1:1</div>
+      <div class="social-stat-label">one agent per debtor</div>
     </div>
     <div class="social-stat" id="ss2">
-      <div class="social-stat-num" data-target="20" data-suffix=" days">0 days</div>
-      <div class="social-stat-label">avg. time to recover</div>
+      <div class="social-stat-num" data-target="49" data-suffix="%">0%</div>
+      <div class="social-stat-label">resolved in 20 days</div>
     </div>
     <div class="social-stat" id="ss3">
       <div class="social-stat-num" data-target="0" data-suffix="">0</div>
-      <div class="social-stat-label">Complaints</div>
+      <div class="social-stat-label">complaints filed</div>
     </div>
   </div>
   <div class="social-quote rv rv-d2" id="social-quote">
@@ -487,7 +382,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </section>
 
-<!-- SECTION 4: HOW IT WORKS -->
 <section class="how-section">
   <div class="rv">
     <div class="how-label">How it works</div>
@@ -518,7 +412,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   <p class="how-footer">Built for ORS Nasco. All contacts from public sources. Powered by AgentCollect.</p>
 </section>
 
-<!-- Floating Voice FAB -->
 <div class="voice-fab" id="voice-fab">
   <div class="voice-fab-icon" id="voice-fab-icon">
     <svg id="fab-mic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg>
@@ -528,415 +421,17 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 </div>
 
 <script type="module">
-// ===== Preload RetellAI SDK =====
 import { RetellWebClient } from 'https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.7/+esm';
 window.__RetellWebClient = RetellWebClient;
 </script>
 <script>
-// ===== Expiry Countdown =====
-(function(){
-  var expiry = new Date('2026-04-03');
-  var diff = Math.ceil((expiry - new Date()) / 864e5);
-  var el = document.getElementById('days-left');
-  if(el) el.textContent = diff > 0 ? diff + ' day' + (diff !== 1 ? 's' : '') : 'expired';
-})();
-
-// ===== Scroll Reveal =====
-(function(){
-  var ro = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('v'); });
-  }, {threshold:.12});
-  document.querySelectorAll('.rv').forEach(function(el){ ro.observe(el); });
-})();
-
-// ===== Hide scroll chevron on first scroll =====
-(function(){
-  var hint = document.getElementById('scroll-hint');
-  if(!hint) return;
-  var done = false;
-  window.addEventListener('scroll', function(){
-    if(!done && window.scrollY > 60){ done = true; hint.classList.add('hidden'); }
-  }, {passive:true});
-})();
-
-// ===== Animated Counters =====
-(function(){
-  var stats = document.querySelectorAll('.social-stat');
-  var animated = false;
-  var ro = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting && !animated){
-        animated = true;
-        stats.forEach(function(stat, idx){
-          setTimeout(function(){
-            stat.classList.add('v');
-            var numEl = stat.querySelector('.social-stat-num');
-            if(!numEl) return;
-            var target = parseInt(numEl.getAttribute('data-target'));
-            var suffix = numEl.getAttribute('data-suffix') || '';
-            var duration = 1200;
-            var start = Date.now();
-            function tick(){
-              var elapsed = Date.now() - start;
-              var progress = Math.min(elapsed / duration, 1);
-              var eased = 1 - Math.pow(1 - progress, 3);
-              var current = Math.round(target * eased);
-              numEl.textContent = current + suffix;
-              if(progress < 1) requestAnimationFrame(tick);
-            }
-            tick();
-          }, idx * 200);
-        });
-      }
-    });
-  }, {threshold:.3});
-  if(stats.length) ro.observe(stats[0]);
-})();
-
-// ===== Social Quote reveal =====
-(function(){
-  var q = document.getElementById('social-quote');
-  if(!q) return;
-  var ro = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('v'); });
-  }, {threshold:.2});
-  ro.observe(q);
-})();
-
-// ===== Floating Voice FAB =====
-(function(){
-  var fab = document.getElementById('voice-fab');
-  var fabText = document.getElementById('voice-fab-text');
-  var fabMicIcon = document.getElementById('fab-mic-icon');
-  var fabHangupIcon = document.getElementById('fab-hangup-icon');
-  var hero = document.getElementById('hero');
-  var fabLive = false;
-  if(!fab || !hero) return;
-
-  // Expose FAB controls globally so call logic can use them
-  window.__fabSetLive = function(isLive){
-    fabLive = isLive;
-    if(isLive){
-      fab.classList.add('visible', 'live');
-      fabText.textContent = 'End call';
-      fabMicIcon.style.display = 'none';
-      fabHangupIcon.style.display = '';
-    } else {
-      fab.classList.remove('live');
-      fabText.textContent = 'Call your agent';
-      fabMicIcon.style.display = '';
-      fabHangupIcon.style.display = 'none';
-      // Re-evaluate visibility based on scroll
-      var heroBottom = hero.getBoundingClientRect().bottom;
-      if(heroBottom >= 0) fab.classList.remove('visible');
-    }
-  };
-
-  fab.addEventListener('click', function(){
-    if(fabLive){
-      // Hang up the call
-      var endBtn = document.getElementById('cs-end-btn');
-      if(endBtn) endBtn.click();
-      return;
-    }
-    hero.scrollIntoView({behavior:'smooth', block:'start'});
-    setTimeout(function(){
-      var orb = document.getElementById('orb-wrap');
-      if(orb) orb.click();
-    }, 600);
-  });
-
-  window.addEventListener('scroll', function(){
-    if(fabLive){ fab.classList.add('visible'); return; }
-    var heroBottom = hero.getBoundingClientRect().bottom;
-    if(heroBottom < 0){
-      fab.classList.add('visible');
-    } else {
-      fab.classList.remove('visible');
-    }
-  });
-})();
-
-// ===== WebRTC Voice Call (2-in-1 Orb) =====
-(function(){
-  var orbWrap = document.getElementById('orb-wrap');
-  var orbLabel = document.getElementById('orb-label');
-  var orbPhone = document.getElementById('orb-phone-center');
-  var csConnecting = document.getElementById('cs-connecting');
-  var csActive = document.getElementById('cs-active');
-  var csEndBtn = document.getElementById('cs-end-btn');
-  var csStatus = document.getElementById('cs-status');
-  var csTranscript = document.getElementById('cs-transcript');
-  var csWaveformEl = document.getElementById('cs-waveform');
-  var csWaveformBars = csWaveformEl ? csWaveformEl.querySelectorAll('span') : [];
-  var waveformAnimId = null;
-  var waveformMode = 'idle';
-  var callActive = false;
-  var retellClient = null;
-  var callStartTime = null;
-
-  function animateWaveform(){
-    for(var i = 0; i < csWaveformBars.length; i++){
-      var bar = csWaveformBars[i];
-      var h;
-      if(waveformMode === 'agent') h = 10 + Math.random() * 34;
-      else if(waveformMode === 'user') h = 6 + Math.random() * 18;
-      else h = 4 + Math.sin(Date.now() / 500 + i * 0.6) * 3;
-      bar.style.height = h + 'px';
-    }
-    waveformAnimId = requestAnimationFrame(animateWaveform);
-  }
-
-  function startWaveformAnim(mode){
-    waveformMode = mode || 'idle';
-    if(!waveformAnimId) animateWaveform();
-  }
-
-  function stopWaveformAnim(){
-    waveformMode = 'idle';
-    if(waveformAnimId){ cancelAnimationFrame(waveformAnimId); waveformAnimId = null; }
-    for(var i = 0; i < csWaveformBars.length; i++) csWaveformBars[i].style.height = '4px';
-  }
-
-  function startVoiceCall(){
-    if(callActive) return;
-    callActive = true;
-    callStartTime = Date.now();
-
-    // Hide label + title + bubble, show connecting
-    if(orbLabel) orbLabel.style.display = 'none';
-    if(orbPhone) orbPhone.style.display = 'none';
-    var heroTitle = document.querySelector('.hero-title');
-    var heroHint = document.querySelector('.hero-hint');
-    var heroCallingLabel = document.querySelector('.hero-calling-label');
-    var orbBubble = document.getElementById('orb-bubble');
-    var demoBox = document.getElementById('demo-box');
-    if(heroTitle) heroTitle.style.display = 'none';
-    if(heroHint) heroHint.style.display = 'none';
-    if(heroCallingLabel) heroCallingLabel.style.display = 'none';
-    if(orbBubble) orbBubble.style.display = 'none';
-    if(demoBox) demoBox.style.display = 'none';
-    // Hide pulse rings during call
-    document.querySelectorAll('.orb-ring').forEach(function(r){ r.style.display = 'none'; });
-    csConnecting.style.display = 'flex';
-    csActive.classList.remove('visible');
-
-    var orb = document.getElementById('orb-main');
-    if(orb) orb.classList.add('speaking');
-
-    (async function(){
-      try {
-        // Run mic permission + API call + SDK load in PARALLEL for fastest connect
-        var micPromise = navigator.mediaDevices.getUserMedia({
-          audio: {
-            echoCancellation: true,
-            noiseSuppression: true,
-            autoGainControl: true,
-            sampleRate: { ideal: 48000 },
-            channelCount: { ideal: 1 }
-          }
-        })
-          .then(function(s){ window.__micStream = s; })
-          .catch(function(){ throw new Error('Microphone access required'); });
-
-        var apiPromise = fetch('https://backend.widr.app/api/v1/demo/web-call', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            company_name: 'ORS Nasco',
-            product: 'welding supply order',
-            amount: '$6,800'
-          })
-        }).then(async function(response) {
-          if(!response.ok) {
-            var errBody = ''; try { errBody = await response.text(); } catch(e){}
-            console.error('web-call error:', response.status, errBody);
-            throw new Error('API returned ' + response.status);
-          }
-          return response.json();
-        });
-
-        var sdkPromise = Promise.resolve(window.__RetellWebClient).then(function(RWC) {
-          if(RWC) return RWC;
-          return import('https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.7/+esm')
-            .then(function(m){ return m.RetellWebClient; })
-            .catch(function(){ return import('https://unpkg.com/retell-client-js-sdk@2.0.7/dist/index.js').then(function(m){ return m.RetellWebClient; }); });
-        });
-
-        var results = await Promise.all([micPromise, apiPromise, sdkPromise]);
-        var result = results[1];
-        var RetellWebClient = results[2];
-        if(!result.success || !result.access_token) throw new Error('No access token');
-        retellClient = new RetellWebClient();
-
-        retellClient.on('call_started', function(){
-          callStartTime = Date.now();
-          csConnecting.style.display = 'none';
-          csActive.classList.add('visible');
-          csStatus.textContent = 'Your turn — speak now';
-          startWaveformAnim('idle');
-          if(orbPhone) orbPhone.style.opacity = '0';
-          if(window.__fabSetLive) window.__fabSetLive(true);
-          try { gtag('event', 'call_started', { company: 'ORS Nasco', page: 'ors-nasco' }); } catch(e){}
-        });
-
-        retellClient.on('call_ended', function(){
-          try { gtag('event', 'call_completed', { company: 'ORS Nasco', page: 'ors-nasco' }); } catch(e){}
-          var duration = callStartTime ? Math.round((Date.now() - callStartTime) / 1000) : 30;
-          endCall(duration);
-        });
-
-        retellClient.on('agent_start_talking', function(){
-          startWaveformAnim('agent');
-          csStatus.textContent = 'Agent speaking...';
-        });
-
-        retellClient.on('agent_stop_talking', function(){
-          startWaveformAnim('user');
-          csStatus.textContent = 'Your turn — speak now';
-        });
-
-        retellClient.on('update', function(update){
-          if(update && update.transcript) renderTranscript(update.transcript);
-        });
-
-        retellClient.on('error', function(err){
-          console.error('RetellAI error:', err);
-          endCall(0);
-        });
-
-        await retellClient.startCall({ accessToken: result.access_token });
-
-      } catch(err){
-        console.error('Voice call error:', err);
-        callActive = false;
-        csConnecting.style.display = 'none';
-        // Restore hero elements
-        var ht = document.querySelector('.hero-title');
-        var hh = document.querySelector('.hero-hint');
-        var hcl = document.querySelector('.hero-calling-label');
-        var ob = document.getElementById('orb-bubble');
-        var db = document.getElementById('demo-box');
-        if(ht) ht.style.display = '';
-        if(hh) hh.style.display = '';
-        if(hcl) hcl.style.display = '';
-        if(ob) ob.style.display = '';
-        if(db) db.style.display = '';
-        document.querySelectorAll('.orb-ring').forEach(function(r){ r.style.display = ''; });
-        if(orbPhone) orbPhone.style.display = '';
-        if(orb) orb.classList.remove('speaking');
-        // Show retry prompt instead of raw error
-        console.error('Call error details:', (err && err.message) || err);
-        if(hh){ hh.textContent = 'Connection failed — tap to retry'; hh.style.color = '#ef4444'; hh.style.fontSize = '13px'; }
-        setTimeout(function(){ if(hh){ hh.textContent = 'Tap to answer'; hh.style.color = ''; hh.style.fontSize = ''; } }, 6000);
-      }
-    })();
-  }
-
-  function renderTranscript(transcript){
-    if(!transcript || !transcript.length) return;
-    var last = null;
-    for(var i = transcript.length - 1; i >= 0; i--){
-      if((transcript[i].content || '').trim()){ last = transcript[i]; break; }
-    }
-    if(!last) return;
-    var role = last.role === 'agent' ? 'agent' : 'user';
-    csTranscript.innerHTML = '<div class="cs-msg ' + role + '">' + last.content + '</div>';
-    csTranscript.scrollTop = csTranscript.scrollHeight;
-  }
-
-  function endCall(duration){
-    callActive = false;
-    if(retellClient){ try { retellClient.stopCall(); } catch(e){} retellClient = null; }
-    if (window.__micStream) { window.__micStream.getTracks().forEach(function(t){ t.stop(); }); window.__micStream = null; }
-    stopWaveformAnim();
-    if(window.__fabSetLive) window.__fabSetLive(false);
-    var orb = document.getElementById('orb-main');
-    if(orb) orb.classList.remove('speaking');
-    if(orbPhone) orbPhone.style.opacity = '1';
-
-    csStatus.textContent = 'Call ended';
-    var postCall = document.getElementById('cs-post-call');
-    var postTitle = document.querySelector('.cs-post-title');
-    if(postTitle && duration > 0){
-      postTitle.textContent = 'That was ' + duration + ' second' + (duration !== 1 ? 's' : '') + '.';
-    }
-    setTimeout(function(){
-      csActive.classList.remove('visible');
-      csTranscript.innerHTML = '';
-      if(postCall) postCall.style.display = 'flex';
-    }, 1500);
-    // Auto-scroll to proof section after call ends
-    if(duration > 5){
-      setTimeout(function(){
-        var proof = document.querySelector('.proof-section');
-        if(proof) proof.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 4000);
-    }
-  }
-
-  var postRetry = document.getElementById('cs-post-retry');
-  if(postRetry) postRetry.addEventListener('click', function(){
-    var postCall = document.getElementById('cs-post-call');
-    if(postCall) postCall.style.display = 'none';
-    if(orbLabel){ orbLabel.style.display = ''; }
-    if(orbPhone){ orbPhone.style.display = ''; orbPhone.style.opacity = '1'; }
-    var heroTitle = document.querySelector('.hero-title');
-    var heroHint = document.querySelector('.hero-hint');
-    var demoBox = document.getElementById('demo-box');
-    if(heroTitle) heroTitle.style.display = '';
-    if(heroHint) heroHint.style.display = '';
-    if(demoBox) demoBox.style.display = '';
-    document.querySelectorAll('.orb-ring').forEach(function(r){ r.style.display = ''; });
-  });
-
-  var postCta = document.getElementById('cs-post-cta');
-  if(postCta) postCta.addEventListener('click', function(){
-    try { gtag('event', 'post_call_book_demo', { company: 'ORS Nasco', page: 'ors-nasco' }); } catch(e){}
-  });
-
-  if(csEndBtn) csEndBtn.addEventListener('click', function(e){
-    e.stopPropagation();
-    endCall(callStartTime ? Math.round((Date.now() - callStartTime) / 1000) : 0);
-  });
-
-  if(orbWrap) orbWrap.addEventListener('click', function(){
-    if(callActive) return;
-    startVoiceCall();
-  });
-})();
-
-// ===== Demo Phone Call =====
-function startDemo() {
-  var phone = document.getElementById('demo-phone').value.trim();
-  if (!phone) {
-    document.getElementById('demo-phone').focus();
-    return;
-  }
-  try { gtag('event', 'demo_call_requested', { phone_entered: true, page: 'ors-nasco' }); } catch(e){}
-  document.getElementById('demo-step-1').classList.add('hidden');
-  document.getElementById('demo-step-2').classList.remove('hidden');
-
-  fetch('https://backend.widr.app/api/v1/demo/prospect-call', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      phone: phone,
-      prospect: 'ORS Nasco',
-      product: 'welding supply order',
-      amount: '$6,800',
-      from_number: '+12016277551'
-    })
-  }).catch(function(){});
-}
-
-// Allow Enter key in phone input
-(function(){
-  var phoneInput = document.getElementById('demo-phone');
-  if(phoneInput) phoneInput.addEventListener('keydown', function(e){
-    if(e.key === 'Enter') startDemo();
-  });
-})();
+(function(){var expiry=new Date('2026-04-03');var diff=Math.ceil((expiry-new Date())/864e5);var el=document.getElementById('days-left');if(el)el.textContent=diff>0?diff+' day'+(diff!==1?'s':''):'expired'})();
+(function(){var ro=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('v')})},{threshold:.12});document.querySelectorAll('.rv').forEach(function(el){ro.observe(el)})})();
+(function(){var hint=document.getElementById('scroll-hint');if(!hint)return;var done=false;window.addEventListener('scroll',function(){if(!done&&window.scrollY>60){done=true;hint.classList.add('hidden')}},{passive:true})})();
+(function(){var stats=document.querySelectorAll('.social-stat');var animated=false;var ro=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting&&!animated){animated=true;stats.forEach(function(stat,idx){setTimeout(function(){stat.classList.add('v');var numEl=stat.querySelector('.social-stat-num');if(!numEl)return;if(numEl.getAttribute('data-static')==='true')return;var target=parseInt(numEl.getAttribute('data-target'));var suffix=numEl.getAttribute('data-suffix')||'';var duration=1200;var start=Date.now();function tick(){var elapsed=Date.now()-start;var progress=Math.min(elapsed/duration,1);var eased=1-Math.pow(1-progress,3);var current=Math.round(target*eased);numEl.textContent=current+suffix;if(progress<1)requestAnimationFrame(tick)}tick()},idx*200)})}})},{threshold:.3});if(stats.length)ro.observe(stats[0])})();
+(function(){var q=document.getElementById('social-quote');if(!q)return;var ro=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('v')})},{threshold:.2});ro.observe(q)})();
+(function(){var fab=document.getElementById('voice-fab');var fabText=document.getElementById('voice-fab-text');var fabMicIcon=document.getElementById('fab-mic-icon');var fabHangupIcon=document.getElementById('fab-hangup-icon');var hero=document.getElementById('hero');var fabLive=false;if(!fab||!hero)return;window.__fabSetLive=function(isLive){fabLive=isLive;if(isLive){fab.classList.add('visible','live');fabText.textContent='End call';fabMicIcon.style.display='none';fabHangupIcon.style.display=''}else{fab.classList.remove('live');fabText.textContent='Call your agent';fabMicIcon.style.display='';fabHangupIcon.style.display='none';var heroBottom=hero.getBoundingClientRect().bottom;if(heroBottom>=0)fab.classList.remove('visible')}};fab.addEventListener('click',function(){if(fabLive){var endBtn=document.getElementById('cs-end-btn');if(endBtn)endBtn.click();return}hero.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(function(){var orb=document.getElementById('orb-wrap');if(orb)orb.click()},600)});window.addEventListener('scroll',function(){if(fabLive){fab.classList.add('visible');return}var heroBottom=hero.getBoundingClientRect().bottom;if(heroBottom<0){fab.classList.add('visible')}else{fab.classList.remove('visible')}})})();
+(function(){var orbWrap=document.getElementById('orb-wrap');var orbLabel=document.getElementById('orb-label');var orbPhone=document.getElementById('orb-phone-center');var csConnecting=document.getElementById('cs-connecting');var csActive=document.getElementById('cs-active');var csEndBtn=document.getElementById('cs-end-btn');var csStatus=document.getElementById('cs-status');var csTranscript=document.getElementById('cs-transcript');var csWaveformEl=document.getElementById('cs-waveform');var csWaveformBars=csWaveformEl?csWaveformEl.querySelectorAll('span'):[];var waveformAnimId=null;var waveformMode='idle';var callActive=false;var retellClient=null;var callStartTime=null;function animateWaveform(){for(var i=0;i<csWaveformBars.length;i++){var bar=csWaveformBars[i];var h;if(waveformMode==='agent')h=10+Math.random()*34;else if(waveformMode==='user')h=6+Math.random()*18;else h=4+Math.sin(Date.now()/500+i*0.6)*3;bar.style.height=h+'px'}waveformAnimId=requestAnimationFrame(animateWaveform)}function startWaveformAnim(mode){waveformMode=mode||'idle';if(!waveformAnimId)animateWaveform()}function stopWaveformAnim(){waveformMode='idle';if(waveformAnimId){cancelAnimationFrame(waveformAnimId);waveformAnimId=null}for(var i=0;i<csWaveformBars.length;i++)csWaveformBars[i].style.height='4px'}function startVoiceCall(){if(callActive)return;callActive=true;callStartTime=Date.now();if(orbLabel)orbLabel.style.display='none';if(orbPhone)orbPhone.style.display='none';var heroTitle=document.querySelector('.hero-title');var heroHint=document.querySelector('.hero-hint');var heroCallingLabel=document.querySelector('.hero-calling-label');var orbBubble=document.getElementById('orb-bubble');if(heroTitle)heroTitle.style.display='none';if(heroHint)heroHint.style.display='none';if(heroCallingLabel)heroCallingLabel.style.display='none';if(orbBubble)orbBubble.style.display='none';document.querySelectorAll('.orb-ring').forEach(function(r){r.style.display='none'});csConnecting.style.display='flex';csActive.classList.remove('visible');var orb=document.getElementById('orb-main');if(orb)orb.classList.add('speaking');(async function(){try{var micPromise=navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true,sampleRate:{ideal:48000},channelCount:{ideal:1}}}).then(function(s){window.__micStream=s}).catch(function(){throw new Error('Microphone access required')});var apiPromise=fetch('https://backend.widr.app/api/v1/demo/web-call',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({company_name:'ORS Nasco',product:'industrial distribution',amount:'$8,500'})}).then(async function(response){if(!response.ok){var errBody='';try{errBody=await response.text()}catch(e){}console.error('web-call error:',response.status,errBody);throw new Error('API returned '+response.status)}return response.json()});var sdkPromise=Promise.resolve(window.__RetellWebClient).then(function(RWC){if(RWC)return RWC;return import('https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.7/+esm').then(function(m){return m.RetellWebClient}).catch(function(){return import('https://unpkg.com/retell-client-js-sdk@2.0.7/dist/index.js').then(function(m){return m.RetellWebClient})})});var results=await Promise.all([micPromise,apiPromise,sdkPromise]);var result=results[1];var RetellWebClient=results[2];if(!result.success||!result.access_token)throw new Error('No access token');retellClient=new RetellWebClient();retellClient.on('call_started',function(){callStartTime=Date.now();csConnecting.style.display='none';csActive.classList.add('visible');csStatus.textContent='Your turn \u2014 speak now';startWaveformAnim('idle');if(orbPhone)orbPhone.style.opacity='0';if(window.__fabSetLive)window.__fabSetLive(true);try{gtag('event','call_started',{company:'ORS Nasco',page:'ors-nasco'})}catch(e){}});retellClient.on('call_ended',function(){try{gtag('event','call_completed',{company:'ORS Nasco',page:'ors-nasco'})}catch(e){}var duration=callStartTime?Math.round((Date.now()-callStartTime)/1000):30;endCall(duration)});retellClient.on('agent_start_talking',function(){startWaveformAnim('agent');csStatus.textContent='Agent speaking...'});retellClient.on('agent_stop_talking',function(){startWaveformAnim('user');csStatus.textContent='Your turn \u2014 speak now'});retellClient.on('update',function(update){if(update&&update.transcript)renderTranscript(update.transcript)});retellClient.on('error',function(err){console.error('RetellAI error:',err);endCall(0)});await retellClient.startCall({accessToken:result.access_token})}catch(err){console.error('Voice call error:',err);callActive=false;csConnecting.style.display='none';var ht=document.querySelector('.hero-title');var hh=document.querySelector('.hero-hint');var hcl=document.querySelector('.hero-calling-label');var ob=document.getElementById('orb-bubble');if(ht)ht.style.display='';if(hh)hh.style.display='';if(hcl)hcl.style.display='';if(ob)ob.style.display='';document.querySelectorAll('.orb-ring').forEach(function(r){r.style.display=''});if(orbPhone)orbPhone.style.display='';if(orb)orb.classList.remove('speaking');console.error('Call error details:',(err&&err.message)||err);if(hh){hh.textContent='Connection failed \u2014 tap to retry';hh.style.color='#ef4444';hh.style.fontSize='13px'}setTimeout(function(){if(hh){hh.textContent='Tap to answer';hh.style.color='';hh.style.fontSize=''}},6000)}})()}function renderTranscript(transcript){if(!transcript||!transcript.length)return;var last=null;for(var i=transcript.length-1;i>=0;i--){if((transcript[i].content||'').trim()){last=transcript[i];break}}if(!last)return;var role=last.role==='agent'?'agent':'user';csTranscript.innerHTML='<div class="cs-msg '+role+'">'+last.content+'</div>';csTranscript.scrollTop=csTranscript.scrollHeight}function endCall(duration){callActive=false;if(retellClient){try{retellClient.stopCall()}catch(e){}retellClient=null}if(window.__micStream){window.__micStream.getTracks().forEach(function(t){t.stop()});window.__micStream=null}stopWaveformAnim();if(window.__fabSetLive)window.__fabSetLive(false);var orb=document.getElementById('orb-main');if(orb)orb.classList.remove('speaking');if(orbPhone)orbPhone.style.opacity='1';csStatus.textContent='Call ended';var postCall=document.getElementById('cs-post-call');var postTitle=document.querySelector('.cs-post-title');if(postTitle&&duration>0){postTitle.textContent='That was '+duration+' second'+(duration!==1?'s':'')+'.'}setTimeout(function(){csActive.classList.remove('visible');csTranscript.innerHTML='';if(postCall)postCall.style.display='flex'},1500);if(duration>5){setTimeout(function(){var proof=document.querySelector('.proof-section');if(proof)proof.scrollIntoView({behavior:'smooth',block:'start'})},4000)}}var postRetry=document.getElementById('cs-post-retry');if(postRetry)postRetry.addEventListener('click',function(){var postCall=document.getElementById('cs-post-call');if(postCall)postCall.style.display='none';if(orbLabel){orbLabel.style.display=''}if(orbPhone){orbPhone.style.display='';orbPhone.style.opacity='1'}var heroTitle=document.querySelector('.hero-title');var heroHint=document.querySelector('.hero-hint');if(heroTitle)heroTitle.style.display='';if(heroHint)heroHint.style.display='';document.querySelectorAll('.orb-ring').forEach(function(r){r.style.display=''})});var postCta=document.getElementById('cs-post-cta');if(postCta)postCta.addEventListener('click',function(){try{gtag('event','post_call_book_demo',{company:'ORS Nasco',page:'ors-nasco'})}catch(e){}});if(csEndBtn)csEndBtn.addEventListener('click',function(e){e.stopPropagation();endCall(callStartTime?Math.round((Date.now()-callStartTime)/1000):0)});if(orbWrap)orbWrap.addEventListener('click',function(){if(callActive)return;startVoiceCall()})})();
 </script>
 </body>
 </html>
