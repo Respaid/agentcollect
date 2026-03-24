@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgentCollect × US Med-Equip</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GRZZT9K05B"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GRZZT9K05B');</script>
+  <!-- Clarity -->
+  <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","vr6uvxdalw");</script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:    #684ED1;
+      --primary-lo: rgba(104,78,209,0.08);
+      --primary-md: rgba(104,78,209,0.18);
+      --text:       #1C1A25;
+      --text2:      #27293F;
+      --muted:      #8084B2;
+      --border:     #DFE0EC;
+      --page-bg:    #f5f6fa;
+      --card-bg:    #fff;
+      --green:      #16A34A;
+      --red:        #DC2626;
+      --radius:     10px;
+      --sans:       'Plus Jakarta Sans', 'Inter', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-snap-type: y proximity;
+    }
+
+    body {
+      background: var(--page-bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(245,246,250,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo svg { width: 28px; height: 28px; }
+
+    .nav-cta {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 9px 20px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: .85; }
+
+    section {
+      min-height: 100vh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px 40px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+    }
+
+    #hero {
+      background: var(--card-bg);
+      text-align: center;
+      align-items: flex-start;
+      padding-top: 100px;
+      padding-bottom: 60px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary-lo);
+      color: var(--primary);
+      border: 1px solid var(--primary-md);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 32px;
+      letter-spacing: .3px;
+    }
+
+    .hero-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .hero-logos img {
+      height: 52px;
+      object-fit: contain;
+    }
+
+    .hero-x {
+      font-size: 28px;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .hero-ac-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 20px;
+      color: var(--primary);
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 3.2rem);
+      font-weight: 300;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    h1 strong {
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 44px;
+      font-weight: 400;
+    }
+
+    .call-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 18px 36px;
+      font-family: var(--sans);
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform .15s, box-shadow .15s;
+      box-shadow: 0 8px 32px rgba(104,78,209,0.28);
+    }
+    .call-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(104,78,209,0.38);
+    }
+
+    .call-icon {
+      width: 22px; height: 22px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .hero-hint {
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .demo-box {
+      background: var(--primary-lo);
+      border: 1.5px solid var(--primary-md);
+      border-radius: 14px;
+      padding: 28px 32px;
+      max-width: 520px;
+      margin: 0 auto 20px;
+    }
+
+    .demo-label {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+
+    .demo-input-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .demo-input {
+      flex: 1;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-family: var(--sans);
+      font-size: 16px;
+      color: var(--text);
+      background: var(--card-bg);
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .demo-input:focus { border-color: var(--primary); }
+
+    .demo-calling {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .demo-pulse {
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: var(--primary);
+      animation: pulse 1.2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 0.5; }
+    }
+
+    .hidden { display: none !important; }
+
+    #intel {
+      background: var(--page-bg);
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 300;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      margin-bottom: 48px;
+      color: var(--text);
+    }
+
+    h2 strong { font-weight: 800; }
+
+    .intel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .intel-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: opacity .5s, transform .5s;
+    }
+
+    .intel-card:nth-child(2) { transition-delay: .1s; }
+    .intel-card:nth-child(3) { transition-delay: .2s; }
+
+    .intel-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--primary-lo);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+      font-size: 20px;
+    }
+
+    .intel-card h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .intel-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .intel-card .tag {
+      display: inline-block;
+      margin-top: 12px;
+      background: var(--primary-lo);
+      color: var(--primary);
+      border-radius: 4px;
+      padding: 3px 9px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    #proof {
+      background: var(--text);
+      color: #fff;
+    }
+
+    #proof h2 { color: #fff; }
+    #proof .section-label { color: rgba(255,255,255,0.5); }
+
+    .proof-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2px;
+      background: rgba(255,255,255,0.06);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+
+    .proof-stat {
+      background: rgba(255,255,255,0.03);
+      padding: 36px 28px;
+      text-align: center;
+      transition: opacity .5s, transform .5s;
+    }
+
+    .proof-stat:nth-child(2) { transition-delay: .1s; }
+    .proof-stat:nth-child(3) { transition-delay: .2s; }
+    .proof-stat:nth-child(4) { transition-delay: .3s; }
+
+    .proof-stat .num {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -2px;
+      line-height: 1;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .proof-stat .label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      font-weight: 500;
+    }
+
+    .proof-clients {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .proof-clients .lede {
+      font-size: 15px;
+      color: rgba(255,255,255,0.6);
+      margin-right: 4px;
+    }
+
+    .client-chip {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .client-chip img {
+      height: 20px;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.85;
+    }
+
+    .client-chip span {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .proof-note {
+      margin-top: 20px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #how {
+      background: var(--page-bg);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 8px;
+    }
+
+    .step {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      position: relative;
+      transition: opacity .5s, transform .5s;
+    }
+
+    .step:nth-child(2) { transition-delay: .12s; }
+    .step:nth-child(3) { transition-delay: .24s; }
+
+    .step-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .step h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .step p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .step-connector {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .steps {
+        position: relative;
+      }
+    }
+
+    #cta {
+      background: var(--card-bg);
+      text-align: center;
+    }
+
+    #cta h2 {
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      margin-bottom: 16px;
+    }
+
+    #cta p {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto 44px;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .cta-email {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .cta-email a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer {
+      background: var(--page-bg);
+      border-top: 1px solid var(--border);
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer .brand {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    footer .note {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .dots {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 50;
+      pointer-events: auto;
+    }
+
+    @media (max-width: 1100px) {
+      .dots { display: none; }
+    }
+
+    .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--border);
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+
+    .dot.active {
+      background: var(--primary);
+      transform: scale(1.4);
+    }
+
+    @media (max-width: 600px) {
+      .dots { display: none; }
+      nav { padding: 12px 16px; }
+      section { padding: 80px 16px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <svg viewBox="0 0 28 28" fill="none">
+      <rect width="28" height="28" rx="7" fill="#684ED1"/>
+      <path d="M8 14.5L12.5 19L20 10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    AgentCollect
+  </a>
+  <a href="tel:+16288773918" class="nav-cta" onclick="gtag('event','call_nav',{})">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/>
+    </svg>
+    (628) 8••-••18
+  </a>
+</nav>
+
+<!-- SCROLL DOTS -->
+<nav class="dots" aria-hidden="true">
+  <div class="dot active" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'})"></div>
+  <div class="dot" onclick="document.getElementById('intel').scrollIntoView({behavior:'smooth'})"></div>
+  <div class="dot" onclick="document.getElementById('disputes').scrollIntoView({behavior:'smooth'})"></div>
+  <div class="dot" onclick="document.getElementById('proof').scrollIntoView({behavior:'smooth'})"></div>
+  <div class="dot" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})"></div>
+  <div class="dot" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})"></div>
+</nav>
+
+<!-- SCREEN 1 — HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      Built for US Med-Equip
+    </div>
+
+    <div class="hero-logos">
+      <img class="company-logo" data-domain="usmedequip.com" src="https://img.logo.dev/usmedequip.com?token=pk_SfCBTRLlQtGVnODdRoMuEg&size=80&format=png" alt="US Med-Equip" style="height:44px;width:auto;object-fit:contain;" onerror="this.outerHTML='<span style=\'font-weight:800;font-size:20px;color:var(--text)\'>US Med-Equip</span>'" />
+      <span class="hero-x">&times;</span>
+      <div class="hero-ac-logo">
+        <svg width="32" height="32" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="7" fill="#684ED1"/>
+          <path d="M8 14.5L12.5 19L20 10" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        AgentCollect
+      </div>
+    </div>
+
+    <h1>Your AI collection agent.<br><strong>Already running.</strong></h1>
+    <p class="hero-sub">Try to get out of paying $7,200/month for a ventilator rental — branded US Med-Equip.</p>
+
+    <!-- Demo Flow -->
+    <div class="demo-box" id="demo-box">
+      <div class="demo-step" id="demo-step-1">
+        <p class="demo-label">Enter your phone number — the agent calls you now.</p>
+        <div class="demo-input-row">
+          <input type="tel" id="demo-phone" placeholder="+1 (555) 000-0000" class="demo-input" />
+          <button class="call-btn" onclick="startDemo()" id="demo-btn">
+            <div class="call-icon">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+            </div>
+            Call me
+          </button>
+        </div>
+      </div>
+      <div class="demo-step hidden" id="demo-step-2">
+        <div class="demo-calling">
+          <div class="demo-pulse"></div>
+          <span>Calling you now — answer and try not to pay $7,200.</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="hero-hint">Or call directly: <a href="tel:+16288773918" style="color:var(--primary);font-weight:600;" onclick="gtag('event','call_hero',{})">(628) 8••-••18</a></p>
+  </div>
+</section>
+
+<!-- SCREEN 2 — INTEL -->
+<section id="intel">
+  <div class="container">
+    <div class="section-label">What we found</div>
+    <h2>US Med-Equip's AR<br><strong>profile, publicly.</strong></h2>
+
+    <div class="intel-grid">
+      <div class="intel-card">
+        <div class="intel-icon">🔗</div>
+        <h3>60,000 units in 1,600+ hospitals</h3>
+        <p>Massive fleet generating thousands of monthly invoices. Hospitals pay on 60-90+ day cycles. That's a structural DSO problem at enormous scale.</p>
+        <span class="tag">Fleet scale</span>
+      </div>
+      <div class="intel-card">
+        <div class="intel-icon">⭐</div>
+        <h3>Worst DSO in B2B</h3>
+        <p>Hospital payment cycles are 60-90+ days. Medicare/Medicaid adds 45-90 day delays. This is structural, not fixable internally — it requires specialized recovery.</p>
+        <span class="tag">Payment cycles</span>
+      </div>
+      <div class="intel-card">
+        <div class="intel-icon">👤</div>
+        <h3>Freeman Spogli wants returns</h3>
+        <p>PE needs EBITDA improvement. Every day of DSO reduction increases enterprise value. AR recovery is the fastest lever to pull before exit.</p>
+        <span class="tag">PE pressure</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREEN 3 — DISPUTES -->
+<section id="disputes">
+  <div class="container">
+    <div class="section-label">What debtors say</div>
+    <h2>The top 3 disputes.<br><strong>We've seen them all.</strong></h2>
+
+    <div class="intel-grid">
+      <div class="intel-card">
+        <div class="intel-icon" style="font-size:18px">💬</div>
+        <h3>"This ventilator was defective, we had to use our own backup."</h3>
+        <p>Equipment issue. The agent offers a service credit on the defective period and collects on the working period — fair resolution that preserves the relationship.</p>
+        <span class="tag" style="background:rgba(22,163,74,0.1);color:#16A34A;border:1px solid rgba(22,163,74,0.2)">Resolved automatically</span>
+      </div>
+      <div class="intel-card">
+        <div class="intel-icon" style="font-size:18px">💬</div>
+        <h3>"Medicare hasn't reimbursed us yet, we'll pay when they do."</h3>
+        <p>Reimbursement timing. The agent sets an auto-payment trigger aligned with Medicare cycles — converting a stall into a committed payment schedule.</p>
+        <span class="tag" style="background:rgba(22,163,74,0.1);color:#16A34A;border:1px solid rgba(22,163,74,0.2)">Resolved automatically</span>
+      </div>
+      <div class="intel-card">
+        <div class="intel-icon" style="font-size:18px">💬</div>
+        <h3>"We returned the hospital beds 2 months ago, our PO shows them closed."</h3>
+        <p>Return processing lag. The agent verifies serial numbers against returns, adjusts billing accordingly, and collects on equipment still in use.</p>
+        <span class="tag" style="background:rgba(22,163,74,0.1);color:#16A34A;border:1px solid rgba(22,163,74,0.2)">Resolved automatically</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREEN 4 — PROOF -->
+<section id="proof">
+  <div class="container">
+    <div class="section-label">Track record</div>
+    <h2>The numbers<br><strong>that matter.</strong></h2>
+
+    <div class="proof-stats">
+      <div class="proof-stat">
+        <span class="num" data-target="49">0</span>
+        <span class="label">% avg resolution rate</span>
+      </div>
+      <div class="proof-stat">
+        <span class="num" data-target="20">0</span>
+        <span class="label">days to close</span>
+      </div>
+      <div class="proof-stat">
+        <span class="num">$0</span>
+        <span class="label">if nothing recovered</span>
+      </div>
+      <div class="proof-stat">
+        <span class="num">0</span>
+        <span class="label">complaints or incidents</span>
+      </div>
+    </div>
+
+    <div class="proof-clients">
+      <span class="lede">Trusted by</span>
+      <div class="client-chip">
+        <img src="https://img.logo.dev/compugroup.com?token=pk_SfCBTRLlQtGVnODdRoMuEg&size=40&format=png" alt="CompuGroup Medical" onerror="this.style.display='none'"/>
+        <span>CompuGroup Medical</span>
+      </div>
+      <div class="client-chip">
+        <img src="https://img.logo.dev/dell.com?token=pk_SfCBTRLlQtGVnODdRoMuEg&size=40&format=png" alt="Dell" onerror="this.style.display='none'"/>
+        <span>Dell</span>
+      </div>
+      <div class="client-chip">
+        <img src="https://img.logo.dev/microsoft.com?token=pk_SfCBTRLlQtGVnODdRoMuEg&size=40&format=png" alt="Microsoft" onerror="this.style.display='none'"/>
+        <span>Microsoft</span>
+      </div>
+      <span class="lede">to contact their customers on their behalf.</span>
+    </div>
+
+    <p class="proof-note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Fully automated. Zero human agents. Zero brand risk.
+    </p>
+  </div>
+</section>
+
+<!-- SCREEN 5 — HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="section-label">How it works</div>
+    <h2>Three steps.<br><strong>Fully automated.</strong></h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">Step 01</div>
+        <h3>Detect &amp; enrich</h3>
+        <p>We identify past-due accounts from your AR export. Cross-reference contact data from 4 independent sources. Verify deliverability before first contact.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">Step 02</div>
+        <h3>Contact, branded as you</h3>
+        <p>Every email, every call goes out under the US Med-Equip brand. The AI agent knows the equipment, the amount, the hospital. Regulation F compliant. Business hours only.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">Step 03</div>
+        <h3>Recover or escalate</h3>
+        <p>~49% resolve in 20 days. Disputes are handled, not ignored. The rest escalate on a schedule you control. Full audit trail, every interaction logged.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREEN 6 — CTA -->
+<section id="cta">
+  <div class="container">
+    <div class="section-label">Next step</div>
+    <h2>Who handles AR<br><strong>at US Med-Equip?</strong></h2>
+    <p>One conversation with the right person is all it takes. Or call the agent right now.</p>
+
+    <div class="cta-actions">
+      <a href="tel:+16288773918" class="call-btn" onclick="gtag('event','call_cta',{})">
+        <div class="call-icon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+        </div>
+        Call (628) 8••-••18
+      </a>
+      <p class="cta-email">Or reply directly — <a href="mailto:j@agentcollect.com">j@agentcollect.com</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="brand">AgentCollect</span>
+  <span class="note">Built for US Med-Equip · Confidential</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.intel-card, .proof-stat, .step, .exec-card').forEach(el => observer.observe(el));
+
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.target);
+      if (!target) return;
+      let start = 0;
+      const duration = 1200;
+      const step = timestamp => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(ease * target) + (target === 49 ? '%' : '');
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target + (target === 49 ? '%' : '');
+      };
+      requestAnimationFrame(step);
+      counterObs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('[data-target]').forEach(el => counterObs.observe(el));
+
+  const sections = document.querySelectorAll('section[id]');
+  const dots = document.querySelectorAll('.dot');
+
+  const dotObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const idx = Array.from(sections).indexOf(e.target);
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    });
+  }, { threshold: 0.5 });
+
+  sections.forEach(s => dotObs.observe(s));
+
+  const tracked = {};
+  const gaObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !tracked[e.target.id]) {
+        tracked[e.target.id] = true;
+        gtag('event', 'section_view', { section: e.target.id });
+      }
+    });
+  }, { threshold: 0.5 });
+
+  sections.forEach(s => gaObs.observe(s));
+
+  function startDemo() {
+    const phone = document.getElementById('demo-phone').value.trim();
+    if (!phone) {
+      document.getElementById('demo-phone').focus();
+      return;
+    }
+    gtag('event', 'demo_call_requested', { phone_entered: true });
+    document.getElementById('demo-step-1').classList.add('hidden');
+    document.getElementById('demo-step-2').classList.remove('hidden');
+
+    fetch('https://backend.widr.app/api/v1/demo/prospect-call', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        phone: phone,
+        prospect: 'US Med-Equip',
+        product: 'ventilator rental (monthly)',
+        amount: '$7,200',
+        from_number: '+12016277551'
+      })
+    }).catch(() => {
+      window.location.href = 'tel:+16288773918';
+    });
+  }
+
+  document.getElementById('demo-phone').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') startDemo();
+  });
+</script>
+</body>
+</html>
