@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DEX Imaging: Yelp + BBB complaints. We found them all.</title>
+<title>DEX Imaging: Multiple billing complaints. We found them all.</title>
 <meta name="robots" content="noindex, nofollow">
-<meta property="og:title" content="DEX Imaging: Yelp + BBB complaints. We found them all.">
+<meta property="og:title" content="DEX Imaging: Multiple billing complaints. We found them all.">
 <meta property="og:description" content="Your DEX Imaging customers are complaining about billing. We found every single one.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://www.agentcollect.com/v3/og-dex-imaging.png">
@@ -30,6 +30,7 @@
     if(sid)body.clarity_session_id=sid;
     fetch('https://backend.widr.app/api/v1/demo/page-visit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).catch(function(){});
   }
+  // Wait for Clarity to initialize and get session ID
   var attempts=0;
   var poll=setInterval(function(){
     attempts++;
@@ -73,23 +74,23 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .nav-expiry{font-size:14px;color:var(--muted);font-weight:500}
 .nav-expiry strong{color:var(--text);font-weight:700}
 
-/* ===== HERO ===== */
+/* ===== HERO — CENTERED INCOMING CALL ===== */
 .hero{min-height:88vh;min-height:88dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#f6f3ef;padding:80px 24px 40px}
 .hero::before{content:'';position:absolute;width:800px;height:800px;top:40%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(204,0,0,.12) 0%,rgba(204,0,0,.05) 40%,transparent 70%);border-radius:50%;pointer-events:none;animation:heroGlow 6s ease-in-out infinite}
 .hero::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 700px 400px at 30% 0%,rgba(204,0,0,.08),transparent),radial-gradient(ellipse 500px 500px at 80% 80%,rgba(16,185,129,.06),transparent)}
 @keyframes heroGlow{0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.12)}}
 .hero-km-logo{height:52px;margin-bottom:52px;opacity:.85}
-.hero-calling-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:#CC0000;opacity:.7;margin-bottom:8px;text-align:center;animation:fadeInUp .6s ease .2s both}
+.hero-calling-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--blue);opacity:.7;margin-bottom:8px;text-align:center;animation:fadeInUp .6s ease .2s both}
 .hero-title{font-size:22px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:6px;text-align:center;animation:fadeInUp .6s ease .3s both}
 .hero-hint{font-size:14px;color:var(--green);opacity:.8;text-align:center;margin-bottom:0;font-weight:600;animation:fadeInUp .6s ease .4s both}
 
 /* Scroll chevron */
 .scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;opacity:.7;animation:chevBounce 1.8s ease-in-out infinite 1.5s;transition:opacity .4s}
 .scroll-hint.hidden{opacity:0;pointer-events:none}
-.scroll-hint svg{width:32px;height:32px;color:#CC0000}
+.scroll-hint svg{width:32px;height:32px;color:var(--blue)}
 @keyframes chevBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}
 
-/* Pulse rings */
+/* Pulse rings — incoming call effect */
 .orb-ring{position:absolute;border-radius:50%;border:1.5px solid rgba(204,0,0,.12);pointer-events:none}
 .orb-ring-1{inset:-30px;animation:ringPulse 3s ease-out infinite}
 .orb-ring-2{inset:-60px;animation:ringPulse 3s ease-out infinite .6s}
@@ -104,8 +105,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .orb-wrap:active .orb-main{transform:scale(.95)}
 .orb-main.speaking{animation:orbDrift 6s ease-in-out infinite,orbPulseSpeak .8s ease-in-out infinite}
 .orb-layer{position:absolute;inset:0;border-radius:50%}
-.orb-layer-1{background:conic-gradient(from 0deg,#CC0000,#FF3333,#660000,#FF6666,#CC0000);animation:orbSpin 8s linear infinite}
-.orb-layer-2{background:conic-gradient(from 180deg,rgba(204,0,0,.8),rgba(255,51,51,.5),rgba(102,0,0,.6),rgba(255,102,102,.4),rgba(204,0,0,.8));animation:orbSpin 12s linear infinite reverse;mix-blend-mode:soft-light}
+.orb-layer-1{background:conic-gradient(from 0deg,#CC0000,#990000,#330000,#FF3333,#CC0000);animation:orbSpin 8s linear infinite}
+.orb-layer-2{background:conic-gradient(from 180deg,rgba(204,0,0,.8),rgba(153,0,0,.5),rgba(51,0,0,.6),rgba(255,51,51,.4),rgba(204,0,0,.8));animation:orbSpin 12s linear infinite reverse;mix-blend-mode:soft-light}
 .orb-layer-3{background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.25) 0%,transparent 50%)}
 .orb-layer-4{background:radial-gradient(circle at 50% 110%,rgba(0,0,0,.4) 0%,transparent 60%)}
 .orb-phone-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:10;transition:opacity .3s,transform .3s}
@@ -127,27 +128,27 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 @keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* Orb bubble */
+/* Orb bubble — floats on top of orb like landing page */
 .orb-bubble{position:absolute;top:16px;right:-40px;background:rgba(255,255,255,.3);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.35);border-radius:14px;padding:10px 18px;font-size:15px;font-weight:700;color:#fff;white-space:nowrap;animation:orbBubble 3s ease-in-out infinite;text-shadow:0 1px 4px rgba(0,0,0,.5);z-index:15}
 @keyframes orbBubble{0%,100%{opacity:.7;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
 
 .orb-label{text-align:center;font-size:15px;font-weight:600;color:var(--muted);margin-top:0;margin-bottom:20px;letter-spacing:-.01em;display:none}
 .orb-label .orb-label-hint{display:block;font-size:12px;font-weight:400;color:var(--muted);opacity:.5;margin-top:4px}
 
-/* ===== CALL STATES ===== */
+/* ===== CALL STATES (below orb) ===== */
 .call-state{display:flex;flex-direction:column;align-items:center;width:100%;max-width:360px;margin:0 auto}
 .cs-connecting{display:none;flex-direction:column;align-items:center;gap:12px;padding:8px 0;animation:fadeInUp .3s ease}
-.cs-connecting .co-spinner{width:28px;height:28px;border:3px solid rgba(204,0,0,.15);border-top-color:#CC0000;border-radius:50%;animation:spin .8s linear infinite}
+.cs-connecting .co-spinner{width:28px;height:28px;border:3px solid rgba(79,70,229,.15);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite}
 .cs-connecting-text{color:var(--muted);font-size:13px;font-weight:500}
 .cs-active{display:none;flex-direction:column;align-items:center;gap:10px;padding:8px 0;width:100%}
 .cs-active.visible{display:flex}
-.cs-status{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#CC0000}
+.cs-status{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--blue)}
 .cs-waveform{display:flex;align-items:center;justify-content:center;gap:3px;height:40px;padding:4px 0}
-.cs-waveform span{width:3.5px;border-radius:3px;background:#CC0000;min-height:4px;will-change:height;transition:height .08s linear}
+.cs-waveform span{width:3.5px;border-radius:3px;background:var(--blue);min-height:4px;will-change:height;transition:height .08s linear}
 .cs-transcript{width:100%;max-height:80px;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}
 .cs-transcript::-webkit-scrollbar{display:none}
 .cs-msg{padding:8px 12px;border-radius:12px;font-size:13px;line-height:1.5;margin-bottom:6px;animation:fadeInUp .3s ease}
-.cs-msg.agent{background:rgba(204,0,0,.08);color:var(--text)}
+.cs-msg.agent{background:rgba(79,70,229,.08);color:var(--text)}
 .cs-msg.user{background:rgba(0,0,0,.04);color:var(--muted);text-align:right}
 .cs-end-btn{padding:10px 24px;background:rgba(239,68,68,.06);color:#ef4444;border:1px solid rgba(239,68,68,.15);border-radius:12px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;font-family:var(--sans)}
 .cs-end-btn:hover{background:rgba(239,68,68,.12)}
@@ -160,9 +161,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .cs-post-retry{background:none;border:1px solid var(--border);color:var(--muted);padding:8px 16px;border-radius:8px;font-size:12px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;margin-top:2px;font-family:var(--sans)}
 .cs-post-retry:hover{border-color:var(--blue);color:var(--blue)}
 
-/* ===== SECTION 2: THE PROBLEM ===== */
+/* ===== SECTION 2: THE PROBLEM + SOCIAL PROOF ===== */
 .proof-section{padding:120px 48px 40px;max-width:920px;margin:0 auto;text-align:center;position:relative}
-.proof-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:1px;background:linear-gradient(90deg,transparent,#CC0000,transparent);opacity:.3}
+.proof-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--blue),transparent);opacity:.3}
 .proof-sec-title{font-size:clamp(26px,3.2vw,38px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;color:var(--text)}
 .proof-sec-sub{font-size:17px;color:var(--muted);margin-bottom:52px;line-height:1.5}
 
@@ -188,9 +189,41 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .pain-count a{color:var(--red);text-decoration:none;font-weight:700}
 .pain-count a:hover{text-decoration:underline}
 
+/* ===== WHAT IS AGENTCOLLECT ===== */
+.wia-section{padding:80px 48px;max-width:920px;margin:0 auto;text-align:center}
+.wia-brand{display:flex;align-items:baseline;justify-content:center;margin-bottom:12px}
+.wia-logo{font-size:22px;font-weight:900;color:var(--text);letter-spacing:-.4px}
+.wia-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--blue);margin-left:1px}
+.wia-title{font-size:clamp(26px,3.2vw,38px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:12px;color:var(--text)}
+.wia-sub{font-size:17px;color:var(--muted);margin-bottom:48px;line-height:1.5;max-width:600px;margin-left:auto;margin-right:auto}
+.wia-comparison{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:720px;margin:0 auto 40px;text-align:left}
+.wia-col{padding:28px 24px;border-radius:16px;border:1px solid var(--border)}
+.wia-col.agency{background:rgba(220,38,38,.02);border-color:rgba(220,38,38,.12)}
+.wia-col.ac{background:rgba(79,70,229,.02);border-color:rgba(79,70,229,.12)}
+.wia-col-header{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.wia-col-header .icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900}
+.wia-col.agency .icon{background:rgba(220,38,38,.08);color:var(--red)}
+.wia-col.ac .icon{background:rgba(79,70,229,.08);color:var(--blue)}
+.wia-col-header h3{font-size:16px;font-weight:800;color:var(--text)}
+.wia-item{display:flex;gap:10px;margin-bottom:12px;font-size:14px;line-height:1.5;color:var(--muted)}
+.wia-item:last-child{margin-bottom:0}
+.wia-item .bullet{flex-shrink:0;font-weight:900;font-size:14px;line-height:1.5}
+.wia-col.agency .bullet{color:var(--red)}
+.wia-col.ac .bullet{color:var(--green)}
+.wia-item strong{color:var(--text);font-weight:700}
+.wia-voice-teaser{background:linear-gradient(135deg,rgba(79,70,229,.03),rgba(79,70,229,.06));border:1px solid rgba(79,70,229,.08);border-radius:16px;padding:24px 28px;max-width:480px;margin:0 auto;text-align:center}
+.wia-voice-teaser-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px}
+.wia-voice-teaser-sub{font-size:13px;color:var(--muted)}
+.wia-voice-teaser-sub a{color:var(--blue);text-decoration:none;font-weight:600;cursor:pointer}
+.wia-voice-teaser-sub a:hover{text-decoration:underline}
+
 /* ===== AGENTCOLLECT PROOF SECTION ===== */
 .ac-proof-section{padding:80px 48px 80px;max-width:920px;margin:0 auto;text-align:center}
+.ac-proof-brand{display:flex;align-items:baseline;justify-content:center;margin-bottom:32px}
+.ac-proof-logo{font-size:22px;font-weight:900;color:var(--text);letter-spacing:-.4px}
+.ac-proof-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--blue);margin-left:1px}
 .ac-proof-title{font-size:clamp(26px,3.2vw,38px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px;color:var(--text)}
+.ac-proof-sub{font-size:17px;color:var(--muted);margin-bottom:48px;line-height:1.5}
 
 .social-logos{display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap;margin-bottom:40px}
 .social-logos img{height:22px;filter:grayscale(100%) brightness(.4);opacity:.5;object-fit:contain;transition:all .4s cubic-bezier(.16,1,.3,1)}
@@ -208,7 +241,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .social-quote-name{font-size:14px;font-weight:700;color:var(--text)}
 .social-quote-role{font-size:13px;color:var(--muted)}
 
-/* ===== HOW IT WORKS ===== */
+/* ===== SECTION 3: HOW IT WORKS ===== */
 .how-section{padding:100px 48px 80px;background:linear-gradient(180deg,#f6f3ef 0%,#F8F7F5 100%);text-align:center;position:relative}
 .how-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:16px}
 .how-title{font-size:clamp(28px,3.5vw,42px);font-weight:900;letter-spacing:-.03em;line-height:1.08;margin-bottom:56px;color:var(--text)}
@@ -225,10 +258,10 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .how-footer{font-size:12px;color:var(--muted);opacity:.5;margin-top:56px;line-height:1.5;text-align:center}
 
 /* ===== FLOATING VOICE FAB ===== */
-.voice-fab{position:fixed;bottom:28px;right:28px;z-index:9000;display:flex;align-items:center;gap:10px;background:#0f0f1a;border:1px solid rgba(204,0,0,.3);border-radius:50px;padding:12px 20px 12px 14px;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 8px 32px rgba(0,0,0,.4);opacity:0;pointer-events:none;transform:translateY(20px)}
+.voice-fab{position:fixed;bottom:28px;right:28px;z-index:9000;display:flex;align-items:center;gap:10px;background:#0f0f1a;border:1px solid rgba(79,70,229,.3);border-radius:50px;padding:12px 20px 12px 14px;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 8px 32px rgba(0,0,0,.4);opacity:0;pointer-events:none;transform:translateY(20px)}
 .voice-fab.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
-.voice-fab:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(204,0,0,.3);border-color:rgba(204,0,0,.5)}
-.voice-fab-icon{width:40px;height:40px;border-radius:50%;background:#CC0000;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 16px rgba(204,0,0,.4)}
+.voice-fab:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(79,70,229,.3);border-color:rgba(79,70,229,.5)}
+.voice-fab-icon{width:40px;height:40px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 16px rgba(79,70,229,.4)}
 .voice-fab-icon svg{width:20px;height:20px;color:#fff}
 .voice-fab-text{color:rgba(255,255,255,.9);font-size:13px;font-weight:600;white-space:nowrap}
 
@@ -242,6 +275,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 /* ===== MOBILE ===== */
 @media(max-width:960px){
   .nav-inner{padding:14px 24px}
+  .wia-comparison{grid-template-columns:1fr;gap:16px}
 }
 @media(max-width:768px){
   .nav-expiry{font-size:12px}
@@ -253,9 +287,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   .orb-ring-3{inset:-68px}
   .hero-title{font-size:18px}
   .proof-section{padding:80px 24px 64px}
+  .proof-cards{grid-template-columns:1fr;gap:12px}
   .how-section{padding:80px 24px 56px}
   .how-grid{grid-template-columns:1fr;gap:16px;max-width:400px;margin:0 auto}
   .ac-proof-section{padding:80px 24px 64px}
+  .wia-section{padding:60px 24px}
   .voice-fab{bottom:16px;right:16px;padding:10px 16px 10px 10px}
   .voice-fab-text{font-size:12px}
 }
@@ -290,21 +326,22 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </nav>
 
-<!-- SECTION 1: HERO -->
+<!-- SECTION 1: HERO — INCOMING CALL -->
 <section class="hero" id="hero">
-  <span style="font-size:28px;font-weight:900;color:#CC0000;letter-spacing:-.03em;opacity:.85;margin-bottom:52px">DEX Imaging</span>
+  <span style="font-size:32px;font-weight:900;color:#CC0000;letter-spacing:-.03em;opacity:.85;margin-bottom:52px">DEX Imaging</span>
 
+  <!-- ORB with pulse rings -->
   <div class="orb-wrap" id="orb-wrap">
     <div class="orb-ring orb-ring-1"></div>
     <div class="orb-ring orb-ring-2"></div>
     <div class="orb-ring orb-ring-3"></div>
     <div class="orb-glow"></div>
     <div class="orb-particle" style="background:rgba(204,0,0,.5)"></div>
-    <div class="orb-particle" style="background:rgba(255,51,51,.5)"></div>
+    <div class="orb-particle" style="background:rgba(153,0,0,.5)"></div>
     <div class="orb-particle" style="background:rgba(204,0,0,.3)"></div>
-    <div class="orb-particle" style="background:rgba(255,102,102,.3)"></div>
-    <div class="orb-particle" style="background:rgba(102,0,0,.4)"></div>
     <div class="orb-particle" style="background:rgba(255,51,51,.3)"></div>
+    <div class="orb-particle" style="background:rgba(51,0,0,.4)"></div>
+    <div class="orb-particle" style="background:rgba(153,0,0,.3)"></div>
     <div class="orb-main" id="orb-main">
       <div class="orb-layer orb-layer-1"></div>
       <div class="orb-layer orb-layer-2"></div>
@@ -323,6 +360,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 
   <div class="orb-label" id="orb-label">Click to call your agent<span class="orb-label-hint">Live AI voice — 30 seconds</span></div>
 
+  <!-- Call States (below orb) -->
   <div class="call-state" id="call-state">
     <div class="cs-connecting" id="cs-connecting">
       <div class="co-spinner"></div>
@@ -343,7 +381,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       <div class="cs-post-check">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
       </div>
-      <div class="cs-post-title">That was 16 secondes.</div>
+      <div class="cs-post-title">That was 30 seconds.</div>
       <div class="cs-post-sub">Now imagine 10,000 accounts with your real data.</div>
       <a href="https://cal.com/johnb/30" target="_blank" class="cs-post-cta" id="cs-post-cta">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -363,46 +401,42 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 <!-- SECTION 2: THE PROBLEM -->
 <section class="proof-section">
   <div class="rv">
-    <h2 class="proof-sec-title">Multiple Yelp + BBB complaints<br><span style="color:var(--red)">about DEX Imaging.</span></h2>
-    <p class="proof-sec-sub">Real reviews from BBB &amp; Yelp. Predatory lease terms exposed.</p>
+    <h2 class="proof-sec-title">Multiple billing complaints<br><span style="color:var(--red)">about DEX Imaging.</span></h2>
+    <p class="proof-sec-sub">Real reviews from BBB &amp; Yelp.</p>
   </div>
 
   <div class="pain-wall rv">
-    <!-- Row 1 -->
+    <!-- Row 1: Lease traps, auto-renewal, deceptive billing -->
     <div class="pain-row pain-row-1">
-      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90089498/complaints" target="_blank">"<span class="hl">63-month leases</span> with 15% annual increases" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
-      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90089498/complaints" target="_blank">"<span class="hl">Auto-renewal traps</span> — locked in for 5 more years" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
-      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90089498/complaints" target="_blank">"Inflated <span class="hl">buyout values</span> — 3x market price" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
-      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90089498/complaints" target="_blank">"<span class="hl">$20K claims</span> on expired contracts" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
-      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90089498/complaints" target="_blank">"Cancellation window is <span class="hl">30 days</span> — impossible to catch" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
-      <!-- dup -->
-      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90089498/complaints" target="_blank">"<span class="hl">63-month leases</span> with 15% annual increases" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
-      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90089498/complaints" target="_blank">"<span class="hl">Auto-renewal traps</span> — locked in for 5 more years" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
-      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90089498/complaints" target="_blank">"Inflated <span class="hl">buyout values</span> — 3x market price" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
-      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90089498/complaints" target="_blank">"<span class="hl">$20K claims</span> on expired contracts" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
-      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90089498/complaints" target="_blank">"Cancellation window is <span class="hl">30 days</span> — impossible to catch" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90087980/complaints" target="_blank">"<span class="hl">63-month leases</span> with 15% annual increases" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
+      <a class="pain-pill" href="https://www.yelp.com/biz/dex-imaging-tampa" target="_blank">"Auto-renewal traps &mdash; miss window = <span class="hl">full year renewal</span>" <img class="src-logo" src="/v3/logos/yelp.png" alt="Yelp"></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90087980/complaints" target="_blank">"<span class="hl">Inflated buyout</span> values at lease end" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
+      <a class="pain-pill" href="https://www.yelp.com/biz/dex-imaging-tampa" target="_blank">"<span class="hl">$20K claims</span> on auto-renewed expired contracts" <img class="src-logo" src="/v3/logos/yelp.png" alt="Yelp"></a>
+      <!-- dup for infinite scroll -->
+      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90087980/complaints" target="_blank">"<span class="hl">63-month leases</span> with 15% annual increases" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
+      <a class="pain-pill" href="https://www.yelp.com/biz/dex-imaging-tampa" target="_blank">"Auto-renewal traps &mdash; miss window = <span class="hl">full year renewal</span>" <img class="src-logo" src="/v3/logos/yelp.png" alt="Yelp"></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90087980/complaints" target="_blank">"<span class="hl">Inflated buyout</span> values at lease end" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
+      <a class="pain-pill" href="https://www.yelp.com/biz/dex-imaging-tampa" target="_blank">"<span class="hl">$20K claims</span> on auto-renewed expired contracts" <img class="src-logo" src="/v3/logos/yelp.png" alt="Yelp"></a>
     </div>
-    <!-- Row 2 -->
+    <!-- Row 2: Unethical practices, hidden fees, impossible cancellation -->
     <div class="pain-row pain-row-2">
-      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90089498/complaints" target="_blank">"Equipment broke — still <span class="hl">paying $1,200/mo</span>" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
-      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90089498/complaints" target="_blank">"Sent to <span class="hl">collections</span> for disputed charges" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
-      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90089498/complaints" target="_blank">"Sales rep <span class="hl">lied about terms</span> — contract says otherwise" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
-      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90089498/complaints" target="_blank">"<span class="hl">15% annual escalators</span> hidden in fine print" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
-      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90089498/complaints" target="_blank">"Tried to return — hit with <span class="hl">$18K termination fee</span>" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
-      <!-- dup -->
-      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90089498/complaints" target="_blank">"Equipment broke — still <span class="hl">paying $1,200/mo</span>" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
-      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90089498/complaints" target="_blank">"Sent to <span class="hl">collections</span> for disputed charges" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
-      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90089498/complaints" target="_blank">"Sales rep <span class="hl">lied about terms</span> — contract says otherwise" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
-      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90089498/complaints" target="_blank">"<span class="hl">15% annual escalators</span> hidden in fine print" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
-      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90089498/complaints" target="_blank">"Tried to return — hit with <span class="hl">$18K termination fee</span>" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
+      <a class="pain-pill" href="https://www.yelp.com/biz/dex-imaging-tampa" target="_blank">"One of the most <span class="hl">deceptive and unethical</span> companies" <img class="src-logo" src="/v3/logos/yelp.png" alt="Yelp"></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90087980/complaints" target="_blank">"Equipment never works properly but <span class="hl">still billed</span>" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
+      <a class="pain-pill" href="https://www.yelp.com/biz/dex-imaging-tampa" target="_blank">"<span class="hl">Impossible to cancel</span> service" <img class="src-logo" src="/v3/logos/yelp.png" alt="Yelp"></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90087980/complaints" target="_blank">"<span class="hl">Hidden fees</span> in maintenance agreements" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
+      <!-- dup for infinite scroll -->
+      <a class="pain-pill" href="https://www.yelp.com/biz/dex-imaging-tampa" target="_blank">"One of the most <span class="hl">deceptive and unethical</span> companies" <img class="src-logo" src="/v3/logos/yelp.png" alt="Yelp"></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90087980/complaints" target="_blank">"Equipment never works properly but <span class="hl">still billed</span>" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
+      <a class="pain-pill" href="https://www.yelp.com/biz/dex-imaging-tampa" target="_blank">"<span class="hl">Impossible to cancel</span> service" <img class="src-logo" src="/v3/logos/yelp.png" alt="Yelp"></a>
+      <a class="pain-pill" href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90087980/complaints" target="_blank">"<span class="hl">Hidden fees</span> in maintenance agreements" <img class="src-logo" src="/v3/logos/bbb.png" alt="BBB"></a>
     </div>
   </div>
-  <div class="pain-count rv">Multiple <span>Yelp + BBB complaints about DEX Imaging &mdash; </span><a href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90089498/complaints" target="_blank">BBB &#8599;</a> <span>|</span> <a href="https://www.yelp.com/biz/dex-imaging-tampa" target="_blank">Yelp &#8599;</a></div>
+  <div class="pain-count rv">Multiple Yelp + BBB complaints <span>from DEX Imaging customers &mdash; </span><a href="https://www.bbb.org/us/fl/tampa/profile/copiers/dex-imaging-0653-90087980/complaints" target="_blank">BBB &#8599;</a> <span>|</span> <a href="https://www.yelp.com/biz/dex-imaging-tampa" target="_blank">Yelp &#8599;</a></div>
 
   </div>
 </section>
 
-<!-- SECTION 3: PROOF -->
+<!-- SECTION 3: PROOF — results speak -->
 <section class="ac-proof-section">
   <div class="rv">
     <h2 class="ac-proof-title">What happens when AI collects for you.</h2>
@@ -480,6 +514,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 </div>
 
 <script type="module">
+// ===== Preload RetellAI SDK =====
 import { RetellWebClient } from 'https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.7/+esm';
 window.__RetellWebClient = RetellWebClient;
 </script>
@@ -500,7 +535,7 @@ window.__RetellWebClient = RetellWebClient;
   document.querySelectorAll('.rv').forEach(function(el){ ro.observe(el); });
 })();
 
-// ===== Hide scroll chevron =====
+// ===== Hide scroll chevron on first scroll =====
 (function(){
   var hint = document.getElementById('scroll-hint');
   if(!hint) return;
@@ -510,7 +545,7 @@ window.__RetellWebClient = RetellWebClient;
   }, {passive:true});
 })();
 
-// ===== Problem Cards =====
+// ===== Problem Cards — staggered reveal =====
 (function(){
   var cards = document.querySelectorAll('.problem-card');
   var ro = new IntersectionObserver(function(entries){
@@ -568,7 +603,7 @@ window.__RetellWebClient = RetellWebClient;
   ro.observe(q);
 })();
 
-// ===== Pillar Cards =====
+// ===== Pillar Cards — staggered reveal =====
 (function(){
   var cards = document.querySelectorAll('.pillar-card');
   if(!cards.length) return;
@@ -593,6 +628,7 @@ window.__RetellWebClient = RetellWebClient;
   var fabLive = false;
   if(!fab || !hero) return;
 
+  // Expose FAB controls globally so call logic can use them
   window.__fabSetLive = function(isLive){
     fabLive = isLive;
     if(isLive){
@@ -605,6 +641,7 @@ window.__RetellWebClient = RetellWebClient;
       fabText.textContent = 'Call your agent';
       fabMicIcon.style.display = '';
       fabHangupIcon.style.display = 'none';
+      // Re-evaluate visibility based on scroll
       var heroBottom = hero.getBoundingClientRect().bottom;
       if(heroBottom >= 0) fab.classList.remove('visible');
     }
@@ -612,6 +649,7 @@ window.__RetellWebClient = RetellWebClient;
 
   fab.addEventListener('click', function(){
     if(fabLive){
+      // Hang up the call
       var endBtn = document.getElementById('cs-end-btn');
       if(endBtn) endBtn.click();
       return;
@@ -634,7 +672,7 @@ window.__RetellWebClient = RetellWebClient;
   });
 })();
 
-// ===== WebRTC Voice Call =====
+// ===== WebRTC Voice Call (2-in-1 Orb) =====
 (function(){
   var orbWrap = document.getElementById('orb-wrap');
   var orbLabel = document.getElementById('orb-label');
@@ -680,6 +718,7 @@ window.__RetellWebClient = RetellWebClient;
     callActive = true;
     callStartTime = Date.now();
 
+    // Hide label + title + bubble, show connecting
     if(orbLabel) orbLabel.style.display = 'none';
     if(orbPhone) orbPhone.style.display = 'none';
     var heroTitle = document.querySelector('.hero-title');
@@ -690,6 +729,7 @@ window.__RetellWebClient = RetellWebClient;
     if(heroHint) heroHint.style.display = 'none';
     if(heroCallingLabel) heroCallingLabel.style.display = 'none';
     if(orbBubble) orbBubble.style.display = 'none';
+    // Hide pulse rings during call
     document.querySelectorAll('.orb-ring').forEach(function(r){ r.style.display = 'none'; });
     csConnecting.style.display = 'flex';
     csActive.classList.remove('visible');
@@ -699,9 +739,10 @@ window.__RetellWebClient = RetellWebClient;
 
     (async function(){
       try {
+        // Request mic permission FIRST — before API call
         try {
           var stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-          stream.getTracks().forEach(function(t){ t.stop(); });
+          stream.getTracks().forEach(function(t){ t.stop(); }); // release immediately, SDK will re-request
         } catch(micErr) {
           throw new Error('Microphone access required');
         }
@@ -726,10 +767,12 @@ window.__RetellWebClient = RetellWebClient;
 
         var RetellWebClient = window.__RetellWebClient;
         if(!RetellWebClient){
+          // Fallback: try dynamic import if preload failed
           try {
             var module = await import('https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.7/+esm');
             RetellWebClient = module.RetellWebClient;
           } catch(importErr) {
+            // Second fallback: try unpkg
             var module2 = await import('https://unpkg.com/retell-client-js-sdk@2.0.7/dist/index.js');
             RetellWebClient = module2.RetellWebClient;
           }
@@ -778,6 +821,7 @@ window.__RetellWebClient = RetellWebClient;
         console.error('Voice call error:', err);
         callActive = false;
         csConnecting.style.display = 'none';
+        // Restore hero elements
         var ht = document.querySelector('.hero-title');
         var hh = document.querySelector('.hero-hint');
         var hcl = document.querySelector('.hero-calling-label');
@@ -789,6 +833,7 @@ window.__RetellWebClient = RetellWebClient;
         document.querySelectorAll('.orb-ring').forEach(function(r){ r.style.display = ''; });
         if(orbPhone) orbPhone.style.display = '';
         if(orb) orb.classList.remove('speaking');
+        // Show retry prompt instead of raw error
         console.error('Call error details:', (err && err.message) || err);
         if(hh){ hh.textContent = 'Connection failed — tap to retry'; hh.style.color = '#ef4444'; hh.style.fontSize = '13px'; }
         setTimeout(function(){ if(hh){ hh.textContent = 'Tap to answer'; hh.style.color = ''; hh.style.fontSize = ''; } }, 6000);
@@ -828,6 +873,7 @@ window.__RetellWebClient = RetellWebClient;
       csTranscript.innerHTML = '';
       if(postCall) postCall.style.display = 'flex';
     }, 1500);
+    // Auto-scroll to proof section after call ends
     if(duration > 5){
       setTimeout(function(){
         var proof = document.querySelector('.proof-section');
