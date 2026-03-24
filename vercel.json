@@ -30,6 +30,7 @@
 { "source": "/xerox-wall", "destination": "/v3/xerox-v3-wall.html" },
 { "source": "/wall-compare", "destination": "/v3/wall-compare.html" },
 { "source": "/fix-compare", "destination": "/v3/fix-compare.html" },
+{ "source": "/konica", "destination": "/v3/konica.html" },
 { "source": "/konica-minolta", "destination": "/v3/konica-v11c.html" },
 { "source": "/analyze", "destination": "/v3/konica-v7-intel.html" },
 { "source": "/konica-minolta2", "destination": "/v3/konica-minolta-v4-brian.html" },
