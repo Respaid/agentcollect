@@ -13,6 +13,7 @@
 { "source": "/elwood", "destination": "/elwood.html" },
 { "source": "/wheeler-fleet", "destination": "/wheeler-fleet.html" },
 { "source": "/meridian-waste", "destination": "/meridian-waste.html" },
+{ "source": "/meridian-waste-review", "destination": "/meridian-waste-review.html" },
 { "source": "/usme", "destination": "/usme.html" },
 { "source": "/sprague", "destination": "/sprague.html" },
 { "source": "/hoffmann", "destination": "/hoffmann.html" },
