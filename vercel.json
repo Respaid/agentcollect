@@ -2,6 +2,11 @@
   "rewrites": [
 { "source": "/review-build-experience", "destination": "/review-build-experience.html" },
 { "source": "/showcase", "destination": "/showcase.html" },
+{ "source": "/mission-linen", "destination": "/v3/mission-linen.html" },
+{ "source": "/breg", "destination": "/v3/breg.html" },
+{ "source": "/lingo", "destination": "/v3/lingo.html" },
+{ "source": "/national-pen", "destination": "/v3/national-pen.html" },
+{ "source": "/merchants-foodservice", "destination": "/v3/merchants-foodservice.html" },
 { "source": "/fiteco", "destination": "/v3/fiteco.html" },
 { "source": "/peac-solutions", "destination": "/v3/peac-solutions.html" },
 { "source": "/conservice", "destination": "/v3/conservice.html" },
