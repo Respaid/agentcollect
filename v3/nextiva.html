@@ -743,45 +743,39 @@ window.__RetellWebClient = RetellWebClient;
 
     (async function(){
       try {
-        // Request mic permission FIRST — before API call
-        // This ensures the permission dialog is dismissed before Sarah starts talking
-        try {
-          var stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-          stream.getTracks().forEach(function(t){ t.stop(); }); // release immediately, SDK will re-request
-        } catch(micErr) {
-          throw new Error('Microphone access required');
-        }
+        // Run mic permission + API call + SDK load in PARALLEL for fastest connect
+        var micPromise = navigator.mediaDevices.getUserMedia({ audio: true })
+          .then(function(s){ s.getTracks().forEach(function(t){ t.stop(); }); })
+          .catch(function(){ throw new Error('Microphone access required'); });
 
-        var response = await fetch('https://backend.widr.app/api/v1/demo/web-call', {
+        var apiPromise = fetch('https://backend.widr.app/api/v1/demo/web-call', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             company_name: 'Nextiva',
-            product: 'VoIP business phone system',
+            product: 'Enterprise VoIP platform, 36-month contract',
             amount: '$9,600'
           })
+        }).then(async function(response) {
+          if(!response.ok) {
+            var errBody = ''; try { errBody = await response.text(); } catch(e){}
+            console.error('web-call error:', response.status, errBody);
+            throw new Error('API returned ' + response.status);
+          }
+          return response.json();
         });
 
-        if(!response.ok) {
-          var errBody = ''; try { errBody = await response.text(); } catch(e){}
-          console.error('web-call error:', response.status, errBody);
-          throw new Error('API returned ' + response.status);
-        }
-        var result = await response.json();
-        if(!result.success || !result.access_token) throw new Error('No access token');
+        var sdkPromise = Promise.resolve(window.__RetellWebClient).then(function(RWC) {
+          if(RWC) return RWC;
+          return import('https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.7/+esm')
+            .then(function(m){ return m.RetellWebClient; })
+            .catch(function(){ return import('https://unpkg.com/retell-client-js-sdk@2.0.7/dist/index.js').then(function(m){ return m.RetellWebClient; }); });
+        });
 
-        var RetellWebClient = window.__RetellWebClient;
-        if(!RetellWebClient){
-          // Fallback: try dynamic import if preload failed
-          try {
-            var module = await import('https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.7/+esm');
-            RetellWebClient = module.RetellWebClient;
-          } catch(importErr) {
-            // Second fallback: try unpkg
-            var module2 = await import('https://unpkg.com/retell-client-js-sdk@2.0.7/dist/index.js');
-            RetellWebClient = module2.RetellWebClient;
-          }
-        }
+        var results = await Promise.all([micPromise, apiPromise, sdkPromise]);
+        var result = results[1];
+        var RetellWebClient = results[2];
+        if(!result.success || !result.access_token) throw new Error('No access token');
         retellClient = new RetellWebClient();
 
         retellClient.on('call_started', function(){
