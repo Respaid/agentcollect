@@ -184,7 +184,7 @@ z-index:1}
 .acct-card-text{font-size:14px;color:rgba(255,255,255,.45);line-height:1.6}
 
 /* ===== AI AGENT UPSELL ===== */
-.agent-section{background:linear-gradient(135deg,#0B1B3D 0%,#0f2247 50%,#132a52 100%);padding:100px 32px;position:relative;overflow:hidden}
+.agent-section{background:linear-gradient(135deg,#0B1B3D 0%,#0f2247 50%,#132a52 100%);padding:56px 32px;position:relative;overflow:hidden}
 .agent-section::before{content:'';position:absolute;inset:0;background:
   radial-gradient(ellipse 800px 500px at 20% 80%,rgba(16,185,129,.08),transparent),
   radial-gradient(ellipse 600px 400px at 80% 20%,rgba(79,70,229,.1),transparent)}
@@ -192,19 +192,19 @@ z-index:1}
 .agent-inner{max-width:1120px;margin:0 auto}
 .agent-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--green);margin-bottom:12px}
 .agent-title{font-family:var(--sans);font-size:clamp(28px,4vw,48px);font-weight:900;color:#fff;letter-spacing:-.04em;line-height:1.08;margin-bottom:16px;max-width:700px}
-.agent-subtitle{font-size:18px;color:rgba(255,255,255,.5);max-width:600px;line-height:1.6;margin-bottom:56px}
+.agent-subtitle{font-size:18px;color:rgba(255,255,255,.5);max-width:600px;line-height:1.6;margin-bottom:32px}
 
-.agent-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.agent-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
 
 /* Progress circle */
-.progress-wrap{text-align:center;margin-bottom:40px}
-.progress-circle{position:relative;width:200px;height:200px;margin:0 auto 20px}
-.progress-circle svg{width:200px;height:200px;transform:rotate(-90deg)}
+.progress-wrap{text-align:center;margin-bottom:20px}
+.progress-circle{position:relative;width:160px;height:160px;margin:0 auto 16px}
+.progress-circle svg{width:160px;height:160px;transform:rotate(-90deg)}
 .progress-circle .bg{fill:none;stroke:rgba(255,255,255,.08);stroke-width:12}
 .progress-circle .fill{fill:none;stroke:var(--green);stroke-width:12;stroke-linecap:round;stroke-dasharray:565;stroke-dashoffset:565;transition:stroke-dashoffset 2s cubic-bezier(.16,1,.3,1)}
 .progress-circle.animated .fill{stroke-dashoffset:158}
 .progress-pct{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.progress-pct-num{font-family:var(--sans);font-size:48px;font-weight:900;color:#fff;letter-spacing:-.03em;line-height:1}
+.progress-pct-num{font-family:var(--sans);font-size:40px;font-weight:900;color:#fff;letter-spacing:-.03em;line-height:1}
 .progress-pct-label{font-size:13px;color:rgba(255,255,255,.45);font-weight:500;margin-top:4px}
 
 /* Readiness table */
@@ -217,7 +217,7 @@ z-index:1}
 .readiness-item.done svg{color:var(--green)}
 .readiness-item.pending svg{color:var(--amber)}
 
-.agent-pitch{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:32px;margin-top:40px}
+.agent-pitch{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:24px;margin-top:24px}
 .agent-pitch-text{font-size:16px;color:rgba(255,255,255,.7);line-height:1.7}
 .agent-pitch-text strong{color:#fff;font-weight:700}
 .agent-pitch-text em{color:var(--green);font-style:normal;font-weight:700}
@@ -227,7 +227,7 @@ z-index:1}
 .agent-cta svg{width:20px;height:20px}
 
 /* ===== AGENT DEMO (Dell orb) ===== */
-.agent-demo-section{min-height:80vh;background:#f6f3ef;padding:80px 24px 40px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.agent-demo-section{min-height:auto;background:#f6f3ef;padding:48px 24px 32px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .agent-demo-section::before{content:'';position:absolute;width:800px;height:800px;top:40%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(0,118,206,.12) 0%,rgba(79,70,229,.05) 40%,transparent 70%);border-radius:50%;pointer-events:none;animation:demoHeroGlow 6s ease-in-out infinite}
 .agent-demo-section::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 700px 400px at 30% 0%,rgba(0,118,206,.08),transparent),radial-gradient(ellipse 500px 500px at 80% 80%,rgba(79,70,229,.06),transparent)}
 @keyframes demoHeroGlow{0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.12)}}
@@ -240,9 +240,9 @@ z-index:1}
 @keyframes demoRingPulse{0%{opacity:.6;transform:scale(.95)}50%{opacity:.2;transform:scale(1)}100%{opacity:0;transform:scale(1.05)}}
 
 /* Orb */
-.demo-orb-wrap{position:relative;width:320px;height:320px;aspect-ratio:1;margin:0 auto 36px;cursor:pointer}
+.demo-orb-wrap{position:relative;width:220px;height:220px;aspect-ratio:1;margin:0 auto 20px;cursor:pointer}
 .demo-orb-glow{position:absolute;inset:-60px;border-radius:50%;background:radial-gradient(circle,rgba(0,118,206,.18) 0%,rgba(79,70,229,.06) 40%,transparent 70%);animation:demoOrbGlowPulse 4s ease-in-out infinite}
-.demo-orb{position:relative;width:320px;height:320px;aspect-ratio:1;border-radius:50%;-webkit-border-radius:50%;overflow:hidden;-webkit-mask-image:-webkit-radial-gradient(white,black);mask-image:radial-gradient(white,black);animation:demoOrbDrift 6s ease-in-out infinite;transition:transform .3s,box-shadow .3s;box-shadow:0 0 80px rgba(0,118,206,.25),0 0 160px rgba(79,70,229,.08),inset 0 0 60px rgba(0,0,0,.3)}
+.demo-orb{position:relative;width:220px;height:220px;aspect-ratio:1;border-radius:50%;-webkit-border-radius:50%;overflow:hidden;-webkit-mask-image:-webkit-radial-gradient(white,black);mask-image:radial-gradient(white,black);animation:demoOrbDrift 6s ease-in-out infinite;transition:transform .3s,box-shadow .3s;box-shadow:0 0 80px rgba(0,118,206,.25),0 0 160px rgba(79,70,229,.08),inset 0 0 60px rgba(0,0,0,.3)}
 .demo-orb-wrap:hover .demo-orb{transform:scale(1.06)}
 .demo-orb-wrap:active .demo-orb{transform:scale(.95)}
 .demo-orb.speaking{animation:demoOrbDrift 6s ease-in-out infinite,demoOrbPulseSpeak .8s ease-in-out infinite}
@@ -252,7 +252,7 @@ z-index:1}
 .demo-orb-layer-3{background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.25) 0%,transparent 50%)}
 .demo-orb-layer-4{background:radial-gradient(circle at 50% 110%,rgba(0,0,0,.4) 0%,transparent 60%)}
 .demo-orb-phone{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:10;transition:opacity .3s,transform .3s}
-.demo-orb-phone svg{width:44px;height:44px;color:#fff;stroke:currentColor;filter:drop-shadow(0 2px 12px rgba(0,0,0,.35));transition:transform .3s}
+.demo-orb-phone svg{width:36px;height:36px;color:#fff;stroke:currentColor;filter:drop-shadow(0 2px 12px rgba(0,0,0,.35));transition:transform .3s}
 .demo-orb-wrap:hover .demo-orb-phone svg{transform:scale(1.12)}
 .demo-orb-particle{position:absolute;width:4px;height:4px;border-radius:50%;animation:demoOrbParticle 4s ease-in-out infinite}
 .demo-orb-particle:nth-child(1){top:-16px;left:30%;animation-delay:0s}
@@ -280,8 +280,8 @@ z-index:1}
 .demo-phone-link a:hover{text-decoration:underline}
 
 /* Demo Hints */
-.demo-hints{max-width:640px;margin:32px auto 0;text-align:center}
-.demo-hints-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--blue);opacity:.6;margin-bottom:14px}
+.demo-hints{max-width:720px;margin:16px auto 0;text-align:center}
+.demo-hints-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--blue);opacity:.6;margin-bottom:8px}
 .demo-hints-grid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
 .demo-hint-pill{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:rgba(255,255,255,.8);border:1px solid rgba(0,0,0,.06);border-radius:50px;cursor:default;transition:all .25s;backdrop-filter:blur(8px);position:relative}
 .demo-hint-pill:hover{border-color:var(--blue);background:rgba(79,70,229,.04);transform:translateY(-2px);box-shadow:0 4px 12px rgba(79,70,229,.1)}
@@ -328,30 +328,30 @@ z-index:1}
 .demo-retry-btn:hover{border-color:var(--blue);color:var(--blue)}
 
 @media(max-width:768px){
-  .demo-orb-wrap{width:240px;height:240px}
-  .demo-orb{width:240px;height:240px;border-radius:50%;-webkit-border-radius:50%;-webkit-mask-image:-webkit-radial-gradient(white,black)}
-  .demo-orb-phone svg{width:36px;height:36px}
-  .demo-orb-ring-1{inset:-20px}
-  .demo-orb-ring-2{inset:-44px}
-  .demo-orb-ring-3{inset:-68px}
-  .demo-title{font-size:18px}
-  .demo-orb-bubble{display:none}
-}
-@media(max-width:480px){
-  .demo-orb-wrap{width:200px;height:200px;aspect-ratio:1;margin:0 auto 28px}
-  .demo-orb{width:200px;height:200px;aspect-ratio:1;border-radius:50%;-webkit-border-radius:50%;-webkit-mask-image:-webkit-radial-gradient(white,black)}
+  .demo-orb-wrap{width:180px;height:180px}
+  .demo-orb{width:180px;height:180px;border-radius:50%;-webkit-border-radius:50%;-webkit-mask-image:-webkit-radial-gradient(white,black)}
   .demo-orb-phone svg{width:32px;height:32px}
   .demo-orb-ring-1{inset:-16px}
   .demo-orb-ring-2{inset:-36px}
   .demo-orb-ring-3{inset:-56px}
+  .demo-title{font-size:18px}
+  .demo-orb-bubble{display:none}
+}
+@media(max-width:480px){
+  .demo-orb-wrap{width:160px;height:160px;aspect-ratio:1;margin:0 auto 16px}
+  .demo-orb{width:160px;height:160px;aspect-ratio:1;border-radius:50%;-webkit-border-radius:50%;-webkit-mask-image:-webkit-radial-gradient(white,black)}
+  .demo-orb-phone svg{width:28px;height:28px}
+  .demo-orb-ring-1{inset:-12px}
+  .demo-orb-ring-2{inset:-28px}
+  .demo-orb-ring-3{inset:-44px}
   .demo-title{font-size:16px}
 }
 
 /* ===== PROPOSAL ===== */
-.proposal-section{padding:100px 32px}
+.proposal-section{padding:60px 32px}
 .proposal-inner{max-width:1120px;margin:0 auto}
 .proposal-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:40px}
-.proposal-card{background:#fff;border-radius:20px;padding:40px 32px;box-shadow:var(--shadow-lg);border:1px solid rgba(0,0,0,.04);transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.proposal-card{background:#fff;border-radius:20px;padding:28px 24px;box-shadow:var(--shadow-lg);border:1px solid rgba(0,0,0,.04);transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
 .proposal-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-xl)}
 .proposal-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
 .proposal-card:nth-child(1)::before{background:var(--blue)}
@@ -387,7 +387,8 @@ z-index:1}
   .hero-stats{grid-template-columns:repeat(2,1fr)}
   .batch-grid,.channel-grid,.acct-grid,.temporal-grid,.agent-grid,.proposal-grid,.readiness-grid{grid-template-columns:1fr}
   .hero{padding:120px 20px 60px}
-  .section,.agent-section,.agent-demo-section,.proposal-section{padding:60px 20px}
+  .section,.agent-section,.proposal-section{padding:48px 20px}
+  .agent-demo-section{padding:36px 16px 24px}
   .accounting-section{padding:40px 24px;margin:40px 0;border-radius:16px}
   .nav-inner{padding:14px 20px}
   .cs-flow{flex-wrap:wrap;gap:8px}
@@ -712,10 +713,10 @@ z-index:1}
 <!-- YOUR OWN AI AGENT — Live Demo -->
 <section class="agent-demo-section" id="agent-demo">
 
-  <div style="text-align:center;margin-bottom:32px;position:relative;z-index:2">
+  <div style="text-align:center;margin-bottom:16px;position:relative;z-index:2">
     <div class="section-label rv" style="color:var(--blue)">Your Own AI Agent</div>
     <h2 class="section-title rv rv-d1" style="max-width:700px;margin-left:auto;margin-right:auto">Everything we just showed you &mdash; but running inside Dell.</h2>
-    <p class="section-subtitle rv rv-d2" style="margin-left:auto;margin-right:auto;text-align:center">Trained on your data. Speaking your language. Available 24/7. Try it now.</p>
+    <p class="section-subtitle rv rv-d2" style="margin-left:auto;margin-right:auto;text-align:center;margin-bottom:16px">Trained on your data. Speaking your language. Available 24/7. Try it now.</p>
   </div>
 
   <!-- ORB with pulse rings -->
@@ -768,23 +769,7 @@ z-index:1}
         <span class="demo-hint-text">"How do I know this is actually from Dell?"</span>
         <span class="demo-hint-badge">legitimacy check</span>
       </div>
-      <div class="demo-hint-pill" data-hint="The employee who placed this order left the company, what do we do?">
-        <span class="demo-hint-icon">&#128100;</span>
-        <span class="demo-hint-text">"That employee no longer works here"</span>
-        <span class="demo-hint-badge">departed contact</span>
-      </div>
-      <div class="demo-hint-pill" data-hint="I canceled this service before it even started, I have proof by email">
-        <span class="demo-hint-icon">&#128683;</span>
-        <span class="demo-hint-text">"I canceled before the service started"</span>
-        <span class="demo-hint-badge">$70K dispute</span>
-      </div>
-      <div class="demo-hint-pill" data-hint="We pay Dell by credit card, not invoice. We're disputing these charges.">
-        <span class="demo-hint-icon">&#128179;</span>
-        <span class="demo-hint-text">"We pay by credit card, not invoice"</span>
-        <span class="demo-hint-badge">payment method</span>
-      </div>
     </div>
-    <div class="demo-hints-note">These are real scenarios from your portfolio. The AI handles all of them.</div>
   </div>
 
   <!-- Call States (below orb) -->
@@ -826,8 +811,8 @@ z-index:1}
 <section class="agent-section" id="agent">
   <div class="agent-inner">
     <div class="agent-label rv">Readiness Assessment</div>
-    <h2 class="agent-title rv rv-d1">72% built. From the work<br>we already did.</h2>
-    <p class="agent-subtitle rv rv-d2">We have already built 72% of a dedicated Dell agent from the work on your 650 accounts. The remaining 28% requires your invoice data and a formal partnership.</p>
+    <h2 class="agent-title rv rv-d1" style="font-size:clamp(24px,3.5vw,40px)">72% built. From the work we already did.</h2>
+    <p class="agent-subtitle rv rv-d2" style="margin-bottom:24px">The remaining 28% requires your invoice data and a formal partnership.</p>
 
     <div class="agent-grid">
       <div class="rv rv-d2">
@@ -872,8 +857,8 @@ z-index:1}
       <div class="rv rv-d3">
         <div class="agent-pitch">
           <div class="agent-pitch-text">
-            <strong>Timeline: 4&ndash;6 weeks to full deployment.</strong><br><br>
-            We plug into Dell's AR system, apply Dell branding to all communications, and build custom payment plans based on your policies. The agent will handle thousands of accounts simultaneously, 24/7, in multiple languages &mdash; at a fraction of the cost of a BPO or internal team.
+            <strong>Timeline: 4&ndash;6 weeks to full deployment.</strong><br>
+            Dell-branded AI agent. Your AR system. Thousands of accounts, 24/7.
           </div>
         </div>
 
@@ -894,26 +879,33 @@ z-index:1}
   <div class="proposal-inner">
     <div class="section-label rv" style="text-align:center">Proposal</div>
     <h2 class="section-title rv rv-d1" style="text-align:center;margin-left:auto;margin-right:auto;max-width:600px">Two tracks, running in parallel</h2>
-    <p class="section-subtitle rv rv-d2" style="text-align:center;margin-left:auto;margin-right:auto">Track 1 feeds Track 2. Every batch we run improves the future Dell agent.</p>
     <div class="section-divider rv rv-d2" style="margin-left:auto;margin-right:auto"></div>
 
     <div class="proposal-grid">
       <div class="proposal-card rv">
         <div class="proposal-track">Track 1</div>
-        <div class="proposal-card-title">Continue 3rd Party Collection</div>
-        <div class="proposal-card-text">Batch #4 is ready to launch. Send us your next batch of accounts and we will continue recovering at 30%+ rates while the AI keeps learning Dell-specific patterns.</div>
+        <div class="proposal-card-title">Continue Collection</div>
+        <ul style="list-style:none;padding:0;margin:0 0 16px;display:flex;flex-direction:column;gap:10px">
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--muted);line-height:1.5"><svg style="flex-shrink:0;margin-top:2px" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg> Send Batch #4</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--muted);line-height:1.5"><svg style="flex-shrink:0;margin-top:2px" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg> We recover at <strong style="color:var(--text)">33%+ rate</strong></li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--muted);line-height:1.5"><svg style="flex-shrink:0;margin-top:2px" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg> AI keeps learning Dell patterns</li>
+        </ul>
         <div class="proposal-card-action">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-          Send your next batch
+          Ready now
         </div>
       </div>
       <div class="proposal-card rv rv-d1">
         <div class="proposal-track">Track 2</div>
         <div class="proposal-card-title">Build the Dell Agent</div>
-        <div class="proposal-card-text">Formalize the partnership. We build a dedicated AI collection agent trained on Dell's recovery data, integrated with your AR system, operating under Dell's brand.</div>
+        <ul style="list-style:none;padding:0;margin:0 0 16px;display:flex;flex-direction:column;gap:10px">
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--muted);line-height:1.5"><svg style="flex-shrink:0;margin-top:2px" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg> Your own AI, trained on your data</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--muted);line-height:1.5"><svg style="flex-shrink:0;margin-top:2px" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg> Dell-branded, integrated with your AR</li>
+          <li style="display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--muted);line-height:1.5"><svg style="flex-shrink:0;margin-top:2px" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg> <strong style="color:var(--text)">4&ndash;6 weeks</strong> to deploy</li>
+        </ul>
         <div class="proposal-card-action">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-          4&ndash;6 weeks to deploy
+          Formalize the partnership
         </div>
       </div>
     </div>
@@ -923,9 +915,9 @@ z-index:1}
     </div>
 
     <div class="proposal-cta rv rv-d3">
-      <a href="mailto:j@agentcollect.com?subject=Dell%20Technologies%20%E2%80%94%20Partnership%20Discussion">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
-        Let's Discuss
+      <a href="https://cal.com/john-banner" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Book a Call
       </a>
     </div>
   </div>
