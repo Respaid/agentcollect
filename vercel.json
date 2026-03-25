@@ -256,7 +256,13 @@
 { "source": "/industries/logistics-collection", "destination": "/industries/logistics-collection.html" },
 { "source": "/industries/financial-services-collection", "destination": "/industries/financial-services-collection.html" },
 { "source": "/industries/professional-services-collection", "destination": "/industries/professional-services-collection.html" },
-{ "source": "/industries/manufacturing-collection", "destination": "/industries/manufacturing-collection.html" }
+{ "source": "/industries/manufacturing-collection", "destination": "/industries/manufacturing-collection.html" },
+{ "source": "/blog", "destination": "/blog/index.html" },
+{ "source": "/blog/ai-debt-collection", "destination": "/blog/ai-debt-collection.html" },
+{ "source": "/blog/automated-accounts-receivable", "destination": "/blog/automated-accounts-receivable.html" },
+{ "source": "/blog/debt-collection-software", "destination": "/blog/debt-collection-software.html" },
+{ "source": "/blog/collection-agency-alternative", "destination": "/blog/collection-agency-alternative.html" },
+{ "source": "/blog/accounts-receivable-recovery", "destination": "/blog/accounts-receivable-recovery.html" }
   ],
   "headers": [
     {
