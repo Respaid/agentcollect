@@ -372,6 +372,22 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .demo-phone-link a{color:var(--blue);text-decoration:none;font-weight:600}
 .demo-phone-link a:hover{text-decoration:underline}
 
+/* Demo Hints */
+.demo-hints{max-width:640px;margin:32px auto 0;text-align:center}
+.demo-hints-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--blue);opacity:.6;margin-bottom:14px}
+.demo-hints-grid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.demo-hint-pill{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:rgba(255,255,255,.8);border:1px solid rgba(0,0,0,.06);border-radius:50px;cursor:default;transition:all .25s;backdrop-filter:blur(8px);position:relative}
+.demo-hint-pill:hover{border-color:var(--blue);background:rgba(79,70,229,.04);transform:translateY(-2px);box-shadow:0 4px 12px rgba(79,70,229,.1)}
+.demo-hint-icon{font-size:16px;flex-shrink:0}
+.demo-hint-text{font-size:13px;font-weight:600;color:var(--text);white-space:nowrap}
+.demo-hint-badge{font-size:10px;font-weight:700;color:var(--blue);background:rgba(79,70,229,.08);padding:3px 8px;border-radius:20px;white-space:nowrap}
+.demo-hints-note{font-size:12px;color:var(--muted);margin-top:16px;font-style:italic}
+@media(max-width:768px){
+  .demo-hint-text{white-space:normal;text-align:left}
+  .demo-hint-pill{padding:8px 12px}
+  .demo-hint-badge{display:none}
+}
+
 .demo-label{text-align:center;color:var(--muted);font-size:15px;font-weight:600;margin-top:0;margin-bottom:20px;letter-spacing:-.01em;display:none}
 .demo-label .demo-label-hint{display:block;font-size:12px;font-weight:400;color:var(--muted);opacity:.5;margin-top:4px}
 
@@ -842,6 +858,44 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   <div class="demo-phone-link">Or call: <a href="tel:+12016277551">(201) 627-7551</a></div>
 
   <div class="demo-label" id="demo-label">Click to call your agent<span class="demo-label-hint">Live AI voice &mdash; 30 seconds</span></div>
+
+  <!-- Try saying this — real Dell scenarios -->
+  <div class="demo-hints rv rv-d2" id="demo-hints">
+    <div class="demo-hints-title">Try saying:</div>
+    <div class="demo-hints-grid">
+      <div class="demo-hint-pill" data-hint="I need a copy of the invoice with the PO number so I can process payment">
+        <span class="demo-hint-icon">📄</span>
+        <span class="demo-hint-text">"Send me the invoice with the PO number"</span>
+        <span class="demo-hint-badge">59% of real disputes</span>
+      </div>
+      <div class="demo-hint-pill" data-hint="We already sent a check for this, it cleared our bank two weeks ago">
+        <span class="demo-hint-icon">✅</span>
+        <span class="demo-hint-text">"We already paid this — check cleared 2 weeks ago"</span>
+        <span class="demo-hint-badge">23% of disputes</span>
+      </div>
+      <div class="demo-hint-pill" data-hint="I've never seen this before, how do I know this is actually from Dell?">
+        <span class="demo-hint-icon">❓</span>
+        <span class="demo-hint-text">"How do I know this is actually from Dell?"</span>
+        <span class="demo-hint-badge">legitimacy check</span>
+      </div>
+      <div class="demo-hint-pill" data-hint="The employee who placed this order left the company, what do we do?">
+        <span class="demo-hint-icon">👤</span>
+        <span class="demo-hint-text">"That employee no longer works here"</span>
+        <span class="demo-hint-badge">departed contact</span>
+      </div>
+      <div class="demo-hint-pill" data-hint="I canceled this service before it even started, I have proof by email">
+        <span class="demo-hint-icon">🚫</span>
+        <span class="demo-hint-text">"I canceled before the service started"</span>
+        <span class="demo-hint-badge">$70K dispute</span>
+      </div>
+      <div class="demo-hint-pill" data-hint="We pay Dell by credit card, not invoice. We're disputing these charges.">
+        <span class="demo-hint-icon">💳</span>
+        <span class="demo-hint-text">"We pay by credit card, not invoice"</span>
+        <span class="demo-hint-badge">payment method</span>
+      </div>
+    </div>
+    <div class="demo-hints-note">These are real scenarios from your portfolio. The AI handles all of them.</div>
+  </div>
 
   <!-- Call States (below orb) -->
   <div class="demo-call-state" id="demo-call-state">
