@@ -1,9 +1,10 @@
 {
   "rewrites": [
-{ "source": "/dell", "destination": "/dell-v4.html" },
+{ "source": "/dell", "destination": "/dell-v5.html" },
 { "source": "/dell-v2", "destination": "/v3/dell-v2.html" },
 { "source": "/dell-v3", "destination": "/dell-v3.html" },
 { "source": "/dell-v4", "destination": "/dell-v4.html" },
+{ "source": "/dell-v5", "destination": "/dell-v5.html" },
 { "source": "/office-practicum", "destination": "/office-practicum.html" },
 { "source": "/data-sales", "destination": "/data-sales.html" },
 { "source": "/csc-leasing", "destination": "/csc-leasing.html" },
