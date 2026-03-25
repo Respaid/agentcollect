@@ -195,7 +195,37 @@ Free downloadable templates for AR teams:
 AI debt collection by US city:
 
 - Locations hub: https://www.agentcollect.com/locations
+- New York: https://www.agentcollect.com/locations/new-york
 - Los Angeles: https://www.agentcollect.com/locations/los-angeles
+- Chicago: https://www.agentcollect.com/locations/chicago
+- Houston: https://www.agentcollect.com/locations/houston
+- Phoenix: https://www.agentcollect.com/locations/phoenix
+- Philadelphia: https://www.agentcollect.com/locations/philadelphia
+- San Antonio: https://www.agentcollect.com/locations/san-antonio
+- San Diego: https://www.agentcollect.com/locations/san-diego
+- Dallas: https://www.agentcollect.com/locations/dallas
+- San Jose: https://www.agentcollect.com/locations/san-jose
+- Austin: https://www.agentcollect.com/locations/austin
+- Jacksonville: https://www.agentcollect.com/locations/jacksonville
+- Fort Worth: https://www.agentcollect.com/locations/fort-worth
+- Columbus: https://www.agentcollect.com/locations/columbus
+- Charlotte: https://www.agentcollect.com/locations/charlotte
+- Indianapolis: https://www.agentcollect.com/locations/indianapolis
+- San Francisco: https://www.agentcollect.com/locations/san-francisco
+- Seattle: https://www.agentcollect.com/locations/seattle
+- Denver: https://www.agentcollect.com/locations/denver
+- Nashville: https://www.agentcollect.com/locations/nashville
+- Oklahoma City: https://www.agentcollect.com/locations/oklahoma-city
+- El Paso: https://www.agentcollect.com/locations/el-paso
+- Washington DC: https://www.agentcollect.com/locations/washington-dc
+- Las Vegas: https://www.agentcollect.com/locations/las-vegas
+- Louisville: https://www.agentcollect.com/locations/louisville
+- Memphis: https://www.agentcollect.com/locations/memphis
+- Portland: https://www.agentcollect.com/locations/portland
+- Baltimore: https://www.agentcollect.com/locations/baltimore
+- Milwaukee: https://www.agentcollect.com/locations/milwaukee
+- Albuquerque: https://www.agentcollect.com/locations/albuquerque
+- Tucson: https://www.agentcollect.com/locations/tucson
 
 ## Additional Glossary Terms (batch 2)
 
