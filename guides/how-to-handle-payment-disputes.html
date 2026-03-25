@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<title>How to Handle Payment Disputes | AgentCollect</title>
+<meta name="description" content="Handle B2B invoice disputes without losing clients. Dispute categories, response frameworks, resolution timelines, escalation paths, and prevention strategies.">
+<meta property="og:title" content="How to Handle Payment Disputes Without Losing the Client | AgentCollect">
+<meta property="og:description" content="B2B invoice dispute resolution frameworks, timelines, and prevention strategies.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.agentcollect.com/guides/how-to-handle-payment-disputes">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Handle Payment Disputes Without Losing the Client">
+<meta name="twitter:description" content="B2B invoice dispute resolution frameworks, timelines, and prevention strategies.">
+<link rel="canonical" href="https://www.agentcollect.com/guides/how-to-handle-payment-disputes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Handle Payment Disputes Without Losing the Client",
+  "description": "Handle B2B invoice disputes without losing clients with response frameworks and prevention strategies.",
+  "author": {"@type": "Organization", "name": "AgentCollect"},
+  "publisher": {"@type": "Organization", "name": "AgentCollect", "url": "https://www.agentcollect.com"},
+  "datePublished": "2026-03-01",
+  "dateModified": "2026-03-24",
+  "url": "https://www.agentcollect.com/guides/how-to-handle-payment-disputes"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What are the most common types of B2B payment disputes?", "acceptedAnswer": {"@type": "Answer", "text": "The four most common B2B invoice disputes are: service quality disputes (38% of cases — 'the deliverables didn't meet expectations'), billing errors (27% — wrong amount, duplicate invoice, incorrect PO), financial hardship (23% — debtor can't pay but uses disputes as a delay tactic), and unauthorized/fraudulent charges (12% — 'we never ordered this'). Each requires a different resolution approach and timeline."}},
+    {"@type": "Question", "name": "How long should it take to resolve a payment dispute?", "acceptedAnswer": {"@type": "Answer", "text": "Billing errors should be resolved within 3-5 business days. Service quality disputes take 7-14 days if both parties negotiate in good faith. Financial hardship situations can be resolved in 5-10 days by offering a payment plan. Fraud-related disputes take 14-30 days due to investigation requirements. The key is acknowledging the dispute within 24 hours — fast acknowledgment prevents escalation."}},
+    {"@type": "Question", "name": "Should you pause collection during a payment dispute?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, pause automated collection on the disputed portion immediately upon receiving a legitimate dispute. Continuing collection pressure during an active dispute damages the relationship and may violate state consumer protection laws (even in B2B). However, if only part of the invoice is disputed, you should continue collecting on the undisputed portion. For example, if a $10,000 invoice has a $2,000 dispute on one line item, collect the undisputed $8,000 while resolving the $2,000 separately."}}
+  ]
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FAFBFF;--bg-card:#fff;--bg-dark:#0B1B3D;
+  --border:#E8ECF2;
+  --text:#0B1B3D;--text-mid:#475569;--text-muted:#94A3B8;
+  --indigo:#4F46E5;--indigo-dark:#4338CA;--indigo-light:rgba(79,70,229,.06);--indigo-glow:rgba(79,70,229,.15);
+  --green:#10B981;--green-light:rgba(16,185,129,.06);
+  --red:#EF4444;--yellow:#F59E0B;
+  --mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.05);--shadow-md:0 4px 12px rgba(0,0,0,.06);
+  --max-w:1140px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--display);letter-spacing:-.03em;line-height:1.15}
+::selection{background:rgba(79,70,229,.12)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);height:60px}
+.nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:100%}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;margin-right:40px;font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:-.04em;color:var(--text)}
+.logo-dot{color:var(--indigo)}
+.nav-links{display:flex;gap:28px;flex:1}
+.nav-links a{color:var(--text-mid);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s;white-space:nowrap}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{padding:9px 20px;background:var(--indigo);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s;display:inline-flex;align-items:center}
+.nav-cta:hover{background:var(--indigo-dark)}
+.hero{padding:120px 32px 64px;max-width:var(--max-w);margin:0 auto}
+.breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:32px}
+.breadcrumb a{color:var(--indigo);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;background:var(--indigo-light);border:1px solid rgba(79,70,229,.15);border-radius:100px;font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--indigo);margin-bottom:20px}
+.hero h1{font-size:clamp(32px,4.5vw,48px);font-weight:900;color:var(--text);margin-bottom:20px;max-width:760px}
+.hero h1 em{font-style:normal;color:var(--indigo)}
+.hero-sub{font-size:17px;line-height:1.7;color:var(--text-mid);max-width:640px;margin-bottom:32px}
+.content{max-width:var(--max-w);margin:0 auto;padding:0 32px 80px}
+.section{margin-bottom:64px}
+.section-tag{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--indigo);margin-bottom:12px;font-weight:500}
+.section h2{font-size:28px;font-weight:800;margin-bottom:16px}
+.section p{font-size:16px;line-height:1.8;color:var(--text-mid);margin-bottom:16px;max-width:720px}
+.section p strong{color:var(--text);font-weight:600}
+.toc{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;margin-bottom:48px}
+.toc h3{font-size:18px;font-weight:800;margin-bottom:16px}
+.toc ol{padding-left:20px}
+.toc li{font-size:14px;color:var(--text-mid);line-height:2;list-style:decimal}
+.toc a{color:var(--indigo);text-decoration:none;font-weight:500}
+.toc a:hover{text-decoration:underline}
+.key-points{list-style:none;padding:0;margin:0 0 24px}
+.key-points li{font-size:15px;color:var(--text-mid);line-height:1.7;padding:10px 0 10px 28px;position:relative;border-bottom:1px solid var(--border)}
+.key-points li:last-child{border-bottom:none}
+.key-points li::before{content:'';position:absolute;left:0;top:18px;width:8px;height:8px;border-radius:50%;background:var(--indigo)}
+.key-points li strong{color:var(--text)}
+.dispute-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;margin-bottom:24px;position:relative;overflow:hidden}
+.dispute-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.dispute-card.service::before{background:var(--yellow)}
+.dispute-card.billing::before{background:var(--green)}
+.dispute-card.hardship::before{background:var(--indigo)}
+.dispute-card.fraud::before{background:var(--red)}
+.dispute-pct{font-family:var(--mono);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.dispute-card.service .dispute-pct{color:var(--yellow)}
+.dispute-card.billing .dispute-pct{color:var(--green)}
+.dispute-card.hardship .dispute-pct{color:var(--indigo)}
+.dispute-card.fraud .dispute-pct{color:var(--red)}
+.dispute-card h3{font-size:20px;font-weight:800;margin-bottom:12px}
+.dispute-card p{font-size:15px;color:var(--text-mid);line-height:1.8;margin-bottom:12px;max-width:none}
+.dispute-card p:last-child{margin-bottom:0}
+.timeline-badge{display:inline-flex;padding:4px 12px;background:var(--green-light);border:1px solid rgba(16,185,129,.2);border-radius:100px;font-family:var(--mono);font-size:11px;font-weight:500;color:var(--green);margin-bottom:12px}
+.example-box{background:var(--indigo-light);border:1px solid rgba(79,70,229,.15);border-radius:16px;padding:32px;margin:24px 0}
+.example-box h3{font-size:18px;font-weight:800;margin-bottom:12px;color:var(--text)}
+.example-box p{font-size:15px;color:var(--text-mid);line-height:1.7;margin-bottom:8px;max-width:none}
+.example-box p:last-child{margin-bottom:0}
+.def-card{background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--indigo);border-radius:16px;padding:32px;margin-bottom:32px}
+.def-card p{font-size:16px;color:var(--text-mid);line-height:1.8;margin-bottom:12px;max-width:none}
+.def-card p:last-child{margin-bottom:0}
+.benchmark-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:24px 0}
+.benchmark-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center}
+.benchmark-value{font-family:var(--display);font-size:26px;font-weight:900;letter-spacing:-.03em;margin-bottom:6px;color:var(--indigo)}
+.benchmark-label{font-size:13px;color:var(--text-muted);font-weight:500;margin-bottom:4px}
+.benchmark-desc{font-size:12px;color:var(--text-muted)}
+.agentcollect-box{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;margin:32px 0;position:relative;overflow:hidden}
+.agentcollect-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--indigo),var(--green))}
+.agentcollect-box h3{font-size:18px;font-weight:800;margin-bottom:12px}
+.agentcollect-box p{font-size:15px;color:var(--text-mid);line-height:1.7;margin-bottom:10px;max-width:none}
+.agentcollect-box p:last-child{margin-bottom:0}
+.related-terms{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.related-term{display:inline-flex;padding:8px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:100px;font-size:13px;font-weight:500;color:var(--text-mid);text-decoration:none;transition:all .15s}
+.related-term:hover{border-color:var(--indigo);color:var(--indigo);background:var(--indigo-light)}
+.faq-item{border-bottom:1px solid var(--border);padding:24px 0}
+.faq-q{font-family:var(--display);font-size:17px;font-weight:700;color:var(--text);margin-bottom:10px}
+.faq-a{font-size:15px;color:var(--text-mid);line-height:1.7;max-width:720px}
+.cta-box{background:var(--bg-dark);border-radius:20px;padding:64px 40px;text-align:center;margin:64px 0;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:-40%;left:-40%;width:180%;height:180%;background:radial-gradient(ellipse at 50% 80%,rgba(79,70,229,.12) 0%,transparent 50%);pointer-events:none}
+.cta-box h2{font-size:32px;font-weight:900;color:#fff;margin-bottom:12px;position:relative}
+.cta-box p{font-size:16px;color:var(--text-muted);margin-bottom:28px;position:relative}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:10px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s;position:relative}
+.cta-btn:hover{background:var(--indigo-dark)}
+.footer{border-top:1px solid var(--border);padding:40px 32px;text-align:center}
+.footer-inner{max-width:var(--max-w);margin:0 auto}
+.footer-logo{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:8px}
+.footer-logo span{color:var(--indigo)}
+.footer-links{display:flex;gap:24px;justify-content:center;margin-bottom:12px}
+.footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{font-size:12px;color:var(--text-muted)}
+@media(max-width:768px){
+  .hero{padding:100px 20px 48px}
+  .content{padding:0 20px 60px}
+  .benchmark-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-links{display:none}
+  .cta-box{padding:48px 24px}
+}
+</style>
+    <!-- RB2B -->
+    <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("LNKLDHEDW9OJ");</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">AgentCollect<span class="logo-dot">.</span></a>
+    <div class="nav-links">
+      <a href="/ai-collection">AI Collection</a>
+      <a href="/attorney-collection">Attorney Collection</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/security">Security</a>
+    </div>
+    <a href="https://cal.com/johnb/30" target="_blank" class="nav-cta-ghost">Talk to us</a>
+    <a href="/#hero-input" class="nav-cta">See your collection plan</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="breadcrumb">
+    <a href="/">Home</a> / <a href="/guides">Guides</a> / How to Handle Payment Disputes
+  </div>
+  <div class="hero-tag">Collection Guide</div>
+  <h1>How to Handle <em>Payment Disputes</em> Without Losing the Client</h1>
+  <p class="hero-sub">Not every unpaid invoice is a collection problem. Some are disputes. The way you handle disputes determines whether you recover the money and keep the client, or lose both. Here is the framework used by companies that resolve 91% of disputes within 14 days.</p>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- TOC -->
+  <div class="toc">
+    <h3>Table of Contents</h3>
+    <ol>
+      <li><a href="#categories">The 4 Categories of Payment Disputes</a></li>
+      <li><a href="#framework">The Universal Response Framework</a></li>
+      <li><a href="#service">Resolving Service Quality Disputes</a></li>
+      <li><a href="#billing">Resolving Billing Error Disputes</a></li>
+      <li><a href="#hardship">Resolving Financial Hardship Disputes</a></li>
+      <li><a href="#fraud">Resolving Unauthorized Charge Disputes</a></li>
+      <li><a href="#prevention">Dispute Prevention Strategies</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+    </ol>
+  </div>
+
+  <!-- CATEGORIES -->
+  <div class="section" id="categories">
+    <div class="section-tag">Dispute Types</div>
+    <h2>The 4 Categories of Payment Disputes</h2>
+    <p>Every B2B invoice dispute falls into one of four categories. Identifying the category correctly is critical because each requires a fundamentally different response strategy. Misidentifying a service dispute as a delay tactic (or vice versa) escalates the situation unnecessarily.</p>
+
+    <div class="benchmark-grid">
+      <div class="benchmark-card">
+        <div class="benchmark-value">38%</div>
+        <div class="benchmark-label">Service Quality</div>
+        <div class="benchmark-desc">"Deliverables didn't meet expectations"</div>
+      </div>
+      <div class="benchmark-card">
+        <div class="benchmark-value">27%</div>
+        <div class="benchmark-label">Billing Errors</div>
+        <div class="benchmark-desc">"Wrong amount or duplicate invoice"</div>
+      </div>
+      <div class="benchmark-card">
+        <div class="benchmark-value">23%</div>
+        <div class="benchmark-label">Financial Hardship</div>
+        <div class="benchmark-desc">"Can't pay, using dispute as delay"</div>
+      </div>
+      <div class="benchmark-card">
+        <div class="benchmark-value">12%</div>
+        <div class="benchmark-label">Unauthorized</div>
+        <div class="benchmark-desc">"We never ordered this"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UNIVERSAL FRAMEWORK -->
+  <div class="section" id="framework">
+    <div class="section-tag">Response Framework</div>
+    <h2>The Universal Response Framework</h2>
+    <p>Regardless of dispute type, every response should follow this five-step framework. The first 24 hours of a dispute set the tone for the entire resolution process.</p>
+
+    <div class="def-card">
+      <p><strong>Step 1: Acknowledge within 24 hours.</strong> "Thank you for bringing this to our attention. We take this seriously and want to resolve it." Acknowledgment is not agreement &mdash; you are not conceding the dispute, you are confirming you received it. Fast acknowledgment reduces escalation risk by 60%.</p>
+      <p><strong>Step 2: Pause collection on the disputed amount.</strong> Immediately. Continuing automated collection while a legitimate dispute is open destroys trust and may violate regulations. If only part of the invoice is disputed, continue collecting the undisputed portion.</p>
+      <p><strong>Step 3: Investigate internally first.</strong> Before responding with substance, verify the facts on your side. Check delivery records, contract terms, billing accuracy, and communication history. You need to know if the dispute has merit before engaging.</p>
+      <p><strong>Step 4: Respond with evidence and a proposal.</strong> Share what you found, propose a specific resolution, and give a timeline. "After reviewing the project records, here is what we found... We propose [solution]. Can we schedule a call for Thursday to finalize this?"</p>
+      <p><strong>Step 5: Document everything.</strong> Every communication, every concession, every agreement. If the dispute escalates to legal, your documentation is your defense. Email confirmations, not verbal agreements.</p>
+    </div>
+  </div>
+
+  <!-- SERVICE QUALITY -->
+  <div class="section" id="service">
+    <div class="dispute-card service">
+      <div class="dispute-pct">38% of disputes &mdash; Most common</div>
+      <div class="timeline-badge">Resolution: 7-14 days</div>
+      <h3>Service Quality Disputes</h3>
+      <p>The debtor claims the work or product did not meet agreed specifications, was delivered late, or was incomplete. This is the most nuanced category because it often involves subjective expectations versus objective deliverables.</p>
+      <p><strong>Root cause analysis:</strong> Was the scope of work clearly documented? Were acceptance criteria defined? Did the client sign off on milestones? Were change orders processed for out-of-scope requests? In 40% of service disputes, the real problem is scope creep that was never formalized.</p>
+      <p><strong>Resolution playbook:</strong></p>
+      <ul class="key-points">
+        <li><strong>If the dispute has merit:</strong> Offer a partial credit (10-25% of the invoice value) or agree to complete the remaining work at no charge. Example: Acme Corp disputes $8,000 of a $20,000 project because two deliverables were incomplete. You verify the deliverables are indeed unfinished. Offer: "We'll complete the remaining two deliverables by April 15 and apply a $2,000 goodwill credit. Upon completion, the adjusted balance of $18,000 is due within 10 days."</li>
+        <li><strong>If the dispute lacks merit:</strong> Respond with documentation. Share the signed SOW, acceptance emails, milestone approvals, and delivery confirmations. Be factual, not confrontational: "Based on the approved project plan (attached) and your team's sign-off on milestones 1-4 (emails attached), all deliverables were completed per the agreed scope."</li>
+        <li><strong>If it is partially valid:</strong> Acknowledge the valid parts, dispute the invalid parts, and propose a middle ground. Most service disputes settle at 85-95% of the original invoice when handled professionally.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BILLING ERRORS -->
+  <div class="section" id="billing">
+    <div class="dispute-card billing">
+      <div class="dispute-pct">27% of disputes &mdash; Easiest to resolve</div>
+      <div class="timeline-badge">Resolution: 3-5 days</div>
+      <h3>Billing Error Disputes</h3>
+      <p>Wrong amount, duplicate invoice, incorrect PO number, wrong billing entity, or pricing discrepancy. These disputes are almost always legitimate and are the easiest to resolve. The key is speed and accuracy.</p>
+      <p><strong>Common billing errors:</strong></p>
+      <ul class="key-points">
+        <li><strong>Duplicate invoice:</strong> Your system sent the same invoice twice with different numbers. Issue a credit memo for the duplicate immediately. Timeframe: same day.</li>
+        <li><strong>Wrong amount:</strong> The invoice reflects $12,500 but the contract says $11,000. Verify against the signed contract. If the client is right, issue a corrected invoice. If you are right (perhaps because of a change order), send the change order documentation. Timeframe: 1-2 days.</li>
+        <li><strong>Wrong PO or entity:</strong> The invoice was sent to the wrong legal entity or references an incorrect PO. Re-issue with corrected details. Timeframe: same day.</li>
+        <li><strong>Tax or fee discrepancy:</strong> Sales tax, shipping, or service fees do not match the client's expectation. Pull the contract for fee terms, verify tax rates for the client's jurisdiction. Timeframe: 2-3 days.</li>
+      </ul>
+      <p><strong>Prevention:</strong> Billing errors are 100% preventable. Implement invoice verification before sending: match every line item to the contract, verify the PO number, confirm the billing entity, and run a duplicate check. This 2-minute check prevents disputes that take days to resolve.</p>
+    </div>
+  </div>
+
+  <!-- FINANCIAL HARDSHIP -->
+  <div class="section" id="hardship">
+    <div class="dispute-card hardship">
+      <div class="dispute-pct">23% of disputes &mdash; Requires empathy + structure</div>
+      <div class="timeline-badge">Resolution: 5-10 days</div>
+      <h3>Financial Hardship Disputes</h3>
+      <p>The debtor cannot pay but frames the conversation as a dispute to buy time. Signals: they suddenly find issues with work that was previously accepted, they avoid phone calls while sending vague emails, or they raise disputes on multiple invoices simultaneously. The tell is that the "dispute" appears only after the invoice is overdue, never during the service delivery.</p>
+      <p><strong>How to identify hardship masquerading as a dispute:</strong></p>
+      <ul class="key-points">
+        <li><strong>Timing:</strong> The dispute was raised 30+ days after delivery and only after collection contact. Legitimate quality disputes surface within days of delivery.</li>
+        <li><strong>Vagueness:</strong> "We're not satisfied with the overall quality" without specifics, versus a legitimate dispute that names exact deliverables, dates, and shortfalls.</li>
+        <li><strong>Pattern:</strong> Check if the company has disputed other vendors. News of layoffs, leadership changes, or funding issues suggests hardship.</li>
+      </ul>
+      <p><strong>Resolution approach:</strong> Address the dispute on its merits (even if you suspect it is a delay tactic), and simultaneously offer a payment plan. "We've reviewed your concerns and believe the deliverables were completed per the SOW. That said, we understand cash flow can be challenging. Would a 3-month payment plan for the $15,000 balance work for your team?" This gives them an exit ramp without either party losing face. See our <a href="/guides/how-to-set-up-payment-plans" style="color:var(--indigo);font-weight:600">payment plan guide</a> for structuring terms.</p>
+    </div>
+  </div>
+
+  <!-- FRAUD -->
+  <div class="section" id="fraud">
+    <div class="dispute-card fraud">
+      <div class="dispute-pct">12% of disputes &mdash; Requires documentation</div>
+      <div class="timeline-badge">Resolution: 14-30 days</div>
+      <h3>Unauthorized Charge Disputes</h3>
+      <p>The debtor claims they never authorized the purchase, the person who signed the contract was not authorized to do so, or the services were never ordered. This is rare in B2B but happens &mdash; particularly with former employees, unauthorized subsidiary purchases, or acquisition-related confusion.</p>
+      <p><strong>Resolution requires strong documentation:</strong></p>
+      <ul class="key-points">
+        <li><strong>Produce the signed contract.</strong> Show who signed, their title, and the date. If the signer had apparent authority (VP, Director, Manager), the company is generally bound by the agreement.</li>
+        <li><strong>Show the chain of communication.</strong> Emails requesting the service, approving the scope, confirming delivery &mdash; these prove the company knew about and authorized the work.</li>
+        <li><strong>Demonstrate delivery and acceptance.</strong> Signed delivery receipts, system login records showing usage, milestone acceptance emails, or any evidence the company benefited from the service.</li>
+        <li><strong>Escalate to legal if necessary.</strong> If the company persists in denying authorization despite documentation, send a formal demand letter via attorney. Most unauthorized-charge disputes collapse when faced with clear documentation.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PREVENTION -->
+  <div class="section" id="prevention">
+    <div class="section-tag">Prevention</div>
+    <h2>Dispute Prevention Strategies</h2>
+    <p>The best dispute is one that never happens. These five practices prevent 70-80% of B2B invoice disputes before they start.</p>
+
+    <ul class="key-points">
+      <li><strong>1. Define acceptance criteria upfront.</strong> Every SOW should include specific, measurable acceptance criteria. "Complete the data migration" is disputable. "Migrate 50,000 records with less than 0.1% error rate, verified by automated testing" is not.</li>
+      <li><strong>2. Get milestone sign-offs in writing.</strong> After each project phase, send a brief email: "Phase 2 is complete. The deliverables include [list]. Please confirm acceptance or flag any concerns within 5 business days." Silence after 5 days constitutes acceptance per your contract (include this clause).</li>
+      <li><strong>3. Verify invoices before sending.</strong> Match every line item to the contract. Confirm PO numbers, billing entities, amounts, and tax calculations. A 2-minute pre-send check prevents days of dispute resolution.</li>
+      <li><strong>4. Separate delivery from billing conversations.</strong> The project manager should confirm "we delivered everything per the SOW" before the invoice goes out. If there are any open items, resolve them before invoicing. Sending an invoice while delivery issues are unresolved guarantees a dispute.</li>
+      <li><strong>5. Build dispute resolution into your contracts.</strong> Include a clause that requires disputes to be raised in writing within 15 business days of invoice receipt. After that window, the invoice is deemed accepted. Also include an escalation path: manager-to-manager discussion first, then mediation, then arbitration.</li>
+    </ul>
+  </div>
+
+  <!-- AGENTCOLLECT -->
+  <div class="section">
+    <div class="agentcollect-box">
+      <h3>How AgentCollect Handles Disputes Automatically</h3>
+      <p>AgentCollect AI agents are trained to detect dispute signals during collection calls and emails. When a debtor raises a dispute, the agent automatically pauses collection, categorizes the dispute type, collects specific details from the debtor, and routes the dispute to your team with a structured summary for resolution.</p>
+      <p><strong>Result:</strong> Disputes are captured accurately on the first contact, reducing back-and-forth by an average of 4 days. The structured intake means your team spends 10 minutes reviewing a categorized dispute instead of 30 minutes deciphering a vague email chain.</p>
+    </div>
+  </div>
+
+  <!-- RELATED -->
+  <div class="section">
+    <div class="section-tag">Related Guides</div>
+    <h2>Continue Learning</h2>
+    <div class="related-terms">
+      <a href="/guides/how-to-collect-unpaid-invoices" class="related-term">Collecting Invoices</a>
+      <a href="/guides/how-to-set-up-payment-plans" class="related-term">Payment Plans</a>
+      <a href="/guides/how-to-write-collection-emails" class="related-term">Collection Emails</a>
+      <a href="/guides/how-to-send-accounts-to-collections" class="related-term">Sending to Collections</a>
+      <a href="/glossary/dispute-resolution" class="related-term">Dispute Resolution (Glossary)</a>
+      <a href="/glossary/demand-letter" class="related-term">Demand Letter</a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section" id="faq">
+    <div class="section-tag">FAQ</div>
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What are the most common types of B2B payment disputes?</div>
+      <div class="faq-a">The four most common are: service quality disputes (38% of cases), billing errors (27%), financial hardship disguised as disputes (23%), and unauthorized/fraudulent charges (12%). Each requires a different resolution approach and timeline.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How long should it take to resolve a payment dispute?</div>
+      <div class="faq-a">Billing errors: 3-5 business days. Service quality disputes: 7-14 days with good-faith negotiation. Financial hardship: 5-10 days via payment plan. Unauthorized charges: 14-30 days due to investigation requirements. The key is acknowledging the dispute within 24 hours.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Should you pause collection during a payment dispute?</div>
+      <div class="faq-a">Yes, pause automated collection on the disputed portion immediately. Continuing collection during an active dispute damages the relationship and may violate regulations. However, if only part of the invoice is disputed, continue collecting the undisputed portion. For example, if a $10,000 invoice has a $2,000 dispute, collect the undisputed $8,000 while resolving the $2,000 separately.</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h2>Handle disputes professionally, automatically</h2>
+    <p>AgentCollect detects disputes during collection, pauses automatically, and routes to your team with structured details. Zero dropped balls.</p>
+    <a href="/contact" class="cta-btn">Start a free pilot &rarr;</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">AgentCollect<span>.</span></div>
+    <div class="footer-links">
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 AgentCollect (YC S23). All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

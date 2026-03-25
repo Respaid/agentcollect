@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<title>AI Debt Collection by City — AgentCollect Locations</title>
+<meta name="description" content="AgentCollect provides AI-powered debt collection across 30 major US cities. Find your city and see how we recover unpaid invoices with calls, emails, and SMS.">
+<meta property="og:title" content="AI Debt Collection by City — AgentCollect Locations">
+<meta property="og:description" content="AgentCollect provides AI-powered debt collection across 30 major US cities. Find your city and see how we recover unpaid invoices locally.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.agentcollect.com/locations">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Debt Collection by City — AgentCollect">
+<meta name="twitter:description" content="AI-powered debt collection across 30 major US cities. Success-only fees.">
+<link rel="canonical" href="https://www.agentcollect.com/locations">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "AI Debt Collection by City",
+  "description": "AgentCollect provides AI-powered debt collection across 30 major US cities.",
+  "url": "https://www.agentcollect.com/locations",
+  "publisher": {"@type": "Organization", "name": "AgentCollect", "url": "https://www.agentcollect.com"}
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FAFBFF;--bg-card:#fff;--bg-dark:#0B1B3D;
+  --border:#E8ECF2;
+  --text:#0B1B3D;--text-mid:#475569;--text-muted:#94A3B8;
+  --indigo:#4F46E5;--indigo-dark:#4338CA;--indigo-light:rgba(79,70,229,.06);
+  --green:#10B981;
+  --mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
+  --shadow-md:0 4px 12px rgba(0,0,0,.06);
+  --max-w:1140px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.03em;line-height:1.15}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);height:60px}
+.nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:100%}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;margin-right:40px;font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:-.04em;color:var(--text)}
+.logo-dot{color:var(--indigo)}
+.nav-links{display:flex;gap:28px;flex:1}
+.nav-links a{color:var(--text-mid);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s;white-space:nowrap}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.nav-cta{padding:9px 20px;background:var(--indigo);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s;display:inline-flex;align-items:center}
+.nav-cta:hover{background:var(--indigo-dark)}
+.hero{padding:120px 32px 64px;max-width:var(--max-w);margin:0 auto}
+.breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:32px}
+.breadcrumb a{color:var(--indigo);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;background:var(--indigo-light);border:1px solid rgba(79,70,229,.15);border-radius:100px;font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--indigo);margin-bottom:20px}
+.hero h1{font-size:clamp(32px,4.5vw,48px);font-weight:900;color:var(--text);margin-bottom:20px;max-width:760px}
+.hero h1 em{font-style:normal;color:var(--indigo)}
+.hero-sub{font-size:17px;line-height:1.7;color:var(--text-mid);max-width:640px}
+.content{max-width:var(--max-w);margin:0 auto;padding:0 32px 80px}
+.section-tag{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--indigo);margin-bottom:12px;font-weight:500;margin-top:48px}
+.region-title{font-size:22px;font-weight:800;margin-bottom:24px;color:var(--text)}
+.cities-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px}
+.city-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:24px;transition:border-color .2s,box-shadow .2s;text-decoration:none;display:block}
+.city-card:hover{border-color:var(--indigo);box-shadow:0 4px 16px rgba(79,70,229,.1)}
+.city-name{font-family:var(--display);font-size:17px;font-weight:800;color:var(--text);margin-bottom:4px;letter-spacing:-.02em}
+.city-state{font-size:13px;color:var(--text-mid);margin-bottom:10px}
+.city-desc{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:12px}
+.city-link{font-size:13px;font-weight:600;color:var(--indigo)}
+.intro-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:40px 0}
+.intro-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:24px}
+.intro-card h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.intro-card p{font-size:14px;color:var(--text-mid);line-height:1.6}
+.intro-card .stat{font-family:var(--display);font-size:28px;font-weight:900;color:var(--indigo);margin-bottom:4px;letter-spacing:-.03em}
+.cta-box{background:var(--bg-dark);border-radius:20px;padding:64px 40px;text-align:center;margin:64px 0;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:-40%;left:-40%;width:180%;height:180%;background:radial-gradient(ellipse at 50% 80%,rgba(79,70,229,.12) 0%,transparent 50%);pointer-events:none}
+.cta-box h2{font-size:32px;font-weight:900;color:#fff;margin-bottom:12px;position:relative}
+.cta-box p{font-size:16px;color:var(--text-muted);margin-bottom:28px;position:relative}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:10px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s;position:relative}
+.cta-btn:hover{background:var(--indigo-dark)}
+.footer{border-top:1px solid var(--border);padding:40px 32px;text-align:center}
+.footer-inner{max-width:var(--max-w);margin:0 auto}
+.footer-logo{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:8px}
+.footer-logo span{color:var(--indigo)}
+.footer-links{display:flex;gap:24px;justify-content:center;margin-bottom:12px;flex-wrap:wrap}
+.footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none}
+.footer-copy{font-size:12px;color:var(--text-muted)}
+@media(max-width:768px){
+  .hero{padding:100px 20px 48px}
+  .content{padding:0 20px 60px}
+  .nav-links{display:none}
+  .intro-grid{grid-template-columns:1fr}
+  .cities-grid{grid-template-columns:1fr}
+  .cta-box{padding:48px 24px}
+}
+@media(min-width:769px) and (max-width:1024px){
+  .cities-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+    <!-- RB2B -->
+    <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("LNKLDHEDW9OJ");</script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">AgentCollect<span class="logo-dot">.</span></a>
+    <div class="nav-links">
+      <a href="/ai-collection">AI Collection</a>
+      <a href="/attorney-collection">Attorney Collection</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/security">Security</a>
+    </div>
+    <a href="/#hero-input" class="nav-cta">See your collection plan</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="breadcrumb"><a href="/">Home</a> &rsaquo; Locations</div>
+  <div class="hero-tag">Local Coverage</div>
+  <h1>AI Debt Collection <em>by City</em></h1>
+  <p class="hero-sub">AgentCollect recovers unpaid B2B invoices in every major US metro. AI-powered calls, emails, and SMS — adapted to local business culture, time zones, and state regulations.</p>
+</div>
+
+<div class="content">
+
+  <div class="intro-grid">
+    <div class="intro-card">
+      <div class="stat">30</div>
+      <h3>Cities Covered</h3>
+      <p>The largest US metro areas by GDP, where most B2B receivables originate and need recovery.</p>
+    </div>
+    <div class="intro-card">
+      <div class="stat">50</div>
+      <h3>States Compliant</h3>
+      <p>Licensed and compliant in all 50 states. Each city page details the specific state regulations that apply.</p>
+    </div>
+    <div class="intro-card">
+      <div class="stat">4</div>
+      <h3>Time Zones</h3>
+      <p>AI agents call during local business hours — EST, CST, MST, and PST — maximizing contact rates.</p>
+    </div>
+  </div>
+
+  <!-- Northeast -->
+  <div class="section-tag">Northeast</div>
+  <h2 class="region-title">Northeast Cities</h2>
+  <div class="cities-grid">
+    <a href="/locations/new-york" class="city-card">
+      <div class="city-name">New York City</div>
+      <div class="city-state">New York</div>
+      <div class="city-desc">Financial capital of the world. 230K+ small businesses across finance, real estate, healthcare, and professional services.</div>
+      <div class="city-link">View NYC coverage &rarr;</div>
+    </a>
+    <a href="/locations/boston" class="city-card">
+      <div class="city-name">Boston</div>
+      <div class="city-state">Massachusetts</div>
+      <div class="city-desc">Biotech and education powerhouse. 65K+ businesses in healthcare, life sciences, higher education, and finance.</div>
+      <div class="city-link">View Boston coverage &rarr;</div>
+    </a>
+    <a href="/locations/philadelphia" class="city-card">
+      <div class="city-name">Philadelphia</div>
+      <div class="city-state">Pennsylvania</div>
+      <div class="city-desc">Healthcare and pharmaceutical hub. 45K+ businesses across pharma, healthcare systems, manufacturing, and logistics.</div>
+      <div class="city-link">View Philadelphia coverage &rarr;</div>
+    </a>
+  </div>
+
+  <!-- Southeast -->
+  <div class="section-tag">Southeast</div>
+  <h2 class="region-title">Southeast Cities</h2>
+  <div class="cities-grid">
+    <a href="/locations/atlanta" class="city-card">
+      <div class="city-name">Atlanta</div>
+      <div class="city-state">Georgia</div>
+      <div class="city-desc">Logistics and media capital of the South. 70K+ businesses in transportation, film production, fintech, and healthcare.</div>
+      <div class="city-link">View Atlanta coverage &rarr;</div>
+    </a>
+    <a href="/locations/miami" class="city-card">
+      <div class="city-name">Miami</div>
+      <div class="city-state">Florida</div>
+      <div class="city-desc">Gateway to Latin America. 60K+ businesses in international trade, real estate, hospitality, and financial services.</div>
+      <div class="city-link">View Miami coverage &rarr;</div>
+    </a>
+    <a href="/locations/tampa" class="city-card">
+      <div class="city-name">Tampa</div>
+      <div class="city-state">Florida</div>
+      <div class="city-desc">Florida's fast-growing business corridor. 35K+ businesses in healthcare, defense, insurance, and professional services.</div>
+      <div class="city-link">View Tampa coverage &rarr;</div>
+    </a>
+    <a href="/locations/charlotte" class="city-card">
+      <div class="city-name">Charlotte</div>
+      <div class="city-state">North Carolina</div>
+      <div class="city-desc">Second-largest US banking center. 40K+ businesses in banking, energy, manufacturing, and technology.</div>
+      <div class="city-link">View Charlotte coverage &rarr;</div>
+    </a>
+    <a href="/locations/nashville" class="city-card">
+      <div class="city-name">Nashville</div>
+      <div class="city-state">Tennessee</div>
+      <div class="city-desc">Healthcare management capital. 35K+ businesses in healthcare administration, music industry, hospitality, and tech startups.</div>
+      <div class="city-link">View Nashville coverage &rarr;</div>
+    </a>
+    <a href="/locations/jacksonville" class="city-card">
+      <div class="city-name">Jacksonville</div>
+      <div class="city-state">Florida</div>
+      <div class="city-desc">Major port and logistics hub. 30K+ businesses in shipping, financial services, healthcare, and military contracting.</div>
+      <div class="city-link">View Jacksonville coverage &rarr;</div>
+    </a>
+    <a href="/locations/raleigh" class="city-card">
+      <div class="city-name">Raleigh</div>
+      <div class="city-state">North Carolina</div>
+      <div class="city-desc">Research Triangle innovation center. 30K+ businesses in biotech, software, clean energy, and university research.</div>
+      <div class="city-link">View Raleigh coverage &rarr;</div>
+    </a>
+  </div>
+
+  <!-- Midwest -->
+  <div class="section-tag">Midwest</div>
+  <h2 class="region-title">Midwest Cities</h2>
+  <div class="cities-grid">
+    <a href="/locations/chicago" class="city-card">
+      <div class="city-name">Chicago</div>
+      <div class="city-state">Illinois</div>
+      <div class="city-desc">Manufacturing and commodities hub. 120K+ businesses in manufacturing, finance, food production, and professional services.</div>
+      <div class="city-link">View Chicago coverage &rarr;</div>
+    </a>
+    <a href="/locations/minneapolis" class="city-card">
+      <div class="city-name">Minneapolis</div>
+      <div class="city-state">Minnesota</div>
+      <div class="city-desc">Fortune 500 headquarters density. 45K+ businesses in retail, healthcare, financial services, and food manufacturing.</div>
+      <div class="city-link">View Minneapolis coverage &rarr;</div>
+    </a>
+    <a href="/locations/detroit" class="city-card">
+      <div class="city-name">Detroit</div>
+      <div class="city-state">Michigan</div>
+      <div class="city-desc">Automotive and advanced manufacturing center. 30K+ businesses in automotive supply chain, mobility tech, and healthcare.</div>
+      <div class="city-link">View Detroit coverage &rarr;</div>
+    </a>
+    <a href="/locations/columbus" class="city-card">
+      <div class="city-name">Columbus</div>
+      <div class="city-state">Ohio</div>
+      <div class="city-desc">Midwest's fastest-growing metro. 35K+ businesses in insurance, retail, logistics, and technology.</div>
+      <div class="city-link">View Columbus coverage &rarr;</div>
+    </a>
+    <a href="/locations/indianapolis" class="city-card">
+      <div class="city-name">Indianapolis</div>
+      <div class="city-state">Indiana</div>
+      <div class="city-desc">Crossroads of America. 30K+ businesses in pharmaceutical manufacturing, motorsports, logistics, and agriculture tech.</div>
+      <div class="city-link">View Indianapolis coverage &rarr;</div>
+    </a>
+    <a href="/locations/kansas-city" class="city-card">
+      <div class="city-name">Kansas City</div>
+      <div class="city-state">Missouri</div>
+      <div class="city-desc">Central US logistics nexus. 30K+ businesses in agriculture, animal health, manufacturing, and federal government contracting.</div>
+      <div class="city-link">View Kansas City coverage &rarr;</div>
+    </a>
+  </div>
+
+  <!-- South / Texas -->
+  <div class="section-tag">South &amp; Texas</div>
+  <h2 class="region-title">South &amp; Texas Cities</h2>
+  <div class="cities-grid">
+    <a href="/locations/houston" class="city-card">
+      <div class="city-name">Houston</div>
+      <div class="city-state">Texas</div>
+      <div class="city-desc">Energy capital of the world. 100K+ businesses in oil and gas, healthcare (Texas Medical Center), aerospace, and international trade.</div>
+      <div class="city-link">View Houston coverage &rarr;</div>
+    </a>
+    <a href="/locations/dallas" class="city-card">
+      <div class="city-name">Dallas</div>
+      <div class="city-state">Texas</div>
+      <div class="city-desc">Corporate relocation magnet. 90K+ businesses in telecom, defense, financial services, and technology.</div>
+      <div class="city-link">View Dallas coverage &rarr;</div>
+    </a>
+    <a href="/locations/san-antonio" class="city-card">
+      <div class="city-name">San Antonio</div>
+      <div class="city-state">Texas</div>
+      <div class="city-desc">Military and cybersecurity hub. 40K+ businesses in defense, healthcare, cybersecurity, and tourism services.</div>
+      <div class="city-link">View San Antonio coverage &rarr;</div>
+    </a>
+    <a href="/locations/austin" class="city-card">
+      <div class="city-name">Austin</div>
+      <div class="city-state">Texas</div>
+      <div class="city-desc">Silicon Hills tech center. 50K+ businesses in software, semiconductor manufacturing, clean energy, and creative industries.</div>
+      <div class="city-link">View Austin coverage &rarr;</div>
+    </a>
+  </div>
+
+  <!-- West -->
+  <div class="section-tag">West</div>
+  <h2 class="region-title">West Coast &amp; Mountain Cities</h2>
+  <div class="cities-grid">
+    <a href="/locations/los-angeles" class="city-card">
+      <div class="city-name">Los Angeles</div>
+      <div class="city-state">California</div>
+      <div class="city-desc">Entertainment and trade capital. 240K+ businesses in entertainment, tech, international trade, fashion, and real estate.</div>
+      <div class="city-link">View LA coverage &rarr;</div>
+    </a>
+    <a href="/locations/san-francisco" class="city-card">
+      <div class="city-name">San Francisco</div>
+      <div class="city-state">California</div>
+      <div class="city-desc">Global tech and venture capital hub. 90K+ businesses in SaaS, fintech, biotech, and professional services.</div>
+      <div class="city-link">View SF coverage &rarr;</div>
+    </a>
+    <a href="/locations/san-diego" class="city-card">
+      <div class="city-name">San Diego</div>
+      <div class="city-state">California</div>
+      <div class="city-desc">Biotech and defense corridor. 55K+ businesses in life sciences, defense contracting, telecom, and tourism.</div>
+      <div class="city-link">View San Diego coverage &rarr;</div>
+    </a>
+    <a href="/locations/san-jose" class="city-card">
+      <div class="city-name">San Jose</div>
+      <div class="city-state">California</div>
+      <div class="city-desc">Heart of Silicon Valley. 50K+ businesses in semiconductors, cloud computing, AI/ML, and hardware manufacturing.</div>
+      <div class="city-link">View San Jose coverage &rarr;</div>
+    </a>
+    <a href="/locations/seattle" class="city-card">
+      <div class="city-name">Seattle</div>
+      <div class="city-state">Washington</div>
+      <div class="city-desc">Cloud computing and aerospace giant. 75K+ businesses in cloud services, aerospace, e-commerce, and life sciences.</div>
+      <div class="city-link">View Seattle coverage &rarr;</div>
+    </a>
+    <a href="/locations/portland" class="city-card">
+      <div class="city-name">Portland</div>
+      <div class="city-state">Oregon</div>
+      <div class="city-desc">Sportswear and clean tech leader. 40K+ businesses in athletic apparel, semiconductors, clean technology, and craft manufacturing.</div>
+      <div class="city-link">View Portland coverage &rarr;</div>
+    </a>
+    <a href="/locations/denver" class="city-card">
+      <div class="city-name">Denver</div>
+      <div class="city-state">Colorado</div>
+      <div class="city-desc">Mountain West business capital. 60K+ businesses in aerospace, telecom, energy, outdoor recreation, and federal agencies.</div>
+      <div class="city-link">View Denver coverage &rarr;</div>
+    </a>
+    <a href="/locations/phoenix" class="city-card">
+      <div class="city-name">Phoenix</div>
+      <div class="city-state">Arizona</div>
+      <div class="city-desc">Semiconductor and data center boom. 55K+ businesses in semiconductor fab, healthcare, real estate, and renewable energy.</div>
+      <div class="city-link">View Phoenix coverage &rarr;</div>
+    </a>
+    <a href="/locations/las-vegas" class="city-card">
+      <div class="city-name">Las Vegas</div>
+      <div class="city-state">Nevada</div>
+      <div class="city-desc">Hospitality and conventions capital. 40K+ businesses in hospitality, entertainment, construction, and event services.</div>
+      <div class="city-link">View Las Vegas coverage &rarr;</div>
+    </a>
+    <a href="/locations/salt-lake-city" class="city-card">
+      <div class="city-name">Salt Lake City</div>
+      <div class="city-state">Utah</div>
+      <div class="city-desc">Silicon Slopes tech corridor. 30K+ businesses in SaaS, outdoor recreation, financial services, and healthcare IT.</div>
+      <div class="city-link">View SLC coverage &rarr;</div>
+    </a>
+  </div>
+
+  <div class="cta-box">
+    <h2>Start recovering in your city today.</h2>
+    <p>Upload your invoices and let AI handle the rest. Success-only fees — you pay nothing until we collect.</p>
+    <a href="/contact" class="cta-btn">Get a free pilot &rarr;</a>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">AgentCollect<span>.</span></div>
+    <div class="footer-links">
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 AgentCollect (YC S23). All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<title>How to Send Accounts to Collections | AgentCollect</title>
+<meta name="description" content="When and how to send B2B accounts to collections without destroying client relationships. Decision tree, provider comparison, data preparation checklist, and cost analysis.">
+<meta property="og:title" content="How to Send Accounts to Collections (Without Losing Customers) | AgentCollect">
+<meta property="og:description" content="When and how to send B2B accounts to collections without destroying client relationships.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.agentcollect.com/guides/how-to-send-accounts-to-collections">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Send Accounts to Collections (Without Losing Customers)">
+<meta name="twitter:description" content="Decision tree, provider comparison, and cost analysis for sending B2B accounts to collections.">
+<link rel="canonical" href="https://www.agentcollect.com/guides/how-to-send-accounts-to-collections">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Send Accounts to Collections (Without Losing Customers)",
+  "description": "When and how to send B2B accounts to collections without destroying client relationships.",
+  "author": {"@type": "Organization", "name": "AgentCollect"},
+  "publisher": {"@type": "Organization", "name": "AgentCollect", "url": "https://www.agentcollect.com"},
+  "datePublished": "2026-03-01",
+  "dateModified": "2026-03-24",
+  "url": "https://www.agentcollect.com/guides/how-to-send-accounts-to-collections"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "When should a business send an account to collections?", "acceptedAnswer": {"@type": "Answer", "text": "Send an account to collections after 60-90 days of unsuccessful internal follow-up. Key triggers include: the debtor stops responding entirely, the debtor makes promises but never follows through, internal AR staff have made at least 5 contact attempts across phone and email, or the debtor disputes the debt without basis. Waiting beyond 120 days significantly reduces recovery probability from ~69% to ~52%."}},
+    {"@type": "Question", "name": "How much does it cost to send an account to collections?", "acceptedAnswer": {"@type": "Answer", "text": "Costs vary by provider type. Traditional collection agencies charge 25-50% of the collected amount on contingency. AI collection agents like AgentCollect charge 5-15% on a success-only basis. Collection attorneys charge $300-500/hour or 33% contingency. For a $10,000 B2B invoice, that means you'd net $5,000-$7,500 with an agency, $8,500-$9,500 with AI, or $6,700 with an attorney on contingency."}},
+    {"@type": "Question", "name": "Will sending an account to collections ruin the business relationship?", "acceptedAnswer": {"@type": "Answer", "text": "Not necessarily. The approach matters more than the action. AI-first collection agents maintain a professional, brand-consistent tone that preserves relationships. 62% of B2B debts collected by AI agents result in the client continuing to do business with the creditor afterward. The key is early intervention (before resentment builds on both sides) and using a provider that communicates respectfully."}}
+  ]
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FAFBFF;--bg-card:#fff;--bg-dark:#0B1B3D;
+  --border:#E8ECF2;
+  --text:#0B1B3D;--text-mid:#475569;--text-muted:#94A3B8;
+  --indigo:#4F46E5;--indigo-dark:#4338CA;--indigo-light:rgba(79,70,229,.06);--indigo-glow:rgba(79,70,229,.15);
+  --green:#10B981;--green-light:rgba(16,185,129,.06);
+  --red:#EF4444;--yellow:#F59E0B;
+  --mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.05);--shadow-md:0 4px 12px rgba(0,0,0,.06);
+  --max-w:1140px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--display);letter-spacing:-.03em;line-height:1.15}
+::selection{background:rgba(79,70,229,.12)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);height:60px}
+.nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:100%}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;margin-right:40px;font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:-.04em;color:var(--text)}
+.logo-dot{color:var(--indigo)}
+.nav-links{display:flex;gap:28px;flex:1}
+.nav-links a{color:var(--text-mid);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s;white-space:nowrap}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{padding:9px 20px;background:var(--indigo);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s;display:inline-flex;align-items:center}
+.nav-cta:hover{background:var(--indigo-dark)}
+.hero{padding:120px 32px 64px;max-width:var(--max-w);margin:0 auto}
+.breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:32px}
+.breadcrumb a{color:var(--indigo);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;background:var(--indigo-light);border:1px solid rgba(79,70,229,.15);border-radius:100px;font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--indigo);margin-bottom:20px}
+.hero h1{font-size:clamp(32px,4.5vw,48px);font-weight:900;color:var(--text);margin-bottom:20px;max-width:760px}
+.hero h1 em{font-style:normal;color:var(--indigo)}
+.hero-sub{font-size:17px;line-height:1.7;color:var(--text-mid);max-width:640px;margin-bottom:32px}
+.content{max-width:var(--max-w);margin:0 auto;padding:0 32px 80px}
+.section{margin-bottom:64px}
+.section-tag{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--indigo);margin-bottom:12px;font-weight:500}
+.section h2{font-size:28px;font-weight:800;margin-bottom:16px}
+.section p{font-size:16px;line-height:1.8;color:var(--text-mid);margin-bottom:16px;max-width:720px}
+.section p strong{color:var(--text);font-weight:600}
+.toc{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;margin-bottom:48px}
+.toc h3{font-size:18px;font-weight:800;margin-bottom:16px}
+.toc ol{padding-left:20px}
+.toc li{font-size:14px;color:var(--text-mid);line-height:2;list-style:decimal}
+.toc a{color:var(--indigo);text-decoration:none;font-weight:500}
+.toc a:hover{text-decoration:underline}
+.def-card{background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--indigo);border-radius:16px;padding:32px;margin-bottom:32px}
+.def-card p{font-size:16px;color:var(--text-mid);line-height:1.8;margin-bottom:12px;max-width:none}
+.def-card p:last-child{margin-bottom:0}
+.key-points{list-style:none;padding:0;margin:0 0 24px}
+.key-points li{font-size:15px;color:var(--text-mid);line-height:1.7;padding:10px 0 10px 28px;position:relative;border-bottom:1px solid var(--border)}
+.key-points li:last-child{border-bottom:none}
+.key-points li::before{content:'';position:absolute;left:0;top:18px;width:8px;height:8px;border-radius:50%;background:var(--indigo)}
+.key-points li strong{color:var(--text)}
+.example-box{background:var(--indigo-light);border:1px solid rgba(79,70,229,.15);border-radius:16px;padding:32px;margin:24px 0}
+.example-box h3{font-size:18px;font-weight:800;margin-bottom:12px;color:var(--text)}
+.example-box p{font-size:15px;color:var(--text-mid);line-height:1.7;margin-bottom:8px;max-width:none}
+.example-box p:last-child{margin-bottom:0}
+.decision-tree{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;margin:24px 0}
+.decision-tree h3{font-size:18px;font-weight:800;margin-bottom:16px;color:var(--text)}
+.decision-node{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:12px;position:relative}
+.decision-node .question{font-family:var(--display);font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px}
+.decision-node .answer{font-size:14px;color:var(--text-mid);line-height:1.6}
+.decision-node .answer strong{color:var(--indigo)}
+.compare-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px}
+.compare-table th{background:var(--bg-dark);color:#fff;padding:14px 16px;text-align:left;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:-.01em}
+.compare-table th:first-child{border-radius:10px 0 0 0}
+.compare-table th:last-child{border-radius:0 10px 0 0}
+.compare-table td{padding:14px 16px;border-bottom:1px solid var(--border);color:var(--text-mid);line-height:1.5}
+.compare-table td strong{color:var(--text)}
+.compare-table tr:hover td{background:var(--indigo-light)}
+.agentcollect-box{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;margin:32px 0;position:relative;overflow:hidden}
+.agentcollect-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--indigo),var(--green))}
+.agentcollect-box h3{font-size:18px;font-weight:800;margin-bottom:12px}
+.agentcollect-box p{font-size:15px;color:var(--text-mid);line-height:1.7;margin-bottom:10px;max-width:none}
+.agentcollect-box p:last-child{margin-bottom:0}
+.related-terms{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.related-term{display:inline-flex;padding:8px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:100px;font-size:13px;font-weight:500;color:var(--text-mid);text-decoration:none;transition:all .15s}
+.related-term:hover{border-color:var(--indigo);color:var(--indigo);background:var(--indigo-light)}
+.faq-item{border-bottom:1px solid var(--border);padding:24px 0}
+.faq-q{font-family:var(--display);font-size:17px;font-weight:700;color:var(--text);margin-bottom:10px}
+.faq-a{font-size:15px;color:var(--text-mid);line-height:1.7;max-width:720px}
+.cta-box{background:var(--bg-dark);border-radius:20px;padding:64px 40px;text-align:center;margin:64px 0;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:-40%;left:-40%;width:180%;height:180%;background:radial-gradient(ellipse at 50% 80%,rgba(79,70,229,.12) 0%,transparent 50%);pointer-events:none}
+.cta-box h2{font-size:32px;font-weight:900;color:#fff;margin-bottom:12px;position:relative}
+.cta-box p{font-size:16px;color:var(--text-muted);margin-bottom:28px;position:relative}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:10px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s;position:relative}
+.cta-btn:hover{background:var(--indigo-dark)}
+.footer{border-top:1px solid var(--border);padding:40px 32px;text-align:center}
+.footer-inner{max-width:var(--max-w);margin:0 auto}
+.footer-logo{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:8px}
+.footer-logo span{color:var(--indigo)}
+.footer-links{display:flex;gap:24px;justify-content:center;margin-bottom:12px}
+.footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{font-size:12px;color:var(--text-muted)}
+@media(max-width:768px){
+  .hero{padding:100px 20px 48px}
+  .content{padding:0 20px 60px}
+  .nav-links{display:none}
+  .cta-box{padding:48px 24px}
+  .compare-table{font-size:12px}
+  .compare-table th,.compare-table td{padding:10px 8px}
+}
+</style>
+    <!-- RB2B -->
+    <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("LNKLDHEDW9OJ");</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">AgentCollect<span class="logo-dot">.</span></a>
+    <div class="nav-links">
+      <a href="/ai-collection">AI Collection</a>
+      <a href="/attorney-collection">Attorney Collection</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/security">Security</a>
+    </div>
+    <a href="https://cal.com/johnb/30" target="_blank" class="nav-cta-ghost">Talk to us</a>
+    <a href="/#hero-input" class="nav-cta">See your collection plan</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="breadcrumb">
+    <a href="/">Home</a> / <a href="/guides">Guides</a> / How to Send Accounts to Collections
+  </div>
+  <div class="hero-tag">Collection Guide</div>
+  <h1>How to Send Accounts to <em>Collections</em> (Without Losing Customers)</h1>
+  <p class="hero-sub">A complete guide to escalating B2B receivables to third-party collection. When to pull the trigger, how to choose a provider, what data to prepare, and a cost comparison that could save you thousands per account.</p>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- TOC -->
+  <div class="toc">
+    <h3>Table of Contents</h3>
+    <ol>
+      <li><a href="#when">When to Send Accounts to Collections</a></li>
+      <li><a href="#decision-tree">Decision Tree: Which Provider Type?</a></li>
+      <li><a href="#compare">Provider Comparison: Agency vs. AI vs. Attorney</a></li>
+      <li><a href="#prepare">What Data to Prepare Before Placing</a></li>
+      <li><a href="#legal">Legal Requirements and Compliance</a></li>
+      <li><a href="#preserve">Preserving the Customer Relationship</a></li>
+      <li><a href="#cost">Cost Analysis: Real Numbers</a></li>
+      <li><a href="#faq">Frequently Asked Questions</a></li>
+    </ol>
+  </div>
+
+  <!-- WHEN -->
+  <div class="section" id="when">
+    <div class="section-tag">Timing</div>
+    <h2>When to Send Accounts to Collections</h2>
+    <p>The biggest mistake companies make is waiting too long. Every month an invoice ages past 60 days, its recovery probability drops by approximately 10%. A $25,000 invoice at 60 days has a 73% chance of full recovery. At 180 days, that drops to 41%. That is $8,000 in expected value evaporating simply from delay.</p>
+
+    <div class="def-card">
+      <p><strong>The 5 triggers that mean it is time to escalate:</strong></p>
+      <p>1. <strong>The debtor has gone silent.</strong> No response to 3+ contact attempts across phone and email over 14 days. Silence after engagement is the strongest predictor of non-payment.</p>
+      <p>2. <strong>Broken promises.</strong> The debtor committed to a payment date that has passed, twice. "The check is in the mail" syndrome.</p>
+      <p>3. <strong>60+ days past due.</strong> Regardless of communication, any invoice past 60 days should be reviewed for escalation. Industry data shows this is the inflection point where internal collection effectiveness drops sharply.</p>
+      <p>4. <strong>Disputed without basis.</strong> The debtor raises disputes that have no contractual or factual basis, often as a delay tactic. If your delivery team confirms the work was completed satisfactorily, escalate.</p>
+      <p>5. <strong>Business distress signals.</strong> Layoffs, leadership changes, negative press, other vendors reporting similar issues. If the company is struggling, you want to be at the front of the creditor line.</p>
+    </div>
+  </div>
+
+  <!-- DECISION TREE -->
+  <div class="section" id="decision-tree">
+    <div class="section-tag">Decision Framework</div>
+    <h2>Decision Tree: Which Collection Provider?</h2>
+
+    <div class="decision-tree">
+      <h3>Start Here: What is your situation?</h3>
+      <div class="decision-node">
+        <div class="question">Is the invoice amount under $1,000?</div>
+        <div class="answer">YES &rarr; <strong>Write it off or use automated dunning.</strong> The cost of any third-party collection typically exceeds the recovery value for sub-$1K B2B invoices. Strengthen your upfront payment terms instead. NO &rarr; Continue below.</div>
+      </div>
+      <div class="decision-node">
+        <div class="question">Do you want to preserve the customer relationship?</div>
+        <div class="answer">YES &rarr; <strong>Use an AI collection agent (like AgentCollect).</strong> AI agents communicate under your brand, maintain professional tone, and offer payment plans. 62% of accounts collected by AI agents continue doing business with the creditor. NO &rarr; Continue below.</div>
+      </div>
+      <div class="decision-node">
+        <div class="question">Is the debtor responding but refusing to pay?</div>
+        <div class="answer">YES &rarr; <strong>Use a collection attorney.</strong> Legal demand letters carry the weight of potential litigation. Most effective when the debtor has assets and is knowingly withholding payment. NO &rarr; Continue below.</div>
+      </div>
+      <div class="decision-node">
+        <div class="question">Is this high-volume (20+ accounts) or high-value ($100K+)?</div>
+        <div class="answer">HIGH VOLUME &rarr; <strong>AI collection agent.</strong> Unlimited capacity, consistent follow-up, lowest per-account cost. HIGH VALUE &rarr; <strong>Collection attorney or boutique agency.</strong> The stakes justify dedicated human attention and legal leverage.</div>
+      </div>
+      <div class="decision-node">
+        <div class="question">Has the debtor gone completely silent?</div>
+        <div class="answer"><strong>Traditional collection agency or AI agent.</strong> Both specialize in skip-tracing and multi-channel re-engagement. AI agents tend to be faster (minutes vs. days for first contact) and cheaper (5-15% vs. 25-50% fee).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARISON -->
+  <div class="section" id="compare">
+    <div class="section-tag">Comparison</div>
+    <h2>Provider Comparison: Agency vs. AI vs. Attorney</h2>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Factor</th>
+          <th>Traditional Agency</th>
+          <th>AI Collection Agent</th>
+          <th>Collection Attorney</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Typical Fee</strong></td>
+          <td>25-50% contingency</td>
+          <td>5-15% success-only</td>
+          <td>$300-500/hr or 33% contingency</td>
+        </tr>
+        <tr>
+          <td><strong>Net Recovery on $10K</strong></td>
+          <td>$5,000-$7,500</td>
+          <td>$8,500-$9,500</td>
+          <td>$6,700 (contingency)</td>
+        </tr>
+        <tr>
+          <td><strong>Time to First Contact</strong></td>
+          <td>3-7 business days</td>
+          <td>Under 1 hour</td>
+          <td>5-14 business days</td>
+        </tr>
+        <tr>
+          <td><strong>Communication Style</strong></td>
+          <td>Agency branding (impersonal)</td>
+          <td>Your brand, your tone</td>
+          <td>Legal letterhead (aggressive)</td>
+        </tr>
+        <tr>
+          <td><strong>Channels Used</strong></td>
+          <td>Phone, mail, email</td>
+          <td>Phone (AI voice), email, SMS</td>
+          <td>Letter, phone</td>
+        </tr>
+        <tr>
+          <td><strong>Relationship Impact</strong></td>
+          <td>High negative impact</td>
+          <td>Low &mdash; feels like your team</td>
+          <td>Very high negative impact</td>
+        </tr>
+        <tr>
+          <td><strong>Best For</strong></td>
+          <td>Consumer debt, very old B2B debt</td>
+          <td>B2B $1K-$100K, relationship matters</td>
+          <td>$10K+, debtor has assets, legal leverage needed</td>
+        </tr>
+        <tr>
+          <td><strong>Recovery Rate (60-day)</strong></td>
+          <td>35-45% of placed</td>
+          <td>65-78% of placed</td>
+          <td>55-70% of placed</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- PREPARE -->
+  <div class="section" id="prepare">
+    <div class="section-tag">Preparation</div>
+    <h2>What Data to Prepare Before Placing</h2>
+    <p>The quality of data you provide directly impacts recovery speed and rate. Missing information forces the provider to waste time on research instead of collection. Prepare these items before placing any account.</p>
+
+    <ul class="key-points">
+      <li><strong>Debtor company legal name and DBA.</strong> Match the name on your contract. Include any subsidiaries or parent company names if applicable.</li>
+      <li><strong>Contact information for AP and decision-maker.</strong> Name, direct phone, email, title. Multiple contacts dramatically improve recovery rates.</li>
+      <li><strong>All invoice details.</strong> Invoice numbers, dates, amounts, PO numbers, service descriptions, payment terms (Net 30, Net 60, etc.).</li>
+      <li><strong>Communication history.</strong> Every email, call, and letter you have sent with dates. This proves you made good-faith internal efforts and protects you legally.</li>
+      <li><strong>Contract or service agreement.</strong> The signed document showing agreed terms, late fee provisions, and any arbitration clauses. Critical for legal escalation.</li>
+      <li><strong>Proof of delivery or service completion.</strong> Signed delivery receipts, completed project documentation, accepted milestones. This preempts "we never received the goods" disputes.</li>
+      <li><strong>Any partial payments or credits.</strong> Record of every payment received, credit notes issued, or adjustments made. The outstanding balance must be defensible.</li>
+      <li><strong>Known disputes or claims.</strong> If the debtor has raised any issues (quality, timing, scope), document them along with your response. Transparency helps the collector navigate objections.</li>
+    </ul>
+
+    <div class="example-box">
+      <h3>Example: Placing a $12,500 Account with AgentCollect</h3>
+      <p><strong>Company:</strong> Meridian Supply Co. (DBA Meridian Industrial)</p>
+      <p><strong>AP Contact:</strong> Lisa Park, lpark@meridiansupply.com, (312) 555-0184</p>
+      <p><strong>Decision Maker:</strong> Tom Reeves, CFO, treeves@meridiansupply.com</p>
+      <p><strong>Invoices:</strong> #INV-2026-0089 ($7,500, due Jan 15), #INV-2026-0112 ($5,000, due Feb 1)</p>
+      <p><strong>Internal Efforts:</strong> 6 emails, 3 phone calls over 45 days. Lisa acknowledged receipt on Feb 3 but has since gone silent.</p>
+      <p><strong>Result:</strong> AgentCollect AI agent made first call within 22 minutes of placement. Reached Lisa on day 2. Payment plan agreed on day 5. Full $12,500 collected within 21 days.</p>
+    </div>
+  </div>
+
+  <!-- LEGAL -->
+  <div class="section" id="legal">
+    <div class="section-tag">Compliance</div>
+    <h2>Legal Requirements and Compliance</h2>
+    <p>B2B debt collection is regulated differently from consumer collections. The Fair Debt Collection Practices Act (FDCPA) primarily governs consumer debts, but many states extend similar protections to commercial debts, and best practices apply universally.</p>
+
+    <ul class="key-points">
+      <li><strong>Verify the debt is valid and documented.</strong> You must be able to prove the debt exists with contracts, invoices, and proof of delivery. Collecting on a disputed or undocumented debt exposes you to liability.</li>
+      <li><strong>Check state licensing requirements.</strong> Collection agencies must be licensed in most states. AI collection services and attorneys handle this differently. Verify your provider is properly licensed in the debtor's state.</li>
+      <li><strong>Maintain accurate records.</strong> Keep copies of all communications, payment history, and account documentation. Minimum retention period: 7 years (varies by state).</li>
+      <li><strong>Respect communication preferences.</strong> If a debtor requests communication only in writing, honor that request. If they request no contact during certain hours, comply. This is both a legal requirement in many jurisdictions and a best practice.</li>
+      <li><strong>Do not threaten actions you cannot or will not take.</strong> Threatening lawsuits you do not intend to file, or credit reporting you cannot execute, violates both FTC regulations and state unfair business practices laws.</li>
+    </ul>
+  </div>
+
+  <!-- PRESERVE RELATIONSHIP -->
+  <div class="section" id="preserve">
+    <div class="section-tag">Relationships</div>
+    <h2>Preserving the Customer Relationship</h2>
+    <p>Sending an account to collections does not have to be the end of a business relationship. The approach matters more than the action itself. Here is how to protect future revenue while recovering what is owed today.</p>
+
+    <div class="agentcollect-box">
+      <h3>The Relationship-First Collection Approach</h3>
+      <p><strong>1. Communicate the escalation before it happens.</strong> Send a final internal email: "We've been unable to resolve the outstanding balance through our regular channels. We're going to engage our collection partner to help facilitate payment. They'll reach out within 24 hours."</p>
+      <p><strong>2. Use a provider that operates under your brand.</strong> AI collection agents like AgentCollect communicate as an extension of your team. The debtor receives calls and emails from "your company's collection department," not a faceless third party.</p>
+      <p><strong>3. Offer a resolution path.</strong> Payment plans, partial settlements, or extended terms show flexibility while still recovering cash. 78% of B2B debtors who initially cannot pay in full will agree to a structured payment plan.</p>
+      <p><strong>4. Separate collection from account management.</strong> Your sales team should not be making collection calls. The awkwardness contaminates the relationship. Let a dedicated team (or AI agent) handle the financial conversation while your account manager maintains the business relationship.</p>
+    </div>
+  </div>
+
+  <!-- COST ANALYSIS -->
+  <div class="section" id="cost">
+    <div class="section-tag">Cost Analysis</div>
+    <h2>Cost Analysis: Real Numbers</h2>
+
+    <div class="example-box">
+      <h3>Scenario: $25,000 Invoice, 75 Days Past Due</h3>
+      <p><strong>Option A &mdash; Traditional Agency (40% fee):</strong> Recovery rate ~40% at this age = $10,000 collected. Agency takes $4,000. You net <strong>$6,000</strong>.</p>
+      <p><strong>Option B &mdash; AI Collection Agent (10% fee):</strong> Recovery rate ~72% = $18,000 collected. AgentCollect takes $1,800. You net <strong>$16,200</strong>.</p>
+      <p><strong>Option C &mdash; Collection Attorney (33% contingency):</strong> Recovery rate ~60% = $15,000 collected. Attorney takes $4,950. You net <strong>$10,050</strong>.</p>
+      <p><strong>Option D &mdash; Do nothing:</strong> By month 6, recovery probability drops to ~41% = $10,250 expected value. Plus $2,100 in opportunity cost on the locked capital. Net present value: <strong>$8,150</strong>.</p>
+      <p style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(79,70,229,.15)"><strong>Bottom line:</strong> AI collection nets 2.7x more than a traditional agency and 60% more than an attorney on this account. The speed advantage (minutes vs. days) compounds the difference because earlier contact means higher recovery rates.</p>
+    </div>
+
+    <p>Use our <a href="/guides/how-to-calculate-collection-roi" style="color:var(--indigo);font-weight:600">collection ROI calculator guide</a> to run these numbers for your specific portfolio, and check out the <a href="/tools/agency-cost-calculator" style="color:var(--indigo);font-weight:600">interactive agency cost calculator</a>.</p>
+  </div>
+
+  <!-- RELATED -->
+  <div class="section">
+    <div class="section-tag">Related Guides</div>
+    <h2>Continue Learning</h2>
+    <div class="related-terms">
+      <a href="/guides/how-to-collect-unpaid-invoices" class="related-term">Collecting Unpaid Invoices</a>
+      <a href="/guides/how-to-calculate-collection-roi" class="related-term">Collection ROI</a>
+      <a href="/guides/how-to-automate-collections" class="related-term">Automating Collections</a>
+      <a href="/guides/how-to-handle-payment-disputes" class="related-term">Payment Disputes</a>
+      <a href="/glossary/contingency-fee" class="related-term">Contingency Fee (Glossary)</a>
+      <a href="/glossary/first-party-collection" class="related-term">First-Party Collection</a>
+      <a href="/glossary/demand-letter" class="related-term">Demand Letter</a>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section" id="faq">
+    <div class="section-tag">FAQ</div>
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">When should a business send an account to collections?</div>
+      <div class="faq-a">Send an account to collections after 60-90 days of unsuccessful internal follow-up. Key triggers include: the debtor stops responding entirely, the debtor makes promises but never follows through, internal AR staff have made at least 5 contact attempts across phone and email, or the debtor disputes the debt without basis. Waiting beyond 120 days significantly reduces recovery probability from ~69% to ~52%.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How much does it cost to send an account to collections?</div>
+      <div class="faq-a">Costs vary by provider type. Traditional collection agencies charge 25-50% of the collected amount on contingency. AI collection agents like AgentCollect charge 5-15% on a success-only basis. Collection attorneys charge $300-500/hour or 33% contingency. For a $10,000 B2B invoice, that means you'd net $5,000-$7,500 with an agency, $8,500-$9,500 with AI, or $6,700 with an attorney on contingency.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Will sending an account to collections ruin the business relationship?</div>
+      <div class="faq-a">Not necessarily. The approach matters more than the action. AI-first collection agents maintain a professional, brand-consistent tone that preserves relationships. 62% of B2B debts collected by AI agents result in the client continuing to do business with the creditor afterward. The key is early intervention and using a provider that communicates respectfully.</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h2>Send accounts to collection the smart way</h2>
+    <p>AgentCollect places your accounts with an AI agent in minutes, not days. 5-15% success-only fee. 74% average recovery rate.</p>
+    <a href="/contact" class="cta-btn">Start a free pilot &rarr;</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">AgentCollect<span>.</span></div>
+    <div class="footer-links">
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 AgentCollect (YC S23). All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -163,4 +163,31 @@
   <url><loc>https://www.agentcollect.com/blog/collection-agency-alternative</loc><lastmod>2026-03-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.agentcollect.com/blog/accounts-receivable-recovery</loc><lastmod>2026-03-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
+  <!-- Templates hub + 6 templates -->
+  <url><loc>https://www.agentcollect.com/templates</loc><lastmod>2026-03-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.agentcollect.com/templates/collection-letter</loc><lastmod>2026-03-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.agentcollect.com/templates/demand-letter</loc><lastmod>2026-03-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.agentcollect.com/templates/payment-reminder-email</loc><lastmod>2026-03-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.agentcollect.com/templates/invoice-follow-up</loc><lastmod>2026-03-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.agentcollect.com/templates/payment-plan-agreement</loc><lastmod>2026-03-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.agentcollect.com/templates/accounts-receivable-policy</loc><lastmod>2026-03-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Guides hub + 6 how-to guides -->
+  <url><loc>https://www.agentcollect.com/guides</loc><lastmod>2026-03-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.agentcollect.com/guides/how-to-collect-unpaid-invoices</loc><lastmod>2026-03-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.agentcollect.com/guides/how-to-reduce-dso</loc><lastmod>2026-03-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.agentcollect.com/guides/how-to-write-collection-emails</loc><lastmod>2026-03-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.agentcollect.com/guides/how-to-send-accounts-to-collections</loc><lastmod>2026-03-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.agentcollect.com/guides/how-to-automate-collections</loc><lastmod>2026-03-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.agentcollect.com/guides/how-to-handle-payment-disputes</loc><lastmod>2026-03-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Locations hub -->
+  <url><loc>https://www.agentcollect.com/locations</loc><lastmod>2026-03-24</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Compare: Yvette AR (missing from sitemap) -->
+  <url><loc>https://www.agentcollect.com/compare/yvette-ar</loc><lastmod>2026-03-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Glossary: DSO (duplicate slug — canonical is days-sales-outstanding) -->
+  <url><loc>https://www.agentcollect.com/glossary/dso</loc><lastmod>2026-03-24</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+
 </urlset>
