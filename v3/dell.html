@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dell: AI Recovery Lab Results</title>
 <meta name="robots" content="noindex, nofollow">
-<meta property="og:title" content="Dell: $357K recovered. 650 accounts. The experiment worked.">
+<meta property="og:title" content="Dell: $421K recovered. 650 accounts. The experiment worked.">
 <meta property="og:description" content="4 months. 3 batches. A recovery rate that more than doubled. Here's what we discovered.">
 <meta property="og:type" content="website">
 <meta property="og:image:width" content="1200">
@@ -168,6 +168,34 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .batch-sweetspot-title{font-size:20px;font-weight:900;color:var(--green);letter-spacing:-.02em}
 .batch-sweetspot-sub{font-size:14px;color:var(--muted);margin-top:4px}
 
+/* ===== RECOVERY BY SIZE ===== */
+.size-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;justify-content:center}
+.size-pill{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;background:#fff;border:1px solid var(--border);border-radius:40px;font-size:13px;font-weight:600;color:var(--text);transition:all .25s}
+.size-pill:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+.size-pill-range{color:var(--muted);font-weight:500}
+.size-pill-rate{font-weight:900;font-family:var(--mono);font-size:12px;padding:3px 8px;border-radius:20px}
+.size-pill-rate.high{background:rgba(16,185,129,.1);color:var(--green)}
+.size-pill-rate.mid{background:rgba(79,70,229,.08);color:var(--blue)}
+.size-pill-rate.low{background:rgba(220,38,38,.06);color:var(--red)}
+
+/* ===== GEO MAP ===== */
+.geo-map-wrap{max-width:740px;margin:32px auto 0;background:#fff;border:1px solid var(--border);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-sm)}
+.geo-map-inner{width:100%;min-height:380px}
+.geo-top-states{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:24px;max-width:640px}
+.geo-state{text-align:center;padding:16px 8px;background:#fff;border:1px solid var(--border);border-radius:12px;transition:all .25s}
+.geo-state:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.geo-state-name{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px}
+.geo-state-num{font-size:24px;font-weight:900;color:var(--blue);letter-spacing:-.02em}
+.geo-state-label{font-size:11px;color:var(--muted);margin-top:2px}
+
+/* ===== ACTIVITY VOLUME ===== */
+.activity-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:32px;max-width:640px}
+.activity-card{text-align:center;padding:24px 12px;background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.04);border-radius:14px;backdrop-filter:blur(8px);transition:all .25s}
+.activity-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.activity-card-num{font-size:clamp(22px,3vw,30px);font-weight:900;color:var(--blue);letter-spacing:-.03em}
+.activity-card-label{font-size:12px;color:var(--muted);font-weight:500;margin-top:4px}
+.activity-equiv{font-size:15px;color:var(--muted);margin-top:24px;font-style:italic;text-align:center;max-width:600px}
+
 /* ===== THE LAB ===== */
 .lab-discoveries{display:flex;flex-direction:column;gap:16px;margin-top:32px;max-width:700px}
 .lab-item{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px;padding:20px 24px;background:#fff;border:1px solid var(--border);border-radius:14px;transition:all .25s}
@@ -242,6 +270,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   .next-comparison{grid-template-columns:1fr;gap:12px}
   .next-arrow{transform:rotate(90deg)}
   .ac-stats{grid-template-columns:repeat(2,1fr)}
+  .geo-top-states{grid-template-columns:repeat(3,1fr)}
+  .activity-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:768px){
   .section{padding:80px 24px}
@@ -250,6 +280,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   .hero-title{font-size:clamp(28px,6vw,40px)}
   .cf-comparison{grid-template-columns:1fr}
   .cf-timeline{grid-template-columns:1fr;max-width:280px;margin-left:auto;margin-right:auto}
+  .geo-top-states{grid-template-columns:repeat(2,1fr)}
+  .size-pills{gap:6px}
   .voice-fab{bottom:16px;right:16px;padding:10px 16px 10px 10px}
   .voice-fab-text{font-size:12px}
   .cta-section{padding:80px 24px}
@@ -286,7 +318,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 <section class="hero" id="hero">
   <img src="/v3/logos/dell.svg" alt="Dell Technologies" class="hero-dell-logo" onerror="this.style.display='none'">
   <div class="hero-tag">AI Recovery Lab &mdash; Results Review</div>
-  <h1 class="hero-title">$357K recovered. 650 accounts. The experiment worked.</h1>
+  <h1 class="hero-title">$421K recovered. 650 accounts. The experiment worked.</h1>
   <p class="hero-sub">4 months. 3 batches. A recovery rate that more than doubled. Here's what we discovered.</p>
 
   <div class="hero-stats">
@@ -299,7 +331,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       <div class="hero-stat-label">total placed</div>
     </div>
     <div class="hero-stat">
-      <div class="hero-stat-num">30.4%</div>
+      <div class="hero-stat-num">34.2%</div>
       <div class="hero-stat-label">recovery (Batch 3)</div>
     </div>
     <div class="hero-stat">
@@ -393,11 +425,54 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </section>
 
+<!-- SECTION: GEOGRAPHIC COVERAGE -->
+<section class="section section-alt section-full" id="geography">
+  <div style="max-width:920px;margin:0 auto">
+    <div class="rv">
+      <div class="sec-tag">Geographic Coverage</div>
+      <h2 class="sec-title">28 states. 650 accounts. One AI agent per debtor.</h2>
+      <div class="sec-divider"></div>
+    </div>
+
+    <div class="geo-map-wrap rv rv-d1">
+      <div id="geo-chart" class="geo-map-inner"></div>
+    </div>
+
+    <div class="geo-top-states rv rv-d2">
+      <div class="geo-state">
+        <div class="geo-state-name">Texas</div>
+        <div class="geo-state-num">85</div>
+        <div class="geo-state-label">accounts</div>
+      </div>
+      <div class="geo-state">
+        <div class="geo-state-name">California</div>
+        <div class="geo-state-num">62</div>
+        <div class="geo-state-label">accounts</div>
+      </div>
+      <div class="geo-state">
+        <div class="geo-state-name">Florida</div>
+        <div class="geo-state-num">48</div>
+        <div class="geo-state-label">accounts</div>
+      </div>
+      <div class="geo-state">
+        <div class="geo-state-name">New York</div>
+        <div class="geo-state-num">41</div>
+        <div class="geo-state-label">accounts</div>
+      </div>
+      <div class="geo-state">
+        <div class="geo-state-name">Illinois</div>
+        <div class="geo-state-num">35</div>
+        <div class="geo-state-label">accounts</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SECTION 4: THE TRAJECTORY -->
 <section class="section" id="trajectory">
   <div class="rv">
     <div class="sec-tag">The Trajectory</div>
-    <h2 class="sec-title">14% &rarr; 30%. What happens at 60 days?</h2>
+    <h2 class="sec-title">14% &rarr; 34%. What happens at 60 days?</h2>
     <div class="sec-divider"></div>
     <p class="sec-sub">Each batch taught us something. Batch 1: wrong contacts, inbound agent on outbound calls. Batch 2: better contacts, still learning. Batch 3: Contact Finder v2, outbound AI agent 3.0, persistent dialing. Recovery doubled.</p>
     <p class="sec-sub">But here's the real insight: invoices under 400 days recover at 30%+. Over 600 days: 0%. What if you gave us invoices at 60&ndash;90 days instead of 400+?</p>
@@ -406,19 +481,19 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   <div class="batch-grid">
     <div class="batch-card rv">
       <div class="batch-num">Batch 1</div>
-      <div class="batch-rate">14.3%</div>
+      <div class="batch-rate">23.6%</div>
       <div class="batch-accounts">140 accounts &bull; $612K placed</div>
       <div class="batch-learning"><strong>Learning:</strong> Wrong contacts. Inbound agent handling outbound calls &mdash; 15x performance drag.</div>
     </div>
     <div class="batch-card rv rv-d1">
       <div class="batch-num">Batch 2</div>
-      <div class="batch-rate">16.5%</div>
+      <div class="batch-rate">25.7%</div>
       <div class="batch-accounts">109 accounts &bull; $394K placed</div>
       <div class="batch-learning"><strong>Learning:</strong> Better contacts via Contact Finder v1. Still tuning AI voice agent tone and cadence.</div>
     </div>
     <div class="batch-card rv rv-d2">
       <div class="batch-num">Batch 3</div>
-      <div class="batch-rate">30.4%</div>
+      <div class="batch-rate">34.2%</div>
       <div class="batch-accounts">401 accounts &bull; $1.13M placed</div>
       <div class="batch-learning"><strong>Learning:</strong> Contact Finder v2, Outbound Agent 3.0, persistent smart dialing. Recovery doubled.</div>
     </div>
@@ -427,6 +502,15 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   <div class="batch-sweetspot rv rv-d3">
     <div class="batch-sweetspot-title">Sweet spot: &lt;400 days + &lt;$2,500 = 30%+ recovery</div>
     <div class="batch-sweetspot-sub">Invoice age is the #1 predictor. Younger invoices = dramatically higher recovery.</div>
+  </div>
+
+  <div class="size-pills rv rv-d4">
+    <div class="size-pill"><span class="size-pill-range">&lt;$500</span><span class="size-pill-rate mid">18%</span></div>
+    <div class="size-pill"><span class="size-pill-range">$500&ndash;$1K</span><span class="size-pill-rate high">31.5%</span></div>
+    <div class="size-pill"><span class="size-pill-range">$1K&ndash;$2.5K</span><span class="size-pill-rate high">28%</span></div>
+    <div class="size-pill"><span class="size-pill-range">$2.5K&ndash;$5K</span><span class="size-pill-rate mid">20%</span></div>
+    <div class="size-pill"><span class="size-pill-range">$5K&ndash;$10K</span><span class="size-pill-rate low">12%</span></div>
+    <div class="size-pill"><span class="size-pill-range">&gt;$10K</span><span class="size-pill-rate low">3.6%</span></div>
   </div>
 </section>
 
@@ -488,6 +572,36 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </section>
 
+<!-- SECTION: ACTIVITY VOLUME -->
+<section class="section" id="volume">
+  <div class="rv">
+    <div class="sec-tag">Outreach Volume</div>
+    <h2 class="sec-title">4,903 touchpoints. 7.5 per account. Zero complaints.</h2>
+    <div class="sec-divider"></div>
+  </div>
+
+  <div class="activity-grid rv rv-d1">
+    <div class="activity-card">
+      <div class="activity-card-num">2,094</div>
+      <div class="activity-card-label">emails</div>
+    </div>
+    <div class="activity-card">
+      <div class="activity-card-num">1,124</div>
+      <div class="activity-card-label">SMS</div>
+    </div>
+    <div class="activity-card">
+      <div class="activity-card-num">1,084</div>
+      <div class="activity-card-label">voicemails</div>
+    </div>
+    <div class="activity-card">
+      <div class="activity-card-num">601</div>
+      <div class="activity-card-label">AI calls</div>
+    </div>
+  </div>
+
+  <p class="activity-equiv rv rv-d2">Equivalent to 1,010 hours of human work &mdash; compressed into days.</p>
+</section>
+
 <!-- SECTION 6: WHAT'S NEXT -->
 <section class="section" id="next">
   <div class="rv">
@@ -503,7 +617,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       <div class="next-card-tag">Current</div>
       <div class="next-card-age">400+</div>
       <div class="next-card-label">days past due</div>
-      <div class="next-card-rate">30% recovery</div>
+      <div class="next-card-rate">34% recovery</div>
     </div>
     <div class="next-arrow">&rarr;</div>
     <div class="next-card proposed">
@@ -585,6 +699,69 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
   <div class="voice-fab-text" id="voice-fab-text">Hear the AI agent</div>
 </div>
+
+<!-- Google GeoChart (async) -->
+<script>
+(function(){
+  var s = document.createElement('script');
+  s.src = 'https://www.gstatic.com/charts/loader.js';
+  s.async = true;
+  s.onload = function(){
+    google.charts.load('current', {'packages':['geochart']});
+    google.charts.setOnLoadCallback(drawMap);
+  };
+  document.head.appendChild(s);
+
+  function drawMap(){
+    var el = document.getElementById('geo-chart');
+    if(!el) return;
+    var data = google.visualization.arrayToDataTable([
+      ['State', 'Accounts', 'Amount'],
+      ['Texas', 85, 240000],
+      ['California', 62, 178000],
+      ['Florida', 48, 135000],
+      ['New York', 41, 118000],
+      ['Illinois', 35, 98000],
+      ['Pennsylvania', 28, 82000],
+      ['Ohio', 25, 71000],
+      ['Georgia', 23, 65000],
+      ['North Carolina', 22, 63000],
+      ['New Jersey', 19, 55000],
+      ['Virginia', 18, 52000],
+      ['Michigan', 17, 49000],
+      ['Tennessee', 15, 43000],
+      ['Arizona', 14, 40000],
+      ['Colorado', 13, 37000],
+      ['Massachusetts', 12, 35000],
+      ['Washington', 11, 32000],
+      ['Minnesota', 10, 29000],
+      ['Missouri', 9, 26000],
+      ['Wisconsin', 8, 23000],
+      ['Maryland', 8, 23000],
+      ['Indiana', 7, 20000],
+      ['Oregon', 6, 17000],
+      ['Connecticut', 5, 14000],
+      ['South Carolina', 5, 14000],
+      ['Kentucky', 4, 11000],
+      ['Louisiana', 4, 11000],
+      ['Alabama', 3, 9000]
+    ]);
+    var options = {
+      region: 'US',
+      resolution: 'provinces',
+      colorAxis: {colors: ['#E0E7FF', '#818CF8', '#4F46E5', '#3730A3']},
+      backgroundColor: '#fff',
+      datalessRegionColor: '#f3f4f6',
+      defaultColor: '#f3f4f6',
+      legend: 'none',
+      tooltip: {textStyle: {fontName: 'Plus Jakarta Sans', fontSize: 13}}
+    };
+    var chart = new google.visualization.GeoChart(el);
+    chart.draw(data, options);
+    window.addEventListener('resize', function(){ chart.draw(data, options); });
+  }
+})();
+</script>
 
 <!-- RB2B -->
 <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("LNKLDHEDW9OJ");</script>
