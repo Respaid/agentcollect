@@ -628,8 +628,11 @@ window.addEventListener('scroll', () => {
 const revealEls = document.querySelectorAll('.rv');
 const revealObs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('v'); revealObs.unobserve(e.target); }});
-}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.01, rootMargin: '0px 0px 0px 0px' });
 revealEls.forEach(el => revealObs.observe(el));
+
+// Fallback: reveal everything after 1.5s in case IntersectionObserver misses
+setTimeout(() => { revealEls.forEach(el => el.classList.add('v')); }, 1500);
 
 // Animated counters
 function animateCounter(el) {
