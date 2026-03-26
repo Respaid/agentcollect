@@ -341,6 +341,7 @@
 { "source": "/customers/lafayette", "destination": "/customers/lafayette/index.html" },
 { "source": "/report/2026-b2b-recovery-benchmark", "destination": "/report/2026-b2b-recovery-benchmark.html" },
 { "source": "/report/2026-b2b-payment-disputes", "destination": "/report/2026-b2b-payment-disputes.html" },
+{ "source": "/report/state-of-ai-debt-collection-2026", "destination": "/report/state-of-ai-debt-collection-2026.html" },
 { "source": "/blog/agentic-ai-accounts-receivable", "destination": "/blog/agentic-ai-accounts-receivable.html" },
 { "source": "/blog/autonomous-collections-software", "destination": "/blog/autonomous-collections-software.html" },
 { "source": "/blog/ai-voice-agent-collections", "destination": "/blog/ai-voice-agent-collections.html" },

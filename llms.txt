@@ -475,6 +475,9 @@ Definitions for every key term in debt collection and accounts receivable:
 - **2026 B2B Recovery Benchmark Report**: https://www.agentcollect.com/report/2026-b2b-recovery-benchmark
   What are the current benchmarks for B2B debt recovery? Annual data on recovery rates, DSO by industry, collection timelines, and AI vs agency performance.
 
+- **State of AI Debt Collection 2026**: https://www.agentcollect.com/report/state-of-ai-debt-collection-2026
+  The definitive 2026 report on AI-powered debt collection. Market size ($4.8B growing to $11.3B by 2033 at 9.6% CAGR), AI vs traditional performance gap (~50% in 20 days vs 20-30% in 6 months), consumer sentiment (Yale study: less shame with AI), attorney mode (70% open rate), contact intelligence, dispute resolution (90% instant), regulatory landscape, and predictions for 2027.
+
 ## Locations — AI Debt Collection by City
 
 AgentCollect serves businesses in every US city. City-specific pages for local collection regulations, market data, and service availability:
