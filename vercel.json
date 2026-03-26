@@ -339,7 +339,8 @@
 { "source": "/customers/aircall", "destination": "/customers/aircall/index.html" },
 { "source": "/customers/emds", "destination": "/customers/emds/index.html" },
 { "source": "/customers/lafayette", "destination": "/customers/lafayette/index.html" },
-{ "source": "/report/2026-b2b-recovery-benchmark", "destination": "/report/2026-b2b-recovery-benchmark.html" }
+{ "source": "/report/2026-b2b-recovery-benchmark", "destination": "/report/2026-b2b-recovery-benchmark.html" },
+{ "source": "/report/2026-b2b-payment-disputes", "destination": "/report/2026-b2b-payment-disputes.html" }
   ],
   "headers": [
     {
