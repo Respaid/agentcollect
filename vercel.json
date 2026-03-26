@@ -45,6 +45,8 @@
 { "source": "/imagefirst", "destination": "/v3/imagefirst.html" },
 { "source": "/microsoft", "destination": "/v3/microsoft.html" },
 { "source": "/salesforce", "destination": "/v3/salesforce.html" },
+{ "source": "/kimble", "destination": "/v3/kimble.html" },
+{ "source": "/automation-personnel", "destination": "/v3/automation-personnel.html" },
 { "source": "/tesla", "destination": "/v3/tesla.html" },
 { "source": "/salesforce-a", "destination": "/v3/salesforce-a.html" },
 { "source": "/salesforce-b", "destination": "/v3/salesforce-b.html" },
@@ -379,7 +381,10 @@
 { "source": "/solutions", "destination": "/solutions/index.html" },
 { "source": "/solutions/saas", "destination": "/solutions/saas.html" },
 { "source": "/solutions/healthcare", "destination": "/solutions/healthcare.html" },
-{ "source": "/solutions/fintech", "destination": "/solutions/fintech.html" }
+{ "source": "/solutions/fintech", "destination": "/solutions/fintech.html" },
+{ "source": "/prudential-overall", "destination": "/v3/prudential-overall.html" },
+{ "source": "/texas-disposal", "destination": "/v3/texas-disposal.html" },
+{ "source": "/qualified-staffing", "destination": "/v3/qualified-staffing.html" }
   ],
   "headers": [
     {
