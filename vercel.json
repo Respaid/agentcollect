@@ -362,7 +362,12 @@
 { "source": "/blog/how-to-collect-debt-from-business", "destination": "/blog/how-to-collect-debt-from-business.html" },
 { "source": "/blog/how-to-choose-collection-agency", "destination": "/blog/how-to-choose-collection-agency.html" },
 { "source": "/blog/collection-letter-that-works", "destination": "/blog/collection-letter-that-works.html" },
-{ "source": "/blog/commercial-vs-consumer-debt-collection", "destination": "/blog/commercial-vs-consumer-debt-collection.html" }
+{ "source": "/blog/commercial-vs-consumer-debt-collection", "destination": "/blog/commercial-vs-consumer-debt-collection.html" },
+{ "source": "/stats", "destination": "/stats.html" },
+{ "source": "/solutions", "destination": "/solutions/index.html" },
+{ "source": "/solutions/saas", "destination": "/solutions/saas.html" },
+{ "source": "/solutions/healthcare", "destination": "/solutions/healthcare.html" },
+{ "source": "/solutions/fintech", "destination": "/solutions/fintech.html" }
   ],
   "headers": [
     {
