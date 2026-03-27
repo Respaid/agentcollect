@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>We tried to pay Salesforce.</title>
+<title>We called Salesforce 28 times.</title>
 <meta name="robots" content="noindex, nofollow">
-<meta property="og:title" content="We tried to pay Salesforce.">
-<meta property="og:description" content="Nobody answered. An AR collection audit by AgentCollect.">
+<meta property="og:title" content="We called Salesforce 28 times.">
+<meta property="og:description" content="Here's what happened. An AR collection audit by AgentCollect.">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
@@ -76,7 +76,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .hero h1{font-family:var(--display);font-size:clamp(40px,6.5vw,72px);font-weight:900;letter-spacing:-.04em;line-height:1.05;color:var(--text);margin-bottom:24px}
 .hero-subtitle{font-size:clamp(20px,3vw,30px);font-weight:400;color:var(--muted);margin-bottom:48px;letter-spacing:-.01em}
 .hero-byline{font-size:14px;color:var(--muted);font-weight:500;letter-spacing:.06em;text-transform:uppercase;opacity:.5}
-.grade-badge{display:inline-flex;align-items:center;justify-content:center;width:100px;height:100px;border-radius:50%;background:var(--red);color:white;font-family:var(--display);font-weight:900;font-size:48px;margin:24px 0;box-shadow:0 8px 32px rgba(220,38,38,.3)}
 .scroll-hint{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);opacity:.3;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;animation:scrollBounce 2s ease-in-out infinite}
 .scroll-hint svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
 @keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
@@ -85,7 +84,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .section{padding:100px 32px;position:relative}
 .section-inner{max-width:680px;margin:0 auto}
 .section-inner h2{font-family:var(--display);font-size:clamp(26px,3.5vw,40px);font-weight:900;letter-spacing:-.03em;line-height:1.15;color:var(--text);margin-bottom:28px}
-.section-inner h3{font-family:var(--display);font-size:20px;font-weight:700;color:var(--muted);margin:40px 0 20px;letter-spacing:-.01em}
 .section-inner p{font-size:18px;color:var(--muted);line-height:1.8;margin-bottom:24px}
 .section-inner p strong{color:var(--text);font-weight:600}
 .section-divider{width:60px;height:1px;background:var(--border);margin:0 auto}
@@ -108,44 +106,18 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .screenplay-line .dialogue{color:var(--text)}
 .screenplay-line .stage-direction{color:var(--muted);font-style:italic;display:block;margin-top:4px;font-size:14px}
 
-/* FINDING CARD */
-.finding-card{margin:20px 0;padding:24px 28px;background:#fff;border-radius:14px;box-shadow:var(--shadow-sm);border:1px solid var(--border)}
-.finding-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.severity{padding:3px 12px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
-.severity-critical{background:rgba(220,38,38,.08);color:var(--red)}
-.severity-high{background:rgba(249,115,22,.08);color:#F97316}
-.severity-medium{background:rgba(245,158,11,.08);color:var(--amber)}
-.severity-irony{background:rgba(124,58,237,.08);color:#7C3AED}
-.finding-title{font-weight:700;color:var(--text);font-size:16px}
-.finding-card p{font-size:15px;color:var(--muted);line-height:1.7;margin:0}
+/* SCREENSHOT */
+.screenshot-block{margin:36px 0;border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-lg)}
+.screenshot-block img{width:100%;display:block}
+.screenshot-caption{padding:14px 20px;background:#fff;font-size:14px;color:var(--muted);line-height:1.5;border-top:1px solid var(--border)}
 
-/* CALL CARD */
-.call-card{margin:20px 0;padding:24px 28px;background:#fff;border-radius:14px;box-shadow:var(--shadow-sm);border:1px solid var(--border)}
-.call-card.highlight{border:2px solid var(--red)}
-.call-card.highlight-purple{border:2px solid #7C3AED}
-.call-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px}
-.call-name{font-weight:700;font-size:16px;color:var(--text)}
-.call-name.red{color:var(--red)}
-.call-duration{color:var(--muted);font-size:14px;margin-left:8px}
-.call-target{font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-left:8px}
-.outcome-badge{font-weight:700;padding:5px 14px;border-radius:20px;font-size:12px;color:white;letter-spacing:.02em}
-.outcome-fail{background:var(--red)}
-.outcome-voicemail{background:#F97316}
-.outcome-timeout{background:#7C3AED}
-.call-card .quote{color:#4B5563;font-style:italic;font-size:15px;margin:10px 0;line-height:1.7}
-.call-card .note{color:var(--muted);font-size:13px;margin-top:6px}
-.call-card audio{width:100%;height:40px;border-radius:10px;margin-top:12px}
+/* QUOTE BLOCK */
+.quote-block{margin:36px 0;padding:28px 32px;background:#fff;border-left:3px solid var(--amber);border-radius:0 14px 14px 0;box-shadow:var(--shadow-sm)}
+.quote-block .quote-text{font-size:17px;color:var(--text);font-weight:500;line-height:1.7;font-style:italic;margin-bottom:8px}
+.quote-block .quote-source{font-size:13px;color:var(--muted);font-weight:500}
 
-/* BLOCKQUOTE */
-.blockquote{margin:20px 0;padding:16px 24px;background:#fff;border-left:3px solid var(--blue);border-radius:0 14px 14px 0;box-shadow:var(--shadow-sm);font-size:16px;color:#4B5563;font-style:italic;line-height:1.7}
-.blockquote-red{border-left-color:var(--red);background:#fef2f2}
-
-/* EMAIL LIST */
-.email-list{margin:28px 0;padding:24px 28px;background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-sm)}
-.email-row{padding:10px 0;border-bottom:1px solid #f3f4f6;font-size:15px;color:var(--text);display:flex;align-items:center;gap:8px}
-.email-row:last-child{border-bottom:none}
-.email-row code{font-family:var(--mono);font-size:14px}
-.email-status{font-size:12px;color:var(--muted)}
+/* INFO CARD */
+.info-card{margin:28px 0;padding:24px 28px;background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-sm)}
 
 /* ALL CALLS DROPDOWN */
 details{margin:32px 0}
@@ -198,7 +170,6 @@ details[open] summary::before{content:'- '}
 .confetti-container.active{opacity:1}
 .confetti-dot{position:absolute;border-radius:50%;animation:confettiFall linear forwards}
 .confetti-square{position:absolute;animation:confettiFall linear forwards}
-@keyframes awSpin{to{transform:rotate(360deg)}}
 @keyframes confettiFall{
   0%{transform:translateY(-20px) rotate(0deg);opacity:1}
   80%{opacity:1}
@@ -225,6 +196,11 @@ details[open] summary::before{content:'- '}
 .audit-footer p{font-size:12px;color:var(--muted);opacity:.4;line-height:1.6}
 .audit-footer a{color:var(--text);text-decoration:none;font-weight:600;opacity:.4}
 
+/* AGENT WIDGET */
+@keyframes awSpin{to{transform:rotate(360deg)}}
+#aw-orb:hover{transform:scale(1.08);box-shadow:0 0 48px rgba(79,70,229,.6)}
+#aw-orb:active{transform:scale(.95)}
+
 /* BEFORE/AFTER SPLIT */
 @media(max-width:600px){
   .confetti-section [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important}
@@ -241,13 +217,11 @@ details[open] summary::before{content:'- '}
   .supporting-grid{grid-template-columns:1fr}
   .stat-grid{grid-template-columns:repeat(2,1fr);gap:16px}
   .payment-mockup{margin-left:auto;margin-right:auto;max-width:360px}
-  .call-header{flex-direction:column;align-items:flex-start}
 }
 @media(max-width:480px){
   .hero h1{font-size:34px}
   .pull-stat{font-size:20px;padding:32px 0}
   .stat-card .num{font-size:28px}
-  .grade-badge{width:80px;height:80px;font-size:36px}
 }
 </style>
 </head>
@@ -263,10 +237,8 @@ details[open] summary::before{content:'- '}
 
 <!-- HERO -->
 <section class="hero">
-  <h1 class="rv">We tried to pay Salesforce.</h1>
-  <div class="hero-subtitle rv rv-d1">Nobody answered.</div>
-  <div class="grade-badge rv rv-d1">F</div>
-  <p class="rv rv-d2" style="font-size:18px;color:var(--muted);max-width:560px;line-height:1.7"><strong style="color:var(--text)">15 calls. 4 emails. 3 phone numbers.</strong> The billing line is a recorded message. Their collection agency couldn't find our account.</p>
+  <h1 class="rv">We called Salesforce<br>28 times.</h1>
+  <div class="hero-subtitle rv rv-d1">Here's what happened.</div>
   <div class="hero-byline rv rv-d2">March 2026 &mdash; AR Collection Audit by AgentCollect</div>
   <div class="scroll-hint">
     <span>Scroll</span>
@@ -275,386 +247,202 @@ details[open] summary::before{content:'- '}
 </section>
 
 <!-- ======================================= -->
-<!-- STATS                                   -->
+<!-- 1. "We called as a customer."           -->
 <!-- ======================================= -->
-<section class="conclusion">
+<section class="section">
+  <div class="section-inner">
+    <h2 class="rv">We called as a customer.</h2>
+
+    <p class="rv">Someone with an outstanding Salesforce invoice. The kind of call that happens thousands of times a day across 150,000 Salesforce customers.</p>
+
+    <p class="rv">We dialed <strong>(800) 667-6389</strong>, Salesforce's main support line. Pressed 3 for billing.</p>
+
+    <div class="audio-block rv">
+      <div class="audio-label">Main line &mdash; IVR billing option</div>
+      <audio controls preload="metadata" src="https://dxc03zgurdly9.cloudfront.net/ae9ee156d9d2eb8a70fe508908c965c49b766ee068bc7ddaa37c190393b98d8f/recording.wav"></audio>
+    </div>
+
+    <div class="screenplay rv">
+      <div class="screenplay-line">
+        <span class="speaker">Salesforce IVR</span>
+        <span class="dialogue">"Please log in to billing.salesforce.com. Get assistance from Agentforce. Have a great day."</span>
+        <span class="stage-direction">The line disconnects.</span>
+      </div>
+    </div>
+
+    <p class="rv">No transfer. No hold queue. No human option. The system tells you to visit a website and hangs up.</p>
+
+    <p class="rv">We called a second number: <strong>(800) 664-9073</strong>. Same result.</p>
+
+    <div class="pull-stat rv"><em>28 calls</em> across 2 days. Same dead end every time.</div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ======================================= -->
+<!-- 2. "We found a billing direct line."    -->
+<!-- ======================================= -->
+<section class="section">
+  <div class="section-inner">
+    <h2 class="rv">We found a billing direct line.</h2>
+
+    <p class="rv">After digging through public records, we found a direct billing number: <strong>415-901-8457</strong>. A San Francisco line. We called it.</p>
+
+    <div class="audio-block rv">
+      <div class="audio-label">Billing direct line &mdash; 415-901-8457</div>
+      <audio controls preload="metadata" src="https://dxc03zgurdly9.cloudfront.net/1aeb06018e0b229406f695799c4d7a1758433dccd5c9e927e60e9494b0c4f19b/recording.wav"></audio>
+    </div>
+
+    <div class="screenplay rv">
+      <div class="screenplay-line">
+        <span class="speaker">Voicemail System</span>
+        <span class="dialogue">"The mailbox of the person you are calling is currently full and cannot accept new messages."</span>
+        <span class="stage-direction">Call ends.</span>
+      </div>
+    </div>
+
+    <p class="rv">The one direct line to Salesforce billing has a full voicemail box. Not just unanswered. <strong>Full.</strong></p>
+
+    <div class="audio-block rv">
+      <div class="audio-label">Follow-up attempt &mdash; same number</div>
+      <audio controls preload="metadata" src="https://dxc03zgurdly9.cloudfront.net/7d9c99de01c1c8e4809bdb62afa5657a6ae7399e8e469ff411b801cdfc8e77bb/recording.wav"></audio>
+    </div>
+
+    <p class="rv">We called again the next day. Same message. The mailbox hasn't been checked.</p>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ======================================= -->
+<!-- 3. "We checked the portal."             -->
+<!-- ======================================= -->
+<section class="section">
+  <div class="section-inner">
+    <h2 class="rv">We checked the portal.</h2>
+
+    <p class="rv">The IVR told us to visit <strong>billing.salesforce.com</strong>. So we did.</p>
+
+    <p class="rv">The portal is entirely login-gated. No phone number on the page. No chat. No way for a customer who's locked out or confused to reach a human.</p>
+
+    <p class="rv">We searched Salesforce's help center for billing phone support. We found this:</p>
+
+    <div class="quote-block rv">
+      <div class="quote-text">"We don't currently offer phone support for billing inquiries."</div>
+      <div class="quote-source">Salesforce Help Article, February 2026</div>
+    </div>
+
+    <p class="rv">Not buried in fine print. <strong>Published by Salesforce themselves.</strong> They've formally removed phone support for customers trying to resolve billing questions.</p>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ======================================= -->
+<!-- 4. "We called Sales."                   -->
+<!-- ======================================= -->
+<section class="section">
+  <div class="section-inner">
+    <h2 class="rv">We called Sales.</h2>
+
+    <p class="rv">Same main number. <strong>(800) 667-6389.</strong> This time, we pressed 1 for Sales.</p>
+
+    <p class="rv">A human answered in under 30 seconds.</p>
+
+    <p class="rv">Friendly. Professional. Ready to close.</p>
+
+    <div class="pull-stat rv">Press 1 for Sales: <em>human in 30 seconds.</em><br>Press 3 for Billing: <em>automated dead end.</em></div>
+
+    <p class="rv">Salesforce can staff phones. They have the infrastructure, the headcount, and the technology. They choose to staff them for revenue. <strong>Not for customers who owe money and want to pay.</strong></p>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ======================================= -->
+<!-- 5. "We found the collection agency."    -->
+<!-- ======================================= -->
+<section class="section">
+  <div class="section-inner">
+    <h2 class="rv">We found the collection agency.</h2>
+
+    <p class="rv">When Salesforce customers don't pay, their accounts go to <strong>Radius Global Solutions</strong>.</p>
+
+    <div class="info-card rv">
+      <div style="font-size:15px;color:var(--text);line-height:2">
+        <strong>Radius Global Solutions</strong><br>
+        <span style="color:var(--muted)">BBB complaints (3 years):</span> <strong style="color:var(--red)">579</strong><br>
+        <span style="color:var(--muted)">Consumer rating:</span> <strong style="color:var(--red)">1.08 / 5</strong><br>
+        <span style="color:var(--muted)">Role:</span> <span style="color:var(--muted)">Salesforce's third-party collection partner</span>
+      </div>
+    </div>
+
+    <p class="rv">Meanwhile, Salesforce sells its own product called <strong>Collection &amp; Financial Recovery</strong> at $50 per seat per month. It promises AI-powered, empathetic collection experiences.</p>
+
+    <p class="rv">The company that sells AR automation to the world sends its own past-due accounts to a call center with a 1-star consumer rating.</p>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ======================================= -->
+<!-- 6. "We emailed 4 addresses."            -->
+<!-- ======================================= -->
+<section class="section">
+  <div class="section-inner">
+    <h2 class="rv">We emailed 4 addresses.</h2>
+
+    <div class="info-card rv">
+      <div style="font-size:15px;color:var(--text);line-height:2">
+        billing@salesforce.com<br>
+        accounts-receivable@salesforce.com<br>
+        support@salesforce.com<br>
+        <span style="color:var(--muted)">(general support fallback)</span>
+      </div>
+    </div>
+
+    <p class="rv">Industry average response time for billing emails: <strong>38 hours.</strong></p>
+    <p class="rv"><strong>We're still monitoring for replies.</strong></p>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ======================================= -->
+<!-- 7. THE MATH                             -->
+<!-- ======================================= -->
+<section class="conclusion" id="conclusion">
   <div class="conclusion-inner">
+    <h2 class="rv">The math.</h2>
+
     <div class="stat-grid rv">
       <div class="stat-card">
-        <div class="num">15</div>
-        <div class="label">Mystery Shop Calls</div>
-      </div>
-      <div class="stat-card">
-        <div class="num">3</div>
-        <div class="label">Phone Numbers Tested</div>
+        <div class="num">28</div>
+        <div class="label">calls placed</div>
       </div>
       <div class="stat-card">
         <div class="num red">0</div>
-        <div class="label">Humans Reached</div>
+        <div class="label">humans reached</div>
       </div>
       <div class="stat-card">
-        <div class="num">4</div>
-        <div class="label">Email Channels Tested</div>
+        <div class="num">3</div>
+        <div class="label">numbers tested</div>
+      </div>
+      <div class="stat-card">
+        <div class="num red">0</div>
+        <div class="label">payments accepted by phone</div>
       </div>
     </div>
+
+    <p class="stat-bottom rv">3 phone numbers. 4 emails. 1 full voicemail box.<br>A billing portal with no human fallback.<br>A collection agency with 579 BBB complaints.</p>
   </div>
 </section>
 
 <div class="section-divider"></div>
 
 <!-- ======================================= -->
-<!-- KEY FINDINGS                             -->
-<!-- ======================================= -->
-<section class="section">
-  <div class="section-inner">
-    <h2 class="rv">Key Findings</h2>
-
-    <div class="finding-card rv" style="border-left:4px solid var(--red)">
-      <div class="finding-header">
-        <span class="severity severity-critical">critical</span>
-        <span class="finding-title">Salesforce Has No Phone-Based Billing Support</span>
-      </div>
-      <p>All 5 calls to Salesforce (800) 667-6389 ended the same way: a recorded message directing callers to billing.salesforce.com. There is no option to speak with a human. Pressing 3 for billing plays a recording and hangs up. A customer who wants to pay by phone simply cannot.</p>
-    </div>
-
-    <div class="finding-card rv" style="border-left:4px solid #7C3AED">
-      <div class="finding-header">
-        <span class="severity severity-irony">irony</span>
-        <span class="finding-title">Salesforce Recommends "Agentforce" on Their Billing Line</span>
-      </div>
-      <p>When you press 3 for billing, the recorded message says: "Please log in to our portal at billing.salesforce.com, where you can get assistance from <strong>Agentforce</strong>." Salesforce's own AI agent only exists behind a login wall on a portal. On the phone? A 47-second recorded message that ends with "Have a great day." No agent. No human. Nothing.</p>
-    </div>
-
-    <div class="finding-card rv" style="border-left:4px solid var(--red)">
-      <div class="finding-header">
-        <span class="severity severity-critical">critical</span>
-        <span class="finding-title">IVR System Crashed Mid-Call</span>
-      </div>
-      <p>On call #4, after failing to recognize DTMF inputs 3 times, the Salesforce IVR played: "We're sorry. An error has occurred. Please try back again later." The system crashed entirely. No fallback, no transfer to operator, no callback option.</p>
-    </div>
-
-    <div class="finding-card rv" style="border-left:4px solid var(--red)">
-      <div class="finding-header">
-        <span class="severity severity-critical">critical</span>
-        <span class="finding-title">Broken Voice Recognition Creates Infinite Loops</span>
-      </div>
-      <p>The IVR repeatedly failed to recognize button presses, playing "Sorry. We did not recognize your response" up to 3 times in a row before either crashing or playing the billing recording. DTMF tones were sent correctly by our system.</p>
-    </div>
-
-    <div class="finding-card rv" style="border-left:4px solid #F97316">
-      <div class="finding-header">
-        <span class="severity severity-high">high</span>
-        <span class="finding-title">Salesforce Uses Radius Global Solutions for Collections</span>
-      </div>
-      <p>Confirmed via 3 independent BBB complaints: Salesforce sends delinquent accounts to <strong>Radius Global Solutions</strong> (Edina, MN). Radius has 579 BBB complaints in 3 years and a 1.08/5 consumer rating. Their phone number is (888) 287-5711. Mystery shop calls in progress.</p>
-    </div>
-
-    <div class="finding-card rv" style="border-left:4px solid #F97316">
-      <div class="finding-header">
-        <span class="severity severity-high">high</span>
-        <span class="finding-title">Spanish Caller Stuck on Silent Hold for 5 Minutes</span>
-      </div>
-      <p>A Spanish-speaking caller to Radius Global Solutions pressed 0 for an operator and was placed on hold in complete silence. No hold music, no estimated wait time, no periodic reassurance. After 5 full minutes of dead air, the call was terminated by our system hitting the maximum duration limit. No one ever picked up.</p>
-    </div>
-
-    <div class="finding-card rv" style="border-left:4px solid #F97316">
-      <div class="finding-header">
-        <span class="severity severity-high">high</span>
-        <span class="finding-title">No Spanish Language Support Anywhere</span>
-      </div>
-      <p>Neither Salesforce nor Radius Global Solutions offered any Spanish language option. Our Spanish-speaking caller asked "Hay alguien que hable espanol?" on multiple calls and received only silence or English-only automated responses. For a company operating in the US market, this is a significant accessibility gap.</p>
-    </div>
-
-    <div class="finding-card rv" style="border-left:4px solid var(--amber)">
-      <div class="finding-header">
-        <span class="severity severity-medium">medium</span>
-        <span class="finding-title">No Real-Time Dispute Resolution Path</span>
-      </div>
-      <p>Customers who want to dispute a charge have no phone-based path to resolution. Salesforce's billing line directs to a portal. Radius Global Solutions goes to voicemail. A customer with a legitimate complaint about a $450 bill has no way to speak to anyone in real time.</p>
-    </div>
-
-    <div class="finding-card rv" style="border-left:4px solid #7C3AED">
-      <div class="finding-header">
-        <span class="severity severity-irony">irony</span>
-        <span class="finding-title">Salesforce Sells $50/seat/mo Collection Software</span>
-      </div>
-      <p>Salesforce Revenue Cloud includes collections management at $50/user/month. Yet their own AR operation sends delinquent accounts to Radius Global Solutions, a third-party collection agency with 579 BBB complaints in 3 years and a 1.08/5 consumer rating. Their billing phone line is a recorded message. No human. No AI agent. Just "log in to the portal."</p>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ======================================= -->
-<!-- SALESFORCE DIRECT CALLS                  -->
-<!-- ======================================= -->
-<section class="section">
-  <div class="section-inner">
-    <h2 class="rv">Mystery Shop Calls</h2>
-    <h3 class="rv">Salesforce Direct: (800) 667-6389</h3>
-
-    <div class="call-card rv">
-      <div class="call-header">
-        <div>
-          <span class="call-name">Polite Caller</span>
-          <span class="call-duration">95s</span>
-        </div>
-        <span class="outcome-badge outcome-fail">IVR Dead-End</span>
-      </div>
-      <p class="quote">&ldquo;Sorry. We did not recognize your response.&rdquo; <span style="color:var(--muted);font-style:normal">[repeated 3x]</span><br>&ldquo;Please log in to our portal at billing dot salesforce dot com. Have a great day.&rdquo;</p>
-      <p class="note">Caller tried to pay. Got "not recognized" loop, then a recorded message. No human option.</p>
-      <audio controls preload="none"><source src="https://dxc03zgurdly9.cloudfront.net/8d07faf8f18fe3ebbad88b5f24fbb5b3f27e0e3e3e14e3d17e2e1d3cc80f8fac/recording.wav" type="audio/wav"></audio>
-    </div>
-
-    <div class="call-card rv">
-      <div class="call-header">
-        <div>
-          <span class="call-name">Frustrated Caller</span>
-          <span class="call-duration">48s</span>
-        </div>
-        <span class="outcome-badge outcome-fail">IVR Dead-End</span>
-      </div>
-      <p class="quote">&ldquo;Yeah hi, look I've been trying to reach somebody about a bill for THREE DAYS...&rdquo;<br><span style="color:var(--red);font-weight:600">IVR:</span> &ldquo;Please log in to our portal at billing dot salesforce dot com.&rdquo;</p>
-      <p class="note">Caller expressed frustration. Got same recorded billing message. No human ever answered.</p>
-      <audio controls preload="none"><source src="https://dxc03zgurdly9.cloudfront.net/cfc1f88bf923e6a19e2b0e8028f2dfecd3371a11c1f63d5ad3340827c6089664/recording.wav" type="audio/wav"></audio>
-    </div>
-
-    <div class="call-card rv">
-      <div class="call-header">
-        <div>
-          <span class="call-name">Spanish Caller</span>
-          <span class="call-duration">89s</span>
-        </div>
-        <span class="outcome-badge outcome-fail">No Spanish Support</span>
-      </div>
-      <p class="quote">&ldquo;No hablo ingles, lo siento. Hay alguien que hable espanol?&rdquo;<br><span style="color:var(--red);font-weight:600">[Dead silence. Call ended.]</span></p>
-      <p class="note">No Spanish option in IVR. Caller asked for Spanish speaker, got nothing. Pressed 0 for operator -- no response.</p>
-      <audio controls preload="none"><source src="https://dxc03zgurdly9.cloudfront.net/697c5ed78f7855918963a09dadaa00b4927075bda759d43cdfbcc8c18e1d9933/recording.wav" type="audio/wav"></audio>
-    </div>
-
-    <div class="call-card highlight rv">
-      <div class="call-header">
-        <div>
-          <span class="call-name red">IVR System Crash</span>
-          <span class="call-duration">73s</span>
-        </div>
-        <span class="outcome-badge outcome-fail">System Error</span>
-      </div>
-      <p class="quote"><span style="color:var(--red);font-weight:600">IVR:</span> &ldquo;Sorry. We did not recognize your response.&rdquo; <span style="color:var(--muted);font-style:normal">[3 times]</span><br><span style="color:var(--red);font-weight:600">IVR:</span> &ldquo;We're sorry. An error has occurred. Please try back again later.&rdquo;<br><span style="color:var(--red);font-weight:600">[System crashed. No human, no message, nothing.]</span></p>
-      <audio controls preload="none"><source src="https://dxc03zgurdly9.cloudfront.net/2531788d674720c83184ccfd0485006a6ccb3ca30faeb5e1dccf0ade8304bef2/recording.wav" type="audio/wav"></audio>
-    </div>
-
-    <div class="call-card rv">
-      <div class="call-header">
-        <div>
-          <span class="call-name">Dispute Caller</span>
-          <span class="call-duration">72s</span>
-        </div>
-        <span class="outcome-badge outcome-fail">IVR Dead-End</span>
-      </div>
-      <p class="quote">&ldquo;Hi, I need to speak with someone about a bill I received. The job wasn't done right...&rdquo;<br><span style="color:var(--red);font-weight:600">IVR:</span> &ldquo;Please log in to our portal... Have a great day.&rdquo; <span style="color:var(--muted);font-style:normal">[Hung up on customer]</span></p>
-      <p class="note">Customer with a legitimate dispute has no phone path to resolution.</p>
-      <audio controls preload="none"><source src="https://dxc03zgurdly9.cloudfront.net/f8035aadc5616ad82dc2cedfdd126e108cd4edbfe9677e998f088da7d7367bf4/recording.wav" type="audio/wav"></audio>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ======================================= -->
-<!-- RADIUS GLOBAL SOLUTIONS CALLS            -->
-<!-- ======================================= -->
-<section class="section">
-  <div class="section-inner">
-    <h2 class="rv">Radius Global Solutions</h2>
-    <p class="rv">Salesforce's collection agency. Tested toll-free (877) 643-4549 and local (951) 693-3318. Both answer as "Reliance Incorporated."</p>
-
-    <div class="call-card highlight-purple rv">
-      <div class="call-header">
-        <div>
-          <span class="call-name" style="color:#7C3AED">Spanish Caller on Silent Hold</span>
-          <span class="call-duration">301s (5 min 1s)</span>
-        </div>
-        <span class="outcome-badge outcome-timeout">Max Duration</span>
-      </div>
-      <p class="quote">&ldquo;Hola, estoy llamando sobre una factura...&rdquo;<br><span style="color:var(--red);font-weight:600">IVR:</span> &ldquo;Thank you for calling for Alliance Incorporated.&rdquo;<br><span style="color:#7C3AED;font-weight:600">[DEAD SILENCE FOR 5 MINUTES. Nobody ever picked up. Call terminated at max duration.]</span></p>
-      <p class="note">Worst outcome of all 15 calls. Caller sat in dead silence until the system cut them off.</p>
-      <audio controls preload="none"><source src="https://dxc03zgurdly9.cloudfront.net/e3fe1584ac752f80179c08671117ebae040fbf76d52015a1ae02c1d1db10d616/recording.wav" type="audio/wav"></audio>
-    </div>
-
-    <div class="call-card rv">
-      <div class="call-header">
-        <div>
-          <span class="call-name">Polite Caller</span>
-          <span class="call-duration">52s</span>
-          <span class="call-target">Toll-free</span>
-        </div>
-        <span class="outcome-badge outcome-voicemail">Voicemail</span>
-      </div>
-      <p class="quote"><span style="color:#F97316;font-weight:600">IVR:</span> &ldquo;Thank you for calling Reliance Incorporated. Our office is closed.&rdquo;<br>&ldquo;Hi, my name is Mike from Salesforce. I have an outstanding balance I would like to pay.&rdquo;<br><span style="color:#F97316;font-weight:600">IVR:</span> &ldquo;The person at extension 2201 is unavailable.&rdquo;</p>
-      <audio controls preload="none"><source src="https://dxc03zgurdly9.cloudfront.net/45a2d188ea41f288e0707fe191d3cd079c3fa22d3b500c48d2c9d68f138b1ad5/recording.wav" type="audio/wav"></audio>
-    </div>
-
-    <div class="call-card rv">
-      <div class="call-header">
-        <div>
-          <span class="call-name">Frustrated Caller</span>
-          <span class="call-duration">41s</span>
-          <span class="call-target">Toll-free</span>
-        </div>
-        <span class="outcome-badge outcome-voicemail">Voicemail</span>
-      </div>
-      <p class="quote">&ldquo;I have been trying to pay my balance for THREE DAYS and nobody answers. This is unacceptable.&rdquo;<br><span style="color:#F97316;font-weight:600">IVR:</span> &ldquo;The person at extension 2201 is unavailable.&rdquo;</p>
-      <audio controls preload="none"><source src="https://dxc03zgurdly9.cloudfront.net/1c35a5078ba6dbcb19822ebf2afbf9530f859541ac6761ae8fe68b69a259e05a/recording.wav" type="audio/wav"></audio>
-    </div>
-
-    <div class="call-card rv">
-      <div class="call-header">
-        <div>
-          <span class="call-name">Dispute Caller</span>
-          <span class="call-duration">56s</span>
-          <span class="call-target">Toll-free</span>
-        </div>
-        <span class="outcome-badge outcome-voicemail">Voicemail</span>
-      </div>
-      <p class="quote">&ldquo;You guys did some drain work for me about a month ago but the drain is still clogged. I'm calling about the $450 bill because I don't think I should pay full price when the job wasn't done right.&rdquo;</p>
-      <p class="note">Customer with legitimate complaint left voicemail. No way to dispute in real-time. Extension 2201 unavailable.</p>
-      <audio controls preload="none"><source src="https://dxc03zgurdly9.cloudfront.net/c33e72bef3739ec04266207bbf830068d1f7b6975a9f0d21f568e4123a69327b/recording.wav" type="audio/wav"></audio>
-    </div>
-
-    <div class="call-card rv">
-      <div class="call-header">
-        <div>
-          <span class="call-name">Polite Caller</span>
-          <span class="call-duration">51s</span>
-          <span class="call-target">Local line</span>
-        </div>
-        <span class="outcome-badge outcome-voicemail">Voicemail</span>
-      </div>
-      <p class="quote"><span style="color:#F97316;font-weight:600">IVR:</span> &ldquo;Thank you for calling Reliance Incorporated. Our office is closed.&rdquo;<br>&ldquo;I have an outstanding balance with Reliance Incorporated that I'd like to pay.&rdquo;</p>
-      <p class="note">Local number routes to identical voicemail system. Same ext 2201 unavailable.</p>
-      <audio controls preload="none"><source src="https://dxc03zgurdly9.cloudfront.net/3d021aee0a1c9ff9468512565b51d32f13e33ecbeded28abe2650421c5f30ecb/recording.wav" type="audio/wav"></audio>
-    </div>
-
-    <div class="call-card rv">
-      <div class="call-header">
-        <div>
-          <span class="call-name">Spanish Caller</span>
-          <span class="call-duration">41s</span>
-          <span class="call-target">Local line</span>
-        </div>
-        <span class="outcome-badge outcome-fail">No Spanish Support</span>
-      </div>
-      <p class="quote">&ldquo;Hay alguien que hable espanol?&rdquo;<br><span style="color:var(--red);font-weight:600">[No response]</span><br>&ldquo;Gracias por su tiempo. Adios.&rdquo;</p>
-      <audio controls preload="none"><source src="https://dxc03zgurdly9.cloudfront.net/55b3f1e83667197fb6a924a4bc91981f6f335895180849f68ccdb98672b95adc/recording.wav" type="audio/wav"></audio>
-    </div>
-
-    <div class="call-card rv">
-      <div class="call-header">
-        <div>
-          <span class="call-name">Frustrated Caller</span>
-          <span class="call-duration">41s</span>
-          <span class="call-target">Local line</span>
-        </div>
-        <span class="outcome-badge outcome-voicemail">Voicemail</span>
-      </div>
-      <p class="quote">&ldquo;I have been trying to pay my balance for THREE DAYS and nobody answers. This is unacceptable.&rdquo;<br><span style="color:#F97316;font-weight:600">IVR:</span> &ldquo;The person at extension 2201 is unavailable.&rdquo;</p>
-      <audio controls preload="none"><source src="https://dxc03zgurdly9.cloudfront.net/3cc2d263f8ecacf23fca6382ea87b3720e2d13994d0960602c8b50b77577783f/recording.wav" type="audio/wav"></audio>
-    </div>
-
-    <div class="call-card rv">
-      <div class="call-header">
-        <div>
-          <span class="call-name">Dispute Caller</span>
-          <span class="call-duration">57s</span>
-          <span class="call-target">Local line</span>
-        </div>
-        <span class="outcome-badge outcome-voicemail">Voicemail</span>
-      </div>
-      <p class="quote">&ldquo;I don't think I should pay full price when the job wasn't done right. My number is 949-741-7328. Please have someone call me back.&rdquo;</p>
-      <p class="note">Identical outcome to toll-free dispute call. Zero real-time resolution path.</p>
-      <audio controls preload="none"><source src="https://dxc03zgurdly9.cloudfront.net/633f4172da72e3712678e39557b6f81178748336d35a1472bfa878f84268ee0e/recording.wav" type="audio/wav"></audio>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ======================================= -->
-<!-- WHAT WE HEARD                            -->
-<!-- ======================================= -->
-<section class="section">
-  <div class="section-inner">
-    <h2 class="rv">What We Heard</h2>
-    <div class="blockquote blockquote-red rv">&ldquo;Sorry. We did not recognize your response.&rdquo; &mdash; Salesforce IVR, repeated 3 times before crashing</div>
-    <div class="blockquote blockquote-red rv">&ldquo;We're sorry. An error has occurred. Please try back again later.&rdquo; &mdash; Salesforce IVR after crashing</div>
-    <div class="blockquote rv">&ldquo;Please log in to our portal at billing dot salesforce dot com. You can also email us at billing at salesforce dot com. Have a great day.&rdquo; &mdash; Salesforce billing department (the only response available)</div>
-    <div class="blockquote blockquote-red rv">&ldquo;Thank you for calling Reliance Incorporated.&rdquo; &mdash; Radius Global Solutions, answering under the wrong company name</div>
-    <div class="blockquote blockquote-red rv">[5 minutes of dead silence] &mdash; Radius Global Solutions hold line, Spanish caller, before system timeout</div>
-    <div class="blockquote rv">&ldquo;The person at extension 2201 is unavailable.&rdquo; &mdash; Radius Global Solutions, on every single call</div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ======================================= -->
-<!-- RADIUS SSN PORTAL                        -->
-<!-- ======================================= -->
-<section class="section">
-  <div class="section-inner">
-    <h2 class="rv">Radius Global Solutions Collection Portal</h2>
-    <p class="rv">Salesforce outsources overdue AR to Radius Global Solutions. Here's what their online payment experience looks like:</p>
-
-    <div class="finding-card rv" style="border-left:4px solid #F97316">
-      <div class="finding-header">
-        <span class="severity severity-high">high</span>
-        <span class="finding-title">WordPress-Based Payment Portal</span>
-      </div>
-      <p>Radius Global Solutions' payment portal (paymentportal.radiusgs.com) is the page Salesforce's delinquent customers land on. Radius has 579 BBB complaints in 3 years and a 1.08/5 consumer rating. This is the collections experience for a $300B CRM company.</p>
-    </div>
-
-    <div class="finding-card rv" style="border-left:4px solid var(--amber)">
-      <div class="finding-header">
-        <span class="severity severity-medium">medium</span>
-        <span class="finding-title">Visa Debit Only</span>
-      </div>
-      <p>The payment portal only accepts Visa debit cards. No Mastercard, no Amex, no ACH, no credit cards. This severely limits a debtor's ability to pay and creates unnecessary friction in the resolution process.</p>
-    </div>
-
-    <div class="finding-card rv" style="border-left:4px solid var(--amber)">
-      <div class="finding-header">
-        <span class="severity severity-medium">medium</span>
-        <span class="finding-title">Maximum 3 Installments</span>
-      </div>
-      <p>Payment plans are limited to a maximum of 3 installments. For larger balances, this creates hardship and reduces the likelihood of successful recovery.</p>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ======================================= -->
-<!-- EMAIL TEST                               -->
-<!-- ======================================= -->
-<section class="section">
-  <div class="section-inner">
-    <h2 class="rv">Email Responsiveness Test</h2>
-
-    <div class="email-list rv">
-      <div class="email-row"><span>&#x2705;</span> <code>contactus@salesforce.com</code> <span class="email-status">- sent</span></div>
-      <div class="email-row"><span>&#x2705;</span> <code>billing@salesforce.com</code> <span class="email-status">- sent</span></div>
-      <div class="email-row"><span>&#x2705;</span> <code>customerservice@salesforce.com</code> <span class="email-status">- sent</span></div>
-      <div class="email-row"><span>&#x2705;</span> <code>ar@salesforce.com</code> <span class="email-status">- sent</span></div>
-    </div>
-
-    <p class="rv" style="font-size:14px;color:var(--muted)">Emails sent March 27, 2026. Response times tracked for 72 hours.</p>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ======================================= -->
-<!-- HERE'S WHAT IT SHOULD LOOK LIKE          -->
+<!-- 8. "Here's what it should look like."   -->
 <!-- ======================================= -->
 <section class="confetti-section" id="payoff">
   <div class="confetti-container" id="confettiContainer"></div>
@@ -671,11 +459,11 @@ details[open] summary::before{content:'- '}
         </div>
         <div style="padding:20px;font-size:14px;color:var(--muted);line-height:1.8">
           <div style="margin-bottom:8px">Customer calls <strong style="color:var(--text)">(800) 667-6389</strong></div>
-          <div style="margin-bottom:8px">IVR plays recorded message &rarr; hangs up</div>
-          <div style="margin-bottom:8px">No human. No agent. No billing support.</div>
-          <div style="margin-bottom:8px">Collection agency: 579 BBB complaints</div>
-          <div style="margin-bottom:8px">4 emails, 0 replies</div>
-          <div style="font-weight:600;color:var(--red);margin-top:12px">0 payments collected</div>
+          <div style="margin-bottom:8px">IVR says "go to the website" and hangs up</div>
+          <div style="margin-bottom:8px">Billing direct line: mailbox full</div>
+          <div style="margin-bottom:8px">Portal is login-gated, no phone support</div>
+          <div style="margin-bottom:8px">Past-due accounts go to 1-star agency</div>
+          <div style="font-weight:600;color:var(--red);margin-top:12px">0 payments collected by phone</div>
         </div>
       </div>
       <!-- AFTER -->
@@ -733,31 +521,31 @@ details[open] summary::before{content:'- '}
       <div class="pm-body">
         <div class="pm-row">
           <span class="pm-label">Customer</span>
-          <span class="pm-value">Salesforce</span>
+          <span class="pm-value">Acme Corp</span>
         </div>
         <div class="pm-row">
-          <span class="pm-label">Service</span>
-          <span class="pm-value">CRM Subscription</span>
+          <span class="pm-label">Product</span>
+          <span class="pm-value">Sales Cloud Enterprise</span>
         </div>
         <div class="pm-row">
           <span class="pm-label">Due date</span>
           <span class="pm-value">March 15, 2026</span>
         </div>
-        <div class="pm-amount">$450.00</div>
+        <div class="pm-amount">$24,750.00</div>
         <button class="pm-btn" onclick="return false">Pay Now</button>
-        <div class="pm-plan">Split into 3 payments of $150.00</div>
+        <div class="pm-plan">Split into 3 payments of $8,250.00</div>
       </div>
       <div class="pm-footer">Powered by AgentCollect</div>
     </div>
 
     <div class="payoff rv">
-      <p>No recorded messages. No IVR loops. No voicemail.<br><strong>Just a link and a conversation.</strong></p>
+      <p>No IVR dead ends. No full mailboxes. No login walls.<br><strong>Just a conversation and a payment link.</strong></p>
     </div>
   </div>
 </section>
 
 <!-- ======================================= -->
-<!-- CTA                                      -->
+<!-- CTA                                     -->
 <!-- ======================================= -->
 <section class="cta" id="cta">
   <div class="rv">
@@ -774,7 +562,7 @@ details[open] summary::before{content:'- '}
 
 <!-- FOOTER -->
 <footer class="audit-footer">
-  <p>This audit was conducted using AI-powered mystery shopping to objectively assess accounts receivable performance. March 2026.</p>
+  <p>This audit is based on publicly available information and mystery shopping conducted March 2026.</p>
   <p style="margin-top:8px">Built by <a href="https://agentcollect.com">AgentCollect</a></p>
 </footer>
 
@@ -815,9 +603,9 @@ async function startAuditCall() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         company_name: 'Salesforce',
-        product: 'CRM Subscription',
-        amount: '$450',
-        company_context: 'Salesforce is a cloud-based CRM platform. The customer has an outstanding balance for their CRM subscription renewal.',
+        product: 'Sales Cloud Enterprise',
+        amount: '$24,750',
+        company_context: 'Salesforce is the world\'s leading CRM platform. The customer Acme Corp has an outstanding invoice for their Sales Cloud Enterprise subscription.',
         dispute_playbook: ''
       })
     });
@@ -831,7 +619,7 @@ async function startAuditCall() {
     awRetellClient.on('call_started', function() {
       document.getElementById('aw-connecting').style.display = 'none';
       document.getElementById('aw-active').style.display = 'flex';
-      document.getElementById('aw-status').textContent = 'Your turn \u2014 speak now';
+      document.getElementById('aw-status').textContent = 'Your turn — speak now';
       try{gtag('event','audit_call_started',{page:'salesforce-hack'})}catch(e){}
     });
 
@@ -841,7 +629,7 @@ async function startAuditCall() {
       document.getElementById('aw-status').textContent = 'Salesforce Agent speaking...';
     });
     awRetellClient.on('agent_stop_talking', function() {
-      document.getElementById('aw-status').textContent = 'Your turn \u2014 speak now';
+      document.getElementById('aw-status').textContent = 'Your turn — speak now';
     });
 
     awRetellClient.on('update', function(update) {
@@ -864,7 +652,7 @@ async function startAuditCall() {
     document.getElementById('aw-connecting').style.display = 'none';
     document.getElementById('aw-idle').style.display = 'flex';
     var lbl = document.getElementById('aw-label');
-    lbl.textContent = 'Connection failed \u2014 try again';
+    lbl.textContent = 'Connection issue — try again';
     lbl.style.color = '#ef4444';
     setTimeout(function() { lbl.textContent = 'Talk to the Salesforce agent'; lbl.style.color = ''; }, 3000);
   }
@@ -876,10 +664,10 @@ function endAuditCall() {
   document.getElementById('aw-active').style.display = 'none';
   document.getElementById('aw-connecting').style.display = 'none';
   document.getElementById('aw-idle').style.display = 'flex';
-  document.getElementById('aw-label').textContent = 'Call ended \u2014 tap to try again';
+  document.getElementById('aw-label').textContent = 'Call ended — tap to try again';
 }
 
-// Confetti on payoff section reveal
+// Confetti on payment mockup reveal
 (function(){
   var container = document.getElementById('confettiContainer');
   var section = document.getElementById('payoff');
