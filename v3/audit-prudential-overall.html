@@ -98,6 +98,52 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .timeline-result{font-size:14px;color:var(--muted);line-height:1.5}
 .timeline-result .hl{color:var(--red);font-weight:700}
 
+/* MYSTERY CALLS */
+.mystery-section{padding:100px 48px;background:#0B1B3D;position:relative;overflow:hidden}
+.mystery-section::before{content:'';position:absolute;width:800px;height:800px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(79,70,229,.1) 0%,transparent 60%);border-radius:50%;pointer-events:none}
+.mystery-inner{max-width:800px;margin:0 auto}
+.mystery-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.35);margin-bottom:12px}
+.mystery-title{font-size:clamp(24px,3vw,36px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px;color:#fff}
+.mystery-sub{font-size:16px;color:rgba(255,255,255,.45);margin-bottom:48px;line-height:1.5}
+.call-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px;margin-bottom:20px;transition:border-color .3s}
+.call-card:hover{border-color:rgba(79,70,229,.3)}
+.call-card:last-child{margin-bottom:0}
+.call-card-header{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px}
+.call-card-info h3{font-size:17px;font-weight:800;color:#fff;margin-bottom:4px}
+.call-card-info .call-number{font-size:13px;color:rgba(255,255,255,.4);font-family:var(--mono);font-weight:500}
+.call-card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.call-card-date{font-size:12px;color:rgba(255,255,255,.35);font-weight:500}
+.call-badge{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.call-badge.duration{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
+.call-badge.result{background:rgba(220,38,38,.15);color:#fca5a5;border:1px solid rgba(220,38,38,.25)}
+.call-audio{margin:16px 0}
+.call-audio audio{width:100%;height:40px;border-radius:8px;outline:none}
+.call-audio audio::-webkit-media-controls-panel{background:rgba(255,255,255,.06);border-radius:8px}
+.call-audio audio::-webkit-media-controls-play-button{color:#fff}
+.call-audio audio::-webkit-media-controls-current-time-display,.call-audio audio::-webkit-media-controls-time-remaining-display{color:rgba(255,255,255,.6);font-size:11px}
+.call-audio-placeholder{padding:12px 16px;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.1);border-radius:8px;font-size:12px;color:rgba(255,255,255,.25);font-style:italic}
+.call-transcript-toggle{display:flex;align-items:center;gap:6px;background:none;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;color:rgba(255,255,255,.5);cursor:pointer;transition:all .2s;font-family:var(--sans);margin-top:12px}
+.call-transcript-toggle:hover{border-color:rgba(79,70,229,.4);color:rgba(255,255,255,.8)}
+.call-transcript-toggle svg{width:14px;height:14px;transition:transform .3s}
+.call-transcript-toggle.open svg{transform:rotate(180deg)}
+.call-transcript{display:none;margin-top:16px;padding:16px;background:rgba(0,0,0,.2);border-radius:12px;max-height:200px;overflow-y:auto}
+.call-transcript.open{display:block}
+.call-transcript::-webkit-scrollbar{width:4px}
+.call-transcript::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
+.ct-msg{padding:8px 12px;border-radius:10px;font-size:13px;line-height:1.5;margin-bottom:8px;max-width:85%}
+.ct-msg:last-child{margin-bottom:0}
+.ct-msg.agent{background:rgba(79,70,229,.2);color:rgba(255,255,255,.85);margin-right:auto}
+.ct-msg.system{background:rgba(255,255,255,.06);color:rgba(255,255,255,.5);margin-left:auto;text-align:right}
+.ct-msg-role{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px;opacity:.6}
+.mystery-summary{margin-top:48px;text-align:center;padding:28px;background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.2);border-radius:14px}
+.mystery-summary-stat{font-size:clamp(18px,2.5vw,24px);font-weight:900;color:#fca5a5;letter-spacing:-.02em}
+
+@media(max-width:768px){
+  .mystery-section{padding:60px 24px}
+  .call-card{padding:20px}
+  .call-card-header{flex-direction:column}
+}
+
 /* COST */
 .cost-section{padding:80px 48px;background:linear-gradient(180deg,#f6f3ef 0%,#F8F7F5 100%);text-align:center;position:relative}
 .cost-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--red),transparent);opacity:.3}
@@ -418,6 +464,139 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       <div class="timeline-day">Day 4 &mdash; Thursday 9:45 AM</div>
       <div class="timeline-action">Called again. (800) 767-5536</div>
       <div class="timeline-result"><span class="hl">Same result.</span> Hold, transfer, voicemail. A customer trying to pay would have given up by now.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2B: MYSTERY CALLS -->
+<section class="mystery-section">
+  <div class="mystery-inner">
+    <div class="rv">
+      <div class="mystery-label">Mystery calls</div>
+      <h2 class="mystery-title">We called. Here's what happened.</h2>
+      <p class="mystery-sub">Real calls to real numbers. Recorded and transcribed.</p>
+    </div>
+
+    <!-- Call 1: Prudential Overall Supply -->
+    <div class="call-card rv rv-d1">
+      <div class="call-card-header">
+        <div class="call-card-info">
+          <h3>Prudential Overall Supply</h3>
+          <span class="call-number">(800) 767-5536</span>
+        </div>
+        <div class="call-card-meta">
+          <span class="call-card-date">Mar 26, 2026 &middot; 5:00 PM PT</span>
+          <span class="call-badge duration">3 min</span>
+          <span class="call-badge result">VOICEMAIL</span>
+        </div>
+      </div>
+      <div class="call-audio">
+        <!-- Recording not yet available -->
+        <div class="call-audio-placeholder">Recording uploading &mdash; check back shortly</div>
+      </div>
+      <button class="call-transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        View transcript
+      </button>
+      <div class="call-transcript">
+        <div class="ct-msg agent">
+          <div class="ct-msg-role">Agent</div>
+          Called main line. Automated greeting. Pressed option for billing.
+        </div>
+        <div class="ct-msg system">
+          <div class="ct-msg-role">System</div>
+          2 minutes on hold. Hold music playing.
+        </div>
+        <div class="ct-msg system">
+          <div class="ct-msg-role">System</div>
+          Transferred once.
+        </div>
+        <div class="ct-msg system">
+          <div class="ct-msg-role">System</div>
+          Sent to accounts receivable voicemail. No option to reach a human.
+        </div>
+      </div>
+    </div>
+
+    <!-- Call 2: UniFirst Corporation -->
+    <div class="call-card rv rv-d2">
+      <div class="call-card-header">
+        <div class="call-card-info">
+          <h3>UniFirst Corporation</h3>
+          <span class="call-number">(888) 449-9612</span>
+        </div>
+        <div class="call-card-meta">
+          <span class="call-card-date">Mar 26, 2026 &middot; 5:14 PM PT</span>
+          <span class="call-badge duration">1 min 10s</span>
+          <span class="call-badge result">MAILBOX FULL</span>
+        </div>
+      </div>
+      <div class="call-audio">
+        <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/154b581f65d937481f5b5dd380e63f1ac26de5ce6415f4ef1e69882b3f576ea7/recording.wav"></audio>
+      </div>
+      <button class="call-transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        View transcript
+      </button>
+      <div class="call-transcript">
+        <div class="ct-msg agent">
+          <div class="ct-msg-role">Agent</div>
+          Called UniFirst main line.
+        </div>
+        <div class="ct-msg system">
+          <div class="ct-msg-role">System</div>
+          Automated message played. Standard IVR greeting.
+        </div>
+        <div class="ct-msg system">
+          <div class="ct-msg-role">System</div>
+          Mailbox is full. Cannot leave a message. Call terminated.
+        </div>
+      </div>
+    </div>
+
+    <!-- Call 3: Kimble Companies -->
+    <div class="call-card rv rv-d3">
+      <div class="call-card-header">
+        <div class="call-card-info">
+          <h3>Kimble Companies</h3>
+          <span class="call-number">(330) 343-1226</span>
+        </div>
+        <div class="call-card-meta">
+          <span class="call-card-date">Mar 26, 2026 &middot; 6:26 PM PT</span>
+          <span class="call-badge duration">1 min 10s</span>
+          <span class="call-badge result">IVR LOOP &mdash; NO BILLING OPTION</span>
+        </div>
+      </div>
+      <div class="call-audio">
+        <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/0b28135caeaecd575f4531ac49f3de3d4251cfb197cfee21d83955cf27df0915/recording.wav"></audio>
+      </div>
+      <button class="call-transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        View transcript
+      </button>
+      <div class="call-transcript">
+        <div class="ct-msg agent">
+          <div class="ct-msg-role">Agent</div>
+          Called Kimble Companies HQ.
+        </div>
+        <div class="ct-msg system">
+          <div class="ct-msg-role">System</div>
+          IVR offers 3 options: gas emergency, refuse/recycling, mining.
+        </div>
+        <div class="ct-msg system">
+          <div class="ct-msg-role">System</div>
+          No billing or accounts receivable option available.
+        </div>
+        <div class="ct-msg agent">
+          <div class="ct-msg-role">Agent</div>
+          Cycled through IVR 3 times. No path to billing department. Hung up.
+        </div>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="mystery-summary rv">
+      <div class="mystery-summary-stat">3 calls. 0 humans reached. 0 payments collected.</div>
     </div>
   </div>
 </section>
