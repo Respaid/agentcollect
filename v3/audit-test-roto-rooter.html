@@ -96,6 +96,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .call-badge{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 .call-badge.duration{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
 .call-badge.result{background:rgba(16,185,129,.15);color:#6ee7b7;border:1px solid rgba(16,185,129,.25)}
+.call-badge.result-amber{background:rgba(245,158,11,.15);color:#fbbf24;border:1px solid rgba(245,158,11,.25)}
 .call-audio{margin:16px 0}
 .call-audio audio{width:100%;height:40px;border-radius:8px;outline:none}
 .call-audio audio::-webkit-media-controls-panel{background:rgba(255,255,255,.06);border-radius:8px}
@@ -121,6 +122,28 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   .mystery-section{padding:60px 24px}
   .call-card{padding:20px}
   .call-card-header{flex-direction:column}
+}
+
+/* COMING SOON */
+.coming-section{padding:80px 48px;background:#0f1729;position:relative}
+.coming-inner{max-width:800px;margin:0 auto}
+.coming-card{border:2px dashed rgba(255,255,255,.12);border-radius:16px;padding:32px;background:rgba(255,255,255,.02)}
+.coming-header{display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.coming-header-icon{font-size:20px}
+.coming-header h3{font-size:20px;font-weight:800;color:rgba(255,255,255,.7);letter-spacing:-.02em}
+.coming-header .coming-tag{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.06);color:rgba(255,255,255,.35);margin-left:auto}
+.coming-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.coming-item:last-child{border-bottom:none}
+.coming-item-icon{font-size:16px;flex-shrink:0;line-height:1.5}
+.coming-item-text{font-size:14px;color:rgba(255,255,255,.5);line-height:1.5;flex:1}
+.coming-item-text strong{color:rgba(255,255,255,.7);font-weight:700}
+.coming-status{display:inline-flex;align-items:center;padding:3px 10px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;flex-shrink:0}
+.coming-status.scheduled{background:rgba(255,255,255,.06);color:rgba(255,255,255,.3)}
+.coming-status.completed{background:rgba(16,185,129,.15);color:#6ee7b7}
+.coming-status.no-response{background:rgba(220,38,38,.15);color:#fca5a5}
+@media(max-width:768px){
+  .coming-section{padding:60px 24px}
+  .coming-card{padding:20px}
 }
 
 /* COST */
@@ -315,61 +338,196 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       <p class="mystery-sub">Real calls to real numbers. Recorded and transcribed.</p>
     </div>
 
-    <!-- Call 1: Roto-Rooter National Line -->
+    <!-- Call 1: Polite Client -->
     <div class="call-card rv rv-d1">
       <div class="call-card-header">
         <div class="call-card-info">
-          <h3>Roto-Rooter &mdash; National Line</h3>
-          <span class="call-number">(800) 768-6911</span>
+          <h3>Scenario 1: Polite Client</h3>
+          <span class="call-number">(800) 768-6911 &middot; Pressed 3&rarr;6 (billing)</span>
         </div>
         <div class="call-card-meta">
-          <span class="call-card-date">Mar 26, 2026 &middot; 8:03 PM PT</span>
           <span class="call-badge duration">1 min 50s</span>
-          <span class="call-badge result">VOICEMAIL &mdash; BILLING DEPT</span>
+          <span class="call-badge result-amber">VOICEMAIL</span>
         </div>
       </div>
       <div class="call-audio">
         <audio controls preload="metadata" src="https://dxc03zgurdly9.cloudfront.net/8ed381b9ee9d2728f5de2bfa7966fe17db66f0c32cac82b9f4768e5de7689636/recording.wav"></audio>
       </div>
-      <button class="call-transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        View transcript
-      </button>
-      <div class="call-transcript">
-        <div class="ct-msg system">
-          <div class="ct-msg-role">IVR</div>
-          Thank you for choosing Roto Rooter... To place a new order, press one. To check-in an existing order, press two. For administrative calls, press three.
+    </div>
+
+    <!-- Call 2: Hospitalized Client -->
+    <div class="call-card rv rv-d1" style="border-color:rgba(16,185,129,.25)">
+      <div class="call-card-header">
+        <div class="call-card-info">
+          <h3>Scenario 2: Hospitalized Client</h3>
+          <span class="call-number">(800) 768-6911 &middot; Pressed 0 &rarr; Human answered</span>
         </div>
-        <div class="ct-msg agent">
-          <div class="ct-msg-role">Agent</div>
-          [Pressed 3]
+        <div class="call-card-meta">
+          <span class="call-badge duration">1 min 15s</span>
+          <span class="call-badge result">HUMAN REACHED</span>
         </div>
-        <div class="ct-msg system">
-          <div class="ct-msg-role">IVR</div>
-          Administrative office for Roto Rooter in New York... To leave a message about billing for other services, press six.
+      </div>
+      <div class="call-audio">
+        <audio controls preload="metadata" src="https://dxc03zgurdly9.cloudfront.net/6793f31b30d8e0efe91ad4e48f38046c5524f5500a5d87c4c63e4aebacda0e68/recording.wav"></audio>
+      </div>
+      <div style="margin-top:12px;padding:14px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.15);border-radius:10px">
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#6ee7b7;margin-bottom:8px">Transcript Highlight</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.6">
+          <strong style="color:rgba(255,255,255,.8)">Mike:</strong> &ldquo;I was in the hospital for a month...&rdquo;<br>
+          <strong style="color:rgba(255,255,255,.8)">Dyshanta:</strong> &ldquo;You have a service with Roto Rooter?&rdquo;
         </div>
-        <div class="ct-msg agent">
-          <div class="ct-msg-role">Agent</div>
-          [Pressed 6]
+      </div>
+    </div>
+
+    <!-- Call 3: Frustrated Client -->
+    <div class="call-card rv rv-d2">
+      <div class="call-card-header">
+        <div class="call-card-info">
+          <h3>Scenario 3: Frustrated Client</h3>
+          <span class="call-number">(800) 768-6911 &middot; Pressed 3&rarr;6 (billing)</span>
         </div>
-        <div class="ct-msg system">
-          <div class="ct-msg-role">IVR</div>
-          Please wait while your call is being transferred.
+        <div class="call-card-meta">
+          <span class="call-badge duration">1 min 48s</span>
+          <span class="call-badge result-amber">VOICEMAIL</span>
         </div>
-        <div class="ct-msg system">
-          <div class="ct-msg-role">IVR</div>
-          [Voicemail beep]
+      </div>
+      <div class="call-audio">
+        <audio controls preload="metadata" src="https://dxc03zgurdly9.cloudfront.net/9a933dab094227b68cc246768d29dc6f4c9755c26d94cf200b7d61526283e5d0/recording.wav"></audio>
+      </div>
+    </div>
+
+    <!-- Call 4: Financial Hardship -->
+    <div class="call-card rv rv-d2">
+      <div class="call-card-header">
+        <div class="call-card-info">
+          <h3>Scenario 4: Financial Hardship</h3>
+          <span class="call-number">(800) 768-6911 &middot; Pressed 3&rarr;6 (billing)</span>
         </div>
-        <div class="ct-msg agent">
-          <div class="ct-msg-role">Agent</div>
-          Hi, my name is Mike from Summit Services. I have a balance on my account and I would like to pay. Please call me back at 949-741-7328. Again, 949-741-7328. Thank you.
+        <div class="call-card-meta">
+          <span class="call-badge duration">1 min 59s</span>
+          <span class="call-badge result-amber">VOICEMAIL</span>
         </div>
+      </div>
+      <div class="call-audio">
+        <audio controls preload="metadata" src="https://dxc03zgurdly9.cloudfront.net/b56496938809016a8d8a55523d25984cf4fc14f8dc3e81e5d07fabd77c33498f/recording.wav"></audio>
+      </div>
+    </div>
+
+    <!-- Call 5: Dispute -->
+    <div class="call-card rv rv-d3">
+      <div class="call-card-header">
+        <div class="call-card-info">
+          <h3>Scenario 5: Dispute</h3>
+          <span class="call-number">(800) 768-6911 &middot; Pressed 3&rarr;6 (billing)</span>
+        </div>
+        <div class="call-card-meta">
+          <span class="call-badge duration">1 min 51s</span>
+          <span class="call-badge result-amber">VOICEMAIL</span>
+        </div>
+      </div>
+      <div class="call-audio">
+        <audio controls preload="metadata" src="https://dxc03zgurdly9.cloudfront.net/f0d7bae36078ca19f454081663c86e962c197dfa2c3993104ce9ef75b44dd3d1/recording.wav"></audio>
+      </div>
+    </div>
+
+    <!-- Call 6: Litigation Threat -->
+    <div class="call-card rv rv-d3">
+      <div class="call-card-header">
+        <div class="call-card-info">
+          <h3>Scenario 6: Litigation Threat</h3>
+          <span class="call-number">(800) 768-6911 &middot; Pressed 3&rarr;6 (billing)</span>
+        </div>
+        <div class="call-card-meta">
+          <span class="call-badge duration">1 min 57s</span>
+          <span class="call-badge result-amber">VOICEMAIL</span>
+        </div>
+      </div>
+      <div class="call-audio">
+        <audio controls preload="metadata" src="https://dxc03zgurdly9.cloudfront.net/d6b320da362473fccb5d02b018e3377accef5f8cdaa11d30e9a0e945bcd7c77d/recording.wav"></audio>
+      </div>
+    </div>
+
+    <!-- Call 7: Full Escalation -->
+    <div class="call-card rv rv-d4">
+      <div class="call-card-header">
+        <div class="call-card-info">
+          <h3>Scenario 7: Full Escalation</h3>
+          <span class="call-number">(800) 768-6911 &middot; Pressed 3&rarr;6 (billing)</span>
+        </div>
+        <div class="call-card-meta">
+          <span class="call-badge duration">1 min 54s</span>
+          <span class="call-badge result-amber">VOICEMAIL</span>
+        </div>
+      </div>
+      <div class="call-audio">
+        <audio controls preload="metadata" src="https://dxc03zgurdly9.cloudfront.net/a29e8566369caa36c96fd0a39a872963e2e5f1b52374f4432ab12de285fc2edb/recording.wav"></audio>
       </div>
     </div>
 
     <!-- Summary -->
     <div class="mystery-summary rv">
-      <div class="mystery-summary-stat">1 call. IVR navigated successfully. Voicemail left. Waiting for callback.</div>
+      <div class="mystery-summary-stat">7 calls. 1 human reached. 6 voicemails left. 0 payments collected.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2B: COMING SOON -->
+<section class="coming-section">
+  <div class="coming-inner">
+    <div class="coming-card rv">
+      <div class="coming-header">
+        <span class="coming-header-icon">&#128338;</span>
+        <h3>Coming Soon &mdash; Scheduled Tests</h3>
+        <span class="coming-tag">In progress</span>
+      </div>
+
+      <div class="coming-item">
+        <span class="coming-item-icon">&#128336;</span>
+        <span class="coming-item-text"><strong>March 27, 5:00 AM PT</strong> &mdash; Business hours call (polite client)</span>
+        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
+      </div>
+
+      <div class="coming-item">
+        <span class="coming-item-icon">&#128336;</span>
+        <span class="coming-item-text"><strong>March 27, 7:00 AM PT</strong> &mdash; Business hours call (frustrated client)</span>
+        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
+      </div>
+
+      <div class="coming-item">
+        <span class="coming-item-icon">&#128336;</span>
+        <span class="coming-item-text"><strong>March 27, 8:00 AM PT</strong> &mdash; Business hours timing test (measure hold time)</span>
+        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
+      </div>
+
+      <div class="coming-item">
+        <span class="coming-item-icon">&#128336;</span>
+        <span class="coming-item-text"><strong>March 27, 8:15 AM PT</strong> &mdash; Spanish language test</span>
+        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
+      </div>
+
+      <div class="coming-item">
+        <span class="coming-item-icon">&#9993;&#65039;</span>
+        <span class="coming-item-text"><strong>March 27</strong> &mdash; Email billing inquiry (response time tracking)</span>
+        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
+      </div>
+
+      <div class="coming-item">
+        <span class="coming-item-icon">&#128203;</span>
+        <span class="coming-item-text"><strong>March 27</strong> &mdash; Contact form submission (response time tracking)</span>
+        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
+      </div>
+
+      <div class="coming-item">
+        <span class="coming-item-icon">&#128241;</span>
+        <span class="coming-item-text"><strong>March 27</strong> &mdash; Payment portal UX audit (desktop + mobile screenshots)</span>
+        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
+      </div>
+
+      <div class="coming-item">
+        <span class="coming-item-icon">&#128260;</span>
+        <span class="coming-item-text"><strong>March 28</strong> &mdash; Voicemail callback check (did they call back within 48h?)</span>
+        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
+      </div>
     </div>
   </div>
 </section>
