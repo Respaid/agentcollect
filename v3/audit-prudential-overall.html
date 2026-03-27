@@ -227,7 +227,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .number-card-source a{color:#94a3b8;text-decoration:underline}
 @media(max-width:768px){.numbers-grid{grid-template-columns:1fr}}
 
-/* LANGUAGE SECTION */
+/* COMPETITION SECTION */
+.competition-section{padding:100px 48px;background:#fff}
+.competition-inner{max-width:800px;margin:0 auto}
+
+/* LANGUAGE / GAP SECTION */
 .language-section{padding:100px 48px;background:#fff}
 .language-container{max-width:900px;margin:0 auto;text-align:center}
 .language-title{font-size:36px;font-weight:900;line-height:1.2;margin-bottom:60px;color:var(--text)}
@@ -458,11 +462,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </nav>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- HERO — The Hook                                     -->
-<!-- ═══════════════════════════════════════════════════ -->
+<!-- ======================================================= -->
+<!-- HERO                                                      -->
+<!-- ======================================================= -->
 <section class="hero">
-  <div class="hero-badge rv">AR Audit Report</div>
+  <div class="hero-badge rv">AR Audit &mdash; Uniform &amp; Linen</div>
   <h1 class="rv rv-d1">We tried to pay <em>Prudential Overall Supply.</em></h1>
   <div class="hero-stats rv rv-d2">
     <div class="hero-stat">
@@ -485,18 +489,56 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   <p class="hero-sub rv rv-d4">March 2026 &mdash; Confidential &mdash; expires in <span id="header-days-left"></span></p>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- THE CALL                                            -->
-<!-- ═══════════════════════════════════════════════════ -->
+<!-- ======================================================= -->
+<!-- CHAPTER 1 - THE CALL                                      -->
+<!-- ======================================================= -->
 <section class="chapter chapter-dark" id="the-call">
   <div class="chapter-inner">
     <div class="rv">
+      <div class="chapter-num">Chapter 1</div>
       <h2 class="chapter-title" style="color:#fff">We called (800) 767-5536.</h2>
       <p class="chapter-sub">A customer with a $1,800 uniform service invoice, trying to pay. This is what happened.</p>
     </div>
 
-    <!-- FEATURED: Voicemail left on AR direct line -->
-    <div class="featured-call rv rv-d1">
+    <!-- FEATURED: Cynthia - AR Direct Line (THE key recording) -->
+    <div class="featured-call rv rv-d1" style="border-color:rgba(16,185,129,.4);background:rgba(16,185,129,.04)">
+      <div class="featured-call-header">
+        <div>
+          <h3>&ldquo;Finally, someone picks up!&rdquo;</h3>
+          <span class="call-number">(949) 250-4855 &rarr; AR Direct Line &mdash; CYNTHIA</span>
+        </div>
+        <div class="featured-badges">
+          <span class="badge badge-duration">3m02s</span>
+          <span class="badge badge-human">&#127881; HUMAN REACHED</span>
+        </div>
+      </div>
+
+      <div class="audio-timeline">
+        <audio controls preload="metadata" id="featured-audio" src="https://dxc03zgurdly9.cloudfront.net/5587240e6122dc8b2b667ede5b013243ddd96eaad4f8cac86de0e0fbae7228a9/recording.wav"></audio>
+        <div class="timeline-markers">
+          <span class="timeline-marker fail" onclick="jumpTo(0)"><span class="tm-time">0:00</span> Frustrated intro</span>
+          <span class="timeline-marker human" onclick="jumpTo(50)"><span class="tm-time">0:50</span> Cynthia answers</span>
+          <span class="timeline-marker human" onclick="jumpTo(55)"><span class="tm-time">0:55</span> &ldquo;I&rsquo;ve been trying for 3 days!&rdquo;</span>
+          <span class="timeline-marker ivr" onclick="jumpTo(70)"><span class="tm-time">1:10</span> &ldquo;Someone said you clicked&rdquo;</span>
+          <span class="timeline-marker human" onclick="jumpTo(96)"><span class="tm-time">1:36</span> &ldquo;What is your customer number?&rdquo;</span>
+          <span class="timeline-marker hold" onclick="jumpTo(139)"><span class="tm-time">2:19</span> &ldquo;Please wait&rdquo; &rarr; HOLD</span>
+          <span class="timeline-marker fail" onclick="jumpTo(162)"><span class="tm-time">2:42</span> Inactivity disconnect</span>
+        </div>
+      </div>
+
+      <div class="transcript-highlight">
+        <div class="transcript-highlight-label">Key moments</div>
+        <div class="transcript-line"><strong>Cynthia:</strong> &ldquo;Thank you for calling Prudential. This is Cynthia.&rdquo;</div>
+        <div class="transcript-line"><strong>Agent:</strong> &ldquo;Finally, someone picks up! I&rsquo;ve been trying to pay for three days!&rdquo;</div>
+        <div class="transcript-line"><strong>Cynthia:</strong> &ldquo;I just transferred you over to someone and they said you had clicked&rdquo; <em>(suggesting a previous callback was missed)</em></div>
+        <div class="transcript-line"><strong>Agent:</strong> &ldquo;I absolutely did not hang up!&rdquo;</div>
+        <div class="transcript-line"><strong>Cynthia:</strong> &ldquo;What is your customer number?&rdquo; &rarr; asks for ZIP &rarr; confirms Irvine, CA &rarr; &ldquo;Please wait&rdquo;</div>
+        <div class="transcript-line"><em>Hold &rarr; 23 seconds of silence &rarr; inactivity disconnect. March 27, 9:44 AM PT.</em></div>
+      </div>
+    </div>
+
+    <!-- SECOND FEATURED: Voicemail on AR direct line -->
+    <div class="featured-call rv rv-d2" style="border-color:rgba(220,38,38,.25)">
       <div class="featured-call-header">
         <div>
           <h3>&ldquo;Hi, this is Mike from Summit Auto Repair.&rdquo;</h3>
@@ -509,11 +551,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       </div>
 
       <div class="audio-timeline">
-        <audio controls preload="metadata" id="featured-audio" src="https://dxc03zgurdly9.cloudfront.net/b909b9caf166a77e2ef4c536e92b279b0a35af42d60b1e1a760c5a59e2b5f7d4/recording.wav"></audio>
+        <audio controls preload="metadata" id="featured-audio-2" src="https://dxc03zgurdly9.cloudfront.net/b909b9caf166a77e2ef4c536e92b279b0a35af42d60b1e1a760c5a59e2b5f7d4/recording.wav"></audio>
         <div class="timeline-markers">
-          <span class="timeline-marker ivr" onclick="jumpTo(0)"><span class="tm-time">0:00</span> IVR greeting</span>
-          <span class="timeline-marker fail" onclick="jumpTo(8)"><span class="tm-time">0:08</span> &ldquo;We are currently closed&rdquo;</span>
-          <span class="timeline-marker human" onclick="jumpTo(14)"><span class="tm-time">0:14</span> Voicemail left as Mike</span>
+          <span class="timeline-marker ivr" onclick="jumpTo2(0)"><span class="tm-time">0:00</span> IVR greeting</span>
+          <span class="timeline-marker fail" onclick="jumpTo2(8)"><span class="tm-time">0:08</span> &ldquo;We are currently closed&rdquo;</span>
+          <span class="timeline-marker human" onclick="jumpTo2(14)"><span class="tm-time">0:14</span> Voicemail left as Mike</span>
         </div>
       </div>
 
@@ -527,65 +569,16 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       <div class="reveals-box reveals-box-dark" style="margin-top:16px">
         <div class="reveals-label">&#128203; What this reveals</div>
         <div class="reveals-item">
-          <div class="ri-dot red"></div>
-          <div class="reveals-item-text"><strong>AR direct line goes to voicemail at 7 AM.</strong> A client calling first thing in the morning reaches a closed office. No after-hours payment option. No callback.</div>
-        </div>
-        <div class="reveals-item">
-          <div class="ri-dot red"></div>
-          <div class="reveals-item-text"><strong>IVR identifies as &ldquo;P00 Main Line&rdquo;</strong> &mdash; not &ldquo;Prudential Overall Supply Accounts Receivable.&rdquo; A client who dialed (949) 250-4855 has no confirmation they reached the right department.</div>
-        </div>
-        <div class="reveals-item">
-          <div class="ri-dot orange"></div>
-          <div class="reveals-item-text"><strong>No self-service payment option.</strong> The voicemail system offers no IVR menu, no &ldquo;press 1 to pay by phone,&rdquo; no website redirect. Dead end until someone calls back.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- FEATURED: Cynthia — AR Direct Line (949) 250-4855 -->
-    <div class="featured-call rv rv-d2" style="border-color:rgba(16,185,129,.4);background:rgba(16,185,129,.04)">
-      <div class="featured-call-header">
-        <div>
-          <h3>&ldquo;Finally, someone picks up!&rdquo;</h3>
-          <span class="call-number">(949) 250-4855 &rarr; AR Direct Line &mdash; CYNTHIA</span>
-        </div>
-        <div class="featured-badges">
-          <span class="badge badge-duration">3m02s</span>
-          <span class="badge badge-human">&#127881; HUMAN REACHED</span>
-        </div>
-      </div>
-
-      <div class="audio-timeline">
-        <audio controls preload="metadata" id="cynthia-audio" src="https://dxc03zgurdly9.cloudfront.net/5587240e6122dc8b2b667ede5b013243ddd96eaad4f8cac86de0e0fbae7228a9/recording.wav"></audio>
-        <div class="timeline-markers">
-          <span class="timeline-marker fail" onclick="jumpToCynthia(0)"><span class="tm-time">0:00</span> Frustrated intro</span>
-          <span class="timeline-marker human" onclick="jumpToCynthia(50)"><span class="tm-time">0:50</span> Cynthia answers</span>
-          <span class="timeline-marker human" onclick="jumpToCynthia(55)"><span class="tm-time">0:55</span> &ldquo;I&rsquo;ve been trying for 3 days!&rdquo;</span>
-          <span class="timeline-marker ivr" onclick="jumpToCynthia(70)"><span class="tm-time">1:10</span> &ldquo;Someone said you clicked&rdquo;</span>
-          <span class="timeline-marker human" onclick="jumpToCynthia(96)"><span class="tm-time">1:36</span> &ldquo;What is your customer number?&rdquo;</span>
-          <span class="timeline-marker hold" onclick="jumpToCynthia(139)"><span class="tm-time">2:19</span> &ldquo;Please wait&rdquo; &rarr; HOLD</span>
-          <span class="timeline-marker fail" onclick="jumpToCynthia(162)"><span class="tm-time">2:42</span> Inactivity disconnect</span>
-        </div>
-      </div>
-
-      <div class="transcript-highlight">
-        <div class="transcript-highlight-label">Key moments</div>
-        <div class="transcript-line"><strong>Cynthia:</strong> &ldquo;Thank you for calling Prudential. This is Cynthia.&rdquo;</div>
-        <div class="transcript-line"><strong>Agent:</strong> &ldquo;Finally, someone picks up! I&rsquo;ve been trying to pay for three days!&rdquo;</div>
-        <div class="transcript-line"><strong>Cynthia:</strong> &ldquo;I just transferred you over to someone and they said you had clicked&rdquo; <em>(suggesting a previous callback was missed)</em></div>
-        <div class="transcript-line"><strong>Agent:</strong> &ldquo;I absolutely did not hang up!&rdquo;</div>
-        <div class="transcript-line"><strong>Cynthia:</strong> &ldquo;What is your customer number?&rdquo; &rarr; asks for ZIP &rarr; confirms Irvine, CA &rarr; &ldquo;Please wait&rdquo;</div>
-        <div class="transcript-line"><em>Hold &rarr; 23 seconds of silence &rarr; inactivity disconnect. March 27, 9:44 AM PT.</em></div>
-      </div>
-
-      <div class="reveals-box reveals-box-dark" style="margin-top:16px">
-        <div class="reveals-label">&#128203; What this reveals</div>
-        <div class="reveals-item">
           <div class="ri-dot green"></div>
           <div class="reveals-item-text"><strong>The AR direct line (949) 250-4855 is the only reliable path to a human.</strong> After 4 days and 10+ attempts across every number, Cynthia is the first person to answer.</div>
         </div>
         <div class="reveals-item">
           <div class="ri-dot red"></div>
           <div class="reveals-item-text"><strong>The main 800 number (800) 767-5536 appears broken</strong> &mdash; dead silence on 3 out of 4 calls. No IVR, no human, no voicemail.</div>
+        </div>
+        <div class="reveals-item">
+          <div class="ri-dot red"></div>
+          <div class="reveals-item-text"><strong>AR direct line goes to voicemail at 7 AM.</strong> A client calling first thing in the morning reaches a closed office. No after-hours payment option. No callback.</div>
         </div>
         <div class="reveals-item">
           <div class="ri-dot orange"></div>
@@ -595,7 +588,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
           <div class="ri-dot orange"></div>
           <div class="reveals-item-text"><strong>Cynthia mentioned a previous transfer attempt</strong>, suggesting our voicemail DID trigger a callback that was missed. The system has no way to reconnect.</div>
         </div>
-        <div class="reveals-source">Source: Direct call tests, March 27, 2026, 9:44 AM PT</div>
+        <div class="reveals-source">Source: Direct call tests, March 26&ndash;27, 2026</div>
       </div>
     </div>
 
@@ -603,45 +596,39 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
     <div class="supporting-calls rv rv-d3">
       <h3>Other calls placed</h3>
       <div class="call-grid">
-        <!-- Mar 27 9:44 AM — Polite → Main 800 -->
         <div class="call-mini">
-          <h4>Mar 27 &mdash; Polite &rarr; Main (800) 767-5536</h4>
+          <h4>Polite &rarr; Main (800) 767-5536</h4>
           <div class="call-mini-meta"><span>44s</span> &middot; <span style="color:#fca5a5">Dead silence</span> <span class="score-badge-red">NO RESPONSE</span></div>
           <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/af000aaf10c2032def5b0c1f7135765ec1daacf7fc3a560678e7bc861453b158/recording.wav"></audio>
-          <div style="padding:8px 12px;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.08);border-radius:6px;font-size:12px;color:rgba(255,255,255,.25);font-style:italic">9:44 AM PT. Agent spoke twice, nobody responded. 44s inactivity disconnect.</div>
         </div>
-        <!-- Mar 27 9:44 AM — Hospitalized → Main 800 -->
         <div class="call-mini">
-          <h4>Mar 27 &mdash; Hospitalized &rarr; Main (800) 767-5536</h4>
+          <h4>Hospitalized &rarr; Main (800) 767-5536</h4>
           <div class="call-mini-meta"><span>20s</span> &middot; <span style="color:#fca5a5">Silent</span> <span class="score-badge-red">SILENT</span></div>
           <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/6800e000ef015e34ab5833802851a34132e2f885a21a5d8b4322bc9308c2cbcb/recording.wav"></audio>
-          <div style="padding:8px 12px;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.08);border-radius:6px;font-size:12px;color:rgba(255,255,255,.25);font-style:italic">9:44 AM PT. Complete silence. 20s disconnect. Main 800 line appears broken.</div>
         </div>
-        <!-- Mar 27 9:44 AM — Timing → Pay-by-Phone (866) -->
         <div class="call-mini">
-          <h4>Mar 27 &mdash; Pay-by-Phone (866) 204-5652</h4>
-          <div class="call-mini-meta"><span>94s</span> &middot; <span style="color:#fbbf24">IVR loop</span> <span class="score-badge-orange">IVR LOOP</span></div>
+          <h4>Pay-by-Phone (866) 204-5652</h4>
+          <div class="call-mini-meta"><span>94s</span> &middot; <span style="color:#fbbf24">IVR loop</span> <span class="score-badge-orange">IVR LOOP (PSN)</span></div>
           <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/dc2c0dcd1e36cb1862daa4d8332532a97f9266b7bc888234da1244cd0f825aab/recording.wav"></audio>
-          <div style="padding:8px 12px;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.08);border-radius:6px;font-size:12px;color:rgba(255,255,255,.25);font-style:italic">Routes to PSN (Payment Service Network), a third-party invoice cloud service. &ldquo;Press 1 to make a payment.&rdquo; Looped 5 times.</div>
         </div>
-        <!-- Earlier calls -->
         <div class="call-mini">
-          <h4>Mar 27, 7:02 AM &mdash; AR Direct (Voicemail)</h4>
+          <h4>Spanish &rarr; Main (800) 767-5536</h4>
+          <div class="call-mini-meta"><span>~5 min</span> &middot; <span style="color:#fca5a5">Silence</span> <span class="score-badge-red">NO RESPONSE</span></div>
+        </div>
+        <div class="call-mini">
+          <h4>AR Direct (Voicemail) &mdash; 7:02 AM</h4>
           <div class="call-mini-meta"><span>32s</span> &middot; <span style="color:#fca5a5">Voicemail</span> <span class="score-badge-red">VM</span></div>
           <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/b909b9caf166a77e2ef4c536e92b279b0a35af42d60b1e1a760c5a59e2b5f7d4/recording.wav"></audio>
-          <div style="padding:8px 12px;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.08);border-radius:6px;font-size:12px;color:rgba(255,255,255,.25);font-style:italic">Left voicemail as Mike from Summit Auto Repair. No callback.</div>
         </div>
         <div class="call-mini">
-          <h4>Mar 27, 8:15 AM &mdash; AR Direct (Dead air)</h4>
+          <h4>AR Direct (Dead air) &mdash; 8:15 AM</h4>
           <div class="call-mini-meta"><span>27s</span> &middot; <span style="color:#fca5a5">Dead air</span> <span class="score-badge-red">NO ANSWER</span></div>
           <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/943ad76b45b11e6e6e8761082e2b0ff9188c1a197f865721b58c469aa2324fc8/recording.wav"></audio>
-          <div style="padding:8px 12px;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.08);border-radius:6px;font-size:12px;color:rgba(255,255,255,.25);font-style:italic">Line answered, then silence. Agent spoke twice, no response. Call dropped.</div>
         </div>
         <div class="call-mini">
-          <h4>Mar 27, 8:20 AM &mdash; Main Line (Hold)</h4>
+          <h4>Main Line (Hold) &mdash; 8:20 AM</h4>
           <div class="call-mini-meta"><span>49s</span> &middot; <span style="color:#fbbf24">Hold, no pickup</span> <span class="score-badge-orange">HOLD</span></div>
           <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/29946dd01a8ce45ca449cb8295845dcb3ce98a4a7a533e9419b9da50e1b5a14f/recording.wav"></audio>
-          <div style="padding:8px 12px;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.08);border-radius:6px;font-size:12px;color:rgba(255,255,255,.25);font-style:italic">Went to hold. Nobody picked up within call window. Ended via inactivity.</div>
         </div>
         <div class="call-mini">
           <h4>Main Line &mdash; (800) 767-5536</h4>
@@ -651,81 +638,124 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
         <div class="call-mini">
           <h4>Day 1 &mdash; Main Line (Manual)</h4>
           <div class="call-mini-meta"><span>~3 min</span> &middot; <span style="color:#fca5a5">Voicemail</span> <span class="score-badge-red">VM</span></div>
-          <div style="padding:8px 12px;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.08);border-radius:6px;font-size:12px;color:rgba(255,255,255,.25);font-style:italic">2 min hold &rarr; transfer &rarr; voicemail. No callback.</div>
         </div>
         <div class="call-mini">
           <h4>Day 2 &mdash; Voicemail + Email</h4>
           <div class="call-mini-meta"><span style="color:#fca5a5">No callback. No email response.</span></div>
-          <div style="padding:8px 12px;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.08);border-radius:6px;font-size:12px;color:rgba(255,255,255,.25);font-style:italic">Left voicemail. Emailed billing. 48h silence.</div>
         </div>
       </div>
 
       <div class="call-summary-box">
-        <p>10+ calls. 96+ hours. 1 human reached (Cynthia). 0 payments collected.</p>
+        <p><span class="score-red">10+</span> calls. <span class="score-orange">96+</span> hours. <span class="score-green">1</span> human reached (Cynthia). <span class="score-red">0</span> payments collected.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- THE PORTAL                                          -->
-<!-- ═══════════════════════════════════════════════════ -->
+<!-- ======================================================= -->
+<!-- CHAPTER 2 - THE PORTAL                                    -->
+<!-- ======================================================= -->
 <section class="portal-section" id="the-portal">
   <div class="portal-inner">
     <div class="rv">
-      <h2 class="chapter-title">We tried to pay online.</h2>
+      <div class="chapter-num">Chapter 2</div>
+      <h2 class="chapter-title">Then we tried to pay online.</h2>
       <p class="chapter-sub">A WIX-based payment portal. For a $349M company.</p>
     </div>
 
-    <div class="screenshot-grid rv rv-d1" style="grid-template-columns:repeat(3,1fr)">
-      <div class="screenshot-card">
-        <img src="/v3/audit-assets/prudential/homepage-paynow-button.png" alt="Homepage pay now button" loading="lazy">
-        <div class="screenshot-caption">
-          <strong>Step 1.</strong> Click &ldquo;Pay Now&rdquo; on prudentialuniforms.com.
-          <span class="score-badge-green" style="margin-top:6px;display:inline-flex">&#10003; Found</span>
+    <!-- Full-width screenshot cards (Roto-Rooter style) -->
+    <div class="screenshot-grid" style="grid-template-columns:1fr;gap:32px;max-width:900px;margin:0 auto">
+
+      <!-- SCREENSHOT 1: Homepage Pay Now -->
+      <div class="screenshot-card rv rv-d1">
+        <div style="position:relative;overflow:hidden">
+          <img src="/v3/audit-assets/prudential/homepage-paynow-button.png" alt="Homepage pay now button" loading="lazy" style="width:100%;height:auto;display:block">
+          <div style="position:absolute;top:12px;right:12px;z-index:2"><span class="score-badge-green">&#10003; FOUND IN 2 CLICKS</span></div>
+        </div>
+        <div class="screenshot-caption" style="padding:16px 20px">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px">
+            <div style="flex:1;min-width:200px">
+              <strong style="font-size:15px">Step 1. Click &ldquo;Pay Now&rdquo; on prudentialuniforms.com.</strong>
+              <p style="margin-top:4px;font-size:13px;color:var(--muted);line-height:1.5">The button exists on the homepage. But it leads to a filler page, not a payment form. You have to click &ldquo;Pay Now&rdquo; again to reach the actual portal.</p>
+            </div>
+            <a href="https://prudentialuniforms.com" target="_blank" rel="noopener" style="font-size:12px;color:var(--blue);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px;padding:6px 14px;border:1px solid rgba(79,70,229,.2);border-radius:8px;flex-shrink:0;transition:all .2s" onmouseover="this.style.background='rgba(79,70,229,.04)'" onmouseout="this.style.background='transparent'">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              See for yourself &rarr;
+            </a>
+          </div>
         </div>
       </div>
-      <div class="screenshot-card">
-        <img src="/v3/audit-assets/prudential/online-payment-page-top.png" alt="Online payment page" loading="lazy">
-        <div class="screenshot-caption">
-          <strong>Step 2.</strong> Read filler page. Click &ldquo;Pay Now&rdquo; again. Redirected to paymentservicenetwork.com.
-          <span class="score-badge-orange" style="margin-top:6px;display:inline-flex">&#9888; 2 Clicks</span>
+
+      <!-- SCREENSHOT 2: "Become Eligible" gate -->
+      <div class="screenshot-card rv rv-d2" style="border:2px solid var(--red)">
+        <div style="position:absolute;top:12px;right:12px;z-index:2"><span class="score-badge-red">&#10005; BLOCKED</span></div>
+        <div style="position:relative;overflow:hidden">
+          <img src="/v3/audit-assets/prudential/desktop-login.png" alt="Login required" loading="lazy" style="width:100%;height:auto;display:block">
+          <div style="position:absolute;bottom:15%;left:16px;background:rgba(220,38,38,.9);color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:8px;max-width:280px;line-height:1.3;pointer-events:none">First-time payers must call AR to &ldquo;become eligible.&rdquo; The AR line goes to voicemail.</div>
+        </div>
+        <div class="screenshot-caption" style="padding:16px 20px">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px">
+            <div style="flex:1;min-width:200px">
+              <strong style="font-size:15px">Step 2. Third-party portal. Email + password required.</strong>
+              <p style="margin-top:4px;font-size:13px;color:var(--muted);line-height:1.5">Redirected to <code style="font-size:11px;background:#fef2f2;color:var(--red);padding:2px 6px;border-radius:4px;font-weight:600">paymentservicenetwork.com</code> &mdash; a completely different domain. First-time payers cannot create an account without calling AR to &ldquo;become eligible.&rdquo; The AR line goes to voicemail.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="screenshot-card">
-        <img src="/v3/audit-assets/prudential/desktop-login.png" alt="Login required" loading="lazy">
-        <div class="screenshot-caption">
-          <strong>Step 3.</strong> Third-party portal. Email + password required. First-time payers must call AR to &ldquo;become eligible.&rdquo;
-          <span class="score-badge-red" style="margin-top:6px;display:inline-flex">&#10005; Blocked</span>
+
+      <!-- SCREENSHOT 3: 3.25% surcharge -->
+      <div class="screenshot-card rv rv-d3" style="border:2px solid var(--red)">
+        <div style="position:absolute;top:12px;right:12px;z-index:2"><span class="score-badge-red">&#10005; ABOVE VISA 3% CAP</span></div>
+        <div style="position:relative;overflow:hidden">
+          <img src="/v3/audit-assets/prudential/online-payment-page-middle.png" alt="Surcharge disclosed" loading="lazy" style="width:100%;height:auto;display:block">
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(220,38,38,.9);color:#fff;font-size:12px;font-weight:700;padding:8px 16px;border-radius:10px;line-height:1.4;text-align:center;pointer-events:none;max-width:280px">3.25% credit card surcharge<br><strong>Exceeds Visa&rsquo;s 3% maximum</strong></div>
+        </div>
+        <div class="screenshot-caption" style="padding:16px 20px">
+          <strong style="font-size:15px">3.25% credit card surcharge disclosed.</strong>
+          <p style="margin-top:4px;font-size:13px;color:var(--muted);line-height:1.5">Exceeds <a href="https://usa.visa.com/support/small-business/regulations-fees.html" target="_blank" rel="noopener" style="color:var(--red);text-decoration:underline">Visa&rsquo;s 3% maximum surcharge cap</a>. Potential fines $50K&ndash;$1M. May also be surcharging debit cards, which is prohibited by federal rules.</p>
+        </div>
+      </div>
+
+      <!-- SCREENSHOT 4: Mobile broken -->
+      <div class="screenshot-card rv rv-d4" style="border:2px solid var(--red)">
+        <div style="position:absolute;top:12px;right:12px;z-index:2"><span class="score-badge-red">&#10005; MOBILE BROKEN</span></div>
+        <div style="position:relative;overflow:hidden">
+          <img src="/v3/audit-assets/prudential/mobile-login.png" alt="Mobile view" loading="lazy" style="width:100%;height:auto;display:block">
+        </div>
+        <div class="screenshot-caption" style="padding:16px 20px">
+          <strong style="font-size:15px">Mobile view. Registration button cut off.</strong>
+          <p style="margin-top:4px;font-size:13px;color:var(--muted);line-height:1.5">On mobile, the registration button is cut off below the fold. A client on their phone cannot even attempt to register.</p>
+        </div>
+      </div>
+
+      <!-- SCREENSHOT 5: Portal on PSN (third-party) -->
+      <div class="screenshot-card rv">
+        <div style="position:absolute;top:12px;right:12px;z-index:2"><span class="score-badge-orange">&#9888; THIRD-PARTY PORTAL</span></div>
+        <div style="position:relative;overflow:hidden">
+          <img src="/v3/audit-assets/prudential/online-payment-page-paynow-buttons.png" alt="Multiple phone numbers" loading="lazy" style="width:100%;height:auto;display:block">
+          <div style="position:absolute;bottom:15%;right:16px;background:rgba(245,158,11,.9);color:#000;font-size:11px;font-weight:700;padding:5px 12px;border-radius:8px;pointer-events:none">Two different phone numbers on one page</div>
+        </div>
+        <div class="screenshot-caption" style="padding:16px 20px">
+          <strong style="font-size:15px">Payment portal lives on paymentservicenetwork.com (PSN).</strong>
+          <p style="margin-top:4px;font-size:13px;color:var(--muted);line-height:1.5">A third-party ASP.NET service, not Prudential infrastructure. Two different phone numbers on the same page. 7 different numbers across their web presence.</p>
+        </div>
+      </div>
+
+      <!-- SCREENSHOT 6: No HSTS -->
+      <div class="screenshot-card rv" style="border:2px solid var(--red)">
+        <div style="position:absolute;top:12px;right:12px;z-index:2"><span class="score-badge-red">&#10005; NO HSTS</span></div>
+        <div style="position:relative;overflow:hidden">
+          <img src="/v3/audit-assets/prudential/online-payment-page-top.png" alt="Online payment page" loading="lazy" style="width:100%;height:auto;display:block">
+          <div style="position:absolute;top:8px;left:50%;transform:translateX(-50%);background:rgba(220,38,38,.9);color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:8px;white-space:nowrap;pointer-events:none">No HSTS header on payment portal</div>
+        </div>
+        <div class="screenshot-caption" style="padding:16px 20px">
+          <strong style="font-size:15px">Payment portal has NO HSTS header.</strong>
+          <p style="margin-top:4px;font-size:13px;color:var(--muted);line-height:1.5">Customers enter credit card numbers without transport security enforcement. The marketing site (prudentialuniforms.com) has proper HSTS + CSP + security headers &mdash; the MARKETING site is more secure than the PAYMENT site.</p>
         </div>
       </div>
     </div>
 
-    <div class="screenshot-grid rv rv-d2" style="grid-template-columns:repeat(3,1fr);margin-top:0">
-      <div class="screenshot-card">
-        <img src="/v3/audit-assets/prudential/mobile-login.png" alt="Mobile view" loading="lazy">
-        <div class="screenshot-caption">
-          Mobile view. Registration button cut off.
-          <span class="score-badge-red" style="margin-top:6px;display:inline-flex">&#10005; Mobile broken</span>
-        </div>
-      </div>
-      <div class="screenshot-card">
-        <img src="/v3/audit-assets/prudential/online-payment-page-middle.png" alt="Surcharge disclosed" loading="lazy">
-        <div class="screenshot-caption">
-          3.25% credit card surcharge disclosed.
-          <span class="score-badge-red" style="margin-top:6px;display:inline-flex">&#10005; Above Visa 3% cap</span>
-        </div>
-      </div>
-      <div class="screenshot-card">
-        <img src="/v3/audit-assets/prudential/online-payment-page-paynow-buttons.png" alt="Multiple phone numbers" loading="lazy">
-        <div class="screenshot-caption">
-          Two different phone numbers on one page. Which one?
-          <span class="score-badge-orange" style="margin-top:6px;display:inline-flex">&#9888; Confusing</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="portal-callout rv rv-d3" style="margin-top:32px">
+    <div class="portal-callout rv" style="margin-top:32px">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
       <div>
         <p>First-time payers must call (949) 876-7388 to &ldquo;become eligible&rdquo; before they can create an account.</p>
@@ -733,7 +763,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       </div>
     </div>
 
-    <div class="reveals-box rv rv-d4" style="margin-top:24px;max-width:720px;margin-left:auto;margin-right:auto">
+    <div class="reveals-box rv" style="margin-top:24px;max-width:900px;margin-left:auto;margin-right:auto">
       <div class="reveals-label">&#128203; What this reveals</div>
       <div class="reveals-item">
         <div class="ri-dot red"></div>
@@ -749,7 +779,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       </div>
       <div class="reveals-item">
         <div class="ri-dot red"></div>
-        <div class="reveals-item-text"><strong>Payment portal (Payment Service Network, ASP.NET) has NO HSTS header.</strong> Customers enter credit card numbers without transport security enforcement. The marketing site (prudentialuniforms.com) has proper HSTS + CSP + security headers &mdash; the MARKETING site is more secure than the PAYMENT site.</div>
+        <div class="reveals-item-text"><strong>Payment portal (Payment Service Network, ASP.NET) has NO HSTS header.</strong> Customers enter credit card numbers without transport security enforcement.</div>
       </div>
       <div class="reveals-item">
         <div class="ri-dot orange"></div>
@@ -762,12 +792,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- COLLECTION STACK                                    -->
-<!-- ═══════════════════════════════════════════════════ -->
+<!-- ======================================================= -->
+<!-- CHAPTER 3 - COLLECTION STACK                              -->
+<!-- ======================================================= -->
 <section class="stack-section" id="the-stack">
   <div class="stack-inner">
     <div class="rv">
+      <div class="chapter-num">Chapter 3</div>
       <h2 class="chapter-title">Your collection stack.</h2>
       <p class="chapter-sub">Prudential doesn&rsquo;t use a collection agency. They sue directly.</p>
     </div>
@@ -833,11 +864,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- THE NUMBERS                                         -->
-<!-- ═══════════════════════════════════════════════════ -->
+<!-- ======================================================= -->
+<!-- CHAPTER 4 - THE NUMBERS                                   -->
+<!-- ======================================================= -->
 <section class="cost-section" id="the-numbers">
   <div class="rv">
+    <div class="chapter-num">Chapter 4</div>
     <h2 class="chapter-title" style="text-align:center">The numbers.</h2>
     <p class="chapter-sub" style="text-align:center;color:var(--muted)">Publicly available data on Prudential Overall Supply.</p>
   </div>
@@ -892,18 +924,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       <div class="number-card-source">Direct header check</div>
     </div>
     <div class="number-card">
-      <div class="number-card-value score-red">3.1/5</div>
-      <div class="number-card-label">Glassdoor</div>
-      <div class="number-card-detail">150 reviews &mdash; &ldquo;Systems are outdated and leadership refuses to change&rdquo;</div>
-      <div class="number-card-source"><a href="https://www.glassdoor.com/Reviews/Prudential-Overall-Supply-Reviews-E23231.htm" target="_blank" rel="noopener">Glassdoor</a></div>
-    </div>
-    <div class="number-card">
-      <div class="number-card-value score-orange">46</div>
-      <div class="number-card-label">Open Positions</div>
-      <div class="number-card-detail">Hiring AR clerk on Indeed &mdash; understaffed signal</div>
-      <div class="number-card-source"><a href="https://www.indeed.com/cmp/Prudential-Overall-Supply" target="_blank" rel="noopener">Indeed</a></div>
-    </div>
-    <div class="number-card">
       <div class="number-card-value score-green">NetSuite</div>
       <div class="number-card-label">ERP System</div>
       <div class="number-card-detail">Jade Global implementation &mdash; back-office modernized</div>
@@ -919,6 +939,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
     <div style="font-size:12px;color:#94a3b8;margin-top:14px;text-align:right">&mdash; <a href="https://www.glassdoor.com/Reviews/Prudential-Overall-Supply-Reviews-E23231.htm" target="_blank" rel="noopener" style="color:#94a3b8;text-decoration:underline">Glassdoor</a></div>
   </div>
 
+  <!-- Animated Cost Counter -->
   <div class="rv rv-d3" style="margin-top:48px">
     <div class="cost-big" id="cost-number">$0</div>
     <div class="cost-big-suffix">/year</div>
@@ -948,12 +969,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- THE COMPETITION                                      -->
-<!-- ═══════════════════════════════════════════════════ -->
+<!-- ======================================================= -->
+<!-- CHAPTER 5 - THE COMPETITION                               -->
+<!-- ======================================================= -->
 <section class="stack-section" id="the-competition" style="background:#fff">
   <div class="stack-inner" style="max-width:800px">
     <div class="rv">
+      <div class="chapter-num">Chapter 5</div>
       <h2 class="chapter-title">The competition.</h2>
       <p class="chapter-sub">Cintas is acquiring UniFirst for $5.5B. The uniform industry is consolidating &mdash; fast.</p>
     </div>
@@ -993,11 +1015,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- THE GAP                                             -->
-<!-- ═══════════════════════════════════════════════════ -->
+<!-- ======================================================= -->
+<!-- CHAPTER 6 - THE GAP                                       -->
+<!-- ======================================================= -->
 <section class="language-section" id="the-gap">
   <div class="language-container">
+    <div class="chapter-num rv" style="text-align:center">Chapter 6</div>
     <h2 class="language-title rv">The language gap.</h2>
 
     <div class="language-stats rv rv-d1">
@@ -1027,13 +1050,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- YOUR AGENT                                          -->
-<!-- ═══════════════════════════════════════════════════ -->
+<!-- ======================================================= -->
+<!-- CHAPTER 7 - YOUR AGENT                                    -->
+<!-- ======================================================= -->
 <section class="agent-section" id="agent-section">
   <div class="rv">
-    <h2 class="agent-title">Your Prudential agent.</h2>
-    <p class="agent-sub">0.3 seconds. Every language. 24/7.</p>
+    <div class="chapter-num">Chapter 7</div>
+    <h2 class="agent-title">This is what picks up instead.</h2>
+    <p class="agent-sub">Your Prudential AI agent. 24/7. 0.3 second response. Every language. $1,800 uniform invoices collected in seconds.</p>
   </div>
 
   <div class="rv rv-d1">
@@ -1089,9 +1113,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- COMING SOON                                         -->
-<!-- ═══════════════════════════════════════════════════ -->
+<!-- ======================================================= -->
+<!-- COMING SOON                                               -->
+<!-- ======================================================= -->
 <section class="coming-section" id="coming-soon">
   <div class="coming-inner">
     <div class="coming-card rv">
@@ -1140,9 +1164,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- CTA                                                 -->
-<!-- ═══════════════════════════════════════════════════ -->
+<!-- ======================================================= -->
+<!-- CTA                                                       -->
+<!-- ======================================================= -->
 <section class="cta-section">
   <div class="rv">
     <h2 class="cta-title">Who handles AR at Prudential?</h2>
@@ -1215,13 +1239,13 @@ function jumpTo(seconds){
 }
 window.jumpTo = jumpTo;
 
-function jumpToCynthia(seconds){
-  var audio = document.getElementById('cynthia-audio');
+function jumpTo2(seconds){
+  var audio = document.getElementById('featured-audio-2');
   if(audio){ audio.currentTime = seconds; audio.play(); }
 }
-window.jumpToCynthia = jumpToCynthia;
+window.jumpTo2 = jumpTo2;
 
-// LIVE TIMER — counting up from March 26, 2026 5:25 PM PT
+// LIVE TIMER - counting up from March 26, 2026 5:25 PM PT
 (function(){
   var start = new Date('2026-03-26T17:25:00-07:00').getTime();
   var timerEl = document.getElementById('live-timer');
@@ -1265,7 +1289,7 @@ window.jumpToCynthia = jumpToCynthia;
   setTimeout(function(){ els.forEach(function(el){ el.classList.add('v'); }); }, 2500);
 })();
 
-// Animated Cost Counter — rolls up to $4,200,000
+// Animated Cost Counter - rolls up to $4,200,000
 (function(){
   var costEl = document.getElementById('cost-number');
   if(!costEl) return;
