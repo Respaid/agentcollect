@@ -286,6 +286,37 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .portal-sub{color:#64748b;margin-bottom:32px;font-size:16px;line-height:1.5}
 .portal-embed{margin:0 auto}
 
+/* LANGUAGE SECTION */
+.language-section{padding:100px 48px;background:#fff}
+.language-container{max-width:900px;margin:0 auto;text-align:center}
+.language-title{font-size:36px;font-weight:900;line-height:1.2;margin-bottom:60px;color:var(--text)}
+.language-stats{display:flex;gap:40px;justify-content:center;flex-wrap:wrap}
+.lang-stat{flex:1;min-width:200px;padding:32px}
+.lang-number{font-size:64px;font-weight:900;color:var(--blue);line-height:1}
+.lang-label{font-size:16px;font-weight:600;color:var(--text);margin-top:8px}
+.lang-detail{font-size:14px;color:#94a3b8;margin-top:4px;font-style:italic}
+.language-impact{margin-top:48px;font-size:18px;color:var(--text)}
+.lang-source{font-size:12px;color:#94a3b8;margin-top:4px}
+.language-solution{margin-top:32px;font-size:20px;font-weight:700;color:var(--blue)}
+
+/* SCORECARD SECTION */
+.scorecard-section{padding:100px 48px;background:#f8f9fa}
+.scorecard-container{max-width:1000px;margin:0 auto}
+.scorecard-title{font-size:36px;font-weight:900;text-align:center;color:var(--text)}
+.scorecard-sub{text-align:center;color:#64748b;margin-bottom:48px}
+.scorecard-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.score-card{background:#fff;border-radius:16px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.06);display:flex;flex-direction:column;gap:8px}
+.score-icon{font-size:32px}
+.score-scenario{font-size:18px;font-weight:800;color:var(--text)}
+.score-desc{font-size:13px;color:#64748b;line-height:1.4}
+.score-result{margin-top:auto;padding-top:12px}
+.score-badge{display:inline-block;padding:6px 16px;border-radius:100px;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+.score-badge.fail{background:#fef2f2;color:#ef4444;border:1px solid #fca5a5}
+.score-badge.pending{background:#fffbeb;color:#d97706;border:1px solid #fcd34d}
+.score-badge.pass{background:#ecfdf5;color:#10b981;border:1px solid #6ee7b7}
+.score-detail{font-size:13px;color:#94a3b8}
+.scorecard-comparison{text-align:center;margin-top:40px;font-size:18px;color:var(--text)}
+
 @media(max-width:768px){
   .flow-section{padding:60px 24px}
   .flow-chart{flex-direction:column;gap:32px;align-items:center}
@@ -294,6 +325,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   .findings-section{padding:60px 24px}
   .finding-grid{grid-template-columns:1fr}
   .portal-section{padding:60px 24px}
+  .language-section{padding:60px 24px}
+  .language-title{font-size:28px}
+  .language-stats{flex-direction:column}
+  .lang-number{font-size:48px}
+  .scorecard-section{padding:60px 24px}
 }
 </style>
 <!-- RB2B -->
@@ -579,6 +615,102 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Portal:</strong> payment link via SMS</span></div>
       <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Hours:</strong> 24/7/365</span></div>
       <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Languages:</strong> 50+</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: HISPANIC LANGUAGE GAP -->
+<section class="language-section rv">
+  <div class="language-container">
+    <h2 class="language-title">Your clients speak Spanish.<br>Your billing doesn't.</h2>
+
+    <div class="language-stats">
+      <div class="lang-stat">
+        <div class="lang-number">18%</div>
+        <div class="lang-label">of Orange County speaks Spanish at home</div>
+      </div>
+      <div class="lang-stat">
+        <div class="lang-number">~4,500</div>
+        <div class="lang-label">of your 30,000 clients have a Spanish-speaking billing contact</div>
+      </div>
+      <div class="lang-stat">
+        <div class="lang-number">0</div>
+        <div class="lang-label">uniform companies offer Spanish-language billing</div>
+        <div class="lang-detail">Not you. Not Cintas. Not UniFirst.</div>
+      </div>
+    </div>
+
+    <div class="language-impact">
+      <p>Industry data: language-matched billing improves payment rates by <strong>18&ndash;31%</strong>.</p>
+      <p class="lang-source">Sources: CFPB 2022, HFMA 2019</p>
+    </div>
+
+    <div class="language-solution">
+      <p>Your AI agent speaks <strong>50+ languages</strong>. Including theirs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: TEAM SCORECARD -->
+<section class="scorecard-section rv">
+  <div class="scorecard-container">
+    <h2 class="scorecard-title">We tested your team.</h2>
+    <p class="scorecard-sub">Five scenarios. Five different caller profiles. Here's how your billing team scored.</p>
+
+    <div class="scorecard-grid">
+      <div class="score-card">
+        <div class="score-icon">&#128222;</div>
+        <div class="score-scenario">Polite Client</div>
+        <div class="score-desc">Standard billing inquiry during business hours</div>
+        <div class="score-result">
+          <span class="score-badge fail">NOT REACHED</span>
+        </div>
+        <div class="score-detail">2 min hold &rarr; transfer &rarr; voicemail. No callback.</div>
+      </div>
+
+      <div class="score-card">
+        <div class="score-icon">&#128548;</div>
+        <div class="score-scenario">Frustrated Client</div>
+        <div class="score-desc">Client who has called multiple times without resolution</div>
+        <div class="score-result">
+          <span class="score-badge pending">PENDING</span>
+        </div>
+        <div class="score-detail">Test scheduled during business hours.</div>
+      </div>
+
+      <div class="score-card">
+        <div class="score-icon">&#128148;</div>
+        <div class="score-scenario">Financial Hardship</div>
+        <div class="score-desc">Small business owner who can't afford the full amount</div>
+        <div class="score-result">
+          <span class="score-badge pending">PENDING</span>
+        </div>
+        <div class="score-detail">Test scheduled during business hours.</div>
+      </div>
+
+      <div class="score-card">
+        <div class="score-icon">&#128116;</div>
+        <div class="score-scenario">Confused Elderly Client</div>
+        <div class="score-desc">Older person who needs extra patience and guidance</div>
+        <div class="score-result">
+          <span class="score-badge pending">PENDING</span>
+        </div>
+        <div class="score-detail">Test scheduled during business hours.</div>
+      </div>
+
+      <div class="score-card">
+        <div class="score-icon">&#127466;&#127480;</div>
+        <div class="score-scenario">Spanish Speaker</div>
+        <div class="score-desc">Client who primarily speaks Spanish</div>
+        <div class="score-result">
+          <span class="score-badge pending">PENDING</span>
+        </div>
+        <div class="score-detail">Test scheduled during business hours.</div>
+      </div>
+    </div>
+
+    <div class="scorecard-comparison">
+      <p>Your AI agent passes all five. Every time. <strong>Try it yourself &rarr;</strong></p>
     </div>
   </div>
 </section>
