@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AR Audit: Kimble Companies</title>
+<title>Kimble Companies: invoice required. hold music included.</title>
 <meta name="robots" content="noindex, nofollow">
-<meta property="og:title" content="AR Audit: Kimble Companies">
-<meta property="og:description" content="Mystery shopping results and AR recovery analysis for Kimble Companies.">
+<meta property="og:title" content="Kimble Companies: invoice required. hold music included.">
+<meta property="og:description" content="We called. We tried to pay. The operator answered and put us on hold. 74 seconds. An AR audit by AgentCollect.">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
@@ -50,8 +50,9 @@
   --shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);
   --shadow-lg:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);
 }
-html{scroll-behavior:smooth;overflow-x:hidden}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:16px;line-height:1.6;position:relative}
+html,body{overflow-x:hidden}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:16px;line-height:1.6;position:relative;max-width:100vw}
 ::selection{background:rgba(79,70,229,.1)}
 
 .rv{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
@@ -69,62 +70,112 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .nav-expiry{font-size:14px;color:var(--muted);font-weight:500}
 .nav-expiry strong{color:var(--text);font-weight:700}
 
-/* HEADER */
-.audit-header{background:#0B1B3D;color:#fff;padding:140px 48px 80px;text-align:center;position:relative;overflow:hidden}
-.audit-header::before{content:'';position:absolute;width:600px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(79,70,229,.15) 0%,rgba(79,70,229,.05) 40%,transparent 70%);border-radius:50%;pointer-events:none}
-.audit-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(79,70,229,.15);border:1px solid rgba(79,70,229,.25);border-radius:100px;padding:8px 20px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.8);margin-bottom:24px}
-.audit-badge svg{width:16px;height:16px}
-.audit-company{font-size:clamp(32px,5vw,56px);font-weight:900;letter-spacing:-.04em;line-height:1.08;margin-bottom:8px}
-.audit-subtitle{font-size:18px;font-weight:600;color:rgba(255,255,255,.5);margin-bottom:8px}
-.audit-date{font-size:14px;color:rgba(255,255,255,.35);font-weight:500}
+/* STICKY NAV */
+.sticky-nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(11,27,61,0.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:12px 0;transform:translateY(-100%);transition:transform 0.3s ease}
+.sticky-nav.visible{transform:translateY(0)}
+.sticky-nav-inner{max-width:1280px;margin:0 auto;padding:0 48px;display:flex;align-items:center;gap:32px}
+.sticky-nav-logo{text-decoration:none;font-weight:900;font-size:14px;color:#fff;letter-spacing:-.3px;display:inline-flex;align-items:baseline;flex-shrink:0;opacity:.7}
+.sticky-nav-logo .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--blue);margin-left:1px}
+.sticky-nav-links{display:flex;align-items:center;gap:4px;flex:1}
+.sticky-nav-links a{text-decoration:none;color:rgba(255,255,255,.5);font-size:12px;font-weight:600;padding:6px 12px;border-radius:6px;transition:all .2s;white-space:nowrap;letter-spacing:.01em}
+.sticky-nav-links a:hover{color:rgba(255,255,255,.8);background:rgba(255,255,255,.06)}
+.sticky-nav-links a.active{color:#fff;background:rgba(79,70,229,.3)}
+@media(max-width:768px){.sticky-nav{display:none}}
 
-/* MYSTERY CALLS */
-.mystery-section{padding:100px 48px;background:#0B1B3D;position:relative;overflow:hidden}
-.mystery-section::before{content:'';position:absolute;width:800px;height:800px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(79,70,229,.1) 0%,transparent 60%);border-radius:50%;pointer-events:none}
-.mystery-inner{max-width:800px;margin:0 auto}
-.mystery-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.35);margin-bottom:12px}
-.mystery-title{font-size:clamp(24px,3vw,36px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px;color:#fff}
-.mystery-sub{font-size:16px;color:rgba(255,255,255,.45);margin-bottom:48px;line-height:1.5}
-.call-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px;margin-bottom:20px;transition:border-color .3s}
-.call-card:hover{border-color:rgba(79,70,229,.3)}
-.call-card:last-child{margin-bottom:0}
-.call-card-header{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px}
-.call-card-info h3{font-size:17px;font-weight:800;color:#fff;margin-bottom:4px}
-.call-card-info .call-number{font-size:13px;color:rgba(255,255,255,.4);font-family:var(--mono);font-weight:500}
-.call-card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.call-card-date{font-size:12px;color:rgba(255,255,255,.35);font-weight:500}
-.call-badge{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-.call-badge.duration{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
-.call-badge.result{background:rgba(220,38,38,.15);color:#fca5a5;border:1px solid rgba(220,38,38,.25)}
-.call-badge.result-amber{background:rgba(245,158,11,.15);color:#fbbf24;border:1px solid rgba(245,158,11,.25)}
-.call-audio{margin:16px 0}
-.call-audio audio{width:100%;height:40px;border-radius:8px;outline:none}
-.call-audio audio::-webkit-media-controls-panel{background:rgba(255,255,255,.06);border-radius:8px}
-.call-audio audio::-webkit-media-controls-play-button{color:#fff}
-.call-audio audio::-webkit-media-controls-current-time-display,.call-audio audio::-webkit-media-controls-time-remaining-display{color:rgba(255,255,255,.6);font-size:11px}
-.call-transcript-toggle{display:flex;align-items:center;gap:6px;background:none;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;color:rgba(255,255,255,.5);cursor:pointer;transition:all .2s;font-family:var(--sans);margin-top:12px}
-.call-transcript-toggle:hover{border-color:rgba(79,70,229,.4);color:rgba(255,255,255,.8)}
-.call-transcript-toggle svg{width:14px;height:14px;transition:transform .3s}
-.call-transcript-toggle.open svg{transform:rotate(180deg)}
-.call-transcript{display:none;margin-top:16px;padding:16px;background:rgba(0,0,0,.2);border-radius:12px;max-height:200px;overflow-y:auto}
-.call-transcript.open{display:block}
-.call-transcript::-webkit-scrollbar{width:4px}
-.call-transcript::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
-.ct-msg{padding:8px 12px;border-radius:10px;font-size:13px;line-height:1.5;margin-bottom:8px;max-width:85%}
-.ct-msg:last-child{margin-bottom:0}
-.ct-msg.agent{background:rgba(79,70,229,.2);color:rgba(255,255,255,.85);margin-right:auto}
-.ct-msg.system{background:rgba(255,255,255,.06);color:rgba(255,255,255,.5);margin-left:auto;text-align:right}
-.ct-msg-role{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px;opacity:.6}
-.mystery-summary{margin-top:48px;text-align:center;padding:28px;background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.2);border-radius:14px}
-.mystery-summary-stat{font-size:clamp(18px,2.5vw,24px);font-weight:900;color:#fca5a5;letter-spacing:-.02em}
+/* HERO */
+.hero{background:#0B1B3D;color:#fff;padding:160px 48px 100px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;width:800px;height:800px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(245,158,11,.07) 0%,rgba(79,70,229,.05) 40%,transparent 70%);border-radius:50%;pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.2);border-radius:100px;padding:8px 20px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.7);margin-bottom:32px}
+.hero h1{font-size:clamp(32px,5vw,60px);font-weight:900;letter-spacing:-.04em;line-height:1.08;margin-bottom:20px;max-width:800px;margin-left:auto;margin-right:auto}
+.hero h1 em{font-style:normal;color:#fbbf24}
+.hero-stats{display:flex;justify-content:center;gap:48px;margin-bottom:24px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat-number{font-size:clamp(36px,5vw,56px);font-weight:900;font-family:var(--mono);line-height:1;letter-spacing:-.03em}
+.hero-stat-number.red{color:#fca5a5}
+.hero-stat-number.amber{color:#fbbf24}
+.hero-stat-number.green{color:#6ee7b7}
+.hero-stat-label{font-size:13px;color:rgba(255,255,255,.4);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+.hero-sub{font-size:16px;color:rgba(255,255,255,.35);margin-top:24px;font-weight:500}
 
-@media(max-width:768px){
-  .mystery-section{padding:60px 24px}
-  .call-card{padding:20px}
-  .call-card-header{flex-direction:column}
-}
+/* CHAPTER */
+.chapter{padding:100px 48px;position:relative}
+.chapter-dark{background:#0B1B3D;color:#fff}
+.chapter-dark::before{content:'';position:absolute;width:800px;height:800px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(79,70,229,.08) 0%,transparent 60%);border-radius:50%;pointer-events:none}
+.chapter-inner{max-width:800px;margin:0 auto}
+.chapter-title{font-size:clamp(24px,3vw,40px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px}
+.chapter-sub{font-size:16px;color:var(--muted);margin-bottom:48px;line-height:1.5}
+.chapter-dark .chapter-sub{color:rgba(255,255,255,.4)}
 
-/* COMING SOON */
+/* FEATURED CALL */
+.featured-call{background:rgba(255,255,255,.04);border:1px solid rgba(245,158,11,.25);border-radius:20px;padding:36px;margin-bottom:32px}
+.featured-call-header{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+.featured-call-header h3{font-size:20px;font-weight:900;color:#fff;margin-bottom:4px}
+.featured-call-header .call-number{font-size:13px;color:rgba(255,255,255,.4);font-family:var(--mono);font-weight:500}
+.featured-badges{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;padding:5px 14px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.badge-duration{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
+.badge-human{background:rgba(16,185,129,.15);color:#6ee7b7;border:1px solid rgba(16,185,129,.25)}
+.badge-hold{background:rgba(245,158,11,.15);color:#fbbf24;border:1px solid rgba(245,158,11,.25)}
+
+/* AUDIO TIMELINE */
+.audio-timeline{margin:20px 0}
+.audio-timeline audio{width:100%;height:44px;border-radius:10px;outline:none}
+.audio-timeline audio::-webkit-media-controls-panel{background:rgba(255,255,255,.06);border-radius:10px}
+.audio-timeline audio::-webkit-media-controls-current-time-display,.audio-timeline audio::-webkit-media-controls-time-remaining-display{color:rgba(255,255,255,.6);font-size:11px}
+
+.timeline-markers{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.timeline-marker{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;border:1px solid transparent}
+.timeline-marker:hover{transform:translateY(-1px)}
+.timeline-marker.ivr{background:rgba(79,70,229,.15);color:#a5b4fc;border-color:rgba(79,70,229,.25)}
+.timeline-marker.human{background:rgba(16,185,129,.12);color:#6ee7b7;border-color:rgba(16,185,129,.2)}
+.timeline-marker.hold{background:rgba(245,158,11,.12);color:#fbbf24;border-color:rgba(245,158,11,.2)}
+.timeline-marker.fail{background:rgba(220,38,38,.12);color:#fca5a5;border-color:rgba(220,38,38,.2)}
+.timeline-marker .tm-time{font-family:var(--mono);font-size:10px;opacity:.7}
+
+/* TRANSCRIPT HIGHLIGHT */
+.transcript-highlight{margin-top:20px;padding:20px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.12);border-radius:14px}
+.transcript-highlight-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#fbbf24;margin-bottom:10px}
+.transcript-line{font-size:14px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:4px}
+.transcript-line:last-child{margin-bottom:0}
+.transcript-line strong{color:rgba(255,255,255,.85);font-weight:700}
+.transcript-line em{color:rgba(255,255,255,.35);font-style:italic}
+
+/* SUPPORTING CALLS GRID */
+.supporting-calls{margin-top:48px}
+.supporting-calls h3{font-size:12px;font-weight:800;color:rgba(255,255,255,.5);margin-bottom:20px;text-transform:uppercase;letter-spacing:.08em}
+.call-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.call-mini{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:16px;transition:border-color .3s}
+.call-mini:hover{border-color:rgba(79,70,229,.25)}
+.call-mini h4{font-size:14px;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:4px}
+.call-mini .call-mini-meta{font-size:12px;color:rgba(255,255,255,.3);display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap}
+.call-mini audio{width:100%;height:32px;border-radius:6px}
+.call-mini audio::-webkit-media-controls-panel{background:rgba(255,255,255,.04);border-radius:6px}
+.call-mini audio::-webkit-media-controls-current-time-display,.call-mini audio::-webkit-media-controls-time-remaining-display{color:rgba(255,255,255,.4);font-size:10px}
+.call-summary-box{margin-top:32px;text-align:center;padding:24px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.15);border-radius:14px}
+.call-summary-box p{font-size:clamp(16px,2vw,20px);font-weight:900;color:#fbbf24;letter-spacing:-.02em}
+
+/* COMING SOON call mini */
+.call-mini-coming{background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.1);border-radius:12px;padding:16px;position:relative}
+.call-mini-coming h4{font-size:14px;font-weight:700;color:rgba(255,255,255,.3);margin-bottom:4px}
+.call-mini-coming .coming-pill{display:inline-flex;align-items:center;padding:3px 10px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.05);color:rgba(255,255,255,.25);margin-bottom:8px}
+.call-mini-coming p{font-size:12px;color:rgba(255,255,255,.25);line-height:1.4}
+
+@media(max-width:768px){.call-grid{grid-template-columns:1fr}}
+
+/* PORTAL SECTION */
+.portal-section{padding:100px 48px;background:#fff}
+.portal-inner{max-width:960px;margin:0 auto}
+.screenshot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:40px 0}
+.screenshot-card{background:#fff;border-radius:12px;border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow);position:relative;transition:transform .2s,box-shadow .2s}
+.screenshot-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.screenshot-card img{width:100%;height:220px;object-fit:cover;object-position:top;display:block;border-bottom:1px solid var(--border)}
+.screenshot-caption{padding:14px 16px;font-size:13px;color:var(--muted);font-weight:500;line-height:1.4}
+.portal-callout{background:#fef2f2;border:1px solid #fca5a5;border-radius:12px;padding:20px 28px;max-width:720px;margin:0 auto;display:flex;align-items:flex-start;gap:12px}
+.portal-callout svg{flex-shrink:0;width:20px;height:20px;color:var(--red);margin-top:2px}
+.portal-callout p{font-size:15px;color:var(--red);font-weight:600;line-height:1.5;text-align:left}
+@media(max-width:768px){.screenshot-grid{grid-template-columns:1fr}.portal-section{padding:60px 24px}}
+
+/* COMING SOON SECTION */
 .coming-section{padding:80px 48px;background:#0f1729;position:relative}
 .coming-inner{max-width:800px;margin:0 auto}
 .coming-card{border:2px dashed rgba(255,255,255,.12);border-radius:16px;padding:32px;background:rgba(255,255,255,.02)}
@@ -140,188 +191,98 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .coming-status{display:inline-flex;align-items:center;padding:3px 10px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;flex-shrink:0}
 .coming-status.scheduled{background:rgba(255,255,255,.06);color:rgba(255,255,255,.3)}
 .coming-status.completed{background:rgba(16,185,129,.15);color:#6ee7b7}
-@media(max-width:768px){
-  .coming-section{padding:60px 24px}
-  .coming-card{padding:20px}
-}
+@media(max-width:768px){.coming-section{padding:60px 24px}.coming-card{padding:20px}}
 
-/* PORTAL TODAY */
-.portal-today{padding:80px 48px;background:#fff}
-.portal-today-inner{max-width:960px;margin:0 auto;text-align:center}
-.portal-today-inner h2{font-size:clamp(24px,3vw,36px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px;color:var(--text)}
-.portal-today-sub{color:#64748b;margin-bottom:40px;font-size:16px;line-height:1.5}
-.screenshot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:40px}
-.screenshot-card{background:#fff;border-radius:12px;border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow)}
-.screenshot-card img{width:100%;height:280px;object-fit:cover;object-position:top;display:block;border-bottom:1px solid var(--border)}
-.screenshot-caption{padding:14px 16px;font-size:13px;color:var(--muted);font-weight:500;line-height:1.4;text-align:left}
-.portal-today-callout{background:#fef2f2;border:1px solid #fca5a5;border-radius:12px;padding:20px 28px;max-width:720px;margin:0 auto;display:flex;align-items:flex-start;gap:12px}
-.portal-today-callout svg{flex-shrink:0;width:20px;height:20px;color:var(--red);margin-top:2px}
-.portal-today-callout p{font-size:15px;color:var(--red);font-weight:600;line-height:1.5;text-align:left}
+/* WHAT FOUND STATS */
+.findings-section{padding:100px 48px;background:var(--bg)}
+.findings-inner{max-width:900px;margin:0 auto}
+.findings-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.finding-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:24px;position:relative}
+.finding-card-number{font-size:clamp(28px,4vw,40px);font-weight:900;line-height:1;margin-bottom:8px;font-family:var(--mono)}
+.finding-card-label{font-size:13px;color:var(--muted);line-height:1.4;font-weight:500}
+.finding-card-source{font-size:11px;color:#94a3b8;margin-top:12px}
+@media(max-width:768px){.findings-section{padding:60px 24px}.findings-grid{grid-template-columns:1fr}}
 
-@media(max-width:768px){
-  .portal-today{padding:60px 24px}
-  .portal-today .screenshot-grid{grid-template-columns:1fr}
-}
+/* REVEALS BOX */
+.reveals-box{margin-top:20px;padding:20px 24px;background:rgba(79,70,229,.04);border:1px solid rgba(79,70,229,.12);border-radius:14px}
+.reveals-box-dark{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08)}
+.reveals-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.reveals-box-dark .reveals-label{color:#a5b4fc}
+.reveals-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;font-size:14px;line-height:1.5}
+.reveals-item:last-child{margin-bottom:0}
+.reveals-item .ri-dot{flex-shrink:0;width:6px;height:6px;border-radius:50%;margin-top:7px}
+.reveals-item .ri-dot.green{background:#10B981}
+.reveals-item .ri-dot.orange{background:#F59E0B}
+.reveals-item .ri-dot.red{background:#dc2626}
+.reveals-item-text{color:var(--muted)}
+.reveals-box-dark .reveals-item-text{color:rgba(255,255,255,.5)}
+.reveals-item-text strong{color:var(--text);font-weight:700}
+.reveals-box-dark .reveals-item-text strong{color:rgba(255,255,255,.85)}
 
-/* COST */
-.section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:12px}
-.section-title{font-size:clamp(24px,3vw,36px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px;color:var(--text)}
-.section-sub{font-size:16px;color:var(--muted);margin-bottom:40px;line-height:1.5}
-.cost-section{padding:80px 48px;background:linear-gradient(180deg,#f6f3ef 0%,#F8F7F5 100%);text-align:center;position:relative}
-.cost-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--red),transparent);opacity:.3}
-.cost-big{font-size:clamp(48px,8vw,88px);font-weight:900;letter-spacing:-.04em;color:var(--red);line-height:1;margin-bottom:8px;font-family:var(--sans)}
-.cost-big-suffix{font-size:clamp(24px,4vw,44px);font-weight:900;color:var(--red);opacity:.6}
-.cost-subtitle{font-size:18px;color:var(--muted);margin-bottom:48px;line-height:1.5;max-width:480px;margin-left:auto;margin-right:auto}
-.cost-breakdown{max-width:480px;margin:0 auto;text-align:left}
-.cost-row{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--border)}
-.cost-row:last-child{border-bottom:none;padding-top:20px}
-.cost-row-label{font-size:15px;color:var(--muted);font-weight:500}
-.cost-row-value{font-size:15px;font-weight:700;color:var(--text);font-family:var(--mono)}
-.cost-row.total .cost-row-label{font-size:17px;font-weight:800;color:var(--text)}
-.cost-row.total .cost-row-value{font-size:20px;font-weight:900;color:var(--red)}
-
-/* AGENT ORB */
-.agent-section{padding:80px 48px;text-align:center;position:relative;overflow:hidden}
-.agent-section::before{content:'';position:absolute;width:600px;height:600px;top:40%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(79,70,229,.08) 0%,transparent 60%);border-radius:50%;pointer-events:none}
-
-.orb-wrap{position:relative;width:280px;height:280px;aspect-ratio:1;margin:0 auto 32px;cursor:pointer}
-.orb-glow{position:absolute;inset:-50px;border-radius:50%;background:radial-gradient(circle,rgba(79,70,229,.18) 0%,rgba(79,70,229,.06) 40%,transparent 70%);animation:orbGlowPulse 4s ease-in-out infinite}
-.orb-main{position:relative;width:280px;height:280px;aspect-ratio:1;border-radius:50%;-webkit-border-radius:50%;overflow:hidden;-webkit-mask-image:-webkit-radial-gradient(white,black);mask-image:radial-gradient(white,black);animation:orbDrift 6s ease-in-out infinite;transition:transform .3s,box-shadow .3s;box-shadow:0 0 80px rgba(79,70,229,.25),0 0 160px rgba(79,70,229,.08),inset 0 0 60px rgba(0,0,0,.3)}
-.orb-wrap:hover .orb-main{transform:scale(1.06)}
-.orb-wrap:active .orb-main{transform:scale(.95)}
-.orb-main.speaking{animation:orbDrift 6s ease-in-out infinite,orbPulseSpeak .8s ease-in-out infinite}
-.orb-layer{position:absolute;inset:0;border-radius:50%}
-.orb-layer-1{background:conic-gradient(from 0deg,#4F46E5,#6366f1,#1e1b4b,#818cf8,#4F46E5);animation:orbSpin 8s linear infinite}
-.orb-layer-2{background:conic-gradient(from 180deg,rgba(79,70,229,.8),rgba(99,102,241,.5),rgba(30,27,75,.6),rgba(129,140,248,.4),rgba(79,70,229,.8));animation:orbSpin 12s linear infinite reverse;mix-blend-mode:soft-light}
-.orb-layer-3{background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.25) 0%,transparent 50%)}
-.orb-layer-4{background:radial-gradient(circle at 50% 110%,rgba(0,0,0,.4) 0%,transparent 60%)}
-.orb-phone-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:10;transition:opacity .3s,transform .3s}
-.orb-phone-center svg{width:40px;height:40px;color:#fff;stroke:currentColor;filter:drop-shadow(0 2px 12px rgba(0,0,0,.35));transition:transform .3s}
-.orb-wrap:hover .orb-phone-center svg{transform:scale(1.12)}
-
-.orb-ring{position:absolute;border-radius:50%;border:1.5px solid rgba(79,70,229,.12);pointer-events:none}
-.orb-ring-1{inset:-24px;animation:ringPulse 3s ease-out infinite}
-.orb-ring-2{inset:-48px;animation:ringPulse 3s ease-out infinite .6s}
-.orb-ring-3{inset:-72px;animation:ringPulse 3s ease-out infinite 1.2s}
-
-@keyframes orbSpin{0%{transform:rotate(0deg) scale(1.15)}100%{transform:rotate(360deg) scale(1.15)}}
-@keyframes orbDrift{0%,100%{transform:translateY(0) scale(1)}33%{transform:translateY(-4px) scale(1.01)}66%{transform:translateY(-2px) scale(.995)}}
-@keyframes orbPulseSpeak{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
-@keyframes orbGlowPulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.8;transform:scale(1.08)}}
-@keyframes ringPulse{0%{opacity:.6;transform:scale(.95)}50%{opacity:.2;transform:scale(1)}100%{opacity:0;transform:scale(1.05)}}
-@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-.call-state{display:flex;flex-direction:column;align-items:center;width:100%;max-width:360px;margin:0 auto}
-.cs-connecting{display:none;flex-direction:column;align-items:center;gap:12px;padding:8px 0;animation:fadeInUp .3s ease}
-.cs-connecting .co-spinner{width:28px;height:28px;border:3px solid rgba(79,70,229,.15);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite}
-.cs-connecting-text{color:var(--muted);font-size:13px;font-weight:500}
-.cs-active{display:none;flex-direction:column;align-items:center;gap:10px;padding:8px 0;width:100%}
-.cs-active.visible{display:flex}
-.cs-status{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--blue)}
-.cs-waveform{display:flex;align-items:center;justify-content:center;gap:3px;height:40px;padding:4px 0}
-.cs-waveform span{width:3.5px;border-radius:3px;background:var(--blue);min-height:4px;will-change:height;transition:height .08s linear}
-.cs-transcript{width:100%;max-height:80px;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}
-.cs-transcript::-webkit-scrollbar{display:none}
-.cs-msg{padding:8px 12px;border-radius:12px;font-size:13px;line-height:1.5;margin-bottom:6px;animation:fadeInUp .3s ease}
-.cs-msg.agent{background:rgba(79,70,229,.08);color:var(--text)}
-.cs-msg.user{background:rgba(0,0,0,.04);color:var(--muted);text-align:right}
-.cs-end-btn{padding:10px 24px;background:rgba(239,68,68,.06);color:#ef4444;border:1px solid rgba(239,68,68,.15);border-radius:12px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;font-family:var(--sans)}
-.cs-end-btn:hover{background:rgba(239,68,68,.12)}
-.cs-post-call{display:none;flex-direction:column;align-items:center;gap:10px;padding:8px 0;animation:fadeInUp .4s ease}
-.cs-post-check{margin-bottom:4px}
-.cs-post-title{font-size:18px;font-weight:800;color:var(--text)}
-.cs-post-sub{font-size:14px;color:var(--muted);text-align:center;line-height:1.5;max-width:300px}
-.cs-post-cta{display:flex;align-items:center;gap:8px;padding:14px 28px;background:var(--blue);color:#fff;border:none;border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;text-decoration:none;margin-top:6px;box-shadow:0 0 20px rgba(79,70,229,.3);font-family:var(--sans)}
-.cs-post-cta:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 4px 24px rgba(79,70,229,.4)}
-.cs-post-retry{background:none;border:1px solid var(--border);color:var(--muted);padding:8px 16px;border-radius:8px;font-size:12px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;margin-top:2px;font-family:var(--sans)}
-.cs-post-retry:hover{border-color:var(--blue);color:var(--blue)}
-
-.agent-title{font-size:clamp(24px,3vw,36px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px;color:var(--text)}
-.agent-sub{font-size:16px;color:var(--muted);margin-bottom:32px;line-height:1.5;max-width:480px;margin-left:auto;margin-right:auto}
-.agent-hint{font-size:14px;color:var(--green);font-weight:600;margin-bottom:4px;animation:fadeInUp .6s ease .3s both}
-
-/* COMPARE */
-.compare-section{padding:80px 48px;max-width:920px;margin:0 auto}
-.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
-.compare-col{padding:32px 28px;border-radius:16px;border:1px solid var(--border)}
-.compare-col.current{background:rgba(220,38,38,.02);border-color:rgba(220,38,38,.12)}
-.compare-col.agent{background:rgba(79,70,229,.02);border-color:rgba(79,70,229,.12)}
-.compare-col-header{display:flex;align-items:center;gap:10px;margin-bottom:24px}
-.compare-col-header .icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
-.compare-col.current .icon{background:rgba(220,38,38,.08);color:var(--red)}
-.compare-col.agent .icon{background:rgba(79,70,229,.08);color:var(--blue)}
-.compare-col-header h3{font-size:18px;font-weight:800;color:var(--text)}
-.compare-item{display:flex;gap:10px;margin-bottom:14px;font-size:15px;line-height:1.5;color:var(--muted)}
-.compare-item:last-child{margin-bottom:0}
-.compare-item .bullet{flex-shrink:0;font-weight:900;font-size:15px;line-height:1.5}
-.compare-col.current .bullet{color:var(--red)}
-.compare-col.agent .bullet{color:var(--green)}
-.compare-item strong{color:var(--text);font-weight:700}
+/* SCORING */
+.score-green{color:#10B981;font-weight:700}
+.score-orange{color:#F59E0B;font-weight:700}
+.score-red{color:#dc2626;font-weight:700}
+.score-badge-green{background:rgba(16,185,129,.1);color:#10B981;border:1px solid rgba(16,185,129,.2);display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;gap:6px}
+.score-badge-orange{background:rgba(245,158,11,.1);color:#F59E0B;border:1px solid rgba(245,158,11,.2);display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;gap:6px}
+.score-badge-red{background:rgba(220,38,38,.1);color:#dc2626;border:1px solid rgba(220,38,38,.2);display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;gap:6px}
 
 /* CTA */
-.cta-section{padding:80px 48px;text-align:center;background:#0B1B3D;color:#fff}
+.cta-section{padding:100px 48px;text-align:center;background:#0B1B3D;color:#fff}
 .cta-title{font-size:clamp(26px,3.5vw,42px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px}
 .cta-sub{font-size:16px;color:rgba(255,255,255,.5);margin-bottom:32px}
 .cta-btn{display:inline-flex;align-items:center;gap:10px;padding:18px 44px;background:var(--blue);color:#fff;border-radius:14px;font-weight:700;font-size:17px;text-decoration:none;transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s;font-family:var(--sans);letter-spacing:-.01em;box-shadow:0 0 20px rgba(79,70,229,.4)}
 .cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(79,70,229,.5)}
 .cta-btn svg{width:18px;height:18px}
-.cta-logos{display:flex;align-items:center;justify-content:center;gap:36px;margin-top:48px;opacity:.4}
-.cta-logos img{height:22px;filter:brightness(0) invert(1);object-fit:contain}
+@media(max-width:768px){.cta-section{padding:60px 24px}}
 
 /* FOOTER */
-.audit-footer{padding:40px 48px 100px;text-align:center;border-top:1px solid var(--border)}
+.audit-footer{padding:40px 48px 120px;text-align:center;border-top:1px solid var(--border)}
 .audit-footer-built{font-size:14px;font-weight:600;color:var(--text);margin-bottom:8px}
 .audit-footer-disc{font-size:12px;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.5}
 
-/* FAB */
-.voice-fab{position:fixed;bottom:28px;right:28px;z-index:9000;display:flex;align-items:center;gap:10px;background:#0f0f1a;border:1px solid rgba(79,70,229,.3);border-radius:50px;padding:12px 20px 12px 14px;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 8px 32px rgba(0,0,0,.4);opacity:0;pointer-events:none;transform:translateY(20px)}
-.voice-fab.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
-.voice-fab:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(79,70,229,.3);border-color:rgba(79,70,229,.5)}
-.voice-fab-icon{width:40px;height:40px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 16px rgba(79,70,229,.4)}
-.voice-fab-icon svg{width:20px;height:20px;color:#fff}
-.voice-fab.live{border-color:rgba(239,68,68,.4);background:#1a0f0f;box-shadow:0 8px 32px rgba(239,68,68,.3)}
-.voice-fab.live:hover{border-color:rgba(239,68,68,.6);box-shadow:0 12px 40px rgba(239,68,68,.4)}
-.voice-fab.live .voice-fab-icon{background:#ef4444;box-shadow:0 0 16px rgba(239,68,68,.5);animation:fabPulse 1.5s ease-in-out infinite}
-.voice-fab.live .voice-fab-text{color:rgba(255,255,255,.9)}
-@keyframes fabPulse{0%,100%{box-shadow:0 0 16px rgba(239,68,68,.5)}50%{box-shadow:0 0 28px rgba(239,68,68,.7)}}
-.voice-fab-text{color:rgba(255,255,255,.9);font-size:13px;font-weight:600;white-space:nowrap}
+/* CHAT BUBBLE */
+.chat-bubble{position:fixed;bottom:28px;right:28px;z-index:9000}
+.chat-bubble-btn{display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#4F46E5,#6366f1);border:none;border-radius:50px;padding:14px 22px 14px 16px;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 8px 32px rgba(79,70,229,.4);color:#fff;font-family:var(--sans);font-size:13px;font-weight:600}
+.chat-bubble-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(79,70,229,.5)}
+.chat-bubble-btn svg{width:22px;height:22px;flex-shrink:0}
+.chat-panel{position:fixed;bottom:28px;right:28px;width:400px;height:520px;background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.2),0 0 0 1px rgba(0,0,0,.05);z-index:9001;display:none;flex-direction:column;overflow:hidden;animation:chatPanelIn .3s ease}
+.chat-panel.open{display:flex}
+@keyframes chatPanelIn{from{opacity:0;transform:translateY(20px) scale(.95)}to{opacity:1;transform:none}}
+.chat-panel-header{background:linear-gradient(135deg,#0B1B3D,#1e2d52);color:#fff;padding:20px 20px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.chat-panel-header-left{display:flex;align-items:center;gap:12px}
+.chat-panel-header-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#4F46E5,#6366f1);display:flex;align-items:center;justify-content:center}
+.chat-panel-header-avatar svg{width:18px;height:18px;color:#fff}
+.chat-panel-header-info h3{font-size:14px;font-weight:700;margin-bottom:1px}
+.chat-panel-header-info span{font-size:11px;color:rgba(255,255,255,.5);font-weight:500}
+.chat-panel-close{background:none;border:none;color:rgba(255,255,255,.5);cursor:pointer;padding:4px;border-radius:6px;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.chat-panel-close:hover{color:#fff;background:rgba(255,255,255,.1)}
+.chat-panel-close svg{width:18px;height:18px}
+.chat-panel-body{flex:1;padding:20px;overflow-y:auto;display:flex;flex-direction:column;gap:12px;background:#f9fafb}
+.chat-msg{max-width:85%;padding:12px 16px;border-radius:16px;font-size:14px;line-height:1.5;animation:fadeInUp .3s ease}
+.chat-msg.bot{background:#fff;color:var(--text);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:4px}
+.chat-msg.user{background:var(--blue);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.chat-panel-footer{padding:16px 20px;border-top:1px solid var(--border);flex-shrink:0;background:#fff}
+.chat-call-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;background:linear-gradient(135deg,#4F46E5,#6366f1);color:#fff;border:none;border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;font-family:var(--sans);box-shadow:0 4px 16px rgba(79,70,229,.3)}
+.chat-call-btn:hover{background:linear-gradient(135deg,#4338CA,#4F46E5);transform:translateY(-1px);box-shadow:0 6px 24px rgba(79,70,229,.4)}
+.chat-call-btn svg{width:18px;height:18px}
 
-/* MOBILE */
-@media(max-width:960px){
-  .nav-inner{padding:14px 24px}
-  .compare-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-}
-@media(max-width:600px){
-  .compare-grid{grid-template-columns:1fr;gap:16px}
-}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* GENERAL MOBILE */
 @media(max-width:768px){
-  .nav-expiry{font-size:12px}
-  .audit-header{padding:120px 24px 60px}
-  .cost-section{padding:60px 24px}
-  .agent-section{padding:60px 24px}
-  .compare-section{padding:60px 24px}
-  .cta-section{padding:60px 24px}
-  .orb-wrap{width:220px;height:220px}
-  .orb-main{width:220px;height:220px}
-  .orb-phone-center svg{width:34px;height:34px}
-  .orb-ring-1{inset:-18px}
-  .orb-ring-2{inset:-38px}
-  .orb-ring-3{inset:-58px}
-  .voice-fab{bottom:16px;right:16px;padding:10px;border-radius:50%}
-  .voice-fab-text{display:none}
+  .nav-inner{padding:14px 24px}
+  .hero{padding:120px 24px 60px}
+  .hero-stats{gap:32px}
+  .chapter{padding:60px 24px}
+  .chat-bubble{bottom:16px;right:16px}
 }
 @media(max-width:480px){
-  .nav-expiry{display:block;font-size:10px;white-space:nowrap}
-  .audit-header{padding:100px 20px 48px}
-  .audit-company{font-size:28px}
-  .orb-wrap{width:180px;height:180px}
-  .orb-main{width:180px;height:180px}
-  .orb-phone-center svg{width:28px;height:28px}
-  .orb-ring-1{inset:-14px}
-  .orb-ring-2{inset:-30px}
-  .orb-ring-3{inset:-46px}
-  .cost-big{font-size:40px}
+  .hero h1{font-size:28px}
+  .chat-bubble-btn span{display:none}
+  .chat-bubble-btn{padding:16px;border-radius:50%}
+  .chat-panel{bottom:0;right:0;left:0;width:100%;height:85vh;border-radius:20px 20px 0 0}
 }
 </style>
 <!-- RB2B -->
@@ -337,370 +298,312 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </nav>
 
-<!-- SECTION 1: HEADER -->
-<section class="audit-header">
-  <div class="audit-badge rv">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
-    AR Audit Report
+<!-- STICKY NAV -->
+<nav class="sticky-nav" id="sticky-nav">
+  <div class="sticky-nav-inner">
+    <a href="https://agentcollect.com" class="sticky-nav-logo">AgentCollect<span class="dot"></span></a>
+    <div class="sticky-nav-links">
+      <a href="#the-call" data-nav>The Call</a>
+      <a href="#the-portal" data-nav>The Portal</a>
+      <a href="#what-we-found" data-nav>What We Found</a>
+      <a href="#coming-soon" data-nav>Coming Soon</a>
+    </div>
   </div>
-  <img src="https://cdn.brandfetch.io/kimblecompanies.com/w/512/h/80/logo" onerror="this.style.display='none'" alt="Kimble Companies" style="max-height:60px;margin-bottom:16px;" class="rv rv-d1">
-  <h1 class="audit-company rv rv-d1">Kimble Companies</h1>
-  <p class="audit-subtitle rv rv-d2">Prepared March 2026</p>
-  <p class="audit-date rv rv-d3">Confidential &mdash; expires in <span id="header-days-left"></span></p>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- HERO                                                -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-badge rv">AR Audit &mdash; Kimble Companies</div>
+  <h1 class="rv rv-d1">We called. We tried to pay.<br><em>Here&rsquo;s what happened.</em></h1>
+  <div class="hero-stats rv rv-d2">
+    <div class="hero-stat">
+      <div class="hero-stat-number amber">1</div>
+      <div class="hero-stat-label">Call</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-number amber">74s</div>
+      <div class="hero-stat-label">On Hold</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-number red">0</div>
+      <div class="hero-stat-label">Payments Collected</div>
+    </div>
+  </div>
+  <div class="rv rv-d3" style="display:inline-flex;align-items:center;gap:10px;margin-top:8px">
+    <span class="score-badge-orange" style="font-size:13px;padding:8px 20px">&#9888; ORANGE &mdash; Operator Available, No Help Provided</span>
+  </div>
+  <p class="hero-sub rv rv-d3">March 2026 &mdash; Confidential &mdash; expires in <span id="header-days-left"></span></p>
 </section>
 
-<!-- SECTION 2: MYSTERY CALLS -->
-<section class="mystery-section">
-  <div class="mystery-inner">
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SECTION 1: THE CALL                                 -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="chapter chapter-dark" id="the-call">
+  <div class="chapter-inner">
     <div class="rv">
-      <div class="mystery-label">Mystery calls</div>
-      <h2 class="mystery-title">We called Kimble Companies.</h2>
-      <p class="mystery-sub">Real calls to real numbers. Recorded and transcribed.</p>
+      <h2 class="chapter-title" style="color:#fff">We called 1-800-201-0005.</h2>
+      <p class="chapter-sub">Mike from Summit Services, calling about an outstanding invoice. He navigated the IVR, reached a live operator, and was placed on hold. He never got help.</p>
     </div>
 
-    <!-- Call 1: Main Line -->
-    <div class="call-card rv rv-d1">
-      <div class="call-card-header">
-        <div class="call-card-info">
-          <h3>Kimble Companies &mdash; Main Line</h3>
-          <span class="call-number">(330) 343-1226</span>
+    <!-- FEATURED: Frustrated — 74s, user_hangup -->
+    <div class="featured-call rv rv-d1">
+      <div class="featured-call-header">
+        <div>
+          <h3>&ldquo;An operator answered. Then the hold music started.&rdquo;</h3>
+          <span class="call-number">1-800-201-0005 &rarr; IVR &rarr; Operator &rarr; Hold</span>
         </div>
-        <div class="call-card-meta">
-          <span class="call-card-date">Mar 26, 2026 &middot; 6:26 PM PT</span>
-          <span class="call-badge duration">1m 10s</span>
-          <span class="call-badge result">IVR LOOP NO BILLING OPTION</span>
-        </div>
-      </div>
-      <div class="call-audio">
-        <audio controls preload="metadata" src="https://dxc03zgurdly9.cloudfront.net/0b28135caeaecd575f4531ac49f3de3d4251cfb197cfee21d83955cf27df0915/recording.wav"></audio>
-      </div>
-      <button class="call-transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        View transcript
-      </button>
-      <div class="call-transcript">
-        <div class="ct-msg system">
-          <div class="ct-msg-role">System</div>
-          IVR greeting. Multiple department options listed.
-        </div>
-        <div class="ct-msg agent">
-          <div class="ct-msg-role">Agent</div>
-          Navigated IVR menu looking for billing/accounts receivable option.
-        </div>
-        <div class="ct-msg system">
-          <div class="ct-msg-role">System</div>
-          No billing or AR option available. IVR loops back to main menu. No way to reach a human for payment.
+        <div class="featured-badges">
+          <span class="badge badge-duration">1 min 14s</span>
+          <span class="badge badge-human">HUMAN REACHED</span>
+          <span class="badge badge-hold">ABANDONED ON HOLD</span>
         </div>
       </div>
-    </div>
 
-    <!-- Call 2: Toll-Free -->
-    <div class="call-card rv rv-d2">
-      <div class="call-card-header">
-        <div class="call-card-info">
-          <h3>Kimble Companies &mdash; Toll-Free</h3>
-          <span class="call-number">(800) 201-0005</span>
-        </div>
-        <div class="call-card-meta">
-          <span class="call-card-date">Mar 26, 2026 &middot; 8:34 PM PT (after hours)</span>
-          <span class="call-badge duration">1m 02s</span>
-          <span class="call-badge result">CLOSED NO VOICEMAIL</span>
+      <div class="audio-timeline">
+        <audio controls preload="metadata" id="featured-audio" src="https://dxc03zgurdly9.cloudfront.net/c2336d43a631fcbfaa1a03152779fb418a19198f6e818b045a96cdb4a532f893/recording.wav"></audio>
+        <div class="timeline-markers">
+          <span class="timeline-marker ivr" onclick="jumpTo(0)"><span class="tm-time">0:00</span> IVR greeting</span>
+          <span class="timeline-marker ivr" onclick="jumpTo(10)"><span class="tm-time">0:10</span> Press 0 for operator</span>
+          <span class="timeline-marker human" onclick="jumpTo(28)"><span class="tm-time">0:28</span> Operator picks up</span>
+          <span class="timeline-marker hold" onclick="jumpTo(35)"><span class="tm-time">0:35</span> &ldquo;One moment please&rdquo; &mdash; hold music begins</span>
+          <span class="timeline-marker fail" onclick="jumpTo(74)"><span class="tm-time">1:14</span> No return. Mike hangs up.</span>
         </div>
       </div>
-      <div class="call-audio">
-        <audio controls preload="metadata" src="https://dxc03zgurdly9.cloudfront.net/a6d97dc716b0ff13adf88b40bf4f7320736a9f8ba78d7a79a537692a59625f3b/recording.wav"></audio>
+
+      <div class="transcript-highlight">
+        <div class="transcript-highlight-label">What happened</div>
+        <div class="transcript-line"><strong>Agent:</strong> &ldquo;Thank you for calling Kimble, how can I direct your call?&rdquo;</div>
+        <div class="transcript-line"><strong>Mike:</strong> &ldquo;Hi, I have a question about an invoice on my account.&rdquo;</div>
+        <div class="transcript-line"><strong>Agent:</strong> &ldquo;Sure, one moment please.&rdquo;</div>
+        <div class="transcript-line"><em>Hold music begins at 0:35. Nobody returns. Mike disconnects after 74 seconds. No billing help offered. No payment taken.</em></div>
       </div>
-      <button class="call-transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        View transcript
-      </button>
-      <div class="call-transcript">
-        <div class="ct-msg system">
-          <div class="ct-msg-role">System</div>
-          "Thank you for calling Kimble Companies. Our offices are currently closed."
+
+      <div class="reveals-box reveals-box-dark" style="margin-top:20px">
+        <div class="reveals-label">&#128203; What this reveals</div>
+        <div class="reveals-item">
+          <div class="ri-dot orange"></div>
+          <div class="reveals-item-text"><strong>Operator has no billing access.</strong> A caller pressing 0 is routed to a general receptionist who can&rsquo;t look up accounts. The only option is to transfer &mdash; and nobody picks up the transfer.</div>
         </div>
-        <div class="ct-msg system">
-          <div class="ct-msg-role">System</div>
-          No voicemail option offered. Line disconnects. A client trying to pay after hours has zero options.
+        <div class="reveals-item">
+          <div class="ri-dot orange"></div>
+          <div class="reveals-item-text"><strong>No dedicated AR/billing line in the IVR.</strong> The IVR menu covers refuse, limestone, coal, oil and gas &mdash; but zero billing option. A customer with an invoice question has no direct path.</div>
+        </div>
+        <div class="reveals-item">
+          <div class="ri-dot red"></div>
+          <div class="reveals-item-text"><strong>No voicemail fallback.</strong> When the transfer fails, the caller is left on hold indefinitely. No option to leave a message, no callback. The call ends with zero resolution.</div>
         </div>
       </div>
     </div>
 
-    <!-- Call 3: Secondary Line — Business Hours (March 27) -->
-    <div class="call-card rv rv-d1">
-      <div class="call-card-header">
-        <div class="call-card-info">
-          <h3>Kimble Companies &mdash; Secondary Line</h3>
-          <span class="call-number">(330) 343-1226</span>
+    <!-- SUPPORTING CALLS: Coming Soon -->
+    <div class="supporting-calls rv rv-d2">
+      <h3>More calls &mdash; additional personas in progress</h3>
+      <div class="call-grid">
+        <div class="call-mini-coming">
+          <span class="coming-pill">Coming Soon &mdash; Call in Progress</span>
+          <h4>&#127973; Hospitalized Client</h4>
+          <p>Calling while managing medical bills. Testing empathy and flexibility on payment timing.</p>
         </div>
-        <div class="call-card-meta">
-          <span class="call-card-date">Mar 27, 2026 &middot; 10:02 AM ET (business hours)</span>
-          <span class="call-badge duration">1m 07s</span>
-          <span class="call-badge result">OPERATOR NO ANSWER</span>
-        </div>
-      </div>
-      <div class="call-audio">
-        <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/57bd7c389aeb6ac18595ece5261e29322f160bf12fa33b1b38f4c428ee2563af/recording.wav"></audio>
-      </div>
-      <button class="call-transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        View transcript
-      </button>
-      <div class="call-transcript">
-        <div class="ct-msg system">
-          <div class="ct-msg-role">System</div>
-          IVR greeting. Same menu as main line: refuse/limestone/coal/oil/gas departments. Press 0 for operator.
-        </div>
-        <div class="ct-msg agent">
-          <div class="ct-msg-role">Agent</div>
-          Pressed 0 for operator transfer.
-        </div>
-        <div class="ct-msg system">
-          <div class="ct-msg-role">System</div>
-          Operator transfer initiated. Held for ~20 seconds. Nobody answered. No voicemail offered. Agent disconnected.
+        <div class="call-mini-coming">
+          <span class="coming-pill">Coming Soon &mdash; Call in Progress</span>
+          <h4>&#128184; Poacher Scenario</h4>
+          <p>Competitor reaching out to billing staff directly. Measuring staff satisfaction and response.</p>
         </div>
       </div>
     </div>
 
-    <!-- Call 4: Toll-Free — Business Hours (March 27) -->
-    <div class="call-card rv rv-d2">
-      <div class="call-card-header">
-        <div class="call-card-info">
-          <h3>Kimble Companies &mdash; Toll-Free</h3>
-          <span class="call-number">(800) 201-0005</span>
-        </div>
-        <div class="call-card-meta">
-          <span class="call-card-date">Mar 27, 2026 &middot; 10:02 AM ET (business hours)</span>
-          <span class="call-badge duration">1m 11s</span>
-          <span class="call-badge result">OPERATOR NO ANSWER</span>
-        </div>
-      </div>
-      <div class="call-audio">
-        <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/5ec2ca6dc96ae968d569bcee65473f059497960818299083de3c884f94ac5670/recording.wav"></audio>
-      </div>
-      <button class="call-transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        View transcript
-      </button>
-      <div class="call-transcript">
-        <div class="ct-msg system">
-          <div class="ct-msg-role">System</div>
-          Same IVR as secondary line. Identical menu structure. Press 0 for operator.
-        </div>
-        <div class="ct-msg agent">
-          <div class="ct-msg-role">Agent</div>
-          Pressed 0 for operator transfer.
-        </div>
-        <div class="ct-msg system">
-          <div class="ct-msg-role">System</div>
-          Operator transfer initiated. Held for ~20 seconds. Nobody answered. No voicemail offered. Both numbers route to the same IVR system.
-        </div>
-      </div>
-    </div>
-
-    <!-- Summary -->
-    <div class="mystery-summary rv">
-      <div class="mystery-summary-stat">4 calls. 0 humans reached. 0 voicemails left. 0 payments collected. Grade: D</div>
-    </div>
-    <div style="margin-top:20px;padding:20px 24px;background:rgba(220,38,38,.06);border:1px solid rgba(220,38,38,.12);border-radius:12px;text-align:left">
-      <p style="font-size:14px;color:rgba(255,255,255,.6);line-height:1.6;margin:0">
-        <strong style="color:#fca5a5">March 27 finding:</strong> Both numbers called during business hours (10:02 AM ET). Same IVR, same result. Operator transfer initiated &mdash; nobody picks up. No dedicated AR/billing option in the IVR. No voicemail. A client trying to pay has no way to reach a human.
-      </p>
+    <div class="call-summary-box rv">
+      <p><span class="score-orange">1</span> call placed. <span class="score-orange">1</span> operator reached. <span class="score-red">0</span> billing help provided. <span class="score-red">0</span> payments collected.</p>
     </div>
   </div>
 </section>
 
-<!-- SECTION 2C: COMPLETED + SCHEDULED TESTS -->
-<section class="coming-section">
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SECTION 2: THE PORTAL                               -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="portal-section" id="the-portal">
+  <div class="portal-inner">
+    <div class="rv">
+      <h2 class="chapter-title">Then we tried to pay online.</h2>
+      <p class="chapter-sub">The portal exists. It&rsquo;s linked from the nav bar. But getting in requires something most customers don&rsquo;t have on hand.</p>
+    </div>
+
+    <div class="screenshot-grid" style="grid-template-columns:1fr;gap:32px;max-width:900px;margin:0 auto">
+
+      <!-- SCREENSHOT 1: Homepage -->
+      <div class="screenshot-card rv rv-d1">
+        <div style="position:relative;overflow:hidden">
+          <img src="/v3/audit-assets/kimble/homepage-desktop-1440.png" alt="Kimble Companies Homepage" loading="lazy" style="width:100%;height:auto;display:block">
+          <!-- Annotation: Pay My Bill in nav -->
+          <div style="position:absolute;top:0;left:0;right:0;height:56px;border:2px solid rgba(16,185,129,.5);pointer-events:none;border-radius:0"></div>
+          <div style="position:absolute;top:60px;right:16px;background:#10B981;color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:8px;box-shadow:0 2px 8px rgba(16,185,129,.3);pointer-events:none">&ldquo;Pay My Bill&rdquo; is visible in the nav</div>
+        </div>
+        <div class="screenshot-caption" style="padding:16px 20px">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px">
+            <div style="flex:1;min-width:200px">
+              <strong style="font-size:15px">kimblecompanies.com</strong>
+              <p style="margin-top:4px;font-size:13px;color:var(--muted);line-height:1.5">Unlike many waste management competitors, Kimble does surface &ldquo;Pay My Bill&rdquo; in the top navigation. This is the right instinct. The problem starts once you click it.</p>
+            </div>
+            <a href="https://kimblecompanies.com" target="_blank" rel="noopener" style="font-size:12px;color:var(--blue);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px;padding:6px 14px;border:1px solid rgba(79,70,229,.2);border-radius:8px;flex-shrink:0;transition:all .2s" onmouseover="this.style.background='rgba(79,70,229,.04)'" onmouseout="this.style.background='transparent'">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              See for yourself &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCREENSHOT 2: Payment Portal — eTower 2016 -->
+      <div class="screenshot-card rv rv-d2" style="border:2px solid rgba(220,38,38,.3)">
+        <div style="position:absolute;top:12px;right:12px;background:var(--red);color:#fff;font-size:10px;font-weight:800;padding:4px 10px;border-radius:100px;letter-spacing:.06em;text-transform:uppercase;z-index:2">Invoice Required</div>
+        <div style="position:relative;overflow:hidden">
+          <img src="/v3/audit-assets/kimble/payment-portal-desktop-1440.png" alt="Kimble Payment Portal" loading="lazy" style="width:100%;height:auto;display:block">
+          <!-- Annotation: 2016 copyright -->
+          <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(220,38,38,.9);color:#fff;font-size:11px;font-weight:700;padding:5px 14px;border-radius:8px;white-space:nowrap;pointer-events:none">eTower platform &mdash; Copyright 2016</div>
+          <!-- Annotation: Invoice # required -->
+          <div style="position:absolute;top:35%;left:16px;background:rgba(220,38,38,.9);color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:8px;max-width:220px;line-height:1.3;pointer-events:none">Requires: last invoice number OR phone on file</div>
+        </div>
+        <div class="screenshot-caption" style="padding:16px 20px">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px">
+            <div style="flex:1;min-width:200px">
+              <strong style="font-size:15px">jj-portal.kimblecompanies.com</strong>
+              <p style="margin-top:4px;font-size:13px;color:var(--muted);line-height:1.5">The portal is on eTower &mdash; a platform with a 2016 copyright notice. To register, you need your last invoice number or phone number on file. A customer who can&rsquo;t find their paper invoice is stopped cold. No guest pay. No account lookup by email.</p>
+            </div>
+            <a href="https://jj-portal.kimblecompanies.com" target="_blank" rel="noopener" style="font-size:12px;color:var(--red);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px;padding:6px 14px;border:1px solid rgba(220,38,38,.2);border-radius:8px;flex-shrink:0;transition:all .2s" onmouseover="this.style.background='rgba(220,38,38,.04)'" onmouseout="this.style.background='transparent'">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              See it yourself &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCREENSHOT 3: Contact Page — 7-field form -->
+      <div class="screenshot-card rv rv-d3">
+        <div style="position:relative;overflow:hidden">
+          <img src="/v3/audit-assets/kimble/contact-desktop-1440.png" alt="Kimble Contact Page" loading="lazy" style="width:100%;height:auto;display:block">
+          <!-- Annotation: 7 fields -->
+          <div style="position:absolute;top:40%;left:50%;transform:translateX(-50%);background:rgba(220,38,38,.9);color:#fff;font-size:12px;font-weight:700;padding:8px 16px;border-radius:10px;line-height:1.4;text-align:center;pointer-events:none;max-width:280px">7 required fields to submit a contact request.<br><strong style="font-size:14px">Including: County.</strong></div>
+        </div>
+        <div class="screenshot-caption" style="padding:16px 20px">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px">
+            <div style="flex:1;min-width:200px">
+              <strong style="font-size:15px">Contact form &mdash; the last resort.</strong>
+              <p style="margin-top:4px;font-size:13px;color:var(--muted);line-height:1.5">When the portal blocks you and the phone puts you on hold, you try the contact form. Seven required fields, including your County. A customer just trying to ask about an invoice now has a form to fill out with geographic data. High abandonment guaranteed.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="portal-callout rv">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <p>Portal requires last invoice number to register. Customer who loses their invoice has no self-service path. 2016 platform with no guest pay option.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SECTION 3: WHAT WE FOUND                            -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="findings-section" id="what-we-found">
+  <div class="findings-inner">
+    <div class="rv">
+      <h2 class="chapter-title">What we found.</h2>
+      <p class="chapter-sub" style="margin-bottom:0">Three friction points. Each one a reason a customer gives up and the invoice goes unpaid.</p>
+    </div>
+    <div class="findings-grid rv rv-d1">
+
+      <div class="finding-card">
+        <span class="score-badge-red" style="position:absolute;top:16px;right:16px;font-size:10px;padding:3px 10px">RED</span>
+        <div class="finding-card-number" style="color:var(--red)">2016</div>
+        <div class="finding-card-label">Year of the eTower payment platform. A decade without a portal upgrade while payment expectations have transformed.</div>
+        <div class="finding-card-source"><a href="https://jj-portal.kimblecompanies.com" target="_blank" rel="noopener" style="color:#94a3b8;text-decoration:underline">Verified on portal &rarr;</a></div>
+      </div>
+
+      <div class="finding-card">
+        <span class="score-badge-orange" style="position:absolute;top:16px;right:16px;font-size:10px;padding:3px 10px">ORANGE</span>
+        <div class="finding-card-number" style="color:var(--amber)">7</div>
+        <div class="finding-card-label">Required fields on the contact form &mdash; including County. More friction than most government websites.</div>
+        <div class="finding-card-source">Verified on contact page</div>
+      </div>
+
+      <div class="finding-card">
+        <span class="score-badge-red" style="position:absolute;top:16px;right:16px;font-size:10px;padding:3px 10px">RED</span>
+        <div class="finding-card-number" style="color:var(--red)">74s</div>
+        <div class="finding-card-label">Seconds on hold before user disconnected. Operator answered but had no path to billing. No voicemail offered.</div>
+        <div class="finding-card-source">Measured on March 27, 2026 call</div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:32px;padding:24px 28px;background:#fff;border:1px solid var(--border);border-radius:16px;max-width:800px;margin-left:auto;margin-right:auto" class="rv rv-d2">
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:16px;text-transform:uppercase;letter-spacing:.06em">The Combined Effect</div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--muted);line-height:1.5">
+          <span style="flex-shrink:0;width:24px;height:24px;border-radius:50%;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--amber)">1</span>
+          <span><strong style="color:var(--text)">Call channel fails:</strong> Operator answers but cannot help. Hold music. Caller disconnects. No resolution.</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--muted);line-height:1.5">
+          <span style="flex-shrink:0;width:24px;height:24px;border-radius:50%;background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--red)">2</span>
+          <span><strong style="color:var(--text)">Portal channel fails:</strong> Requires invoice number. Customer who can&rsquo;t find their paper invoice is blocked. No guest pay. No email lookup.</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--muted);line-height:1.5">
+          <span style="flex-shrink:0;width:24px;height:24px;border-radius:50%;background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--red)">3</span>
+          <span><strong style="color:var(--text)">Contact channel fails:</strong> Seven-field form including County. A customer trying to ask a simple billing question faces a bureaucratic intake process.</span>
+        </div>
+      </div>
+      <div style="margin-top:20px;padding:14px 20px;background:rgba(220,38,38,.04);border:1px solid rgba(220,38,38,.1);border-radius:10px">
+        <p style="font-size:14px;font-weight:700;color:var(--red);margin:0">Result: a motivated customer who wants to pay has three blocked exits. Invoice ages. Friction turns into avoidance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- COMING SOON                                         -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="coming-section" id="coming-soon">
   <div class="coming-inner">
     <div class="coming-card rv">
       <div class="coming-header">
         <span class="coming-header-icon">&#128338;</span>
-        <h3>Test Results &mdash; Scheduled Tests</h3>
-        <span class="coming-tag">Updated</span>
+        <h3>More Personas in Progress</h3>
+        <span class="coming-tag">Calls in progress</span>
       </div>
 
       <div class="coming-item">
-        <span class="coming-item-icon">&#128308;</span>
-        <span class="coming-item-text"><strong>March 27, 10:02 AM ET</strong> &mdash; Business hours call (secondary line) &mdash; Operator transfer, no answer</span>
+        <span class="coming-item-icon">&#9989;</span>
+        <span class="coming-item-text"><strong>Frustrated Client (Mike, Summit Services)</strong> &mdash; Navigated IVR, reached operator, placed on hold. Hung up at 74s. No help received.</span>
         <span class="coming-status completed">&#10003; DONE</span>
       </div>
 
       <div class="coming-item">
-        <span class="coming-item-icon">&#128308;</span>
-        <span class="coming-item-text"><strong>March 27, 10:02 AM ET</strong> &mdash; Business hours call (toll-free) &mdash; Same IVR, operator no answer</span>
-        <span class="coming-status completed">&#10003; DONE</span>
+        <span class="coming-item-icon">&#127973;</span>
+        <span class="coming-item-text"><strong>Hospitalized Client</strong> &mdash; Calling while managing medical bills. Testing empathy and payment plan flexibility.</span>
+        <span class="coming-status scheduled">&#9203; IN PROGRESS</span>
       </div>
 
       <div class="coming-item">
-        <span class="coming-item-icon">&#128548;</span>
-        <span class="coming-item-text"><strong>March 27, 10:30 AM ET</strong> &mdash; Frustrated client scenario</span>
-        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
+        <span class="coming-item-icon">&#128184;</span>
+        <span class="coming-item-text"><strong>Poacher Scenario</strong> &mdash; Competitor reaching out to billing staff. Measuring staff satisfaction, compensation, openness to change.</span>
+        <span class="coming-status scheduled">&#9203; IN PROGRESS</span>
       </div>
 
       <div class="coming-item">
         <span class="coming-item-icon">&#9993;&#65039;</span>
-        <span class="coming-item-text"><strong>March 27</strong> &mdash; Email billing inquiry (response time tracking)</span>
+        <span class="coming-item-text"><strong>Email billing inquiry</strong> &mdash; Response time tracking via contact form. How long until someone replies?</span>
         <span class="coming-status scheduled">&#9203; SCHEDULED</span>
       </div>
 
-      <div class="coming-item">
-        <span class="coming-item-icon">&#127466;&#127480;</span>
-        <span class="coming-item-text"><strong>March 27</strong> &mdash; Spanish language test</span>
-        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- PORTAL TODAY -->
-<section class="portal-today rv">
-  <div class="portal-today-inner">
-    <h2>Your payment portal today</h2>
-    <p class="portal-today-sub">This is what your clients see when they try to pay.</p>
-    <div class="screenshot-grid">
-      <div class="screenshot-card rv rv-d1">
-        <img src="/v3/audit-assets/kimble/portal-desktop.png" alt="Kimble desktop portal" loading="lazy">
-        <div class="screenshot-caption">Desktop view. 2016 platform. Registration required before paying.</div>
-      </div>
-      <div class="screenshot-card rv rv-d2">
-        <img src="/v3/audit-assets/kimble/portal-mobile.png" alt="Kimble mobile portal" loading="lazy">
-        <div class="screenshot-caption">Mobile view. Layout breaks on phone. Buttons overlap.</div>
-      </div>
-    </div>
-    <div class="portal-today-callout">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      <p>Mobile portal BROKEN &mdash; layout breaks on phone. 2016 platform. No guest pay option.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 3: THE COST -->
-<section class="cost-section">
-  <div class="rv">
-    <div class="section-label">The cost</div>
-    <div class="cost-big" id="cost-number">$0</div>
-    <div class="cost-big-suffix">/year</div>
-    <p class="cost-subtitle">Estimated revenue from clients who tried to pay and gave up.</p>
-  </div>
-  <div class="cost-breakdown rv rv-d1">
-    <div class="cost-row">
-      <span class="cost-row-label">Revenue</span>
-      <span class="cost-row-value">$327M</span>
-    </div>
-    <div class="cost-row">
-      <span class="cost-row-label">Industry bad debt rate</span>
-      <span class="cost-row-value">3%</span>
-    </div>
-    <div class="cost-row">
-      <span class="cost-row-label">BBB complaints (3 years)</span>
-      <span class="cost-row-value">66</span>
-    </div>
-    <div class="cost-row">
-      <span class="cost-row-label">Birdeye rating</span>
-      <span class="cost-row-value">1.9/5</span>
-    </div>
-    <div class="cost-row total">
-      <span class="cost-row-label">Estimated lost revenue</span>
-      <span class="cost-row-value">~$10M/yr</span>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 4: YOUR AGENT -->
-<section class="agent-section" id="agent-section">
-  <div class="rv">
-    <div class="section-label">Your agent</div>
-    <h2 class="agent-title">This is what picks up instead.</h2>
-    <p class="agent-sub">Your Kimble Companies AI agent. 24/7. 0.3 second response. Every language.</p>
-  </div>
-
-  <div class="rv rv-d1">
-    <div class="orb-wrap" id="orb-wrap">
-      <div class="orb-ring orb-ring-1"></div>
-      <div class="orb-ring orb-ring-2"></div>
-      <div class="orb-ring orb-ring-3"></div>
-      <div class="orb-glow"></div>
-      <div class="orb-main" id="orb-main">
-        <div class="orb-layer orb-layer-1"></div>
-        <div class="orb-layer orb-layer-2"></div>
-        <div class="orb-layer orb-layer-3"></div>
-        <div class="orb-layer orb-layer-4"></div>
-        <div class="orb-phone-center" id="orb-phone-center">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        </div>
-      </div>
-    </div>
-    <div class="agent-hint">Tap to call your agent</div>
-  </div>
-
-  <div class="call-state" id="call-state">
-    <div class="cs-connecting" id="cs-connecting">
-      <div class="co-spinner"></div>
-      <div class="cs-connecting-text" id="cs-connecting-text">Connecting to Kimble Companies agent...</div>
-    </div>
-    <div class="cs-active" id="cs-active">
-      <div class="cs-status" id="cs-status">Listening...</div>
-      <div class="cs-waveform" id="cs-waveform">
-        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-      </div>
-      <div class="cs-transcript" id="cs-transcript"></div>
-      <button class="cs-end-btn" id="cs-end-btn">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        End call
-      </button>
-    </div>
-    <div class="cs-post-call" id="cs-post-call">
-      <div class="cs-post-check">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-      </div>
-      <div class="cs-post-title">That was 30 seconds.</div>
-      <div class="cs-post-sub">Now imagine this handling every incoming billing call for Kimble Companies.</div>
-      <a href="mailto:j@agentcollect.com?subject=Kimble Companies AR Audit" class="cs-post-cta" id="cs-post-cta">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        Talk to us
-      </a>
-      <button class="cs-post-retry" id="cs-post-retry">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
-        Try another call
-      </button>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 5: SIDE BY SIDE -->
-<section class="compare-section">
-  <div class="rv">
-    <div class="section-label">Side by side</div>
-    <h2 class="section-title">Your current process vs. your AI agent.</h2>
-  </div>
-  <div class="compare-grid">
-    <div class="compare-col current rv rv-d1">
-      <div class="compare-col-header">
-        <div class="icon">&#10005;</div>
-        <h3>Your Current Process</h3>
-      </div>
-      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Phone:</strong> IVR loop, no billing option, closed = disconnected</span></div>
-      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Portal:</strong> 2016 platform, broken on mobile, no guest pay</span></div>
-      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>After hours:</strong> line disconnects, no voicemail</span></div>
-      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Hours:</strong> Mon-Fri business hours only</span></div>
-      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Languages:</strong> English only</span></div>
-    </div>
-    <div class="compare-col agent rv rv-d2">
-      <div class="compare-col-header">
-        <div class="icon">&#10003;</div>
-        <h3>Your AI Agent</h3>
-      </div>
-      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Phone:</strong> picks up in 0.3s</span></div>
-      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Portal:</strong> payment link via SMS</span></div>
-      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>After hours:</strong> fully operational</span></div>
-      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Hours:</strong> 24/7/365</span></div>
-      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Languages:</strong> 50+</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 6: CTA -->
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- CTA                                                 -->
+<!-- ═══════════════════════════════════════════════════ -->
 <section class="cta-section">
   <div class="rv">
     <h2 class="cta-title">Who handles AR at Kimble Companies?</h2>
@@ -710,35 +613,60 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       j@agentcollect.com
     </a>
   </div>
-  <div class="cta-logos rv rv-d1">
-    <img src="/v3/logos/dell.svg" alt="Dell" loading="lazy" onerror="this.style.display='none'">
-    <img src="/v3/logos/microsoft.svg" alt="Microsoft" loading="lazy" onerror="this.style.display='none'">
-  </div>
 </section>
 
-<!-- SECTION 7: FOOTER -->
+<!-- FOOTER -->
 <footer class="audit-footer">
   <p class="audit-footer-built">Built for Kimble Companies by AgentCollect<span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--blue);margin-left:1px;vertical-align:middle"></span></p>
-  <p class="audit-footer-disc">This audit is based on publicly available information and mystery shopping conducted March 2026.</p>
+  <p class="audit-footer-disc">This audit is based on publicly available information and mystery shopping conducted March 2026. All calls were placed by AI agents.</p>
 </footer>
 
-<!-- Floating Voice FAB -->
-<div class="voice-fab" id="voice-fab">
-  <div class="voice-fab-icon" id="voice-fab-icon">
-    <svg id="fab-mic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg>
-    <svg id="fab-hangup-icon" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-  </div>
-  <div class="voice-fab-text" id="voice-fab-text">Call your agent</div>
+<!-- Chat Bubble -->
+<div class="chat-bubble" id="chat-bubble">
+  <button class="chat-bubble-btn" id="chat-bubble-btn" onclick="toggleChatPanel()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    <span>Questions about this audit?</span>
+  </button>
 </div>
 
-<script type="module">
-import { RetellWebClient } from 'https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.7/+esm';
-window.__RetellWebClient = RetellWebClient;
-</script>
+<!-- Chat Panel -->
+<div class="chat-panel" id="chat-panel">
+  <div class="chat-panel-header">
+    <div class="chat-panel-header-left">
+      <div class="chat-panel-header-avatar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg>
+      </div>
+      <div class="chat-panel-header-info">
+        <h3>AgentCollect Assistant</h3>
+        <span>Kimble Companies audit</span>
+      </div>
+    </div>
+    <button class="chat-panel-close" onclick="toggleChatPanel()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="chat-panel-body" id="chat-panel-body">
+    <div class="chat-msg bot">Hi, I&rsquo;m your AgentCollect assistant. I built this audit for Kimble Companies. Ask me anything about what we found.</div>
+  </div>
+  <div class="chat-panel-footer" id="chat-panel-footer">
+    <button class="chat-call-btn" id="chat-call-btn" onclick="chatStartCall()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Call Agent
+    </button>
+  </div>
+</div>
+
 <script>
+// Timeline jump-to-event
+function jumpTo(seconds){
+  var audio = document.getElementById('featured-audio');
+  if(audio){ audio.currentTime = seconds; audio.play(); }
+}
+window.jumpTo = jumpTo;
+
 // Expiry Countdown
 (function(){
-  var expiry = new Date('2026-04-10');
+  var expiry = new Date('2026-04-24');
   var diff = Math.ceil((expiry - new Date()) / 864e5);
   var el = document.getElementById('days-left');
   var el2 = document.getElementById('header-days-left');
@@ -761,287 +689,75 @@ window.__RetellWebClient = RetellWebClient;
   setTimeout(function(){ els.forEach(function(el){ el.classList.add('v'); }); }, 2500);
 })();
 
-// Animated Cost Counter
+// Sticky Nav
 (function(){
-  var costEl = document.getElementById('cost-number');
-  if(!costEl) return;
-  var target = 10000000;
-  var animated = false;
-  var ro = new IntersectionObserver(function(entries){
+  var stickyNav = document.getElementById('sticky-nav');
+  var header = document.querySelector('.hero');
+  var navLinks = document.querySelectorAll('[data-nav]');
+  if(!stickyNav || !header) return;
+
+  var headerObs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      if(e.isIntersecting && !animated){
-        animated = true;
-        var duration = 2000;
-        var start = Date.now();
-        function tick(){
-          var elapsed = Date.now() - start;
-          var progress = Math.min(elapsed / duration, 1);
-          var eased = 1 - Math.pow(1 - progress, 3);
-          var current = Math.round(target * eased);
-          costEl.textContent = '$' + current.toLocaleString('en-US');
-          if(progress < 1) requestAnimationFrame(tick);
-        }
-        tick();
+      if(e.isIntersecting) stickyNav.classList.remove('visible');
+      else stickyNav.classList.add('visible');
+    });
+  }, {threshold:0, rootMargin:'0px'});
+  headerObs.observe(header);
+
+  var sections = [];
+  navLinks.forEach(function(link){
+    var id = link.getAttribute('href').replace('#','');
+    var el = document.getElementById(id);
+    if(el) sections.push({el:el, link:link});
+  });
+
+  var sectionObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var match = sections.find(function(s){ return s.el === e.target; });
+      if(match && e.isIntersecting){
+        navLinks.forEach(function(l){ l.classList.remove('active'); });
+        match.link.classList.add('active');
       }
     });
-  }, {threshold:.3});
-  ro.observe(costEl);
+  }, {threshold:0.15, rootMargin:'-60px 0px -60% 0px'});
+  sections.forEach(function(s){ sectionObs.observe(s.el); });
+
+  navLinks.forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      var id = this.getAttribute('href').replace('#','');
+      var target = document.getElementById(id);
+      if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
 })();
 
-// Floating Voice FAB
+// Chat Bubble + Panel
 (function(){
-  var fab = document.getElementById('voice-fab');
-  var fabText = document.getElementById('voice-fab-text');
-  var fabMicIcon = document.getElementById('fab-mic-icon');
-  var fabHangupIcon = document.getElementById('fab-hangup-icon');
-  var agentSection = document.getElementById('agent-section');
-  var fabLive = false;
-  if(!fab || !agentSection) return;
+  var chatBubble = document.getElementById('chat-bubble');
+  var chatPanel = document.getElementById('chat-panel');
+  var chatPanelOpen = false;
 
-  window.__fabSetLive = function(isLive){
-    fabLive = isLive;
-    if(isLive){
-      fab.classList.add('visible', 'live');
-      fabText.textContent = 'End call';
-      fabMicIcon.style.display = 'none';
-      fabHangupIcon.style.display = '';
+  window.toggleChatPanel = function(){
+    chatPanelOpen = !chatPanelOpen;
+    if(chatPanelOpen){
+      chatPanel.classList.add('open');
+      chatBubble.style.display = 'none';
     } else {
-      fab.classList.remove('live');
-      fabText.textContent = 'Call your agent';
-      fabMicIcon.style.display = '';
-      fabHangupIcon.style.display = 'none';
-      var rect = agentSection.getBoundingClientRect();
-      if(rect.bottom >= 0 && rect.top <= window.innerHeight) fab.classList.remove('visible');
+      chatPanel.classList.remove('open');
+      chatBubble.style.display = '';
     }
   };
 
-  fab.addEventListener('click', function(){
-    if(fabLive){
-      var endBtn = document.getElementById('cs-end-btn');
-      if(endBtn) endBtn.click();
-      return;
-    }
-    agentSection.scrollIntoView({behavior:'smooth', block:'start'});
-    setTimeout(function(){
-      var orb = document.getElementById('orb-wrap');
-      if(orb) orb.click();
-    }, 600);
-  });
-
-  window.addEventListener('scroll', function(){
-    if(fabLive){ fab.classList.add('visible'); return; }
-    var rect = agentSection.getBoundingClientRect();
-    if(rect.bottom < 0 || rect.top > window.innerHeight){
-      fab.classList.add('visible');
-    } else {
-      fab.classList.remove('visible');
-    }
-  });
-})();
-
-// WebRTC Voice Call
-(function(){
-  var orbWrap = document.getElementById('orb-wrap');
-  var orbPhone = document.getElementById('orb-phone-center');
-  var csConnecting = document.getElementById('cs-connecting');
-  var csActive = document.getElementById('cs-active');
-  var csEndBtn = document.getElementById('cs-end-btn');
-  var csStatus = document.getElementById('cs-status');
-  var csTranscript = document.getElementById('cs-transcript');
-  var csWaveformEl = document.getElementById('cs-waveform');
-  var csWaveformBars = csWaveformEl ? csWaveformEl.querySelectorAll('span') : [];
-  var waveformAnimId = null;
-  var waveformMode = 'idle';
-  var callActive = false;
-  var retellClient = null;
-  var callStartTime = null;
-
-  function animateWaveform(){
-    for(var i = 0; i < csWaveformBars.length; i++){
-      var bar = csWaveformBars[i];
-      var h;
-      if(waveformMode === 'agent') h = 10 + Math.random() * 34;
-      else if(waveformMode === 'user') h = 6 + Math.random() * 18;
-      else h = 4 + Math.sin(Date.now() / 500 + i * 0.6) * 3;
-      bar.style.height = h + 'px';
-    }
-    waveformAnimId = requestAnimationFrame(animateWaveform);
-  }
-
-  function startWaveformAnim(mode){
-    waveformMode = mode || 'idle';
-    if(!waveformAnimId) animateWaveform();
-  }
-
-  function stopWaveformAnim(){
-    waveformMode = 'idle';
-    if(waveformAnimId){ cancelAnimationFrame(waveformAnimId); waveformAnimId = null; }
-    for(var i = 0; i < csWaveformBars.length; i++) csWaveformBars[i].style.height = '4px';
-  }
-
-  function startVoiceCall(){
-    if(callActive) return;
-    callActive = true;
-    callStartTime = Date.now();
-
-    if(orbPhone) orbPhone.style.display = 'none';
-    var agentHint = document.querySelector('.agent-hint');
-    if(agentHint) agentHint.style.display = 'none';
-    document.querySelectorAll('.orb-ring').forEach(function(r){ r.style.display = 'none'; });
-    csConnecting.style.display = 'flex';
-    csActive.classList.remove('visible');
-
-    var orb = document.getElementById('orb-main');
-    if(orb) orb.classList.add('speaking');
-
-    (async function(){
-      try {
-        var micPromise = navigator.mediaDevices.getUserMedia({
-          audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true, sampleRate: { ideal: 48000 }, channelCount: { ideal: 1 } }
-        }).then(function(s){ window.__micStream = s; })
-          .catch(function(){ throw new Error('Microphone access required'); });
-
-        var apiPromise = fetch('https://backend.widr.app/api/v1/demo/web-call', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            company_name: 'Kimble Companies',
-            product: 'commercial waste collection',
-            amount: '$450'
-          })
-        }).then(async function(response) {
-          if(!response.ok) {
-            var errBody = ''; try { errBody = await response.text(); } catch(e){}
-            console.error('web-call error:', response.status, errBody);
-            throw new Error('API returned ' + response.status);
-          }
-          return response.json();
-        });
-
-        var sdkPromise = Promise.resolve(window.__RetellWebClient).then(function(RWC) {
-          if(RWC) return RWC;
-          return import('https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.7/+esm')
-            .then(function(m){ return m.RetellWebClient; });
-        });
-
-        var results = await Promise.all([micPromise, apiPromise, sdkPromise]);
-        var result = results[1];
-        var RetellWebClient = results[2];
-        if(!result.success || !result.access_token) throw new Error('No access token');
-        retellClient = new RetellWebClient();
-
-        retellClient.on('call_started', function(){
-          callStartTime = Date.now();
-          csConnecting.style.display = 'none';
-          csActive.classList.add('visible');
-          csStatus.textContent = 'Your turn \u2014 speak now';
-          startWaveformAnim('idle');
-          if(orbPhone) orbPhone.style.opacity = '0';
-          if(window.__fabSetLive) window.__fabSetLive(true);
-          try { gtag('event', 'call_started', { company: 'Kimble Companies', page: 'audit-kimble' }); } catch(e){}
-        });
-
-        retellClient.on('call_ended', function(){
-          try { gtag('event', 'call_completed', { company: 'Kimble Companies', page: 'audit-kimble' }); } catch(e){}
-          var duration = callStartTime ? Math.round((Date.now() - callStartTime) / 1000) : 30;
-          endCall(duration);
-        });
-
-        retellClient.on('agent_start_talking', function(){
-          startWaveformAnim('agent');
-          csStatus.textContent = 'Agent speaking...';
-        });
-
-        retellClient.on('agent_stop_talking', function(){
-          startWaveformAnim('user');
-          csStatus.textContent = 'Your turn \u2014 speak now';
-        });
-
-        retellClient.on('update', function(update){
-          if(update && update.transcript) renderTranscript(update.transcript);
-        });
-
-        retellClient.on('error', function(err){
-          console.error('RetellAI error:', err);
-          endCall(0);
-        });
-
-        await retellClient.startCall({ accessToken: result.access_token });
-
-      } catch(err){
-        console.error('Voice call error:', err);
-        callActive = false;
-        csConnecting.style.display = 'none';
-        var agentHint2 = document.querySelector('.agent-hint');
-        if(agentHint2) agentHint2.style.display = '';
-        document.querySelectorAll('.orb-ring').forEach(function(r){ r.style.display = ''; });
-        if(orbPhone) orbPhone.style.display = '';
-        if(orb) orb.classList.remove('speaking');
-        if(agentHint2){ agentHint2.textContent = 'Connection issue \u2014 tap to retry'; agentHint2.style.color = '#ef4444'; }
-        setTimeout(function(){ if(agentHint2){ agentHint2.textContent = 'Tap to call your agent'; agentHint2.style.color = ''; } }, 6000);
-      }
-    })();
-  }
-
-  function renderTranscript(transcript){
-    if(!transcript || !transcript.length) return;
-    var last = null;
-    for(var i = transcript.length - 1; i >= 0; i--){
-      if((transcript[i].content || '').trim()){ last = transcript[i]; break; }
-    }
-    if(!last) return;
-    var role = last.role === 'agent' ? 'agent' : 'user';
-    csTranscript.innerHTML = '<div class="cs-msg ' + role + '">' + last.content + '</div>';
-    csTranscript.scrollTop = csTranscript.scrollHeight;
-  }
-
-  function endCall(duration){
-    callActive = false;
-    if(retellClient){ try { retellClient.stopCall(); } catch(e){} retellClient = null; }
-    if(window.__micStream){ window.__micStream.getTracks().forEach(function(t){ t.stop(); }); window.__micStream = null; }
-    stopWaveformAnim();
-    if(window.__fabSetLive) window.__fabSetLive(false);
-    var orb = document.getElementById('orb-main');
-    if(orb) orb.classList.remove('speaking');
-    if(orbPhone) orbPhone.style.opacity = '1';
-
-    csStatus.textContent = 'Call ended';
-    var postCall = document.getElementById('cs-post-call');
-    var postTitle = document.querySelector('.cs-post-title');
-    if(postTitle && duration > 0){
-      postTitle.textContent = 'That was ' + duration + ' second' + (duration !== 1 ? 's' : '') + '.';
-    }
-    setTimeout(function(){
-      csActive.classList.remove('visible');
-      csTranscript.innerHTML = '';
-      if(postCall) postCall.style.display = 'flex';
-    }, 1500);
-  }
-
-  var postRetry = document.getElementById('cs-post-retry');
-  if(postRetry) postRetry.addEventListener('click', function(){
-    var postCall = document.getElementById('cs-post-call');
-    if(postCall) postCall.style.display = 'none';
-    if(orbPhone){ orbPhone.style.display = ''; orbPhone.style.opacity = '1'; }
-    var agentHint = document.querySelector('.agent-hint');
-    if(agentHint) agentHint.style.display = '';
-    document.querySelectorAll('.orb-ring').forEach(function(r){ r.style.display = ''; });
-  });
-
-  var postCta = document.getElementById('cs-post-cta');
-  if(postCta) postCta.addEventListener('click', function(){
-    try { gtag('event', 'post_call_contact', { company: 'Kimble Companies', page: 'audit-kimble' }); } catch(e){}
-  });
-
-  if(csEndBtn) csEndBtn.addEventListener('click', function(e){
-    e.stopPropagation();
-    endCall(callStartTime ? Math.round((Date.now() - callStartTime) / 1000) : 0);
-  });
-
-  if(orbWrap) orbWrap.addEventListener('click', function(){
-    if(callActive) return;
-    startVoiceCall();
-  });
+  window.chatStartCall = function(){
+    var body = document.getElementById('chat-panel-body');
+    if(!body) return;
+    var msg = document.createElement('div');
+    msg.className = 'chat-msg bot';
+    msg.textContent = 'To speak with a live AgentCollect rep, email j@agentcollect.com or call us directly. We\'ll walk you through what an AI agent would have done differently on each of these calls.';
+    body.appendChild(msg);
+    body.scrollTop = body.scrollHeight;
+  };
 })();
 </script>
 </body>
