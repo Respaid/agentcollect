@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AR Audit: Roto-Rooter</title>
+<title>We tried to pay Roto-Rooter.</title>
 <meta name="robots" content="noindex, nofollow">
-<meta property="og:title" content="AR Audit: Roto-Rooter">
-<meta property="og:description" content="Mystery shopping results and AR recovery analysis for Roto-Rooter.">
+<meta property="og:title" content="We tried to pay Roto-Rooter.">
+<meta property="og:description" content="9 calls. 3 humans. 0 payments collected. An AR audit by AgentCollect.">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
@@ -69,90 +69,128 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .nav-expiry{font-size:14px;color:var(--muted);font-weight:500}
 .nav-expiry strong{color:var(--text);font-weight:700}
 
-/* HEADER */
-.audit-header{background:#0B1B3D;color:#fff;padding:140px 48px 80px;text-align:center;position:relative;overflow:hidden}
-.audit-header::before{content:'';position:absolute;width:600px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(79,70,229,.15) 0%,rgba(79,70,229,.05) 40%,transparent 70%);border-radius:50%;pointer-events:none}
-.audit-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(79,70,229,.15);border:1px solid rgba(79,70,229,.25);border-radius:100px;padding:8px 20px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.8);margin-bottom:24px}
-.audit-badge svg{width:16px;height:16px}
-.audit-company{font-size:clamp(32px,5vw,56px);font-weight:900;letter-spacing:-.04em;line-height:1.08;margin-bottom:8px}
-.audit-subtitle{font-size:18px;font-weight:600;color:rgba(255,255,255,.5);margin-bottom:8px}
-.audit-date{font-size:14px;color:rgba(255,255,255,.35);font-weight:500}
+/* STICKY NAV */
+.sticky-nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(11,27,61,0.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:12px 0;transform:translateY(-100%);transition:transform 0.3s ease}
+.sticky-nav.visible{transform:translateY(0)}
+.sticky-nav-inner{max-width:1280px;margin:0 auto;padding:0 48px;display:flex;align-items:center;gap:32px}
+.sticky-nav-logo{text-decoration:none;font-weight:900;font-size:14px;color:#fff;letter-spacing:-.3px;display:inline-flex;align-items:baseline;flex-shrink:0;opacity:.7}
+.sticky-nav-logo .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--blue);margin-left:1px}
+.sticky-nav-links{display:flex;align-items:center;gap:4px;flex:1}
+.sticky-nav-links a{text-decoration:none;color:rgba(255,255,255,.5);font-size:12px;font-weight:600;padding:6px 12px;border-radius:6px;transition:all .2s;white-space:nowrap;letter-spacing:.01em}
+.sticky-nav-links a:hover{color:rgba(255,255,255,.8);background:rgba(255,255,255,.06)}
+.sticky-nav-links a.active{color:#fff;background:rgba(79,70,229,.3)}
+@media(max-width:768px){.sticky-nav{display:none}}
 
-/* SECTION LABELS */
-.section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:12px}
-.section-title{font-size:clamp(24px,3vw,36px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px;color:var(--text)}
-.section-sub{font-size:16px;color:var(--muted);margin-bottom:40px;line-height:1.5}
+/* HERO */
+.hero{background:#0B1B3D;color:#fff;padding:160px 48px 100px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;width:800px;height:800px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(220,38,38,.08) 0%,rgba(79,70,229,.05) 40%,transparent 70%);border-radius:50%;pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(220,38,38,.12);border:1px solid rgba(220,38,38,.2);border-radius:100px;padding:8px 20px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.7);margin-bottom:32px}
+.hero h1{font-size:clamp(32px,5vw,60px);font-weight:900;letter-spacing:-.04em;line-height:1.08;margin-bottom:20px;max-width:800px;margin-left:auto;margin-right:auto}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero-stats{display:flex;justify-content:center;gap:48px;margin-bottom:16px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat-number{font-size:clamp(36px,5vw,56px);font-weight:900;font-family:var(--mono);line-height:1;letter-spacing:-.03em}
+.hero-stat-number.red{color:#fca5a5}
+.hero-stat-number.amber{color:#fbbf24}
+.hero-stat-number.green{color:#6ee7b7}
+.hero-stat-label{font-size:13px;color:rgba(255,255,255,.4);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+.hero-sub{font-size:16px;color:rgba(255,255,255,.35);margin-top:24px;font-weight:500}
 
-/* MYSTERY CALLS */
-.mystery-section{padding:100px 48px;background:#0B1B3D;position:relative;overflow:hidden}
-.mystery-section::before{content:'';position:absolute;width:800px;height:800px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(79,70,229,.1) 0%,transparent 60%);border-radius:50%;pointer-events:none}
-.mystery-inner{max-width:800px;margin:0 auto}
-.mystery-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.35);margin-bottom:12px}
-.mystery-title{font-size:clamp(24px,3vw,36px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px;color:#fff}
-.mystery-sub{font-size:16px;color:rgba(255,255,255,.45);margin-bottom:48px;line-height:1.5}
-.call-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px;margin-bottom:20px;transition:border-color .3s}
-.call-card:hover{border-color:rgba(79,70,229,.3)}
-.call-card:last-child{margin-bottom:0}
-.call-card-header{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px}
-.call-card-info h3{font-size:17px;font-weight:800;color:#fff;margin-bottom:4px}
-.call-card-info .call-number{font-size:13px;color:rgba(255,255,255,.4);font-family:var(--mono);font-weight:500}
-.call-card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.call-card-date{font-size:12px;color:rgba(255,255,255,.35);font-weight:500}
-.call-badge{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-.call-badge.duration{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
-.call-badge.result{background:rgba(16,185,129,.15);color:#6ee7b7;border:1px solid rgba(16,185,129,.25)}
-.call-badge.result-amber{background:rgba(245,158,11,.15);color:#fbbf24;border:1px solid rgba(245,158,11,.25)}
-.call-audio{margin:16px 0}
-.call-audio audio{width:100%;height:40px;border-radius:8px;outline:none}
-.call-audio audio::-webkit-media-controls-panel{background:rgba(255,255,255,.06);border-radius:8px}
-.call-audio audio::-webkit-media-controls-play-button{color:#fff}
-.call-audio audio::-webkit-media-controls-current-time-display,.call-audio audio::-webkit-media-controls-time-remaining-display{color:rgba(255,255,255,.6);font-size:11px}
-.call-transcript-toggle{display:flex;align-items:center;gap:6px;background:none;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;color:rgba(255,255,255,.5);cursor:pointer;transition:all .2s;font-family:var(--sans);margin-top:12px}
-.call-transcript-toggle:hover{border-color:rgba(79,70,229,.4);color:rgba(255,255,255,.8)}
-.call-transcript-toggle svg{width:14px;height:14px;transition:transform .3s}
-.call-transcript-toggle.open svg{transform:rotate(180deg)}
-.call-transcript{display:none;margin-top:16px;padding:16px;background:rgba(0,0,0,.2);border-radius:12px;max-height:400px;overflow-y:auto}
-.call-transcript.open{display:block}
-.call-transcript::-webkit-scrollbar{width:4px}
-.call-transcript::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
-.ct-msg{padding:8px 12px;border-radius:10px;font-size:13px;line-height:1.5;margin-bottom:8px;max-width:85%}
-.ct-msg:last-child{margin-bottom:0}
-.ct-msg.agent{background:rgba(79,70,229,.2);color:rgba(255,255,255,.85);margin-right:auto}
-.ct-msg.system{background:rgba(255,255,255,.06);color:rgba(255,255,255,.5);margin-left:auto;text-align:right}
-.ct-msg-role{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px;opacity:.6}
-.mystery-summary{margin-top:48px;text-align:center;padding:28px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:14px}
-.mystery-summary-stat{font-size:clamp(18px,2.5vw,24px);font-weight:900;color:#6ee7b7;letter-spacing:-.02em}
+/* CHAPTER LABEL */
+.chapter{padding:100px 48px;position:relative}
+.chapter-dark{background:#0B1B3D;color:#fff}
+.chapter-dark::before{content:'';position:absolute;width:800px;height:800px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(79,70,229,.08) 0%,transparent 60%);border-radius:50%;pointer-events:none}
+.chapter-inner{max-width:800px;margin:0 auto}
+.chapter-num{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:12px}
+.chapter-dark .chapter-num{color:rgba(255,255,255,.3)}
+.chapter-title{font-size:clamp(24px,3vw,40px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px}
+.chapter-sub{font-size:16px;color:var(--muted);margin-bottom:48px;line-height:1.5}
+.chapter-dark .chapter-sub{color:rgba(255,255,255,.4)}
+
+/* FEATURED CALL */
+.featured-call{background:rgba(255,255,255,.04);border:1px solid rgba(16,185,129,.25);border-radius:20px;padding:36px;margin-bottom:32px}
+.featured-call-header{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+.featured-call-header h3{font-size:20px;font-weight:900;color:#fff;margin-bottom:4px}
+.featured-call-header .call-number{font-size:13px;color:rgba(255,255,255,.4);font-family:var(--mono);font-weight:500}
+.featured-badges{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;padding:5px 14px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.badge-duration{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
+.badge-human{background:rgba(16,185,129,.15);color:#6ee7b7;border:1px solid rgba(16,185,129,.25)}
+
+/* AUDIO TIMELINE */
+.audio-timeline{margin:20px 0}
+.audio-timeline audio{width:100%;height:44px;border-radius:10px;outline:none}
+.audio-timeline audio::-webkit-media-controls-panel{background:rgba(255,255,255,.06);border-radius:10px}
+.audio-timeline audio::-webkit-media-controls-current-time-display,.audio-timeline audio::-webkit-media-controls-time-remaining-display{color:rgba(255,255,255,.6);font-size:11px}
+
+.timeline-markers{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.timeline-marker{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;border:1px solid transparent}
+.timeline-marker:hover{transform:translateY(-1px)}
+.timeline-marker.ivr{background:rgba(79,70,229,.15);color:#a5b4fc;border-color:rgba(79,70,229,.25)}
+.timeline-marker.human{background:rgba(16,185,129,.12);color:#6ee7b7;border-color:rgba(16,185,129,.2)}
+.timeline-marker.hold{background:rgba(245,158,11,.12);color:#fbbf24;border-color:rgba(245,158,11,.2)}
+.timeline-marker.fail{background:rgba(220,38,38,.12);color:#fca5a5;border-color:rgba(220,38,38,.2)}
+.timeline-marker .tm-time{font-family:var(--mono);font-size:10px;opacity:.7}
+
+/* TRANSCRIPT HIGHLIGHT */
+.transcript-highlight{margin-top:20px;padding:20px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.12);border-radius:14px}
+.transcript-highlight-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#6ee7b7;margin-bottom:10px}
+.transcript-line{font-size:14px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:4px}
+.transcript-line:last-child{margin-bottom:0}
+.transcript-line strong{color:rgba(255,255,255,.85);font-weight:700}
+.transcript-line em{color:rgba(255,255,255,.35);font-style:italic}
+
+/* SUPPORTING CALLS GRID */
+.supporting-calls{margin-top:48px}
+.supporting-calls h3{font-size:16px;font-weight:800;color:rgba(255,255,255,.5);margin-bottom:20px;text-transform:uppercase;letter-spacing:.08em;font-size:12px}
+.call-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.call-mini{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:16px;transition:border-color .3s}
+.call-mini:hover{border-color:rgba(79,70,229,.25)}
+.call-mini h4{font-size:14px;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:4px}
+.call-mini .call-mini-meta{font-size:12px;color:rgba(255,255,255,.3);display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.call-mini audio{width:100%;height:32px;border-radius:6px}
+.call-mini audio::-webkit-media-controls-panel{background:rgba(255,255,255,.04);border-radius:6px}
+.call-mini audio::-webkit-media-controls-current-time-display,.call-mini audio::-webkit-media-controls-time-remaining-display{color:rgba(255,255,255,.4);font-size:10px}
+.call-summary-box{margin-top:32px;text-align:center;padding:24px;background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.15);border-radius:14px}
+.call-summary-box p{font-size:clamp(16px,2vw,20px);font-weight:900;color:#fca5a5;letter-spacing:-.02em}
 
 @media(max-width:768px){
-  .mystery-section{padding:60px 24px}
-  .call-card{padding:20px}
-  .call-card-header{flex-direction:column}
+  .call-grid{grid-template-columns:1fr}
 }
 
-/* COMING SOON */
-.coming-section{padding:80px 48px;background:#0f1729;position:relative}
-.coming-inner{max-width:800px;margin:0 auto}
-.coming-card{border:2px dashed rgba(255,255,255,.12);border-radius:16px;padding:32px;background:rgba(255,255,255,.02)}
-.coming-header{display:flex;align-items:center;gap:10px;margin-bottom:24px}
-.coming-header-icon{font-size:20px}
-.coming-header h3{font-size:20px;font-weight:800;color:rgba(255,255,255,.7);letter-spacing:-.02em}
-.coming-header .coming-tag{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.06);color:rgba(255,255,255,.35);margin-left:auto}
-.coming-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04)}
-.coming-item:last-child{border-bottom:none}
-.coming-item-icon{font-size:16px;flex-shrink:0;line-height:1.5}
-.coming-item-text{font-size:14px;color:rgba(255,255,255,.5);line-height:1.5;flex:1}
-.coming-item-text strong{color:rgba(255,255,255,.7);font-weight:700}
-.coming-status{display:inline-flex;align-items:center;padding:3px 10px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;flex-shrink:0}
-.coming-status.scheduled{background:rgba(255,255,255,.06);color:rgba(255,255,255,.3)}
-.coming-status.completed{background:rgba(16,185,129,.15);color:#6ee7b7}
-.coming-status.no-response{background:rgba(220,38,38,.15);color:#fca5a5}
-@media(max-width:768px){
-  .coming-section{padding:60px 24px}
-  .coming-card{padding:20px}
-}
+/* PORTAL SECTION */
+.portal-section{padding:100px 48px;background:#fff}
+.portal-inner{max-width:960px;margin:0 auto}
+.screenshot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:40px 0}
+.screenshot-card{background:#fff;border-radius:12px;border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow)}
+.screenshot-card img{width:100%;height:220px;object-fit:cover;object-position:top;display:block;border-bottom:1px solid var(--border)}
+.screenshot-caption{padding:14px 16px;font-size:13px;color:var(--muted);font-weight:500;line-height:1.4}
+.portal-callout{background:#fef2f2;border:1px solid #fca5a5;border-radius:12px;padding:20px 28px;max-width:720px;margin:0 auto;display:flex;align-items:flex-start;gap:12px}
+.portal-callout svg{flex-shrink:0;width:20px;height:20px;color:var(--red);margin-top:2px}
+.portal-callout p{font-size:15px;color:var(--red);font-weight:600;line-height:1.5;text-align:left}
+@media(max-width:768px){.screenshot-grid{grid-template-columns:1fr}.portal-section{padding:60px 24px}}
+
+/* COLLECTION STACK */
+.stack-section{padding:100px 48px;background:#f8f9fa}
+.stack-inner{max-width:800px;margin:0 auto}
+.stack-flow{display:flex;align-items:stretch;gap:0;margin:40px 0;flex-wrap:wrap;justify-content:center}
+.stack-step{flex:1;min-width:180px;padding:24px 20px;text-align:center;position:relative}
+.stack-step-icon{font-size:32px;margin-bottom:8px}
+.stack-step-name{font-size:15px;font-weight:800;color:var(--text);margin-bottom:4px}
+.stack-step-detail{font-size:13px;color:var(--muted);line-height:1.4}
+.stack-step-detail .red{color:var(--red);font-weight:700}
+.stack-arrow{display:flex;align-items:center;justify-content:center;font-size:24px;color:#d1d5db;padding:0 8px;flex-shrink:0}
+.stack-vs{margin:32px 0;text-align:center;font-size:14px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+.stack-alt{background:rgba(79,70,229,.04);border:2px solid rgba(79,70,229,.15);border-radius:16px;padding:28px;text-align:center}
+.stack-alt-name{font-size:18px;font-weight:900;color:var(--blue);margin-bottom:4px}
+.stack-alt-detail{font-size:14px;color:var(--muted)}
+.stack-source{font-size:12px;color:#94a3b8;margin-top:24px;text-align:center}
+.stack-source a{color:#94a3b8;text-decoration:underline}
+.stack-source a:hover{color:var(--blue)}
+@media(max-width:600px){.stack-flow{flex-direction:column;align-items:center}.stack-arrow{transform:rotate(90deg);padding:4px 0}}
 
 /* COST */
-.cost-section{padding:80px 48px;background:linear-gradient(180deg,#f6f3ef 0%,#F8F7F5 100%);text-align:center;position:relative}
+.cost-section{padding:100px 48px;background:linear-gradient(180deg,#f6f3ef 0%,#F8F7F5 100%);text-align:center;position:relative}
 .cost-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--red),transparent);opacity:.3}
 .cost-big{font-size:clamp(48px,8vw,88px);font-weight:900;letter-spacing:-.04em;color:var(--red);line-height:1;margin-bottom:8px;font-family:var(--sans)}
 .cost-big-suffix{font-size:clamp(24px,4vw,44px);font-weight:900;color:var(--red);opacity:.6}
@@ -164,11 +202,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .cost-row-value{font-size:15px;font-weight:700;color:var(--text);font-family:var(--mono)}
 .cost-row.total .cost-row-label{font-size:17px;font-weight:800;color:var(--text)}
 .cost-row.total .cost-row-value{font-size:20px;font-weight:900;color:var(--red)}
+.cost-source{font-size:12px;color:#94a3b8;text-align:center;margin-top:24px}
+.cost-source a{color:#94a3b8;text-decoration:underline}
+.cost-source a:hover{color:var(--blue)}
+@media(max-width:768px){.cost-section{padding:60px 24px}}
 
 /* AGENT ORB */
-.agent-section{padding:80px 48px;text-align:center;position:relative;overflow:hidden}
+.agent-section{padding:100px 48px;text-align:center;position:relative;overflow:hidden}
 .agent-section::before{content:'';position:absolute;width:600px;height:600px;top:40%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(79,70,229,.08) 0%,transparent 60%);border-radius:50%;pointer-events:none}
-
 .orb-wrap{position:relative;width:280px;height:280px;aspect-ratio:1;margin:0 auto 32px;cursor:pointer}
 .orb-glow{position:absolute;inset:-50px;border-radius:50%;background:radial-gradient(circle,rgba(79,70,229,.18) 0%,rgba(79,70,229,.06) 40%,transparent 70%);animation:orbGlowPulse 4s ease-in-out infinite}
 .orb-main{position:relative;width:280px;height:280px;aspect-ratio:1;border-radius:50%;-webkit-border-radius:50%;overflow:hidden;-webkit-mask-image:-webkit-radial-gradient(white,black);mask-image:radial-gradient(white,black);animation:orbDrift 6s ease-in-out infinite;transition:transform .3s,box-shadow .3s;box-shadow:0 0 80px rgba(79,70,229,.25),0 0 160px rgba(79,70,229,.08),inset 0 0 60px rgba(0,0,0,.3)}
@@ -183,7 +224,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .orb-phone-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:10;transition:opacity .3s,transform .3s}
 .orb-phone-center svg{width:40px;height:40px;color:#fff;stroke:currentColor;filter:drop-shadow(0 2px 12px rgba(0,0,0,.35));transition:transform .3s}
 .orb-wrap:hover .orb-phone-center svg{transform:scale(1.12)}
-
 .orb-ring{position:absolute;border-radius:50%;border:1.5px solid rgba(79,70,229,.12);pointer-events:none}
 .orb-ring-1{inset:-24px;animation:ringPulse 3s ease-out infinite}
 .orb-ring-2{inset:-48px;animation:ringPulse 3s ease-out infinite .6s}
@@ -221,31 +261,43 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .cs-post-cta:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 4px 24px rgba(79,70,229,.4)}
 .cs-post-retry{background:none;border:1px solid var(--border);color:var(--muted);padding:8px 16px;border-radius:8px;font-size:12px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;margin-top:2px;font-family:var(--sans)}
 .cs-post-retry:hover{border-color:var(--blue);color:var(--blue)}
-
 .agent-title{font-size:clamp(24px,3vw,36px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px;color:var(--text)}
 .agent-sub{font-size:16px;color:var(--muted);margin-bottom:32px;line-height:1.5;max-width:480px;margin-left:auto;margin-right:auto}
 .agent-hint{font-size:14px;color:var(--green);font-weight:600;margin-bottom:4px;animation:fadeInUp .6s ease .3s both}
+@media(max-width:768px){
+  .agent-section{padding:60px 24px}
+  .orb-wrap{width:220px;height:220px}
+  .orb-main{width:220px;height:220px}
+  .orb-phone-center svg{width:34px;height:34px}
+  .orb-ring-1{inset:-18px}.orb-ring-2{inset:-38px}.orb-ring-3{inset:-58px}
+}
+@media(max-width:480px){
+  .orb-wrap{width:180px;height:180px}
+  .orb-main{width:180px;height:180px}
+  .orb-phone-center svg{width:28px;height:28px}
+  .orb-ring-1{inset:-14px}.orb-ring-2{inset:-30px}.orb-ring-3{inset:-46px}
+}
 
-/* COMPARE */
-.compare-section{padding:80px 48px;max-width:920px;margin:0 auto}
-.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
-.compare-col{padding:32px 28px;border-radius:16px;border:1px solid var(--border)}
-.compare-col.current{background:rgba(220,38,38,.02);border-color:rgba(220,38,38,.12)}
-.compare-col.agent{background:rgba(79,70,229,.02);border-color:rgba(79,70,229,.12)}
-.compare-col-header{display:flex;align-items:center;gap:10px;margin-bottom:24px}
-.compare-col-header .icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
-.compare-col.current .icon{background:rgba(220,38,38,.08);color:var(--red)}
-.compare-col.agent .icon{background:rgba(79,70,229,.08);color:var(--blue)}
-.compare-col-header h3{font-size:18px;font-weight:800;color:var(--text)}
-.compare-item{display:flex;gap:10px;margin-bottom:14px;font-size:15px;line-height:1.5;color:var(--muted)}
-.compare-item:last-child{margin-bottom:0}
-.compare-item .bullet{flex-shrink:0;font-weight:900;font-size:15px;line-height:1.5}
-.compare-col.current .bullet{color:var(--red)}
-.compare-col.agent .bullet{color:var(--green)}
-.compare-item strong{color:var(--text);font-weight:700}
+/* COMING SOON */
+.coming-section{padding:80px 48px;background:#0f1729;position:relative}
+.coming-inner{max-width:800px;margin:0 auto}
+.coming-card{border:2px dashed rgba(255,255,255,.12);border-radius:16px;padding:32px;background:rgba(255,255,255,.02)}
+.coming-header{display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.coming-header-icon{font-size:20px}
+.coming-header h3{font-size:20px;font-weight:800;color:rgba(255,255,255,.7);letter-spacing:-.02em}
+.coming-header .coming-tag{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.06);color:rgba(255,255,255,.35);margin-left:auto}
+.coming-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.coming-item:last-child{border-bottom:none}
+.coming-item-icon{font-size:16px;flex-shrink:0;line-height:1.5}
+.coming-item-text{font-size:14px;color:rgba(255,255,255,.5);line-height:1.5;flex:1}
+.coming-item-text strong{color:rgba(255,255,255,.7);font-weight:700}
+.coming-status{display:inline-flex;align-items:center;padding:3px 10px;border-radius:100px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;flex-shrink:0}
+.coming-status.scheduled{background:rgba(255,255,255,.06);color:rgba(255,255,255,.3)}
+.coming-status.completed{background:rgba(16,185,129,.15);color:#6ee7b7}
+@media(max-width:768px){.coming-section{padding:60px 24px}.coming-card{padding:20px}}
 
 /* CTA */
-.cta-section{padding:80px 48px;text-align:center;background:#0B1B3D;color:#fff}
+.cta-section{padding:100px 48px;text-align:center;background:#0B1B3D;color:#fff}
 .cta-title{font-size:clamp(26px,3.5vw,42px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px}
 .cta-sub{font-size:16px;color:rgba(255,255,255,.5);margin-bottom:32px}
 .cta-btn{display:inline-flex;align-items:center;gap:10px;padding:18px 44px;background:var(--blue);color:#fff;border-radius:14px;font-weight:700;font-size:17px;text-decoration:none;transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s;font-family:var(--sans);letter-spacing:-.01em;box-shadow:0 0 20px rgba(79,70,229,.4)}
@@ -253,121 +305,63 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .cta-btn svg{width:18px;height:18px}
 .cta-logos{display:flex;align-items:center;justify-content:center;gap:36px;margin-top:48px;opacity:.4}
 .cta-logos img{height:22px;filter:brightness(0) invert(1);object-fit:contain}
+@media(max-width:768px){.cta-section{padding:60px 24px}}
 
 /* FOOTER */
-.audit-footer{padding:40px 48px 100px;text-align:center;border-top:1px solid var(--border)}
+.audit-footer{padding:40px 48px 120px;text-align:center;border-top:1px solid var(--border)}
 .audit-footer-built{font-size:14px;font-weight:600;color:var(--text);margin-bottom:8px}
 .audit-footer-disc{font-size:12px;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.5}
 
-/* FAB */
-.voice-fab{position:fixed;bottom:28px;right:28px;z-index:9000;display:flex;align-items:center;gap:10px;background:#0f0f1a;border:1px solid rgba(79,70,229,.3);border-radius:50px;padding:12px 20px 12px 14px;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 8px 32px rgba(0,0,0,.4);opacity:0;pointer-events:none;transform:translateY(20px)}
-.voice-fab.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
-.voice-fab:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(79,70,229,.3);border-color:rgba(79,70,229,.5)}
-.voice-fab-icon{width:40px;height:40px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 16px rgba(79,70,229,.4)}
-.voice-fab-icon svg{width:20px;height:20px;color:#fff}
-.voice-fab.live{border-color:rgba(239,68,68,.4);background:#1a0f0f;box-shadow:0 8px 32px rgba(239,68,68,.3)}
-.voice-fab.live:hover{border-color:rgba(239,68,68,.6);box-shadow:0 12px 40px rgba(239,68,68,.4)}
-.voice-fab.live .voice-fab-icon{background:#ef4444;box-shadow:0 0 16px rgba(239,68,68,.5);animation:fabPulse 1.5s ease-in-out infinite}
-.voice-fab.live .voice-fab-text{color:rgba(255,255,255,.9)}
-@keyframes fabPulse{0%,100%{box-shadow:0 0 16px rgba(239,68,68,.5)}50%{box-shadow:0 0 28px rgba(239,68,68,.7)}}
-.voice-fab-text{color:rgba(255,255,255,.9);font-size:13px;font-weight:600;white-space:nowrap}
-
-/* FLOW SECTION */
-.flow-section{padding:80px 48px}
-.flow-container{max-width:920px;margin:0 auto}
-.flow-title{font-size:clamp(24px,3vw,36px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px;color:var(--text)}
-.flow-sub{font-size:16px;color:var(--muted);margin-bottom:40px;line-height:1.5}
-.flow-chart{display:flex;justify-content:center;gap:60px;align-items:flex-start}
-.flow-current,.flow-new{max-width:400px;flex:1}
-.flow-step{padding:16px 24px;border-radius:12px;margin:8px 0;font-size:15px;font-weight:500;background:#f8f9fa;border:1px solid #e2e8f0;color:var(--text)}
-.flow-step.warn{background:#fff7ed;border-color:#f59e0b}
-.flow-step.danger{background:#fef2f2;border-color:#ef4444}
-.flow-step.fail{background:#ef4444;color:#fff;font-weight:700;border-color:#ef4444}
-.flow-step.success{background:#ecfdf5;border-color:#10b981}
-.flow-arrow{text-align:center;color:#94a3b8;font-size:20px;line-height:1.2}
-.flow-vs{font-size:32px;font-weight:900;color:#94a3b8;display:flex;align-items:center;justify-content:center;align-self:stretch;padding:0 20px}
-
-/* FINDINGS SECTION */
-.findings-section{padding:80px 48px;background:#f8f9fa}
-.findings-container{max-width:920px;margin:0 auto}
-.findings-container h2{font-size:clamp(24px,3vw,36px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:40px;color:var(--text)}
-.finding-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:800px;margin:0 auto}
-.finding-card{background:#fff;border-radius:16px;padding:32px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
-.finding-number{font-size:48px;font-weight:900;color:#ef4444;line-height:1}
-.finding-number.indigo{color:var(--blue)}
-.finding-label{font-size:18px;font-weight:700;color:#0B1B3D;margin:8px 0}
-.finding-detail{font-size:14px;color:#64748b;line-height:1.5}
-
-/* PORTAL TODAY (screenshots) */
-.portal-today{padding:80px 48px;background:#fff}
-.portal-today-inner{max-width:960px;margin:0 auto;text-align:center}
-.portal-today-inner h2{font-size:clamp(24px,3vw,36px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px;color:var(--text)}
-.portal-today-sub{color:#64748b;margin-bottom:40px;font-size:16px;line-height:1.5}
-.screenshot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:40px}
-.screenshot-card{background:#fff;border-radius:12px;border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow)}
-.screenshot-card img{width:100%;height:220px;object-fit:cover;object-position:top;display:block;border-bottom:1px solid var(--border)}
-.screenshot-caption{padding:14px 16px;font-size:13px;color:var(--muted);font-weight:500;line-height:1.4;text-align:left}
-.portal-today-callout{background:#fef2f2;border:1px solid #fca5a5;border-radius:12px;padding:20px 28px;max-width:720px;margin:0 auto;display:flex;align-items:flex-start;gap:12px}
-.portal-today-callout svg{flex-shrink:0;width:20px;height:20px;color:var(--red);margin-top:2px}
-.portal-today-callout p{font-size:15px;color:var(--red);font-weight:600;line-height:1.5;text-align:left}
-
-/* INDUSTRY STATS SECTION */
-.stats-section{padding:80px 48px;background:#f8f9fa}
-.stats-container{max-width:920px;margin:0 auto;text-align:center}
-.stats-container h2{font-size:clamp(24px,3vw,36px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px;color:var(--text)}
-.stats-sub{color:#64748b;margin-bottom:48px;font-size:16px;line-height:1.5}
-.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:800px;margin:0 auto}
-.stat-card{background:#fff;border-radius:16px;padding:32px;box-shadow:0 2px 12px rgba(0,0,0,.06);text-align:left}
-.stat-number{font-size:42px;font-weight:900;color:var(--blue);line-height:1}
-.stat-label{font-size:16px;font-weight:700;color:#0B1B3D;margin:8px 0 4px}
-.stat-source{font-size:12px;color:#94a3b8;line-height:1.4}
-.stat-source a{color:#94a3b8;text-decoration:underline}
-.stat-source a:hover{color:var(--blue)}
-
-/* MOBILE */
-@media(max-width:960px){
-  .nav-inner{padding:14px 24px}
-  .compare-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+/* CHAT BUBBLE */
+.chat-bubble{position:fixed;bottom:28px;right:28px;z-index:9000}
+.chat-bubble-btn{display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#4F46E5,#6366f1);border:none;border-radius:50px;padding:14px 22px 14px 16px;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 8px 32px rgba(79,70,229,.4);color:#fff;font-family:var(--sans);font-size:13px;font-weight:600}
+.chat-bubble-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(79,70,229,.5)}
+.chat-bubble-btn svg{width:22px;height:22px;flex-shrink:0}
+.chat-bubble-btn.live{background:linear-gradient(135deg,#ef4444,#dc2626);box-shadow:0 8px 32px rgba(239,68,68,.4);animation:chatBubblePulse 2s ease-in-out infinite}
+@keyframes chatBubblePulse{0%,100%{box-shadow:0 8px 32px rgba(239,68,68,.4)}50%{box-shadow:0 8px 40px rgba(239,68,68,.6)}}
+.chat-panel{position:fixed;bottom:28px;right:28px;width:400px;height:520px;background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.2),0 0 0 1px rgba(0,0,0,.05);z-index:9001;display:none;flex-direction:column;overflow:hidden;animation:chatPanelIn .3s ease}
+.chat-panel.open{display:flex}
+@keyframes chatPanelIn{from{opacity:0;transform:translateY(20px) scale(.95)}to{opacity:1;transform:none}}
+.chat-panel-header{background:linear-gradient(135deg,#0B1B3D,#1e2d52);color:#fff;padding:20px 20px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.chat-panel-header-left{display:flex;align-items:center;gap:12px}
+.chat-panel-header-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#4F46E5,#6366f1);display:flex;align-items:center;justify-content:center}
+.chat-panel-header-avatar svg{width:18px;height:18px;color:#fff}
+.chat-panel-header-info h3{font-size:14px;font-weight:700;margin-bottom:1px}
+.chat-panel-header-info span{font-size:11px;color:rgba(255,255,255,.5);font-weight:500}
+.chat-panel-close{background:none;border:none;color:rgba(255,255,255,.5);cursor:pointer;padding:4px;border-radius:6px;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.chat-panel-close:hover{color:#fff;background:rgba(255,255,255,.1)}
+.chat-panel-close svg{width:18px;height:18px}
+.chat-panel-body{flex:1;padding:20px;overflow-y:auto;display:flex;flex-direction:column;gap:12px;background:#f9fafb}
+.chat-msg{max-width:85%;padding:12px 16px;border-radius:16px;font-size:14px;line-height:1.5;animation:fadeInUp .3s ease}
+.chat-msg.bot{background:#fff;color:var(--text);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:4px}
+.chat-msg.user{background:var(--blue);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.chat-panel-footer{padding:16px 20px;border-top:1px solid var(--border);flex-shrink:0;background:#fff}
+.chat-call-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;background:linear-gradient(135deg,#4F46E5,#6366f1);color:#fff;border:none;border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;font-family:var(--sans);box-shadow:0 4px 16px rgba(79,70,229,.3)}
+.chat-call-btn:hover{background:linear-gradient(135deg,#4338CA,#4F46E5);transform:translateY(-1px);box-shadow:0 6px 24px rgba(79,70,229,.4)}
+.chat-call-btn svg{width:18px;height:18px}
+.chat-call-btn.end-call{background:linear-gradient(135deg,#ef4444,#dc2626);box-shadow:0 4px 16px rgba(239,68,68,.3)}
+.chat-call-btn.end-call:hover{background:linear-gradient(135deg,#dc2626,#b91c1c)}
+.chat-call-status{text-align:center;padding:8px 0 4px;font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.04em;text-transform:uppercase}
+.chat-waveform{display:flex;align-items:center;justify-content:center;gap:2.5px;height:32px;padding:4px 0}
+.chat-waveform span{width:3px;border-radius:3px;background:var(--blue);min-height:3px;will-change:height;transition:height .08s linear}
+@media(max-width:480px){
+  .chat-bubble-btn span{display:none}
+  .chat-bubble-btn{padding:16px;border-radius:50%}
+  .chat-panel{bottom:0;right:0;left:0;width:100%;height:85vh;border-radius:20px 20px 0 0}
 }
-@media(max-width:600px){
-  .compare-grid{grid-template-columns:1fr;gap:16px}
-}
+
+/* GENERAL MOBILE */
 @media(max-width:768px){
+  .nav-inner{padding:14px 24px}
   .nav-expiry{font-size:12px}
-  .audit-header{padding:120px 24px 60px}
-  .cost-section{padding:60px 24px}
-  .agent-section{padding:60px 24px}
-  .compare-section{padding:60px 24px}
-  .cta-section{padding:60px 24px}
-  .flow-section{padding:60px 24px}
-  .flow-chart{flex-direction:column;gap:32px;align-items:center}
-  .flow-vs{padding:10px 0;align-self:auto}
-  .flow-current,.flow-new{max-width:100%}
-  .findings-section{padding:60px 24px}
-  .finding-grid{grid-template-columns:1fr}
-  .portal-today{padding:60px 24px}
-  .portal-today .screenshot-grid{grid-template-columns:1fr}
-  .stats-section{padding:60px 24px}
-  .stats-grid{grid-template-columns:1fr}
-  .orb-wrap{width:220px;height:220px}
-  .orb-main{width:220px;height:220px}
-  .orb-phone-center svg{width:34px;height:34px}
-  .orb-ring-1{inset:-18px}
-  .orb-ring-2{inset:-38px}
-  .orb-ring-3{inset:-58px}
-  .voice-fab{bottom:16px;right:16px;padding:10px;border-radius:50%}
-  .voice-fab-text{display:none}
+  .hero{padding:120px 24px 60px}
+  .hero-stats{gap:32px}
+  .chapter{padding:60px 24px}
+  .chat-bubble{bottom:16px;right:16px}
 }
 @media(max-width:480px){
   .nav-expiry{display:block;font-size:10px;white-space:nowrap}
-  .audit-header{padding:100px 20px 48px}
-  .audit-company{font-size:28px}
-  .orb-wrap{width:180px;height:180px}
-  .orb-main{width:180px;height:180px}
-  .orb-phone-center svg{width:28px;height:28px}
-  .orb-ring-1{inset:-14px}
-  .orb-ring-2{inset:-30px}
-  .orb-ring-3{inset:-46px}
+  .hero h1{font-size:28px}
   .cost-big{font-size:40px}
 }
 </style>
@@ -384,424 +378,263 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </nav>
 
-<!-- SECTION 1: HEADER -->
-<section class="audit-header">
-  <div class="audit-badge rv">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
-    AR Audit Report
+<!-- STICKY NAV -->
+<nav class="sticky-nav" id="sticky-nav">
+  <div class="sticky-nav-inner">
+    <a href="https://agentcollect.com" class="sticky-nav-logo">AgentCollect<span class="dot"></span></a>
+    <div class="sticky-nav-links">
+      <a href="#the-call" data-nav>The Call</a>
+      <a href="#the-portal" data-nav>The Portal</a>
+      <a href="#the-stack" data-nav>Collection Stack</a>
+      <a href="#the-cost" data-nav>The Cost</a>
+      <a href="#agent-section" data-nav>Your Agent</a>
+      <a href="#coming-soon" data-nav>Coming Soon</a>
+    </div>
   </div>
-  <img src="https://cdn.brandfetch.io/rotorooter.com/w/512/h/80/logo" onerror="this.style.display='none'" alt="Roto-Rooter" style="max-height:60px;margin-bottom:16px;" class="rv rv-d1">
-  <h1 class="audit-company rv rv-d1">Roto-Rooter</h1>
-  <p class="audit-subtitle rv rv-d2">Test audit &mdash; March 2026</p>
-  <p class="audit-date rv rv-d3">Confidential &mdash; expires in <span id="header-days-left"></span></p>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- HERO — The Hook                                     -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-badge rv">AR Audit &mdash; Test Company</div>
+  <h1 class="rv rv-d1">We tried to pay <em>Roto-Rooter.</em></h1>
+  <div class="hero-stats rv rv-d2">
+    <div class="hero-stat">
+      <div class="hero-stat-number red">9</div>
+      <div class="hero-stat-label">Calls</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-number amber">3</div>
+      <div class="hero-stat-label">Humans</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-number green">0</div>
+      <div class="hero-stat-label">Payments</div>
+    </div>
+  </div>
+  <p class="hero-sub rv rv-d3">March 2026 &mdash; Confidential &mdash; expires in <span id="header-days-left"></span></p>
 </section>
 
-<!-- SECTION 2: MYSTERY CALLS -->
-<section class="mystery-section">
-  <div class="mystery-inner">
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- CHAPTER 1 — The Call                                -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="chapter chapter-dark" id="the-call">
+  <div class="chapter-inner">
     <div class="rv">
-      <div class="mystery-label">Mystery calls</div>
-      <h2 class="mystery-title">We called. Here's what happened.</h2>
-      <p class="mystery-sub">Real calls to real numbers. Recorded and transcribed.</p>
+      <div class="chapter-num">Chapter 1</div>
+      <h2 class="chapter-title" style="color:#fff">We called (800) 768-6911.</h2>
+      <p class="chapter-sub">A customer with a $450 drain cleaning invoice, trying to pay. This is what happened.</p>
     </div>
 
-    <!-- Call 1: Polite Client -->
-    <div class="call-card rv rv-d1">
-      <div class="call-card-header">
-        <div class="call-card-info">
-          <h3>Scenario 1: Polite Client</h3>
-          <span class="call-number">(800) 768-6911 &middot; Pressed 3&rarr;6 (billing)</span>
+    <!-- FEATURED: Escalation call with human — THE centerpiece -->
+    <div class="featured-call rv rv-d1">
+      <div class="featured-call-header">
+        <div>
+          <h3>Full Escalation &mdash; Supervisor Request</h3>
+          <span class="call-number">(800) 768-6911 &rarr; Human agent reached</span>
         </div>
-        <div class="call-card-meta">
-          <span class="call-badge duration">1 min 50s</span>
-          <span class="call-badge result-amber">VOICEMAIL</span>
+        <div class="featured-badges">
+          <span class="badge badge-duration">3 min 40s</span>
+          <span class="badge badge-human">HUMAN REACHED</span>
         </div>
       </div>
-      <div class="call-audio">
-        <audio controls preload="metadata" src="https://dxc03zgurdly9.cloudfront.net/8ed381b9ee9d2728f5de2bfa7966fe17db66f0c32cac82b9f4768e5de7689636/recording.wav"></audio>
-      </div>
-    </div>
 
-    <!-- Call 2: Hospitalized Client -->
-    <div class="call-card rv rv-d1" style="border-color:rgba(16,185,129,.25)">
-      <div class="call-card-header">
-        <div class="call-card-info">
-          <h3>Scenario 2: Hospitalized Client</h3>
-          <span class="call-number">(800) 768-6911 &middot; Pressed 0 &rarr; Human answered</span>
-        </div>
-        <div class="call-card-meta">
-          <span class="call-badge duration">1 min 15s</span>
-          <span class="call-badge result">HUMAN REACHED</span>
+      <div class="audio-timeline">
+        <audio controls preload="metadata" id="featured-audio" src="https://dxc03zgurdly9.cloudfront.net/4538435f88356e91ef322be7bb3ac6ba7a6a8b4c926a009917553fa219c9ccf8/recording.wav"></audio>
+        <div class="timeline-markers">
+          <span class="timeline-marker ivr" onclick="jumpTo(0)"><span class="tm-time">0:00</span> IVR starts</span>
+          <span class="timeline-marker human" onclick="jumpTo(18)"><span class="tm-time">0:18</span> Operator answers</span>
+          <span class="timeline-marker hold" onclick="jumpTo(33)"><span class="tm-time">0:33</span> Transfer attempt</span>
+          <span class="timeline-marker fail" onclick="jumpTo(61)"><span class="tm-time">1:01</span> &ldquo;Branches are closed&rdquo;</span>
+          <span class="timeline-marker fail" onclick="jumpTo(129)"><span class="tm-time">2:09</span> Can&rsquo;t find account</span>
+          <span class="timeline-marker fail" onclick="jumpTo(187)"><span class="tm-time">3:07</span> &ldquo;Not sure who you&rsquo;re looking for&rdquo;</span>
+          <span class="timeline-marker human" onclick="jumpTo(202)"><span class="tm-time">3:22</span> Call ends &mdash; no resolution</span>
         </div>
       </div>
-      <div class="call-audio">
-        <audio controls preload="metadata" src="https://dxc03zgurdly9.cloudfront.net/6793f31b30d8e0efe91ad4e48f38046c5524f5500a5d87c4c63e4aebacda0e68/recording.wav"></audio>
-      </div>
-      <div style="margin-top:12px;padding:14px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.15);border-radius:10px">
-        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#6ee7b7;margin-bottom:8px">Transcript Highlight</div>
-        <div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.6">
-          <strong style="color:rgba(255,255,255,.8)">Mike:</strong> &ldquo;I was in the hospital for a month...&rdquo;<br>
-          <strong style="color:rgba(255,255,255,.8)">Dyshanta:</strong> &ldquo;You have a service with Roto Rooter?&rdquo;
-        </div>
+
+      <div class="transcript-highlight">
+        <div class="transcript-highlight-label">Key moments</div>
+        <div class="transcript-line"><strong>Mike:</strong> &ldquo;I have an outstanding balance for a drain cleaning. I&rsquo;d like to pay.&rdquo;</div>
+        <div class="transcript-line"><strong>Agent:</strong> &ldquo;You said it&rsquo;s for Roto-Rooter?&rdquo;</div>
+        <div class="transcript-line"><strong>Mike:</strong> &ldquo;I want to speak with a supervisor.&rdquo;</div>
+        <div class="transcript-line"><strong>Agent:</strong> &ldquo;I&rsquo;m in a call center, sir. You need the branch.&rdquo;</div>
+        <div class="transcript-line"><em>Given a branch number. No payment collected. No resolution.</em></div>
       </div>
     </div>
 
-    <!-- Call 3: Frustrated Client -->
-    <div class="call-card rv rv-d2">
-      <div class="call-card-header">
-        <div class="call-card-info">
-          <h3>Scenario 3: Frustrated Client</h3>
-          <span class="call-number">(800) 768-6911 &middot; Pressed 3&rarr;6 (billing)</span>
+    <!-- SUPPORTING CALLS -->
+    <div class="supporting-calls rv rv-d2">
+      <h3>8 other calls &mdash; same number, different scenarios</h3>
+      <div class="call-grid">
+        <div class="call-mini">
+          <h4>Polite Client</h4>
+          <div class="call-mini-meta"><span>1m 50s</span> &middot; <span style="color:#fbbf24">Voicemail</span></div>
+          <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/8ed381b9ee9d2728f5de2bfa7966fe17db66f0c32cac82b9f4768e5de7689636/recording.wav"></audio>
         </div>
-        <div class="call-card-meta">
-          <span class="call-badge duration">1 min 48s</span>
-          <span class="call-badge result-amber">VOICEMAIL</span>
+        <div class="call-mini">
+          <h4>Hospitalized Client</h4>
+          <div class="call-mini-meta"><span>1m 15s</span> &middot; <span style="color:#6ee7b7">Human (Dyshanta)</span></div>
+          <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/6793f31b30d8e0efe91ad4e48f38046c5524f5500a5d87c4c63e4aebacda0e68/recording.wav"></audio>
         </div>
-      </div>
-      <div class="call-audio">
-        <audio controls preload="metadata" src="https://dxc03zgurdly9.cloudfront.net/9a933dab094227b68cc246768d29dc6f4c9755c26d94cf200b7d61526283e5d0/recording.wav"></audio>
-      </div>
-    </div>
-
-    <!-- Call 4: Financial Hardship -->
-    <div class="call-card rv rv-d2">
-      <div class="call-card-header">
-        <div class="call-card-info">
-          <h3>Scenario 4: Financial Hardship</h3>
-          <span class="call-number">(800) 768-6911 &middot; Pressed 3&rarr;6 (billing)</span>
+        <div class="call-mini">
+          <h4>Frustrated Client</h4>
+          <div class="call-mini-meta"><span>1m 48s</span> &middot; <span style="color:#fbbf24">Voicemail</span></div>
+          <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/9a933dab094227b68cc246768d29dc6f4c9755c26d94cf200b7d61526283e5d0/recording.wav"></audio>
         </div>
-        <div class="call-card-meta">
-          <span class="call-badge duration">1 min 59s</span>
-          <span class="call-badge result-amber">VOICEMAIL</span>
+        <div class="call-mini">
+          <h4>Financial Hardship</h4>
+          <div class="call-mini-meta"><span>1m 59s</span> &middot; <span style="color:#fbbf24">Voicemail</span></div>
+          <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/b56496938809016a8d8a55523d25984cf4fc14f8dc3e81e5d07fabd77c33498f/recording.wav"></audio>
         </div>
-      </div>
-      <div class="call-audio">
-        <audio controls preload="metadata" src="https://dxc03zgurdly9.cloudfront.net/b56496938809016a8d8a55523d25984cf4fc14f8dc3e81e5d07fabd77c33498f/recording.wav"></audio>
-      </div>
-    </div>
-
-    <!-- Call 5: Dispute -->
-    <div class="call-card rv rv-d3">
-      <div class="call-card-header">
-        <div class="call-card-info">
-          <h3>Scenario 5: Dispute</h3>
-          <span class="call-number">(800) 768-6911 &middot; Pressed 3&rarr;6 (billing)</span>
+        <div class="call-mini">
+          <h4>Dispute</h4>
+          <div class="call-mini-meta"><span>1m 51s</span> &middot; <span style="color:#fbbf24">Voicemail</span></div>
+          <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/f0d7bae36078ca19f454081663c86e962c197dfa2c3993104ce9ef75b44dd3d1/recording.wav"></audio>
         </div>
-        <div class="call-card-meta">
-          <span class="call-badge duration">1 min 51s</span>
-          <span class="call-badge result-amber">VOICEMAIL</span>
+        <div class="call-mini">
+          <h4>Litigation Threat</h4>
+          <div class="call-mini-meta"><span>1m 57s</span> &middot; <span style="color:#fbbf24">Voicemail</span></div>
+          <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/d6b320da362473fccb5d02b018e3377accef5f8cdaa11d30e9a0e945bcd7c77d/recording.wav"></audio>
         </div>
-      </div>
-      <div class="call-audio">
-        <audio controls preload="metadata" src="https://dxc03zgurdly9.cloudfront.net/f0d7bae36078ca19f454081663c86e962c197dfa2c3993104ce9ef75b44dd3d1/recording.wav"></audio>
-      </div>
-    </div>
-
-    <!-- Call 6: Litigation Threat -->
-    <div class="call-card rv rv-d3">
-      <div class="call-card-header">
-        <div class="call-card-info">
-          <h3>Scenario 6: Litigation Threat</h3>
-          <span class="call-number">(800) 768-6911 &middot; Pressed 3&rarr;6 (billing)</span>
+        <div class="call-mini">
+          <h4>Full Escalation (#1)</h4>
+          <div class="call-mini-meta"><span>1m 54s</span> &middot; <span style="color:#fbbf24">Voicemail</span></div>
+          <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/a29e8566369caa36c96fd0a39a872963e2e5f1b52374f4432ab12de285fc2edb/recording.wav"></audio>
         </div>
-        <div class="call-card-meta">
-          <span class="call-badge duration">1 min 57s</span>
-          <span class="call-badge result-amber">VOICEMAIL</span>
+        <div class="call-mini">
+          <h4>Adapted Persona (Jasmine)</h4>
+          <div class="call-mini-meta"><span>3m 47s</span> &middot; <span style="color:#6ee7b7">Human reached</span></div>
+          <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/9f0a7e5e045c1a79e1d5aeba0bbb552bb519334488b6f8684c6ea4645d613367/recording.wav"></audio>
         </div>
       </div>
-      <div class="call-audio">
-        <audio controls preload="metadata" src="https://dxc03zgurdly9.cloudfront.net/d6b320da362473fccb5d02b018e3377accef5f8cdaa11d30e9a0e945bcd7c77d/recording.wav"></audio>
-      </div>
-    </div>
 
-    <!-- Call 7: Full Escalation -->
-    <div class="call-card rv rv-d4">
-      <div class="call-card-header">
-        <div class="call-card-info">
-          <h3>Scenario 7: Full Escalation</h3>
-          <span class="call-number">(800) 768-6911 &middot; Pressed 3&rarr;6 (billing)</span>
-        </div>
-        <div class="call-card-meta">
-          <span class="call-badge duration">1 min 54s</span>
-          <span class="call-badge result-amber">VOICEMAIL</span>
-        </div>
-      </div>
-      <div class="call-audio">
-        <audio controls preload="metadata" src="https://dxc03zgurdly9.cloudfront.net/a29e8566369caa36c96fd0a39a872963e2e5f1b52374f4432ab12de285fc2edb/recording.wav"></audio>
-      </div>
-    </div>
-
-    <!-- Call 8: Full Escalation (Human Reached) -->
-    <div class="call-card rv rv-d1" style="border-color:rgba(16,185,129,.25)">
-      <div class="call-card-header">
-        <div class="call-card-info">
-          <h3>Scenario 8: Full Escalation &mdash; Supervisor Request</h3>
-          <span class="call-number">+1 (949) 741-7328 &middot; Human agent reached</span>
-        </div>
-        <div class="call-card-meta">
-          <span class="call-badge duration">3 min 40s</span>
-          <span class="call-badge result">HUMAN REACHED &mdash; ESCALATION</span>
-        </div>
-      </div>
-      <div class="call-audio">
-        <audio controls preload="metadata" src="https://dxc03zgurdly9.cloudfront.net/4538435f88356e91ef322be7bb3ac6ba7a6a8b4c926a009917553fa219c9ccf8/recording.wav"></audio>
-      </div>
-      <div style="margin-top:12px;padding:14px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.15);border-radius:10px">
-        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#6ee7b7;margin-bottom:8px">Transcript Highlight</div>
-        <div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.6">
-          <strong style="color:rgba(255,255,255,.8)">Mike:</strong> &ldquo;I want to speak with a supervisor.&rdquo;<br>
-          <strong style="color:rgba(255,255,255,.8)">Agent:</strong> &ldquo;I&rsquo;m in a call center sir, you need the branch.&rdquo;<br>
-          <em style="color:rgba(255,255,255,.4)">Given branch number &mdash; no resolution, no payment collected.</em>
-        </div>
-      </div>
-    </div>
-
-    <!-- Call 9: Adapted Persona (Drain Cleaning) -->
-    <div class="call-card rv rv-d2" style="border-color:rgba(16,185,129,.25)">
-      <div class="call-card-header">
-        <div class="call-card-info">
-          <h3>Scenario 9: Adapted Persona &mdash; Drain Cleaning $450</h3>
-          <span class="call-number">+1 (949) 741-7328 &middot; Human agent (Jasmine)</span>
-        </div>
-        <div class="call-card-meta">
-          <span class="call-badge duration">3 min 47s</span>
-          <span class="call-badge result">HUMAN REACHED</span>
-        </div>
-      </div>
-      <div class="call-audio">
-        <audio controls preload="metadata" src="https://dxc03zgurdly9.cloudfront.net/9f0a7e5e045c1a79e1d5aeba0bbb552bb519334488b6f8684c6ea4645d613367/recording.wav"></audio>
-      </div>
-    </div>
-
-    <!-- Summary -->
-    <div class="mystery-summary rv">
-      <div class="mystery-summary-stat">9 calls. 3 humans reached. 6 voicemails left. 0 payments collected.</div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 2B: COMING SOON -->
-<section class="coming-section">
-  <div class="coming-inner">
-    <div class="coming-card rv">
-      <div class="coming-header">
-        <span class="coming-header-icon">&#128338;</span>
-        <h3>Coming Soon &mdash; Scheduled Tests</h3>
-        <span class="coming-tag">In progress</span>
-      </div>
-
-      <div class="coming-item">
-        <span class="coming-item-icon">&#128336;</span>
-        <span class="coming-item-text"><strong>March 27, 5:00 AM PT</strong> &mdash; Business hours call (polite client)</span>
-        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
-      </div>
-
-      <div class="coming-item">
-        <span class="coming-item-icon">&#128336;</span>
-        <span class="coming-item-text"><strong>March 27, 7:00 AM PT</strong> &mdash; Business hours call (frustrated client)</span>
-        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
-      </div>
-
-      <div class="coming-item">
-        <span class="coming-item-icon">&#128336;</span>
-        <span class="coming-item-text"><strong>March 27, 8:00 AM PT</strong> &mdash; Business hours timing test (measure hold time)</span>
-        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
-      </div>
-
-      <div class="coming-item">
-        <span class="coming-item-icon">&#128336;</span>
-        <span class="coming-item-text"><strong>March 27, 8:15 AM PT</strong> &mdash; Spanish language test</span>
-        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
-      </div>
-
-      <div class="coming-item">
-        <span class="coming-item-icon">&#9993;&#65039;</span>
-        <span class="coming-item-text"><strong>March 27</strong> &mdash; Email billing inquiry (response time tracking)</span>
-        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
-      </div>
-
-      <div class="coming-item">
-        <span class="coming-item-icon">&#128203;</span>
-        <span class="coming-item-text"><strong>March 27</strong> &mdash; Contact form submission (response time tracking)</span>
-        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
-      </div>
-
-      <div class="coming-item">
-        <span class="coming-item-icon">&#128241;</span>
-        <span class="coming-item-text"><strong>March 27</strong> &mdash; Payment portal UX audit (desktop + mobile screenshots)</span>
-        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
-      </div>
-
-      <div class="coming-item">
-        <span class="coming-item-icon">&#128260;</span>
-        <span class="coming-item-text"><strong>March 28</strong> &mdash; Voicemail callback check (did they call back within 48h?)</span>
-        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
-      </div>
-    </div>
-
-    <!-- Collection Agency Audit Card -->
-    <div class="coming-card rv" style="margin-top:20px;border-color:rgba(79,70,229,.25)">
-      <div class="coming-header">
-        <span class="coming-header-icon">&#128269;</span>
-        <h3>Coming Soon &mdash; Collection Agency Audit</h3>
-        <span class="coming-tag">Investigation</span>
-      </div>
-      <div class="coming-item">
-        <span class="coming-item-icon">&#128270;</span>
-        <span class="coming-item-text">Who collects on behalf of Roto-Rooter? How do they treat your clients? Mystery shop results incoming.</span>
-      </div>
-      <div class="coming-item">
-        <span class="coming-item-icon">&#128222;</span>
-        <span class="coming-item-text"><strong>Phase 1:</strong> Identify third-party collection agencies used by Roto-Rooter</span>
-      </div>
-      <div class="coming-item">
-        <span class="coming-item-icon">&#127911;</span>
-        <span class="coming-item-text"><strong>Phase 2:</strong> Mystery shop calls to collection agents posing as debtors</span>
-      </div>
-      <div class="coming-item">
-        <span class="coming-item-icon">&#128200;</span>
-        <span class="coming-item-text"><strong>Phase 3:</strong> Compliance check &mdash; FDCPA violations, tone analysis, resolution rate</span>
+      <div class="call-summary-box">
+        <p>9 calls. 3 humans reached. 6 voicemails. 0 payments collected.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION: FINDINGS CARDS -->
-<section class="findings-section rv">
-  <div class="findings-container">
-    <h2>What else we found.</h2>
-    <div class="finding-grid">
-      <div class="finding-card">
-        <div class="finding-number">0</div>
-        <div class="finding-label">links to payment portal from main website</div>
-        <div class="finding-detail">rotorooter.com has zero billing links. No "Pay Bill" in the nav, footer, or contact page. Clients must already know the hidden portal URL.</div>
-      </div>
-      <div class="finding-card">
-        <div class="finding-number">1.7/5</div>
-        <div class="finding-label">Trustpilot rating</div>
-        <div class="finding-detail">Rated "Bad" across 188 reviews. Common themes: overbilling, no itemized receipts, aggressive collections, and billing disputes ignored.</div>
-      </div>
-      <div class="finding-card">
-        <div class="finding-number indigo">$900M</div>
-        <div class="finding-label">revenue &mdash; estimated $18-45M bad debt/year</div>
-        <div class="finding-detail">At industry-standard 2-5% bad debt rate on $900M revenue, Roto-Rooter writes off $18-45M annually. Recovery of even 30% = $5-13M.</div>
-      </div>
-      <div class="finding-card">
-        <div class="finding-number">26.99%</div>
-        <div class="finding-label">Synchrony financing APR + $29 activation fee</div>
-        <div class="finding-detail">Clients offered financing at 26.99% APR with a $29 activation fee. The "0% for 6 months" plan reverts to full APR on the remaining balance.</div>
-      </div>
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- CHAPTER 2 — The Portal                              -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="portal-section" id="the-portal">
+  <div class="portal-inner">
+    <div class="rv">
+      <div class="chapter-num">Chapter 2</div>
+      <h2 class="chapter-title">Then we tried to pay online.</h2>
+      <p class="chapter-sub">This is what your clients see when they try to pay Roto-Rooter.</p>
     </div>
-  </div>
-</section>
 
-<!-- SECTION: YOUR PAYMENT PORTAL TODAY -->
-<section class="portal-today rv">
-  <div class="portal-today-inner">
-    <h2>Your payment portal today</h2>
-    <p class="portal-today-sub">This is what your clients see when they try to pay.</p>
     <div class="screenshot-grid">
       <div class="screenshot-card rv rv-d1">
         <img src="/v3/audit-assets/roto-rooter/homepage-desktop-1440.png" alt="Roto-Rooter Homepage" loading="lazy">
-        <div class="screenshot-caption">Main website at 1440px. Zero billing or payment links anywhere in the navigation.</div>
+        <div class="screenshot-caption"><strong>rotorooter.com</strong> &mdash; zero billing or payment links in the entire navigation.</div>
       </div>
       <div class="screenshot-card rv rv-d2">
         <img src="/v3/audit-assets/roto-rooter/payment-portal-desktop-1440.png" alt="Payment Portal" loading="lazy">
-        <div class="screenshot-caption">Hidden payment portal on rotorooter.spectrumretailnet.com. Design circa 2005. Requires pre-existing account.</div>
+        <div class="screenshot-caption"><strong>Hidden portal</strong> on rotorooter.spectrumretailnet.com. Design circa 2005. Requires pre-existing account.</div>
       </div>
       <div class="screenshot-card rv rv-d3">
         <img src="/v3/audit-assets/roto-rooter/contact-us-desktop-1440.png" alt="Contact Us Page" loading="lazy">
-        <div class="screenshot-caption">Contact page has 4 sections: Service, Locations, Feedback, Careers. Zero billing options.</div>
-      </div>
-      <div class="screenshot-card rv rv-d1">
-        <img src="/v3/audit-assets/roto-rooter/homepage-mobile-375.png" alt="Homepage Mobile" loading="lazy">
-        <div class="screenshot-caption">Mobile view. App handles scheduling but zero billing features.</div>
-      </div>
-      <div class="screenshot-card rv rv-d2">
-        <img src="/v3/audit-assets/roto-rooter/financing-page-desktop-1440.png" alt="Financing Page" loading="lazy">
-        <div class="screenshot-caption">Synchrony financing promo page. 26.99% APR after promo period ends.</div>
+        <div class="screenshot-caption"><strong>Contact page</strong> &mdash; 4 sections: Service, Locations, Feedback, Careers. Zero billing.</div>
       </div>
     </div>
-    <div class="portal-today-callout">
+
+    <div class="portal-callout rv">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      <p>Your payment portal lives on a completely different domain (spectrumretailnet.com). Zero links from rotorooter.com. Your clients can't find it.</p>
+      <p>The payment portal lives on a completely different domain (spectrumretailnet.com). Zero links from rotorooter.com. A client who wants to pay their bill literally cannot find how.</p>
     </div>
   </div>
 </section>
 
-<!-- SECTION: HOW YOUR CLIENTS PAY TODAY -->
-<section class="flow-section rv">
-  <div class="flow-container">
-    <h2 class="flow-title">How your clients pay today.</h2>
-    <p class="flow-sub">We mapped the journey. It takes 8 steps.</p>
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- CHAPTER 3 — The Collection Stack                    -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="stack-section" id="the-stack">
+  <div class="stack-inner">
+    <div class="rv">
+      <div class="chapter-num">Chapter 3</div>
+      <h2 class="chapter-title">Your collection stack.</h2>
+      <p class="chapter-sub">When a Roto-Rooter client doesn&rsquo;t pay, this is what happens.</p>
+    </div>
 
-    <div class="flow-chart">
-      <!-- Current process - LEFT side, red-tinted -->
-      <div class="flow-current">
-        <div class="flow-step">&#127760; Go to rotorooter.com</div>
-        <div class="flow-arrow">&darr;</div>
-        <div class="flow-step warn">&#128683; No &ldquo;Pay Bill&rdquo; link visible</div>
-        <div class="flow-arrow">&darr;</div>
-        <div class="flow-step">&#128270; Search Google &ldquo;roto rooter pay bill&rdquo;</div>
-        <div class="flow-arrow">&darr;</div>
-        <div class="flow-step warn">&#128279; Find hidden portal on different domain (spectrumretailnet.com)</div>
-        <div class="flow-arrow">&darr;</div>
-        <div class="flow-step danger">&#128274; Create account (username + password)</div>
-        <div class="flow-arrow">&darr;</div>
-        <div class="flow-step danger">&#128196; Need ticket/invoice number</div>
-        <div class="flow-arrow">&darr;</div>
-        <div class="flow-step danger">&#128179; Enter payment info</div>
-        <div class="flow-arrow">&darr;</div>
-        <div class="flow-step fail">&#128176; Pay &mdash; if portal even works</div>
+    <div class="stack-flow rv rv-d1">
+      <div class="stack-step">
+        <div class="stack-step-icon">&#127968;</div>
+        <div class="stack-step-name">Roto-Rooter</div>
+        <div class="stack-step-detail">Internal AR team<br>Result: voicemail</div>
       </div>
-
-      <!-- Divider -->
-      <div class="flow-vs">vs</div>
-
-      <!-- AgentCollect process - RIGHT side, green-tinted -->
-      <div class="flow-new">
-        <div class="flow-step">&#128241; Receive SMS with payment link</div>
-        <div class="flow-arrow">&darr;</div>
-        <div class="flow-step success">&#128179; Tap to pay (Apple Pay / Google Pay / Card)</div>
-        <div class="flow-arrow">&darr;</div>
-        <div class="flow-step success">&#9989; Done. 12 seconds.</div>
+      <div class="stack-arrow">&rarr;</div>
+      <div class="stack-step">
+        <div class="stack-step-icon">&#128222;</div>
+        <div class="stack-step-name">Verliance Inc</div>
+        <div class="stack-step-detail"><span class="red">1.8/5 Indeed</span><br>Federal lawsuit Feb 2026<br><span class="red">Not BBB accredited</span></div>
       </div>
+      <div class="stack-arrow">&rarr;</div>
+      <div class="stack-step">
+        <div class="stack-step-icon">&#9878;&#65039;</div>
+        <div class="stack-step-name">Court / Write-off</div>
+        <div class="stack-step-detail">Tucey v. Roto-Rooter<br>+ Verliance<br>Case 5:26-cv-01424</div>
+      </div>
+    </div>
+
+    <div class="stack-vs rv rv-d2">or</div>
+
+    <div class="stack-alt rv rv-d3">
+      <div class="stack-step-icon" style="font-size:36px;margin-bottom:8px">&#129302;</div>
+      <div class="stack-alt-name">AgentCollect AI</div>
+      <div class="stack-alt-detail">Picks up in 0.3s. Every language. 24/7. Zero lawsuits.</div>
+    </div>
+
+    <div class="stack-source rv rv-d4">
+      <a href="https://www.indeed.com/cmp/Verliance-Inc/reviews" target="_blank" rel="noopener">Indeed: Verliance 1.8/5</a> &middot;
+      <a href="https://www.courtlistener.com/docket/69685381/tucey-v-roto-rooter-services-company/" target="_blank" rel="noopener">PACER: Tucey v. Roto-Rooter + Verliance, 5:26-cv-01424</a>
     </div>
   </div>
 </section>
 
-<!-- SECTION 3: THE COST -->
-<section class="cost-section">
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- CHAPTER 4 — The Cost                                -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="cost-section" id="the-cost">
   <div class="rv">
-    <div class="section-label">The cost</div>
+    <div class="chapter-num">Chapter 4</div>
     <div class="cost-big" id="cost-number">$0</div>
     <div class="cost-big-suffix">/year</div>
-    <p class="cost-subtitle">Estimated revenue from clients who tried to pay and gave up.</p>
+    <p class="cost-subtitle">Estimated bad debt at Roto-Rooter.</p>
   </div>
   <div class="cost-breakdown rv rv-d1">
     <div class="cost-row">
-      <span class="cost-row-label">Revenue</span>
+      <span class="cost-row-label">Revenue (2024)</span>
       <span class="cost-row-value">~$900M</span>
     </div>
     <div class="cost-row">
       <span class="cost-row-label">Industry bad debt rate</span>
-      <span class="cost-row-value">2-5%</span>
+      <span class="cost-row-value">2&ndash;5%</span>
     </div>
     <div class="cost-row">
-      <span class="cost-row-label">Clients who attempt to pay but abandon</span>
-      <span class="cost-row-value">~15%</span>
+      <span class="cost-row-label">YoY revenue decline</span>
+      <span class="cost-row-value">-5.2%</span>
     </div>
     <div class="cost-row total">
-      <span class="cost-row-label">Estimated lost revenue</span>
-      <span class="cost-row-value">$2.7M&ndash;6.8M/yr</span>
+      <span class="cost-row-label">Estimated annual bad debt</span>
+      <span class="cost-row-value">$18M&ndash;$45M</span>
     </div>
+  </div>
+  <div class="cost-source rv rv-d2">
+    <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=CHE&type=10-K" target="_blank" rel="noopener">Chemed Corp 10-K (NYSE: CHE)</a> &middot;
+    <a href="https://www.dnb.com/content/dam/english/economic-and-industry-insight/DBT_Report.pdf" target="_blank" rel="noopener">Dun &amp; Bradstreet: 9% B2B bad debt rate</a>
   </div>
 </section>
 
-<!-- SECTION 4: YOUR AGENT -->
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- CHAPTER 5 — Your Agent                              -->
+<!-- ═══════════════════════════════════════════════════ -->
 <section class="agent-section" id="agent-section">
   <div class="rv">
-    <div class="section-label">Your agent</div>
+    <div class="chapter-num">Chapter 5</div>
     <h2 class="agent-title">This is what picks up instead.</h2>
     <p class="agent-sub">Your Roto-Rooter AI agent. 24/7. 0.3 second response. Every language.</p>
   </div>
@@ -859,67 +692,77 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </section>
 
-<!-- SECTION 5: SIDE BY SIDE -->
-<section class="compare-section">
-  <div class="rv">
-    <div class="section-label">Side by side</div>
-    <h2 class="section-title">Your current process vs. your AI agent.</h2>
-  </div>
-  <div class="compare-grid">
-    <div class="compare-col current rv rv-d1">
-      <div class="compare-col-header">
-        <div class="icon">&#10005;</div>
-        <h3>Your Current Process</h3>
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- COMING SOON                                         -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="coming-section" id="coming-soon">
+  <div class="coming-inner">
+    <div class="coming-card rv">
+      <div class="coming-header">
+        <span class="coming-header-icon">&#128338;</span>
+        <h3>Coming Soon &mdash; Scheduled Tests</h3>
+        <span class="coming-tag">In progress</span>
       </div>
-      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Phone:</strong> IVR maze, then voicemail</span></div>
-      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Callback:</strong> waiting for response</span></div>
-      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Hours:</strong> business hours only</span></div>
-      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Languages:</strong> English only</span></div>
+
+      <div class="coming-item">
+        <span class="coming-item-icon">&#128336;</span>
+        <span class="coming-item-text"><strong>March 27, 5:00 AM PT</strong> &mdash; Business hours polite client call</span>
+        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
+      </div>
+      <div class="coming-item">
+        <span class="coming-item-icon">&#128336;</span>
+        <span class="coming-item-text"><strong>March 27, 7:00 AM PT</strong> &mdash; Frustrated client call</span>
+        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
+      </div>
+      <div class="coming-item">
+        <span class="coming-item-icon">&#128336;</span>
+        <span class="coming-item-text"><strong>March 27, 8:00 AM PT</strong> &mdash; Timing test (measure hold time)</span>
+        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
+      </div>
+      <div class="coming-item">
+        <span class="coming-item-icon">&#127463;&#127479;</span>
+        <span class="coming-item-text"><strong>March 27, 8:15 AM PT</strong> &mdash; Spanish language test</span>
+        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
+      </div>
+      <div class="coming-item">
+        <span class="coming-item-icon">&#9993;&#65039;</span>
+        <span class="coming-item-text"><strong>March 27</strong> &mdash; Email billing inquiry (response time tracking)</span>
+        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
+      </div>
+      <div class="coming-item">
+        <span class="coming-item-icon">&#128260;</span>
+        <span class="coming-item-text"><strong>March 28</strong> &mdash; Voicemail callback check (did they call back within 48h?)</span>
+        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
+      </div>
     </div>
-    <div class="compare-col agent rv rv-d2">
-      <div class="compare-col-header">
-        <div class="icon">&#10003;</div>
-        <h3>Your AI Agent</h3>
+
+    <!-- Collection Agency Audit Coming Soon -->
+    <div class="coming-card rv" style="margin-top:20px;border-color:rgba(79,70,229,.25)">
+      <div class="coming-header">
+        <span class="coming-header-icon">&#128269;</span>
+        <h3>Coming Soon &mdash; Verliance Inc Audit</h3>
+        <span class="coming-tag">Investigation</span>
       </div>
-      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Phone:</strong> picks up in 0.3s</span></div>
-      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Payment:</strong> instant link via SMS</span></div>
-      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Hours:</strong> 24/7/365</span></div>
-      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Languages:</strong> 50+</span></div>
+      <div class="coming-item">
+        <span class="coming-item-icon">&#128222;</span>
+        <span class="coming-item-text"><strong>March 27, 9:00 AM PT</strong> &mdash; Mystery shop call to Verliance (877) 643-4549 as a Roto-Rooter debtor</span>
+        <span class="coming-status scheduled">&#9203; SCHEDULED</span>
+      </div>
+      <div class="coming-item">
+        <span class="coming-item-icon">&#128270;</span>
+        <span class="coming-item-text">Compliance check &mdash; FDCPA violations, tone analysis, resolution rate</span>
+      </div>
+      <div class="coming-item">
+        <span class="coming-item-icon">&#128200;</span>
+        <span class="coming-item-text">Empathy comparison &mdash; how does Verliance treat Roto-Rooter&rsquo;s clients vs. an AI agent?</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION: INDUSTRY STATS -->
-<section class="stats-section rv">
-  <div class="stats-container">
-    <h2>The numbers don't lie.</h2>
-    <p class="stats-sub">Industry data on how consumers pay bills in 2025.</p>
-    <div class="stats-grid">
-      <div class="stat-card rv rv-d1">
-        <div class="stat-number">68%</div>
-        <div class="stat-label">of Americans paid a bill on their phone this year</div>
-        <div class="stat-source"><a href="https://www.federalreserve.gov/publications/mobile-financial-services.htm" target="_blank" rel="noopener">Federal Reserve, 2025</a></div>
-      </div>
-      <div class="stat-card rv rv-d2">
-        <div class="stat-number">41%</div>
-        <div class="stat-label">of bill payments happen outside business hours</div>
-        <div class="stat-source"><a href="https://home.paynearme.com/resources" target="_blank" rel="noopener">PayNearMe (n=2,500)</a></div>
-      </div>
-      <div class="stat-card rv rv-d3">
-        <div class="stat-number">53%</div>
-        <div class="stat-label">abandon pages loading over 3 seconds</div>
-        <div class="stat-source"><a href="https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-load-time/" target="_blank" rel="noopener">Google / SOASTA</a></div>
-      </div>
-      <div class="stat-card rv rv-d4">
-        <div class="stat-number">70.19%</div>
-        <div class="stat-label">average checkout abandonment rate</div>
-        <div class="stat-source"><a href="https://baymard.com/lists/cart-abandonment-rate" target="_blank" rel="noopener">Baymard Institute</a></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 6: CTA -->
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- CTA                                                 -->
+<!-- ═══════════════════════════════════════════════════ -->
 <section class="cta-section">
   <div class="rv">
     <h2 class="cta-title">Who handles AR at Roto-Rooter?</h2>
@@ -935,19 +778,49 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </section>
 
-<!-- SECTION 7: FOOTER -->
+<!-- FOOTER -->
 <footer class="audit-footer">
   <p class="audit-footer-built">Built for Roto-Rooter by AgentCollect<span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--blue);margin-left:1px;vertical-align:middle"></span></p>
   <p class="audit-footer-disc">This audit is based on publicly available information and mystery shopping conducted March 2026.</p>
 </footer>
 
-<!-- Floating Voice FAB -->
-<div class="voice-fab" id="voice-fab">
-  <div class="voice-fab-icon" id="voice-fab-icon">
-    <svg id="fab-mic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg>
-    <svg id="fab-hangup-icon" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+<!-- Chat Bubble -->
+<div class="chat-bubble" id="chat-bubble">
+  <button class="chat-bubble-btn" id="chat-bubble-btn" onclick="toggleChatPanel()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    <span>Questions about this audit?</span>
+  </button>
+</div>
+
+<!-- Chat Panel -->
+<div class="chat-panel" id="chat-panel">
+  <div class="chat-panel-header">
+    <div class="chat-panel-header-left">
+      <div class="chat-panel-header-avatar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg>
+      </div>
+      <div class="chat-panel-header-info">
+        <h3>AgentCollect Assistant</h3>
+        <span>Roto-Rooter audit</span>
+      </div>
+    </div>
+    <button class="chat-panel-close" onclick="toggleChatPanel()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
   </div>
-  <div class="voice-fab-text" id="voice-fab-text">Call your agent</div>
+  <div class="chat-panel-body" id="chat-panel-body">
+    <div class="chat-msg bot">Hi, I'm your AgentCollect assistant. I built this audit for Roto-Rooter. Ask me anything about what we found.</div>
+  </div>
+  <div class="chat-panel-footer" id="chat-panel-footer">
+    <div class="chat-call-status" id="chat-call-status" style="display:none"></div>
+    <div class="chat-waveform" id="chat-waveform" style="display:none">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <button class="chat-call-btn" id="chat-call-btn" onclick="chatStartCall()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Call Agent
+    </button>
+  </div>
 </div>
 
 <script type="module">
@@ -955,6 +828,13 @@ import { RetellWebClient } from 'https://cdn.jsdelivr.net/npm/retell-client-js-s
 window.__RetellWebClient = RetellWebClient;
 </script>
 <script>
+// Timeline jump-to-event
+function jumpTo(seconds){
+  var audio = document.getElementById('featured-audio');
+  if(audio){ audio.currentTime = seconds; audio.play(); }
+}
+window.jumpTo = jumpTo;
+
 // Expiry Countdown
 (function(){
   var expiry = new Date('2026-04-10');
@@ -980,17 +860,17 @@ window.__RetellWebClient = RetellWebClient;
   setTimeout(function(){ els.forEach(function(el){ el.classList.add('v'); }); }, 2500);
 })();
 
-// Animated Cost Counter — rolls up to $6,800,000
+// Animated Cost Counter — rolls up to $45,000,000
 (function(){
   var costEl = document.getElementById('cost-number');
   if(!costEl) return;
-  var target = 6800000;
+  var target = 45000000;
   var animated = false;
   var ro = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting && !animated){
         animated = true;
-        var duration = 2000;
+        var duration = 2500;
         var start = Date.now();
         function tick(){
           var elapsed = Date.now() - start;
@@ -1007,58 +887,235 @@ window.__RetellWebClient = RetellWebClient;
   ro.observe(costEl);
 })();
 
-// Floating Voice FAB
+// Sticky Nav
 (function(){
-  var fab = document.getElementById('voice-fab');
-  var fabText = document.getElementById('voice-fab-text');
-  var fabMicIcon = document.getElementById('fab-mic-icon');
-  var fabHangupIcon = document.getElementById('fab-hangup-icon');
-  var agentSection = document.getElementById('agent-section');
-  var fabLive = false;
-  if(!fab || !agentSection) return;
+  var stickyNav = document.getElementById('sticky-nav');
+  var header = document.querySelector('.hero');
+  var navLinks = document.querySelectorAll('[data-nav]');
+  if(!stickyNav || !header) return;
 
-  window.__fabSetLive = function(isLive){
-    fabLive = isLive;
-    if(isLive){
-      fab.classList.add('visible', 'live');
-      fabText.textContent = 'End call';
-      fabMicIcon.style.display = 'none';
-      fabHangupIcon.style.display = '';
-    } else {
-      fab.classList.remove('live');
-      fabText.textContent = 'Call your agent';
-      fabMicIcon.style.display = '';
-      fabHangupIcon.style.display = 'none';
-      var rect = agentSection.getBoundingClientRect();
-      if(rect.bottom >= 0 && rect.top <= window.innerHeight) fab.classList.remove('visible');
-    }
-  };
+  var headerObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting) stickyNav.classList.remove('visible');
+      else stickyNav.classList.add('visible');
+    });
+  }, {threshold:0, rootMargin:'0px'});
+  headerObs.observe(header);
 
-  fab.addEventListener('click', function(){
-    if(fabLive){
-      var endBtn = document.getElementById('cs-end-btn');
-      if(endBtn) endBtn.click();
-      return;
-    }
-    agentSection.scrollIntoView({behavior:'smooth', block:'start'});
-    setTimeout(function(){
-      var orb = document.getElementById('orb-wrap');
-      if(orb) orb.click();
-    }, 600);
+  var sections = [];
+  navLinks.forEach(function(link){
+    var id = link.getAttribute('href').replace('#','');
+    var el = document.getElementById(id);
+    if(el) sections.push({el:el, link:link});
   });
 
-  window.addEventListener('scroll', function(){
-    if(fabLive){ fab.classList.add('visible'); return; }
-    var rect = agentSection.getBoundingClientRect();
-    if(rect.bottom < 0 || rect.top > window.innerHeight){
-      fab.classList.add('visible');
-    } else {
-      fab.classList.remove('visible');
-    }
+  var sectionObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var match = sections.find(function(s){ return s.el === e.target; });
+      if(match && e.isIntersecting){
+        navLinks.forEach(function(l){ l.classList.remove('active'); });
+        match.link.classList.add('active');
+      }
+    });
+  }, {threshold:0.15, rootMargin:'-60px 0px -60% 0px'});
+  sections.forEach(function(s){ sectionObs.observe(s.el); });
+
+  navLinks.forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      var id = this.getAttribute('href').replace('#','');
+      var target = document.getElementById(id);
+      if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+    });
   });
 })();
 
-// WebRTC Voice Call
+// Chat Bubble + Panel
+(function(){
+  var chatBubble = document.getElementById('chat-bubble');
+  var chatBubbleBtn = document.getElementById('chat-bubble-btn');
+  var chatPanel = document.getElementById('chat-panel');
+  var chatCallBtn = document.getElementById('chat-call-btn');
+  var chatCallStatus = document.getElementById('chat-call-status');
+  var chatWaveform = document.getElementById('chat-waveform');
+  var chatWaveformBars = chatWaveform ? chatWaveform.querySelectorAll('span') : [];
+  var chatBody = document.getElementById('chat-panel-body');
+  var chatPanelOpen = false;
+  var chatCallActive = false;
+  var chatRetellClient = null;
+  var chatCallStartTime = null;
+  var chatWaveformAnimId = null;
+  var chatWaveformMode = 'idle';
+
+  window.toggleChatPanel = function(){
+    chatPanelOpen = !chatPanelOpen;
+    if(chatPanelOpen){
+      chatPanel.classList.add('open');
+      chatBubble.style.display = 'none';
+    } else {
+      chatPanel.classList.remove('open');
+      chatBubble.style.display = '';
+    }
+  };
+
+  function animateChatWaveform(){
+    for(var i = 0; i < chatWaveformBars.length; i++){
+      var h;
+      if(chatWaveformMode === 'agent') h = 8 + Math.random() * 24;
+      else if(chatWaveformMode === 'user') h = 5 + Math.random() * 14;
+      else h = 3 + Math.sin(Date.now() / 500 + i * 0.6) * 2;
+      chatWaveformBars[i].style.height = h + 'px';
+    }
+    chatWaveformAnimId = requestAnimationFrame(animateChatWaveform);
+  }
+
+  function startChatWaveform(mode){
+    chatWaveformMode = mode || 'idle';
+    chatWaveform.style.display = 'flex';
+    if(!chatWaveformAnimId) animateChatWaveform();
+  }
+
+  function stopChatWaveform(){
+    chatWaveformMode = 'idle';
+    if(chatWaveformAnimId){ cancelAnimationFrame(chatWaveformAnimId); chatWaveformAnimId = null; }
+    chatWaveform.style.display = 'none';
+    for(var i = 0; i < chatWaveformBars.length; i++) chatWaveformBars[i].style.height = '3px';
+  }
+
+  function addChatMsg(text, role){
+    var div = document.createElement('div');
+    div.className = 'chat-msg ' + (role === 'agent' ? 'bot' : 'user');
+    div.textContent = text;
+    chatBody.appendChild(div);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function chatEndCall(duration){
+    chatCallActive = false;
+    if(chatRetellClient){ try { chatRetellClient.stopCall(); } catch(e){} chatRetellClient = null; }
+    if(window.__chatMicStream){ window.__chatMicStream.getTracks().forEach(function(t){ t.stop(); }); window.__chatMicStream = null; }
+    stopChatWaveform();
+    chatCallStatus.style.display = 'none';
+    chatCallBtn.classList.remove('end-call');
+    chatCallBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> Call Again';
+    chatBubbleBtn.classList.remove('live');
+    if(duration > 0) addChatMsg('Call ended. That was ' + duration + ' seconds. Tap "Call Again" to try another call, or email j@agentcollect.com to learn more.', 'agent');
+  }
+
+  window.chatStartCall = function(){
+    if(chatCallActive){
+      chatEndCall(chatCallStartTime ? Math.round((Date.now() - chatCallStartTime) / 1000) : 0);
+      return;
+    }
+    chatCallActive = true;
+    chatCallStartTime = Date.now();
+    chatCallStatus.textContent = 'Connecting...';
+    chatCallStatus.style.display = '';
+    chatCallBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> Connecting...';
+    chatBubbleBtn.classList.add('live');
+
+    (async function(){
+      try {
+        var micPromise = navigator.mediaDevices.getUserMedia({
+          audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true }
+        }).then(function(s){ window.__chatMicStream = s; })
+          .catch(function(){ throw new Error('Microphone access required'); });
+
+        var apiPromise = fetch('https://backend.widr.app/api/v1/demo/web-call', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            company_name: 'Roto-Rooter',
+            product: 'plumbing and drain services',
+            amount: '$850'
+          })
+        }).then(async function(response) {
+          if(!response.ok) throw new Error('API returned ' + response.status);
+          return response.json();
+        });
+
+        var sdkPromise = Promise.resolve(window.__RetellWebClient).then(function(RWC) {
+          if(RWC) return RWC;
+          return import('https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.7/+esm')
+            .then(function(m){ return m.RetellWebClient; });
+        });
+
+        var results = await Promise.all([micPromise, apiPromise, sdkPromise]);
+        var result = results[1];
+        var RetellWebClient = results[2];
+        if(!result.success || !result.access_token) throw new Error('No access token');
+        chatRetellClient = new RetellWebClient();
+
+        chatRetellClient.on('call_started', function(){
+          chatCallStartTime = Date.now();
+          chatCallStatus.textContent = 'Your turn \u2014 speak now';
+          chatCallBtn.classList.add('end-call');
+          chatCallBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> End Call';
+          startChatWaveform('idle');
+          addChatMsg('Connected! You can speak now.', 'agent');
+          try { gtag('event', 'chat_call_started', { company: 'Roto-Rooter', page: 'audit-test-roto-rooter' }); } catch(e){}
+        });
+
+        chatRetellClient.on('call_ended', function(){
+          var duration = chatCallStartTime ? Math.round((Date.now() - chatCallStartTime) / 1000) : 0;
+          chatEndCall(duration);
+        });
+
+        chatRetellClient.on('agent_start_talking', function(){
+          startChatWaveform('agent');
+          chatCallStatus.textContent = 'Agent speaking...';
+        });
+
+        chatRetellClient.on('agent_stop_talking', function(){
+          startChatWaveform('user');
+          chatCallStatus.textContent = 'Your turn \u2014 speak now';
+        });
+
+        chatRetellClient.on('update', function(update){
+          if(update && update.transcript && update.transcript.length){
+            var last = null;
+            for(var i = update.transcript.length - 1; i >= 0; i--){
+              if((update.transcript[i].content || '').trim()){ last = update.transcript[i]; break; }
+            }
+            if(last){
+              var existingBubbles = chatBody.querySelectorAll('.chat-msg.transcript-live');
+              existingBubbles.forEach(function(b){ b.remove(); });
+              var div = document.createElement('div');
+              div.className = 'chat-msg ' + (last.role === 'agent' ? 'bot' : 'user') + ' transcript-live';
+              div.textContent = last.content;
+              chatBody.appendChild(div);
+              chatBody.scrollTop = chatBody.scrollHeight;
+            }
+          }
+        });
+
+        chatRetellClient.on('error', function(err){
+          console.error('Chat call error:', err);
+          chatEndCall(0);
+          addChatMsg('Connection issue. Tap "Call Again" to retry.', 'agent');
+        });
+
+        await chatRetellClient.startCall({ accessToken: result.access_token });
+
+      } catch(err){
+        console.error('Chat call error:', err);
+        chatCallActive = false;
+        chatCallStatus.style.display = 'none';
+        chatCallBtn.classList.remove('end-call');
+        chatCallBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> Call Agent';
+        chatBubbleBtn.classList.remove('live');
+        addChatMsg('Could not connect. Please check your microphone and try again.', 'agent');
+      }
+    })();
+  };
+
+  window.__fabSetLive = function(isLive){
+    if(isLive) chatBubbleBtn.classList.add('live');
+    else chatBubbleBtn.classList.remove('live');
+  };
+})();
+
+// WebRTC Voice Call (Orb)
 (function(){
   var orbWrap = document.getElementById('orb-wrap');
   var orbPhone = document.getElementById('orb-phone-center');
@@ -1102,14 +1159,12 @@ window.__RetellWebClient = RetellWebClient;
     if(callActive) return;
     callActive = true;
     callStartTime = Date.now();
-
     if(orbPhone) orbPhone.style.display = 'none';
     var agentHint = document.querySelector('.agent-hint');
     if(agentHint) agentHint.style.display = 'none';
     document.querySelectorAll('.orb-ring').forEach(function(r){ r.style.display = 'none'; });
     csConnecting.style.display = 'flex';
     csActive.classList.remove('visible');
-
     var orb = document.getElementById('orb-main');
     if(orb) orb.classList.add('speaking');
 
@@ -1223,13 +1278,10 @@ window.__RetellWebClient = RetellWebClient;
     var orb = document.getElementById('orb-main');
     if(orb) orb.classList.remove('speaking');
     if(orbPhone) orbPhone.style.opacity = '1';
-
     csStatus.textContent = 'Call ended';
     var postCall = document.getElementById('cs-post-call');
     var postTitle = document.querySelector('.cs-post-title');
-    if(postTitle && duration > 0){
-      postTitle.textContent = 'That was ' + duration + ' second' + (duration !== 1 ? 's' : '') + '.';
-    }
+    if(postTitle && duration > 0) postTitle.textContent = 'That was ' + duration + ' second' + (duration !== 1 ? 's' : '') + '.';
     setTimeout(function(){
       csActive.classList.remove('visible');
       csTranscript.innerHTML = '';
