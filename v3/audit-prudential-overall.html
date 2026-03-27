@@ -499,10 +499,17 @@ window.__RetellWebClient = RetellWebClient;
 
 // Scroll Reveal
 (function(){
+  var els = document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('v'); });
+    return;
+  }
   var ro = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('v'); });
-  }, {threshold:.12});
-  document.querySelectorAll('.rv').forEach(function(el){ ro.observe(el); });
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('v'); ro.unobserve(e.target); } });
+  }, {threshold:.08, rootMargin:'0px 0px 200px 0px'});
+  els.forEach(function(el){ ro.observe(el); });
+  // Safety: reveal any still-hidden elements after 2.5s (e.g. if observer glitches)
+  setTimeout(function(){ els.forEach(function(el){ el.classList.add('v'); }); }, 2500);
 })();
 
 // Animated Cost Counter — rolls up to $4,200,000 (high end of range)
