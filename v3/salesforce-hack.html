@@ -117,7 +117,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .badge{display:inline-flex;align-items:center;padding:5px 14px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 .badge-duration{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
 .badge-human{background:rgba(220,38,38,.15);color:#fca5a5;border:1px solid rgba(220,38,38,.25)}
-.badge-scheduled{background:rgba(245,158,11,.15);color:#fbbf24;border:1px solid rgba(245,158,11,.25)}
 
 /* AUDIO TIMELINE */
 .audio-timeline{margin:20px 0}
@@ -156,12 +155,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .call-summary-box{margin-top:32px;text-align:center;padding:24px;background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.15);border-radius:14px}
 .call-summary-box p{font-size:clamp(16px,2vw,20px);font-weight:900;color:#fca5a5;letter-spacing:-.02em}
 
-/* COMING SOON CALL */
-.coming-call-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 24px;border:2px dashed rgba(255,255,255,.12);border-radius:16px;text-align:center;margin-top:20px}
-.coming-call-placeholder .coming-call-icon{font-size:48px;margin-bottom:16px;opacity:.6}
-.coming-call-placeholder h4{font-size:18px;font-weight:800;color:rgba(255,255,255,.6);margin-bottom:8px}
-.coming-call-placeholder p{font-size:14px;color:rgba(255,255,255,.35);line-height:1.5;max-width:400px}
-
 @media(max-width:768px){
   .call-grid{grid-template-columns:1fr}
 }
@@ -174,14 +167,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .screenshot-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
 .screenshot-card img{width:100%;height:220px;object-fit:cover;object-position:top;display:block;border-bottom:1px solid var(--border)}
 .screenshot-caption{padding:14px 16px;font-size:13px;color:var(--muted);font-weight:500;line-height:1.4}
-.finding-card{background:#fff;border-radius:16px;border:1px solid var(--border);padding:28px;box-shadow:var(--shadow);transition:border-color .3s,transform .3s}
-.finding-card:hover{border-color:rgba(220,38,38,.25);transform:translateY(-2px)}
-.finding-card-icon{font-size:28px;margin-bottom:12px}
-.finding-card h4{font-size:16px;font-weight:800;color:var(--text);margin-bottom:8px;line-height:1.3}
-.finding-card p{font-size:14px;color:var(--muted);line-height:1.6}
-.finding-card .quote{font-size:13px;font-style:italic;color:var(--text);margin-top:12px;padding:12px 16px;background:rgba(220,38,38,.04);border-left:3px solid var(--red);border-radius:0 8px 8px 0;line-height:1.5}
-.finding-card .source{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:#94a3b8;margin-top:12px;text-decoration:none;border-bottom:1px solid transparent;transition:all .2s}
-.finding-card .source:hover{color:var(--blue);border-color:var(--blue)}
 .portal-callout{background:#fef2f2;border:1px solid #fca5a5;border-radius:12px;padding:20px 28px;max-width:720px;margin:0 auto;display:flex;align-items:flex-start;gap:12px}
 .portal-callout svg{flex-shrink:0;width:20px;height:20px;color:var(--red);margin-top:2px}
 .portal-callout p{font-size:15px;color:var(--red);font-weight:600;line-height:1.5;text-align:left}
@@ -192,6 +177,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .review-score-source{font-size:11px;margin-top:4px}
 .review-score-source a{color:#94a3b8;text-decoration:underline}
 .review-score-source a:hover{color:var(--blue)}
+@media(max-width:768px){.screenshot-grid{grid-template-columns:1fr}.portal-section{padding:60px 24px}}
+
 /* COMPARISON TABLE */
 .comp-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -8px;padding:0 8px}
 .comp-table{width:100%;border-collapse:collapse;font-size:14px;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
@@ -233,8 +220,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .irony-source a{color:#94a3b8;text-decoration:underline}
 .irony-source a:hover{color:var(--blue)}
 @media(max-width:768px){.irony-grid{grid-template-columns:1fr}.irony-section{padding:60px 24px}}
-
-@media(max-width:768px){.screenshot-grid{grid-template-columns:1fr}.portal-section{padding:60px 24px}}
 
 /* COLLECTION STACK */
 .stack-section{padding:100px 48px;background:#f8f9fa}
@@ -435,6 +420,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   .cost-big{font-size:40px}
 }
 
+/* SCORING COLORS */
+.score-green{color:#10B981;font-weight:700}
+.score-orange{color:#F59E0B;font-weight:700}
+.score-red{color:#dc2626;font-weight:700}
+.score-badge-green{background:rgba(16,185,129,.1);color:#10B981;border:1px solid rgba(16,185,129,.2);display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;gap:6px}
+.score-badge-orange{background:rgba(245,158,11,.1);color:#F59E0B;border:1px solid rgba(245,158,11,.2);display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;gap:6px}
+.score-badge-red{background:rgba(220,38,38,.1);color:#dc2626;border:1px solid rgba(220,38,38,.2);display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;gap:6px}
+
 /* WHAT THIS REVEALS BOX */
 .reveals-box{margin-top:20px;padding:20px 24px;background:rgba(79,70,229,.04);border:1px solid rgba(79,70,229,.12);border-radius:14px}
 .reveals-box-dark{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08)}
@@ -483,9 +476,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </nav>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- HERO — The Hook                                     -->
-<!-- ═══════════════════════════════════════════════════ -->
+<!-- ======================================================= -->
+<!-- HERO                                                      -->
+<!-- ======================================================= -->
 <section class="hero">
   <div class="hero-badge rv">AR Audit &mdash; Tech Giant</div>
   <h1 class="rv rv-d1">We tried to cancel <em>Salesforce.</em></h1>
@@ -506,9 +499,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   <p class="hero-sub rv rv-d3">March 2026 &mdash; Confidential &mdash; expires in <span id="header-days-left"></span></p>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- CHAPTER 1 — The Call                                -->
-<!-- ═══════════════════════════════════════════════════ -->
+<!-- ======================================================= -->
+<!-- CHAPTER 1 - The Call                                      -->
+<!-- ======================================================= -->
 <section class="chapter chapter-dark" id="the-call">
   <div class="chapter-inner">
     <div class="rv">
@@ -556,34 +549,33 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       <div class="call-grid">
         <div class="call-mini">
           <h4>Timing test &mdash; DTMF failure</h4>
-          <div class="call-mini-meta"><span>73s</span> &middot; <span style="color:#fca5a5">IVR error &rarr; No human</span></div>
+          <div class="call-mini-meta"><span>73s</span> &middot; <span style="color:#fca5a5">IVR error &rarr; No human</span> <span class="score-badge-red">&#10007;</span></div>
           <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/23aa7f2266078f7af567fb56afe50b12615dd590e203c4d3efabc319e711ad6f/recording.wav"></audio>
         </div>
         <div class="call-mini" style="border:2px dashed rgba(245,158,11,.25);background:rgba(245,158,11,.03)">
           <h4>&#128338; Frustrated caller scenario</h4>
-          <div class="call-mini-meta"><span style="color:#fbbf24">COMING SOON</span> &middot; <span>Scheduled</span></div>
+          <div class="call-mini-meta"><span style="color:#fbbf24">COMING SOON</span> &middot; <span>Scheduled</span> <span class="score-badge-orange">&#9203;</span></div>
         </div>
       </div>
 
       <div class="call-summary-box">
-        <p>2 calls. 0 humans. 0 payments. The $38B CRM company has no billing humans.</p>
+        <p><span class="score-red">2</span> calls. <span class="score-red">0</span> humans. <span class="score-red">0</span> payments. The $38B CRM company has no billing humans.</p>
       </div>
     </div>
-  </div>
 
-    <div class="reveals-box reveals-box-dark" style="margin-top:16px">
+    <div class="reveals-box reveals-box-dark rv rv-d3" style="margin-top:16px">
       <div class="reveals-label">&#128203; What this reveals</div>
       <div class="reveals-item"><span class="ri-dot red"></span><span class="reveals-item-text"><strong>Salesforce billing line (1-800-667-6389) has zero human agents.</strong> Press 3 for billing plays a recorded message and disconnects.</span></div>
       <div class="reveals-item"><span class="ri-dot red"></span><span class="reveals-item-text"><strong>&ldquo;Agentforce&rdquo; is mentioned in the IVR</strong> &mdash; Salesforce&rsquo;s own AI billing agent just tells you to go to the portal.</span></div>
       <div class="reveals-item"><span class="ri-dot orange"></span><span class="reveals-item-text"><strong>Second test call:</strong> DTMF (keypad) input was not recognized by the IVR system.</span></div>
       <div class="reveals-source">Source: Direct call test, March 27, 2026</div>
     </div>
-
+  </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- CHAPTER 2 — The Cancellation Trap                   -->
-<!-- ═══════════════════════════════════════════════════ -->
+<!-- ======================================================= -->
+<!-- CHAPTER 2 - The Cancellation Trap                         -->
+<!-- ======================================================= -->
 <section class="portal-section" id="the-portal">
   <div class="portal-inner">
     <div class="rv">
@@ -592,12 +584,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       <p class="chapter-sub">The company that sells customer relationship software. Here&rsquo;s how they treat their own customers.</p>
     </div>
 
-    <!-- Full-width annotated cards -->
-    <div class="screenshot-grid" style="grid-template-columns:1fr;gap:24px;max-width:900px;margin:0 auto">
+    <!-- Full-width annotated screenshot-cards (Roto-Rooter pattern) -->
+    <div class="screenshot-grid rv rv-d1" style="grid-template-columns:1fr;gap:24px;max-width:900px;margin:0 auto">
 
       <!-- Card 1: No Self-Service Cancel -->
-      <div class="screenshot-card rv rv-d1" style="border:2px solid var(--red)">
-        <div style="position:absolute;top:12px;right:12px;background:var(--red);color:#fff;font-size:10px;font-weight:800;padding:4px 10px;border-radius:100px;letter-spacing:.06em;text-transform:uppercase;z-index:2">No Exit</div>
+      <div class="screenshot-card" style="border:2px solid var(--red)">
+        <div style="position:absolute;top:12px;right:12px;z-index:2"><span class="score-badge-red">&#128308; RED</span></div>
         <div class="screenshot-caption" style="padding:24px 28px">
           <div style="display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap">
             <div style="font-size:32px;flex-shrink:0">&#128274;</div>
@@ -614,7 +606,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       </div>
 
       <!-- Card 2: The Auto-Renewal Trap -->
-      <div class="screenshot-card rv rv-d2">
+      <div class="screenshot-card" style="border:2px solid var(--red)">
+        <div style="position:absolute;top:12px;right:12px;z-index:2"><span class="score-badge-red">&#128308; RED</span></div>
         <div class="screenshot-caption" style="padding:24px 28px">
           <div style="display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap">
             <div style="font-size:32px;flex-shrink:0">&#128260;</div>
@@ -632,7 +625,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       </div>
 
       <!-- Card 3: No Refunds, Ever -->
-      <div class="screenshot-card rv rv-d3">
+      <div class="screenshot-card" style="border:2px solid var(--red)">
+        <div style="position:absolute;top:12px;right:12px;z-index:2"><span class="score-badge-red">&#128308; RED</span></div>
         <div class="screenshot-caption" style="padding:24px 28px">
           <div style="display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap">
             <div style="font-size:32px;flex-shrink:0">&#128176;</div>
@@ -645,23 +639,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
         </div>
       </div>
 
-      <!-- Card 4: Third-Party Cancellation Industry -->
-      <div class="screenshot-card rv rv-d4">
-        <div class="screenshot-caption" style="padding:24px 28px">
-          <div style="display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap">
-            <div style="font-size:32px;flex-shrink:0">&#128269;</div>
-            <div style="flex:1;min-width:240px">
-              <strong style="font-size:17px;color:var(--text)">Third-Party Cancellation Industry</strong>
-              <p style="margin-top:8px;font-size:14px;color:var(--muted);line-height:1.6">The cancellation process is so painful that consultants built entire businesses around helping people cancel Salesforce.</p>
-              <a href="https://www.cloudarc.com/" target="_blank" rel="noopener" style="display:inline-block;font-size:12px;color:#94a3b8;text-decoration:underline;margin-top:12px">&#128279; CloudArc</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 5: Active Legal Exposure -->
-      <div class="screenshot-card rv" style="border:2px solid var(--red)">
-        <div style="position:absolute;top:12px;right:12px;background:var(--red);color:#fff;font-size:10px;font-weight:800;padding:4px 10px;border-radius:100px;letter-spacing:.06em;text-transform:uppercase;z-index:2">RED</div>
+      <!-- Card 4: Active Legal Exposure -->
+      <div class="screenshot-card" style="border:2px solid var(--red)">
+        <div style="position:absolute;top:12px;right:12px;z-index:2"><span class="score-badge-red">&#128308; RED</span></div>
         <div class="screenshot-caption" style="padding:24px 28px">
           <div style="display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap">
             <div style="font-size:32px;flex-shrink:0">&#9878;&#65039;</div>
@@ -682,10 +662,25 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
           </div>
         </div>
       </div>
+
+      <!-- Card 5: Third-Party Cancellation Industry -->
+      <div class="screenshot-card" style="border:2px solid var(--amber)">
+        <div style="position:absolute;top:12px;right:12px;z-index:2"><span class="score-badge-orange">&#128992; ORANGE</span></div>
+        <div class="screenshot-caption" style="padding:24px 28px">
+          <div style="display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap">
+            <div style="font-size:32px;flex-shrink:0">&#128269;</div>
+            <div style="flex:1;min-width:240px">
+              <strong style="font-size:17px;color:var(--text)">Third-Party Cancellation Industry</strong>
+              <p style="margin-top:8px;font-size:14px;color:var(--muted);line-height:1.6">The cancellation process is so painful that consultants built entire businesses around helping people cancel Salesforce.</p>
+              <a href="https://www.cloudarc.com/" target="_blank" rel="noopener" style="display:inline-block;font-size:12px;color:#94a3b8;text-decoration:underline;margin-top:12px">&#128279; CloudArc</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Review Scores -->
-    <div class="review-score rv" style="margin-top:40px">
+    <div class="review-score rv rv-d2" style="margin-top:40px">
       <div class="review-score-item">
         <div class="review-score-number">1.2</div>
         <div class="review-score-label">Trustpilot</div>
@@ -704,7 +699,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
     </div>
 
     <!-- Competitive Comparison Table -->
-    <div style="margin-top:40px" class="rv">
+    <div style="margin-top:40px" class="rv rv-d3">
       <h3 style="font-size:16px;font-weight:800;text-align:center;margin-bottom:20px;color:var(--text)">How competitors handle cancellation</h3>
       <div class="comp-table-wrap">
         <table class="comp-table">
@@ -758,7 +753,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       </div>
     </div>
 
-    <div class="reveals-box" style="margin-top:32px">
+    <div class="reveals-box rv rv-d4" style="margin-top:32px">
       <div class="reveals-label">&#128203; What this reveals</div>
       <div class="reveals-item"><span class="ri-dot red"></span><span class="reveals-item-text"><strong>Salesforce is the ONLY major CRM with no self-service cancellation.</strong> HubSpot, Zoho, and Microsoft all offer it.</span></div>
       <div class="reveals-item"><span class="ri-dot red"></span><span class="reveals-item-text"><strong>Active legal exposure:</strong> class action filed (Lira v. Salesforce) under California&rsquo;s Automatic Renewal Law.</span></div>
@@ -774,9 +769,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- CHAPTER 3 — The Collection Stack                    -->
-<!-- ═══════════════════════════════════════════════════ -->
+<!-- ======================================================= -->
+<!-- CHAPTER 3 - The Collection Stack                          -->
+<!-- ======================================================= -->
 <section class="stack-section" id="the-stack">
   <div class="stack-inner">
     <div class="rv">
@@ -823,12 +818,20 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       <a href="https://www.trustpilot.com/review/www.salesforce.com" target="_blank" rel="noopener">Trustpilot: 1.2/5 (616+ reviews)</a> &middot;
       <a href="https://law.justia.com/cases/federal/appellate-courts/ca9/22-16506/22-16506-2024-01-19.html" target="_blank" rel="noopener">Justia: Salesforce contract litigation</a>
     </div>
+
+    <div class="reveals-box rv" style="margin-top:32px">
+      <div class="reveals-label">&#128203; What this reveals</div>
+      <div class="reveals-item"><span class="ri-dot red"></span><span class="reveals-item-text"><strong>Salesforce sends customers to collections for contracts they tried to cancel.</strong> BBB complaints confirm this pattern.</span></div>
+      <div class="reveals-item"><span class="ri-dot red"></span><span class="reveals-item-text"><strong>Salesforce has sued customers for contract breach.</strong> Multiple federal cases on record.</span></div>
+      <div class="reveals-item"><span class="ri-dot orange"></span><span class="reveals-item-text"><strong>Collection agency identity unknown.</strong> Investigation pending to identify which agency handles Salesforce AR.</span></div>
+      <div class="reveals-source">Sources: BBB, Trustpilot, PACER federal court records</div>
+    </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- CHAPTER 4 — The Cost                                -->
-<!-- ═══════════════════════════════════════════════════ -->
+<!-- ======================================================= -->
+<!-- CHAPTER 4 - The Cost                                      -->
+<!-- ======================================================= -->
 <section class="cost-section" id="the-cost">
   <div class="rv">
     <div class="chapter-num">Chapter 4</div>
@@ -872,9 +875,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- CHAPTER 4.5 — The Irony                              -->
-<!-- ═══════════════════════════════════════════════════ -->
+<!-- ======================================================= -->
+<!-- The Irony                                                 -->
+<!-- ======================================================= -->
 <section class="irony-section" id="the-irony">
   <div class="irony-inner">
     <div class="rv">
@@ -886,7 +889,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
     <div class="irony-grid rv rv-d1">
       <!-- LEFT: What they SELL -->
       <div class="irony-col irony-col-sells">
-        <div class="irony-col-label">&#128994; What Salesforce SELLS (Revenue Cloud Billing)</div>
+        <div class="irony-col-label"><span class="score-badge-green">&#128994; SELLS</span></div>
         <div class="irony-item"><em>&ldquo;Unify selling and billing for a seamless customer experience&rdquo;</em></div>
         <div class="irony-item"><em>&ldquo;Enable customers to handle invoice requests independently&rdquo;</em></div>
         <div class="irony-item"><em>&ldquo;Automatically apply credit memos, process refunds&rdquo;</em></div>
@@ -897,7 +900,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 
       <!-- RIGHT: What they DO -->
       <div class="irony-col irony-col-does">
-        <div class="irony-col-label">&#128308; What Salesforce DOES (their own billing)</div>
+        <div class="irony-col-label"><span class="score-badge-red">&#128308; DOES</span></div>
         <div class="irony-item"><em>Press 3 for billing</em> &rarr; recorded message &rarr; &ldquo;have a great day&rdquo; &rarr; hung up</div>
         <div class="irony-item">No self-service cancellation &mdash; must call your Account Executive</div>
         <div class="irony-item"><strong style="color:var(--red)">1.2/5</strong> Trustpilot for billing &middot; <strong style="color:var(--red)">F</strong> BBB grade</div>
@@ -922,17 +925,18 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       </div>
     </div>
 
-    <div class="irony-source rv rv-d3">
-      <a href="https://www.salesforce.com/sales/revenue-cloud-billing/" target="_blank" rel="noopener">Revenue Cloud Billing</a> &middot;
-      <a href="https://www.salesforce.com/agentforce/" target="_blank" rel="noopener">Agentforce</a> &middot;
-      <a href="https://www.trustpilot.com/review/www.salesforce.com" target="_blank" rel="noopener">Trustpilot 1.2/5</a>
+    <div class="reveals-box rv rv-d3" style="margin-top:32px">
+      <div class="reveals-label">&#128203; What this reveals</div>
+      <div class="reveals-item"><span class="ri-dot red"></span><span class="reveals-item-text"><strong>Salesforce sells &ldquo;seamless billing&rdquo; software but their own billing is a dead end.</strong> Revenue Cloud Billing promises self-service; Salesforce offers none.</span></div>
+      <div class="reveals-item"><span class="ri-dot red"></span><span class="reveals-item-text"><strong>Agentforce is not deployed on their own billing line.</strong> The flagship AI product does not serve Salesforce&rsquo;s own customers.</span></div>
+      <div class="reveals-source">Sources: <a href="https://www.salesforce.com/sales/revenue-cloud-billing/" target="_blank" rel="noopener">Revenue Cloud Billing</a> &middot; <a href="https://www.salesforce.com/agentforce/" target="_blank" rel="noopener">Agentforce</a> &middot; <a href="https://www.trustpilot.com/review/www.salesforce.com" target="_blank" rel="noopener">Trustpilot 1.2/5</a></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- CHAPTER 5 — Your Agent                              -->
-<!-- ═══════════════════════════════════════════════════ -->
+<!-- ======================================================= -->
+<!-- CHAPTER 5 - Your Agent                                    -->
+<!-- ======================================================= -->
 <section class="agent-section" id="agent-section">
   <div class="rv">
     <div class="chapter-num">Chapter 5</div>
@@ -993,9 +997,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- COMING SOON                                         -->
-<!-- ═══════════════════════════════════════════════════ -->
+<!-- ======================================================= -->
+<!-- COMING SOON                                               -->
+<!-- ======================================================= -->
 <section class="coming-section" id="coming-soon">
   <div class="coming-inner">
     <div class="coming-card rv">
@@ -1034,9 +1038,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- CTA                                                 -->
-<!-- ═══════════════════════════════════════════════════ -->
+<!-- ======================================================= -->
+<!-- CTA                                                       -->
+<!-- ======================================================= -->
 <section class="cta-section">
   <div class="rv">
     <h2 class="cta-title">Who handles AR at Salesforce?</h2>
@@ -1134,7 +1138,7 @@ window.jumpTo = jumpTo;
   setTimeout(function(){ els.forEach(function(el){ el.classList.add('v'); }); }, 2500);
 })();
 
-// Animated Cost Counter — rolls up to $233,000,000
+// Animated Cost Counter - rolls up to $233,000,000
 (function(){
   var costEl = document.getElementById('cost-number');
   if(!costEl) return;
