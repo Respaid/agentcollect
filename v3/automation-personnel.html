@@ -400,6 +400,56 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </section>
 
+<!-- SECTION 1B: MYSTERY CALLS -->
+<section style="padding:100px 48px;background:#0B1B3D;position:relative;overflow:hidden">
+  <div style="position:absolute;width:800px;height:800px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(79,70,229,.1) 0%,transparent 60%);border-radius:50%;pointer-events:none"></div>
+  <div style="max-width:800px;margin:0 auto">
+    <div class="rv">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.35);margin-bottom:12px">Mystery calls</div>
+      <h2 style="font-size:clamp(24px,3vw,36px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px;color:#fff">We called Automation Personnel.</h2>
+      <p style="font-size:16px;color:rgba(255,255,255,.45);margin-bottom:48px;line-height:1.5">Real calls to real numbers. Recorded and transcribed.</p>
+    </div>
+
+    <!-- Call 1: IVR Disconnect -->
+    <div class="rv rv-d1" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px;margin-bottom:20px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:16px">
+        <div>
+          <h3 style="font-size:17px;font-weight:800;color:rgba(255,255,255,.85);margin-bottom:4px">Automation Personnel &mdash; Main Line</h3>
+          <span style="font-size:14px;color:rgba(255,255,255,.4);font-family:'JetBrains Mono',monospace">(205) 733-3700</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+          <span style="font-size:12px;color:rgba(255,255,255,.35)">Mar 27, 2026 &middot; 9:02 AM CT (business hours)</span>
+          <span style="display:inline-flex;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.04em;background:rgba(220,38,38,.15);color:#fca5a5">10s</span>
+          <span style="display:inline-flex;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:rgba(220,38,38,.15);color:#fca5a5">DISCONNECTED</span>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/7527731fed31752266de6df8c17bcf300e1e1341a3a38d474b3206181034b41b/recording.wav" style="width:100%;height:40px;border-radius:8px"></audio>
+      </div>
+      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:16px 20px">
+        <div style="margin-bottom:12px">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.25);margin-bottom:4px">System</div>
+          <div style="font-size:14px;color:rgba(255,255,255,.5);line-height:1.5">"Thank you for choosing Automation Personnel."</div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.25);margin-bottom:4px">System</div>
+          <div style="font-size:14px;color:rgba(255,255,255,.5);line-height:1.5">IVR disconnected the caller after 10 seconds. No menu options. No transfer. No voicemail. Call ended by the system.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="rv" style="margin-top:48px;text-align:center;padding:28px;background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.2);border-radius:14px">
+      <div style="font-size:clamp(18px,2.5vw,24px);font-weight:900;color:#fca5a5;letter-spacing:-.02em">1 call. 0 humans reached. IVR disconnected in 10 seconds. Grade: F</div>
+    </div>
+    <div class="rv" style="margin-top:20px;padding:20px 24px;background:rgba(220,38,38,.06);border:1px solid rgba(220,38,38,.12);border-radius:12px;text-align:left">
+      <p style="font-size:14px;color:rgba(255,255,255,.6);line-height:1.6;margin:0">
+        <strong style="color:#fca5a5">March 27 finding:</strong> Called (205) 733-3700 at 9:02 AM CT during business hours. The IVR answered with "Thank you for choosing Automation Personnel" then immediately disconnected the call. Total duration: 10 seconds. No menu, no operator, no voicemail. A client trying to pay an invoice is cut off before they can say a word. Possible auto-screening of unknown/VoIP caller IDs.
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- SECTION 2: THE PROBLEM -->
 <section class="proof-section">
   <div class="rv">
