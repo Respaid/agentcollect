@@ -431,6 +431,25 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   .hero h1{font-size:28px}
   .cost-big{font-size:40px}
 }
+
+/* WHAT THIS REVEALS BOX */
+.reveals-box{margin-top:20px;padding:20px 24px;background:rgba(79,70,229,.04);border:1px solid rgba(79,70,229,.12);border-radius:14px}
+.reveals-box-dark{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08)}
+.reveals-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.reveals-box-dark .reveals-label{color:#a5b4fc}
+.reveals-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;font-size:14px;line-height:1.5}
+.reveals-item:last-child{margin-bottom:0}
+.reveals-item .ri-dot{flex-shrink:0;width:6px;height:6px;border-radius:50%;margin-top:7px}
+.reveals-item .ri-dot.green{background:#10B981}
+.reveals-item .ri-dot.orange{background:#F59E0B}
+.reveals-item .ri-dot.red{background:#dc2626}
+.reveals-item-text{color:var(--muted)}
+.reveals-box-dark .reveals-item-text{color:rgba(255,255,255,.5)}
+.reveals-item-text strong{color:var(--text);font-weight:700}
+.reveals-box-dark .reveals-item-text strong{color:rgba(255,255,255,.85)}
+.reveals-source{font-size:11px;color:#94a3b8;margin-top:12px}
+.reveals-source a{color:#94a3b8;text-decoration:underline}
+.reveals-source a:hover{color:var(--blue)}
 </style>
 <!-- RB2B -->
 <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("LNKLDHEDW9OJ");</script>
@@ -548,6 +567,15 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       </div>
     </div>
   </div>
+
+    <div class="reveals-box reveals-box-dark" style="margin-top:16px">
+      <div class="reveals-label">&#128203; What this reveals</div>
+      <div class="reveals-item"><span class="ri-dot red"></span><span class="reveals-item-text"><strong>Salesforce billing line (1-800-667-6389) has zero human agents.</strong> Press 3 for billing plays a recorded message and disconnects.</span></div>
+      <div class="reveals-item"><span class="ri-dot red"></span><span class="reveals-item-text"><strong>&ldquo;Agentforce&rdquo; is mentioned in the IVR</strong> &mdash; Salesforce&rsquo;s own AI billing agent just tells you to go to the portal.</span></div>
+      <div class="reveals-item"><span class="ri-dot orange"></span><span class="reveals-item-text"><strong>Second test call:</strong> DTMF (keypad) input was not recognized by the IVR system.</span></div>
+      <div class="reveals-source">Source: Direct call test, March 27, 2026</div>
+    </div>
+
 </section>
 
 <!-- ═══════════════════════════════════════════════════ -->
@@ -725,6 +753,15 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
           </tbody>
         </table>
       </div>
+    </div>
+
+    <div class="reveals-box" style="margin-top:32px">
+      <div class="reveals-label">&#128203; What this reveals</div>
+      <div class="reveals-item"><span class="ri-dot red"></span><span class="reveals-item-text"><strong>Salesforce is the ONLY major CRM with no self-service cancellation.</strong> HubSpot, Zoho, and Microsoft all offer it.</span></div>
+      <div class="reveals-item"><span class="ri-dot red"></span><span class="reveals-item-text"><strong>Active legal exposure:</strong> class action filed (Lira v. Salesforce) under California&rsquo;s Automatic Renewal Law.</span></div>
+      <div class="reveals-item"><span class="ri-dot red"></span><span class="reveals-item-text"><strong>California law amended July 2025</strong> &mdash; companies MUST offer online cancel if customer signed up online. Salesforce has no cancel button.</span></div>
+      <div class="reveals-item"><span class="ri-dot orange"></span><span class="reveals-item-text"><strong>BBB: NOT accredited.</strong> Failed to respond to 6+ complaints.</span></div>
+      <div class="reveals-source">Sources: Top Class Actions, CA Attorney General, Cooley LLP, BBB</div>
     </div>
 
     <div class="portal-callout rv" style="margin-top:32px">
@@ -999,8 +1036,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 <!-- ═══════════════════════════════════════════════════ -->
 <section class="cta-section">
   <div class="rv">
-    <h2 class="cta-title">Even the biggest CRM company in the world<br>has no billing humans.</h2>
-    <p class="cta-sub">What does YOUR billing experience look like?</p>
+    <h2 class="cta-title">Who handles AR at Salesforce?</h2>
+    <p class="cta-sub">Even the biggest CRM company in the world has no billing humans. What does YOUR billing experience look like?</p>
     <a href="mailto:j@agentcollect.com?subject=AR Audit Request" class="cta-btn" onclick="try{gtag('event','cta_email',{page:'salesforce-hack'})}catch(e){}">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       Get your AR audit
