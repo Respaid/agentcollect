@@ -162,7 +162,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .portal-section{padding:100px 48px;background:#fff}
 .portal-inner{max-width:960px;margin:0 auto}
 .screenshot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:40px 0}
-.screenshot-card{background:#fff;border-radius:12px;border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow)}
+.screenshot-card{background:#fff;border-radius:12px;border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow);position:relative;transition:transform .2s,box-shadow .2s}
+.screenshot-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
 .screenshot-card img{width:100%;height:220px;object-fit:cover;object-position:top;display:block;border-bottom:1px solid var(--border)}
 .screenshot-caption{padding:14px 16px;font-size:13px;color:var(--muted);font-weight:500;line-height:1.4}
 .portal-callout{background:#fef2f2;border:1px solid #fca5a5;border-radius:12px;padding:20px 28px;max-width:720px;margin:0 auto;display:flex;align-items:flex-start;gap:12px}
@@ -589,30 +590,83 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
     <div class="rv">
       <div class="chapter-num">Chapter 2</div>
       <h2 class="chapter-title">Then we tried to pay online.</h2>
-      <p class="chapter-sub">This is what your clients see when they try to pay Roto-Rooter.</p>
+      <p class="chapter-sub">Go ahead &mdash; try to find a &ldquo;Pay My Bill&rdquo; button on rotorooter.com. We&rsquo;ll wait.</p>
     </div>
 
     <div class="screenshot-grid">
-      <div class="screenshot-card rv rv-d1">
+      <div class="screenshot-card rv rv-d1" style="cursor:pointer" onclick="openPortalPreview('https://www.rotorooter.com','rotorooter.com — The Homepage')">
         <img src="/v3/audit-assets/roto-rooter/homepage-desktop-1440.png" alt="Roto-Rooter Homepage" loading="lazy">
-        <div class="screenshot-caption"><strong>rotorooter.com</strong> &mdash; zero billing or payment links in the entire navigation.</div>
+        <div class="screenshot-caption">
+          <strong>rotorooter.com</strong> &mdash; zero billing or payment links anywhere in the navigation. Not in the header. Not in the footer. Nowhere.
+          <div style="margin-top:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <a href="https://www.rotorooter.com" target="_blank" rel="noopener" style="font-size:12px;color:var(--blue);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px" onclick="event.stopPropagation()">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Open rotorooter.com
+            </a>
+            <span style="font-size:11px;color:var(--blue);opacity:.5;cursor:pointer" onclick="event.stopPropagation();openPortalPreview('https://www.rotorooter.com','rotorooter.com')">or preview here &rarr;</span>
+          </div>
+        </div>
       </div>
-      <div class="screenshot-card rv rv-d2">
-        <img src="/v3/audit-assets/roto-rooter/payment-portal-desktop-1440.png" alt="Payment Portal" loading="lazy">
-        <div class="screenshot-caption"><strong>Hidden portal</strong> on rotorooter.spectrumretailnet.com. Design circa 2005. Requires pre-existing account.</div>
+      <div class="screenshot-card rv rv-d2" style="cursor:pointer;border:2px solid var(--red)" onclick="openPortalPreview('https://rotorooter.spectrumretailnet.com','The Hidden Payment Portal')">
+        <div style="position:absolute;top:12px;right:12px;background:var(--red);color:#fff;font-size:10px;font-weight:800;padding:4px 10px;border-radius:100px;letter-spacing:.06em;text-transform:uppercase;z-index:2">Hidden</div>
+        <img src="/v3/audit-assets/roto-rooter/payment-portal-desktop-1440.png" alt="Payment Portal" loading="lazy" style="position:relative">
+        <div class="screenshot-caption">
+          <strong>The payment portal.</strong> It exists &mdash; but on a completely different domain: <code style="font-size:11px;background:#f1f5f9;padding:2px 6px;border-radius:4px">rotorooter.spectrumretailnet.com</code>. Design circa 2005. No link from the main site. You have to already know it exists.
+          <div style="margin-top:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <a href="https://rotorooter.spectrumretailnet.com" target="_blank" rel="noopener" style="font-size:12px;color:var(--red);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px" onclick="event.stopPropagation()">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              See it yourself
+            </a>
+            <span style="font-size:11px;color:var(--red);opacity:.5;cursor:pointer" onclick="event.stopPropagation();openPortalPreview('https://rotorooter.spectrumretailnet.com','Payment Portal')">or preview here &rarr;</span>
+          </div>
+        </div>
       </div>
-      <div class="screenshot-card rv rv-d3">
+      <div class="screenshot-card rv rv-d3" style="cursor:pointer" onclick="openPortalPreview('https://www.rotorooter.com/contact-us/','rotorooter.com/contact-us')">
         <img src="/v3/audit-assets/roto-rooter/contact-us-desktop-1440.png" alt="Contact Us Page" loading="lazy">
-        <div class="screenshot-caption"><strong>Contact page</strong> &mdash; 4 sections: Service, Locations, Feedback, Careers. Zero billing.</div>
+        <div class="screenshot-caption">
+          <strong>Contact page.</strong> Four sections: Service Requests, Locations, Feedback, Careers. Zero mention of billing, payments, or invoices. A customer wanting to pay has no path forward.
+          <div style="margin-top:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <a href="https://www.rotorooter.com/contact-us/" target="_blank" rel="noopener" style="font-size:12px;color:var(--blue);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px" onclick="event.stopPropagation()">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Open contact page
+            </a>
+            <span style="font-size:11px;color:var(--blue);opacity:.5;cursor:pointer" onclick="event.stopPropagation();openPortalPreview('https://www.rotorooter.com/contact-us/','Contact Page')">or preview here &rarr;</span>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="portal-callout rv">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      <p>The payment portal lives on a completely different domain (spectrumretailnet.com). Zero links from rotorooter.com. A client who wants to pay their bill literally cannot find how.</p>
+    <div class="portal-callout rv" style="flex-direction:column;gap:16px;text-align:center">
+      <div style="display:flex;align-items:flex-start;gap:12px;text-align:left">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;width:20px;height:20px;color:var(--red);margin-top:2px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div>
+          <p style="font-size:15px;color:var(--red);font-weight:600;line-height:1.5;margin-bottom:8px">The payment portal lives on a completely different domain (spectrumretailnet.com). There is not a single link from rotorooter.com to it. A client who wants to pay their bill literally cannot find how.</p>
+          <p style="font-size:13px;color:var(--muted);line-height:1.5">This is a <strong style="color:var(--text)">$900M company</strong>. Their payment portal uses design patterns from 2005. It requires a pre-existing account number &mdash; which new clients don&rsquo;t have. And the URL contains another company&rsquo;s name (<em>spectrumretailnet</em>), which looks like a phishing site to anyone who doesn&rsquo;t know better.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- PORTAL PREVIEW LIGHTBOX -->
+<div id="portal-lightbox" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);animation:fadeInUp .3s ease" onclick="closePortalPreview()">
+  <div style="position:absolute;top:0;left:0;right:0;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;z-index:2">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.3);border-radius:8px;padding:6px 14px;font-size:12px;font-weight:700;color:#fca5a5;letter-spacing:.04em">LIVE PREVIEW</div>
+      <span id="portal-lightbox-title" style="font-size:14px;color:rgba(255,255,255,.6);font-weight:500"></span>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <a id="portal-lightbox-link" href="#" target="_blank" rel="noopener" style="font-size:12px;color:rgba(255,255,255,.5);text-decoration:none;display:flex;align-items:center;gap:4px;padding:6px 14px;border:1px solid rgba(255,255,255,.15);border-radius:8px;transition:all .2s" onmouseover="this.style.borderColor='rgba(255,255,255,.3)';this.style.color='#fff'" onmouseout="this.style.borderColor='rgba(255,255,255,.15)';this.style.color='rgba(255,255,255,.5)'" onclick="event.stopPropagation()">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Open in new tab
+      </a>
+      <button style="background:rgba(255,255,255,.1);border:none;color:#fff;width:36px;height:36px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;font-size:20px" onmouseover="this.style.background='rgba(255,255,255,.2)'" onmouseout="this.style.background='rgba(255,255,255,.1)'" onclick="closePortalPreview()">&times;</button>
+    </div>
+  </div>
+  <div style="position:absolute;top:64px;left:24px;right:24px;bottom:24px;border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.08)" onclick="event.stopPropagation()">
+    <iframe id="portal-lightbox-iframe" src="about:blank" style="width:100%;height:100%;border:none;background:#fff"></iframe>
+  </div>
+</div>
 
 <!-- ═══════════════════════════════════════════════════ -->
 <!-- CHAPTER 3 — The Collection Stack                    -->
@@ -893,6 +947,25 @@ import { RetellWebClient } from 'https://cdn.jsdelivr.net/npm/retell-client-js-s
 window.__RetellWebClient = RetellWebClient;
 </script>
 <script>
+// Portal preview lightbox
+function openPortalPreview(url, title) {
+  var lb = document.getElementById('portal-lightbox');
+  document.getElementById('portal-lightbox-title').textContent = title || url;
+  document.getElementById('portal-lightbox-link').href = url;
+  document.getElementById('portal-lightbox-iframe').src = url;
+  lb.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+function closePortalPreview() {
+  var lb = document.getElementById('portal-lightbox');
+  lb.style.display = 'none';
+  document.getElementById('portal-lightbox-iframe').src = 'about:blank';
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closePortalPreview();
+});
+
 // Timeline jump-to-event
 function jumpTo(seconds){
   var audio = document.getElementById('featured-audio');
