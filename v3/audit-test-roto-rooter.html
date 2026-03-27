@@ -365,6 +365,33 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   .hero h1{font-size:28px}
   .cost-big{font-size:40px}
 }
+
+/* SCORING COLORS */
+.score-green{color:#10B981;font-weight:700}
+.score-orange{color:#F59E0B;font-weight:700}
+.score-red{color:#dc2626;font-weight:700}
+.score-badge-green{background:rgba(16,185,129,.1);color:#10B981;border:1px solid rgba(16,185,129,.2);display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;gap:6px}
+.score-badge-orange{background:rgba(245,158,11,.1);color:#F59E0B;border:1px solid rgba(245,158,11,.2);display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;gap:6px}
+.score-badge-red{background:rgba(220,38,38,.1);color:#dc2626;border:1px solid rgba(220,38,38,.2);display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;gap:6px}
+
+/* WHAT THIS REVEALS BOX */
+.reveals-box{margin-top:20px;padding:20px 24px;background:rgba(79,70,229,.04);border:1px solid rgba(79,70,229,.12);border-radius:14px}
+.reveals-box-dark{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08)}
+.reveals-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--blue);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.reveals-box-dark .reveals-label{color:#a5b4fc}
+.reveals-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;font-size:14px;line-height:1.5}
+.reveals-item:last-child{margin-bottom:0}
+.reveals-item .ri-dot{flex-shrink:0;width:6px;height:6px;border-radius:50%;margin-top:7px}
+.reveals-item .ri-dot.green{background:#10B981}
+.reveals-item .ri-dot.orange{background:#F59E0B}
+.reveals-item .ri-dot.red{background:#dc2626}
+.reveals-item-text{color:var(--muted)}
+.reveals-box-dark .reveals-item-text{color:rgba(255,255,255,.5)}
+.reveals-item-text strong{color:var(--text);font-weight:700}
+.reveals-box-dark .reveals-item-text strong{color:rgba(255,255,255,.85)}
+.reveals-source{font-size:11px;color:#94a3b8;margin-top:12px}
+.reveals-source a{color:#94a3b8;text-decoration:underline}
+.reveals-source a:hover{color:var(--blue)}
 </style>
 <!-- RB2B -->
 <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("LNKLDHEDW9OJ");</script>
@@ -488,6 +515,31 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
         <div class="transcript-line"><em>Given branch number (657) XXX-XXXX. No payment. No resolution.</em></div>
         <div class="transcript-line" style="margin-top:8px;padding:8px 12px;background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.12);border-radius:8px"><strong style="color:#fca5a5">&#9888; Update:</strong> <em>We called the branch number. It&rsquo;s disconnected. The call center gave a non-working number.</em></div>
       </div>
+
+      <div class="reveals-box reveals-box-dark" style="margin-top:16px">
+        <div class="reveals-label">&#128203; What this reveals</div>
+        <div class="reveals-item">
+          <div class="ri-dot red"></div>
+          <div class="reveals-item-text"><strong>Outsourced call center.</strong> Roto-Rooter routes customer calls to an external call center with zero access to billing systems. The agent cannot look up accounts, take payments, or transfer to billing.</div>
+        </div>
+        <div class="reveals-item">
+          <div class="ri-dot orange"></div>
+          <div class="reveals-item-text"><strong>3 national call centers identified:</strong> Baltimore, MD &middot; Chicago, IL &middot; Tempe, AZ. Staffed 24/7 including overnight shifts.</div>
+        </div>
+        <div class="reveals-item">
+          <div class="ri-dot red"></div>
+          <div class="reveals-item-text"><strong>Branch number is disconnected.</strong> The number provided by the call center agent &mdash; (657) 276-0952 &mdash; is invalid. The customer is given a dead end.</div>
+        </div>
+        <div class="reveals-item">
+          <div class="ri-dot red"></div>
+          <div class="reveals-item-text"><strong>3-layer bounce:</strong> Customer &rarr; Call Center (can&rsquo;t help) &rarr; Branch number (disconnected) &rarr; ???. A client wanting to pay has no path forward.</div>
+        </div>
+        <div class="reveals-source">
+          Sources: <a href="https://www.servicetitan.com/press/servicetitan-announces-strategic-partnership-with-roto-rooter" target="_blank" rel="noopener">ServiceTitan partnership (3 call centers)</a> &middot;
+          <a href="https://www.indeed.com/cmp/Roto--rooter-Plumbing-&-Water-Cleanup/reviews" target="_blank" rel="noopener">Indeed employee reviews</a> &middot;
+          Chemed Corp (NYSE: CHE) subsidiary
+        </div>
+      </div>
     </div>
 
     <!-- THIRD FEATURED: Hospitalized — empathy test -->
@@ -521,63 +573,63 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
       <div class="call-grid">
         <div class="call-mini">
           <h4>Polite Client</h4>
-          <div class="call-mini-meta"><span>1m 50s</span> &middot; <span style="color:#fbbf24">Voicemail</span></div>
+          <div class="call-mini-meta"><span>1m 50s</span> &middot; <span style="color:#fbbf24">Voicemail</span> <span class="score-badge-orange">VM</span></div>
           <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/8ed381b9ee9d2728f5de2bfa7966fe17db66f0c32cac82b9f4768e5de7689636/recording.wav"></audio>
         </div>
         <div class="call-mini">
           <h4>Hospitalized Client</h4>
-          <div class="call-mini-meta"><span>1m 15s</span> &middot; <span style="color:#6ee7b7">Human (Dyshanta)</span></div>
+          <div class="call-mini-meta"><span>1m 15s</span> &middot; <span style="color:#6ee7b7">Human (Dyshanta)</span> <span class="score-badge-green">&#10003;</span></div>
           <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/6793f31b30d8e0efe91ad4e48f38046c5524f5500a5d87c4c63e4aebacda0e68/recording.wav"></audio>
         </div>
         <div class="call-mini">
           <h4>Frustrated Client</h4>
-          <div class="call-mini-meta"><span>1m 48s</span> &middot; <span style="color:#fbbf24">Voicemail</span></div>
+          <div class="call-mini-meta"><span>1m 48s</span> &middot; <span style="color:#fbbf24">Voicemail</span> <span class="score-badge-orange">VM</span></div>
           <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/9a933dab094227b68cc246768d29dc6f4c9755c26d94cf200b7d61526283e5d0/recording.wav"></audio>
         </div>
         <div class="call-mini">
           <h4>Financial Hardship</h4>
-          <div class="call-mini-meta"><span>1m 59s</span> &middot; <span style="color:#fbbf24">Voicemail</span></div>
+          <div class="call-mini-meta"><span>1m 59s</span> &middot; <span style="color:#fbbf24">Voicemail</span> <span class="score-badge-orange">VM</span></div>
           <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/b56496938809016a8d8a55523d25984cf4fc14f8dc3e81e5d07fabd77c33498f/recording.wav"></audio>
         </div>
         <div class="call-mini">
           <h4>Dispute</h4>
-          <div class="call-mini-meta"><span>1m 51s</span> &middot; <span style="color:#fbbf24">Voicemail</span></div>
+          <div class="call-mini-meta"><span>1m 51s</span> &middot; <span style="color:#fbbf24">Voicemail</span> <span class="score-badge-orange">VM</span></div>
           <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/f0d7bae36078ca19f454081663c86e962c197dfa2c3993104ce9ef75b44dd3d1/recording.wav"></audio>
         </div>
         <div class="call-mini">
           <h4>Litigation Threat</h4>
-          <div class="call-mini-meta"><span>1m 57s</span> &middot; <span style="color:#fbbf24">Voicemail</span></div>
+          <div class="call-mini-meta"><span>1m 57s</span> &middot; <span style="color:#fbbf24">Voicemail</span> <span class="score-badge-orange">VM</span></div>
           <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/d6b320da362473fccb5d02b018e3377accef5f8cdaa11d30e9a0e945bcd7c77d/recording.wav"></audio>
         </div>
         <div class="call-mini">
           <h4>Full Escalation (#1)</h4>
-          <div class="call-mini-meta"><span>1m 54s</span> &middot; <span style="color:#fbbf24">Voicemail</span></div>
+          <div class="call-mini-meta"><span>1m 54s</span> &middot; <span style="color:#fbbf24">Voicemail</span> <span class="score-badge-orange">VM</span></div>
           <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/a29e8566369caa36c96fd0a39a872963e2e5f1b52374f4432ab12de285fc2edb/recording.wav"></audio>
         </div>
         <div class="call-mini">
           <h4>Adapted Persona</h4>
-          <div class="call-mini-meta"><span>3m 47s</span> &middot; <span style="color:#6ee7b7">Human reached</span></div>
+          <div class="call-mini-meta"><span>3m 47s</span> &middot; <span style="color:#6ee7b7">Human reached</span> <span class="score-badge-green">&#10003;</span></div>
           <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/9f0a7e5e045c1a79e1d5aeba0bbb552bb519334488b6f8684c6ea4645d613367/recording.wav"></audio>
         </div>
         <div class="call-mini">
           <h4>Dispute &mdash; Drain Still Clogged</h4>
-          <div class="call-mini-meta"><span>1m 58s</span> &middot; <span style="color:#6ee7b7">Human reached</span></div>
+          <div class="call-mini-meta"><span>1m 58s</span> &middot; <span style="color:#6ee7b7">Human reached</span> <span class="score-badge-green">&#10003;</span></div>
           <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/6b66c0585cfced030a7f126a70ba0bcb56952cf9eb880c2d971c10b5fe505344/recording.wav"></audio>
         </div>
         <div class="call-mini">
           <h4>Collection Agency (Verliance) &mdash; After Hours</h4>
-          <div class="call-mini-meta"><span>52s</span> &middot; <span style="color:#fbbf24">Voicemail (after hours)</span></div>
+          <div class="call-mini-meta"><span>52s</span> &middot; <span style="color:#fbbf24">Voicemail (after hours)</span> <span class="score-badge-orange">VM</span></div>
           <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/9f8aff0c5eeed383a71a26c417ae39e2bff1427ebd65417c0f995c97b294786b/recording.wav"></audio>
         </div>
         <div class="call-mini" style="border-color:rgba(220,38,38,.3);background:rgba(220,38,38,.04)">
           <h4>&#x1F525; Collection Agency (Verliance) &mdash; Business Hours</h4>
-          <div class="call-mini-meta"><span>2m 28s</span> &middot; <span style="color:#6ee7b7">Human reached</span> &middot; <span style="color:#fca5a5">Account NOT found</span></div>
+          <div class="call-mini-meta"><span>2m 28s</span> &middot; <span style="color:#6ee7b7">Human reached</span> &middot; <span style="color:#fca5a5">Account NOT found</span> <span class="score-badge-red">&#10007;</span></div>
           <audio controls preload="none" src="https://dxc03zgurdly9.cloudfront.net/214fff4da0d4b7f2d47f7afc89d17bdbb8b251be0ea6c412656fc3a02cba8836/recording.wav"></audio>
         </div>
       </div>
 
       <div class="call-summary-box">
-        <p>13 calls. 6 humans reached. 7 voicemails. 0 payments collected.</p>
+        <p><span class="score-green">13</span> calls. <span class="score-orange">6</span> humans reached. <span class="score-orange">7</span> voicemails. <span class="score-red">0</span> payments collected.</p>
       </div>
     </div>
   </div>
@@ -741,6 +793,22 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
     <div class="stack-source rv rv-d4">
       <a href="https://www.indeed.com/cmp/Verliance-Inc/reviews" target="_blank" rel="noopener">Indeed: Verliance 1.8/5</a> &middot;
       <a href="https://www.courtlistener.com/docket/69685381/tucey-v-roto-rooter-services-company/" target="_blank" rel="noopener">PACER: Tucey v. Roto-Rooter + Verliance, 5:26-cv-01424</a>
+    </div>
+
+    <div class="reveals-box" style="margin-top:32px">
+      <div class="reveals-label">&#128203; What this reveals</div>
+      <div class="reveals-item">
+        <div class="ri-dot red"></div>
+        <div class="reveals-item-text"><strong>Agency answers as &ldquo;Good Lions&rdquo;</strong> &mdash; not Verliance or Reliance. Clients receiving collection letters from &ldquo;Verliance&rdquo; who call back hear a completely different company name.</div>
+      </div>
+      <div class="reveals-item">
+        <div class="ri-dot red"></div>
+        <div class="reveals-item-text"><strong>Agency cannot locate client accounts</strong> by name or phone number. File-number-only lookup system. A client calling to pay without their letter in hand = dead end.</div>
+      </div>
+      <div class="reveals-item">
+        <div class="ri-dot orange"></div>
+        <div class="reveals-item-text"><strong>IVR explicitly declares &ldquo;This is a debt collection agency&rdquo;</strong> &mdash; FDCPA mini-Miranda disclosure. Your clients hear this when they try to resolve a balance.</div>
+      </div>
     </div>
   </div>
 </section>
