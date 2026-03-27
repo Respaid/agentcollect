@@ -250,22 +250,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .cta-logos img{height:22px;filter:brightness(0) invert(1);object-fit:contain}
 
 /* FOOTER */
-.audit-footer{padding:40px 48px 100px;text-align:center;border-top:1px solid var(--border)}
+.audit-footer{padding:40px 48px 120px;text-align:center;border-top:1px solid var(--border)}
 .audit-footer-built{font-size:14px;font-weight:600;color:var(--text);margin-bottom:8px}
 .audit-footer-disc{font-size:12px;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.5}
 
-/* FAB */
-.voice-fab{position:fixed;bottom:28px;right:28px;z-index:9000;display:flex;align-items:center;gap:10px;background:#0f0f1a;border:1px solid rgba(79,70,229,.3);border-radius:50px;padding:12px 20px 12px 14px;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 8px 32px rgba(0,0,0,.4);opacity:0;pointer-events:none;transform:translateY(20px)}
-.voice-fab.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
-.voice-fab:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(79,70,229,.3);border-color:rgba(79,70,229,.5)}
-.voice-fab-icon{width:40px;height:40px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 16px rgba(79,70,229,.4)}
-.voice-fab-icon svg{width:20px;height:20px;color:#fff}
-.voice-fab.live{border-color:rgba(239,68,68,.4);background:#1a0f0f;box-shadow:0 8px 32px rgba(239,68,68,.3)}
-.voice-fab.live:hover{border-color:rgba(239,68,68,.6);box-shadow:0 12px 40px rgba(239,68,68,.4)}
-.voice-fab.live .voice-fab-icon{background:#ef4444;box-shadow:0 0 16px rgba(239,68,68,.5);animation:fabPulse 1.5s ease-in-out infinite}
-.voice-fab.live .voice-fab-text{color:rgba(255,255,255,.9)}
-@keyframes fabPulse{0%,100%{box-shadow:0 0 16px rgba(239,68,68,.5)}50%{box-shadow:0 0 28px rgba(239,68,68,.7)}}
-.voice-fab-text{color:rgba(255,255,255,.9);font-size:13px;font-weight:600;white-space:nowrap}
+/* (FAB replaced by chat bubble — see CHAT BUBBLE section above) */
 
 /* MOBILE */
 @media(max-width:960px){
@@ -289,8 +278,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   .orb-ring-1{inset:-18px}
   .orb-ring-2{inset:-38px}
   .orb-ring-3{inset:-58px}
-  .voice-fab{bottom:16px;right:16px;padding:10px;border-radius:50%}
-  .voice-fab-text{display:none}
+  .chat-bubble{bottom:16px;right:16px}
   .findings-section{padding-bottom:100px}
 }
 @media(max-width:480px){
@@ -399,6 +387,56 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   .scorecard-section{padding:60px 24px}
 }
 
+/* STICKY NAV */
+.sticky-nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(11,27,61,0.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:12px 0;transform:translateY(-100%);transition:transform 0.3s ease}
+.sticky-nav.visible{transform:translateY(0)}
+.sticky-nav-inner{max-width:1280px;margin:0 auto;padding:0 48px;display:flex;align-items:center;gap:32px}
+.sticky-nav-logo{text-decoration:none;font-weight:900;font-size:14px;color:#fff;letter-spacing:-.3px;display:inline-flex;align-items:baseline;flex-shrink:0;opacity:.7}
+.sticky-nav-logo .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--blue);margin-left:1px}
+.sticky-nav-links{display:flex;align-items:center;gap:4px;flex:1}
+.sticky-nav-links a{text-decoration:none;color:rgba(255,255,255,.5);font-size:12px;font-weight:600;padding:6px 12px;border-radius:6px;transition:all .2s;white-space:nowrap;letter-spacing:.01em}
+.sticky-nav-links a:hover{color:rgba(255,255,255,.8);background:rgba(255,255,255,.06)}
+.sticky-nav-links a.active{color:#fff;background:rgba(79,70,229,.3)}
+@media(max-width:768px){.sticky-nav{display:none}}
+
+/* CHAT BUBBLE */
+.chat-bubble{position:fixed;bottom:28px;right:28px;z-index:9000}
+.chat-bubble-btn{display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#4F46E5,#6366f1);border:none;border-radius:50px;padding:14px 22px 14px 16px;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 8px 32px rgba(79,70,229,.4);color:#fff;font-family:var(--sans);font-size:13px;font-weight:600}
+.chat-bubble-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(79,70,229,.5)}
+.chat-bubble-btn svg{width:22px;height:22px;flex-shrink:0}
+.chat-bubble-btn.live{background:linear-gradient(135deg,#ef4444,#dc2626);box-shadow:0 8px 32px rgba(239,68,68,.4);animation:chatBubblePulse 2s ease-in-out infinite}
+@keyframes chatBubblePulse{0%,100%{box-shadow:0 8px 32px rgba(239,68,68,.4)}50%{box-shadow:0 8px 40px rgba(239,68,68,.6)}}
+.chat-panel{position:fixed;bottom:28px;right:28px;width:400px;height:520px;background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.2),0 0 0 1px rgba(0,0,0,.05);z-index:9001;display:none;flex-direction:column;overflow:hidden;animation:chatPanelIn .3s ease}
+.chat-panel.open{display:flex}
+@keyframes chatPanelIn{from{opacity:0;transform:translateY(20px) scale(.95)}to{opacity:1;transform:none}}
+.chat-panel-header{background:linear-gradient(135deg,#0B1B3D,#1e2d52);color:#fff;padding:20px 20px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.chat-panel-header-left{display:flex;align-items:center;gap:12px}
+.chat-panel-header-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#4F46E5,#6366f1);display:flex;align-items:center;justify-content:center}
+.chat-panel-header-avatar svg{width:18px;height:18px;color:#fff}
+.chat-panel-header-info h3{font-size:14px;font-weight:700;margin-bottom:1px}
+.chat-panel-header-info span{font-size:11px;color:rgba(255,255,255,.5);font-weight:500}
+.chat-panel-close{background:none;border:none;color:rgba(255,255,255,.5);cursor:pointer;padding:4px;border-radius:6px;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.chat-panel-close:hover{color:#fff;background:rgba(255,255,255,.1)}
+.chat-panel-close svg{width:18px;height:18px}
+.chat-panel-body{flex:1;padding:20px;overflow-y:auto;display:flex;flex-direction:column;gap:12px;background:#f9fafb}
+.chat-msg{max-width:85%;padding:12px 16px;border-radius:16px;font-size:14px;line-height:1.5;animation:fadeInUp .3s ease}
+.chat-msg.bot{background:#fff;color:var(--text);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:4px}
+.chat-msg.user{background:var(--blue);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.chat-panel-footer{padding:16px 20px;border-top:1px solid var(--border);flex-shrink:0;background:#fff}
+.chat-call-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:14px;background:linear-gradient(135deg,#4F46E5,#6366f1);color:#fff;border:none;border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;font-family:var(--sans);box-shadow:0 4px 16px rgba(79,70,229,.3)}
+.chat-call-btn:hover{background:linear-gradient(135deg,#4338CA,#4F46E5);transform:translateY(-1px);box-shadow:0 6px 24px rgba(79,70,229,.4)}
+.chat-call-btn svg{width:18px;height:18px}
+.chat-call-btn.end-call{background:linear-gradient(135deg,#ef4444,#dc2626);box-shadow:0 4px 16px rgba(239,68,68,.3)}
+.chat-call-btn.end-call:hover{background:linear-gradient(135deg,#dc2626,#b91c1c)}
+.chat-call-status{text-align:center;padding:8px 0 4px;font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.04em;text-transform:uppercase}
+.chat-waveform{display:flex;align-items:center;justify-content:center;gap:2.5px;height:32px;padding:4px 0}
+.chat-waveform span{width:3px;border-radius:3px;background:var(--blue);min-height:3px;will-change:height;transition:height .08s linear}
+@media(max-width:480px){
+  .chat-bubble-btn span{display:none}
+  .chat-bubble-btn{padding:16px;border-radius:50%}
+  .chat-panel{bottom:0;right:0;left:0;width:100%;height:85vh;border-radius:20px 20px 0 0}
+}
+
 /* COMING SOON */
 .coming-section{padding:80px 48px;background:#0f1729;position:relative}
 .coming-inner{max-width:800px;margin:0 auto}
@@ -434,6 +472,20 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   </div>
 </nav>
 
+<!-- STICKY NAV -->
+<nav class="sticky-nav" id="sticky-nav">
+  <div class="sticky-nav-inner">
+    <a href="https://agentcollect.com" class="sticky-nav-logo">AgentCollect<span class="dot"></span></a>
+    <div class="sticky-nav-links">
+      <a href="#phone-audit" data-nav>Phone Audit</a>
+      <a href="#portal" data-nav>Portal</a>
+      <a href="#cost-analysis" data-nav>Cost Analysis</a>
+      <a href="#agent-section" data-nav>Your Agent</a>
+      <a href="#coming-soon" data-nav>Coming Soon</a>
+    </div>
+  </div>
+</nav>
+
 <!-- SECTION 1: HEADER -->
 <section class="audit-header">
   <div class="audit-badge rv">
@@ -447,7 +499,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 </section>
 
 <!-- SECTION 2: PHONE AUDIT TIMELINE -->
-<section class="timeline-section">
+<section class="timeline-section" id="phone-audit">
   <div class="rv">
     <div class="section-label">Phone audit</div>
     <h2 class="section-title">We called Prudential Overall Supply.</h2>
@@ -589,7 +641,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 </section>
 
 <!-- SECTION 2C: COMING SOON -->
-<section class="coming-section">
+<section class="coming-section" id="coming-soon">
   <div class="coming-inner">
     <div class="coming-card rv">
       <div class="coming-header">
@@ -650,7 +702,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 </section>
 
 <!-- SECTION 3: THE COST -->
-<section class="cost-section">
+<section class="cost-section" id="cost-analysis">
   <div class="rv">
     <div class="section-label">The cost</div>
     <div class="cost-big" id="cost-number">$0</div>
@@ -756,7 +808,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 </section>
 
 <!-- SECTION 3C: YOUR PAYMENT PORTAL TODAY -->
-<section class="portal-today rv">
+<section class="portal-today rv" id="portal">
   <div class="portal-today-inner">
     <h2>Your payment portal today</h2>
     <p class="portal-today-sub">This is what your clients see when they try to pay.</p>
@@ -1017,13 +1069,43 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   <p class="audit-footer-disc">This audit is based on publicly available information and mystery shopping conducted March 2026.</p>
 </footer>
 
-<!-- Floating Voice FAB -->
-<div class="voice-fab" id="voice-fab">
-  <div class="voice-fab-icon" id="voice-fab-icon">
-    <svg id="fab-mic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg>
-    <svg id="fab-hangup-icon" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+<!-- Chat Bubble -->
+<div class="chat-bubble" id="chat-bubble">
+  <button class="chat-bubble-btn" id="chat-bubble-btn" onclick="toggleChatPanel()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    <span>Questions about this audit?</span>
+  </button>
+</div>
+
+<!-- Chat Panel -->
+<div class="chat-panel" id="chat-panel">
+  <div class="chat-panel-header">
+    <div class="chat-panel-header-left">
+      <div class="chat-panel-header-avatar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg>
+      </div>
+      <div class="chat-panel-header-info">
+        <h3>AgentCollect Assistant</h3>
+        <span>Prudential Overall Supply audit</span>
+      </div>
+    </div>
+    <button class="chat-panel-close" onclick="toggleChatPanel()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
   </div>
-  <div class="voice-fab-text" id="voice-fab-text">Call your agent</div>
+  <div class="chat-panel-body" id="chat-panel-body">
+    <div class="chat-msg bot">Hi, I'm your AgentCollect assistant. I built this audit for Prudential Overall Supply. Ask me anything about what we found.</div>
+  </div>
+  <div class="chat-panel-footer" id="chat-panel-footer">
+    <div class="chat-call-status" id="chat-call-status" style="display:none"></div>
+    <div class="chat-waveform" id="chat-waveform" style="display:none">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <button class="chat-call-btn" id="chat-call-btn" onclick="chatStartCall()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Call Agent
+    </button>
+  </div>
 </div>
 
 <script type="module">
@@ -1084,55 +1166,249 @@ window.__RetellWebClient = RetellWebClient;
   ro.observe(costEl);
 })();
 
-// Floating Voice FAB
+// Sticky Nav
 (function(){
-  var fab = document.getElementById('voice-fab');
-  var fabText = document.getElementById('voice-fab-text');
-  var fabMicIcon = document.getElementById('fab-mic-icon');
-  var fabHangupIcon = document.getElementById('fab-hangup-icon');
-  var agentSection = document.getElementById('agent-section');
-  var fabLive = false;
-  if(!fab || !agentSection) return;
+  var stickyNav = document.getElementById('sticky-nav');
+  var header = document.querySelector('.audit-header');
+  var navLinks = document.querySelectorAll('[data-nav]');
+  if(!stickyNav || !header) return;
 
-  window.__fabSetLive = function(isLive){
-    fabLive = isLive;
-    if(isLive){
-      fab.classList.add('visible', 'live');
-      fabText.textContent = 'End call';
-      fabMicIcon.style.display = 'none';
-      fabHangupIcon.style.display = '';
+  // Show/hide sticky nav based on scroll past hero
+  var headerObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        stickyNav.classList.remove('visible');
+      } else {
+        stickyNav.classList.add('visible');
+      }
+    });
+  }, {threshold:0, rootMargin:'0px'});
+  headerObs.observe(header);
+
+  // Highlight active section
+  var sections = [];
+  navLinks.forEach(function(link){
+    var id = link.getAttribute('href').replace('#','');
+    var el = document.getElementById(id);
+    if(el) sections.push({el:el, link:link});
+  });
+
+  var sectionObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      var match = sections.find(function(s){ return s.el === e.target; });
+      if(match){
+        if(e.isIntersecting){
+          navLinks.forEach(function(l){ l.classList.remove('active'); });
+          match.link.classList.add('active');
+        }
+      }
+    });
+  }, {threshold:0.15, rootMargin:'-60px 0px -60% 0px'});
+
+  sections.forEach(function(s){ sectionObs.observe(s.el); });
+
+  // Smooth scroll on click
+  navLinks.forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      var id = this.getAttribute('href').replace('#','');
+      var target = document.getElementById(id);
+      if(target){
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+  });
+})();
+
+// Chat Bubble + Panel
+(function(){
+  var chatBubble = document.getElementById('chat-bubble');
+  var chatBubbleBtn = document.getElementById('chat-bubble-btn');
+  var chatPanel = document.getElementById('chat-panel');
+  var chatCallBtn = document.getElementById('chat-call-btn');
+  var chatCallStatus = document.getElementById('chat-call-status');
+  var chatWaveform = document.getElementById('chat-waveform');
+  var chatWaveformBars = chatWaveform ? chatWaveform.querySelectorAll('span') : [];
+  var chatBody = document.getElementById('chat-panel-body');
+  var chatPanelOpen = false;
+  var chatCallActive = false;
+  var chatRetellClient = null;
+  var chatCallStartTime = null;
+  var chatWaveformAnimId = null;
+  var chatWaveformMode = 'idle';
+
+  window.toggleChatPanel = function(){
+    chatPanelOpen = !chatPanelOpen;
+    if(chatPanelOpen){
+      chatPanel.classList.add('open');
+      chatBubble.style.display = 'none';
     } else {
-      fab.classList.remove('live');
-      fabText.textContent = 'Call your agent';
-      fabMicIcon.style.display = '';
-      fabHangupIcon.style.display = 'none';
-      var rect = agentSection.getBoundingClientRect();
-      if(rect.bottom >= 0 && rect.top <= window.innerHeight) fab.classList.remove('visible');
+      chatPanel.classList.remove('open');
+      chatBubble.style.display = '';
     }
   };
 
-  fab.addEventListener('click', function(){
-    if(fabLive){
-      var endBtn = document.getElementById('cs-end-btn');
-      if(endBtn) endBtn.click();
+  function animateChatWaveform(){
+    for(var i = 0; i < chatWaveformBars.length; i++){
+      var h;
+      if(chatWaveformMode === 'agent') h = 8 + Math.random() * 24;
+      else if(chatWaveformMode === 'user') h = 5 + Math.random() * 14;
+      else h = 3 + Math.sin(Date.now() / 500 + i * 0.6) * 2;
+      chatWaveformBars[i].style.height = h + 'px';
+    }
+    chatWaveformAnimId = requestAnimationFrame(animateChatWaveform);
+  }
+
+  function startChatWaveform(mode){
+    chatWaveformMode = mode || 'idle';
+    chatWaveform.style.display = 'flex';
+    if(!chatWaveformAnimId) animateChatWaveform();
+  }
+
+  function stopChatWaveform(){
+    chatWaveformMode = 'idle';
+    if(chatWaveformAnimId){ cancelAnimationFrame(chatWaveformAnimId); chatWaveformAnimId = null; }
+    chatWaveform.style.display = 'none';
+    for(var i = 0; i < chatWaveformBars.length; i++) chatWaveformBars[i].style.height = '3px';
+  }
+
+  function addChatMsg(text, role){
+    var div = document.createElement('div');
+    div.className = 'chat-msg ' + (role === 'agent' ? 'bot' : 'user');
+    div.textContent = text;
+    chatBody.appendChild(div);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function chatEndCall(duration){
+    chatCallActive = false;
+    if(chatRetellClient){ try { chatRetellClient.stopCall(); } catch(e){} chatRetellClient = null; }
+    if(window.__chatMicStream){ window.__chatMicStream.getTracks().forEach(function(t){ t.stop(); }); window.__chatMicStream = null; }
+    stopChatWaveform();
+    chatCallStatus.style.display = 'none';
+    chatCallBtn.classList.remove('end-call');
+    chatCallBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> Call Again';
+    chatBubbleBtn.classList.remove('live');
+    if(duration > 0) addChatMsg('Call ended. That was ' + duration + ' seconds. Tap "Call Again" to try another call, or email j@agentcollect.com to learn more.', 'agent');
+  }
+
+  window.chatStartCall = function(){
+    if(chatCallActive){
+      chatEndCall(chatCallStartTime ? Math.round((Date.now() - chatCallStartTime) / 1000) : 0);
       return;
     }
-    agentSection.scrollIntoView({behavior:'smooth', block:'start'});
-    setTimeout(function(){
-      var orb = document.getElementById('orb-wrap');
-      if(orb) orb.click();
-    }, 600);
-  });
+    chatCallActive = true;
+    chatCallStartTime = Date.now();
+    chatCallStatus.textContent = 'Connecting...';
+    chatCallStatus.style.display = '';
+    chatCallBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> Connecting...';
+    chatBubbleBtn.classList.add('live');
 
-  window.addEventListener('scroll', function(){
-    if(fabLive){ fab.classList.add('visible'); return; }
-    var rect = agentSection.getBoundingClientRect();
-    if(rect.bottom < 0 || rect.top > window.innerHeight){
-      fab.classList.add('visible');
+    (async function(){
+      try {
+        var micPromise = navigator.mediaDevices.getUserMedia({
+          audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true }
+        }).then(function(s){ window.__chatMicStream = s; })
+          .catch(function(){ throw new Error('Microphone access required'); });
+
+        var apiPromise = fetch('https://backend.widr.app/api/v1/demo/web-call', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            company_name: 'Prudential Overall Supply',
+            product: 'uniform rental and facility services',
+            amount: '$2,800'
+          })
+        }).then(async function(response) {
+          if(!response.ok) throw new Error('API returned ' + response.status);
+          return response.json();
+        });
+
+        var sdkPromise = Promise.resolve(window.__RetellWebClient).then(function(RWC) {
+          if(RWC) return RWC;
+          return import('https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.7/+esm')
+            .then(function(m){ return m.RetellWebClient; });
+        });
+
+        var results = await Promise.all([micPromise, apiPromise, sdkPromise]);
+        var result = results[1];
+        var RetellWebClient = results[2];
+        if(!result.success || !result.access_token) throw new Error('No access token');
+        chatRetellClient = new RetellWebClient();
+
+        chatRetellClient.on('call_started', function(){
+          chatCallStartTime = Date.now();
+          chatCallStatus.textContent = 'Your turn \u2014 speak now';
+          chatCallBtn.classList.add('end-call');
+          chatCallBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> End Call';
+          startChatWaveform('idle');
+          addChatMsg('Connected! You can speak now.', 'agent');
+          try { gtag('event', 'chat_call_started', { company: 'Prudential Overall Supply', page: 'audit-prudential-overall' }); } catch(e){}
+        });
+
+        chatRetellClient.on('call_ended', function(){
+          var duration = chatCallStartTime ? Math.round((Date.now() - chatCallStartTime) / 1000) : 0;
+          chatEndCall(duration);
+        });
+
+        chatRetellClient.on('agent_start_talking', function(){
+          startChatWaveform('agent');
+          chatCallStatus.textContent = 'Agent speaking...';
+        });
+
+        chatRetellClient.on('agent_stop_talking', function(){
+          startChatWaveform('user');
+          chatCallStatus.textContent = 'Your turn \u2014 speak now';
+        });
+
+        chatRetellClient.on('update', function(update){
+          if(update && update.transcript && update.transcript.length){
+            var last = null;
+            for(var i = update.transcript.length - 1; i >= 0; i--){
+              if((update.transcript[i].content || '').trim()){ last = update.transcript[i]; break; }
+            }
+            if(last){
+              // Update last transcript bubble or add new
+              var existingBubbles = chatBody.querySelectorAll('.chat-msg.transcript-live');
+              existingBubbles.forEach(function(b){ b.remove(); });
+              var div = document.createElement('div');
+              div.className = 'chat-msg ' + (last.role === 'agent' ? 'bot' : 'user') + ' transcript-live';
+              div.textContent = last.content;
+              chatBody.appendChild(div);
+              chatBody.scrollTop = chatBody.scrollHeight;
+            }
+          }
+        });
+
+        chatRetellClient.on('error', function(err){
+          console.error('Chat call error:', err);
+          chatEndCall(0);
+          addChatMsg('Connection issue. Tap "Call Again" to retry.', 'agent');
+        });
+
+        await chatRetellClient.startCall({ accessToken: result.access_token });
+
+      } catch(err){
+        console.error('Chat call error:', err);
+        chatCallActive = false;
+        chatCallStatus.style.display = 'none';
+        chatCallBtn.classList.remove('end-call');
+        chatCallBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> Call Agent';
+        chatBubbleBtn.classList.remove('live');
+        addChatMsg('Could not connect. Please check your microphone and try again.', 'agent');
+      }
+    })();
+  };
+
+  // Also update FAB live state for the orb's calls
+  window.__fabSetLive = function(isLive){
+    // Keep chat bubble in sync when orb calls happen
+    if(isLive){
+      chatBubbleBtn.classList.add('live');
     } else {
-      fab.classList.remove('visible');
+      chatBubbleBtn.classList.remove('live');
     }
-  });
+  };
 })();
 
 // WebRTC Voice Call
