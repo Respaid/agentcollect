@@ -697,17 +697,28 @@ body{min-height:100vh;display:flex;flex-direction:column;align-items:center;just
 <div class="confetti-container" id="confetti-container"></div>
 
 <script>
-// Timer
-let startTime = Date.now();
+// Timer — starts on first user interaction, not page load
+let startTime = null;
 let timerInterval;
 let timerStopped = false;
+let timerStarted = false;
+
+function startTimerOnInteraction() {
+  if (timerStarted) return;
+  timerStarted = true;
+  startTime = Date.now();
+  timerInterval = setInterval(updateTimer, 100);
+}
 
 function updateTimer() {
-  if (timerStopped) return;
+  if (timerStopped || !startTime) return;
   const elapsed = Math.round((Date.now() - startTime) / 1000);
   document.getElementById('timer').textContent = elapsed + 's';
 }
-timerInterval = setInterval(updateTimer, 100);
+
+// Start timer on first click/tap anywhere in the demo
+document.addEventListener('click', startTimerOnInteraction, { once: true });
+document.addEventListener('touchstart', startTimerOnInteraction, { once: true });
 
 function stopTimer() {
   timerStopped = true;
@@ -806,8 +817,13 @@ function launchConfetti() {
 // Reset demo
 function resetDemo() {
   // Reset timer
-  startTime = Date.now();
+  startTime = null;
+  timerStarted = false;
   timerStopped = false;
+  clearInterval(timerInterval);
+  document.getElementById('timer').textContent = '0s';
+  document.addEventListener('click', startTimerOnInteraction, { once: true });
+  document.addEventListener('touchstart', startTimerOnInteraction, { once: true });
 
   // Reset screens
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));

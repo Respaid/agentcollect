@@ -249,7 +249,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .cta-logos img{height:22px;filter:brightness(0) invert(1);object-fit:contain}
 
 /* FOOTER */
-.audit-footer{padding:40px 48px;text-align:center;border-top:1px solid var(--border)}
+.audit-footer{padding:40px 48px 100px;text-align:center;border-top:1px solid var(--border)}
 .audit-footer-built{font-size:14px;font-weight:600;color:var(--text);margin-bottom:8px}
 .audit-footer-disc{font-size:12px;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.5}
 
@@ -269,6 +269,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 /* MOBILE */
 @media(max-width:960px){
   .nav-inner{padding:14px 24px}
+  .compare-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+}
+@media(max-width:600px){
   .compare-grid{grid-template-columns:1fr;gap:16px}
 }
 @media(max-width:768px){
@@ -285,11 +288,12 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
   .orb-ring-1{inset:-18px}
   .orb-ring-2{inset:-38px}
   .orb-ring-3{inset:-58px}
-  .voice-fab{bottom:16px;right:16px;padding:10px 16px 10px 10px}
-  .voice-fab-text{font-size:12px}
+  .voice-fab{bottom:16px;right:16px;padding:10px;border-radius:50%}
+  .voice-fab-text{display:none}
+  .findings-section{padding-bottom:100px}
 }
 @media(max-width:480px){
-  .nav-expiry{display:none}
+  .nav-expiry{display:block;font-size:10px;white-space:nowrap}
   .audit-header{padding:100px 20px 48px}
   .audit-company{font-size:28px}
   .orb-wrap{width:180px;height:180px}
@@ -314,7 +318,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 .flow-step.fail{background:#ef4444;color:#fff;font-weight:700;border-color:#ef4444}
 .flow-step.success{background:#ecfdf5;border-color:#10b981}
 .flow-arrow{text-align:center;color:#94a3b8;font-size:20px;line-height:1.2}
-.flow-vs{font-size:32px;font-weight:900;color:#94a3b8;align-self:center;padding:0 20px}
+.flow-vs{font-size:32px;font-weight:900;color:#94a3b8;display:flex;align-items:center;justify-content:center;align-self:stretch;padding:0 20px}
 
 /* FINDINGS SECTION */
 .findings-section{padding:80px 48px;background:#f8f9fa}
@@ -413,6 +417,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
     AR Audit Report
   </div>
+  <img src="https://cdn.brandfetch.io/prudentialoverall.com/w/512/h/80/logo" onerror="this.style.display='none'" alt="Prudential Overall Supply" style="max-height:60px;margin-bottom:16px;" class="rv rv-d1">
   <h1 class="audit-company rv rv-d1">Prudential Overall Supply</h1>
   <p class="audit-subtitle rv rv-d2">Prepared March 2026</p>
   <p class="audit-date rv rv-d3">Confidential &mdash; expires in <span id="header-days-left"></span></p>
@@ -492,8 +497,10 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
         </div>
       </div>
       <div class="call-audio">
-        <!-- Recording not yet available -->
-        <div class="call-audio-placeholder">Recording uploading &mdash; check back shortly</div>
+        <div style="padding:12px 16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:8px;font-size:13px;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:8px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;color:rgba(255,255,255,.35)"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Conducted in person by our team. Transcript below.
+        </div>
       </div>
       <button class="call-transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
