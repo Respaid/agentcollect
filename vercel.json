@@ -386,6 +386,7 @@
 { "source": "/texas-disposal", "destination": "/v3/texas-disposal.html" },
 { "source": "/qualified-staffing", "destination": "/v3/qualified-staffing.html" },
 { "source": "/audit/prudential-overall", "destination": "/v3/audit-prudential-overall.html" },
+{ "source": "/audit/test-roto-rooter", "destination": "/v3/audit-test-roto-rooter.html" },
 { "source": "/v3/components/:path*", "destination": "/v3/components/:path*" }
   ],
   "headers": [

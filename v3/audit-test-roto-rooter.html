@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AR Audit: Roto-Rooter</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="AR Audit: Roto-Rooter">
+<meta property="og:description" content="Mystery shopping results and AR recovery analysis for Roto-Rooter.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GRZZT9K05B"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GRZZT9K05B',{page_title:'audit-test-roto-rooter'});</script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","vr6uvxdalw");</script>
+<script>
+(function(){
+  var sent=false;
+  function notify(sid){
+    if(sent)return;sent=true;
+    var body={page:'audit-test-roto-rooter',clarity_project_id:'vr6uvxdalw',referrer:document.referrer||'direct'};
+    if(sid)body.clarity_session_id=sid;
+    fetch('https://backend.widr.app/api/v1/demo/page-visit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).catch(function(){});
+  }
+  var attempts=0;
+  var poll=setInterval(function(){
+    attempts++;
+    if(window.clarity){
+      try{
+        window.clarity('get','id',function(userId,sessionId){
+          clearInterval(poll);
+          notify(sessionId);
+        });
+      }catch(e){clearInterval(poll);notify(null);}
+    }
+    if(attempts>20){clearInterval(poll);notify(null);}
+  },500);
+})();
+</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --blue:#4F46E5;--blue-dark:#4338CA;--text:#0B1B3D;--muted:#6b7280;--border:#e5e7eb;--bg:#FAFBFF;
+  --green:#10B981;--green-dark:#059669;--red:#dc2626;--amber:#F59E0B;
+  --mono:'JetBrains Mono',monospace;--sans:'Plus Jakarta Sans',system-ui,sans-serif;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+  --shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);
+  --shadow-lg:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:16px;line-height:1.6;position:relative}
+::selection{background:rgba(79,70,229,.1)}
+
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.rv.v{opacity:1;transform:none}
+.rv-d1{transition-delay:.12s}
+.rv-d2{transition-delay:.24s}
+.rv-d3{transition-delay:.36s}
+.rv-d4{transition-delay:.48s}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(250,251,255,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,0,0,.04)}
+.nav-inner{max-width:1280px;margin:0 auto;padding:16px 48px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{text-decoration:none;font-weight:900;font-size:17px;color:var(--text);letter-spacing:-.4px;display:inline-flex;align-items:baseline}
+.nav-logo .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--blue);margin-left:1px;vertical-align:baseline}
+.nav-expiry{font-size:14px;color:var(--muted);font-weight:500}
+.nav-expiry strong{color:var(--text);font-weight:700}
+
+/* HEADER */
+.audit-header{background:#0B1B3D;color:#fff;padding:140px 48px 80px;text-align:center;position:relative;overflow:hidden}
+.audit-header::before{content:'';position:absolute;width:600px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(79,70,229,.15) 0%,rgba(79,70,229,.05) 40%,transparent 70%);border-radius:50%;pointer-events:none}
+.audit-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(79,70,229,.15);border:1px solid rgba(79,70,229,.25);border-radius:100px;padding:8px 20px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.8);margin-bottom:24px}
+.audit-badge svg{width:16px;height:16px}
+.audit-company{font-size:clamp(32px,5vw,56px);font-weight:900;letter-spacing:-.04em;line-height:1.08;margin-bottom:8px}
+.audit-subtitle{font-size:18px;font-weight:600;color:rgba(255,255,255,.5);margin-bottom:8px}
+.audit-date{font-size:14px;color:rgba(255,255,255,.35);font-weight:500}
+
+/* MYSTERY CALLS */
+.mystery-section{padding:100px 48px;background:#0B1B3D;position:relative;overflow:hidden}
+.mystery-section::before{content:'';position:absolute;width:800px;height:800px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(79,70,229,.1) 0%,transparent 60%);border-radius:50%;pointer-events:none}
+.mystery-inner{max-width:800px;margin:0 auto}
+.mystery-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.35);margin-bottom:12px}
+.mystery-title{font-size:clamp(24px,3vw,36px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px;color:#fff}
+.mystery-sub{font-size:16px;color:rgba(255,255,255,.45);margin-bottom:48px;line-height:1.5}
+.call-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px;margin-bottom:20px;transition:border-color .3s}
+.call-card:hover{border-color:rgba(79,70,229,.3)}
+.call-card:last-child{margin-bottom:0}
+.call-card-header{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px}
+.call-card-info h3{font-size:17px;font-weight:800;color:#fff;margin-bottom:4px}
+.call-card-info .call-number{font-size:13px;color:rgba(255,255,255,.4);font-family:var(--mono);font-weight:500}
+.call-card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.call-card-date{font-size:12px;color:rgba(255,255,255,.35);font-weight:500}
+.call-badge{display:inline-flex;align-items:center;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.call-badge.duration{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6)}
+.call-badge.result{background:rgba(16,185,129,.15);color:#6ee7b7;border:1px solid rgba(16,185,129,.25)}
+.call-audio{margin:16px 0}
+.call-audio audio{width:100%;height:40px;border-radius:8px;outline:none}
+.call-audio audio::-webkit-media-controls-panel{background:rgba(255,255,255,.06);border-radius:8px}
+.call-audio audio::-webkit-media-controls-play-button{color:#fff}
+.call-audio audio::-webkit-media-controls-current-time-display,.call-audio audio::-webkit-media-controls-time-remaining-display{color:rgba(255,255,255,.6);font-size:11px}
+.call-transcript-toggle{display:flex;align-items:center;gap:6px;background:none;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;color:rgba(255,255,255,.5);cursor:pointer;transition:all .2s;font-family:var(--sans);margin-top:12px}
+.call-transcript-toggle:hover{border-color:rgba(79,70,229,.4);color:rgba(255,255,255,.8)}
+.call-transcript-toggle svg{width:14px;height:14px;transition:transform .3s}
+.call-transcript-toggle.open svg{transform:rotate(180deg)}
+.call-transcript{display:none;margin-top:16px;padding:16px;background:rgba(0,0,0,.2);border-radius:12px;max-height:400px;overflow-y:auto}
+.call-transcript.open{display:block}
+.call-transcript::-webkit-scrollbar{width:4px}
+.call-transcript::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
+.ct-msg{padding:8px 12px;border-radius:10px;font-size:13px;line-height:1.5;margin-bottom:8px;max-width:85%}
+.ct-msg:last-child{margin-bottom:0}
+.ct-msg.agent{background:rgba(79,70,229,.2);color:rgba(255,255,255,.85);margin-right:auto}
+.ct-msg.system{background:rgba(255,255,255,.06);color:rgba(255,255,255,.5);margin-left:auto;text-align:right}
+.ct-msg-role{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px;opacity:.6}
+.mystery-summary{margin-top:48px;text-align:center;padding:28px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:14px}
+.mystery-summary-stat{font-size:clamp(18px,2.5vw,24px);font-weight:900;color:#6ee7b7;letter-spacing:-.02em}
+
+@media(max-width:768px){
+  .mystery-section{padding:60px 24px}
+  .call-card{padding:20px}
+  .call-card-header{flex-direction:column}
+}
+
+/* COST */
+.cost-section{padding:80px 48px;background:linear-gradient(180deg,#f6f3ef 0%,#F8F7F5 100%);text-align:center;position:relative}
+.cost-section::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--red),transparent);opacity:.3}
+.cost-big{font-size:clamp(48px,8vw,88px);font-weight:900;letter-spacing:-.04em;color:var(--red);line-height:1;margin-bottom:8px;font-family:var(--sans)}
+.cost-big-suffix{font-size:clamp(24px,4vw,44px);font-weight:900;color:var(--red);opacity:.6}
+.cost-subtitle{font-size:18px;color:var(--muted);margin-bottom:48px;line-height:1.5;max-width:480px;margin-left:auto;margin-right:auto}
+.cost-breakdown{max-width:480px;margin:0 auto;text-align:left}
+.cost-row{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--border)}
+.cost-row:last-child{border-bottom:none;padding-top:20px}
+.cost-row-label{font-size:15px;color:var(--muted);font-weight:500}
+.cost-row-value{font-size:15px;font-weight:700;color:var(--text);font-family:var(--mono)}
+.cost-row.total .cost-row-label{font-size:17px;font-weight:800;color:var(--text)}
+.cost-row.total .cost-row-value{font-size:20px;font-weight:900;color:var(--red)}
+
+/* AGENT ORB */
+.agent-section{padding:80px 48px;text-align:center;position:relative;overflow:hidden}
+.agent-section::before{content:'';position:absolute;width:600px;height:600px;top:40%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(79,70,229,.08) 0%,transparent 60%);border-radius:50%;pointer-events:none}
+
+.orb-wrap{position:relative;width:280px;height:280px;aspect-ratio:1;margin:0 auto 32px;cursor:pointer}
+.orb-glow{position:absolute;inset:-50px;border-radius:50%;background:radial-gradient(circle,rgba(79,70,229,.18) 0%,rgba(79,70,229,.06) 40%,transparent 70%);animation:orbGlowPulse 4s ease-in-out infinite}
+.orb-main{position:relative;width:280px;height:280px;aspect-ratio:1;border-radius:50%;-webkit-border-radius:50%;overflow:hidden;-webkit-mask-image:-webkit-radial-gradient(white,black);mask-image:radial-gradient(white,black);animation:orbDrift 6s ease-in-out infinite;transition:transform .3s,box-shadow .3s;box-shadow:0 0 80px rgba(79,70,229,.25),0 0 160px rgba(79,70,229,.08),inset 0 0 60px rgba(0,0,0,.3)}
+.orb-wrap:hover .orb-main{transform:scale(1.06)}
+.orb-wrap:active .orb-main{transform:scale(.95)}
+.orb-main.speaking{animation:orbDrift 6s ease-in-out infinite,orbPulseSpeak .8s ease-in-out infinite}
+.orb-layer{position:absolute;inset:0;border-radius:50%}
+.orb-layer-1{background:conic-gradient(from 0deg,#4F46E5,#6366f1,#1e1b4b,#818cf8,#4F46E5);animation:orbSpin 8s linear infinite}
+.orb-layer-2{background:conic-gradient(from 180deg,rgba(79,70,229,.8),rgba(99,102,241,.5),rgba(30,27,75,.6),rgba(129,140,248,.4),rgba(79,70,229,.8));animation:orbSpin 12s linear infinite reverse;mix-blend-mode:soft-light}
+.orb-layer-3{background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.25) 0%,transparent 50%)}
+.orb-layer-4{background:radial-gradient(circle at 50% 110%,rgba(0,0,0,.4) 0%,transparent 60%)}
+.orb-phone-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:10;transition:opacity .3s,transform .3s}
+.orb-phone-center svg{width:40px;height:40px;color:#fff;stroke:currentColor;filter:drop-shadow(0 2px 12px rgba(0,0,0,.35));transition:transform .3s}
+.orb-wrap:hover .orb-phone-center svg{transform:scale(1.12)}
+
+.orb-ring{position:absolute;border-radius:50%;border:1.5px solid rgba(79,70,229,.12);pointer-events:none}
+.orb-ring-1{inset:-24px;animation:ringPulse 3s ease-out infinite}
+.orb-ring-2{inset:-48px;animation:ringPulse 3s ease-out infinite .6s}
+.orb-ring-3{inset:-72px;animation:ringPulse 3s ease-out infinite 1.2s}
+
+@keyframes orbSpin{0%{transform:rotate(0deg) scale(1.15)}100%{transform:rotate(360deg) scale(1.15)}}
+@keyframes orbDrift{0%,100%{transform:translateY(0) scale(1)}33%{transform:translateY(-4px) scale(1.01)}66%{transform:translateY(-2px) scale(.995)}}
+@keyframes orbPulseSpeak{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+@keyframes orbGlowPulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.8;transform:scale(1.08)}}
+@keyframes ringPulse{0%{opacity:.6;transform:scale(.95)}50%{opacity:.2;transform:scale(1)}100%{opacity:0;transform:scale(1.05)}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.call-state{display:flex;flex-direction:column;align-items:center;width:100%;max-width:360px;margin:0 auto}
+.cs-connecting{display:none;flex-direction:column;align-items:center;gap:12px;padding:8px 0;animation:fadeInUp .3s ease}
+.cs-connecting .co-spinner{width:28px;height:28px;border:3px solid rgba(79,70,229,.15);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite}
+.cs-connecting-text{color:var(--muted);font-size:13px;font-weight:500}
+.cs-active{display:none;flex-direction:column;align-items:center;gap:10px;padding:8px 0;width:100%}
+.cs-active.visible{display:flex}
+.cs-status{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--blue)}
+.cs-waveform{display:flex;align-items:center;justify-content:center;gap:3px;height:40px;padding:4px 0}
+.cs-waveform span{width:3.5px;border-radius:3px;background:var(--blue);min-height:4px;will-change:height;transition:height .08s linear}
+.cs-transcript{width:100%;max-height:80px;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}
+.cs-transcript::-webkit-scrollbar{display:none}
+.cs-msg{padding:8px 12px;border-radius:12px;font-size:13px;line-height:1.5;margin-bottom:6px;animation:fadeInUp .3s ease}
+.cs-msg.agent{background:rgba(79,70,229,.08);color:var(--text)}
+.cs-msg.user{background:rgba(0,0,0,.04);color:var(--muted);text-align:right}
+.cs-end-btn{padding:10px 24px;background:rgba(239,68,68,.06);color:#ef4444;border:1px solid rgba(239,68,68,.15);border-radius:12px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;font-family:var(--sans)}
+.cs-end-btn:hover{background:rgba(239,68,68,.12)}
+.cs-post-call{display:none;flex-direction:column;align-items:center;gap:10px;padding:8px 0;animation:fadeInUp .4s ease}
+.cs-post-check{margin-bottom:4px}
+.cs-post-title{font-size:18px;font-weight:800;color:var(--text)}
+.cs-post-sub{font-size:14px;color:var(--muted);text-align:center;line-height:1.5;max-width:300px}
+.cs-post-cta{display:flex;align-items:center;gap:8px;padding:14px 28px;background:var(--blue);color:#fff;border:none;border-radius:14px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;text-decoration:none;margin-top:6px;box-shadow:0 0 20px rgba(79,70,229,.3);font-family:var(--sans)}
+.cs-post-cta:hover{background:var(--blue-dark);transform:translateY(-1px);box-shadow:0 4px 24px rgba(79,70,229,.4)}
+.cs-post-retry{background:none;border:1px solid var(--border);color:var(--muted);padding:8px 16px;border-radius:8px;font-size:12px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;margin-top:2px;font-family:var(--sans)}
+.cs-post-retry:hover{border-color:var(--blue);color:var(--blue)}
+
+.agent-title{font-size:clamp(24px,3vw,36px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:8px;color:var(--text)}
+.agent-sub{font-size:16px;color:var(--muted);margin-bottom:32px;line-height:1.5;max-width:480px;margin-left:auto;margin-right:auto}
+.agent-hint{font-size:14px;color:var(--green);font-weight:600;margin-bottom:4px;animation:fadeInUp .6s ease .3s both}
+
+/* COMPARE */
+.compare-section{padding:80px 48px;max-width:920px;margin:0 auto}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.compare-col{padding:32px 28px;border-radius:16px;border:1px solid var(--border)}
+.compare-col.current{background:rgba(220,38,38,.02);border-color:rgba(220,38,38,.12)}
+.compare-col.agent{background:rgba(79,70,229,.02);border-color:rgba(79,70,229,.12)}
+.compare-col-header{display:flex;align-items:center;gap:10px;margin-bottom:24px}
+.compare-col-header .icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.compare-col.current .icon{background:rgba(220,38,38,.08);color:var(--red)}
+.compare-col.agent .icon{background:rgba(79,70,229,.08);color:var(--blue)}
+.compare-col-header h3{font-size:18px;font-weight:800;color:var(--text)}
+.compare-item{display:flex;gap:10px;margin-bottom:14px;font-size:15px;line-height:1.5;color:var(--muted)}
+.compare-item:last-child{margin-bottom:0}
+.compare-item .bullet{flex-shrink:0;font-weight:900;font-size:15px;line-height:1.5}
+.compare-col.current .bullet{color:var(--red)}
+.compare-col.agent .bullet{color:var(--green)}
+.compare-item strong{color:var(--text);font-weight:700}
+
+/* CTA */
+.cta-section{padding:80px 48px;text-align:center;background:#0B1B3D;color:#fff}
+.cta-title{font-size:clamp(26px,3.5vw,42px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px}
+.cta-sub{font-size:16px;color:rgba(255,255,255,.5);margin-bottom:32px}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;padding:18px 44px;background:var(--blue);color:#fff;border-radius:14px;font-weight:700;font-size:17px;text-decoration:none;transition:transform .2s cubic-bezier(.16,1,.3,1),box-shadow .2s;font-family:var(--sans);letter-spacing:-.01em;box-shadow:0 0 20px rgba(79,70,229,.4)}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(79,70,229,.5)}
+.cta-btn svg{width:18px;height:18px}
+.cta-logos{display:flex;align-items:center;justify-content:center;gap:36px;margin-top:48px;opacity:.4}
+.cta-logos img{height:22px;filter:brightness(0) invert(1);object-fit:contain}
+
+/* FOOTER */
+.audit-footer{padding:40px 48px 100px;text-align:center;border-top:1px solid var(--border)}
+.audit-footer-built{font-size:14px;font-weight:600;color:var(--text);margin-bottom:8px}
+.audit-footer-disc{font-size:12px;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.5}
+
+/* FAB */
+.voice-fab{position:fixed;bottom:28px;right:28px;z-index:9000;display:flex;align-items:center;gap:10px;background:#0f0f1a;border:1px solid rgba(79,70,229,.3);border-radius:50px;padding:12px 20px 12px 14px;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 8px 32px rgba(0,0,0,.4);opacity:0;pointer-events:none;transform:translateY(20px)}
+.voice-fab.visible{opacity:1;pointer-events:auto;transform:translateY(0)}
+.voice-fab:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(79,70,229,.3);border-color:rgba(79,70,229,.5)}
+.voice-fab-icon{width:40px;height:40px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 16px rgba(79,70,229,.4)}
+.voice-fab-icon svg{width:20px;height:20px;color:#fff}
+.voice-fab.live{border-color:rgba(239,68,68,.4);background:#1a0f0f;box-shadow:0 8px 32px rgba(239,68,68,.3)}
+.voice-fab.live:hover{border-color:rgba(239,68,68,.6);box-shadow:0 12px 40px rgba(239,68,68,.4)}
+.voice-fab.live .voice-fab-icon{background:#ef4444;box-shadow:0 0 16px rgba(239,68,68,.5);animation:fabPulse 1.5s ease-in-out infinite}
+.voice-fab.live .voice-fab-text{color:rgba(255,255,255,.9)}
+@keyframes fabPulse{0%,100%{box-shadow:0 0 16px rgba(239,68,68,.5)}50%{box-shadow:0 0 28px rgba(239,68,68,.7)}}
+.voice-fab-text{color:rgba(255,255,255,.9);font-size:13px;font-weight:600;white-space:nowrap}
+
+/* MOBILE */
+@media(max-width:960px){
+  .nav-inner{padding:14px 24px}
+  .compare-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+}
+@media(max-width:600px){
+  .compare-grid{grid-template-columns:1fr;gap:16px}
+}
+@media(max-width:768px){
+  .nav-expiry{font-size:12px}
+  .audit-header{padding:120px 24px 60px}
+  .cost-section{padding:60px 24px}
+  .agent-section{padding:60px 24px}
+  .compare-section{padding:60px 24px}
+  .cta-section{padding:60px 24px}
+  .orb-wrap{width:220px;height:220px}
+  .orb-main{width:220px;height:220px}
+  .orb-phone-center svg{width:34px;height:34px}
+  .orb-ring-1{inset:-18px}
+  .orb-ring-2{inset:-38px}
+  .orb-ring-3{inset:-58px}
+  .voice-fab{bottom:16px;right:16px;padding:10px;border-radius:50%}
+  .voice-fab-text{display:none}
+}
+@media(max-width:480px){
+  .nav-expiry{display:block;font-size:10px;white-space:nowrap}
+  .audit-header{padding:100px 20px 48px}
+  .audit-company{font-size:28px}
+  .orb-wrap{width:180px;height:180px}
+  .orb-main{width:180px;height:180px}
+  .orb-phone-center svg{width:28px;height:28px}
+  .orb-ring-1{inset:-14px}
+  .orb-ring-2{inset:-30px}
+  .orb-ring-3{inset:-46px}
+  .cost-big{font-size:40px}
+}
+</style>
+<!-- RB2B -->
+<script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("LNKLDHEDW9OJ");</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://agentcollect.com" class="nav-logo">AgentCollect<span class="dot"></span></a>
+    <span class="nav-expiry">This page disappears in <strong id="days-left"></strong></span>
+  </div>
+</nav>
+
+<!-- SECTION 1: HEADER -->
+<section class="audit-header">
+  <div class="audit-badge rv">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
+    AR Audit Report
+  </div>
+  <img src="https://cdn.brandfetch.io/rotorooter.com/w/512/h/80/logo" onerror="this.style.display='none'" alt="Roto-Rooter" style="max-height:60px;margin-bottom:16px;" class="rv rv-d1">
+  <h1 class="audit-company rv rv-d1">Roto-Rooter</h1>
+  <p class="audit-subtitle rv rv-d2">Test audit &mdash; March 2026</p>
+  <p class="audit-date rv rv-d3">Confidential &mdash; expires in <span id="header-days-left"></span></p>
+</section>
+
+<!-- SECTION 2: MYSTERY CALLS -->
+<section class="mystery-section">
+  <div class="mystery-inner">
+    <div class="rv">
+      <div class="mystery-label">Mystery calls</div>
+      <h2 class="mystery-title">We called. Here's what happened.</h2>
+      <p class="mystery-sub">Real calls to real numbers. Recorded and transcribed.</p>
+    </div>
+
+    <!-- Call 1: Roto-Rooter National Line -->
+    <div class="call-card rv rv-d1">
+      <div class="call-card-header">
+        <div class="call-card-info">
+          <h3>Roto-Rooter &mdash; National Line</h3>
+          <span class="call-number">(800) 768-6911</span>
+        </div>
+        <div class="call-card-meta">
+          <span class="call-card-date">Mar 26, 2026 &middot; 8:03 PM PT</span>
+          <span class="call-badge duration">1 min 50s</span>
+          <span class="call-badge result">VOICEMAIL &mdash; BILLING DEPT</span>
+        </div>
+      </div>
+      <div class="call-audio">
+        <audio controls preload="metadata" src="https://dxc03zgurdly9.cloudfront.net/8ed381b9ee9d2728f5de2bfa7966fe17db66f0c32cac82b9f4768e5de7689636/recording.wav"></audio>
+      </div>
+      <button class="call-transcript-toggle" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        View transcript
+      </button>
+      <div class="call-transcript">
+        <div class="ct-msg system">
+          <div class="ct-msg-role">IVR</div>
+          Thank you for choosing Roto Rooter... To place a new order, press one. To check-in an existing order, press two. For administrative calls, press three.
+        </div>
+        <div class="ct-msg agent">
+          <div class="ct-msg-role">Agent</div>
+          [Pressed 3]
+        </div>
+        <div class="ct-msg system">
+          <div class="ct-msg-role">IVR</div>
+          Administrative office for Roto Rooter in New York... To leave a message about billing for other services, press six.
+        </div>
+        <div class="ct-msg agent">
+          <div class="ct-msg-role">Agent</div>
+          [Pressed 6]
+        </div>
+        <div class="ct-msg system">
+          <div class="ct-msg-role">IVR</div>
+          Please wait while your call is being transferred.
+        </div>
+        <div class="ct-msg system">
+          <div class="ct-msg-role">IVR</div>
+          [Voicemail beep]
+        </div>
+        <div class="ct-msg agent">
+          <div class="ct-msg-role">Agent</div>
+          Hi, my name is Mike from Summit Services. I have a balance on my account and I would like to pay. Please call me back at 949-741-7328. Again, 949-741-7328. Thank you.
+        </div>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="mystery-summary rv">
+      <div class="mystery-summary-stat">1 call. IVR navigated successfully. Voicemail left. Waiting for callback.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: THE COST -->
+<section class="cost-section">
+  <div class="rv">
+    <div class="section-label">The cost</div>
+    <div class="cost-big" id="cost-number">$0</div>
+    <div class="cost-big-suffix">/year</div>
+    <p class="cost-subtitle">Estimated revenue from clients who tried to pay and gave up.</p>
+  </div>
+  <div class="cost-breakdown rv rv-d1">
+    <div class="cost-row">
+      <span class="cost-row-label">Revenue</span>
+      <span class="cost-row-value">~$700M</span>
+    </div>
+    <div class="cost-row">
+      <span class="cost-row-label">Industry bad debt rate</span>
+      <span class="cost-row-value">1-3%</span>
+    </div>
+    <div class="cost-row">
+      <span class="cost-row-label">Clients who attempt to pay but abandon</span>
+      <span class="cost-row-value">~10%</span>
+    </div>
+    <div class="cost-row total">
+      <span class="cost-row-label">Estimated lost revenue</span>
+      <span class="cost-row-value">~$500K/yr</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: YOUR AGENT -->
+<section class="agent-section" id="agent-section">
+  <div class="rv">
+    <div class="section-label">Your agent</div>
+    <h2 class="agent-title">This is what picks up instead.</h2>
+    <p class="agent-sub">Your Roto-Rooter AI agent. 24/7. 0.3 second response. Every language.</p>
+  </div>
+
+  <div class="rv rv-d1">
+    <div class="orb-wrap" id="orb-wrap">
+      <div class="orb-ring orb-ring-1"></div>
+      <div class="orb-ring orb-ring-2"></div>
+      <div class="orb-ring orb-ring-3"></div>
+      <div class="orb-glow"></div>
+      <div class="orb-main" id="orb-main">
+        <div class="orb-layer orb-layer-1"></div>
+        <div class="orb-layer orb-layer-2"></div>
+        <div class="orb-layer orb-layer-3"></div>
+        <div class="orb-layer orb-layer-4"></div>
+        <div class="orb-phone-center" id="orb-phone-center">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="agent-hint">Tap to call your agent</div>
+  </div>
+
+  <div class="call-state" id="call-state">
+    <div class="cs-connecting" id="cs-connecting">
+      <div class="co-spinner"></div>
+      <div class="cs-connecting-text" id="cs-connecting-text">Connecting to Roto-Rooter agent...</div>
+    </div>
+    <div class="cs-active" id="cs-active">
+      <div class="cs-status" id="cs-status">Listening...</div>
+      <div class="cs-waveform" id="cs-waveform">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="cs-transcript" id="cs-transcript"></div>
+      <button class="cs-end-btn" id="cs-end-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        End call
+      </button>
+    </div>
+    <div class="cs-post-call" id="cs-post-call">
+      <div class="cs-post-check">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <div class="cs-post-title">That was 30 seconds.</div>
+      <div class="cs-post-sub">Now imagine this handling every incoming billing call for Roto-Rooter.</div>
+      <a href="mailto:j@agentcollect.com?subject=Roto-Rooter AR Audit" class="cs-post-cta" id="cs-post-cta">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Talk to us
+      </a>
+      <button class="cs-post-retry" id="cs-post-retry">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+        Try another call
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: SIDE BY SIDE -->
+<section class="compare-section">
+  <div class="rv">
+    <div class="section-label">Side by side</div>
+    <h2 class="section-title">Your current process vs. your AI agent.</h2>
+  </div>
+  <div class="compare-grid">
+    <div class="compare-col current rv rv-d1">
+      <div class="compare-col-header">
+        <div class="icon">&#10005;</div>
+        <h3>Your Current Process</h3>
+      </div>
+      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Phone:</strong> IVR maze, then voicemail</span></div>
+      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Callback:</strong> waiting for response</span></div>
+      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Hours:</strong> business hours only</span></div>
+      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Languages:</strong> English only</span></div>
+    </div>
+    <div class="compare-col agent rv rv-d2">
+      <div class="compare-col-header">
+        <div class="icon">&#10003;</div>
+        <h3>Your AI Agent</h3>
+      </div>
+      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Phone:</strong> picks up in 0.3s</span></div>
+      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Payment:</strong> instant link via SMS</span></div>
+      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Hours:</strong> 24/7/365</span></div>
+      <div class="compare-item"><span class="bullet">&#8226;</span><span><strong>Languages:</strong> 50+</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: CTA -->
+<section class="cta-section">
+  <div class="rv">
+    <h2 class="cta-title">Who handles AR at Roto-Rooter?</h2>
+    <p class="cta-sub">We built this audit in 48 hours. Imagine what the agent does in 30 days.</p>
+    <a href="mailto:j@agentcollect.com?subject=Roto-Rooter AR Audit" class="cta-btn" onclick="try{gtag('event','cta_email',{page:'audit-test-roto-rooter'})}catch(e){}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      j@agentcollect.com
+    </a>
+  </div>
+  <div class="cta-logos rv rv-d1">
+    <img src="/v3/logos/dell.svg" alt="Dell" loading="lazy" onerror="this.style.display='none'">
+    <img src="/v3/logos/microsoft.svg" alt="Microsoft" loading="lazy" onerror="this.style.display='none'">
+  </div>
+</section>
+
+<!-- SECTION 7: FOOTER -->
+<footer class="audit-footer">
+  <p class="audit-footer-built">Built for Roto-Rooter by AgentCollect<span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--blue);margin-left:1px;vertical-align:middle"></span></p>
+  <p class="audit-footer-disc">This audit is based on publicly available information and mystery shopping conducted March 2026.</p>
+</footer>
+
+<!-- Floating Voice FAB -->
+<div class="voice-fab" id="voice-fab">
+  <div class="voice-fab-icon" id="voice-fab-icon">
+    <svg id="fab-mic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/></svg>
+    <svg id="fab-hangup-icon" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </div>
+  <div class="voice-fab-text" id="voice-fab-text">Call your agent</div>
+</div>
+
+<script type="module">
+import { RetellWebClient } from 'https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.7/+esm';
+window.__RetellWebClient = RetellWebClient;
+</script>
+<script>
+// Expiry Countdown
+(function(){
+  var expiry = new Date('2026-04-10');
+  var diff = Math.ceil((expiry - new Date()) / 864e5);
+  var el = document.getElementById('days-left');
+  var el2 = document.getElementById('header-days-left');
+  var text = diff > 0 ? diff + ' day' + (diff !== 1 ? 's' : '') : 'expired';
+  if(el) el.textContent = text;
+  if(el2) el2.textContent = text;
+})();
+
+// Scroll Reveal
+(function(){
+  var els = document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('v'); });
+    return;
+  }
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('v'); ro.unobserve(e.target); } });
+  }, {threshold:.08, rootMargin:'0px 0px 200px 0px'});
+  els.forEach(function(el){ ro.observe(el); });
+  setTimeout(function(){ els.forEach(function(el){ el.classList.add('v'); }); }, 2500);
+})();
+
+// Animated Cost Counter — rolls up to $500,000
+(function(){
+  var costEl = document.getElementById('cost-number');
+  if(!costEl) return;
+  var target = 500000;
+  var animated = false;
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting && !animated){
+        animated = true;
+        var duration = 2000;
+        var start = Date.now();
+        function tick(){
+          var elapsed = Date.now() - start;
+          var progress = Math.min(elapsed / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var current = Math.round(target * eased);
+          costEl.textContent = '$' + current.toLocaleString('en-US');
+          if(progress < 1) requestAnimationFrame(tick);
+        }
+        tick();
+      }
+    });
+  }, {threshold:.3});
+  ro.observe(costEl);
+})();
+
+// Floating Voice FAB
+(function(){
+  var fab = document.getElementById('voice-fab');
+  var fabText = document.getElementById('voice-fab-text');
+  var fabMicIcon = document.getElementById('fab-mic-icon');
+  var fabHangupIcon = document.getElementById('fab-hangup-icon');
+  var agentSection = document.getElementById('agent-section');
+  var fabLive = false;
+  if(!fab || !agentSection) return;
+
+  window.__fabSetLive = function(isLive){
+    fabLive = isLive;
+    if(isLive){
+      fab.classList.add('visible', 'live');
+      fabText.textContent = 'End call';
+      fabMicIcon.style.display = 'none';
+      fabHangupIcon.style.display = '';
+    } else {
+      fab.classList.remove('live');
+      fabText.textContent = 'Call your agent';
+      fabMicIcon.style.display = '';
+      fabHangupIcon.style.display = 'none';
+      var rect = agentSection.getBoundingClientRect();
+      if(rect.bottom >= 0 && rect.top <= window.innerHeight) fab.classList.remove('visible');
+    }
+  };
+
+  fab.addEventListener('click', function(){
+    if(fabLive){
+      var endBtn = document.getElementById('cs-end-btn');
+      if(endBtn) endBtn.click();
+      return;
+    }
+    agentSection.scrollIntoView({behavior:'smooth', block:'start'});
+    setTimeout(function(){
+      var orb = document.getElementById('orb-wrap');
+      if(orb) orb.click();
+    }, 600);
+  });
+
+  window.addEventListener('scroll', function(){
+    if(fabLive){ fab.classList.add('visible'); return; }
+    var rect = agentSection.getBoundingClientRect();
+    if(rect.bottom < 0 || rect.top > window.innerHeight){
+      fab.classList.add('visible');
+    } else {
+      fab.classList.remove('visible');
+    }
+  });
+})();
+
+// WebRTC Voice Call
+(function(){
+  var orbWrap = document.getElementById('orb-wrap');
+  var orbPhone = document.getElementById('orb-phone-center');
+  var csConnecting = document.getElementById('cs-connecting');
+  var csActive = document.getElementById('cs-active');
+  var csEndBtn = document.getElementById('cs-end-btn');
+  var csStatus = document.getElementById('cs-status');
+  var csTranscript = document.getElementById('cs-transcript');
+  var csWaveformEl = document.getElementById('cs-waveform');
+  var csWaveformBars = csWaveformEl ? csWaveformEl.querySelectorAll('span') : [];
+  var waveformAnimId = null;
+  var waveformMode = 'idle';
+  var callActive = false;
+  var retellClient = null;
+  var callStartTime = null;
+
+  function animateWaveform(){
+    for(var i = 0; i < csWaveformBars.length; i++){
+      var bar = csWaveformBars[i];
+      var h;
+      if(waveformMode === 'agent') h = 10 + Math.random() * 34;
+      else if(waveformMode === 'user') h = 6 + Math.random() * 18;
+      else h = 4 + Math.sin(Date.now() / 500 + i * 0.6) * 3;
+      bar.style.height = h + 'px';
+    }
+    waveformAnimId = requestAnimationFrame(animateWaveform);
+  }
+
+  function startWaveformAnim(mode){
+    waveformMode = mode || 'idle';
+    if(!waveformAnimId) animateWaveform();
+  }
+
+  function stopWaveformAnim(){
+    waveformMode = 'idle';
+    if(waveformAnimId){ cancelAnimationFrame(waveformAnimId); waveformAnimId = null; }
+    for(var i = 0; i < csWaveformBars.length; i++) csWaveformBars[i].style.height = '4px';
+  }
+
+  function startVoiceCall(){
+    if(callActive) return;
+    callActive = true;
+    callStartTime = Date.now();
+
+    if(orbPhone) orbPhone.style.display = 'none';
+    var agentHint = document.querySelector('.agent-hint');
+    if(agentHint) agentHint.style.display = 'none';
+    document.querySelectorAll('.orb-ring').forEach(function(r){ r.style.display = 'none'; });
+    csConnecting.style.display = 'flex';
+    csActive.classList.remove('visible');
+
+    var orb = document.getElementById('orb-main');
+    if(orb) orb.classList.add('speaking');
+
+    (async function(){
+      try {
+        var micPromise = navigator.mediaDevices.getUserMedia({
+          audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true, sampleRate: { ideal: 48000 }, channelCount: { ideal: 1 } }
+        }).then(function(s){ window.__micStream = s; })
+          .catch(function(){ throw new Error('Microphone access required'); });
+
+        var apiPromise = fetch('https://backend.widr.app/api/v1/demo/web-call', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            company_name: 'Roto-Rooter',
+            product: 'plumbing and drain services',
+            amount: '$850'
+          })
+        }).then(async function(response) {
+          if(!response.ok) {
+            var errBody = ''; try { errBody = await response.text(); } catch(e){}
+            console.error('web-call error:', response.status, errBody);
+            throw new Error('API returned ' + response.status);
+          }
+          return response.json();
+        });
+
+        var sdkPromise = Promise.resolve(window.__RetellWebClient).then(function(RWC) {
+          if(RWC) return RWC;
+          return import('https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.7/+esm')
+            .then(function(m){ return m.RetellWebClient; });
+        });
+
+        var results = await Promise.all([micPromise, apiPromise, sdkPromise]);
+        var result = results[1];
+        var RetellWebClient = results[2];
+        if(!result.success || !result.access_token) throw new Error('No access token');
+        retellClient = new RetellWebClient();
+
+        retellClient.on('call_started', function(){
+          callStartTime = Date.now();
+          csConnecting.style.display = 'none';
+          csActive.classList.add('visible');
+          csStatus.textContent = 'Your turn \u2014 speak now';
+          startWaveformAnim('idle');
+          if(orbPhone) orbPhone.style.opacity = '0';
+          if(window.__fabSetLive) window.__fabSetLive(true);
+          try { gtag('event', 'call_started', { company: 'Roto-Rooter', page: 'audit-test-roto-rooter' }); } catch(e){}
+        });
+
+        retellClient.on('call_ended', function(){
+          try { gtag('event', 'call_completed', { company: 'Roto-Rooter', page: 'audit-test-roto-rooter' }); } catch(e){}
+          var duration = callStartTime ? Math.round((Date.now() - callStartTime) / 1000) : 30;
+          endCall(duration);
+        });
+
+        retellClient.on('agent_start_talking', function(){
+          startWaveformAnim('agent');
+          csStatus.textContent = 'Agent speaking...';
+        });
+
+        retellClient.on('agent_stop_talking', function(){
+          startWaveformAnim('user');
+          csStatus.textContent = 'Your turn \u2014 speak now';
+        });
+
+        retellClient.on('update', function(update){
+          if(update && update.transcript) renderTranscript(update.transcript);
+        });
+
+        retellClient.on('error', function(err){
+          console.error('RetellAI error:', err);
+          endCall(0);
+        });
+
+        await retellClient.startCall({ accessToken: result.access_token });
+
+      } catch(err){
+        console.error('Voice call error:', err);
+        callActive = false;
+        csConnecting.style.display = 'none';
+        var agentHint2 = document.querySelector('.agent-hint');
+        if(agentHint2) agentHint2.style.display = '';
+        document.querySelectorAll('.orb-ring').forEach(function(r){ r.style.display = ''; });
+        if(orbPhone) orbPhone.style.display = '';
+        if(orb) orb.classList.remove('speaking');
+        if(agentHint2){ agentHint2.textContent = 'Connection issue \u2014 tap to retry'; agentHint2.style.color = '#ef4444'; }
+        setTimeout(function(){ if(agentHint2){ agentHint2.textContent = 'Tap to call your agent'; agentHint2.style.color = ''; } }, 6000);
+      }
+    })();
+  }
+
+  function renderTranscript(transcript){
+    if(!transcript || !transcript.length) return;
+    var last = null;
+    for(var i = transcript.length - 1; i >= 0; i--){
+      if((transcript[i].content || '').trim()){ last = transcript[i]; break; }
+    }
+    if(!last) return;
+    var role = last.role === 'agent' ? 'agent' : 'user';
+    csTranscript.innerHTML = '<div class="cs-msg ' + role + '">' + last.content + '</div>';
+    csTranscript.scrollTop = csTranscript.scrollHeight;
+  }
+
+  function endCall(duration){
+    callActive = false;
+    if(retellClient){ try { retellClient.stopCall(); } catch(e){} retellClient = null; }
+    if(window.__micStream){ window.__micStream.getTracks().forEach(function(t){ t.stop(); }); window.__micStream = null; }
+    stopWaveformAnim();
+    if(window.__fabSetLive) window.__fabSetLive(false);
+    var orb = document.getElementById('orb-main');
+    if(orb) orb.classList.remove('speaking');
+    if(orbPhone) orbPhone.style.opacity = '1';
+
+    csStatus.textContent = 'Call ended';
+    var postCall = document.getElementById('cs-post-call');
+    var postTitle = document.querySelector('.cs-post-title');
+    if(postTitle && duration > 0){
+      postTitle.textContent = 'That was ' + duration + ' second' + (duration !== 1 ? 's' : '') + '.';
+    }
+    setTimeout(function(){
+      csActive.classList.remove('visible');
+      csTranscript.innerHTML = '';
+      if(postCall) postCall.style.display = 'flex';
+    }, 1500);
+  }
+
+  var postRetry = document.getElementById('cs-post-retry');
+  if(postRetry) postRetry.addEventListener('click', function(){
+    var postCall = document.getElementById('cs-post-call');
+    if(postCall) postCall.style.display = 'none';
+    if(orbPhone){ orbPhone.style.display = ''; orbPhone.style.opacity = '1'; }
+    var agentHint = document.querySelector('.agent-hint');
+    if(agentHint) agentHint.style.display = '';
+    document.querySelectorAll('.orb-ring').forEach(function(r){ r.style.display = ''; });
+  });
+
+  var postCta = document.getElementById('cs-post-cta');
+  if(postCta) postCta.addEventListener('click', function(){
+    try { gtag('event', 'post_call_contact', { company: 'Roto-Rooter', page: 'audit-test-roto-rooter' }); } catch(e){}
+  });
+
+  if(csEndBtn) csEndBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    endCall(callStartTime ? Math.round((Date.now() - callStartTime) / 1000) : 0);
+  });
+
+  if(orbWrap) orbWrap.addEventListener('click', function(){
+    if(callActive) return;
+    startVoiceCall();
+  });
+})();
+</script>
+</body>
+</html>
