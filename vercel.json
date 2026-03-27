@@ -395,7 +395,13 @@
 { "source": "/audit/texas-disposal", "destination": "/v3/audit-texas-disposal.html" },
 { "source": "/audit/qualified-staffing", "destination": "/v3/audit-qualified-staffing.html" },
 { "source": "/audit/test-roto-rooter", "destination": "/v3/audit-test-roto-rooter.html" },
-{ "source": "/v3/components/:path*", "destination": "/v3/components/:path*" }
+{ "source": "/v3/components/:path*", "destination": "/v3/components/:path*" },
+{ "source": "/blog/ai-payment-negotiation-agent", "destination": "/blog/ai-payment-negotiation-agent.html" },
+{ "source": "/blog/regulation-f-compliance-software", "destination": "/blog/regulation-f-compliance-software.html" },
+{ "source": "/blog/predictive-cash-flow-forecasting", "destination": "/blog/predictive-cash-flow-forecasting.html" },
+{ "source": "/blog/ar-automation-saas", "destination": "/blog/ar-automation-saas.html" },
+{ "source": "/blog/collection-software-sap", "destination": "/blog/collection-software-sap.html" },
+{ "source": "/blog/collection-software-oracle", "destination": "/blog/collection-software-oracle.html" }
   ],
   "headers": [
     {
