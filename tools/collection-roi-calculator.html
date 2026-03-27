@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<meta name="author" content="John Banner">
+<title>Collection ROI Calculator — How Much More Could You Recover? | AgentCollect</title>
+<meta name="description" content="Calculate the ROI of switching from a traditional collection agency to AI collection. Compare recovery rates, fees, and net recovery side by side. Free, no signup.">
+<meta property="og:title" content="Collection ROI Calculator — How Much More Could You Recover? | AgentCollect">
+<meta property="og:description" content="Calculate collection ROI instantly. Compare traditional agency (25-50% fee) vs AI collection (5-15% fee) on your actual delinquent AR portfolio.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.agentcollect.com/tools/collection-roi-calculator">
+<meta property="og:image" content="https://www.agentcollect.com/og.png?v=5">
+<link rel="canonical" href="https://www.agentcollect.com/tools/collection-roi-calculator">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Collection ROI Calculator",
+  "description": "Calculate the ROI of switching from a traditional collection agency to AI-powered collection. Compare recovery rates, fees, and net recovery.",
+  "url": "https://www.agentcollect.com/tools/collection-roi-calculator",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "datePublished": "2026-03-26",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "AgentCollect",
+    "url": "https://www.agentcollect.com"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What is collection ROI?", "acceptedAnswer": {"@type": "Answer", "text": "Collection ROI measures the net return from your debt collection efforts after subtracting all fees and costs. It is calculated as (Amount Recovered minus Collection Fees) divided by Total Delinquent AR. A higher ROI means you are keeping more of each dollar recovered. Traditional agencies typically deliver 10-20% net ROI due to high fees (25-50%), while AI collection platforms deliver 35-45% net ROI with lower fees (5-15%) and higher recovery rates."}},
+    {"@type": "Question", "name": "How much do traditional collection agencies charge?", "acceptedAnswer": {"@type": "Answer", "text": "Traditional collection agencies charge contingency fees of 25-50% of the amount recovered. The exact rate depends on the age of the debt, the volume of accounts, and the agency. First-party placements (under 90 days) typically run 25-35%, while older or smaller placements can reach 40-50%. Some agencies also charge flat fees per account ($10-25) or minimum monthly fees. These fees significantly reduce the net amount you actually receive from recovered debts."}},
+    {"@type": "Question", "name": "What recovery rate should I expect from collections?", "acceptedAnswer": {"@type": "Answer", "text": "Traditional collection agencies recover 20-30% of placed accounts over a 3-6 month period. AI collection platforms like AgentCollect recover approximately 50% within 20 days. The difference comes from technology: AI agents research each debtor individually, identify the right decision-maker, and execute multi-channel outreach at scale. Human collectors are limited to 100-150 accounts each, while AI handles unlimited accounts simultaneously."}},
+    {"@type": "Question", "name": "How does AI collection improve ROI over traditional agencies?", "acceptedAnswer": {"@type": "Answer", "text": "AI collection improves ROI in two ways: higher recovery rates (approximately 50% vs 20-30%) and lower fees (5-15% vs 25-50%). On a $1M delinquent portfolio, a traditional agency at 25% recovery and 35% fee nets you $162,500. AI collection at 50% recovery and 10% fee nets you $450,000. That is 2.8x more money back in your account from the same portfolio."}},
+    {"@type": "Question", "name": "Is there a minimum portfolio size for AI collection?", "acceptedAnswer": {"@type": "Answer", "text": "AgentCollect has no minimum portfolio size, no setup fees, and no contracts. You can start with a single invoice or upload thousands. The platform is designed to scale: it processes up to 85,000 recoveries per day. Whether you have 10 overdue invoices or 10,000, each one gets a dedicated AI agent working it simultaneously."}}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "AgentCollect",
+  "url": "https://www.agentcollect.com",
+  "logo": "https://www.agentcollect.com/og.png",
+  "foundingDate": "2020",
+  "description": "AI-powered debt collection agent. One agent per account. Up to 85,000 recoveries per day.",
+  "sameAs": ["https://www.linkedin.com/company/agentcollect","https://twitter.com/agentcollect"],
+  "founder": {"@type": "Person","name": "John Banner"}
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#FAFBFF;--bg-card:#fff;--bg-dark:#0B1B3D;
+  --border:#E8ECF2;
+  --text:#0B1B3D;--text-mid:#475569;--text-muted:#94A3B8;
+  --indigo:#4F46E5;--indigo-dark:#4338CA;--indigo-light:rgba(79,70,229,.06);--indigo-glow:rgba(79,70,229,.15);
+  --green:#10B981;--green-light:rgba(16,185,129,.06);
+  --red:#EF4444;--yellow:#F59E0B;--orange:#F97316;
+  --mono:'JetBrains Mono',monospace;--sans:'Inter',-apple-system,sans-serif;--display:'Plus Jakarta Sans',sans-serif;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.05);
+  --shadow-md:0 4px 12px rgba(0,0,0,.06);
+  --max-w:1140px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--display);letter-spacing:-.03em;line-height:1.15}
+::selection{background:rgba(79,70,229,.12)}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);height:60px}
+.nav-inner{max-width:var(--max-w);margin:0 auto;padding:0 32px;display:flex;align-items:center;height:100%}
+.logo{display:flex;align-items:center;gap:8px;text-decoration:none;margin-right:40px;font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:-.04em;color:var(--text)}
+.logo-dot{color:var(--indigo)}
+.nav-links{display:flex;gap:28px;flex:1}
+.nav-links a{color:var(--text-mid);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s;white-space:nowrap}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.nav-cta{padding:9px 20px;background:var(--indigo);color:#fff;border:none;border-radius:8px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s;display:inline-flex;align-items:center}
+.nav-cta:hover{background:var(--indigo-dark)}
+
+.hero{padding:120px 32px 64px;max-width:var(--max-w);margin:0 auto}
+.breadcrumb{font-size:13px;color:var(--text-muted);margin-bottom:32px}
+.breadcrumb a{color:var(--indigo);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;background:var(--indigo-light);border:1px solid rgba(79,70,229,.15);border-radius:100px;font-family:var(--mono);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--indigo);margin-bottom:20px}
+.hero h1{font-size:clamp(32px,4.5vw,48px);font-weight:900;color:var(--text);margin-bottom:20px;max-width:760px}
+.hero h1 em{font-style:normal;color:var(--indigo)}
+.hero-sub{font-size:17px;line-height:1.7;color:var(--text-mid);max-width:640px;margin-bottom:32px}
+
+.content{max-width:var(--max-w);margin:0 auto;padding:0 32px 80px}
+.section{margin-bottom:64px}
+.section-tag{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--indigo);margin-bottom:12px;font-weight:500}
+.section h2{font-size:28px;font-weight:800;margin-bottom:16px}
+.section p{font-size:16px;line-height:1.8;color:var(--text-mid);margin-bottom:16px;max-width:720px}
+.section p strong{color:var(--text);font-weight:600}
+
+.calc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:40px;box-shadow:var(--shadow-md)}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:28px}
+.calc-field{display:flex;flex-direction:column;gap:8px}
+.calc-label{font-size:14px;font-weight:600;color:var(--text)}
+.calc-label span{font-weight:400;color:var(--text-muted);font-size:13px}
+.calc-input-wrap{position:relative;display:flex;align-items:center}
+.calc-input-wrap .prefix{position:absolute;left:16px;font-size:15px;font-weight:600;color:var(--text-muted);pointer-events:none}
+.calc-input-wrap .suffix{position:absolute;right:16px;font-size:15px;font-weight:600;color:var(--text-muted);pointer-events:none}
+.calc-input{width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:10px;font-family:var(--sans);font-size:15px;color:var(--text);background:var(--bg);transition:border-color .2s,box-shadow .2s;outline:none}
+.calc-input:focus{border-color:var(--indigo);box-shadow:0 0 0 3px var(--indigo-glow)}
+.calc-input.has-prefix{padding-left:32px}
+.calc-input.has-suffix{padding-right:32px}
+.calc-btn{width:100%;padding:16px 28px;background:var(--indigo);color:#fff;border:none;border-radius:10px;font-family:var(--sans);font-size:16px;font-weight:700;cursor:pointer;transition:background .2s,transform .1s}
+.calc-btn:hover{background:var(--indigo-dark)}
+.calc-btn:active{transform:scale(.985)}
+
+.result-card{display:none;margin-top:32px;background:var(--bg-card);border:1px solid var(--border);border-radius:20px;overflow:hidden;box-shadow:var(--shadow-md)}
+.result-card.visible{display:block;animation:fadeSlideIn .5s ease}
+@keyframes fadeSlideIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.comparison-grid{display:grid;grid-template-columns:200px 1fr 1fr;gap:0}
+.comparison-grid .col-header{padding:20px 24px;font-family:var(--display);font-size:15px;font-weight:800;border-bottom:2px solid var(--border)}
+.comparison-grid .col-header.traditional{background:rgba(239,68,68,.04);color:var(--red)}
+.comparison-grid .col-header.ai{background:rgba(79,70,229,.04);color:var(--indigo)}
+.comparison-grid .col-header.label{background:var(--bg);color:var(--text-muted);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.comparison-grid .cell{padding:16px 24px;border-bottom:1px solid var(--border);font-size:15px;color:var(--text-mid)}
+.comparison-grid .cell.label{background:var(--bg);font-weight:600;color:var(--text);font-size:14px}
+.comparison-grid .cell .big-num{font-family:var(--display);font-size:28px;font-weight:900;letter-spacing:-.03em;display:block;margin-bottom:2px}
+.comparison-grid .cell .big-num.green{color:var(--green)}
+.comparison-grid .cell .big-num.red{color:var(--red)}
+.comparison-grid .cell .big-num.indigo{color:var(--indigo)}
+.comparison-grid .cell .sub{font-size:12px;color:var(--text-muted)}
+
+.bar-compare{padding:24px 32px}
+.bar-compare h4{font-size:16px;font-weight:700;margin-bottom:16px}
+.bar-pair{margin-bottom:20px}
+.bar-pair-label{font-size:13px;font-weight:600;color:var(--text);margin-bottom:8px}
+.bar-row{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.bar-row-label{font-size:12px;font-weight:600;color:var(--text-muted);width:80px;text-align:right}
+.bar-track{flex:1;height:24px;background:var(--bg);border-radius:6px;overflow:hidden;position:relative}
+.bar-fill{height:100%;border-radius:6px;transition:width .8s ease;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-size:11px;font-weight:700;color:#fff;min-width:40px}
+.bar-fill.traditional{background:var(--red)}
+.bar-fill.ai{background:var(--indigo)}
+
+.diff-banner{background:linear-gradient(135deg,var(--indigo),var(--indigo-dark));padding:28px 32px;display:flex;align-items:center;justify-content:center;gap:12px}
+.diff-banner .diff-amount{font-family:var(--display);font-size:36px;font-weight:900;color:#fff;letter-spacing:-.03em}
+.diff-banner .diff-label{font-size:15px;color:rgba(255,255,255,.8)}
+
+.result-agent{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:24px;margin:24px 32px 32px;position:relative;overflow:hidden}
+.result-agent::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--indigo),var(--green))}
+.result-agent p{font-size:14px;color:var(--text-mid);line-height:1.7;margin:0}
+.result-agent strong{color:var(--text)}
+
+.disclaimer{font-size:12px;color:var(--text-muted);line-height:1.6;padding:16px 32px 24px;border-top:1px solid var(--border)}
+
+.data-table{width:100%;border-collapse:collapse;margin:24px 0;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.data-table th{background:var(--bg);font-family:var(--display);font-size:13px;font-weight:700;color:var(--text);text-align:left;padding:14px 20px;border-bottom:1px solid var(--border)}
+.data-table td{font-size:14px;color:var(--text-mid);padding:14px 20px;border-bottom:1px solid var(--border)}
+.data-table tr:last-child td{border-bottom:none}
+
+.faq-item{border-bottom:1px solid var(--border);padding:24px 0}
+.faq-q{font-family:var(--display);font-size:17px;font-weight:700;color:var(--text);margin-bottom:10px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-size:20px;color:var(--text-muted);font-weight:400;transition:transform .2s}
+.faq-item.open .faq-q::after{content:'\2212'}
+.faq-a{font-size:15px;color:var(--text-mid);line-height:1.7;max-width:720px;max-height:0;overflow:hidden;transition:max-height .3s ease,opacity .3s ease;opacity:0}
+.faq-item.open .faq-a{max-height:400px;opacity:1}
+
+.tool-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:28px;text-decoration:none;display:block;transition:border-color .2s,box-shadow .2s}
+.tool-card:hover{border-color:var(--indigo);box-shadow:0 4px 16px rgba(79,70,229,.08)}
+.tool-card-tag{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--indigo);margin-bottom:8px;font-weight:500}
+.tool-card h3{font-size:18px;font-weight:800;color:var(--text);margin-bottom:8px}
+.tool-card p{font-size:14px;color:var(--text-mid);line-height:1.6;margin:0}
+.tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+
+.cta-box{background:var(--bg-dark);border-radius:20px;padding:64px 40px;text-align:center;margin:64px 0;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:-40%;left:-40%;width:180%;height:180%;background:radial-gradient(ellipse at 50% 80%,rgba(79,70,229,.12) 0%,transparent 50%);pointer-events:none}
+.cta-box h2{font-size:32px;font-weight:900;color:#fff;margin-bottom:12px;position:relative}
+.cta-box p{font-size:16px;color:var(--text-muted);margin-bottom:28px;position:relative}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:10px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .2s;position:relative}
+.cta-btn:hover{background:var(--indigo-dark)}
+
+.footer{border-top:1px solid var(--border);padding:40px 32px;text-align:center}
+.footer-inner{max-width:var(--max-w);margin:0 auto}
+.footer-logo{font-family:var(--display);font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.03em;margin-bottom:8px}
+.footer-logo span{color:var(--indigo)}
+.footer-links{display:flex;gap:24px;justify-content:center;margin-bottom:12px}
+.footer-links a{font-size:13px;color:var(--text-muted);text-decoration:none}
+.footer-links a:hover{color:var(--text)}
+.footer-copy{font-size:12px;color:var(--text-muted)}
+
+@media(max-width:768px){
+  .hero{padding:100px 20px 48px}
+  .content{padding:0 20px 60px}
+  .calc-grid{grid-template-columns:1fr}
+  .calc-card{padding:24px}
+  .comparison-grid{grid-template-columns:1fr}
+  .comparison-grid .col-header,.comparison-grid .cell{padding:12px 16px}
+  .comparison-grid .cell .big-num{font-size:22px}
+  .bar-compare{padding:20px}
+  .diff-banner{flex-direction:column;padding:20px}
+  .diff-banner .diff-amount{font-size:28px}
+  .result-agent{margin:20px}
+  .disclaimer{padding:12px 20px 20px}
+  .nav-links{display:none}
+  .cta-box{padding:48px 24px}
+  .tools-grid{grid-template-columns:1fr}
+}
+</style>
+<script>
+(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "vtpmvp6kvr");
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GRZZT9K05B"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GRZZT9K05B');</script>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">AgentCollect<span class="logo-dot">.</span></a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/tools" class="active">Tools</a>
+      <a href="/glossary">Glossary</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <a href="https://cal.com/johnb/30" class="nav-cta" target="_blank" rel="noopener">Get a demo</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="breadcrumb">
+    <a href="/">Home</a> / <a href="/tools">Tools</a> / Collection ROI Calculator
+  </div>
+  <div class="hero-tag">Free Tool</div>
+  <h1><em>Collection ROI</em> Calculator</h1>
+  <p class="hero-sub">How much more could you recover from your delinquent accounts receivable? A collection ROI calculator compares what you net from a traditional collection agency versus AI-powered collection. Enter your portfolio below to see the difference in dollars and percentage. Most companies are surprised by how much they leave on the table with legacy agencies.</p>
+</div>
+
+<div class="content">
+
+  <div class="section">
+    <div class="calc-card">
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label class="calc-label" for="total-ar">Total Delinquent AR <span>($)</span></label>
+          <div class="calc-input-wrap">
+            <span class="prefix">$</span>
+            <input type="text" id="total-ar" class="calc-input has-prefix" placeholder="500,000" inputmode="decimal" autocomplete="off">
+          </div>
+        </div>
+        <div class="calc-field">
+          <label class="calc-label" for="current-rate">Current Recovery Rate <span>(%)</span></label>
+          <div class="calc-input-wrap">
+            <input type="text" id="current-rate" class="calc-input has-suffix" placeholder="25" inputmode="decimal" autocomplete="off">
+            <span class="suffix">%</span>
+          </div>
+        </div>
+        <div class="calc-field">
+          <label class="calc-label" for="current-fee">Current Collection Fee <span>(%)</span></label>
+          <div class="calc-input-wrap">
+            <input type="text" id="current-fee" class="calc-input has-suffix" placeholder="35" inputmode="decimal" autocomplete="off">
+            <span class="suffix">%</span>
+          </div>
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calculateROI()">Calculate ROI</button>
+    </div>
+
+    <div class="result-card" id="result-card">
+      <div class="comparison-grid" id="comparison-grid"></div>
+
+      <div class="bar-compare" id="bar-compare"></div>
+
+      <div class="diff-banner" id="diff-banner"></div>
+
+      <div class="result-agent">
+        <p><strong>See your actual ROI with real data.</strong> Upload your delinquent accounts and we will show you projected recovery based on your specific portfolio composition. No commitment, no setup fees, no minimums. AgentCollect is trusted by Fortune 500 companies including Microsoft and Dell. Founded 2020, YC S23.</p>
+      </div>
+
+      <div class="disclaimer">
+        <strong>Disclaimer:</strong> This calculator uses approximate industry averages for illustration. Traditional agency fees typically range 25-50% of recovered amounts. AgentCollect fees range 5-15% depending on volume and account age. The ~50% AI recovery rate is based on AgentCollect platform averages within 20 days. Actual results vary by portfolio composition, account age, and industry. Past performance does not guarantee future results.
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-tag">Why It Matters</div>
+    <h2>The Hidden Cost of Collection Fees</h2>
+    <p>Most companies focus on recovery rate when evaluating a collection partner, but <strong>net recovery</strong> is the metric that matters. A 30% recovery rate with a 40% fee means you keep only 18 cents of every delinquent dollar. A 50% recovery rate with a 10% fee means you keep 45 cents. Same effort, 2.5x the result.</p>
+    <p>Traditional collection agencies built their pricing model when human collectors were the only option. Each collector handles 100-150 accounts, so agencies need high fees to cover labor costs. AI collection eliminates that constraint. One AI agent per account, unlimited accounts simultaneously, with overhead costs distributed across the platform.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-tag">Comparison</div>
+    <h2>Traditional Agency vs. AI Collection</h2>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Traditional Agency</th>
+          <th>AI Collection (AgentCollect)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Recovery rate</strong></td>
+          <td>20-30% over 3-6 months</td>
+          <td>~50% within 20 days</td>
+        </tr>
+        <tr>
+          <td><strong>Fee structure</strong></td>
+          <td>25-50% contingency</td>
+          <td>5-15% success-only</td>
+        </tr>
+        <tr>
+          <td><strong>Time to results</strong></td>
+          <td>3-6 months</td>
+          <td>~20 days</td>
+        </tr>
+        <tr>
+          <td><strong>Mandate duration</strong></td>
+          <td>90 days typical</td>
+          <td>Up to 12 months</td>
+        </tr>
+        <tr>
+          <td><strong>Accounts per collector</strong></td>
+          <td>100-150 per human</td>
+          <td>1 AI agent per account (unlimited)</td>
+        </tr>
+        <tr>
+          <td><strong>Channels</strong></td>
+          <td>Phone + mail</td>
+          <td>Email + phone + SMS + attorney letters</td>
+        </tr>
+        <tr>
+          <td><strong>Setup fee</strong></td>
+          <td>Varies ($0-$25/account)</td>
+          <td>$0</td>
+        </tr>
+        <tr>
+          <td><strong>Minimum</strong></td>
+          <td>Often 50-100 accounts</td>
+          <td>No minimum</td>
+        </tr>
+        <tr>
+          <td><strong>Capacity</strong></td>
+          <td>Limited by headcount</td>
+          <td>Up to 85,000 recoveries/day</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-tag">FAQ</div>
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item open">
+      <div class="faq-q" onclick="toggleFaq(this)">What is collection ROI?</div>
+      <div class="faq-a">Collection ROI measures the net return from your debt collection efforts after subtracting all fees and costs. It is calculated as (Amount Recovered minus Collection Fees) divided by Total Delinquent AR. A higher ROI means you are keeping more of each dollar recovered. Traditional agencies typically deliver 10-20% net ROI due to high fees (25-50%), while AI collection platforms deliver 35-45% net ROI with lower fees (5-15%) and higher recovery rates.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How much do traditional collection agencies charge?</div>
+      <div class="faq-a">Traditional collection agencies charge contingency fees of 25-50% of the amount recovered. The exact rate depends on the age of the debt, the volume of accounts, and the agency. First-party placements (under 90 days) typically run 25-35%, while older or smaller placements can reach 40-50%. Some agencies also charge flat fees per account ($10-25) or minimum monthly fees.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What recovery rate should I expect from collections?</div>
+      <div class="faq-a">Traditional collection agencies recover 20-30% of placed accounts over a 3-6 month period. AI collection platforms like AgentCollect recover approximately 50% within 20 days. The difference comes from technology: AI agents research each debtor individually, identify the right decision-maker, and execute multi-channel outreach at scale.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How does AI collection improve ROI over traditional agencies?</div>
+      <div class="faq-a">AI collection improves ROI in two ways: higher recovery rates (approximately 50% vs 20-30%) and lower fees (5-15% vs 25-50%). On a $1M delinquent portfolio, a traditional agency at 25% recovery and 35% fee nets you $162,500. AI collection at 50% recovery and 10% fee nets you $450,000. That is 2.8x more money back in your account from the same portfolio.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Is there a minimum portfolio size for AI collection?</div>
+      <div class="faq-a">AgentCollect has no minimum portfolio size, no setup fees, and no contracts. You can start with a single invoice or upload thousands. The platform processes up to 85,000 recoveries per day. Whether you have 10 overdue invoices or 10,000, each one gets a dedicated AI agent working it simultaneously.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-tag">Related Tools</div>
+    <h2>More Free AR Tools</h2>
+    <div class="tools-grid">
+      <a href="/tools/dso-calculator" class="tool-card">
+        <div class="tool-card-tag">Calculator</div>
+        <h3>DSO Calculator</h3>
+        <p>Calculate your Days Sales Outstanding and see how it compares to industry benchmarks.</p>
+      </a>
+      <a href="/tools/ar-aging-report" class="tool-card">
+        <div class="tool-card-tag">Generator</div>
+        <h3>AR Aging Report Generator</h3>
+        <p>Build an accounts receivable aging report with visual breakdown and CSV export.</p>
+      </a>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <h2>See Your Actual ROI. Book a Call.</h2>
+    <p>Upload your delinquent accounts and get a projected recovery analysis based on your real data.</p>
+    <a href="https://cal.com/johnb/30" class="cta-btn" target="_blank" rel="noopener">Book a demo <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">AgentCollect<span>.</span></div>
+    <div class="footer-links">
+      <a href="/pricing">Pricing</a>
+      <a href="/how-it-works">How It Works</a>
+      <a href="/blog">Blog</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 AgentCollect, Inc. 490 Post St, San Francisco, CA &middot; Founded 2020 &middot; YC S23</div>
+  </div>
+</footer>
+
+<script>
+function parseNum(str) {
+  return parseFloat(str.replace(/[^0-9.\-]/g, '')) || 0;
+}
+function fmt(n) {
+  return '$' + n.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+}
+
+function calculateROI() {
+  const totalAR = parseNum(document.getElementById('total-ar').value);
+  const currentRate = parseNum(document.getElementById('current-rate').value) / 100;
+  const currentFee = parseNum(document.getElementById('current-fee').value) / 100;
+
+  if (!totalAR || !currentRate || !currentFee) {
+    alert('Please fill in all three fields.');
+    return;
+  }
+
+  // Traditional (user's numbers)
+  const tradRecovered = totalAR * currentRate;
+  const tradFeeAmt = tradRecovered * currentFee;
+  const tradNet = tradRecovered - tradFeeAmt;
+  const tradROI = (tradNet / totalAR * 100);
+
+  // AI (AgentCollect estimates)
+  const aiRate = 0.50;
+  const aiFee = 0.10;
+  const aiRecovered = totalAR * aiRate;
+  const aiFeeAmt = aiRecovered * aiFee;
+  const aiNet = aiRecovered - aiFeeAmt;
+  const aiROI = (aiNet / totalAR * 100);
+
+  const diff = aiNet - tradNet;
+  const diffPct = totalAR > 0 ? ((diff / tradNet) * 100) : 0;
+
+  // Comparison grid
+  document.getElementById('comparison-grid').innerHTML = `
+    <div class="col-header label">Metric</div>
+    <div class="col-header traditional">Traditional Agency</div>
+    <div class="col-header ai">AI Collection</div>
+
+    <div class="cell label">Recovery Rate</div>
+    <div class="cell"><span class="big-num red">${(currentRate*100).toFixed(0)}%</span></div>
+    <div class="cell"><span class="big-num indigo">~50%</span></div>
+
+    <div class="cell label">Gross Recovered</div>
+    <div class="cell">${fmt(tradRecovered)}</div>
+    <div class="cell">${fmt(aiRecovered)}</div>
+
+    <div class="cell label">Collection Fee</div>
+    <div class="cell">${(currentFee*100).toFixed(0)}% = ${fmt(tradFeeAmt)}</div>
+    <div class="cell">10% = ${fmt(aiFeeAmt)}</div>
+
+    <div class="cell label">Net Recovery</div>
+    <div class="cell"><span class="big-num red">${fmt(tradNet)}</span><span class="sub">${tradROI.toFixed(1)}% of portfolio</span></div>
+    <div class="cell"><span class="big-num green">${fmt(aiNet)}</span><span class="sub">${aiROI.toFixed(1)}% of portfolio</span></div>
+  `;
+
+  // Bar comparison
+  const maxVal = Math.max(aiNet, tradNet, 1);
+  document.getElementById('bar-compare').innerHTML = `
+    <h4>Net Recovery Comparison</h4>
+    <div class="bar-pair">
+      <div class="bar-pair-label">Net dollars you keep after all fees</div>
+      <div class="bar-row">
+        <div class="bar-row-label">Traditional</div>
+        <div class="bar-track"><div class="bar-fill traditional" style="width:${(tradNet/maxVal*100).toFixed(1)}%">${fmt(tradNet)}</div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-row-label">AI</div>
+        <div class="bar-track"><div class="bar-fill ai" style="width:${(aiNet/maxVal*100).toFixed(1)}%">${fmt(aiNet)}</div></div>
+      </div>
+    </div>
+  `;
+
+  // Diff banner
+  document.getElementById('diff-banner').innerHTML = `
+    <div class="diff-label">You could recover an additional</div>
+    <div class="diff-amount">${fmt(diff)}</div>
+    <div class="diff-label">with AI collection (${diffPct > 0 ? '+' : ''}${diffPct.toFixed(0)}% more net recovery)</div>
+  `;
+
+  const card = document.getElementById('result-card');
+  card.style.display = 'block';
+  card.classList.add('visible');
+  card.scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+
+function toggleFaq(el) {
+  el.parentElement.classList.toggle('open');
+}
+</script>
+</body>
+</html>

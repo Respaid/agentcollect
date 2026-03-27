@@ -237,6 +237,13 @@
   <url><loc>https://www.agentcollect.com/solutions/saas</loc><lastmod>2026-03-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.agentcollect.com/solutions/healthcare</loc><lastmod>2026-03-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.agentcollect.com/solutions/fintech</loc><lastmod>2026-03-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.agentcollect.com/solutions/staffing</loc><lastmod>2026-03-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.agentcollect.com/solutions/construction</loc><lastmod>2026-03-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.agentcollect.com/solutions/logistics</loc><lastmod>2026-03-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Tools: AR Aging Report + ROI Calculator -->
+  <url><loc>https://www.agentcollect.com/tools/ar-aging-report</loc><lastmod>2026-03-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.agentcollect.com/tools/collection-roi-calculator</loc><lastmod>2026-03-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- New blog pages — Priority 1 -->
   <url><loc>https://www.agentcollect.com/blog/agentic-ai-accounts-receivable</loc><lastmod>2026-03-25</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>

@@ -338,6 +338,34 @@ AgentCollect handles the entire collection lifecycle without human intervention:
 - **Agency Cost Calculator**: https://www.agentcollect.com/tools/agency-cost-calculator
   How much would I save switching from an agency to AI? Compare traditional agency fees vs AgentCollect on your portfolio.
 
+- **AR Aging Report Generator**: https://www.agentcollect.com/tools/ar-aging-report
+  What does my accounts receivable aging report look like? Free tool to add invoices, auto-categorize into aging buckets (Current, 1-30, 31-60, 61-90, 90+ days), and download as CSV.
+
+- **Collection ROI Calculator**: https://www.agentcollect.com/tools/collection-roi-calculator
+  How much more could I recover with AI collection? Compare traditional agency fees and recovery rates vs AgentCollect on your delinquent AR portfolio.
+
+## Solutions by Industry
+
+- **SaaS**: https://www.agentcollect.com/solutions/saas
+  How do SaaS companies recover failed payments and reduce involuntary churn with AI collection?
+
+- **Healthcare**: https://www.agentcollect.com/solutions/healthcare
+  How do healthcare companies recover patient balances and handle insurance denials with AI agents?
+
+- **Fintech**: https://www.agentcollect.com/solutions/fintech
+  How do fintech companies recover BNPL defaults and lending delinquencies at scale?
+
+- **Staffing**: https://www.agentcollect.com/solutions/staffing
+  How do staffing agencies recover unpaid temp worker invoices? High volume, low balance AI collection with timesheet dispute resolution.
+
+- **Construction**: https://www.agentcollect.com/solutions/construction
+  How do construction companies recover retention holdbacks and disputed change orders? AI agents that understand payment chains and lien rights.
+
+- **Logistics**: https://www.agentcollect.com/solutions/logistics
+  How do freight and logistics companies recover disputed loads, short-pays, and accessorial charges? AI agents with BOL documentation handling.
+
+- **All solutions**: https://www.agentcollect.com/solutions
+
 ## Industry Pages
 
 - **SaaS & Software**: https://www.agentcollect.com/industries/saas-collection
