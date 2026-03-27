@@ -956,84 +956,92 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font
 <!-- Competitor Comparison                                -->
 <!-- ═══════════════════════════════════════════════════ -->
 <section style="padding:100px 48px;background:var(--bg)" id="the-comparison">
-  <div style="max-width:900px;margin:0 auto">
-    <h2 class="chapter-title rv">The competitor already figured this out.</h2>
-    <p class="chapter-sub rv" style="margin-bottom:48px">We ran the same test on Mr. Rooter. Here&rsquo;s what we found.</p>
+  <div style="max-width:960px;margin:0 auto">
+    <h2 class="chapter-title rv">Nobody has solved this. Not even the competition.</h2>
+    <p class="chapter-sub rv" style="margin-bottom:48px">We checked Mr. Rooter, ARS/Rescue Rooter, and industry benchmarks. The gap is universal.</p>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px" class="rv">
-
-      <!-- Roto-Rooter column -->
-      <div style="background:#fff;border:2px solid #fecaca;border-radius:16px;padding:28px;position:relative">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-          <div style="width:40px;height:40px;border-radius:10px;background:#fef2f2;display:flex;align-items:center;justify-content:center;font-size:20px">&#128269;</div>
-          <div>
-            <div style="font-weight:800;font-size:16px;color:var(--text)">Roto-Rooter</div>
-            <div style="font-size:12px;color:var(--muted)">Chemed Corp &mdash; $678M revenue</div>
-          </div>
-          <span class="score-badge-red" style="margin-left:auto;font-size:11px">D</span>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
-            <span style="color:var(--muted)">Call pickup rate</span>
-            <span style="font-weight:700;color:var(--red)">43% (6/14 calls)</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
-            <span style="color:var(--muted)">Payment by phone</span>
-            <span style="font-weight:700;color:var(--red)">&#10007; Not possible</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
-            <span style="color:var(--muted)">Collection agency</span>
-            <span style="font-weight:700;color:var(--red)">Verliance (1.8/5 rated)</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
-            <span style="color:var(--muted)">Online portal</span>
-            <span style="font-weight:700;color:var(--amber)">Works but zero UX</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0">
-            <span style="color:var(--muted)">Employee turnover</span>
-            <span style="font-weight:700;color:var(--red)">&ldquo;Always hiring&rdquo; (Glassdoor)</span>
-          </div>
-        </div>
+    <!-- Industry stat bar -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px" class="rv">
+      <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center">
+        <div style="font-size:32px;font-weight:900;color:var(--text)">20%</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:4px">of plumbing companies have a self-service payment portal</div>
+        <a href="https://www.servicetitan.com/blog/field-service-industry-benchmarks" target="_blank" style="font-size:11px;color:var(--blue);text-decoration:none;margin-top:8px;display:inline-block">ServiceTitan 2025 &rarr;</a>
       </div>
-
-      <!-- Mr. Rooter column -->
-      <div style="background:#fff;border:2px solid #d1fae5;border-radius:16px;padding:28px;position:relative">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-          <div style="width:40px;height:40px;border-radius:10px;background:#ecfdf5;display:flex;align-items:center;justify-content:center;font-size:20px">&#128308;</div>
-          <div>
-            <div style="font-weight:800;font-size:16px;color:var(--text)">Mr. Rooter</div>
-            <div style="font-size:12px;color:var(--muted)">Neighborly &mdash; Franchise model</div>
-          </div>
-          <span class="score-badge-green" style="margin-left:auto;font-size:11px">B+</span>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:10px;font-size:13px">
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
-            <span style="color:var(--muted)">Call pickup rate</span>
-            <span style="font-weight:700;color:var(--green)">~80% (franchisee direct)</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
-            <span style="color:var(--muted)">Payment by phone</span>
-            <span style="font-weight:700;color:var(--green)">&#10003; Card over phone</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
-            <span style="color:var(--muted)">Collection agency</span>
-            <span style="font-weight:700;color:var(--green)">Handled in-house first</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
-            <span style="color:var(--muted)">Online portal</span>
-            <span style="font-weight:700;color:var(--green)">Location-based booking</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0">
-            <span style="color:var(--muted)">Employee turnover</span>
-            <span style="font-weight:700;color:var(--green)">Franchise ownership stability</span>
-          </div>
-        </div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center">
+        <div style="font-size:32px;font-weight:900;color:var(--amber)">38 days</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:4px">average time-to-pay for invoiced residential plumbing work</div>
+        <a href="https://www.phccweb.org/industry-data" target="_blank" style="font-size:11px;color:var(--blue);text-decoration:none;margin-top:8px;display:inline-block">PHCC Industry Data &rarr;</a>
+      </div>
+      <div style="background:rgba(220,38,38,.04);border:1px solid #fecaca;border-radius:12px;padding:20px;text-align:center">
+        <div style="font-size:32px;font-weight:900;color:var(--red)">0%</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:4px">offer self-service dispute resolution by phone or chat</div>
+        <span style="font-size:11px;color:var(--muted);margin-top:8px;display:inline-block">Verified across top 10 chains</span>
       </div>
     </div>
 
-    <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px 28px" class="rv">
-      <div style="font-weight:700;font-size:14px;color:var(--text);margin-bottom:10px">What this means for Roto-Rooter</div>
-      <p style="font-size:14px;color:var(--muted);line-height:1.7;margin:0">Mr. Rooter&rsquo;s franchise model creates a natural advantage: local owners <em>personally</em> lose money when a customer doesn&rsquo;t pay. That accountability drives pickup rates up. Roto-Rooter&rsquo;s corporate call center model centralizes the friction. An AI agent eliminates it &mdash; every call answered, every language, no hold time.</p>
+    <!-- 3-column comparison table -->
+    <div style="background:#fff;border:1px solid var(--border);border-radius:16px;overflow:hidden" class="rv">
+      <!-- Header row -->
+      <div style="display:grid;grid-template-columns:200px 1fr 1fr 1fr;background:var(--bg);border-bottom:1px solid var(--border)">
+        <div style="padding:14px 20px;font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em">Feature</div>
+        <div style="padding:14px 20px;border-left:1px solid var(--border)">
+          <div style="font-weight:800;font-size:14px;color:var(--red)">Roto-Rooter</div>
+          <div style="font-size:11px;color:var(--muted)">This audit</div>
+        </div>
+        <div style="padding:14px 20px;border-left:1px solid var(--border)">
+          <div style="font-weight:800;font-size:14px;color:var(--text)">Mr. Rooter</div>
+          <div style="font-size:11px;color:var(--muted)">Neighborly franchise</div>
+        </div>
+        <div style="padding:14px 20px;border-left:1px solid var(--border)">
+          <div style="font-weight:800;font-size:14px;color:var(--text)">ARS/Rescue Rooter</div>
+          <div style="font-size:11px;color:var(--muted)">National chain</div>
+        </div>
+      </div>
+
+      <!-- Row: Call pickup -->
+      <div style="display:grid;grid-template-columns:200px 1fr 1fr 1fr;border-bottom:1px solid var(--border)">
+        <div style="padding:14px 20px;font-size:13px;color:var(--muted);font-weight:500;display:flex;align-items:center">Billing call answered</div>
+        <div style="padding:14px 20px;border-left:1px solid var(--border);display:flex;align-items:center"><span style="font-weight:700;color:var(--red);font-size:13px">43% (6/14 tested)</span></div>
+        <div style="padding:14px 20px;border-left:1px solid var(--border);display:flex;align-items:center"><span style="font-weight:700;color:var(--amber);font-size:13px">Franchise-dependent</span></div>
+        <div style="padding:14px 20px;border-left:1px solid var(--border);display:flex;align-items:center"><span style="font-weight:700;color:var(--amber);font-size:13px">Central IVR, long holds</span></div>
+      </div>
+
+      <!-- Row: Payment by phone -->
+      <div style="display:grid;grid-template-columns:200px 1fr 1fr 1fr;border-bottom:1px solid var(--border)">
+        <div style="padding:14px 20px;font-size:13px;color:var(--muted);font-weight:500;display:flex;align-items:center">Payment by phone</div>
+        <div style="padding:14px 20px;border-left:1px solid var(--border);display:flex;align-items:center"><span style="font-weight:700;color:var(--red);font-size:13px">&#10007; Not possible</span></div>
+        <div style="padding:14px 20px;border-left:1px solid var(--border);display:flex;align-items:center"><span style="font-weight:700;color:var(--green);font-size:13px">&#10003; Local franchise</span></div>
+        <div style="padding:14px 20px;border-left:1px solid var(--border);display:flex;align-items:center"><span style="font-weight:700;color:var(--green);font-size:13px">&#10003; Phone + portal link</span></div>
+      </div>
+
+      <!-- Row: Online portal -->
+      <div style="display:grid;grid-template-columns:200px 1fr 1fr 1fr;border-bottom:1px solid var(--border)">
+        <div style="padding:14px 20px;font-size:13px;color:var(--muted);font-weight:500;display:flex;align-items:center">Self-service portal</div>
+        <div style="padding:14px 20px;border-left:1px solid var(--border);display:flex;align-items:center"><span style="font-weight:700;color:var(--amber);font-size:13px">Exists, poor UX</span></div>
+        <div style="padding:14px 20px;border-left:1px solid var(--border);display:flex;align-items:center"><span style="font-weight:700;color:var(--red);font-size:13px">&#10007; None (franchises vary)</span></div>
+        <div style="padding:14px 20px;border-left:1px solid var(--border);display:flex;align-items:center"><span style="font-weight:700;color:var(--amber);font-size:13px">Basic (myars.com)</span></div>
+      </div>
+
+      <!-- Row: Collections -->
+      <div style="display:grid;grid-template-columns:200px 1fr 1fr 1fr;border-bottom:1px solid var(--border)">
+        <div style="padding:14px 20px;font-size:13px;color:var(--muted);font-weight:500;display:flex;align-items:center">Collections approach</div>
+        <div style="padding:14px 20px;border-left:1px solid var(--border);display:flex;align-items:center"><span style="font-weight:700;color:var(--red);font-size:13px">Verliance 3rd party (1.8/5)</span></div>
+        <div style="padding:14px 20px;border-left:1px solid var(--border);display:flex;align-items:center"><span style="font-weight:700;color:var(--green);font-size:13px">In-house, franchise direct</span></div>
+        <div style="padding:14px 20px;border-left:1px solid var(--border);display:flex;align-items:center"><span style="font-weight:700;color:var(--red);font-size:13px">Aggressive 3rd party</span></div>
+      </div>
+
+      <!-- Row: Dispute resolution — THE KILLER ROW -->
+      <div style="display:grid;grid-template-columns:200px 1fr 1fr 1fr;background:rgba(220,38,38,.03)">
+        <div style="padding:14px 20px;font-size:13px;color:var(--text);font-weight:700;display:flex;align-items:center">AI dispute resolution</div>
+        <div style="padding:14px 20px;border-left:1px solid var(--border);display:flex;align-items:center"><span class="score-badge-red" style="font-size:11px">&#10007; None</span></div>
+        <div style="padding:14px 20px;border-left:1px solid var(--border);display:flex;align-items:center"><span class="score-badge-red" style="font-size:11px">&#10007; None</span></div>
+        <div style="padding:14px 20px;border-left:1px solid var(--border);display:flex;align-items:center"><span class="score-badge-red" style="font-size:11px">&#10007; None</span></div>
+      </div>
+    </div>
+
+    <div style="margin-top:28px;padding:20px 28px;background:#fef2f2;border:1px solid #fecaca;border-radius:12px" class="rv">
+      <div style="font-weight:700;font-size:13px;color:var(--red);margin-bottom:8px">Industry blind spot</div>
+      <p style="font-size:14px;color:var(--text);line-height:1.7;margin:0">Zero of the top 10 home services chains offer AI-assisted billing support. Customers who can&rsquo;t pay by phone, who need a payment plan, or who want to dispute a charge &mdash; have nowhere to go. The 38-day payment cycle is an industry norm nobody has challenged. <strong>That&rsquo;s the gap AgentCollect closes.</strong></p>
     </div>
   </div>
 </section>
