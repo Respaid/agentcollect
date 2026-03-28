@@ -838,7 +838,7 @@
                             <svg id="orb-logo-fallback" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" style="width:36px;height:36px;opacity:.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                         </div>
                     </div>
-                    <div class="orb-bubble" id="orb-bubble">Bonjour, je suis Sophie...</div>
+                    <div class="orb-bubble" id="orb-bubble">Bonjour, je suis Camille...</div>
                 </div>
                 <!-- Unified voice/chat widget -->
                 <div class="uw" id="unified-widget">
@@ -847,7 +847,7 @@
                         <button class="uw-mic-btn" id="uw-mic-btn">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
                         </button>
-                        <div class="uw-mic-label">Parler avec Sophie</div>
+                        <div class="uw-mic-label">Parler avec Camille</div>
                     </div>
                     <!-- Voice: connecting -->
                     <div class="uw-connecting" id="uw-connecting" style="display:none">
@@ -2938,7 +2938,7 @@
         var orbBubble = document.getElementById('orb-bubble');
 
         if (data && data.name) {
-            orbBubble.textContent = "Bonjour, je suis Sophie de " + data.name + "...";
+            orbBubble.textContent = "Bonjour, je suis Camille de " + data.name + "...";
         }
 
         // Set brand logo (top title area) — use Google favicon (reliable, always square icon)
@@ -3188,7 +3188,7 @@
 
                 retellClient.on('agent_start_talking', function() {
                     startWaveformAnim('agent');
-                    uwStatus.textContent = 'Sophie parle...';
+                    uwStatus.textContent = 'Camille parle...';
                 });
 
                 retellClient.on('agent_stop_talking', function() {
@@ -3219,7 +3219,7 @@
                 // Show error inline
                 var label = document.querySelector('.uw-mic-label');
                 if (label) { label.textContent = 'Connexion impossible — reessayez'; label.style.color = '#ef4444'; }
-                setTimeout(function() { if (label) { label.textContent = 'Parler avec Sophie'; label.style.color = ''; } }, 3000);
+                setTimeout(function() { if (label) { label.textContent = 'Parler avec Camille'; label.style.color = ''; } }, 3000);
             }
         })();
     }

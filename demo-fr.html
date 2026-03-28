@@ -533,7 +533,7 @@ async function toggleCall() {
 
     retellClient.on('agent_start_talking', function() {
       container.classList.add('speaking');
-      statusText.textContent = 'Sophie parle...';
+      statusText.textContent = 'Camille parle...';
     });
 
     retellClient.on('agent_stop_talking', function() {
@@ -613,7 +613,7 @@ function renderTranscript(messages) {
     if (!(m.content || '').trim()) continue;
     var isAgent = m.role === 'agent';
     var cls = isAgent ? 't-agent' : 't-user';
-    var label = isAgent ? 'Sophie' : 'Vous';
+    var label = isAgent ? 'Camille' : 'Vous';
     html += '<div class="t-msg ' + cls + '"><span class="t-role">' + label + '</span>' + m.content + '</div>';
   }
   box.innerHTML = html;
