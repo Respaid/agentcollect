@@ -180,14 +180,11 @@
         .dossier-line-key{font-size:13px;font-weight:700;color:var(--text);min-width:100px;flex-shrink:0;font-family:var(--display);letter-spacing:-.02em}
         .dossier-line-val{flex:1}
 
-        /* Skeleton shimmer for loading state */
-        .skeleton{background:linear-gradient(90deg,#e8ecf2 25%,#f0f3f7 50%,#e8ecf2 75%);background-size:200% 100%;animation:shimmer 1.8s ease-in-out infinite;border-radius:4px;height:16px;width:100%}
-        .skeleton.short{width:35%}.skeleton.med{width:60%}.skeleton.long{width:80%}
-        .skeleton-kv{display:flex;gap:12px;padding:7px 0;border-bottom:1px solid rgba(0,0,0,.03)}
-        .skeleton-kv .skeleton:first-child{width:72px;height:14px;flex-shrink:0}
-        .skeleton-kv .skeleton:last-child{flex:1;height:14px}
-        @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
-        .dossier-line.replacing{transition:opacity .2s ease;opacity:0}
+        /* Loading placeholder lines */
+        .dossier-loading-line{font-size:14px;color:var(--text-dim);padding:6px 0;border-bottom:1px solid rgba(0,0,0,.03);font-style:italic}
+        .dossier-loading-line .typing-dots{display:inline-block}
+        .dossier-loading-line .typing-dots::after{content:'...';animation:dotpulse 1.4s steps(4,end) infinite}
+        @keyframes dotpulse{0%{content:''}25%{content:'.'}50%{content:'..'}75%{content:'...'}}
         .dossier-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
         .dossier-meta-chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--text-muted);background:rgba(79,70,229,.04);padding:3px 10px;border-radius:8px;letter-spacing:-.01em}
         .dossier-meta-chip svg{width:12px;height:12px;opacity:.6}
@@ -1996,19 +1993,19 @@
     // Remove skeletons and show generic fallback when API fails or times out
     function clearSkeletons() {
         var productsEl = document.getElementById('dossier-products');
-        if (productsEl && productsEl.querySelector('.skeleton')) {
+        if (productsEl && productsEl.querySelector('.dossier-loading-line')) {
             productsEl.innerHTML = '';
             addDossierLine(productsEl, 'Produits et services B2B', 'green');
             addDossierKVLine(productsEl, 'Clients', 'Entreprises et ETI');
         }
         var risksEl = document.getElementById('dossier-risks');
-        if (risksEl && risksEl.querySelector('.skeleton')) {
+        if (risksEl && risksEl.querySelector('.dossier-loading-line')) {
             risksEl.innerHTML = '';
             addDossierLine(risksEl, 'Cycles de paiement au-dela des termes convenus', 'amber');
             addDossierLine(risksEl, 'Litiges sur factures retardant le reglement', 'red');
             addDossierLine(risksEl, 'Changement de contact AP sans passation', 'green');
         }
-        if (dossierIndustry && dossierIndustry.querySelector('.skeleton')) {
+        if (dossierIndustry && !dossierIndustry.textContent) {
             dossierIndustry.textContent = 'Services aux entreprises';
         }
     }
@@ -2266,19 +2263,11 @@
         return line;
     }
 
-    // Skeleton loading lines
-    function addSkeletonKV(container, widthClass) {
+    // Loading placeholder line
+    function addLoadingLine(container, text) {
         var line = document.createElement('div');
-        line.className = 'skeleton-kv';
-        line.innerHTML = '<div class="skeleton short"></div><div class="skeleton ' + (widthClass || 'med') + '"></div>';
-        container.appendChild(line);
-        return line;
-    }
-
-    function addSkeletonLine(container, widthClass) {
-        var line = document.createElement('div');
-        line.className = 'dossier-line visible';
-        line.innerHTML = '<span class="dossier-line-dot green" style="opacity:.3"></span><span class="skeleton ' + (widthClass || 'long') + '" style="display:inline-block"></span>';
+        line.className = 'dossier-loading-line';
+        line.innerHTML = text + '<span class="typing-dots"></span>';
         container.appendChild(line);
         return line;
     }
@@ -2407,7 +2396,7 @@
                 if (hasHardcoded && data.industry) {
                     dossierIndustry.textContent = data.industry;
                 } else {
-                    dossierIndustry.innerHTML = '<span class="skeleton short" style="height:14px;display:inline-block;vertical-align:middle"></span>';
+                    dossierIndustry.textContent = '';
                 }
                 dossierBrand.classList.add('visible');
 
@@ -2418,9 +2407,7 @@
                         if (hasHardcoded) {
                             renderProductsSection(dossierProducts, data);
                         } else {
-                            addSkeletonKV(dossierProducts, 'long');
-                            addSkeletonKV(dossierProducts, 'med');
-                            addSkeletonKV(dossierProducts, 'short');
+                            addLoadingLine(dossierProducts, 'Recherche des produits et clients');
                         }
 
                         // Step 3: 60→85% — Payment Risk section (skeletons or real)
@@ -2437,9 +2424,7 @@
                                         riskDelay += 400;
                                     });
                                 } else {
-                                    addSkeletonLine(dossierRisks, 'long');
-                                    addSkeletonLine(dossierRisks, 'med');
-                                    addSkeletonLine(dossierRisks, 'long');
+                                    addLoadingLine(dossierRisks, 'Identification des risques de paiement');
                                 }
 
                                 trackEvent('cards_shown');
