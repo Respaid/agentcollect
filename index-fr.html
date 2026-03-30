@@ -181,11 +181,11 @@
         .dossier-line-val{flex:1}
 
         /* Skeleton shimmer for loading state */
-        .skeleton{background:linear-gradient(90deg,rgba(79,70,229,.06) 25%,rgba(79,70,229,.12) 50%,rgba(79,70,229,.06) 75%);background-size:200% 100%;animation:shimmer 1.5s ease-in-out infinite;border-radius:6px;height:18px;width:100%}
-        .skeleton.short{width:40%}.skeleton.med{width:65%}.skeleton.long{width:85%}
-        .skeleton-kv{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.04)}
-        .skeleton-kv .skeleton:first-child{width:80px;flex-shrink:0}
-        .skeleton-kv .skeleton:last-child{flex:1}
+        .skeleton{background:linear-gradient(90deg,#e8ecf2 25%,#f0f3f7 50%,#e8ecf2 75%);background-size:200% 100%;animation:shimmer 1.8s ease-in-out infinite;border-radius:4px;height:16px;width:100%}
+        .skeleton.short{width:35%}.skeleton.med{width:60%}.skeleton.long{width:80%}
+        .skeleton-kv{display:flex;gap:12px;padding:7px 0;border-bottom:1px solid rgba(0,0,0,.03)}
+        .skeleton-kv .skeleton:first-child{width:72px;height:14px;flex-shrink:0}
+        .skeleton-kv .skeleton:last-child{flex:1;height:14px}
         @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
         .dossier-line.replacing{transition:opacity .2s ease;opacity:0}
         .dossier-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
@@ -1989,7 +1989,28 @@
         .catch(function(err) {
             apiPending = false;
             console.log('API call failed (using cached/default data):', err.message);
+            clearSkeletons();
         });
+    }
+
+    // Remove skeletons and show generic fallback when API fails or times out
+    function clearSkeletons() {
+        var productsEl = document.getElementById('dossier-products');
+        if (productsEl && productsEl.querySelector('.skeleton')) {
+            productsEl.innerHTML = '';
+            addDossierLine(productsEl, 'Produits et services B2B', 'green');
+            addDossierKVLine(productsEl, 'Clients', 'Entreprises et ETI');
+        }
+        var risksEl = document.getElementById('dossier-risks');
+        if (risksEl && risksEl.querySelector('.skeleton')) {
+            risksEl.innerHTML = '';
+            addDossierLine(risksEl, 'Cycles de paiement au-dela des termes convenus', 'amber');
+            addDossierLine(risksEl, 'Litiges sur factures retardant le reglement', 'red');
+            addDossierLine(risksEl, 'Changement de contact AP sans passation', 'green');
+        }
+        if (dossierIndustry && dossierIndustry.querySelector('.skeleton')) {
+            dossierIndustry.textContent = 'Services aux entreprises';
+        }
     }
 
     function updateDemoWithAPIData(data) {
@@ -2285,24 +2306,36 @@
     // Render business intel section with real data
     function renderProductsSection(container, data) {
         container.innerHTML = '';
+        var hasContent = false;
         if (data.flagshipProduct) {
             addDossierKVLine(container, 'Produit', data.flagshipProduct);
+            hasContent = true;
         } else if (data.product && data.product !== 'professional services') {
             var productLines = data.product.split(/,\s*/);
             productLines.slice(0, 2).forEach(function(p) {
                 addDossierLine(container, p.trim(), 'green');
             });
+            hasContent = true;
         }
         if (data.clientSegments) {
             addDossierKVLine(container, 'Clients', data.clientSegments.length > 80 ? data.clientSegments.substring(0, 77) + '...' : data.clientSegments);
+            hasContent = true;
         } else if (data.clients && data.clients !== 'Enterprise and mid-market companies') {
             addDossierKVLine(container, 'Clients', data.clients.length > 80 ? data.clients.substring(0, 77) + '...' : data.clients);
+            hasContent = true;
         }
         if (data.clientCount) {
             addDossierKVLine(container, 'Volume', data.clientCount);
+            hasContent = true;
         }
         if (data.avgInvoiceAmount) {
             addDossierKVLine(container, 'Facture moy.', data.avgInvoiceAmount);
+            hasContent = true;
+        }
+        if (!hasContent) {
+            if (data.product) addDossierLine(container, data.product, 'green');
+            if (data.industry) addDossierKVLine(container, 'Secteur', data.industry);
+            if (data.employeeSize) addDossierKVLine(container, 'Taille', data.employeeSize);
         }
     }
 
