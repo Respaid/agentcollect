@@ -2034,7 +2034,7 @@
 
         // Update dossier name and industry (replace skeleton)
         if (data.name) dossierName.textContent = data.name;
-        if (data.industry) dossierIndustry.textContent = data.industry;
+        if (data.industry && data.industry !== 'default' && data.industry !== 'General Business') dossierIndustry.textContent = data.industry;
 
         // Render meta chips (founded, HQ, size, revenue)
         if (dossierMeta) {
@@ -2459,7 +2459,7 @@
         // Fallback: if API returned no useful intel, show product + industry
         if (!hasContent) {
             if (data.product) addDossierLine(container, data.product, 'green');
-            if (data.industry) addDossierKVLine(container, 'Industry', data.industry);
+            if (data.industry && data.industry !== 'default' && data.industry !== 'General Business') addDossierKVLine(container, 'Industry', data.industry);
             if (data.employeeSize) addDossierKVLine(container, 'Size', data.employeeSize);
         }
     }

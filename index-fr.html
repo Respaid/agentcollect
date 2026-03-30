@@ -2029,7 +2029,7 @@
 
         // Update dossier name and industry (replace skeleton)
         if (data.name) dossierName.textContent = data.name;
-        if (data.industry) dossierIndustry.textContent = data.industry;
+        if (data.industry && data.industry !== 'default' && data.industry !== 'General Business') dossierIndustry.textContent = data.industry;
 
         // Render meta chips (founded, HQ, size, revenue)
         if (dossierMeta) {
@@ -2323,7 +2323,7 @@
         }
         if (!hasContent) {
             if (data.product) addDossierLine(container, data.product, 'green');
-            if (data.industry) addDossierKVLine(container, 'Secteur', data.industry);
+            if (data.industry && data.industry !== 'default' && data.industry !== 'General Business') addDossierKVLine(container, 'Secteur', data.industry);
             if (data.employeeSize) addDossierKVLine(container, 'Taille', data.employeeSize);
         }
     }
