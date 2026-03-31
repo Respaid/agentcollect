@@ -157,7 +157,7 @@
         .dossier{padding:0;max-width:680px;margin:0 auto}
         .dossier-brand{display:flex;align-items:center;gap:16px;margin-bottom:28px;opacity:0;transform:translateY(12px);transition:all .6s cubic-bezier(.16,1,.3,1)}
         .dossier-brand.visible{opacity:1;transform:translateY(0)}
-        .dossier-brand-logo{width:56px;height:56px;border-radius:14px;object-fit:contain;background:#fff;border:1.5px solid var(--border);flex-shrink:0}
+        .dossier-brand-logo{display:none}
         .dossier-brand-info{flex:1}
         .dossier-brand-name{font-family:var(--display);font-size:28px;font-weight:900;color:var(--text);letter-spacing:-.04em;line-height:1.15}
         .dossier-brand-industry{font-size:15px;color:var(--text-muted);margin-top:2px}
@@ -1636,14 +1636,14 @@
         },
         'bfmbusiness.com': {
             name: 'BFM Business',
-            product: 'BFM Business Premium Digital Subscription',
-            amount: '$3,200',
+            product: 'Abonnement BFM Business Premium Digital',
+            amount: '3 200 €',
             industry: 'Media & Business News',
-            clients: 'Financial services firms, corporate communications, enterprise news aggregation',
-            flagshipProduct: 'BFM Business Premium Digital Subscription',
-            clientSegments: '65% mid-market financial services, 20% corporate comms, 15% enterprise',
-            clientCount: '2,500+ B2B subscribers',
-            avgInvoiceAmount: '$3,200',
+            clients: 'Societes de services financiers, communications corporate, agences media',
+            flagshipProduct: 'Abonnement BFM Business Premium Digital',
+            clientSegments: '65% ETI services financiers, 20% comms corporate, 15% grands comptes',
+            clientCount: '2 500+ abonnes B2B',
+            avgInvoiceAmount: '3 200 €',
             analysis: [
                 'Budget cuts in comms departments reduce subscription renewals',
                 'Content access disputes over paywall restrictions',
@@ -1653,154 +1653,154 @@
         },
         'lydia-app.com': {
             name: 'Lydia',
-            product: 'Lydia Black Premium mobile payment plan',
-            amount: '$4,800',
-            industry: 'Fintech / Mobile Payments',
-            clients: 'Consumers, freelancers, SMBs in France',
-            flagshipProduct: 'Lydia Black Premium - Business Plan',
-            clientSegments: '70% consumers & freelancers, 20% SMBs, 10% mid-market',
-            clientCount: '7M+ users in France',
-            avgInvoiceAmount: '$4,800',
+            product: 'Abonnement Lydia Black Premium',
+            amount: '4 500 €',
+            industry: 'Fintech / Paiements mobiles',
+            clients: 'Particuliers, freelances, PME en France',
+            flagshipProduct: 'Lydia Black Premium - Offre Pro',
+            clientSegments: '70% particuliers & freelances, 20% PME, 10% ETI',
+            clientCount: '7M+ utilisateurs en France',
+            avgInvoiceAmount: '4 500 €',
             analysis: [
-                'Subscription churn after free trial ends',
-                'Disputed transaction fees on marketplace payouts',
-                'Business account billing disputes after team downsizing'
+                'Resiliation apres fin de periode d\'essai gratuite',
+                'Frais de transaction contestes sur les virements marketplace',
+                'Litiges de facturation apres reduction d\'equipe'
             ],
             disputes: []
         },
         'bfrp.fr': {
             name: 'Banque de France',
-            product: 'Financial data services & regulatory filings',
-            amount: '$12,000',
-            industry: 'Central Banking & Financial Regulation',
-            clients: 'French banks, financial institutions, government agencies',
-            flagshipProduct: 'FIBEN Company Rating Reports',
-            clientSegments: '60% commercial banks, 25% insurers, 15% government',
-            clientCount: '800+ institutional subscribers',
-            avgInvoiceAmount: '$12,000',
+            product: 'Services de donnees financieres & filings reglementaires',
+            amount: '11 000 €',
+            industry: 'Banque centrale & Regulation financiere',
+            clients: 'Banques francaises, institutions financieres, administrations',
+            flagshipProduct: 'Rapports de cotation FIBEN',
+            clientSegments: '60% banques commerciales, 25% assureurs, 15% administrations',
+            clientCount: '800+ abonnes institutionnels',
+            avgInvoiceAmount: '11 000 €',
             analysis: [
-                'Budget cycle delays in public institutions',
-                'Multi-year contract renegotiation during fiscal reviews',
-                'Procurement process bottlenecks in government entities'
+                'Retards de cycle budgetaire dans les institutions publiques',
+                'Renegociation de contrats pluriannuels lors des revues fiscales',
+                'Goulots d\'etranglement dans les processus d\'achat public'
             ],
             disputes: []
         },
         'orange-business.com': {
             name: 'Orange Business',
-            product: 'Cloud & IT managed services',
-            amount: '$18,500',
-            industry: 'Telecom & IT Services',
-            clients: 'Enterprise, mid-market, public sector in France & Europe',
+            product: 'Services cloud & infogérance IT',
+            amount: '17 000 €',
+            industry: 'Telecom & Services IT',
+            clients: 'Grands comptes, ETI, secteur public en France & Europe',
             flagshipProduct: 'Orange Business Flex Cloud Infrastructure',
-            clientSegments: '50% enterprise, 30% mid-market, 20% public sector',
-            clientCount: '3,000+ enterprise clients',
-            avgInvoiceAmount: '$18,500',
+            clientSegments: '50% grands comptes, 30% ETI, 20% secteur public',
+            clientCount: '3 000+ clients entreprise',
+            avgInvoiceAmount: '17 000 €',
             analysis: [
-                'Complex multi-service invoices disputed line by line',
-                'SLA penalty claims offsetting payment obligations',
-                'Contract migration delays during digital transformation'
+                'Factures multi-services contestées ligne par ligne',
+                'Penalites SLA compensees sur les obligations de paiement',
+                'Retards de migration lors de la transformation digitale'
             ],
             disputes: []
         },
         'ovhcloud.com': {
             name: 'OVHcloud',
-            product: 'Cloud hosting & dedicated servers',
-            amount: '$6,200',
-            industry: 'Cloud Infrastructure',
-            clients: 'SMBs, startups, developers, enterprises in Europe',
+            product: 'Hebergement cloud & serveurs dedies',
+            amount: '5 800 €',
+            industry: 'Infrastructure Cloud',
+            clients: 'PME, startups, developpeurs, grands comptes en Europe',
             flagshipProduct: 'OVHcloud Hosted Private Cloud',
-            clientSegments: '55% SMBs & startups, 30% mid-market, 15% enterprise',
-            clientCount: '1.6M+ customers worldwide',
-            avgInvoiceAmount: '$6,200',
+            clientSegments: '55% PME & startups, 30% ETI, 15% grands comptes',
+            clientCount: '1,6M+ clients dans le monde',
+            avgInvoiceAmount: '5 800 €',
             analysis: [
-                'Auto-renewal disputes on expired credit cards',
-                'Resource overage charges contested by startups',
-                'Migration-period double billing during cloud transitions'
+                'Litiges de renouvellement auto sur carte expiree',
+                'Depassements de ressources contestes par les startups',
+                'Double facturation lors des migrations cloud'
             ],
             disputes: []
         },
         'alan.com': {
             name: 'Alan',
-            product: 'Health insurance & wellness platform',
-            amount: '$8,400',
-            industry: 'Insurtech / Health Insurance',
-            clients: 'SMBs, startups, mid-market companies in France',
-            flagshipProduct: 'Alan Green Company Health Plan',
-            clientSegments: '60% startups & SMBs, 30% mid-market, 10% enterprise',
-            clientCount: '25,000+ companies insured',
-            avgInvoiceAmount: '$8,400',
+            product: 'Assurance sante & plateforme bien-etre',
+            amount: '7 800 €',
+            industry: 'Insurtech / Assurance sante',
+            clients: 'PME, startups, ETI en France',
+            flagshipProduct: 'Alan Green - Mutuelle Entreprise',
+            clientSegments: '60% startups & PME, 30% ETI, 10% grands comptes',
+            clientCount: '25 000+ entreprises assurees',
+            avgInvoiceAmount: '7 800 €',
             analysis: [
-                'Employee headcount disputes affecting premium calculations',
-                'Coverage downgrade requests during cash flow tightening',
-                'Delayed onboarding blocking initial premium collection'
+                'Litiges d\'effectifs impactant le calcul des primes',
+                'Demandes de baisse de couverture en periode de tension',
+                'Retard d\'onboarding bloquant la collecte des premieres primes'
             ],
             disputes: []
         },
         'qonto.com': {
             name: 'Qonto',
-            product: 'Business banking & expense management',
-            amount: '$3,600',
-            industry: 'Fintech / Business Banking',
-            clients: 'Freelancers, SMBs, startups in France & Europe',
-            flagshipProduct: 'Qonto Business Plan - Multi-user',
-            clientSegments: '50% freelancers & micro-businesses, 35% SMBs, 15% mid-market',
-            clientCount: '500,000+ business clients',
-            avgInvoiceAmount: '$3,600',
+            product: 'Banque pro & gestion des depenses',
+            amount: '3 400 €',
+            industry: 'Fintech / Banque pro',
+            clients: 'Freelances, PME, startups en France & Europe',
+            flagshipProduct: 'Qonto Business - Multi-utilisateurs',
+            clientSegments: '50% freelances & TPE, 35% PME, 15% ETI',
+            clientCount: '500 000+ clients professionnels',
+            avgInvoiceAmount: '3 400 €',
             analysis: [
-                'Account closure disputes with remaining subscription balance',
-                'Card fee disputes after team downsizing',
-                'API integration billing contested by fintech partners'
+                'Litiges de cloture de compte avec solde d\'abonnement restant',
+                'Contestation des frais de carte apres reduction d\'equipe',
+                'Facturation API contestee par les partenaires fintech'
             ],
             disputes: []
         },
         'payfit.com': {
             name: 'PayFit',
-            product: 'Payroll & HR management platform',
-            amount: '$5,400',
-            industry: 'HR Tech / Payroll',
-            clients: 'SMBs in France, UK, Germany, Spain',
-            flagshipProduct: 'PayFit Payroll Automation - Growth Plan',
-            clientSegments: '70% SMBs (10-250 employees), 20% mid-market, 10% startups',
-            clientCount: '10,000+ companies',
-            avgInvoiceAmount: '$5,400',
+            product: 'Paie & gestion RH automatisee',
+            amount: '5 000 €',
+            industry: 'HR Tech / Paie',
+            clients: 'PME en France, UK, Allemagne, Espagne',
+            flagshipProduct: 'PayFit Paie Automatisee - Plan Growth',
+            clientSegments: '70% PME (10-250 salaries), 20% ETI, 10% startups',
+            clientCount: '10 000+ entreprises',
+            avgInvoiceAmount: '5 000 €',
             analysis: [
-                'Headcount-based pricing disputes after layoffs',
-                'Implementation fee disputes on delayed onboarding',
-                'Module upsell billing contested after trial period'
+                'Litiges de tarification par effectif apres licenciements',
+                'Contestation des frais de mise en place sur onboarding retarde',
+                'Facturation de modules contestes apres periode d\'essai'
             ],
             disputes: []
         },
         'spendesk.com': {
             name: 'Spendesk',
-            product: 'Spend management platform',
-            amount: '$4,200',
-            industry: 'Fintech / Spend Management',
-            clients: 'Mid-market and enterprise finance teams in Europe',
+            product: 'Plateforme de gestion des depenses',
+            amount: '3 900 €',
+            industry: 'Fintech / Gestion des depenses',
+            clients: 'Equipes finance ETI et grands comptes en Europe',
             flagshipProduct: 'Spendesk Scale Plan',
-            clientSegments: '55% mid-market, 30% enterprise, 15% growing startups',
-            clientCount: '4,000+ companies',
-            avgInvoiceAmount: '$4,200',
+            clientSegments: '55% ETI, 30% grands comptes, 15% startups en croissance',
+            clientCount: '4 000+ entreprises',
+            avgInvoiceAmount: '3 900 €',
             analysis: [
-                'Card program fee disputes after user count changes',
-                'Annual contract exit clauses triggered mid-term',
-                'Implementation milestone disagreements delaying payment'
+                'Litiges de frais de programme carte apres changement d\'effectif',
+                'Clauses de sortie de contrat annuel declenchees en cours',
+                'Desaccords sur les jalons de mise en place retardant le paiement'
             ],
             disputes: []
         },
         'pennylane.com': {
             name: 'Pennylane',
-            product: 'Accounting & financial management platform',
-            amount: '$2,800',
-            industry: 'Fintech / Accounting',
-            clients: 'Accountants, SMBs, CFOs in France',
+            product: 'Plateforme de comptabilite & gestion financiere',
+            amount: '2 600 €',
+            industry: 'Fintech / Comptabilite',
+            clients: 'Cabinets comptables, PME, DAF en France',
             flagshipProduct: 'Pennylane Business Plan',
-            clientSegments: '45% accounting firms, 40% SMBs, 15% CFOs',
-            clientCount: '3,500+ accounting firms',
-            avgInvoiceAmount: '$2,800',
+            clientSegments: '45% cabinets comptables, 40% PME, 15% DAF',
+            clientCount: '3 500+ cabinets comptables',
+            avgInvoiceAmount: '2 600 €',
             analysis: [
-                'Client migration delays from legacy accounting software',
-                'Seat-based pricing disputes after accountant turnover',
-                'API usage overages contested by integration partners'
+                'Retards de migration depuis un logiciel comptable historique',
+                'Litiges de tarification par poste apres turnover comptable',
+                'Depassements d\'usage API contestes par les partenaires'
             ],
             disputes: []
         }
@@ -2012,7 +2012,7 @@
         fetch('https://backend.widr.app/api/v1/demo/analyze-company', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ domain: domain }),
+            body: JSON.stringify({ domain: domain, lang: 'fr' }),
             signal: controller.signal
         })
         .then(function(response) {
