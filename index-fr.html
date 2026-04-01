@@ -531,6 +531,32 @@
         @media(max-width:480px){.voice-fab{bottom:16px;right:16px;padding:10px 16px 10px 10px}.voice-fab-text{font-size:12px}}
         .uw-powered{text-align:center;padding:8px 12px 12px;font-size:11px;color:rgba(255,255,255,.2)}
 
+        /* ========== CONTACT FORM MODAL ========== */
+        .contact-overlay{position:fixed;inset:0;z-index:10001;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+        .contact-overlay.open{opacity:1;pointer-events:auto}
+        .contact-modal{background:#fff;border-radius:20px;padding:40px;max-width:520px;width:92%;box-shadow:0 24px 48px rgba(0,0,0,.12);position:relative;transform:translateY(20px);transition:transform .3s}
+        .contact-overlay.open .contact-modal{transform:translateY(0)}
+        .contact-modal-close{position:absolute;top:16px;right:16px;background:none;border:none;cursor:pointer;padding:8px;color:var(--text-muted);transition:color .2s}
+        .contact-modal-close:hover{color:var(--text)}
+        .contact-modal h3{font-family:var(--display);font-size:24px;font-weight:900;letter-spacing:-.04em;color:var(--text);margin-bottom:6px}
+        .contact-modal .contact-sub{font-size:15px;color:var(--text-mid);margin-bottom:24px;line-height:1.5}
+        .contact-form{display:flex;flex-direction:column;gap:14px}
+        .contact-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+        .contact-field{display:flex;flex-direction:column;gap:4px}
+        .contact-field label{font-size:13px;font-weight:600;color:var(--text-mid);letter-spacing:-.01em}
+        .contact-field input,.contact-field textarea{border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;font-family:var(--sans);font-size:15px;color:var(--text);background:#fff;outline:none;transition:border-color .2s,box-shadow .2s}
+        .contact-field input:focus,.contact-field textarea:focus{border-color:var(--indigo);box-shadow:0 0 0 3px rgba(79,70,229,.08)}
+        .contact-field textarea{resize:vertical;min-height:80px}
+        .contact-field input::placeholder,.contact-field textarea::placeholder{color:var(--text-dim)}
+        .contact-submit{padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;transition:background .2s,transform .1s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px}
+        .contact-submit:hover{background:var(--indigo-dark)}
+        .contact-submit:active{transform:scale(.97)}
+        .contact-submit:disabled{opacity:.6;cursor:not-allowed}
+        .contact-success{text-align:center;padding:20px 0}
+        .contact-success-icon{width:48px;height:48px;border-radius:50%;background:rgba(16,185,129,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+        .contact-success h4{font-family:var(--display);font-size:20px;font-weight:800;color:var(--text);margin-bottom:8px}
+        .contact-success p{font-size:15px;color:var(--text-mid);line-height:1.5}
+
         /* ========== RESPONSIVE ========== */
         @media(max-width:1024px){
             .stats-grid{grid-template-columns:repeat(2,1fr)}
@@ -574,6 +600,8 @@
             .stats-grid{grid-template-columns:1fr 1fr}
             .logo-marquee::before,.logo-marquee::after{width:30px}
             .logo-track img{height:18px}
+            .contact-modal{padding:28px 20px}
+            .contact-row{grid-template-columns:1fr}
         }
 
         /* ========== INTEL EXPOSURE SECTION ========== */
@@ -723,7 +751,7 @@
     </div>
     <div class="nav-right">
         <a href="/" class="nav-cta-ghost" onclick="sessionStorage.setItem('lang-override','en');return true;" style="font-size:13px;padding:10px 16px;font-weight:600">EN</a>
-        <a href="https://cal.com/johnb/30" class="nav-cta" target="_blank" rel="noopener">Reserver une demo</a>
+        <a href="#" class="nav-cta" onclick="openContactModal();return false;">Reserver une demo</a>
     </div>
     <button class="nav-mobile" aria-label="Open menu">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="1.5"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
@@ -876,7 +904,7 @@
                         </div>
                         <div class="uw-post-title">Votre agent est pret a 90%.</div>
                         <div class="uw-post-sub">Voix &#10003; &mdash; Litiges &#10003; &mdash; Contacts &#10003; &mdash; 15 minutes pour finaliser les 10% restants.</div>
-                        <a href="https://cal.com/johnb/30" target="_blank" class="uw-post-cta" id="uw-post-cta">
+                        <a href="#" class="uw-post-cta" id="uw-post-cta" onclick="openContactModal();return false;">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                             Finaliser mon agent &mdash; sans engagement
                         </a>
@@ -891,7 +919,7 @@
 
             <!-- Finalize CTA — below demo player -->
             <div class="finalize-cta-bar" id="finalize-cta-bar" style="display:none">
-                <a href="https://cal.com/johnb/30" target="_blank" class="bci-readiness-cta" id="finalize-cta-btn">
+                <a href="#" class="bci-readiness-cta" id="finalize-cta-btn" onclick="openContactModal();return false;">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     Finaliser mon agent
                 </a>
@@ -981,7 +1009,7 @@
         </div>
     </div>
     <div class="intel-bottom-cta" id="intel-bottom-cta">
-        <a href="https://cal.com/johnb/30" target="_blank" id="intel-cta-btn">
+        <a href="#" id="intel-cta-btn" onclick="openContactModal();return false;">
             Obtenir votre rapport complet
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -1066,7 +1094,7 @@
             </div>
             <div class="objection-card reveal s2">
                 <div class="objection-q">"Et si l'IA dit quelque chose de faux ?"</div>
-                <div class="objection-a">Pre-entraine sur 1 milliard de conversations. Testez par vous-meme &mdash; entrez votre domaine ci-dessus.</div>
+                <div class="objection-a">Pre-entraine sur des milliers de scenarios reels de recouvrement. Testez par vous-meme &mdash; entrez votre domaine ci-dessus.</div>
             </div>
             <div class="objection-card reveal s3">
                 <div class="objection-q">"C'est complique a mettre en place ?"</div>
@@ -1234,7 +1262,7 @@
 <section class="final-cta reveal">
     <h2>Votre agent est pret.<br>Un appel pour etre en production.</h2>
     <p>Nous construirons votre agent en direct et essaierons de recuperer de l'argent reel pendant l'appel.</p>
-    <a href="https://cal.com/johnb/30" target="_blank" rel="noopener" class="cta-btn cta-btn-primary">
+    <a href="#" class="cta-btn cta-btn-primary" onclick="openContactModal();return false;">
         Reserver une demo de 30 min
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
@@ -1375,7 +1403,7 @@
             <div class="footer-col">
                 <h4>Entreprise</h4>
                 <a href="/about/john-banner">John Banner</a>
-                <a href="https://cal.com/johnb/30" target="_blank" rel="noopener">Nous contacter</a>
+                <a href="#" onclick="openContactModal();return false;">Nous contacter</a>
             </div>
         </div>
         <div class="footer-bottom">

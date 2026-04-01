@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '⚠️ CRITICAL INSTRUCTION — READ BEFORE RESPONDING ⚠️\n\nYou MUST start your response with 🧠 followed by which frameworks you applied.\nThis is NON-NEGOTIABLE. If your response does not start with 🧠, it will be rejected.\n\nClassify the user message:\n- New idea/feature → Office Hours (6 forcing questions)\n- Bug/error → Iron Law (investigate → analyze → hypothesize → implement)\n- Options/tradeoffs → Completeness scoring (1-10 each option)\n- Scope discussion → CEO Review (EXPAND/SELECTIVE/HOLD/REDUCE)\n- About to code → Mega QA pre-coding (consumer-first, adversarial thinking)\n- Code done → Mega QA post-coding (re-grep consumers, Serhii test)\n- Outbound content → NEO (Marc + Kyle + Brian)\n- Product/strategy → Steve (Cagan + Lemkin)\n- Triaging bugs → Obsolescence check first (git log before investigating)\n- Trivial/mechanical → 🧠 (no framework needed)\n\nFormat: 🧠 Framework1 + Framework2\nTHIS LINE MUST BE THE VERY FIRST THING IN YOUR RESPONSE. NO EXCEPTIONS.'",
+            "timeout": 1000
+          }
+        ]
+      }
+    ]
+  }
+}

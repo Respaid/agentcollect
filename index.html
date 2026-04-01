@@ -532,6 +532,32 @@
         @media(max-width:480px){.voice-fab{bottom:16px;right:16px;padding:10px 16px 10px 10px}.voice-fab-text{font-size:12px}}
         .uw-powered{text-align:center;padding:8px 12px 12px;font-size:11px;color:rgba(255,255,255,.2)}
 
+        /* ========== CONTACT FORM MODAL ========== */
+        .contact-overlay{position:fixed;inset:0;z-index:10001;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+        .contact-overlay.open{opacity:1;pointer-events:auto}
+        .contact-modal{background:#fff;border-radius:20px;padding:40px;max-width:520px;width:92%;box-shadow:0 24px 48px rgba(0,0,0,.12);position:relative;transform:translateY(20px);transition:transform .3s}
+        .contact-overlay.open .contact-modal{transform:translateY(0)}
+        .contact-modal-close{position:absolute;top:16px;right:16px;background:none;border:none;cursor:pointer;padding:8px;color:var(--text-muted);transition:color .2s}
+        .contact-modal-close:hover{color:var(--text)}
+        .contact-modal h3{font-family:var(--display);font-size:24px;font-weight:900;letter-spacing:-.04em;color:var(--text);margin-bottom:6px}
+        .contact-modal .contact-sub{font-size:15px;color:var(--text-mid);margin-bottom:24px;line-height:1.5}
+        .contact-form{display:flex;flex-direction:column;gap:14px}
+        .contact-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+        .contact-field{display:flex;flex-direction:column;gap:4px}
+        .contact-field label{font-size:13px;font-weight:600;color:var(--text-mid);letter-spacing:-.01em}
+        .contact-field input,.contact-field textarea{border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;font-family:var(--sans);font-size:15px;color:var(--text);background:#fff;outline:none;transition:border-color .2s,box-shadow .2s}
+        .contact-field input:focus,.contact-field textarea:focus{border-color:var(--indigo);box-shadow:0 0 0 3px rgba(79,70,229,.08)}
+        .contact-field textarea{resize:vertical;min-height:80px}
+        .contact-field input::placeholder,.contact-field textarea::placeholder{color:var(--text-dim)}
+        .contact-submit{padding:14px 28px;background:var(--indigo);color:#fff;border:none;border-radius:12px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer;transition:background .2s,transform .1s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px}
+        .contact-submit:hover{background:var(--indigo-dark)}
+        .contact-submit:active{transform:scale(.97)}
+        .contact-submit:disabled{opacity:.6;cursor:not-allowed}
+        .contact-success{text-align:center;padding:20px 0}
+        .contact-success-icon{width:48px;height:48px;border-radius:50%;background:rgba(16,185,129,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+        .contact-success h4{font-family:var(--display);font-size:20px;font-weight:800;color:var(--text);margin-bottom:8px}
+        .contact-success p{font-size:15px;color:var(--text-mid);line-height:1.5}
+
         /* ========== RESPONSIVE ========== */
         @media(max-width:1024px){
             .stats-grid{grid-template-columns:repeat(2,1fr)}
@@ -575,6 +601,8 @@
             .stats-grid{grid-template-columns:1fr 1fr}
             .logo-marquee::before,.logo-marquee::after{width:30px}
             .logo-track img{height:18px}
+            .contact-modal{padding:28px 20px}
+            .contact-row{grid-template-columns:1fr}
         }
 
         /* ========== INTEL EXPOSURE SECTION ========== */
@@ -723,7 +751,7 @@
         <a href="/blog">Blog</a>
     </div>
     <div class="nav-right">
-        <a href="https://cal.com/johnb/30" class="nav-cta" target="_blank" rel="noopener">Book a demo</a>
+        <a href="#" class="nav-cta" onclick="openContactModal();return false;">Book a demo</a>
     </div>
     <button class="nav-mobile" aria-label="Open menu">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text)" stroke-width="1.5"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
@@ -874,7 +902,7 @@
                         </div>
                         <div class="uw-post-title">Your agent is 90% ready.</div>
                         <div class="uw-post-sub">Voice &#10003; &mdash; Disputes &#10003; &mdash; Contacts &#10003; &mdash; 15 minutes to finalize the last 10%.</div>
-                        <a href="https://cal.com/johnb/30" target="_blank" class="uw-post-cta" id="uw-post-cta">
+                        <a href="#" class="uw-post-cta" id="uw-post-cta" onclick="openContactModal();return false;">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                             Finalize my agent &mdash; zero commitment
                         </a>
@@ -889,7 +917,7 @@
 
             <!-- Finalize CTA — below demo player -->
             <div class="finalize-cta-bar" id="finalize-cta-bar" style="display:none">
-                <a href="https://cal.com/johnb/30" target="_blank" class="bci-readiness-cta" id="finalize-cta-btn">
+                <a href="#" class="bci-readiness-cta" id="finalize-cta-btn" onclick="openContactModal();return false;">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     Finalize my agent
                 </a>
@@ -979,7 +1007,7 @@
         </div>
     </div>
     <div class="intel-bottom-cta" id="intel-bottom-cta">
-        <a href="https://cal.com/johnb/30" target="_blank" id="intel-cta-btn">
+        <a href="#" id="intel-cta-btn" onclick="openContactModal();return false;">
             Get your full exposure report
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -1064,7 +1092,7 @@
             </div>
             <div class="objection-card reveal s2">
                 <div class="objection-q">"What if the AI says something wrong?"</div>
-                <div class="objection-a">Pre-trained on 1 billion conversations. Test it yourself &mdash; enter your domain above.</div>
+                <div class="objection-a">Pre-trained on thousands of real collection scenarios. Test it yourself &mdash; enter your domain above.</div>
             </div>
             <div class="objection-card reveal s3">
                 <div class="objection-q">"Is it complicated to set up?"</div>
@@ -1232,7 +1260,7 @@
 <section class="final-cta reveal">
     <h2>Your agent is ready.<br>One call to go live.</h2>
     <p>We'll build your agent live and try to recover real money during the call.</p>
-    <a href="https://cal.com/johnb/30" target="_blank" rel="noopener" class="cta-btn cta-btn-primary">
+    <a href="#" class="cta-btn cta-btn-primary" onclick="openContactModal();return false;">
         Book a 30-min demo
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
@@ -1373,7 +1401,7 @@
             <div class="footer-col">
                 <h4>Company</h4>
                 <a href="/about/john-banner">John Banner</a>
-                <a href="https://cal.com/johnb/30" target="_blank" rel="noopener">Contact</a>
+                <a href="#" onclick="openContactModal();return false;">Contact</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -3571,6 +3599,117 @@
     });
     if (widget) observer.observe(widget, { subtree: true, attributes: true, attributeFilter: ['class'] });
 })();
+</script>
+
+<!-- CONTACT FORM MODAL -->
+<div class="contact-overlay" id="contact-overlay">
+    <div class="contact-modal">
+        <button class="contact-modal-close" id="contact-modal-close" aria-label="Close">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <div id="contact-form-view">
+            <h3>Talk to our team</h3>
+            <p class="contact-sub">Tell us about your collection needs. We'll get back to you within a few hours.</p>
+            <form class="contact-form" id="contact-form" onsubmit="submitContactForm(event)">
+                <div class="contact-row">
+                    <div class="contact-field">
+                        <label for="cf-name">Name *</label>
+                        <input type="text" id="cf-name" name="name" required placeholder="Jane Smith">
+                    </div>
+                    <div class="contact-field">
+                        <label for="cf-email">Work email *</label>
+                        <input type="email" id="cf-email" name="email" required placeholder="jane@company.com">
+                    </div>
+                </div>
+                <div class="contact-row">
+                    <div class="contact-field">
+                        <label for="cf-company">Company *</label>
+                        <input type="text" id="cf-company" name="company" required placeholder="Acme Corp">
+                    </div>
+                    <div class="contact-field">
+                        <label for="cf-phone">Phone <span style="color:var(--text-dim);font-weight:400">(optional)</span></label>
+                        <input type="tel" id="cf-phone" name="phone" placeholder="+1 (555) 123-4567">
+                    </div>
+                </div>
+                <div class="contact-field">
+                    <label for="cf-message">How can we help? *</label>
+                    <textarea id="cf-message" name="message" required placeholder="Tell us about your accounts receivable challenges, volume, and what you're looking for..."></textarea>
+                </div>
+                <button type="submit" class="contact-submit" id="cf-submit">
+                    Send message
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </form>
+        </div>
+        <div id="contact-success-view" style="display:none">
+            <div class="contact-success">
+                <div class="contact-success-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <h4>Message sent!</h4>
+                <p>We'll be in touch shortly. In the meantime, pick a time that works for you.</p>
+                <p style="font-size:13px;color:var(--text-dim);margin-top:12px">Redirecting to calendar...</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+function openContactModal() {
+    var overlay = document.getElementById('contact-overlay');
+    var formView = document.getElementById('contact-form-view');
+    var successView = document.getElementById('contact-success-view');
+    formView.style.display = '';
+    successView.style.display = 'none';
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    try { gtag('event', 'contact_form_open', { page: location.pathname }); } catch(e) {}
+}
+function closeContactModal() {
+    var overlay = document.getElementById('contact-overlay');
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+}
+document.getElementById('contact-modal-close').addEventListener('click', closeContactModal);
+document.getElementById('contact-overlay').addEventListener('click', function(e) {
+    if (e.target === this) closeContactModal();
+});
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeContactModal();
+});
+
+function submitContactForm(e) {
+    e.preventDefault();
+    var btn = document.getElementById('cf-submit');
+    btn.disabled = true;
+    btn.innerHTML = '<span style="display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite"></span> Sending...';
+
+    var data = {
+        name: document.getElementById('cf-name').value.trim(),
+        email: document.getElementById('cf-email').value.trim(),
+        company: document.getElementById('cf-company').value.trim(),
+        phone: document.getElementById('cf-phone').value.trim() || null,
+        message: document.getElementById('cf-message').value.trim(),
+        action: 'contact_form'
+    };
+
+    fetch('https://backend.widr.app/api/v1/demo/track', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+    }).then(function(r) { return r.json(); }).then(function(res) {
+        document.getElementById('contact-form-view').style.display = 'none';
+        document.getElementById('contact-success-view').style.display = '';
+        try { gtag('event', 'contact_form_submit', { page: location.pathname, company: data.company }); } catch(e) {}
+        setTimeout(function() {
+            closeContactModal();
+            window.open('https://cal.com/johnb/30', '_blank');
+        }, 2500);
+    }).catch(function(err) {
+        btn.disabled = false;
+        btn.innerHTML = 'Send message <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+        alert('Something went wrong. Please try again.');
+    });
+}
 </script>
 </body>
 </html>

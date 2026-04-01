@@ -1,0 +1,362 @@
+{
+  "mystery_shop_results": {
+    "generated_at": "2026-03-27",
+    "total_calls": 15,
+    "summary": {
+      "salesforce_800_667_6389": {
+        "outcome": "ALL 5 CALLS HIT IVR WALL - Zero humans reached",
+        "billing_dept_message": "Please log in to billing.salesforce.com or email billing@salesforce.com. Have a great day.",
+        "key_finding": "Salesforce billing has NO phone support. All 5 personas (polite, frustrated, spanish, identity probe, dispute) reached the same automated dead-end. IVR did not recognize DTMF presses reliably. Billing department is a recorded message directing to portal/email only."
+      },
+      "verliance_tollfree_877_643_4549": {
+        "outcome": "ALL 5 CALLS HIT VOICEMAIL - Office closed",
+        "voicemail_message": "Thank you for calling Reliance Incorporated. Our office is closed.",
+        "key_finding": "Verliance toll-free answered as 'Reliance Incorporated' (not Verliance). Office was closed during all calls. Extension 2201 was unavailable. Agents left voicemails but no human interaction occurred."
+      },
+      "verliance_local_951_693_3318": {
+        "outcome": "ALL 5 CALLS HIT VOICEMAIL - Office closed",
+        "voicemail_message": "Thank you for calling Reliance Incorporated. Our office is closed.",
+        "key_finding": "Same 'Reliance Incorporated' branding as toll-free. Identical voicemail system. Same extension 2201 unavailable. No human reached on any persona."
+      }
+    },
+    "calls": [
+      {
+        "call_number": 1,
+        "call_id": "call_44c723fc46975ef8342600f5de3",
+        "target": "Salesforce",
+        "target_number": "(800) 667-6389",
+        "persona": "polite",
+        "duration_seconds": 95,
+        "call_status": "ended",
+        "disconnection_reason": "user_hangup",
+        "outcome": "IVR dead-end",
+        "in_voicemail": false,
+        "key_finding": "Agent tried to navigate IVR to billing (press 3) but DTMF not recognized repeatedly. Eventually got billing dept recorded message directing to portal/email only. Zero human contact possible.",
+        "transcript": "Agent: Hi, I'm calling to make a payment on my account. I have uniform service with\nIVR: Thank you for calling Salesforce. For sales, press one. For technical support, press two. For billing, press three...\nIVR: Sorry. We did not recognize your response. [repeated 3x]\nIVR: Thank you for calling the Salesforce billing department. Please log in to our portal at billing dot salesforce dot com. Where you can get assistance from agent force, view your account, contract, and invoice details. You can also email us at billing at Salesforce dot com. Please be sure to include your account or contract number and a brief description of your request. Have a great day.",
+        "recording_url": "https://dxc03zgurdly9.cloudfront.net/8d07faf8f18fe3ebbad88b5f24fbb5b3f27e0e3e3e14e3d17e2e1d3cc80f8fac/recording.wav",
+        "call_analysis": {
+          "call_successful": false,
+          "user_sentiment": "Neutral",
+          "call_summary": "The agent called Salesforce billing and navigated through the automated menu. The system failed to recognize responses multiple times before playing the billing department message directing to online portal and email."
+        }
+      },
+      {
+        "call_number": 2,
+        "call_id": "call_cfc112176604519dc46e821af35",
+        "target": "Salesforce",
+        "target_number": "(800) 667-6389",
+        "persona": "frustrated",
+        "duration_seconds": 48,
+        "call_status": "ended",
+        "disconnection_reason": "user_hangup",
+        "outcome": "IVR dead-end",
+        "in_voicemail": false,
+        "key_finding": "Frustrated persona pressed 3 for billing via DTMF tool. Got same recorded billing message. No human option exists. Call auto-terminated.",
+        "best_exchange": "Agent: Yeah hi, look I've been trying to reach somebody about a bill for THREE...\nIVR: Thank you for calling the Salesforce billing department. Please log in to our portal at billing dot salesforce dot com...\n[No human ever answered]",
+        "recording_url": "https://dxc03zgurdly9.cloudfront.net/cfc1f88bf923e6a19e2b0e8028f2dfecd3371a11c1f63d5ad3340827c6089664/recording.wav",
+        "call_analysis": {
+          "call_successful": true,
+          "user_sentiment": "Neutral",
+          "call_summary": "The agent attempted to reach the Salesforce billing department and navigated the automated menu to press the billing option. The call was answered by an automated message directing the agent to use the online portal or email for assistance."
+        }
+      },
+      {
+        "call_number": 3,
+        "call_id": "call_b722663a5c5d5f0093e348f0b84",
+        "target": "Salesforce",
+        "target_number": "(800) 667-6389",
+        "persona": "spanish",
+        "duration_seconds": 89,
+        "call_status": "ended",
+        "disconnection_reason": "user_hangup",
+        "outcome": "IVR dead-end, no Spanish support",
+        "in_voicemail": false,
+        "key_finding": "Spanish-speaking caller got NO Spanish language option. Agent tried pressing 0 multiple times for operator - no response. Eventually pressed 3 for billing, got English-only recorded message. Agent asked 'Hay alguien que hable espanol?' - no response. ZERO Spanish support.",
+        "best_exchange": "Agent: Hola, estoy llamando sobre una factura...\nIVR: For sales, press one. For technical support, press two. For billing, press three...\nAgent: No hablo ingles, lo siento. Hay alguien que hable espanol?\n[Dead silence - call ended]",
+        "recording_url": "https://dxc03zgurdly9.cloudfront.net/697c5ed78f7855918963a09dadaa00b4927075bda759d43cdfbcc8c18e1d9933/recording.wav",
+        "call_analysis": {
+          "call_successful": false,
+          "user_sentiment": "Neutral",
+          "call_summary": "The agent called to inquire about a bill and expressed a desire to pay the $450 invoice. The call involved navigating an automated system with multiple digit presses, and the agent requested to speak with someone who speaks Spanish due to a language barrier. The call ended without resolution."
+        }
+      },
+      {
+        "call_number": 4,
+        "call_id": "call_8432d4accf6e5fbc19e77188e4f",
+        "target": "Salesforce",
+        "target_number": "(800) 667-6389",
+        "persona": "identity_probe",
+        "duration_seconds": 73,
+        "call_status": "ended",
+        "disconnection_reason": "user_hangup",
+        "outcome": "IVR error - system crashed",
+        "in_voicemail": false,
+        "key_finding": "Identity probe caller tried pressing 3 for billing twice - IVR said 'did not recognize your response' both times. Then pressed 0 for operator - got 'An error has occurred. Please try back again later.' System CRASHED. Cannot even reach recorded billing message reliably.",
+        "best_exchange": "Agent: Hi, this is Sarah calling from Marketplace Liquor in Savage. We had some plumbing work done by Roto-Rooter...\nIVR: Sorry. We did not recognize your response. [3 times]\nIVR: We're sorry. An error has occurred. Please try back again later.\n[System crashed - no human, no message, nothing]",
+        "recording_url": "https://dxc03zgurdly9.cloudfront.net/2531788d674720c83184ccfd0485006a6ccb3ca30faeb5e1dccf0ade8304bef2/recording.wav",
+        "call_analysis": {
+          "call_successful": false,
+          "user_sentiment": "Neutral",
+          "call_summary": "Multiple attempts to navigate the menu by pressing digits were unsuccessful, resulting in an error message and the call ending without resolution."
+        }
+      },
+      {
+        "call_number": 5,
+        "call_id": "call_2ac9dfcadade2d88ae833e2542e",
+        "target": "Salesforce",
+        "target_number": "(800) 667-6389",
+        "persona": "dispute",
+        "duration_seconds": 72,
+        "call_status": "ended",
+        "disconnection_reason": "user_hangup",
+        "outcome": "IVR dead-end",
+        "in_voicemail": false,
+        "key_finding": "Dispute caller pressed 3 twice. First time 'not recognized', second time got billing recorded message. No way to dispute a bill by phone. Told to use portal or email. A customer with a legitimate dispute has NO phone path to resolution.",
+        "best_exchange": "Agent: Hi, I need to speak with someone about a bill I received. You guys did a drain cleaning at my...\nIVR: Sorry. We did not recognize your response...\nIVR: Thank you for calling the Salesforce billing department. Please log in to our portal... Have a great day.\n[Hung up on disputing customer]",
+        "recording_url": "https://dxc03zgurdly9.cloudfront.net/f8035aadc5616ad82dc2cedfdd126e108cd4edbfe9677e998f088da7d7367bf4/recording.wav",
+        "call_analysis": {
+          "call_successful": false,
+          "user_sentiment": "Neutral",
+          "call_summary": "The agent attempted to discuss a billing issue but was redirected to an automated Salesforce billing menu. The call ended after the automated system provided instructions to use the billing portal or email for assistance."
+        }
+      },
+      {
+        "call_number": 6,
+        "call_id": "call_2cdc83217ce440dab4e5a627a0e",
+        "target": "Verliance (toll-free)",
+        "target_number": "(877) 643-4549",
+        "persona": "polite",
+        "duration_seconds": 52,
+        "call_status": "ended",
+        "disconnection_reason": "agent_hangup",
+        "outcome": "Voicemail - office closed",
+        "in_voicemail": true,
+        "key_finding": "Answered as 'Reliance Incorporated' (not Verliance). Office closed. Agent left voicemail as Mike from Summit Auto Repair wanting to pay balance. Extension 2201 unavailable. Agent left callback number 949-741-7328.",
+        "best_exchange": "IVR: Thank you for calling Reliance Incorporated. Our office is closed. Please leave a detailed message...\nAgent: Hi, my name is Mike from Summit Auto Repair. I have an outstanding balance with your company that I would like to pay.\nIVR: The person at extension 2201 is unavailable.\nAgent: [Left voicemail with callback number 949-741-7328]",
+        "recording_url": "https://dxc03zgurdly9.cloudfront.net/45a2d188ea41f288e0707fe191d3cd079c3fa22d3b500c48d2c9d68f138b1ad5/recording.wav",
+        "call_analysis": {
+          "call_successful": false,
+          "user_sentiment": "Neutral",
+          "call_summary": "The agent called Reliance Incorporated to make a payment but reached their voicemail. Left a detailed message with callback number."
+        }
+      },
+      {
+        "call_number": 7,
+        "call_id": "call_04a3933210df0fe4f15c0525409",
+        "target": "Verliance (toll-free)",
+        "target_number": "(877) 643-4549",
+        "persona": "frustrated",
+        "duration_seconds": 41,
+        "call_status": "ended",
+        "disconnection_reason": "agent_hangup",
+        "outcome": "Voicemail - office closed",
+        "in_voicemail": true,
+        "key_finding": "Same 'Reliance Incorporated' greeting. Frustrated caller expressed anger about trying to pay for 3 days. Left voicemail. Extension 2201 unavailable. No human reached.",
+        "best_exchange": "IVR: Our office is closed...\nAgent: Hi, this is Mike from Summit Services. I have been trying to pay my balance for THREE DAYS and nobody answers. This is unacceptable.\nIVR: The person at extension 2201 is unavailable.\nAgent: I left the voicemail. Hopefully someone gets back to me soon.",
+        "recording_url": "https://dxc03zgurdly9.cloudfront.net/1c35a5078ba6dbcb19822ebf2afbf9530f859541ac6761ae8fe68b69a259e05a/recording.wav",
+        "call_analysis": {
+          "call_successful": false,
+          "user_sentiment": "Negative",
+          "call_summary": "The agent called Reliance Incorporated but reached their voicemail. Left a message expressing frustration about not being able to pay for three days."
+        }
+      },
+      {
+        "call_number": 8,
+        "call_id": "call_59c4c7afec2bc9317966b015b44",
+        "target": "Verliance (toll-free)",
+        "target_number": "(877) 643-4549",
+        "persona": "spanish",
+        "duration_seconds": 301,
+        "call_status": "ended",
+        "disconnection_reason": "max_duration_reached",
+        "outcome": "Stuck on hold - max duration timeout",
+        "in_voicemail": false,
+        "key_finding": "Spanish caller pressed 0 for operator, then got stuck. Called answered as 'For Alliance Incorporated'. Agent sat on silent hold for 5 MINUTES until max call duration (300s) was reached. Nobody ever picked up. WORST outcome of all 15 calls - burned $80 in call costs for nothing.",
+        "best_exchange": "Agent: Hola, estoy llamando sobre una...\nIVR: Thank you for calling for Alliance Incorporated.\n[Agent pressed 0, then 1]\n[DEAD SILENCE FOR 5 MINUTES]\n[Call terminated: max_duration_reached]",
+        "recording_url": "https://dxc03zgurdly9.cloudfront.net/e3fe1584ac752f80179c08671117ebae040fbf76d52015a1ae02c1d1db10d616/recording.wav",
+        "call_analysis": {
+          "call_successful": true,
+          "user_sentiment": "Neutral",
+          "call_summary": "The agent attempted to interact but the call ended due to reaching the maximum duration allowed."
+        }
+      },
+      {
+        "call_number": 9,
+        "call_id": "call_fa045f28488829413676cde8907",
+        "target": "Verliance (toll-free)",
+        "target_number": "(877) 643-4549",
+        "persona": "identity_probe",
+        "duration_seconds": 27,
+        "call_status": "ended",
+        "disconnection_reason": "agent_hangup",
+        "outcome": "Voicemail - office closed",
+        "in_voicemail": true,
+        "key_finding": "Identity probe caller recognized office was closed and politely said they'd call back during business hours. Did NOT leave a voicemail with identifying info. Good agent behavior.",
+        "best_exchange": "Agent: Hi, this is Sarah calling from Marketplace Liquor...\nIVR: Reliance Incorporated. Our office is closed...\nAgent: Thank you for your time. I'll call back during business hours to sort this out.",
+        "recording_url": "https://dxc03zgurdly9.cloudfront.net/a15e2065a5d5c7704d49fb4ed0afc5fef08d02146e3a42f90d9cd49b5fef7ff0/recording.wav",
+        "call_analysis": {
+          "call_successful": false,
+          "user_sentiment": "Neutral",
+          "call_summary": "The agent called Reliance Incorporated but reached voicemail. Decided to call back during business hours."
+        }
+      },
+      {
+        "call_number": 10,
+        "call_id": "call_171f8382e89f2935c5ba8f261d4",
+        "target": "Verliance (toll-free)",
+        "target_number": "(877) 643-4549",
+        "persona": "dispute",
+        "duration_seconds": 56,
+        "call_status": "ended",
+        "disconnection_reason": "agent_hangup",
+        "outcome": "Voicemail - left dispute message",
+        "in_voicemail": true,
+        "key_finding": "Dispute caller left a detailed voicemail about drain work not done right, disputing $450 bill. Extension 2201 unavailable. No way to actually dispute in real-time. Customer left hanging.",
+        "best_exchange": "Agent: Hi, this is Mike from Summit Auto Repair on Industrial Boulevard. You guys did some drain work for me about a month ago but the drain is still clogged. I'm calling about the four fifty bill because I don't think I should pay full price when the job wasn't done right. My number is 949-741-7328. Please have someone call me back about this billing issue.",
+        "recording_url": "https://dxc03zgurdly9.cloudfront.net/c33e72bef3739ec04266207bbf830068d1f7b6975a9f0d21f568e4123a69327b/recording.wav",
+        "call_analysis": {
+          "call_successful": true,
+          "user_sentiment": "Neutral",
+          "call_summary": "The agent left a detailed voicemail about drain work not completed satisfactorily, requesting callback about $450 billing dispute."
+        }
+      },
+      {
+        "call_number": 11,
+        "call_id": "call_dd4e8ea9eee775ea1dee71785af",
+        "target": "Verliance (local)",
+        "target_number": "(951) 693-3318",
+        "persona": "polite",
+        "duration_seconds": 51,
+        "call_status": "ended",
+        "disconnection_reason": "agent_hangup",
+        "outcome": "Voicemail - office closed",
+        "in_voicemail": true,
+        "key_finding": "Local number routes to same 'Reliance Incorporated' voicemail system. Same ext 2201 unavailable. Agent left voicemail wanting to pay balance. Same behavior as toll-free.",
+        "best_exchange": "IVR: Thank you for calling Reliance Incorporated. Our office is closed...\nAgent: Hi, my name is Mike from Summit Auto Repair. I have an outstanding balance with Reliance Incorporated that I'd like to pay. Please call me back at 949-741-7328.",
+        "recording_url": "https://dxc03zgurdly9.cloudfront.net/3d021aee0a1c9ff9468512565b51d32f13e33ecbeded28abe2650421c5f30ecb/recording.wav",
+        "call_analysis": {
+          "call_successful": false,
+          "user_sentiment": "Neutral",
+          "call_summary": "Agent called to make a payment but reached voicemail. Left detailed message with callback number."
+        }
+      },
+      {
+        "call_number": 12,
+        "call_id": "call_fa4980a16e4825c27c3546b1e3b",
+        "target": "Verliance (local)",
+        "target_number": "(951) 693-3318",
+        "persona": "frustrated",
+        "duration_seconds": 41,
+        "call_status": "ended",
+        "disconnection_reason": "agent_hangup",
+        "outcome": "Voicemail - office closed",
+        "in_voicemail": true,
+        "key_finding": "Frustrated caller left angry voicemail about trying to pay for 3 days. Same ext 2201 unavailable. Local number provides zero additional accessibility over toll-free.",
+        "best_exchange": "Agent: Hi, this is Mike from Summit Services. I have been trying to pay my balance for THREE DAYS and nobody answers. This is unacceptable. Please call me back at 949-741-7328.\nIVR: The person at extension 2201 is unavailable.\nAgent: I've left my message. Let's hope I get a call back soon.",
+        "recording_url": "https://dxc03zgurdly9.cloudfront.net/3cc2d263f8ecacf23fca6382ea87b3720e2d13994d0960602c8b50b77577783f/recording.wav",
+        "call_analysis": {
+          "call_successful": false,
+          "user_sentiment": "Negative",
+          "call_summary": "Agent called but reached voicemail. Left frustrated message about inability to pay for three days."
+        }
+      },
+      {
+        "call_number": 13,
+        "call_id": "call_c84286dd64d986f3ec3db7072ab",
+        "target": "Verliance (local)",
+        "target_number": "(951) 693-3318",
+        "persona": "spanish",
+        "duration_seconds": 41,
+        "call_status": "ended",
+        "disconnection_reason": "agent_hangup",
+        "outcome": "No Spanish support - hung up",
+        "in_voicemail": false,
+        "key_finding": "Spanish caller got English-only voicemail ('for Alliance Incorporated'). Pressed 0 for operator. Got 'Two zero, one' response. Agent asked for Spanish speaker, got no response. Said goodbye politely in Spanish. ZERO Spanish support on this line.",
+        "best_exchange": "Agent: Hola, estoy llamando sobre una...\nIVR: Thank you for calling for Alliance Incorporated.\nAgent: No hablo ingles, lo siento. Hay alguien que hable espanol?\n[No response]\nAgent: Gracias por su tiempo. Si necesitan algo mas, por favor contactenme. Adios.",
+        "recording_url": "https://dxc03zgurdly9.cloudfront.net/55b3f1e83667197fb6a924a4bc91981f6f335895180849f68ccdb98672b95adc/recording.wav",
+        "call_analysis": {
+          "call_successful": true,
+          "user_sentiment": "Neutral",
+          "call_summary": "Agent attempted to communicate in Spanish but received only English responses. Ended call politely."
+        }
+      },
+      {
+        "call_number": 14,
+        "call_id": "call_b624fd15517b556fb4dbd6cd2f5",
+        "target": "Verliance (local)",
+        "target_number": "(951) 693-3318",
+        "persona": "identity_probe",
+        "duration_seconds": 31,
+        "call_status": "ended",
+        "disconnection_reason": "agent_hangup",
+        "outcome": "Voicemail - office closed, did not leave message",
+        "in_voicemail": true,
+        "key_finding": "Identity probe caller recognized closed office and decided to call back during business hours. Did not leave voicemail. Smart agent behavior - did not reveal identity info to voicemail.",
+        "best_exchange": "Agent: Hi, this is Sarah calling from Marketplace Liquor in Savage...\nIVR: Reliance Incorporated. Our office is closed...\nAgent: It seems their office is closed. I'll try calling back during their business hours. Thank you!",
+        "recording_url": "https://dxc03zgurdly9.cloudfront.net/ff716659a01858b8cb51a9373550b852f3afea53bfba85becefe0db0eb8b3b9e/recording.wav",
+        "call_analysis": {
+          "call_successful": false,
+          "user_sentiment": "Neutral",
+          "call_summary": "Agent called but office was closed. Decided to call back during business hours."
+        }
+      },
+      {
+        "call_number": 15,
+        "call_id": "call_2179015de280664423bd0f7f701",
+        "target": "Verliance (local)",
+        "target_number": "(951) 693-3318",
+        "persona": "dispute",
+        "duration_seconds": 57,
+        "call_status": "ended",
+        "disconnection_reason": "agent_hangup",
+        "outcome": "Voicemail - left dispute message",
+        "in_voicemail": true,
+        "key_finding": "Dispute caller left detailed voicemail about $450 bill dispute for drain work not done right. Extension 2201 unavailable. Identical outcome to toll-free dispute call. Customer with legitimate complaint has zero real-time resolution path.",
+        "best_exchange": "Agent: Hi, this is Mike from Summit Auto Repair on Industrial Boulevard. You guys did some drain work for me about a month ago but the drain is still clogged. I'm calling about the four fifty bill because I don't think I should pay full price when the job wasn't done right. My number is 949-741-7328. Please have someone call me back about this billing issue.",
+        "recording_url": "https://dxc03zgurdly9.cloudfront.net/633f4172da72e3712678e39557b6f81178748336d35a1472bfa878f84268ee0e/recording.wav",
+        "call_analysis": {
+          "call_successful": false,
+          "user_sentiment": "Neutral",
+          "call_summary": "Agent left a detailed voicemail requesting callback about a billing dispute for $450."
+        }
+      }
+    ],
+    "audit_conclusions": {
+      "salesforce": {
+        "humans_reached": 0,
+        "total_calls": 5,
+        "phone_support": "NONE - billing is portal/email only",
+        "spanish_support": "NONE",
+        "ivr_reliability": "POOR - DTMF presses frequently not recognized, system crashed once",
+        "dispute_path": "NONE by phone",
+        "payment_path": "NONE by phone - directed to billing.salesforce.com",
+        "audit_grade": "F"
+      },
+      "verliance_tollfree": {
+        "humans_reached": 0,
+        "total_calls": 5,
+        "phone_support": "VOICEMAIL ONLY during this test window",
+        "spanish_support": "NONE",
+        "branding": "Answers as 'Reliance Incorporated' not 'Verliance'",
+        "extension_2201": "Always unavailable",
+        "dispute_path": "Voicemail only",
+        "payment_path": "Voicemail only",
+        "hold_time": "Spanish caller stuck on hold 5 minutes with no pickup (max duration reached)",
+        "audit_grade": "F"
+      },
+      "verliance_local": {
+        "humans_reached": 0,
+        "total_calls": 5,
+        "phone_support": "VOICEMAIL ONLY - identical to toll-free",
+        "spanish_support": "NONE",
+        "branding": "Same 'Reliance Incorporated' / 'for Alliance Incorporated' voicemail",
+        "extension_2201": "Always unavailable",
+        "dispute_path": "Voicemail only",
+        "payment_path": "Voicemail only",
+        "audit_grade": "F"
+      }
+    },
+    "total_cost_cents": 260.53,
+    "total_duration_seconds": 963
+  }
+}

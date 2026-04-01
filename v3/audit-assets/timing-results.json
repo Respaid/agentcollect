@@ -1,0 +1,353 @@
+{
+  "run_date": "2026-03-27",
+  "runs": [
+    {
+      "run_id": "run_1",
+      "run_time_utc": "12:02",
+      "run_time_pt": "05:02 AM PDT",
+      "note": "All calls placed at 5 AM PDT — all prospects CLOSED. Re-run needed during business hours."
+    },
+    {
+      "run_id": "run_2",
+      "run_time_utc": "14:02",
+      "run_time_pt": "07:02 AM PDT",
+      "from_number": "+19497417328",
+      "timing_agent": "agent_4ba93270dfed9b5893f9f2813f",
+      "mystery_shopper_agent": "agent_7be4cfedc1e08674f42b2a296b",
+
+      "results": [
+        {
+          "prospect": "Qualified Staffing",
+          "number": "+18102300368",
+          "call_id": "call_13f09ae0d51872af341ee578510",
+          "call_time_local": "10:02 AM EDT",
+          "duration_seconds": 95.8,
+          "result": "voicemail",
+          "result_detail": "IVR with department menu (press 7 for AR), then hit general voicemail — 'unable to take your call at this time'",
+          "human_answered": false,
+          "ivr_depth": "multi-level",
+          "ar_option_in_ivr": true,
+          "notes": "Has dedicated AR option (press 7) but routes to voicemail during business hours (10 AM EDT).",
+          "recording_url": "https://dxc03zgurdly9.cloudfront.net/10be442931e6ab3a69ef45eb1be03aed3c9be48d677b6fa6cbd96a74c5d4ed52/recording.wav",
+          "audit_finding": "Press 7 for AR — hits voicemail even at 10 AM. No live AR contact by phone.",
+          "email_copy": "pressed 7 for accounts receivable. voicemail."
+        },
+        {
+          "prospect": "Automation Personnel",
+          "number": "+12057333700",
+          "call_id": "call_7451272fbadd39f4e2ce2276371",
+          "call_time_local": "09:02 AM CDT",
+          "duration_seconds": 10.1,
+          "result": "ivr_disconnect",
+          "result_detail": "IVR answered 'Thank you for choosing Automation Personnel' then call disconnected (user_hangup) after 10 seconds.",
+          "human_answered": false,
+          "ivr_depth": "entry-only",
+          "ar_option_in_ivr": false,
+          "notes": "Call disconnected immediately after IVR greeting. Possible caller screening on unknown numbers. Needs retry.",
+          "recording_url": "https://dxc03zgurdly9.cloudfront.net/7527731fed31752266de6df8c17bcf300e1e1341a3a38d474b3206181034b41b/recording.wav",
+          "audit_finding": "IVR disconnects callers within 10 seconds. Possible auto-screening for unknown callers.",
+          "email_copy": "called today. your system hung up on me in 10 seconds."
+        },
+        {
+          "prospect": "Kimble Companies",
+          "number": "+18002010005",
+          "label": "main",
+          "call_id": "call_d93b02667834f083b1d7a959f9f",
+          "call_time_local": "10:02 AM EDT",
+          "duration_seconds": 71.4,
+          "result": "ivr_transfer_no_answer",
+          "result_detail": "IVR for refuse/limestone/coal/oil/gas industries. Pressed 0 for operator. Transferred — operator never answered.",
+          "human_answered": false,
+          "ivr_depth": "multi-level",
+          "ar_option_in_ivr": false,
+          "notes": "No dedicated AR option. Must press 0 for operator. Operator transfer at 10 AM EDT — no answer.",
+          "recording_url": "https://dxc03zgurdly9.cloudfront.net/5ec2ca6dc96ae968d569bcee65473f059497960818299083de3c884f94ac5670/recording.wav",
+          "audit_finding": "No AR option in IVR. Operator transfer at 10 AM — no answer.",
+          "email_copy": "pressed 0 for operator. no answer."
+        },
+        {
+          "prospect": "Kimble Companies",
+          "number": "+13303431226",
+          "label": "secondary",
+          "call_id": "call_f3b21331bbe444650db24a396e4",
+          "call_time_local": "10:02 AM EDT",
+          "duration_seconds": 66.9,
+          "result": "ivr_transfer_no_answer",
+          "result_detail": "Same IVR as main number. Pressed 0 for operator. Transferred — no answer.",
+          "human_answered": false,
+          "ivr_depth": "multi-level",
+          "ar_option_in_ivr": false,
+          "notes": "Both Kimble numbers route to the same IVR system. Confirmed duplicate routing. Neither operator answers at 10 AM EDT.",
+          "recording_url": "https://dxc03zgurdly9.cloudfront.net/57bd7c389aeb6ac18595ece5261e29322f160bf12fa33b1b38f4c428ee2563af/recording.wav",
+          "audit_finding": "Both numbers → same IVR → operator transfer → no answer. Two numbers, zero humans reachable.",
+          "email_copy": "tried both numbers. same IVR. no one picked up."
+        },
+        {
+          "prospect": "Texas Disposal Systems",
+          "number": "+18003758375",
+          "call_id": "call_c1c6bcda83f7552922e4bddb93a",
+          "call_time_local": "09:02 AM CDT",
+          "duration_seconds": 72.3,
+          "result": "human_answered",
+          "result_detail": "IVR with payment option (press 3), operator option (press 0). Human picked up: 'How may I help you? Texas Disposal. May I help you?'",
+          "human_answered": true,
+          "time_to_human_seconds": 64,
+          "ivr_depth": "multi-level",
+          "ar_option_in_ivr": false,
+          "payment_option_in_ivr": true,
+          "notes": "BEST PERFORMER. Human reachable in ~64 seconds at 9 AM CDT. Has payment IVR option (press 3) AND live operator.",
+          "recording_url": "https://dxc03zgurdly9.cloudfront.net/67838f19b3c59c80364f205a186d5bf8f41177c3f262eb709d2ac6195bb90027/recording.wav",
+          "audit_finding": "Human answers in ~64 seconds. Has payment IVR option. Live billing contact reachable.",
+          "email_copy": "called (800) 375-8375. someone answered. 64 seconds."
+        },
+        {
+          "prospect": "Prudential Overall Supply",
+          "number": "+18007675536",
+          "label": "main_800",
+          "call_id": "call_16eb9e52f2f239e2780d9823473",
+          "call_time_local": "07:02 AM PDT",
+          "duration_seconds": 18.9,
+          "result": "closed",
+          "result_detail": "Recording: 'We are currently closed. At the tone, please leave a message.'",
+          "human_answered": false,
+          "notes": "Called at 7 AM PDT — before business hours. Retry between 9 AM–5 PM PDT.",
+          "recording_url": "https://dxc03zgurdly9.cloudfront.net/688a481b4c8a4db88d74aadd16eb4dd07ffd99182712329b27a5fb58ba92c870/recording.wav",
+          "audit_finding": "PENDING — called before hours. Retry during business hours.",
+          "email_copy": "PENDING retry"
+        },
+        {
+          "prospect": "Prudential Overall Supply",
+          "number": "+19492504855",
+          "label": "ar_direct",
+          "call_id": "call_0e7c4afa52879f4eb9d5f4b949a",
+          "call_time_local": "07:02 AM PDT",
+          "duration_seconds": 32.4,
+          "result": "voicemail_message_left",
+          "result_detail": "AR direct line closed at 7 AM PDT. Mystery shopper left voicemail as Mike from Summit Auto Repair.",
+          "human_answered": false,
+          "mystery_shopper": true,
+          "voicemail_left": true,
+          "voicemail_content": "Hi, my name is Mike from Summit Auto Repair. You did a drain cleaning at my shop and I got a bill for 450 dollars that I would like to pay. Please call me back at 9-4-9, 7-4-1, 7-3-2-8.",
+          "voicemail_left_at_utc": "14:04",
+          "callback_number": "+19497417328",
+          "notes": "CRITICAL: Voicemail left on AR direct line. Monitoring +19497417328 for callback. Callback timing = key audit metric.",
+          "recording_url": "https://dxc03zgurdly9.cloudfront.net/b909b9caf166a77e2ef4c536e92b279b0a35af42d60b1e1a760c5a59e2b5f7d4/recording.wav",
+          "audit_finding": "AR line closed at 7 AM PDT. Voicemail left — awaiting callback to measure response time.",
+          "email_copy": "left a voicemail on your AR line. waiting to see if anyone calls back."
+        }
+      ],
+
+      "scorecard": {
+        "texas_disposal":       { "grade": "A", "finding": "LIVE HUMAN in 64s. Payment IVR option. Phones staffed at 9 AM CDT." },
+        "qualified_staffing":   { "grade": "C", "finding": "AR option in IVR but hits voicemail at 10 AM EDT. No live contact." },
+        "kimble_companies":     { "grade": "D", "finding": "Both numbers → same IVR → operator transfer → no answer at 10 AM EDT." },
+        "automation_personnel": { "grade": "F", "finding": "IVR disconnects in 10 seconds. Possible auto-screening. Effectively unreachable." },
+        "prudential_overall":   { "grade": "PENDING", "finding": "Called at 7 AM PDT before hours. Retry needed + monitoring voicemail callback." }
+      },
+
+      "follow_up_needed": [
+        {
+          "prospect": "Prudential Overall Supply",
+          "action": "Retry both numbers between 9 AM–12 PM PDT (16:00–19:00 UTC)",
+          "reason": "Called at 7 AM PDT — before business hours"
+        },
+        {
+          "prospect": "Automation Personnel",
+          "action": "Retry +12057333700 — possible caller screening on unknown CallerID",
+          "reason": "Call lasted only 10 seconds, IVR disconnected"
+        },
+        {
+          "prospect": "Prudential Overall Supply AR",
+          "action": "Monitor +19497417328 for callback from (949) 250-4855",
+          "reason": "Voicemail left at 14:04 UTC. Callback timing = key audit metric for email copy"
+        }
+      ],
+
+      "audit_email_copy": {
+        "texas_disposal": "called (800) 375-8375 this morning. someone answered. 64 seconds.",
+        "qualified_staffing": "called (810) 230-0368. pressed 7 for accounts receivable. voicemail.",
+        "kimble_companies": "called (800) 201-0005 and (330) 343-1226. same system. pressed 0 for operator. no answer.",
+        "automation_personnel": "called (205) 733-3700. your system hung up in 10 seconds.",
+        "prudential_overall": "PENDING — retry during business hours"
+      }
+    },
+    {
+      "run_id": "run_3",
+      "run_time_utc": "15:02",
+      "run_time_pt": "08:02 AM PDT",
+      "from_number": "+19497417328",
+      "timing_agent": "agent_4ba93270dfed9b5893f9f2813f",
+      "mystery_shopper_agent": "agent_7be4cfedc1e08674f42b2a296b",
+      "note": "Business hours run — 8 AM PDT. All prospects should be open.",
+
+      "results": [
+        {
+          "prospect": "Automation Personnel",
+          "number": "+12057333700",
+          "call_id": "call_a6f452059ca15b15f39f0876b32",
+          "call_time_local": "09:02 AM CDT",
+          "duration_seconds": 20,
+          "result": "human_answered",
+          "result_detail": "Live human answered in ~9 seconds. 'Thank you for choosing automation personnel services. This is Colby. How can I help?' No IVR.",
+          "human_answered": true,
+          "time_to_human_seconds": 9,
+          "ivr_depth": "none",
+          "ar_option_in_ivr": false,
+          "notes": "FASTEST in cohort. Zero IVR. Direct pickup. Contrast with run_2 which disconnected in 10s — today confirmed live human. Colby answered.",
+          "recording_url": "https://dxc03zgurdly9.cloudfront.net/333397c043ce7692e571b3bbda5913ba91dff45335a5343e5c8fabed70f2c213/recording.wav",
+          "audit_finding": "Answered in 9 seconds, no IVR. Best phone AR experience in cohort.",
+          "email_copy": "called (205) 733-3700 this morning. colby picked up in 9 seconds. no hold, no menu."
+        },
+        {
+          "prospect": "Prudential Overall Supply",
+          "number": "+18007675536",
+          "label": "main_800",
+          "call_id": "call_c009bde0fdaa0494225fa50229c",
+          "call_time_local": "08:02 AM PDT",
+          "duration_seconds": 44,
+          "result": "human_answered",
+          "result_detail": "Hold only (no IVR). Human answered: 'Thank you for calling Prudential Browse Supply. This is Cynthia.' at ~32 seconds.",
+          "human_answered": true,
+          "time_to_human_seconds": 32,
+          "ivr_depth": "none",
+          "notes": "Main 800 line is now open at 8 AM PDT. No IVR, just hold music then human. Faster than AR direct line which doesn't answer at all.",
+          "recording_url": "https://dxc03zgurdly9.cloudfront.net/0a52cc88a68a00e4229ff430ca44efea74c8e0674fa27c72c1cb9c3bf5ca8801/recording.wav",
+          "audit_finding": "Main 800 reaches a human in 32s. AR direct line unreachable. Structural billing support gap.",
+          "email_copy": "called (800) 767-5536. cynthia picked up in 32 seconds."
+        },
+        {
+          "prospect": "Texas Disposal Systems",
+          "number": "+18003758375",
+          "call_id": "call_76d46b401cdc867bf9b7a543666",
+          "call_time_local": "08:02 AM PDT / 10:02 AM CDT",
+          "duration_seconds": 61,
+          "result": "human_answered",
+          "result_detail": "IVR (commercial/residential/payment/Gardenville/hours/operator options) → hold → human reached at ~47 seconds. Agent said wrong number and hung up.",
+          "human_answered": true,
+          "time_to_human_seconds": 47,
+          "ivr_depth": "single-level",
+          "payment_option_in_ivr": true,
+          "ar_option_in_ivr": false,
+          "notes": "Has 'press 3 to make a payment' in IVR — only company with payment option. Human reachable in 47s vs 64s in run_2 (faster today).",
+          "recording_url": "https://dxc03zgurdly9.cloudfront.net/4816e5ebfe7fbaa5aa55562a0b8dc1e7bbf3fb909ccd64e0eceafa83ae6f3979/recording.wav",
+          "audit_finding": "Payment IVR option exists. Human reachable in 47s. Best structured billing UX in cohort.",
+          "email_copy": "called (800) 375-8375. pressed 0. someone answered in 47 seconds."
+        },
+        {
+          "prospect": "Kimble Companies",
+          "number": "+18002010005",
+          "label": "main",
+          "call_id": "call_a3c05e170655622b19e0249bb47",
+          "call_time_local": "10:02 AM EDT",
+          "duration_seconds": 81,
+          "result": "human_answered",
+          "result_detail": "IVR (refuse/recycling/limestone/coal/oil/gas, press 0 for operator) → operator picked up 'Kimball Companies. How can I help you?' at ~70 seconds.",
+          "human_answered": true,
+          "time_to_human_seconds": 70,
+          "ivr_depth": "single-level",
+          "ar_option_in_ivr": false,
+          "notes": "Contrast with run_2 where operator didn't answer. Today human reached at 70s. Brand inconsistency: IVR says 'Kimbell', human says 'Kimball'.",
+          "recording_url": "https://dxc03zgurdly9.cloudfront.net/f633e3640cbee8bb38e4f0aa08c52937e9c685ed1373a292f5ac8aec8fc59cc3/recording.wav",
+          "audit_finding": "Reachable but slow (70s). No AR/billing option in IVR — must press 0 and ask. IVR/human name inconsistency (Kimbell vs Kimball).",
+          "email_copy": "called (800) 201-0005. pressed 0. someone answered at 70 seconds."
+        },
+        {
+          "prospect": "Kimble Companies",
+          "number": "+13303431226",
+          "label": "secondary",
+          "call_id": "call_3e280e2c026c21e483369793238",
+          "call_time_local": "10:02 AM EDT",
+          "duration_seconds": 76,
+          "result": "ivr_only",
+          "result_detail": "Identical IVR to main number. Timing agent did not press an option and hung up after 76s.",
+          "human_answered": false,
+          "time_to_human_seconds": null,
+          "ivr_depth": "single-level",
+          "notes": "Confirmed: both numbers route to same IVR system. Secondary number = redundant.",
+          "recording_url": "https://dxc03zgurdly9.cloudfront.net/9d23f58cafa111435f542de9933298bb9930444867bff85f8f2fedf1e7032837/recording.wav",
+          "audit_finding": "Two numbers, one IVR, no AR-specific path.",
+          "email_copy": "tried (330) 343-1226. same system as (800) 201-0005."
+        },
+        {
+          "prospect": "Qualified Staffing",
+          "number": "+18102300368",
+          "call_id": "call_3b31113f8b2c5c25f0296a6aac7",
+          "call_time_local": "10:02 AM EDT",
+          "duration_seconds": 120,
+          "result": "ivr_loop_no_escape",
+          "result_detail": "Corporate office IVR loops: employment verification fax (810-230-8057), name directory (press 2), department listing (press 3), website for branches. No billing/AR/payment option. No operator option. Agent cycled through menu twice in 2 minutes — max duration hit.",
+          "human_answered": false,
+          "time_to_human_seconds": null,
+          "ivr_depth": "loop",
+          "ar_option_in_ivr": false,
+          "notes": "Worst IVR in cohort. No escape route without knowing an extension. Billing contact completely inaccessible by phone. IVR options confirmed: fax for employment verification, press 2 name directory, press 3 department, website for branches. Named employees in directory: Carly Dockery, Doug Belott, Susan Church, Anne McCowen, Ryan Cofel, Amanda Essex, Aaron German, Don O'Neil, Ashley Poirier.",
+          "recording_url": "https://dxc03zgurdly9.cloudfront.net/86a5a00e4758a9bb041b8bbfb9a84a6b59686848a49ed5dab7ee71856f80a5ea/recording.wav",
+          "audit_finding": "CRITICAL — No billing/AR phone path. Corporate IVR loops with no operator option. Customer cannot reach AR by phone.",
+          "email_copy": "called (810) 230-0368 this morning. spent 2 minutes in a phone tree with no way to reach billing.",
+          "ivr_employee_directory": ["Carly Dockery", "Doug Belott", "Susan Church", "Anne McCowen", "Ryan Cofel", "Amanda Essex", "Aaron German", "Don O'Neil", "Ashley Poirier"]
+        },
+        {
+          "prospect": "Prudential Overall Supply",
+          "number": "+19492504855",
+          "label": "ar_direct_949",
+          "call_id": "call_e3cf22e991dd2eec93cc801fb53",
+          "call_time_local": "08:02 AM PDT",
+          "duration_seconds": 35,
+          "result": "no_answer_silent",
+          "result_detail": "Complete silence. No IVR, no hold music, no voicemail greeting, no human. Empty transcript. Call ended by inactivity after 35 seconds.",
+          "human_answered": false,
+          "time_to_human_seconds": null,
+          "notes": "The AR direct line is silent during business hours. Not even a voicemail greeting. Just rings and goes silent. This is WORSE than a voicemail.",
+          "recording_url": "https://dxc03zgurdly9.cloudfront.net/518de847d8193a590f6d4541f5b171664d4e3d750e06fd9f2de243e8b9816b16/recording.wav",
+          "audit_finding": "CRITICAL — AR direct line completely unmanned and silent. No voicemail, no transfer, no IVR. Dead line during business hours.",
+          "email_copy": "called (949) 250-4855 — your AR direct line — at 8 AM. silence. not even voicemail."
+        }
+      ],
+
+      "mystery_shop": {
+        "prospect": "Prudential Overall Supply",
+        "number": "+19492504855",
+        "label": "ar_direct_949",
+        "call_id": "call_1c5d276a0be23d73db1206cd43c",
+        "agent": "agent_7be4cfedc1e08674f42b2a296b",
+        "identity": "Mike, Summit Auto Repair — calling to pay $1,800 invoice",
+        "call_time_local": "08:03 AM PDT",
+        "duration_seconds": 49,
+        "result": "no_answer",
+        "result_detail": "Mystery shopper (Mike) introduced himself and stated he wanted to pay an $1,800 balance for uniform services. No one picked up. Agent waited 21 seconds, said 'Hello? I'm just holding to get assistance with paying my balance...' Still no response. Call ended by inactivity.",
+        "human_answered": false,
+        "transcript": "Agent: 'Hi, yeah, I'm calling about a bill? You guys provide uniform service for my auto shop, Summit Auto Repair, and I got an invoice for about eighteen hundred dollars. I'd like to pay my balance.' [21s silence] Agent: 'Hello? I'm just holding to get assistance with paying my balance for Summit Auto Repair. Let me know if I need to provide any additional information!'",
+        "audit_significance": "CRITICAL — A customer actively trying to PAY $1,800 was ignored. The AR direct line doesn't answer even for inbound payment calls.",
+        "recording_url": "https://dxc03zgurdly9.cloudfront.net/358556b9eaf8dd3f372b34caaa8ef62a51a6e30deb6508384434c22b523b8f83/recording.wav",
+        "email_copy": "called (949) 250-4855 this morning. wanted to pay an invoice. no one answered."
+      },
+
+      "scorecard": {
+        "automation_personnel": { "grade": "A", "time_to_human": "9s", "finding": "Live human, no IVR. Best in cohort." },
+        "prudential_main_800":  { "grade": "B", "time_to_human": "32s", "finding": "Hold then human. No IVR. But AR direct line is dead." },
+        "texas_disposal":       { "grade": "B-", "time_to_human": "47s", "finding": "IVR with payment option. Human reachable." },
+        "kimble_main":          { "grade": "C+", "time_to_human": "70s", "finding": "IVR then human. Slow. No AR path." },
+        "kimble_secondary":     { "grade": "C", "time_to_human": "N/A", "finding": "Same as main. Redundant number." },
+        "qualified_staffing":   { "grade": "D", "time_to_human": "N/A", "finding": "IVR loop with no escape. Billing unreachable by phone." },
+        "prudential_ar_949":    { "grade": "F", "time_to_human": "N/A", "finding": "Silent line. Not even voicemail. $1,800 payment attempt ignored." }
+      },
+
+      "audit_email_copy_final": {
+        "automation_personnel": "called (205) 733-3700 this morning. colby picked up in 9 seconds.",
+        "texas_disposal":       "called (800) 375-8375. pressed 0 for operator. someone answered in 47 seconds.",
+        "kimble_companies":     "called (800) 201-0005. pressed 0. someone answered at 70 seconds.",
+        "qualified_staffing":   "called (810) 230-0368. spent 2 minutes in a phone tree with no way to reach billing.",
+        "prudential_overall":   "called (949) 250-4855 — your AR direct line — at 8 AM. tried to pay an invoice. silence."
+      },
+
+      "key_new_findings_vs_run2": [
+        "Automation Personnel confirmed: LIVE HUMAN at 9s (run_2 disconnected — was likely caller screening)",
+        "Prudential main 800 now reachable — Cynthia answered in 32s (run_2: closed before hours)",
+        "Texas Disposal faster today: 47s vs 64s in run_2",
+        "Kimble main: human now answering (run_2: operator transfer no answer)",
+        "Prudential AR 949: STILL no answer — confirmed pattern, not one-off",
+        "Mystery shop: $1,800 payment attempt on Prudential AR — ignored — strongest audit hook yet"
+      ]
+    }
+  ]
+}
