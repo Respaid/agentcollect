@@ -1,0 +1,26 @@
+{
+  "initial_outreach": {
+    "subject": "We called {{company_name}} today",
+    "from_name": "Jonathan Banner",
+    "from_email": "jb@agentcollect.com",
+    "body_html": "<p>Hi {{ceo_first_name}},</p><p>My grandfather ran a small business for 40 years. The thing that kept him up at night wasn't competitors or the economy -- it was waiting to get paid.</p><p>We called {{company_name}}'s billing department today. Here's what we found:</p><ul>{{findings_bullets}}</ul><p>How far off am I?</p><p>We built an AI that handles AR calls 24/7 -- no hold times, no voicemail, no missed revenue. Companies using it recover 3x faster.</p><p>Worth 15 minutes to see your audit?</p><p>{{audit_page_link}}</p><p>Best,<br>Jonathan Banner<br>CEO, AgentCollect (YC S23)<br>jb@agentcollect.com</p>"
+  },
+  "audit_page_share": {
+    "subject": "Your AR audit is ready, {{ceo_first_name}}",
+    "from_name": "Jonathan Banner",
+    "from_email": "jb@agentcollect.com",
+    "body_html": "<p>Hi {{ceo_first_name}},</p><p>I put together a full AR audit for {{company_name}} -- real calls, real findings, real recordings.</p><p><a href='{{audit_page_url}}'>View your audit here</a></p><p>The short version: your team is leaving money on the table. The recordings tell the story better than I can.</p><p>Happy to walk you through it live.</p><p>Best,<br>Jonathan Banner<br>CEO, AgentCollect (YC S23)<br>jb@agentcollect.com</p>"
+  },
+  "follow_up_1": {
+    "subject": "Re: We called {{company_name}} today",
+    "from_name": "Jonathan Banner",
+    "from_email": "jb@agentcollect.com",
+    "body_html": "<p>Hi {{ceo_first_name}},</p><p>Quick follow-up. We've now completed {{call_count}} mystery shop calls to {{company_name}}'s billing team.</p><p>Key finding: {{top_finding}}</p><p>The full audit with call recordings is here: <a href='{{audit_page_url}}'>{{audit_page_url}}</a></p><p>Would love to show you how our AI handles these situations differently.</p><p>Best,<br>Jonathan Banner<br>CEO, AgentCollect (YC S23)<br>jb@agentcollect.com</p>"
+  },
+  "follow_up_2": {
+    "subject": "{{company_name}} AR benchmark vs industry",
+    "from_name": "Jonathan Banner",
+    "from_email": "jb@agentcollect.com",
+    "body_html": "<p>Hi {{ceo_first_name}},</p><p>Last note from me.</p><p>We've audited {{companies_audited}} companies' AR departments this quarter. {{company_name}} scored {{score}}/100 on reachability -- {{comparison}}.</p><p>The companies using our AI agent average 95/100 because there's no hold time, no voicemail, no lunch breaks.</p><p>If you ever want to see the full audit: <a href='{{audit_page_url}}'>{{audit_page_url}}</a></p><p>Best,<br>Jonathan Banner<br>CEO, AgentCollect (YC S23)<br>jb@agentcollect.com</p>"
+  }
+}

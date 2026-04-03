@@ -1,0 +1,120 @@
+{
+  "ar_audit": {
+    "agent_id": "agent_7be4cfedc1e08674f42b2a296b",
+    "name": "AR Audit (Vendor Reconciliation)",
+    "description": "Monthly vendor check, verify balance and contract terms",
+    "priority": 1,
+    "requires_real_client": true,
+    "dynamic_variables": {
+      "client_name": "{{client_name}}",
+      "client_address": "{{client_address}}",
+      "caller_name": "{{caller_name}}",
+      "company_name": "{{target_name}}",
+      "invoice_amount": "{{invoice_amount}}"
+    }
+  },
+  "hospitalized": {
+    "agent_id": "agent_417106c8ded2494128408c8054",
+    "name": "Hospitalized Hardship",
+    "description": "Caller in hospital, needs payment plan or extension",
+    "priority": 2,
+    "requires_real_client": true,
+    "dynamic_variables": {
+      "caller_name": "{{caller_name}}",
+      "company_name": "{{target_name}}",
+      "account_number": "{{account_number}}"
+    }
+  },
+  "frustrated": {
+    "agent_id": "agent_9c3d3d7e17af02d20138137de1",
+    "name": "Frustrated Dispute",
+    "description": "Angry caller disputing a charge, tests de-escalation",
+    "priority": 3,
+    "requires_real_client": true,
+    "dynamic_variables": {
+      "caller_name": "{{caller_name}}",
+      "company_name": "{{target_name}}",
+      "dispute_amount": "{{dispute_amount}}"
+    }
+  },
+  "new_client": {
+    "agent_id": "agent_0899f83d241597953cb457d196",
+    "name": "New Client Probe",
+    "description": "Potential new customer asking about services and billing",
+    "priority": 4,
+    "requires_real_client": false,
+    "dynamic_variables": {
+      "caller_name": "{{caller_name}}",
+      "company_name": "{{target_name}}"
+    }
+  },
+  "timing_before": {
+    "agent_id": "agent_4ba93270dfed9b5893f9f2813f",
+    "name": "Before Hours (7 AM)",
+    "description": "Call at 7 AM local time to test before-hours availability",
+    "priority": 5,
+    "requires_real_client": false,
+    "schedule": "07:00 local",
+    "dynamic_variables": {
+      "caller_name": "{{caller_name}}",
+      "company_name": "{{target_name}}"
+    }
+  },
+  "timing_lunch": {
+    "agent_id": "agent_4ba93270dfed9b5893f9f2813f",
+    "name": "Lunch Hour (12:15 PM)",
+    "description": "Call at 12:15 PM local to test lunch hour staffing",
+    "priority": 6,
+    "requires_real_client": false,
+    "schedule": "12:15 local",
+    "dynamic_variables": {
+      "caller_name": "{{caller_name}}",
+      "company_name": "{{target_name}}"
+    }
+  },
+  "timing_after": {
+    "agent_id": "agent_4ba93270dfed9b5893f9f2813f",
+    "name": "After Hours (5:30 PM)",
+    "description": "Call at 5:30 PM local to test end-of-day availability",
+    "priority": 7,
+    "requires_real_client": false,
+    "schedule": "17:30 local",
+    "dynamic_variables": {
+      "caller_name": "{{caller_name}}",
+      "company_name": "{{target_name}}"
+    }
+  },
+  "spanish": {
+    "agent_id": "agent_04df7a4302d93419038264c7c8",
+    "name": "Spanish Speaker",
+    "description": "Caller speaks only Spanish, tests language accessibility",
+    "priority": 8,
+    "requires_real_client": false,
+    "dynamic_variables": {
+      "caller_name": "{{caller_name}}",
+      "company_name": "{{target_name}}"
+    }
+  },
+  "elderly": {
+    "agent_id": "agent_163e88176d10fa00f8afcfc10f",
+    "name": "Elderly Confused",
+    "description": "Elderly caller confused about bill, tests patience and clarity",
+    "priority": 9,
+    "requires_real_client": false,
+    "dynamic_variables": {
+      "caller_name": "{{caller_name}}",
+      "company_name": "{{target_name}}"
+    }
+  },
+  "recruiter": {
+    "agent_id": "agent_34a4874a8396a7afa75fe7c150",
+    "name": "Recruiter Probe",
+    "description": "Recruiter probing for AR team size, names, and salaries",
+    "priority": 10,
+    "requires_real_client": false,
+    "dynamic_variables": {
+      "caller_name": "{{caller_name}}",
+      "company_name": "{{target_name}}"
+    }
+  }
+}

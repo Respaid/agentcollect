@@ -1,0 +1,55 @@
+{
+  "voices": [
+    {
+      "voice_id": "minimax-Camille",
+      "agent_id": "agent_a24bd17999f596e9aa34339497",
+      "gender": "female",
+      "accent": "American",
+      "names": ["Stacey", "Sarah", "Lisa", "Nicole", "Jen"]
+    },
+    {
+      "voice_id": "minimax-Daniel",
+      "agent_id": "agent_4f2a4dfde9790b263a88f24e83",
+      "gender": "male",
+      "accent": "American",
+      "names": ["Mike", "David", "James", "Brian", "Kevin"]
+    },
+    {
+      "voice_id": "minimax-Brynne",
+      "agent_id": "agent_08a736ebfdf130268b2bc883b9",
+      "gender": "female",
+      "accent": "American",
+      "names": ["Karen", "Rachel", "Pat", "Andrea", "Megan"]
+    },
+    {
+      "voice_id": "minimax-Jason",
+      "agent_id": "agent_66268c1f0ee49b776b7056f2c3",
+      "gender": "male",
+      "accent": "American",
+      "names": ["Tom", "Chris", "Robert", "Greg", "Steve"]
+    },
+    {
+      "voice_id": "minimax-Maren",
+      "agent_id": null,
+      "gender": "female",
+      "accent": "British",
+      "names": ["Emma", "Charlotte", "Olivia"],
+      "note": "CREATE WHEN NEEDED - British accent, use for diversity"
+    },
+    {
+      "voice_id": "minimax-George",
+      "agent_id": "agent_e75f903ac0d212bf31ba0cde7c",
+      "gender": "male",
+      "accent": "American",
+      "names": ["Mark", "Dan", "Jeff", "Scott", "Brad"]
+    }
+  ],
+  "rotation_rules": {
+    "min_gap_same_number_minutes": 30,
+    "min_gap_same_company_minutes": 120,
+    "never_same_voice_twice_in_row": true,
+    "alternate_gender": true,
+    "never_reuse_name_for_same_target": true,
+    "never_reuse_from_number_for_same_target": true
+  }
+}

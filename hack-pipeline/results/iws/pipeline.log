@@ -1,0 +1,29 @@
+2026-04-03 13:24:27 [INFO] ============================================================
+2026-04-03 13:24:27 [INFO] Starting pipeline for Interstate Waste Services (iws)
+2026-04-03 13:24:27 [INFO] ============================================================
+2026-04-03 13:24:27 [INFO] [iws] Phase intel: already done.
+2026-04-03 13:24:27 [INFO] [iws] Running phase: calls
+2026-04-03 13:24:27 [INFO] [iws] CRITICAL learning: Use REAL client identities, never fake
+2026-04-03 13:24:27 [INFO] [iws] CRITICAL learning: Female names with Camille voice only
+2026-04-03 13:24:27 [INFO] [iws] CRITICAL learning: verify-phone before EVERY call
+2026-04-03 13:24:27 [INFO] [iws] CRITICAL learning: max_duration 20 min for all calls
+2026-04-03 13:24:27 [INFO] [iws] CRITICAL learning: Telnyx SIP broken for outbound, use Twilio numbers only
+2026-04-03 13:24:27 [INFO] [iws] CRITICAL learning: For toll-free targets, must use Twilio numbers
+2026-04-03 13:24:27 [INFO] [iws] CRITICAL learning: Never use male names with Camille voice
+2026-04-03 13:24:27 [INFO] [iws] CRITICAL learning: Salesforce billing IVR hangs up - go through sales
+2026-04-03 13:24:27 [INFO] [iws] DRY RUN: Would verify phone +18663425497
+2026-04-03 13:24:27 [INFO] [iws] Persona timing_before scheduled for 07:00 local, current time 13:24. Skipping (outside window).
+2026-04-03 13:24:27 [INFO] [iws] Persona timing_lunch scheduled for 12:15 local, current time 13:24. Skipping (outside window).
+2026-04-03 13:24:27 [INFO] [iws] Persona timing_after scheduled for 17:30 local, current time 13:24. Skipping (outside window).
+2026-04-03 13:24:27 [INFO] [iws] DRY RUN: Would call +18663425497 with persona=spanish, agent=agent_04df7a4302d93419038264c7c8, caller=Rebecca Taylor, from=+14693209673
+2026-04-03 13:24:27 [INFO] [iws] DRY RUN: Would call +18663425497 with persona=elderly, agent=agent_163e88176d10fa00f8afcfc10f, caller=Sarah Mitchell, from=+19084607151
+2026-04-03 13:24:27 [INFO] [iws] DRY RUN: Would call +18663425497 with persona=recruiter, agent=agent_34a4874a8396a7afa75fe7c150, caller=Rachel Kim, from=+17326479785
+2026-04-03 13:24:27 [INFO] [iws] DRY RUN: Would call +18663425497 with persona=new_client, agent=agent_0899f83d241597953cb457d196, caller=Stephanie Park, from=+12137241472
+2026-04-03 13:24:27 [INFO] [iws] Running phase: emails
+2026-04-03 13:24:27 [WARNING] [iws] No CEO email found. Cannot send emails. Find email for Michael DiBella and update targets.json.
+2026-04-03 13:24:27 [INFO] [iws] Phase portal: already done.
+2026-04-03 13:24:27 [INFO] [iws] Phase page: already done.
+2026-04-03 13:24:27 [INFO] [iws] Running phase: outreach
+2026-04-03 13:24:27 [INFO] [iws] Outreach BLOCKED: requires JB approval.
+2026-04-03 13:24:27 [INFO]   To approve: set outreach.status='approved' in targets.json
+2026-04-03 13:24:27 [INFO] [iws] Pipeline run complete.

@@ -1,0 +1,22 @@
+[
+  {"id": 1, "learning": "Use REAL client identities, never fake", "applies_to": "phase2_calls", "severity": "critical"},
+  {"id": 2, "learning": "Female names with Camille voice only", "applies_to": "phase2_calls", "severity": "critical"},
+  {"id": 3, "learning": "verify-phone before EVERY call", "applies_to": "phase2_calls", "severity": "critical"},
+  {"id": 4, "learning": "Use Contact Finder to get real client credentials for companies with good security", "applies_to": "phase0_intel", "severity": "critical"},
+  {"id": 5, "learning": "If billing dead, try sales line", "applies_to": "phase2_calls", "severity": "high"},
+  {"id": 6, "learning": "max_duration 20 min for all calls", "applies_to": "phase2_calls", "severity": "critical"},
+  {"id": 7, "learning": "Telnyx SIP broken for outbound, use Twilio numbers only", "applies_to": "phase2_calls", "severity": "critical"},
+  {"id": 8, "learning": "For toll-free targets, must use Twilio numbers", "applies_to": "phase2_calls", "severity": "critical"},
+  {"id": 9, "learning": "Pages must tell a STORY not list results", "applies_to": "phase4_page", "severity": "critical"},
+  {"id": 10, "learning": "Audio player must sync with transcript word-by-word", "applies_to": "phase4_page", "severity": "high"},
+  {"id": 11, "learning": "Send emails PARALLEL with calls, not after", "applies_to": "phase3_emails", "severity": "critical"},
+  {"id": 12, "learning": "Amerit Fleet all numbers dead - drop target", "applies_to": "phase0_intel", "severity": "info"},
+  {"id": 13, "learning": "Amazon requires email/phone/order# - use Contact Finder on real clients", "applies_to": "phase0_intel", "severity": "critical"},
+  {"id": 14, "learning": "Never use male names with Camille voice", "applies_to": "phase2_calls", "severity": "critical"},
+  {"id": 15, "learning": "IWS searches by ADDRESS strict match", "applies_to": "phase2_calls", "severity": "high"},
+  {"id": 16, "learning": "Planned Companies AR permanently unstaffed", "applies_to": "phase2_calls", "severity": "info"},
+  {"id": 17, "learning": "Salesforce billing IVR hangs up - go through sales", "applies_to": "phase2_calls", "severity": "critical"},
+  {"id": 18, "learning": "Radius asks for SSN on B2B accounts", "applies_to": "phase2_calls", "severity": "info"},
+  {"id": 19, "learning": "Voice speed 0.80-0.95, temperature 1.3-1.5, responsiveness 0.5-0.7", "applies_to": "phase2_calls", "severity": "high"},
+  {"id": 20, "learning": "Callback technique: reference previous call for credibility", "applies_to": "phase2_calls", "severity": "high"}
+]

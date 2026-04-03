@@ -1,0 +1,132 @@
+{
+  "iws": {
+    "name": "Interstate Waste Services",
+    "status": "active",
+    "timezone": "America/New_York",
+    "phases": {
+      "intel": {"status": "done", "completed_at": "2026-04-03"},
+      "calls": {
+        "status": "in_progress",
+        "personas_completed": ["ar_audit", "hospitalized", "frustrated"],
+        "personas_remaining": ["timing_before", "timing_lunch", "timing_after", "spanish", "elderly", "recruiter", "new_client"]
+      },
+      "emails": {"status": "pending"},
+      "portal": {"status": "done", "completed_at": "2026-04-03"},
+      "page": {"status": "done", "url": "agentcollect.com/audit-iws.html", "completed_at": "2026-04-03"},
+      "outreach": {"status": "blocked", "reason": "requires_jb_go"}
+    },
+    "phones": ["+18663425497"],
+    "real_clients": ["CityMD", "Chelsea Piers", "NY Yankees"],
+    "ceo": {"name": "Michael DiBella", "email": null},
+    "notes": "Searches by ADDRESS strict match. Use real client addresses."
+  },
+  "kimball": {
+    "name": "Kimball International",
+    "status": "active",
+    "timezone": "America/New_York",
+    "phases": {
+      "intel": {"status": "done", "completed_at": "2026-04-02"},
+      "calls": {
+        "status": "in_progress",
+        "personas_completed": ["ar_audit"],
+        "personas_remaining": ["hospitalized", "frustrated", "timing_before", "timing_lunch", "timing_after", "spanish", "elderly", "recruiter", "new_client"]
+      },
+      "emails": {"status": "pending"},
+      "portal": {"status": "pending"},
+      "page": {"status": "done", "url": "agentcollect.com/audit-kimball.html", "completed_at": "2026-04-02"},
+      "outreach": {"status": "blocked", "reason": "requires_jb_go"}
+    },
+    "phones": ["+18005461232"],
+    "real_clients": ["McDonald's", "Hilton", "Marriott"],
+    "ceo": {"name": "Kristie Juster", "email": null},
+    "notes": ""
+  },
+  "salesforce": {
+    "name": "Salesforce",
+    "status": "active",
+    "timezone": "America/Los_Angeles",
+    "phases": {
+      "intel": {"status": "done", "completed_at": "2026-04-03"},
+      "calls": {
+        "status": "in_progress",
+        "personas_completed": [],
+        "personas_remaining": ["ar_audit", "hospitalized", "frustrated", "timing_before", "timing_lunch", "timing_after", "spanish", "elderly", "recruiter", "new_client"]
+      },
+      "emails": {"status": "pending"},
+      "portal": {"status": "pending"},
+      "page": {"status": "pending"},
+      "outreach": {"status": "blocked", "reason": "requires_jb_go"}
+    },
+    "phones": ["+18006677389"],
+    "real_clients": [],
+    "ceo": {"name": "Marc Benioff", "email": null},
+    "notes": "Billing IVR hangs up. Must go through sales line. Huge target."
+  },
+  "elwood": {
+    "name": "Elwood Staffing",
+    "status": "active",
+    "timezone": "America/New_York",
+    "phases": {
+      "intel": {"status": "done", "completed_at": "2026-04-02"},
+      "calls": {
+        "status": "in_progress",
+        "personas_completed": ["ar_audit"],
+        "personas_remaining": ["hospitalized", "frustrated", "timing_before", "timing_lunch", "timing_after", "spanish", "elderly", "recruiter", "new_client"]
+      },
+      "emails": {"status": "pending"},
+      "portal": {"status": "pending"},
+      "page": {"status": "done", "url": "agentcollect.com/audit-elwood.html", "completed_at": "2026-04-02"},
+      "outreach": {"status": "blocked", "reason": "requires_jb_go"}
+    },
+    "phones": ["+18007894595"],
+    "real_clients": [],
+    "ceo": {"name": "Mark Elwood", "email": null},
+    "notes": ""
+  },
+  "planned": {
+    "name": "Planned Companies",
+    "status": "active",
+    "timezone": "America/New_York",
+    "phases": {
+      "intel": {"status": "done", "completed_at": "2026-04-02"},
+      "calls": {
+        "status": "in_progress",
+        "personas_completed": ["ar_audit", "timing_lunch"],
+        "personas_remaining": ["hospitalized", "frustrated", "timing_before", "timing_after", "spanish", "elderly", "recruiter", "new_client"]
+      },
+      "emails": {"status": "pending"},
+      "portal": {"status": "pending"},
+      "page": {"status": "done", "url": "agentcollect.com/audit-planned.html", "completed_at": "2026-04-02"},
+      "outreach": {"status": "blocked", "reason": "requires_jb_go"}
+    },
+    "phones": ["+17329064700"],
+    "real_clients": [],
+    "ceo": {"name": "Robert Francis", "email": null},
+    "notes": "AR permanently unstaffed. Voicemail every time. Strong audit evidence."
+  },
+  "amazon_business": {
+    "name": "Amazon Business",
+    "status": "active",
+    "timezone": "America/Los_Angeles",
+    "phases": {
+      "intel": {
+        "status": "in_progress",
+        "contacts_found": ["Monro Muffler", "ABM Industries", "VEG Emergency Vets"],
+        "notes": "Requires email/phone/order# to access billing. Must use Contact Finder on real clients."
+      },
+      "calls": {
+        "status": "in_progress",
+        "personas_completed": [],
+        "personas_remaining": ["ar_audit", "hospitalized", "frustrated", "timing_before", "timing_lunch", "timing_after", "spanish", "elderly", "recruiter", "new_client"]
+      },
+      "emails": {"status": "pending"},
+      "portal": {"status": "pending"},
+      "page": {"status": "pending"},
+      "outreach": {"status": "blocked", "reason": "requires_jb_go"}
+    },
+    "phones": ["+18882817575"],
+    "real_clients": ["Monro Muffler", "ABM Industries", "VEG Emergency Vets"],
+    "ceo": {"name": "Andy Jassy", "email": null},
+    "notes": "Amazon requires email/phone/order# for verification. Use Contact Finder to get real client credentials."
+  }
+}
