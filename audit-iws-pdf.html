@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<title>AR Collection Audit — Interstate Waste Services — AgentCollect</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@page {
+  size: letter;
+  margin: 0;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #4F46E5;
+  --text: #0B1B3D;
+  --muted: #475569;
+  --light: #94A3B8;
+  --border: #E8ECF2;
+  --bg: #ffffff;
+  --green: #10B981;
+  --red: #dc2626;
+  --red-light: #fef2f2;
+  --display: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --sans: 'Inter', system-ui, sans-serif;
+}
+
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  font-size: 11pt;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* PAGE LAYOUT */
+.page {
+  width: 8.5in;
+  min-height: 11in;
+  padding: 0.65in 0.75in;
+  margin: 0 auto;
+  position: relative;
+  page-break-after: always;
+  display: flex;
+  flex-direction: column;
+}
+
+.page:last-child {
+  page-break-after: avoid;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--text);
+  margin-bottom: 28px;
+}
+
+.logo {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 16pt;
+  color: var(--text);
+  letter-spacing: -0.4px;
+  display: inline-flex;
+  align-items: baseline;
+  text-decoration: none;
+}
+
+.logo .dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--blue);
+  margin-left: 1px;
+}
+
+.header-right {
+  text-align: right;
+  font-size: 8.5pt;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.header-right .label {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  font-size: 7pt;
+  color: var(--light);
+}
+
+/* FOOTER */
+.footer {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 7.5pt;
+  color: var(--light);
+}
+
+.footer-logo {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 9pt;
+  color: var(--light);
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.footer-logo .dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--light);
+  margin-left: 1px;
+}
+
+/* PAGE 1: EXECUTIVE SUMMARY */
+.exec-title {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 22pt;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.exec-subtitle {
+  font-size: 10pt;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.company-row {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 28px;
+  font-size: 9.5pt;
+}
+
+.company-row .item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.company-row .label {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  font-size: 7pt;
+  color: var(--light);
+}
+
+.company-row .value {
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* OVERALL SCORE */
+.score-block {
+  background: var(--red-light);
+  border: 1.5px solid #fecaca;
+  border-radius: 10px;
+  padding: 24px;
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.score-big {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 48pt;
+  color: var(--red);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.score-of {
+  font-size: 18pt;
+  font-weight: 600;
+  color: #b91c1c;
+}
+
+.score-label {
+  font-size: 9pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #b91c1c;
+  margin-top: 4px;
+}
+
+/* CATEGORY SCORES */
+.category-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.category-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 8px;
+  text-align: center;
+}
+
+.category-card .cat-score {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 20pt;
+  color: var(--red);
+  line-height: 1;
+}
+
+.category-card .cat-score.amber {
+  color: #D97706;
+}
+
+.category-card .cat-of {
+  font-size: 11pt;
+  font-weight: 600;
+  color: var(--light);
+}
+
+.category-card .cat-name {
+  font-size: 7.5pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* KEY FINDING */
+.key-finding {
+  background: #f8fafc;
+  border-left: 3px solid var(--red);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 18px;
+  margin-bottom: 22px;
+}
+
+.key-finding-title {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 9pt;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--red);
+  margin-bottom: 6px;
+}
+
+.key-finding p {
+  font-size: 10pt;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* IMPACT + METHOD */
+.meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.meta-box {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+.meta-box .meta-label {
+  font-size: 7pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--light);
+  margin-bottom: 4px;
+}
+
+.meta-box .meta-value {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 16pt;
+  color: var(--red);
+  letter-spacing: -0.02em;
+}
+
+.meta-box .meta-text {
+  font-size: 9pt;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* PAGE 2: FINDINGS */
+.findings-title {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 18pt;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.finding {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+}
+
+.finding-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.finding-title {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 11pt;
+  color: var(--text);
+}
+
+.finding-badge {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 9pt;
+  color: #fff;
+  background: var(--red);
+  padding: 2px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.finding-badge.amber {
+  background: #D97706;
+}
+
+.finding ul {
+  list-style: none;
+  padding: 0;
+}
+
+.finding li {
+  font-size: 9.5pt;
+  color: var(--muted);
+  line-height: 1.55;
+  padding-left: 16px;
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.finding li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--red);
+}
+
+.finding li strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* PAGE 3: RECOMMENDATION */
+.rec-title {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 18pt;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.rec-subtitle {
+  font-size: 10pt;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+
+/* COMPARISON TABLE */
+.comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+
+.comp-col {
+  padding: 18px 20px;
+}
+
+.comp-col.today {
+  background: #fef2f2;
+  border-right: 1px solid var(--border);
+}
+
+.comp-col.agent {
+  background: #f0fdf4;
+}
+
+.comp-col-title {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 10pt;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+}
+
+.comp-col.today .comp-col-title {
+  color: var(--red);
+}
+
+.comp-col.agent .comp-col-title {
+  color: var(--green);
+}
+
+.comp-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 9px;
+  font-size: 9pt;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.comp-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  margin-top: 1px;
+}
+
+.comp-col.today .comp-icon {
+  background: #fecaca;
+  color: var(--red);
+}
+
+.comp-col.agent .comp-icon {
+  background: #bbf7d0;
+  color: #059669;
+}
+
+/* VALUE PROP */
+.value-block {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 22px;
+  margin-bottom: 22px;
+}
+
+.value-block p {
+  font-size: 10.5pt;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+.value-block strong {
+  font-weight: 700;
+}
+
+/* STATS ROW */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.stat-item {
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 6px;
+}
+
+.stat-num {
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 16pt;
+  color: var(--blue);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 7.5pt;
+  font-weight: 500;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* CTA */
+.cta-block {
+  background: var(--blue);
+  border-radius: 10px;
+  padding: 22px 24px;
+  text-align: center;
+  color: #fff;
+}
+
+.cta-block .cta-title {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 14pt;
+  margin-bottom: 6px;
+}
+
+.cta-block .cta-email {
+  font-size: 12pt;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.cta-block .cta-sub {
+  font-size: 8.5pt;
+  opacity: 0.65;
+  margin-top: 4px;
+}
+
+/* PRINT STYLES */
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .page {
+    width: auto;
+    min-height: auto;
+    padding: 0.5in 0.6in;
+    margin: 0;
+    page-break-after: always;
+    page-break-inside: avoid;
+  }
+
+  .page:last-child {
+    page-break-after: avoid;
+  }
+
+  .score-block {
+    background: var(--red-light) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .finding-badge {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .comp-col.today {
+    background: #fef2f2 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .comp-col.agent {
+    background: #f0fdf4 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .cta-block {
+    background: var(--blue) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .comp-icon {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* SCREEN SEPARATOR */
+@media screen {
+  .page {
+    box-shadow: 0 0 20px rgba(0,0,0,0.08);
+    margin: 20px auto;
+    background: #fff;
+  }
+
+  body {
+    background: #e5e7eb;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: EXECUTIVE SUMMARY -->
+<div class="page">
+  <div class="header">
+    <span class="logo">AgentCollect<span class="dot"></span></span>
+    <div class="header-right">
+      <div class="label">Confidential</div>
+      AR Collection Audit
+    </div>
+  </div>
+
+  <div class="exec-title">AR Collection Audit</div>
+  <div class="exec-subtitle">Confidential assessment of inbound billing operations</div>
+
+  <div class="company-row">
+    <div class="item">
+      <span class="label">Company</span>
+      <span class="value">Interstate Waste Services</span>
+    </div>
+    <div class="item">
+      <span class="label">Industry</span>
+      <span class="value">Waste Management</span>
+    </div>
+    <div class="item">
+      <span class="label">Report Date</span>
+      <span class="value">April 2026</span>
+    </div>
+    <div class="item">
+      <span class="label">Prepared By</span>
+      <span class="value">AgentCollect</span>
+    </div>
+  </div>
+
+  <div class="score-block">
+    <div class="score-label">Overall Collection Readiness Score</div>
+    <div class="score-big">2.1 <span class="score-of">/ 10</span></div>
+  </div>
+
+  <div class="category-row">
+    <div class="category-card">
+      <div class="cat-score">0<span class="cat-of">/10</span></div>
+      <div class="cat-name">Identity Verification</div>
+    </div>
+    <div class="category-card">
+      <div class="cat-score amber">3<span class="cat-of">/10</span></div>
+      <div class="cat-name">Empathy &amp; Tone</div>
+    </div>
+    <div class="category-card">
+      <div class="cat-score">0<span class="cat-of">/10</span></div>
+      <div class="cat-name">Dispute Resolution</div>
+    </div>
+    <div class="category-card">
+      <div class="cat-score">0<span class="cat-of">/10</span></div>
+      <div class="cat-name">Payment Collection</div>
+    </div>
+  </div>
+
+  <div class="key-finding">
+    <div class="key-finding-title">Key Finding</div>
+    <p>We called IWS billing twice as customers. Your representatives disclosed <strong>$48,124 in account data</strong> to unverified callers and collected <strong>$0</strong>. Your customer portal (MyIWS.com) is for sale. There is no way for customers to pay online.</p>
+  </div>
+
+  <div class="meta-grid">
+    <div class="meta-box">
+      <div class="meta-label">Estimated Annual Revenue at Risk</div>
+      <div class="meta-value">$4.8M+</div>
+    </div>
+    <div class="meta-box">
+      <div class="meta-label">Methodology</div>
+      <div class="meta-text">3 calls across 2 business days, posing as customers of CityMD, Chelsea Piers, and a construction company with a billing dispute.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span class="footer-logo">AgentCollect<span class="dot"></span></span>
+    <span>agentcollect.com</span>
+    <span>Confidential &mdash; Page 1 of 3</span>
+  </div>
+</div>
+
+<!-- PAGE 2: FINDINGS -->
+<div class="page">
+  <div class="header">
+    <span class="logo">AgentCollect<span class="dot"></span></span>
+    <div class="header-right">
+      <div class="label">Confidential</div>
+      Interstate Waste Services
+    </div>
+  </div>
+
+  <div class="findings-title">Detailed Findings</div>
+
+  <div class="finding">
+    <div class="finding-header">
+      <div class="finding-title">1. No Identity Verification</div>
+      <span class="finding-badge">0 / 10</span>
+    </div>
+    <ul>
+      <li><strong>Charlene</strong> looked up a CityMD account using only a company name and address. No account number, no callback verification, no security questions.</li>
+      <li>Disclosed: <strong>$34,818 outstanding balance</strong>, AP contact email, payment history, and primary contact name.</li>
+      <li>A competitor, vendor, or bad actor could extract the same data in under 2 minutes.</li>
+    </ul>
+  </div>
+
+  <div class="finding">
+    <div class="finding-header">
+      <div class="finding-title">2. Pattern Confirmed: Second Rep, Same Result</div>
+      <span class="finding-badge">0 / 10</span>
+    </div>
+    <ul>
+      <li><strong>Sue</strong> looked up Chelsea Piers by name alone. No verification attempted at any point during the call.</li>
+      <li>Disclosed: <strong>$13,305 balance</strong>, equipment inventory details, pickup schedule, and multiple contact names.</li>
+      <li>This is not an individual error. It is a systemic gap: no verification protocol exists.</li>
+    </ul>
+  </div>
+
+  <div class="finding">
+    <div class="finding-header">
+      <div class="finding-title">3. Dispute Resolution Non-Existent</div>
+      <span class="finding-badge">0 / 10</span>
+    </div>
+    <ul>
+      <li><strong>Nancy</strong> confirmed account details for a caller claiming a billing dispute, again without any form of verification.</li>
+      <li>Resolution offered: "Call your sales rep David." No case number, no escalation path, no follow-up committed.</li>
+      <li>Customer left with zero resolution. High risk of churn and delayed payment.</li>
+    </ul>
+  </div>
+
+  <div class="finding">
+    <div class="finding-header">
+      <div class="finding-title">4. Customer Portal Broken</div>
+      <span class="finding-badge amber">Critical</span>
+    </div>
+    <ul>
+      <li>IWS phone IVR directs customers to <strong>MyIWS.com</strong> to make payments. That domain is currently for sale ($2,695).</li>
+      <li>Tested: <strong>/make-a-payment</strong>, <strong>/customer-portal</strong>, and <strong>/myiws</strong> all return 404 errors.</li>
+      <li>Customers who want to pay online cannot. Every payment requires a phone call that collects $0.</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <span class="footer-logo">AgentCollect<span class="dot"></span></span>
+    <span>agentcollect.com</span>
+    <span>Confidential &mdash; Page 2 of 3</span>
+  </div>
+</div>
+
+<!-- PAGE 3: RECOMMENDATION -->
+<div class="page">
+  <div class="header">
+    <span class="logo">AgentCollect<span class="dot"></span></span>
+    <div class="header-right">
+      <div class="label">Confidential</div>
+      Interstate Waste Services
+    </div>
+  </div>
+
+  <div class="rec-title">What It Should Look Like</div>
+  <div class="rec-subtitle">Side-by-side: your current process vs. a modern AR operation</div>
+
+  <div class="comparison">
+    <div class="comp-col today">
+      <div class="comp-col-title">Today: IWS Billing</div>
+      <div class="comp-step">
+        <div class="comp-icon">&times;</div>
+        <span>Customer calls. Waits on hold.</span>
+      </div>
+      <div class="comp-step">
+        <div class="comp-icon">&times;</div>
+        <span>Rep answers. No identity check.</span>
+      </div>
+      <div class="comp-step">
+        <div class="comp-icon">&times;</div>
+        <span>Account data disclosed to anyone.</span>
+      </div>
+      <div class="comp-step">
+        <div class="comp-icon">&times;</div>
+        <span>Portal down. No way to pay online.</span>
+      </div>
+      <div class="comp-step">
+        <div class="comp-icon">&times;</div>
+        <span>Dispute? "Call your sales rep."</span>
+      </div>
+      <div class="comp-step">
+        <div class="comp-icon">&times;</div>
+        <span><strong>Result: $0 collected.</strong></span>
+      </div>
+    </div>
+    <div class="comp-col agent">
+      <div class="comp-col-title">With AgentCollect</div>
+      <div class="comp-step">
+        <div class="comp-icon">&check;</div>
+        <span>AI answers in 2 seconds. No hold.</span>
+      </div>
+      <div class="comp-step">
+        <div class="comp-icon">&check;</div>
+        <span>Identity verified before any data shared.</span>
+      </div>
+      <div class="comp-step">
+        <div class="comp-icon">&check;</div>
+        <span>Branded payment link sent by SMS/email.</span>
+      </div>
+      <div class="comp-step">
+        <div class="comp-icon">&check;</div>
+        <span>Online portal works. 24/7 self-service.</span>
+      </div>
+      <div class="comp-step">
+        <div class="comp-icon">&check;</div>
+        <span>Disputes logged, escalated, tracked.</span>
+      </div>
+      <div class="comp-step">
+        <div class="comp-icon">&check;</div>
+        <span><strong>Result: paid in 30 seconds.</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="value-block">
+    <p>
+      <strong>AgentCollect</strong> deploys an AI agent trained on your billing data. 100% answer rate. Identity verification on every call. Branded payment links. Disputes resolved on the spot. Your customers pay faster, your team handles less, and your data stays secure.
+    </p>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Answer Rate</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2s</div>
+      <div class="stat-label">Response Time</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Availability</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">30s</div>
+      <div class="stat-label">Time to Payment</div>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-title">15-Minute Demo</div>
+    <div class="cta-email">j@agentcollect.com</div>
+    <div class="cta-sub">See what your IWS billing agent looks and sounds like, live.</div>
+  </div>
+
+  <div class="footer">
+    <span class="footer-logo" style="color:#fff;">AgentCollect<span class="dot" style="background:#fff;"></span></span>
+    <span>agentcollect.com</span>
+    <span>Confidential &mdash; Page 3 of 3</span>
+  </div>
+</div>
+
+</body>
+</html>
