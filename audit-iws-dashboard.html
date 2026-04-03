@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IWS AR Collection Audit | Dashboard</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="IWS AR Collection Audit — Dashboard">
+<meta property="og:description" content="3 calls. 2 reps. $48,124 in data disclosed. $0 collected.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- GA -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GRZZT9K05B"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GRZZT9K05B',{page_title:'audit-iws-dashboard'});</script>
+<!-- Clarity -->
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","vr6uvxdalw");</script>
+<!-- Page visit beacon -->
+<script>
+(function(){
+  var sent=false;
+  function notify(sid){
+    if(sent)return;sent=true;
+    var body={page:'audit-iws-dashboard',clarity_project_id:'vr6uvxdalw',referrer:document.referrer||'direct'};
+    if(sid)body.clarity_session_id=sid;
+    fetch('https://backend.widr.app/api/v1/demo/page-visit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).catch(function(){});
+  }
+  var attempts=0;
+  var poll=setInterval(function(){
+    attempts++;
+    if(window.clarity){
+      try{
+        window.clarity('get','id',function(userId,sessionId){
+          clearInterval(poll);
+          notify(sessionId);
+        });
+      }catch(e){clearInterval(poll);notify(null);}
+    }
+    if(attempts>20){clearInterval(poll);notify(null);}
+  },500);
+})();
+</script>
+<!-- RB2B -->
+<script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("LNKLDHEDW9OJ");</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a14;--bg-card:#12121f;--bg-card-hover:#16162a;
+  --border:rgba(255,255,255,.06);--border-hover:rgba(255,255,255,.1);
+  --red:#ef4444;--red-dim:rgba(239,68,68,.15);--red-border:rgba(239,68,68,.25);
+  --amber:#f59e0b;--amber-dim:rgba(245,158,11,.12);--amber-border:rgba(245,158,11,.2);
+  --green:#10b981;--green-dim:rgba(16,185,129,.12);--green-border:rgba(16,185,129,.2);
+  --blue:#4F46E5;--blue-dim:rgba(79,70,229,.12);
+  --text:#e8e8f0;--text-muted:rgba(255,255,255,.45);--text-dim:rgba(255,255,255,.25);
+  --mono:'JetBrains Mono',monospace;
+  --sans:'Inter','Plus Jakarta Sans',system-ui,sans-serif;
+  --display:'Plus Jakarta Sans',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.6}
+::selection{background:rgba(239,68,68,.2)}
+
+/* Dot grid background */
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(rgba(255,255,255,.03) 1px,transparent 1px);background-size:24px 24px;pointer-events:none;z-index:0}
+
+/* ==================== HEADER BAR ==================== */
+.dash-header{position:sticky;top:0;z-index:100;background:rgba(10,10,20,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 32px}
+.dash-header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;gap:24px}
+.dash-header-left{display:flex;align-items:center;gap:16px}
+.dash-title{font-family:var(--display);font-weight:800;font-size:15px;color:var(--text);letter-spacing:-.02em;white-space:nowrap}
+.dash-title span{color:var(--text-muted);font-weight:500}
+.dash-header-center{display:flex;align-items:center;gap:12px}
+.score-badge{font-family:var(--mono);font-size:32px;font-weight:700;color:var(--red);line-height:1}
+.score-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--red);opacity:.7}
+.dash-header-right{display:flex;align-items:center;gap:12px}
+.risk-badge{display:flex;align-items:center;gap:8px;padding:8px 16px;background:var(--red-dim);border:1px solid var(--red-border);border-radius:10px}
+.risk-amount{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--red)}
+.risk-label{font-size:11px;color:rgba(239,68,68,.6);font-weight:600;letter-spacing:.02em}
+.pulse-dot{width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+
+/* Subtitle bar */
+.dash-subtitle{background:rgba(255,255,255,.02);border-bottom:1px solid var(--border);padding:10px 32px;text-align:center;font-size:13px;color:var(--text-muted);font-weight:500}
+.dash-subtitle strong{color:var(--text);font-weight:600}
+
+/* ==================== FINDING CARDS GRID ==================== */
+.cards-section{max-width:1200px;margin:0 auto;padding:32px 32px 0}
+.cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.finding-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .2s,background .2s;position:relative}
+.finding-card:hover{border-color:var(--border-hover);background:var(--bg-card-hover)}
+.card-accent{position:absolute;top:0;left:0;bottom:0;width:4px;border-radius:16px 0 0 16px}
+.card-accent.red{background:var(--red)}
+.card-accent.amber{background:var(--amber)}
+
+/* Card header */
+.card-top{padding:24px 24px 0 28px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.card-icon.red{background:var(--red-dim)}
+.card-score{font-family:var(--mono);font-size:28px;font-weight:700;color:var(--red);line-height:1}
+.card-score-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(239,68,68,.5);text-align:right}
+.card-score-wrap{text-align:right}
+.card-category{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);margin-bottom:4px}
+
+/* Card body */
+.card-body{padding:16px 24px 20px 28px}
+.card-punchline{font-family:var(--display);font-size:17px;font-weight:700;color:var(--text);line-height:1.35;margin-bottom:12px;letter-spacing:-.01em}
+.card-detail{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:16px}
+
+/* Mini audio player */
+.mini-player{display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;margin-bottom:14px}
+.mini-play-btn{width:32px;height:32px;border-radius:50%;background:var(--blue);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
+.mini-play-btn:hover{background:#5a3fc0;transform:scale(1.08)}
+.mini-play-btn svg{width:12px;height:12px;fill:#fff}
+.mini-progress-wrap{flex:1;display:flex;flex-direction:column;gap:4px}
+.mini-bar{width:100%;height:3px;background:rgba(255,255,255,.08);border-radius:2px;cursor:pointer;position:relative;overflow:hidden}
+.mini-bar-fill{height:100%;background:var(--blue);border-radius:2px;width:0%;transition:width .1s linear}
+.mini-time{font-family:var(--mono);font-size:10px;color:var(--text-dim);display:flex;justify-content:space-between}
+.mini-label{font-size:11px;color:var(--text-dim);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px}
+
+/* Expand/collapse */
+.card-expand-btn{display:flex;align-items:center;gap:6px;background:none;border:1px solid var(--border);color:var(--text-muted);font-size:12px;font-weight:600;padding:6px 12px;border-radius:8px;cursor:pointer;transition:all .15s;font-family:var(--sans)}
+.card-expand-btn:hover{background:rgba(255,255,255,.04);color:var(--text);border-color:var(--border-hover)}
+.card-expand-btn svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;transition:transform .2s}
+.card-expand-btn.open svg{transform:rotate(180deg)}
+.card-evidence{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1)}
+.card-evidence.open{max-height:500px}
+.card-evidence-inner{padding:0 24px 20px 28px}
+
+/* Screenplay mini */
+.mini-screenplay{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-size:13px;line-height:1.7}
+.mini-screenplay .sp-speaker{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);margin-bottom:2px}
+.mini-screenplay .sp-speaker.agent{color:rgba(79,70,229,.6)}
+.mini-screenplay .sp-line{color:rgba(255,255,255,.6);margin-bottom:10px}
+.mini-screenplay .sp-line:last-child{margin-bottom:0}
+.mini-screenplay .sp-note{font-size:11px;color:rgba(239,68,68,.5);font-style:italic;margin-top:2px}
+
+/* Portal URLs list */
+.url-list{list-style:none;padding:0}
+.url-list li{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:13px;border-bottom:1px solid var(--border)}
+.url-list li:last-child{border-bottom:none}
+.url-domain{color:rgba(255,255,255,.5);font-family:var(--mono);font-size:12px}
+.url-result{color:var(--red);font-weight:600;font-size:12px}
+.url-arrow{color:var(--text-dim);font-size:11px}
+
+/* ==================== BOTTOM LINE ==================== */
+.bottom-section{max-width:1200px;margin:0 auto;padding:40px 32px}
+.bottom-card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.bottom-header{padding:24px 32px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.bottom-header h3{font-family:var(--display);font-size:20px;font-weight:800;color:var(--text);letter-spacing:-.02em}
+.bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.bottom-col{padding:32px}
+.bottom-col:first-child{border-right:1px solid var(--border)}
+.bottom-col-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.bottom-col-label.bad{color:var(--red)}
+.bottom-col-label.good{color:var(--green)}
+.bottom-col-label .dot{width:6px;height:6px;border-radius:50%}
+.bottom-col-label.bad .dot{background:var(--red)}
+.bottom-col-label.good .dot{background:var(--green)}
+.bottom-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(255,255,255,.55);padding:6px 0;line-height:1.5}
+.bottom-item .bi-icon{font-size:14px;flex-shrink:0;margin-top:2px}
+.bottom-item strong{color:var(--text);font-weight:600}
+
+/* Widget + payment row */
+.widget-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:32px;border-top:1px solid var(--border)}
+.widget-center{display:flex;flex-direction:column;align-items:center;gap:16px}
+.widget-label{font-size:13px;color:var(--text-muted);font-weight:500;text-align:center}
+
+/* Payment mockup */
+.pm{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.3);max-width:340px;width:100%;margin:0 auto}
+.pm-header{background:linear-gradient(135deg,#1a3a2a,#0f2a1c);padding:20px;text-align:center}
+.pm-brand{font-family:var(--display);font-weight:800;font-size:15px;color:#fff;letter-spacing:-.02em}
+.pm-sub{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
+.pm-body{padding:20px}
+.pm-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0f0f0;font-size:13px}
+.pm-row-label{color:#888}
+.pm-row-value{color:#111;font-weight:600}
+.pm-amount{font-family:var(--display);font-size:32px;font-weight:900;color:#111;text-align:center;padding:20px 0 12px;letter-spacing:-.02em}
+.pm-btn{display:block;width:100%;padding:14px;background:var(--green);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;font-family:var(--display);letter-spacing:-.01em}
+.pm-plan{font-size:12px;color:#888;text-align:center;margin-top:10px}
+.pm-footer{text-align:center;padding:10px;font-size:11px;color:#bbb;border-top:1px solid #f0f0f0}
+
+/* ==================== CTA ==================== */
+.cta-section{text-align:center;padding:60px 32px 40px}
+.cta-section h2{font-family:var(--display);font-size:clamp(22px,3vw,32px);font-weight:900;color:var(--text);letter-spacing:-.03em;margin-bottom:24px}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:var(--blue);color:#fff;text-decoration:none;border-radius:14px;font-size:16px;font-weight:700;font-family:var(--display);transition:all .2s;letter-spacing:-.01em}
+.cta-btn:hover{background:#5a3fc0;transform:translateY(-1px);box-shadow:0 8px 24px rgba(79,70,229,.3)}
+.cta-btn svg{width:18px;height:18px}
+.cta-brand{margin-top:24px}
+.cta-brand a{font-family:var(--display);font-weight:900;font-size:15px;color:var(--text-muted);text-decoration:none;letter-spacing:-.03em;transition:color .2s}
+.cta-brand a:hover{color:var(--text)}
+.cta-brand .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--blue);margin-left:1px;vertical-align:baseline}
+
+/* Footer */
+.audit-footer{text-align:center;padding:24px 32px 40px;font-size:12px;color:var(--text-dim)}
+.audit-footer a{color:var(--blue);text-decoration:none}
+
+/* ==================== AGENT WIDGET ==================== */
+@keyframes awSpin{to{transform:rotate(360deg)}}
+
+/* ==================== RESPONSIVE ==================== */
+@media(max-width:1024px){
+  .cards-grid{grid-template-columns:1fr}
+  .bottom-grid{grid-template-columns:1fr}
+  .bottom-col:first-child{border-right:none;border-bottom:1px solid var(--border)}
+  .widget-row{grid-template-columns:1fr}
+  .dash-header-inner{flex-wrap:wrap;height:auto;padding:12px 0;gap:8px}
+  .dash-header-center{order:-1;width:100%;justify-content:center}
+  .dash-subtitle{font-size:12px;padding:8px 16px}
+}
+@media(max-width:600px){
+  .dash-header{padding:0 16px}
+  .cards-section{padding:20px 16px 0}
+  .bottom-section{padding:20px 16px}
+  .dash-header-left{display:none}
+  .dash-header-right .risk-label{display:none}
+  .card-top{padding:20px 20px 0 24px}
+  .card-body{padding:14px 20px 18px 24px}
+  .card-evidence-inner{padding:0 20px 18px 24px}
+  .widget-row{padding:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== STICKY HEADER ==================== -->
+<header class="dash-header">
+  <div class="dash-header-inner">
+    <div class="dash-header-left">
+      <div class="dash-title">IWS AR Collection Audit <span>/ April 2026</span></div>
+    </div>
+    <div class="dash-header-center">
+      <div style="text-align:center">
+        <div class="score-badge">2.1<span style="font-size:16px;color:rgba(239,68,68,.5)">/10</span></div>
+        <div class="score-label">Overall Score</div>
+      </div>
+    </div>
+    <div class="dash-header-right">
+      <div class="risk-badge">
+        <div class="pulse-dot"></div>
+        <div>
+          <div class="risk-amount" id="headerCounter">$4.8M+</div>
+          <div class="risk-label">at risk</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="dash-subtitle">
+  <strong>3 calls</strong> &middot; <strong>2 reps</strong> &middot; <strong>$48,124</strong> in data disclosed &middot; <strong>$0</strong> collected
+</div>
+
+<!-- ==================== FINDING CARDS ==================== -->
+<section class="cards-section">
+  <div class="cards-grid">
+
+    <!-- CARD 1: Identity Verification -->
+    <div class="finding-card" id="card1">
+      <div class="card-accent red"></div>
+      <div class="card-top">
+        <div>
+          <div class="card-category">Identity Verification</div>
+          <div class="card-icon red" style="margin-top:8px">&#x1F513;</div>
+        </div>
+        <div class="card-score-wrap">
+          <div class="card-score">0<span style="font-size:14px;opacity:.4">/10</span></div>
+          <div class="card-score-label">CRITICAL</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-punchline">Charlene gave a stranger your client's full account details. No ID check.</div>
+        <div class="card-detail">CityMD: $34,818 balance, AP email, payment history, primary contact. All disclosed with just a name.</div>
+
+        <!-- Mini audio player -->
+        <div class="mini-player" id="player1">
+          <button class="mini-play-btn" onclick="toggleMini('player1')">
+            <svg class="play-icon" viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" style="display:none"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+          </button>
+          <div class="mini-progress-wrap">
+            <div class="mini-label">CityMD call &mdash; no ID verification</div>
+            <div class="mini-bar" onclick="seekMini(event,'player1')"><div class="mini-bar-fill"></div></div>
+            <div class="mini-time"><span class="mini-current">0:00</span><span class="mini-duration">--:--</span></div>
+          </div>
+        </div>
+
+        <button class="card-expand-btn" onclick="toggleEvidence('card1')">
+          Evidence
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </div>
+      <div class="card-evidence" id="card1-evidence">
+        <div class="card-evidence-inner">
+          <div class="mini-screenplay">
+            <div class="sp-speaker agent">Our caller</div>
+            <div class="sp-line">"Hi, I'm calling about an account for CityMD on Grove Street."</div>
+            <div class="sp-speaker">Charlene (IWS)</div>
+            <div class="sp-line">"CityMD, 340 Grove St. Balance is $34,818.38."
+              <div class="sp-note">No account number. No callback. No verification of any kind.</div>
+            </div>
+            <div class="sp-speaker">Charlene (IWS)</div>
+            <div class="sp-line">"The AP contact is Michelle, email is on file. Last payment was February."
+              <div class="sp-note">Full AR data handed to an unverified caller in under 60 seconds.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 2: Payment Collection -->
+    <div class="finding-card" id="card2">
+      <div class="card-accent red"></div>
+      <div class="card-top">
+        <div>
+          <div class="card-category">Payment Collection</div>
+          <div class="card-icon red" style="margin-top:8px">&#x1F4B8;</div>
+        </div>
+        <div class="card-score-wrap">
+          <div class="card-score">0<span style="font-size:14px;opacity:.4">/10</span></div>
+          <div class="card-score-label">CRITICAL</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-punchline">Two customers tried to pay. Your team collected $0.</div>
+        <div class="card-detail">No payment link. No portal. No way to take money on the call. Customer hangs up, bill unpaid.</div>
+
+        <div class="mini-player" id="player2">
+          <button class="mini-play-btn" onclick="toggleMini('player2')">
+            <svg class="play-icon" viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" style="display:none"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+          </button>
+          <div class="mini-progress-wrap">
+            <div class="mini-label">Chelsea Piers call &mdash; $0 collected</div>
+            <div class="mini-bar" onclick="seekMini(event,'player2')"><div class="mini-bar-fill"></div></div>
+            <div class="mini-time"><span class="mini-current">0:00</span><span class="mini-duration">--:--</span></div>
+          </div>
+        </div>
+
+        <button class="card-expand-btn" onclick="toggleEvidence('card2')">
+          Evidence
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </div>
+      <div class="card-evidence" id="card2-evidence">
+        <div class="card-evidence-inner">
+          <div class="mini-screenplay">
+            <div class="sp-speaker agent">Our caller</div>
+            <div class="sp-line">"Hi, this is Sarah Piacentini from Chelsea Piers in Manhattan."</div>
+            <div class="sp-speaker">Sue (IWS)</div>
+            <div class="sp-line">"Your balance is $13,305.68. Last charge was March 16."
+              <div class="sp-note">No account number asked. No callback. No verification of any kind.</div>
+            </div>
+            <div class="sp-speaker">Sue (IWS)</div>
+            <div class="sp-line">Disclosed: 2x 30-yard dumpsters, 12x recycling bins, 5x trash containers, daily pickup schedule, and multiple contact names.
+              <div class="sp-note">Full balance + equipment + schedule + contacts given to unverified caller.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 3: Dispute Resolution -->
+    <div class="finding-card" id="card3">
+      <div class="card-accent red"></div>
+      <div class="card-top">
+        <div>
+          <div class="card-category">Dispute Resolution</div>
+          <div class="card-icon red" style="margin-top:8px">&#x1F624;</div>
+        </div>
+        <div class="card-score-wrap">
+          <div class="card-score">0<span style="font-size:14px;opacity:.4">/10</span></div>
+          <div class="card-score-label">CRITICAL</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-punchline">Customer with a $5K dispute was told: "Call someone else."</div>
+        <div class="card-detail">Nancy couldn't help. Sent the customer to "David." Customer is now looking at competitors.</div>
+
+        <div class="mini-player" id="player3">
+          <button class="mini-play-btn" onclick="toggleMini('player3')">
+            <svg class="play-icon" viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+            <svg class="pause-icon" viewBox="0 0 24 24" style="display:none"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+          </button>
+          <div class="mini-progress-wrap">
+            <div class="mini-label">Billing dispute &mdash; no resolution</div>
+            <div class="mini-bar" onclick="seekMini(event,'player3')"><div class="mini-bar-fill"></div></div>
+            <div class="mini-time"><span class="mini-current">0:00</span><span class="mini-duration">--:--</span></div>
+          </div>
+        </div>
+
+        <button class="card-expand-btn" onclick="toggleEvidence('card3')">
+          Evidence
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </div>
+      <div class="card-evidence" id="card3-evidence">
+        <div class="card-evidence-inner">
+          <div class="mini-screenplay">
+            <div class="sp-speaker agent">Frustrated customer</div>
+            <div class="sp-line">"I've been charged for a dumpster that was never picked up at Glen Pointe."</div>
+            <div class="sp-speaker">Nancy (IWS)</div>
+            <div class="sp-line">"I can see your account... 500 Frank W. Burr Boulevard, right? 30-yard container."
+              <div class="sp-note">Confirmed address, equipment, and sales rep name. No identity verification. Again.</div>
+            </div>
+            <div class="sp-speaker">Nancy (IWS)</div>
+            <div class="sp-line">"You'll need to speak with your sales rep, David, about that."
+              <div class="sp-note">Customer called billing. Billing can't help. Told to call someone else.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 4: Customer Portal -->
+    <div class="finding-card" id="card4">
+      <div class="card-accent red"></div>
+      <div class="card-top">
+        <div>
+          <div class="card-category">Customer Portal</div>
+          <div class="card-icon red" style="margin-top:8px">&#x1F6AB;</div>
+        </div>
+        <div class="card-score-wrap">
+          <div class="card-score" style="font-size:18px;letter-spacing:-.02em">BROKEN</div>
+          <div class="card-score-label">OFFLINE</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-punchline">Your IVR tells customers to use MyIWS.com. It's for sale for $2,695.</div>
+        <div class="card-detail">myiws.com redirects to HugeDomains. /make-a-payment, /customer-portal, /myiws all return 404.</div>
+
+        <button class="card-expand-btn" onclick="toggleEvidence('card4')">
+          Evidence
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </div>
+      <div class="card-evidence" id="card4-evidence">
+        <div class="card-evidence-inner">
+          <ul class="url-list">
+            <li>
+              <span class="url-domain">myiws.com</span>
+              <span class="url-arrow">&rarr;</span>
+              <span class="url-result">For sale on HugeDomains &mdash; $2,695</span>
+            </li>
+            <li>
+              <span class="url-domain">interstatewaste.com/myiws</span>
+              <span class="url-arrow">&rarr;</span>
+              <span class="url-result">404 Not Found</span>
+            </li>
+            <li>
+              <span class="url-domain">interstatewaste.com/make-a-payment</span>
+              <span class="url-arrow">&rarr;</span>
+              <span class="url-result">404 Not Found</span>
+            </li>
+            <li>
+              <span class="url-domain">interstatewaste.com/customer-portal</span>
+              <span class="url-arrow">&rarr;</span>
+              <span class="url-result">404 Not Found</span>
+            </li>
+          </ul>
+          <div style="margin-top:14px;font-size:12px;color:var(--text-dim);line-height:1.6">
+            <strong style="color:var(--text-muted)">What your team tells customers:</strong><br>
+            IVR: "Use the MyIWS portal on our website"<br>
+            Rep Charlene: "Try BuildTrust"<br>
+            FAQ page has a typo: "interstwaste.com" instead of "interstatewaste.com"
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== THE BOTTOM LINE ==================== -->
+<section class="bottom-section">
+  <div class="bottom-card">
+    <div class="bottom-header">
+      <h3>The Bottom Line</h3>
+      <div style="margin-left:auto;display:flex;align-items:center;gap:8px;padding:6px 14px;background:var(--red-dim);border:1px solid var(--red-border);border-radius:8px">
+        <span style="font-size:12px;color:rgba(239,68,68,.6)">Since you opened this page:</span>
+        <span id="liveCounter" style="font-family:var(--mono);font-size:16px;font-weight:700;color:var(--red)">$0</span>
+        <span style="font-size:12px;color:rgba(239,68,68,.6)">lost</span>
+      </div>
+    </div>
+    <div class="bottom-grid">
+      <!-- TODAY -->
+      <div class="bottom-col">
+        <div class="bottom-col-label bad"><div class="dot"></div>Today at IWS</div>
+        <div class="bottom-item"><span class="bi-icon">&#x1F6AB;</span>Portal broken &mdash; domain for sale</div>
+        <div class="bottom-item"><span class="bi-icon">&#x23F3;</span><strong>3 min hold</strong> before a human answers</div>
+        <div class="bottom-item"><span class="bi-icon">&#x1F513;</span>No ID check &mdash; data given to anyone</div>
+        <div class="bottom-item"><span class="bi-icon">&#x1F4CB;</span><strong>$48,124</strong> in AR data leaked in 2 calls</div>
+        <div class="bottom-item"><span class="bi-icon">&#x1F624;</span>Disputes: "call your sales rep"</div>
+        <div class="bottom-item"><span class="bi-icon">&#x1F4B0;</span>Customer hangs up. <strong style="color:var(--red)">$0 collected.</strong></div>
+      </div>
+      <!-- WITH AGENTCOLLECT -->
+      <div class="bottom-col">
+        <div class="bottom-col-label good"><div class="dot"></div>With AgentCollect</div>
+        <div class="bottom-item"><span class="bi-icon">&#x26A1;</span>AI picks up in <strong>2 seconds</strong></div>
+        <div class="bottom-item"><span class="bi-icon">&#x1F512;</span>Identity verified before any data shared</div>
+        <div class="bottom-item"><span class="bi-icon">&#x1F517;</span>Branded payment link sent by text</div>
+        <div class="bottom-item"><span class="bi-icon">&#x1F4AC;</span>Disputes resolved on the spot</div>
+        <div class="bottom-item"><span class="bi-icon">&#x1F310;</span>24/7. 100% answer rate. Every call.</div>
+        <div class="bottom-item"><span class="bi-icon">&#x2705;</span>Payment collected in <strong style="color:var(--green)">30 seconds.</strong></div>
+      </div>
+    </div>
+
+    <!-- Widget + Payment Row -->
+    <div class="widget-row">
+      <!-- Voice Agent Widget -->
+      <div class="widget-center">
+        <div class="widget-label">Try it. Call the IWS collection agent.</div>
+        <div id="agent-widget" style="max-width:380px;width:100%;background:#0f0f1a;border-radius:20px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.06)">
+          <div id="aw-idle" style="display:flex;flex-direction:column;align-items:center;padding:24px 20px 20px;gap:12px">
+            <div id="aw-orb" style="width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#4F46E5,#7C3AED);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;box-shadow:0 0 32px rgba(79,70,229,.4)" onclick="startAuditCall()">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+            </div>
+            <div style="color:rgba(255,255,255,.6);font-size:13px;font-weight:500" id="aw-label">Talk to the IWS collection agent</div>
+          </div>
+          <div id="aw-connecting" style="display:none;flex-direction:column;align-items:center;padding:24px 20px;gap:12px">
+            <div style="width:28px;height:28px;border:3px solid rgba(255,255,255,.1);border-top-color:#4F46E5;border-radius:50%;animation:awSpin .8s linear infinite"></div>
+            <div style="color:rgba(255,255,255,.6);font-size:12px">Connecting to IWS agent...</div>
+          </div>
+          <div id="aw-active" style="display:none;flex-direction:column;align-items:center;padding:16px;gap:10px">
+            <div id="aw-status" style="color:rgba(255,255,255,.5);font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase">Listening...</div>
+            <div id="aw-waveform" style="display:flex;align-items:center;justify-content:center;gap:3px;height:40px"></div>
+            <div id="aw-transcript" style="width:100%;max-height:70px;overflow-y:auto;scrollbar-width:none"></div>
+            <button id="aw-end" onclick="endAuditCall()" style="padding:8px 20px;background:rgba(239,68,68,.12);color:#ef4444;border:1px solid rgba(239,68,68,.25);border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M3.68 16.07l3.92-3.11V9.59c2.85-.93 5.94-.93 8.8 0v3.38l3.91 3.1c.46.36.2 1.11-.39 1.11h-3.79c-.26 0-.5-.11-.68-.28l-2.38-2.25c-.87.17-1.76.17-2.63 0L8.06 17c-.18.17-.42.28-.68.28H3.99c-.49 0-.76-.65-.31-1.11z"/></svg>
+              End call
+            </button>
+          </div>
+          <div style="text-align:center;padding:4px 12px 10px;font-size:10px;color:rgba(255,255,255,.15)">Powered by AgentCollect</div>
+        </div>
+      </div>
+      <!-- Payment Mockup -->
+      <div class="widget-center">
+        <div class="widget-label">What your customer sees in 30 seconds.</div>
+        <div class="pm">
+          <div class="pm-header">
+            <div class="pm-brand">Interstate Waste Services</div>
+            <div class="pm-sub">Secure Payment</div>
+          </div>
+          <div class="pm-body">
+            <div class="pm-row"><span class="pm-row-label">Customer</span><span class="pm-row-value">CityMD &mdash; 340 Grove St</span></div>
+            <div class="pm-row"><span class="pm-row-label">Service</span><span class="pm-row-value">Commercial Waste Collection</span></div>
+            <div class="pm-row"><span class="pm-row-label">Due date</span><span class="pm-row-value">April 15, 2026</span></div>
+            <div class="pm-amount">$34,818.38</div>
+            <button class="pm-btn" onclick="return false">Pay Now</button>
+            <div class="pm-plan">Split into 3 payments of $11,606.13</div>
+          </div>
+          <div class="pm-footer">Powered by AgentCollect</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CTA ==================== -->
+<section class="cta-section">
+  <h2>15 minutes to show you the full picture.</h2>
+  <a href="mailto:j@agentcollect.com?subject=IWS AR Audit" class="cta-btn" onclick="try{gtag('event','cta_email',{page:'audit-iws-dashboard'})}catch(e){}">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    j@agentcollect.com
+  </a>
+  <div class="cta-brand">
+    <a href="https://agentcollect.com">AgentCollect<span class="dot"></span></a>
+  </div>
+</section>
+
+<footer class="audit-footer">
+  <p>This audit was conducted April 2026 using publicly available information and recorded phone calls.</p>
+  <p style="margin-top:6px">Built by <a href="https://agentcollect.com">AgentCollect</a></p>
+</footer>
+
+<script>
+// ==========================================
+// MINI AUDIO PLAYERS
+// ==========================================
+var players = {
+  player1: {
+    audio: null,
+    src: 'https://dxc03zgurdly9.cloudfront.net/151d73a710007467f2bf6fa76c37efa523647f5ee55504fb84eabc0780d75ca4/recording.wav',
+    startAt: 200, // jump to key moment
+    playing: false
+  },
+  player2: {
+    audio: null,
+    src: 'https://dxc03zgurdly9.cloudfront.net/a65149700fb8ffb2c61ed59593d5398a8e351c2279fced3cc6edb2e983864c93/recording.wav',
+    startAt: 0,
+    playing: false
+  },
+  player3: {
+    audio: null,
+    src: 'https://dxc03zgurdly9.cloudfront.net/ce16c18d62beaf5248031cd662c0149fd745ba6e3c8cceac394083112692497c/recording.wav',
+    startAt: 0,
+    playing: false
+  }
+};
+
+function initMini(id) {
+  var p = players[id];
+  if (p.audio) return;
+  p.audio = new Audio(p.src);
+  p.audio.preload = 'metadata';
+  var el = document.getElementById(id);
+
+  p.audio.addEventListener('loadedmetadata', function() {
+    el.querySelector('.mini-duration').textContent = formatTime(p.audio.duration);
+    if (p.startAt && p.audio.currentTime < 1) p.audio.currentTime = p.startAt;
+  });
+
+  p.audio.addEventListener('timeupdate', function() {
+    var pct = (p.audio.currentTime / (p.audio.duration || 1)) * 100;
+    el.querySelector('.mini-bar-fill').style.width = pct + '%';
+    el.querySelector('.mini-current').textContent = formatTime(p.audio.currentTime);
+  });
+
+  p.audio.addEventListener('ended', function() {
+    p.playing = false;
+    updateMiniState(id);
+  });
+}
+
+function toggleMini(id) {
+  var p = players[id];
+  initMini(id);
+
+  // Pause all other players
+  Object.keys(players).forEach(function(key) {
+    if (key !== id && players[key].playing) {
+      players[key].audio.pause();
+      players[key].playing = false;
+      updateMiniState(key);
+    }
+  });
+
+  if (p.playing) {
+    p.audio.pause();
+    p.playing = false;
+  } else {
+    p.audio.play();
+    p.playing = true;
+    try { gtag('event', 'play_mini_audio', { page: 'audit-iws-dashboard', player: id }); } catch(e) {}
+  }
+  updateMiniState(id);
+}
+
+function updateMiniState(id) {
+  var el = document.getElementById(id);
+  var p = players[id];
+  el.querySelector('.play-icon').style.display = p.playing ? 'none' : 'block';
+  el.querySelector('.pause-icon').style.display = p.playing ? 'block' : 'none';
+}
+
+function seekMini(e, id) {
+  initMini(id);
+  var p = players[id];
+  var bar = e.currentTarget;
+  var rect = bar.getBoundingClientRect();
+  var pct = (e.clientX - rect.left) / rect.width;
+  p.audio.currentTime = pct * (p.audio.duration || 1);
+  if (!p.playing) { p.audio.play(); p.playing = true; updateMiniState(id); }
+}
+
+function formatTime(s) {
+  if (isNaN(s)) return '0:00';
+  var m = Math.floor(s / 60);
+  var sec = Math.floor(s % 60);
+  return m + ':' + (sec < 10 ? '0' : '') + sec;
+}
+
+// ==========================================
+// EXPAND / COLLAPSE
+// ==========================================
+function toggleEvidence(cardId) {
+  var evidence = document.getElementById(cardId + '-evidence');
+  var btn = document.querySelector('#' + cardId + ' .card-expand-btn');
+  evidence.classList.toggle('open');
+  btn.classList.toggle('open');
+  try { gtag('event', 'expand_evidence', { page: 'audit-iws-dashboard', card: cardId }); } catch(e) {}
+}
+
+// ==========================================
+// LIVE COUNTER
+// ==========================================
+(function() {
+  var counter = document.getElementById('liveCounter');
+  var headerCounter = document.getElementById('headerCounter');
+  if (!counter) return;
+  var start = Date.now();
+  var ratePerSec = 4800000 / 365 / 24 / 3600; // ~$0.15/sec
+  setInterval(function() {
+    var elapsed = (Date.now() - start) / 1000;
+    var amount = elapsed * ratePerSec;
+    if (amount < 1) counter.textContent = '$' + amount.toFixed(2);
+    else counter.textContent = '$' + Math.floor(amount).toLocaleString();
+    // Update header after 5 seconds to start ticking
+    if (elapsed > 5 && headerCounter) {
+      headerCounter.textContent = '$' + (4800000 + Math.floor(amount)).toLocaleString();
+    }
+  }, 100);
+})();
+
+// ==========================================
+// AGENT VOICE WIDGET (WebRTC)
+// ==========================================
+var awCallActive = false;
+var awRetellClient = null;
+
+async function startAuditCall() {
+  if (awCallActive) return;
+  awCallActive = true;
+  document.getElementById('aw-idle').style.display = 'none';
+  document.getElementById('aw-connecting').style.display = 'flex';
+  document.getElementById('aw-active').style.display = 'none';
+  try {
+    var response = await fetch('https://backend.widr.app/api/v1/demo/web-call', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        company_name: 'Interstate Waste Services',
+        product: 'Commercial Waste Collection',
+        amount: '$34,818',
+        company_context: 'Interstate Waste Services is a commercial waste collection company in the Northeast US. The customer CityMD has multiple locations with waste collection accounts.',
+        dispute_playbook: ''
+      })
+    });
+    if (!response.ok) throw new Error('API error');
+    var result = await response.json();
+    if (!result.success || !result.access_token) throw new Error('No token');
+    var module = await import('https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.7/+esm');
+    awRetellClient = new module.RetellWebClient();
+    awRetellClient.on('call_started', function() {
+      document.getElementById('aw-connecting').style.display = 'none';
+      document.getElementById('aw-active').style.display = 'flex';
+      document.getElementById('aw-status').textContent = 'Your turn \u2014 speak now';
+      try { gtag('event', 'audit_call_started', { page: 'audit-iws-dashboard' }); } catch(e) {}
+    });
+    awRetellClient.on('call_ended', function() { endAuditCall(); });
+    awRetellClient.on('agent_start_talking', function() {
+      document.getElementById('aw-status').textContent = 'IWS Agent speaking...';
+    });
+    awRetellClient.on('agent_stop_talking', function() {
+      document.getElementById('aw-status').textContent = 'Your turn \u2014 speak now';
+    });
+    awRetellClient.on('update', function(update) {
+      if (update && update.transcript && update.transcript.length) {
+        var last = update.transcript[update.transcript.length - 1];
+        if (last && last.content) {
+          var role = last.role === 'agent' ? 'agent' : 'user';
+          var tc = document.getElementById('aw-transcript');
+          tc.innerHTML = '<div style="padding:6px 10px;border-radius:10px;font-size:12px;line-height:1.5;' + (role === 'agent' ? 'background:rgba(79,70,229,.15);color:rgba(255,255,255,.9)' : 'background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);text-align:right') + '">' + last.content + '</div>';
+        }
+      }
+    });
+    awRetellClient.on('error', function() { endAuditCall(); });
+    await awRetellClient.startCall({ accessToken: result.access_token });
+  } catch (err) {
+    console.error('Audit call error:', err);
+    awCallActive = false;
+    document.getElementById('aw-connecting').style.display = 'none';
+    document.getElementById('aw-idle').style.display = 'flex';
+    var lbl = document.getElementById('aw-label');
+    lbl.textContent = 'Connection failed \u2014 try again';
+    lbl.style.color = '#ef4444';
+    setTimeout(function() { lbl.textContent = 'Talk to the IWS collection agent'; lbl.style.color = ''; }, 3000);
+  }
+}
+
+function endAuditCall() {
+  awCallActive = false;
+  if (awRetellClient) { try { awRetellClient.stopCall(); } catch(e) {} awRetellClient = null; }
+  document.getElementById('aw-active').style.display = 'none';
+  document.getElementById('aw-connecting').style.display = 'none';
+  document.getElementById('aw-idle').style.display = 'flex';
+  document.getElementById('aw-label').textContent = 'Call ended \u2014 tap to try again';
+}
+</script>
+
+</body>
+</html>
