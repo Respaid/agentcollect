@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow">
-<title>AR Collection Audit — Interstate Waste Services — AgentCollect</title>
+<title>AR Collection Process Assessment — Interstate Waste Services — RPT-2026-0403-IWS</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23433196'/%3E%3Ctext x='28' y='48' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900' font-size='46' letter-spacing='-3'%3EA%3C/text%3E%3Ccircle cx='52' cy='16' r='6' fill='white' opacity='0.85'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
 <style>
 @page {
   size: letter;
@@ -21,16 +21,23 @@
 }
 
 :root {
-  --blue: #4F46E5;
-  --text: #0B1B3D;
-  --muted: #475569;
-  --light: #94A3B8;
-  --border: #E8ECF2;
+  --text: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --muted: #6b6b6b;
+  --light: #999999;
+  --border: #d4d4d4;
+  --border-light: #e8e8e8;
   --bg: #ffffff;
-  --green: #10B981;
-  --red: #dc2626;
-  --red-light: #fef2f2;
-  --display: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --red: #b91c1c;
+  --red-bg: #fef2f2;
+  --red-border: #fecaca;
+  --orange: #c2410c;
+  --orange-bg: #fff7ed;
+  --yellow: #a16207;
+  --yellow-bg: #fefce8;
+  --green: #15803d;
+  --blue: #1e40af;
+  --serif: 'Source Serif 4', 'Georgia', serif;
   --sans: 'Inter', system-ui, sans-serif;
 }
 
@@ -43,8 +50,8 @@ body {
   font-family: var(--sans);
   color: var(--text);
   background: var(--bg);
-  font-size: 11pt;
-  line-height: 1.5;
+  font-size: 10pt;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -52,7 +59,7 @@ body {
 .page {
   width: 8.5in;
   min-height: 11in;
-  padding: 0.65in 0.75in;
+  padding: 0.6in 0.75in;
   margin: 0 auto;
   position: relative;
   page-break-after: always;
@@ -64,825 +71,1142 @@ body {
   page-break-after: avoid;
 }
 
-/* HEADER */
-.header {
+/* PAGE HEADER (pages 2+) */
+.page-header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding-bottom: 16px;
-  border-bottom: 2px solid var(--text);
-  margin-bottom: 28px;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 0.5px solid var(--border);
+  margin-bottom: 24px;
+  font-size: 7pt;
+  color: var(--light);
+  letter-spacing: 0.04em;
 }
 
-.logo {
-  font-family: var(--display);
-  font-weight: 900;
-  font-size: 16pt;
-  color: var(--text);
-  letter-spacing: -0.4px;
-  display: inline-flex;
-  align-items: baseline;
-  text-decoration: none;
-}
-
-.logo .dot {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--blue);
-  margin-left: 1px;
-}
-
-.header-right {
-  text-align: right;
-  font-size: 8.5pt;
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-.header-right .label {
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 600;
+/* PAGE FOOTER */
+.page-footer {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 0.5px solid var(--border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 7pt;
   color: var(--light);
 }
 
-/* FOOTER */
-.footer {
-  margin-top: auto;
-  padding-top: 14px;
-  border-top: 1px solid var(--border);
+/* ================================ */
+/* COVER PAGE                       */
+/* ================================ */
+.cover {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 7.5pt;
-  color: var(--light);
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1.2in 0.9in;
 }
 
-.footer-logo {
-  font-family: var(--display);
-  font-weight: 900;
+.cover-classification {
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+  border: 1.5px solid var(--red);
+  padding: 4px 14px;
+  margin-bottom: 48px;
+}
+
+.cover-type {
   font-size: 9pt;
-  color: var(--light);
-  display: inline-flex;
-  align-items: baseline;
-}
-
-.footer-logo .dot {
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--light);
-  margin-left: 1px;
-}
-
-/* PAGE 1: EXECUTIVE SUMMARY */
-.exec-title {
-  font-family: var(--display);
-  font-weight: 900;
-  font-size: 22pt;
-  letter-spacing: -0.03em;
-  line-height: 1.15;
-  color: var(--text);
-  margin-bottom: 4px;
-}
-
-.exec-subtitle {
-  font-size: 10pt;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 28px;
+  margin-bottom: 12px;
 }
 
-.company-row {
-  display: flex;
-  gap: 32px;
-  margin-bottom: 28px;
+.cover-title {
+  font-family: var(--serif);
+  font-size: 32pt;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.cover-subtitle {
+  font-family: var(--serif);
+  font-size: 18pt;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-bottom: 48px;
+}
+
+.cover-line {
+  width: 60px;
+  height: 2px;
+  background: var(--text);
+  margin-bottom: 32px;
+}
+
+.cover-meta {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 8px 16px;
   font-size: 9.5pt;
 }
 
-.company-row .item {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.company-row .label {
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+.cover-meta dt {
   font-weight: 600;
-  font-size: 7pt;
-  color: var(--light);
-}
-
-.company-row .value {
-  font-weight: 600;
-  color: var(--text);
-}
-
-/* OVERALL SCORE */
-.score-block {
-  background: var(--red-light);
-  border: 1.5px solid #fecaca;
-  border-radius: 10px;
-  padding: 24px;
-  text-align: center;
-  margin-bottom: 22px;
-}
-
-.score-big {
-  font-family: var(--display);
-  font-weight: 900;
-  font-size: 48pt;
-  color: var(--red);
-  line-height: 1;
-  letter-spacing: -0.03em;
-}
-
-.score-of {
-  font-size: 18pt;
-  font-weight: 600;
-  color: #b91c1c;
-}
-
-.score-label {
-  font-size: 9pt;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: #b91c1c;
-  margin-top: 4px;
-}
-
-/* CATEGORY SCORES */
-.category-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-bottom: 24px;
-}
-
-.category-card {
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 14px 8px;
-  text-align: center;
-}
-
-.category-card .cat-score {
-  font-family: var(--display);
-  font-weight: 900;
-  font-size: 20pt;
-  color: var(--red);
-  line-height: 1;
-}
-
-.category-card .cat-score.amber {
-  color: #D97706;
-}
-
-.category-card .cat-of {
-  font-size: 11pt;
-  font-weight: 600;
-  color: var(--light);
-}
-
-.category-card .cat-name {
-  font-size: 7.5pt;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
   color: var(--muted);
-  margin-top: 6px;
-}
-
-/* KEY FINDING */
-.key-finding {
-  background: #f8fafc;
-  border-left: 3px solid var(--red);
-  border-radius: 0 8px 8px 0;
-  padding: 16px 18px;
-  margin-bottom: 22px;
-}
-
-.key-finding-title {
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: 9pt;
+  font-size: 8pt;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--red);
-  margin-bottom: 6px;
+  padding-top: 1px;
 }
 
-.key-finding p {
-  font-size: 10pt;
+.cover-meta dd {
   color: var(--text);
-  line-height: 1.6;
+  font-weight: 500;
 }
 
-/* IMPACT + METHOD */
-.meta-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-
-.meta-box {
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 14px 16px;
-}
-
-.meta-box .meta-label {
+.cover-footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 0.5px solid var(--border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 7pt;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
   color: var(--light);
+  width: 100%;
+}
+
+/* ================================ */
+/* SECTION HEADINGS                 */
+/* ================================ */
+.section-num {
+  font-size: 8pt;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
   margin-bottom: 4px;
 }
 
-.meta-box .meta-value {
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: 16pt;
-  color: var(--red);
-  letter-spacing: -0.02em;
-}
-
-.meta-box .meta-text {
-  font-size: 9pt;
-  color: var(--muted);
-  line-height: 1.5;
-}
-
-/* PAGE 2: FINDINGS */
-.findings-title {
-  font-family: var(--display);
-  font-weight: 900;
+.section-title {
+  font-family: var(--serif);
   font-size: 18pt;
-  letter-spacing: -0.02em;
+  font-weight: 700;
   color: var(--text);
-  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+  line-height: 1.2;
 }
 
-.finding {
+.section-title-sm {
+  font-family: var(--serif);
+  font-size: 14pt;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+
+/* ================================ */
+/* RATING BOX                       */
+/* ================================ */
+.rating-box {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-size: 11pt;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rating-box.critical {
+  background: var(--red);
+  color: #ffffff;
+}
+
+.rating-box.needs-improvement {
+  background: var(--orange);
+  color: #ffffff;
+}
+
+.rating-box.satisfactory {
+  background: var(--green);
+  color: #ffffff;
+}
+
+/* ================================ */
+/* TABLES                           */
+/* ================================ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.5pt;
+}
+
+table th {
+  background: #f5f5f5;
+  font-weight: 600;
+  text-align: left;
+  padding: 7px 10px;
+  border: 0.5px solid var(--border);
+  font-size: 8.5pt;
+  letter-spacing: 0.02em;
+  color: var(--text-secondary);
+}
+
+table td {
+  padding: 7px 10px;
+  border: 0.5px solid var(--border);
+  vertical-align: top;
+}
+
+table tr:nth-child(even) td {
+  background: #fafafa;
+}
+
+/* ================================ */
+/* RISK BADGES                      */
+/* ================================ */
+.badge {
+  display: inline-block;
+  font-size: 7.5pt;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+.badge.critical {
+  background: #fef2f2;
+  color: var(--red);
+  border: 1px solid var(--red-border);
+}
+
+.badge.high {
+  background: var(--orange-bg);
+  color: var(--orange);
+  border: 1px solid #fed7aa;
+}
+
+.badge.medium {
+  background: var(--yellow-bg);
+  color: var(--yellow);
+  border: 1px solid #fde68a;
+}
+
+/* ================================ */
+/* FINDING BLOCKS                   */
+/* ================================ */
+.finding-block {
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 16px 18px;
-  margin-bottom: 14px;
+  border-radius: 4px;
+  margin-bottom: 18px;
+  overflow: hidden;
 }
 
 .finding-header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
+  align-items: center;
+  background: #f5f5f5;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
 }
 
-.finding-title {
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: 11pt;
+.finding-id {
+  font-size: 9pt;
+  font-weight: 700;
   color: var(--text);
 }
 
-.finding-badge {
-  font-family: var(--display);
-  font-weight: 800;
+.finding-title-text {
+  font-size: 10pt;
+  font-weight: 600;
+  color: var(--text);
+  margin-left: 8px;
+}
+
+.finding-body {
+  padding: 14px;
+}
+
+.finding-body table {
   font-size: 9pt;
-  color: #fff;
-  background: var(--red);
-  padding: 2px 10px;
-  border-radius: 20px;
-  white-space: nowrap;
 }
 
-.finding-badge.amber {
-  background: #D97706;
+.finding-body table th {
+  width: 100px;
+  background: transparent;
+  border: none;
+  border-bottom: 0.5px solid var(--border-light);
+  font-weight: 700;
+  color: var(--text);
+  vertical-align: top;
+  padding: 6px 10px 6px 0;
+  font-size: 8.5pt;
 }
 
-.finding ul {
-  list-style: none;
-  padding: 0;
+.finding-body table td {
+  border: none;
+  border-bottom: 0.5px solid var(--border-light);
+  padding: 6px 0 6px 10px;
+  color: var(--text-secondary);
+  line-height: 1.5;
 }
 
-.finding li {
-  font-size: 9.5pt;
-  color: var(--muted);
+.finding-body table tr:nth-child(even) td {
+  background: transparent;
+}
+
+.finding-body table tr:last-child th,
+.finding-body table tr:last-child td {
+  border-bottom: none;
+}
+
+.evidence-box {
+  background: #f9f9f9;
+  border: 1px solid var(--border-light);
+  border-radius: 3px;
+  padding: 10px 12px;
+  margin-top: 10px;
+  font-size: 8.5pt;
+  color: var(--text-secondary);
   line-height: 1.55;
-  padding-left: 16px;
-  position: relative;
-  margin-bottom: 5px;
 }
 
-.finding li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 7px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--red);
-}
-
-.finding li strong {
+.evidence-box strong {
   color: var(--text);
   font-weight: 600;
 }
 
-/* PAGE 3: RECOMMENDATION */
-.rec-title {
-  font-family: var(--display);
-  font-weight: 900;
-  font-size: 18pt;
-  letter-spacing: -0.02em;
-  color: var(--text);
-  margin-bottom: 6px;
-}
-
-.rec-subtitle {
-  font-size: 10pt;
-  color: var(--muted);
-  margin-bottom: 22px;
-}
-
-/* COMPARISON TABLE */
-.comparison {
+/* ================================ */
+/* RISK MATRIX                      */
+/* ================================ */
+.risk-matrix {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 30px 1fr 1fr;
+  grid-template-rows: auto 1fr 1fr;
   gap: 0;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 22px;
+  width: 340px;
+  margin: 16px 0;
 }
 
-.comp-col {
-  padding: 18px 20px;
+.rm-corner {
+  background: transparent;
 }
 
-.comp-col.today {
-  background: #fef2f2;
-  border-right: 1px solid var(--border);
-}
-
-.comp-col.agent {
-  background: #f0fdf4;
-}
-
-.comp-col-title {
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: 10pt;
+.rm-col-header {
+  text-align: center;
+  font-size: 7.5pt;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  margin-bottom: 12px;
-}
-
-.comp-col.today .comp-col-title {
-  color: var(--red);
-}
-
-.comp-col.agent .comp-col-title {
-  color: var(--green);
-}
-
-.comp-step {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  margin-bottom: 9px;
-  font-size: 9pt;
   color: var(--muted);
+  padding: 4px;
+}
+
+.rm-row-header {
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  text-align: center;
+  font-size: 7.5pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  padding: 4px;
+}
+
+.rm-cell {
+  border: 1px solid var(--border);
+  padding: 10px 8px;
+  text-align: center;
+  font-size: 7.5pt;
+  font-weight: 600;
   line-height: 1.4;
 }
 
-.comp-icon {
-  flex-shrink: 0;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  font-weight: 700;
-  margin-top: 1px;
-}
-
-.comp-col.today .comp-icon {
-  background: #fecaca;
+.rm-cell.red {
+  background: #fef2f2;
   color: var(--red);
 }
 
-.comp-col.agent .comp-icon {
-  background: #bbf7d0;
-  color: #059669;
+.rm-cell.orange {
+  background: var(--orange-bg);
+  color: var(--orange);
 }
 
-/* VALUE PROP */
-.value-block {
-  background: #f8fafc;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 20px 22px;
-  margin-bottom: 22px;
+.rm-cell.yellow {
+  background: var(--yellow-bg);
+  color: var(--yellow);
 }
 
-.value-block p {
-  font-size: 10.5pt;
+.rm-cell.green {
+  background: #f0fdf4;
+  color: var(--green);
+}
+
+/* ================================ */
+/* SUMMARY BOX                      */
+/* ================================ */
+.summary-paragraph {
+  font-size: 10pt;
   line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+/* ================================ */
+/* APPENDIX                         */
+/* ================================ */
+.appendix-label {
+  font-size: 9pt;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+  margin-top: 18px;
+}
+
+.appendix-label:first-child {
+  margin-top: 0;
+}
+
+.glossary-table td:first-child {
+  font-weight: 600;
+  width: 140px;
   color: var(--text);
 }
 
-.value-block strong {
-  font-weight: 700;
-}
-
-/* STATS ROW */
-.stats-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-bottom: 24px;
-}
-
-.stat-item {
-  text-align: center;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 12px 6px;
-}
-
-.stat-num {
-  font-family: var(--display);
-  font-weight: 900;
-  font-size: 16pt;
-  color: var(--blue);
-  line-height: 1;
-}
-
-.stat-label {
-  font-size: 7.5pt;
-  font-weight: 500;
-  color: var(--muted);
-  margin-top: 4px;
-}
-
-/* CTA */
-.cta-block {
-  background: var(--blue);
-  border-radius: 10px;
-  padding: 22px 24px;
-  text-align: center;
-  color: #fff;
-}
-
-.cta-block .cta-title {
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: 14pt;
-  margin-bottom: 6px;
-}
-
-.cta-block .cta-email {
-  font-size: 12pt;
-  font-weight: 600;
-  opacity: 0.9;
-}
-
-.cta-block .cta-sub {
-  font-size: 8.5pt;
-  opacity: 0.65;
-  margin-top: 4px;
-}
-
-/* PRINT STYLES */
+/* ================================ */
+/* PRINT                            */
+/* ================================ */
 @media print {
-  body {
-    background: #fff;
-  }
-
+  body { background: #fff; }
   .page {
     width: auto;
     min-height: auto;
-    padding: 0.5in 0.6in;
+    padding: 0.5in 0.65in;
     margin: 0;
     page-break-after: always;
     page-break-inside: avoid;
   }
-
-  .page:last-child {
-    page-break-after: avoid;
-  }
-
-  .score-block {
-    background: var(--red-light) !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
-  .finding-badge {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
-  .comp-col.today {
-    background: #fef2f2 !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
-  .comp-col.agent {
-    background: #f0fdf4 !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
-  .cta-block {
-    background: var(--blue) !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
-  .comp-icon {
+  .page:last-child { page-break-after: avoid; }
+  .rating-box, .badge, .rm-cell {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 }
 
-/* SCREEN SEPARATOR */
 @media screen {
   .page {
-    box-shadow: 0 0 20px rgba(0,0,0,0.08);
+    box-shadow: 0 1px 8px rgba(0,0,0,0.08);
     margin: 20px auto;
     background: #fff;
   }
-
   body {
-    background: #e5e7eb;
+    background: #e5e5e5;
   }
 }
 </style>
 </head>
 <body>
 
-<!-- PAGE 1: EXECUTIVE SUMMARY -->
-<div class="page">
-  <div class="header">
-    <span class="logo">AgentCollect<span class="dot"></span></span>
-    <div class="header-right">
-      <div class="label">Confidential</div>
-      AR Collection Audit
-    </div>
-  </div>
+<!-- ============================================================== -->
+<!-- PAGE 1: COVER                                                   -->
+<!-- ============================================================== -->
+<div class="page cover">
+  <div class="cover-classification">CONFIDENTIAL</div>
 
-  <div class="exec-title">AR Collection Audit</div>
-  <div class="exec-subtitle">Confidential assessment of inbound billing operations</div>
+  <div class="cover-type">Independent Operational Audit</div>
+  <div class="cover-title">AR Collection Process<br>Assessment</div>
+  <div class="cover-subtitle">Interstate Waste Services, Inc.</div>
 
-  <div class="company-row">
-    <div class="item">
-      <span class="label">Company</span>
-      <span class="value">Interstate Waste Services</span>
-    </div>
-    <div class="item">
-      <span class="label">Industry</span>
-      <span class="value">Waste Management</span>
-    </div>
-    <div class="item">
-      <span class="label">Report Date</span>
-      <span class="value">April 2026</span>
-    </div>
-    <div class="item">
-      <span class="label">Prepared By</span>
-      <span class="value">AgentCollect</span>
-    </div>
-  </div>
+  <div class="cover-line"></div>
 
-  <div class="score-block">
-    <div class="score-label">Overall Collection Readiness Score</div>
-    <div class="score-big">2.1 <span class="score-of">/ 10</span></div>
-  </div>
+  <dl class="cover-meta">
+    <dt>Report No.</dt>
+    <dd>RPT-2026-0403-IWS</dd>
+    <dt>Date Issued</dt>
+    <dd>April 3, 2026</dd>
+    <dt>Assessment Period</dt>
+    <dd>March 28 &ndash; April 3, 2026</dd>
+    <dt>Prepared For</dt>
+    <dd>IWS Executive Leadership</dd>
+    <dt>Classification</dt>
+    <dd>Confidential &mdash; Management Use Only</dd>
+  </dl>
 
-  <div class="category-row">
-    <div class="category-card">
-      <div class="cat-score">0<span class="cat-of">/10</span></div>
-      <div class="cat-name">Identity Verification</div>
-    </div>
-    <div class="category-card">
-      <div class="cat-score amber">3<span class="cat-of">/10</span></div>
-      <div class="cat-name">Empathy &amp; Tone</div>
-    </div>
-    <div class="category-card">
-      <div class="cat-score">0<span class="cat-of">/10</span></div>
-      <div class="cat-name">Dispute Resolution</div>
-    </div>
-    <div class="category-card">
-      <div class="cat-score">0<span class="cat-of">/10</span></div>
-      <div class="cat-name">Payment Collection</div>
-    </div>
-  </div>
-
-  <div class="key-finding">
-    <div class="key-finding-title">Key Finding</div>
-    <p>We called IWS billing twice as customers. Your representatives disclosed <strong>$48,124 in account data</strong> to unverified callers and collected <strong>$0</strong>. Your customer portal (MyIWS.com) is for sale. There is no way for customers to pay online.</p>
-  </div>
-
-  <div class="meta-grid">
-    <div class="meta-box">
-      <div class="meta-label">Estimated Annual Revenue at Risk</div>
-      <div class="meta-value">$4.8M+</div>
-    </div>
-    <div class="meta-box">
-      <div class="meta-label">Methodology</div>
-      <div class="meta-text">3 calls across 2 business days, posing as customers of CityMD, Chelsea Piers, and a construction company with a billing dispute.</div>
-    </div>
-  </div>
-
-  <div class="footer">
-    <span class="footer-logo">AgentCollect<span class="dot"></span></span>
-    <span>agentcollect.com</span>
-    <span>Confidential &mdash; Page 1 of 3</span>
+  <div class="cover-footer">
+    <span>Prepared by AgentCollect &mdash; agentcollect.com</span>
+    <span>RPT-2026-0403-IWS</span>
   </div>
 </div>
 
-<!-- PAGE 2: FINDINGS -->
+<!-- ============================================================== -->
+<!-- PAGE 2: EXECUTIVE SUMMARY                                       -->
+<!-- ============================================================== -->
 <div class="page">
-  <div class="header">
-    <span class="logo">AgentCollect<span class="dot"></span></span>
-    <div class="header-right">
-      <div class="label">Confidential</div>
-      Interstate Waste Services
-    </div>
+  <div class="page-header">
+    <span>CONFIDENTIAL &mdash; IWS AR Collection Assessment</span>
+    <span>RPT-2026-0403-IWS</span>
   </div>
 
-  <div class="findings-title">Detailed Findings</div>
+  <div class="section-num">Section 1</div>
+  <div class="section-title">Executive Summary</div>
 
-  <div class="finding">
-    <div class="finding-header">
-      <div class="finding-title">1. No Identity Verification</div>
-      <span class="finding-badge">0 / 10</span>
-    </div>
-    <ul>
-      <li><strong>Charlene</strong> looked up a CityMD account using only a company name and address. No account number, no callback verification, no security questions.</li>
-      <li>Disclosed: <strong>$34,818 outstanding balance</strong>, AP contact email, payment history, and primary contact name.</li>
-      <li>A competitor, vendor, or bad actor could extract the same data in under 2 minutes.</li>
-    </ul>
+  <div style="margin-bottom: 18px;">
+    <span style="font-size: 8.5pt; font-weight: 600; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin-right: 10px;">Overall Rating:</span>
+    <span class="rating-box critical">UNSATISFACTORY</span>
   </div>
 
-  <div class="finding">
-    <div class="finding-header">
-      <div class="finding-title">2. Pattern Confirmed: Second Rep, Same Result</div>
-      <span class="finding-badge">0 / 10</span>
-    </div>
-    <ul>
-      <li><strong>Sue</strong> looked up Chelsea Piers by name alone. No verification attempted at any point during the call.</li>
-      <li>Disclosed: <strong>$13,305 balance</strong>, equipment inventory details, pickup schedule, and multiple contact names.</li>
-      <li>This is not an individual error. It is a systemic gap: no verification protocol exists.</li>
-    </ul>
-  </div>
+  <p class="summary-paragraph">
+    An independent assessment of Interstate Waste Services' accounts receivable collection process was conducted between March 28 and April 3, 2026. The assessment evaluated four operational areas through simulated customer interactions. All four areas received critical risk ratings. The assessment identified systemic deficiencies in identity verification, payment collection, dispute resolution, and digital self-service capabilities.
+  </p>
 
-  <div class="finding">
-    <div class="finding-header">
-      <div class="finding-title">3. Dispute Resolution Non-Existent</div>
-      <span class="finding-badge">0 / 10</span>
-    </div>
-    <ul>
-      <li><strong>Nancy</strong> confirmed account details for a caller claiming a billing dispute, again without any form of verification.</li>
-      <li>Resolution offered: "Call your sales rep David." No case number, no escalation path, no follow-up committed.</li>
-      <li>Customer left with zero resolution. High risk of churn and delayed payment.</li>
-    </ul>
-  </div>
+  <!-- Key Metrics -->
+  <div style="font-size: 9pt; font-weight: 700; color: var(--text); margin-bottom: 6px; letter-spacing: 0.04em; text-transform: uppercase;">Key Metrics</div>
+  <table style="margin-bottom: 18px;">
+    <tr><th>Metric</th><th>Finding</th></tr>
+    <tr><td>Calls conducted</td><td>3</td></tr>
+    <tr><td>Representatives assessed</td><td>3 (Charlene, Sue, Nancy)</td></tr>
+    <tr><td>Customer accounts tested</td><td>3 (CityMD, Chelsea Piers, Glen Pointe)</td></tr>
+    <tr><td>Account data disclosed without verification</td><td>$48,124</td></tr>
+    <tr><td>Payments collected during assessment</td><td>$0</td></tr>
+    <tr><td>Digital portals tested</td><td>4 URLs</td></tr>
+    <tr><td>Functional portals</td><td>0</td></tr>
+  </table>
 
-  <div class="finding">
-    <div class="finding-header">
-      <div class="finding-title">4. Customer Portal Broken</div>
-      <span class="finding-badge amber">Critical</span>
-    </div>
-    <ul>
-      <li>IWS phone IVR directs customers to <strong>MyIWS.com</strong> to make payments. That domain is currently for sale ($2,695).</li>
-      <li>Tested: <strong>/make-a-payment</strong>, <strong>/customer-portal</strong>, and <strong>/myiws</strong> all return 404 errors.</li>
-      <li>Customers who want to pay online cannot. Every payment requires a phone call that collects $0.</li>
-    </ul>
-  </div>
+  <!-- Findings Overview -->
+  <div style="font-size: 9pt; font-weight: 700; color: var(--text); margin-bottom: 6px; letter-spacing: 0.04em; text-transform: uppercase;">Findings Overview</div>
+  <table>
+    <tr>
+      <th style="width: 40px;">#</th>
+      <th>Finding</th>
+      <th style="width: 100px;">Risk Rating</th>
+      <th style="width: 60px;">Score</th>
+    </tr>
+    <tr>
+      <td>F-01</td>
+      <td>No caller identity verification</td>
+      <td><span class="badge critical">CRITICAL</span></td>
+      <td>0 / 10</td>
+    </tr>
+    <tr>
+      <td>F-02</td>
+      <td>No payment collection capability</td>
+      <td><span class="badge critical">CRITICAL</span></td>
+      <td>0 / 10</td>
+    </tr>
+    <tr>
+      <td>F-03</td>
+      <td>Dispute resolution failure</td>
+      <td><span class="badge critical">CRITICAL</span></td>
+      <td>0 / 10</td>
+    </tr>
+    <tr>
+      <td>F-04</td>
+      <td>Customer portal non-functional</td>
+      <td><span class="badge critical">CRITICAL</span></td>
+      <td>N/A</td>
+    </tr>
+    <tr>
+      <td>F-05</td>
+      <td>Estimated annual revenue impact</td>
+      <td><span class="badge critical">CRITICAL</span></td>
+      <td>$4.8M+</td>
+    </tr>
+  </table>
 
-  <div class="footer">
-    <span class="footer-logo">AgentCollect<span class="dot"></span></span>
-    <span>agentcollect.com</span>
-    <span>Confidential &mdash; Page 2 of 3</span>
+  <div class="page-footer">
+    <span>Prepared by AgentCollect &mdash; agentcollect.com</span>
+    <span>Page 1 of 7</span>
   </div>
 </div>
 
-<!-- PAGE 3: RECOMMENDATION -->
+<!-- ============================================================== -->
+<!-- PAGE 3: SCOPE & METHODOLOGY                                     -->
+<!-- ============================================================== -->
 <div class="page">
-  <div class="header">
-    <span class="logo">AgentCollect<span class="dot"></span></span>
-    <div class="header-right">
-      <div class="label">Confidential</div>
-      Interstate Waste Services
+  <div class="page-header">
+    <span>CONFIDENTIAL &mdash; IWS AR Collection Assessment</span>
+    <span>RPT-2026-0403-IWS</span>
+  </div>
+
+  <div class="section-num">Section 2</div>
+  <div class="section-title">Scope &amp; Methodology</div>
+
+  <div class="section-title-sm">Objective</div>
+  <p class="summary-paragraph">
+    To evaluate the effectiveness, security, and customer experience of Interstate Waste Services' accounts receivable collection process through simulated customer interactions.
+  </p>
+
+  <div class="section-title-sm">Scope</div>
+  <p class="summary-paragraph">
+    The assessment covered inbound telephone interactions with IWS billing representatives, digital self-service portals, and dispute resolution processes. Testing was conducted during standard business hours (Eastern Time) at IWS's primary billing number: (866) 342-5497.
+  </p>
+
+  <div class="section-title-sm">Methodology</div>
+  <table style="margin-bottom: 18px;">
+    <tr><th style="width: 60px;">Phase</th><th>Description</th></tr>
+    <tr>
+      <td style="font-weight: 600;">Phase 1</td>
+      <td><strong>Reconnaissance.</strong> Public information gathering on IWS customer base, billing processes, and digital properties. Identification of commercial customers with active waste collection accounts for use in simulated interactions.</td>
+    </tr>
+    <tr>
+      <td style="font-weight: 600;">Phase 2</td>
+      <td><strong>Telephone Assessment.</strong> Three calls placed to IWS billing (866-342-5497) posing as representatives of known IWS commercial customers. Calls assessed identity verification protocols, data handling procedures, payment collection capabilities, and service quality. All calls were recorded.</td>
+    </tr>
+    <tr>
+      <td style="font-weight: 600;">Phase 3</td>
+      <td><strong>Digital Assessment.</strong> Testing of all customer-facing payment portals referenced in IVR messaging, website navigation, and representative recommendations. Four URLs tested across two domains.</td>
+    </tr>
+    <tr>
+      <td style="font-weight: 600;">Phase 4</td>
+      <td><strong>Dispute Simulation.</strong> One call placed as a customer with a legitimate billing dispute (missed dumpster pickup) to assess dispute resolution capabilities, customer retention protocols, and first-call resolution rates.</td>
+    </tr>
+  </table>
+
+  <div class="section-title-sm">Assessment Framework</div>
+  <p class="summary-paragraph">
+    Each operational area was scored on a 0&ndash;10 scale based on industry best practices for AR collection operations. Ratings follow a standard audit classification: <strong>Satisfactory</strong> (7&ndash;10), <strong>Needs Improvement</strong> (4&ndash;6), <strong>Unsatisfactory</strong> (0&ndash;3).
+  </p>
+
+  <div class="section-title-sm">Limitations</div>
+  <p class="summary-paragraph" style="margin-bottom: 0;">
+    This assessment reflects a point-in-time evaluation. Results may not represent all customer interactions or all representatives. The assessment was conducted during standard business hours (Eastern Time). Portal testing was limited to publicly accessible URLs referenced by IWS staff or automated systems.
+  </p>
+
+  <div class="page-footer">
+    <span>Prepared by AgentCollect &mdash; agentcollect.com</span>
+    <span>Page 2 of 7</span>
+  </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- PAGE 4: FINDING F-01 and F-02                                   -->
+<!-- ============================================================== -->
+<div class="page">
+  <div class="page-header">
+    <span>CONFIDENTIAL &mdash; IWS AR Collection Assessment</span>
+    <span>RPT-2026-0403-IWS</span>
+  </div>
+
+  <div class="section-num">Section 3</div>
+  <div class="section-title">Detailed Findings</div>
+
+  <!-- F-01 -->
+  <div class="finding-block">
+    <div class="finding-header">
+      <div>
+        <span class="finding-id">F-01</span>
+        <span class="finding-title-text">No Caller Identity Verification</span>
+      </div>
+      <span class="badge critical">CRITICAL</span>
+    </div>
+    <div class="finding-body">
+      <table>
+        <tr>
+          <th>Condition</th>
+          <td>Representatives disclosed full account details&mdash;including outstanding balances, payment histories, AP contact emails, equipment inventories, service schedules, and primary contact names&mdash;to unverified callers. No account number, callback verification, or security question was required across any of the three calls assessed.</td>
+        </tr>
+        <tr>
+          <th>Criteria</th>
+          <td>Industry standard requires minimum two-factor verification before disclosing account information (e.g., account number + company name, or callback to registered number). NACHA and PCI-DSS guidelines mandate identity verification before sharing financial data.</td>
+        </tr>
+        <tr>
+          <th>Cause</th>
+          <td>No standardized identity verification protocol appears to be in place. All three representatives relied solely on caller-provided company name and address to locate accounts. The consistency across representatives indicates a systemic gap rather than individual error.</td>
+        </tr>
+        <tr>
+          <th>Consequence</th>
+          <td>$48,124 in account data disclosed across two vendor reconciliation calls. Data disclosed included: customer balances ($34,818.38 for CityMD; $13,305.68 for Chelsea Piers), AP email addresses, payment histories, primary contact names (e.g., Lizbeth Rutherford), equipment inventories (2x 30-yard dumpsters, 12x recycling bins, 5x trash containers), and daily pickup schedules. This creates exposure to social engineering, competitive intelligence gathering, and potential regulatory liability.</td>
+        </tr>
+        <tr>
+          <th>Corrective Action</th>
+          <td>Implement mandatory two-factor verification protocol before any account data disclosure. Train all billing representatives on data classification and disclosure policies. Consider implementing automated identity verification at the IVR level prior to agent connection.</td>
+        </tr>
+      </table>
+      <div class="evidence-box">
+        <strong>Evidence &mdash; Call 1:</strong> Assessor identified as CityMD office manager. Representative (Charlene) located account using only company name and address. Full balance ($34,818.38), AP email, payment history, and primary contact name disclosed within 15 minutes.<br>
+        <strong>Evidence &mdash; Call 2:</strong> Assessor identified as Chelsea Piers representative. Representative (Sue) disclosed $13,305.68 balance, equipment inventory, daily pickup schedule, and multiple contact names. No verification attempted at any point.
+      </div>
     </div>
   </div>
 
-  <div class="rec-title">What It Should Look Like</div>
-  <div class="rec-subtitle">Side-by-side: your current process vs. a modern AR operation</div>
-
-  <div class="comparison">
-    <div class="comp-col today">
-      <div class="comp-col-title">Today: IWS Billing</div>
-      <div class="comp-step">
-        <div class="comp-icon">&times;</div>
-        <span>Customer calls. Waits on hold.</span>
+  <!-- F-02 -->
+  <div class="finding-block">
+    <div class="finding-header">
+      <div>
+        <span class="finding-id">F-02</span>
+        <span class="finding-title-text">No Payment Collection Capability</span>
       </div>
-      <div class="comp-step">
-        <div class="comp-icon">&times;</div>
-        <span>Rep answers. No identity check.</span>
-      </div>
-      <div class="comp-step">
-        <div class="comp-icon">&times;</div>
-        <span>Account data disclosed to anyone.</span>
-      </div>
-      <div class="comp-step">
-        <div class="comp-icon">&times;</div>
-        <span>Portal down. No way to pay online.</span>
-      </div>
-      <div class="comp-step">
-        <div class="comp-icon">&times;</div>
-        <span>Dispute? "Call your sales rep."</span>
-      </div>
-      <div class="comp-step">
-        <div class="comp-icon">&times;</div>
-        <span><strong>Result: $0 collected.</strong></span>
-      </div>
+      <span class="badge critical">CRITICAL</span>
     </div>
-    <div class="comp-col agent">
-      <div class="comp-col-title">With AgentCollect</div>
-      <div class="comp-step">
-        <div class="comp-icon">&check;</div>
-        <span>AI answers in 2 seconds. No hold.</span>
+    <div class="finding-body">
+      <table>
+        <tr>
+          <th>Condition</th>
+          <td>No payment was collected across any of the three calls. Representatives had no mechanism to accept payment during the call&mdash;no payment link, no card processing, no ACH capability. Customers requesting to pay were directed to a non-functional portal or told to mail a check.</td>
+        </tr>
+        <tr>
+          <th>Criteria</th>
+          <td>Industry standard for AR billing operations includes real-time payment processing via phone (card or ACH), payment link delivery (SMS or email), and functional self-service portal. Leading waste management companies offer all three channels.</td>
+        </tr>
+        <tr>
+          <th>Cause</th>
+          <td>No integrated payment processing system is connected to the billing team's workflow. Representatives lack tools to generate payment links or process payments during live calls.</td>
+        </tr>
+        <tr>
+          <th>Consequence</th>
+          <td>$0 collected across all interactions despite engaged callers with outstanding balances totaling $48,124. Customers who call ready to pay are unable to do so, extending DSO and increasing write-off risk. With 10,000+ commercial customers, the estimated annual impact is $4.8M+ in delayed or uncollected receivables.</td>
+        </tr>
+        <tr>
+          <th>Corrective Action</th>
+          <td>Implement phone payment processing (card and ACH). Enable representatives to generate and send branded payment links via SMS and email during calls. Deploy a functional online payment portal.</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Prepared by AgentCollect &mdash; agentcollect.com</span>
+    <span>Page 3 of 7</span>
+  </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- PAGE 5: FINDING F-03 and F-04                                   -->
+<!-- ============================================================== -->
+<div class="page">
+  <div class="page-header">
+    <span>CONFIDENTIAL &mdash; IWS AR Collection Assessment</span>
+    <span>RPT-2026-0403-IWS</span>
+  </div>
+
+  <div class="section-num">Section 3 (continued)</div>
+  <div class="section-title" style="font-size: 16pt;">Detailed Findings</div>
+
+  <!-- F-03 -->
+  <div class="finding-block">
+    <div class="finding-header">
+      <div>
+        <span class="finding-id">F-03</span>
+        <span class="finding-title-text">Dispute Resolution Failure</span>
       </div>
-      <div class="comp-step">
-        <div class="comp-icon">&check;</div>
-        <span>Identity verified before any data shared.</span>
-      </div>
-      <div class="comp-step">
-        <div class="comp-icon">&check;</div>
-        <span>Branded payment link sent by SMS/email.</span>
-      </div>
-      <div class="comp-step">
-        <div class="comp-icon">&check;</div>
-        <span>Online portal works. 24/7 self-service.</span>
-      </div>
-      <div class="comp-step">
-        <div class="comp-icon">&check;</div>
-        <span>Disputes logged, escalated, tracked.</span>
-      </div>
-      <div class="comp-step">
-        <div class="comp-icon">&check;</div>
-        <span><strong>Result: paid in 30 seconds.</strong></span>
+      <span class="badge critical">CRITICAL</span>
+    </div>
+    <div class="finding-body">
+      <table>
+        <tr>
+          <th>Condition</th>
+          <td>A caller reported a billing dispute (charged for a dumpster pickup that did not occur at Glen Pointe, 500 Frank W. Burr Boulevard). Representative Nancy confirmed account details without identity verification, then directed the caller to "speak with your sales rep, David." No case number was issued, no escalation was initiated, no follow-up was committed, and no timeline was provided.</td>
+        </tr>
+        <tr>
+          <th>Criteria</th>
+          <td>Industry best practice requires first-call resolution capability for billing disputes, including: issuing a case/ticket number, documenting the dispute, providing an estimated resolution timeline, and escalating through a defined process. The billing team should have authority to issue provisional credits for service failures.</td>
+        </tr>
+        <tr>
+          <th>Cause</th>
+          <td>The billing team appears to lack authority to resolve disputes or issue credits. No documented dispute escalation protocol was observed. Resolution depends on the customer successfully reaching a specific individual (David) through a separate call.</td>
+        </tr>
+        <tr>
+          <th>Consequence</th>
+          <td>Customers with legitimate disputes receive no resolution, no case tracking, and no assurance of follow-up. This increases customer churn risk and extends payment delays. The customer in this scenario&mdash;disputing approximately $5,000&mdash;was left with zero resolution and a directive to call back and ask for someone by first name.</td>
+        </tr>
+        <tr>
+          <th>Corrective Action</th>
+          <td>Establish a formal dispute resolution protocol with defined escalation tiers. Empower the billing team to issue provisional credits for documented service failures. Implement case numbering and tracking for all disputes. Define and communicate resolution SLAs to customers.</td>
+        </tr>
+      </table>
+      <div class="evidence-box">
+        <strong>Evidence:</strong> Caller reported a missed dumpster pickup at Glen Pointe. Nancy (IWS) confirmed the address and equipment without verification, then stated: <em>"You'll need to speak with your sales rep, David, about that."</em> No case number, no escalation, no timeline, no follow-up. Call ended without resolution.
       </div>
     </div>
   </div>
 
-  <div class="value-block">
-    <p>
-      <strong>AgentCollect</strong> deploys an AI agent trained on your billing data. 100% answer rate. Identity verification on every call. Branded payment links. Disputes resolved on the spot. Your customers pay faster, your team handles less, and your data stays secure.
+  <!-- F-04 -->
+  <div class="finding-block">
+    <div class="finding-header">
+      <div>
+        <span class="finding-id">F-04</span>
+        <span class="finding-title-text">Customer Portal Non-Functional</span>
+      </div>
+      <span class="badge critical">CRITICAL</span>
+    </div>
+    <div class="finding-body">
+      <table>
+        <tr>
+          <th>Condition</th>
+          <td>The IWS interactive voice response (IVR) system directs customers to "use the MyIWS portal on our website" to manage accounts and make payments. The domain myiws.com is listed for sale ($2,695 on HugeDomains). Three additional portal URLs on the primary domain return 404 errors. Representative Charlene recommended an alternative portal ("BuildTrust") which also did not resolve to a functional payment page.</td>
+        </tr>
+        <tr>
+          <th>Criteria</th>
+          <td>All customer-facing portal references (IVR, website, representative guidance) should resolve to functional, secure payment pages. Domain registrations for customer-facing properties should be maintained and monitored.</td>
+        </tr>
+        <tr>
+          <th>Cause</th>
+          <td>The myiws.com domain registration appears to have lapsed. Website portal pages (/make-a-payment, /customer-portal, /myiws) do not exist or are not deployed. There is no apparent coordination between IVR messaging and actual digital properties.</td>
+        </tr>
+        <tr>
+          <th>Consequence</th>
+          <td>Every customer who follows IVR or representative instructions to pay online is unable to do so. This forces all payment activity through phone channels that themselves cannot collect payment, creating a closed loop with zero payment capability.</td>
+        </tr>
+        <tr>
+          <th>Corrective Action</th>
+          <td>Immediately secure the myiws.com domain. Deploy a functional payment portal at a consistent URL. Update IVR messaging to reference the correct, verified URL. Audit all customer-facing references (website, IVR, printed materials) for accuracy. Implement monitoring for domain expiration and portal uptime.</td>
+        </tr>
+      </table>
+      <div class="evidence-box">
+        <strong>Portal test results:</strong><br>
+        myiws.com &rarr; Domain listed for sale ($2,695 on HugeDomains)<br>
+        interstatewaste.com/make-a-payment &rarr; 404 Not Found<br>
+        interstatewaste.com/customer-portal &rarr; 404 Not Found<br>
+        interstatewaste.com/myiws &rarr; 404 Not Found<br>
+        <strong>Additional note:</strong> IWS FAQ page contains a typographical error ("interstwaste.com" instead of "interstatewaste.com"), further compounding customer confusion.
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Prepared by AgentCollect &mdash; agentcollect.com</span>
+    <span>Page 4 of 7</span>
+  </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- PAGE 6: RISK ASSESSMENT & IMPACT                                -->
+<!-- ============================================================== -->
+<div class="page">
+  <div class="page-header">
+    <span>CONFIDENTIAL &mdash; IWS AR Collection Assessment</span>
+    <span>RPT-2026-0403-IWS</span>
+  </div>
+
+  <div class="section-num">Section 4</div>
+  <div class="section-title">Risk Assessment &amp; Impact Analysis</div>
+
+  <div class="section-title-sm">Estimated Annual Revenue Impact</div>
+  <p class="summary-paragraph">
+    Based on IWS's reported customer base of 10,000+ commercial accounts across the Northeast, industry-standard AR delinquency rates (typically 5&ndash;12% for commercial waste services), and the observed inability to collect payments through any channel (telephone, digital, or dispute resolution), the estimated annual revenue impact is <strong>$4.8M or greater</strong> in delayed or uncollected receivables.
+  </p>
+  <p class="summary-paragraph">
+    This estimate is conservative. It does not account for customer churn driven by poor dispute resolution, reputational risk from data security gaps, or compounding effects of extended DSO on working capital.
+  </p>
+
+  <!-- Risk Matrix -->
+  <div class="section-title-sm">Risk Matrix</div>
+  <div style="display: flex; gap: 40px; align-items: flex-start; margin-bottom: 24px;">
+    <div>
+      <table style="width: 340px;">
+        <tr>
+          <th style="background: transparent; border: none; width: 85px;"></th>
+          <th style="text-align: center; font-size: 8pt;">Moderate Impact</th>
+          <th style="text-align: center; font-size: 8pt;">High Impact</th>
+        </tr>
+        <tr>
+          <td style="font-weight: 700; font-size: 8pt; background: transparent;">High Likelihood</td>
+          <td style="text-align: center; background: var(--orange-bg); color: var(--orange); font-weight: 600; font-size: 8pt;">HIGH</td>
+          <td style="text-align: center; background: var(--red-bg); color: var(--red); font-weight: 600; font-size: 8pt;">
+            F-01 &bull; F-02<br>F-03 &bull; F-04
+          </td>
+        </tr>
+        <tr>
+          <td style="font-weight: 700; font-size: 8pt; background: transparent;">Low Likelihood</td>
+          <td style="text-align: center; background: #f0fdf4; color: var(--green); font-weight: 600; font-size: 8pt;">LOW</td>
+          <td style="text-align: center; background: var(--yellow-bg); color: var(--yellow); font-weight: 600; font-size: 8pt;">MEDIUM</td>
+        </tr>
+      </table>
+      <p style="font-size: 7.5pt; color: var(--light); margin-top: 6px;">All four findings fall in the high-likelihood, high-impact quadrant.</p>
+    </div>
+  </div>
+
+  <!-- Industry Comparison -->
+  <div class="section-title-sm">Comparison to Industry Standards</div>
+  <table style="margin-bottom: 24px;">
+    <tr>
+      <th>Operational Area</th>
+      <th style="width: 90px; text-align: center;">IWS Score</th>
+      <th style="width: 110px; text-align: center;">Industry Benchmark</th>
+      <th style="width: 60px; text-align: center;">Gap</th>
+    </tr>
+    <tr>
+      <td>Caller identity verification</td>
+      <td style="text-align: center; color: var(--red); font-weight: 700;">0 / 10</td>
+      <td style="text-align: center;">7 / 10</td>
+      <td style="text-align: center; color: var(--red); font-weight: 700;">&minus;7</td>
+    </tr>
+    <tr>
+      <td>Payment collection capability</td>
+      <td style="text-align: center; color: var(--red); font-weight: 700;">0 / 10</td>
+      <td style="text-align: center;">8 / 10</td>
+      <td style="text-align: center; color: var(--red); font-weight: 700;">&minus;8</td>
+    </tr>
+    <tr>
+      <td>Dispute resolution</td>
+      <td style="text-align: center; color: var(--red); font-weight: 700;">0 / 10</td>
+      <td style="text-align: center;">6 / 10</td>
+      <td style="text-align: center; color: var(--red); font-weight: 700;">&minus;6</td>
+    </tr>
+    <tr>
+      <td>Digital self-service portal</td>
+      <td style="text-align: center; color: var(--red); font-weight: 700;">0 / 10</td>
+      <td style="text-align: center;">7 / 10</td>
+      <td style="text-align: center; color: var(--red); font-weight: 700;">&minus;7</td>
+    </tr>
+    <tr>
+      <td>Empathy and tone</td>
+      <td style="text-align: center; color: var(--orange); font-weight: 700;">3 / 10</td>
+      <td style="text-align: center;">7 / 10</td>
+      <td style="text-align: center; color: var(--orange); font-weight: 700;">&minus;4</td>
+    </tr>
+  </table>
+
+  <div class="section-title-sm">Aggregate Assessment</div>
+  <table>
+    <tr>
+      <th style="width: 200px;">Rating Category</th>
+      <th>Definition</th>
+      <th style="width: 80px; text-align: center;">IWS Status</th>
+    </tr>
+    <tr>
+      <td><span class="rating-box satisfactory" style="font-size: 7.5pt; padding: 2px 8px;">SATISFACTORY</span></td>
+      <td>Controls are adequate. Minor improvements recommended. Score: 7&ndash;10.</td>
+      <td style="text-align: center;">&mdash;</td>
+    </tr>
+    <tr>
+      <td><span class="rating-box needs-improvement" style="font-size: 7.5pt; padding: 2px 8px;">NEEDS IMPROVEMENT</span></td>
+      <td>Controls are partially effective. Significant gaps exist. Score: 4&ndash;6.</td>
+      <td style="text-align: center;">&mdash;</td>
+    </tr>
+    <tr>
+      <td><span class="rating-box critical" style="font-size: 7.5pt; padding: 2px 8px;">UNSATISFACTORY</span></td>
+      <td>Controls are absent or ineffective. Immediate remediation required. Score: 0&ndash;3.</td>
+      <td style="text-align: center; font-weight: 700; color: var(--red); font-size: 14pt;">&#9679;</td>
+    </tr>
+  </table>
+
+  <div class="page-footer">
+    <span>Prepared by AgentCollect &mdash; agentcollect.com</span>
+    <span>Page 5 of 7</span>
+  </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- PAGE 7: RECOMMENDATIONS                                         -->
+<!-- ============================================================== -->
+<div class="page">
+  <div class="page-header">
+    <span>CONFIDENTIAL &mdash; IWS AR Collection Assessment</span>
+    <span>RPT-2026-0403-IWS</span>
+  </div>
+
+  <div class="section-num">Section 5</div>
+  <div class="section-title">Recommendations</div>
+
+  <p class="summary-paragraph">
+    The following corrective actions are recommended in order of priority. Each recommendation addresses the root cause identified in the corresponding finding.
+  </p>
+
+  <table style="margin-bottom: 24px;">
+    <tr>
+      <th style="width: 30px;">#</th>
+      <th>Recommendation</th>
+      <th style="width: 70px;">Priority</th>
+      <th style="width: 70px;">Finding</th>
+    </tr>
+    <tr>
+      <td>R-01</td>
+      <td><strong>Implement caller identity verification protocol.</strong> Require minimum two-factor verification (account number + company name, or callback to registered number) before any account data is disclosed. Train all billing representatives. Consider IVR-level automated verification.</td>
+      <td><span class="badge critical">IMMEDIATE</span></td>
+      <td>F-01</td>
+    </tr>
+    <tr>
+      <td>R-02</td>
+      <td><strong>Deploy payment collection capability.</strong> Integrate phone payment processing (card and ACH). Enable representatives to generate branded payment links via SMS/email during live calls. This is the highest-ROI remediation: customers who call wanting to pay should be able to pay.</td>
+      <td><span class="badge critical">IMMEDIATE</span></td>
+      <td>F-02</td>
+    </tr>
+    <tr>
+      <td>R-03</td>
+      <td><strong>Secure domain and deploy functional portal.</strong> Re-acquire myiws.com. Deploy a functional self-service payment portal. Update all customer-facing references (IVR, website, printed materials). Implement domain and uptime monitoring.</td>
+      <td><span class="badge critical">IMMEDIATE</span></td>
+      <td>F-04</td>
+    </tr>
+    <tr>
+      <td>R-04</td>
+      <td><strong>Establish dispute resolution protocol.</strong> Define escalation tiers and resolution SLAs. Empower billing team with provisional credit authority for documented service failures. Implement case numbering and tracking. Ensure every dispute caller receives a case number and timeline.</td>
+      <td><span class="badge high">HIGH</span></td>
+      <td>F-03</td>
+    </tr>
+    <tr>
+      <td>R-05</td>
+      <td><strong>Conduct comprehensive data security review.</strong> Audit all customer-facing processes for data exposure risks. Implement data classification policies. Establish regular mystery-shop assessments to monitor compliance.</td>
+      <td><span class="badge high">HIGH</span></td>
+      <td>F-01</td>
+    </tr>
+    <tr>
+      <td>R-06</td>
+      <td><strong>Implement customer experience monitoring.</strong> Establish ongoing call quality scoring, first-call resolution tracking, and customer satisfaction measurement. Conduct quarterly operational assessments to measure remediation progress.</td>
+      <td><span class="badge medium">MEDIUM</span></td>
+      <td>All</td>
+    </tr>
+  </table>
+
+  <div style="background: #f5f5f5; border: 1px solid var(--border); border-radius: 4px; padding: 14px 16px; margin-top: 8px;">
+    <div style="font-size: 9pt; font-weight: 700; color: var(--text); margin-bottom: 6px;">Management Response Requested</div>
+    <p style="font-size: 9pt; color: var(--text-secondary); line-height: 1.55; margin: 0;">
+      Per standard audit protocol, management is requested to provide a written response to each finding, including: (1) agreement or disagreement with the finding, (2) planned corrective actions, (3) responsible party, and (4) estimated completion date. Responses should be directed to the report authors within 30 days of report issuance.
     </p>
   </div>
 
-  <div class="stats-row">
-    <div class="stat-item">
-      <div class="stat-num">100%</div>
-      <div class="stat-label">Answer Rate</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">2s</div>
-      <div class="stat-label">Response Time</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">24/7</div>
-      <div class="stat-label">Availability</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">30s</div>
-      <div class="stat-label">Time to Payment</div>
-    </div>
+  <div class="page-footer">
+    <span>Prepared by AgentCollect &mdash; agentcollect.com</span>
+    <span>Page 6 of 7</span>
+  </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- PAGE 8: APPENDICES                                              -->
+<!-- ============================================================== -->
+<div class="page">
+  <div class="page-header">
+    <span>CONFIDENTIAL &mdash; IWS AR Collection Assessment</span>
+    <span>RPT-2026-0403-IWS</span>
   </div>
 
-  <div class="cta-block">
-    <div class="cta-title">15-Minute Demo</div>
-    <div class="cta-email">j@agentcollect.com</div>
-    <div class="cta-sub">See what your IWS billing agent looks and sounds like, live.</div>
-  </div>
+  <div class="section-num">Appendices</div>
+  <div class="section-title">Supporting Documentation</div>
 
-  <div class="footer">
-    <span class="footer-logo" style="color:#fff;">AgentCollect<span class="dot" style="background:#fff;"></span></span>
-    <span>agentcollect.com</span>
-    <span>Confidential &mdash; Page 3 of 3</span>
+  <!-- Appendix A -->
+  <div class="appendix-label">Appendix A: Call Log</div>
+  <table style="margin-bottom: 16px;">
+    <tr>
+      <th style="width: 30px;">#</th>
+      <th style="width: 80px;">Date</th>
+      <th style="width: 70px;">Duration</th>
+      <th style="width: 80px;">Representative</th>
+      <th style="width: 100px;">Customer Posed</th>
+      <th>Outcome</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Mar 28, 2026</td>
+      <td>15 min 25 sec</td>
+      <td>Charlene</td>
+      <td>CityMD</td>
+      <td>$34,818.38 balance disclosed. AP email, payment history, contact name (Lizbeth Rutherford) shared. $0 collected.</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Apr 1, 2026</td>
+      <td>12 min</td>
+      <td>Sue</td>
+      <td>Chelsea Piers</td>
+      <td>$13,305.68 balance disclosed. Equipment inventory, pickup schedule, contact names shared. $0 collected.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Apr 2, 2026</td>
+      <td>8 min</td>
+      <td>Nancy</td>
+      <td>Glen Pointe</td>
+      <td>Account details confirmed without verification. Dispute unresolved. Directed to "call David." $0 collected.</td>
+    </tr>
+  </table>
+
+  <!-- Appendix B -->
+  <div class="appendix-label">Appendix B: Portal Test Results</div>
+  <table style="margin-bottom: 16px;">
+    <tr>
+      <th>URL Tested</th>
+      <th style="width: 120px;">Expected Result</th>
+      <th style="width: 180px;">Actual Result</th>
+    </tr>
+    <tr>
+      <td>myiws.com</td>
+      <td>Customer portal</td>
+      <td style="color: var(--red); font-weight: 600;">Domain for sale ($2,695)</td>
+    </tr>
+    <tr>
+      <td>interstatewaste.com/make-a-payment</td>
+      <td>Payment page</td>
+      <td style="color: var(--red); font-weight: 600;">404 Not Found</td>
+    </tr>
+    <tr>
+      <td>interstatewaste.com/customer-portal</td>
+      <td>Account management</td>
+      <td style="color: var(--red); font-weight: 600;">404 Not Found</td>
+    </tr>
+    <tr>
+      <td>interstatewaste.com/myiws</td>
+      <td>Portal redirect</td>
+      <td style="color: var(--red); font-weight: 600;">404 Not Found</td>
+    </tr>
+  </table>
+
+  <!-- Appendix C -->
+  <div class="appendix-label">Appendix C: Audio Recordings</div>
+  <p style="font-size: 9pt; color: var(--text-secondary); line-height: 1.55; margin-bottom: 16px;">
+    Full audio recordings of all three assessment calls are available for review at:<br>
+    <strong>agentcollect.com/audit/iws</strong><br>
+    Recordings are retained for 90 days from the date of this report. Access is restricted to authorized personnel.
+  </p>
+
+  <!-- Appendix D -->
+  <div class="appendix-label">Appendix D: Glossary &amp; Rating Definitions</div>
+  <table class="glossary-table">
+    <tr>
+      <td>AR</td>
+      <td>Accounts Receivable. Money owed to a company by its customers for goods or services delivered.</td>
+    </tr>
+    <tr>
+      <td>DSO</td>
+      <td>Days Sales Outstanding. The average number of days it takes to collect payment after a sale. Lower is better.</td>
+    </tr>
+    <tr>
+      <td>IVR</td>
+      <td>Interactive Voice Response. An automated phone system that interacts with callers before routing to a representative.</td>
+    </tr>
+    <tr>
+      <td>PCI-DSS</td>
+      <td>Payment Card Industry Data Security Standard. Security requirements for organizations that handle credit card information.</td>
+    </tr>
+    <tr>
+      <td>NACHA</td>
+      <td>National Automated Clearing House Association. Governs the ACH network used for electronic fund transfers.</td>
+    </tr>
+    <tr>
+      <td>Critical (0&ndash;1)</td>
+      <td>Control is absent. Immediate risk to operations, revenue, or data security. Requires immediate remediation.</td>
+    </tr>
+    <tr>
+      <td>High (2&ndash;3)</td>
+      <td>Control is ineffective. Significant risk exists. Requires remediation within 30 days.</td>
+    </tr>
+    <tr>
+      <td>Medium (4&ndash;6)</td>
+      <td>Control is partially effective. Moderate risk. Requires remediation within 90 days.</td>
+    </tr>
+    <tr>
+      <td>Satisfactory (7&ndash;10)</td>
+      <td>Control is adequate. Minor improvements may be recommended. Standard monitoring continues.</td>
+    </tr>
+  </table>
+
+  <div class="page-footer">
+    <span>Prepared by AgentCollect &mdash; agentcollect.com</span>
+    <span>Page 7 of 7</span>
   </div>
 </div>
 
